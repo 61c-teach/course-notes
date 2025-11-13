@@ -1,6 +1,6 @@
-# Data 6: Course Notes
+# CS 61C: Course Notes
 
-Course notes for Data 6, based on the Stat course-site-quarto template.
+Course notes for CS 61C, based on the Stat course-site-quarto template.
 
 Quick reference:
 - Use VS Code with Quarto extensions to update and preview notes locally.

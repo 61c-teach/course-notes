@@ -8,8 +8,8 @@ website:
     center:
       - text: Home / About / License
         href: index.qmd
-      # - text: GitHub
-      #   href: "https://github.com/data-6-berkeley"
+      - text: GitHub
+        href: "https://github.com/61c-teach/course-notes"
       - text: Accessibility
         href: "https://dap.berkeley.edu/get-help/report-web-accessibility-issue"
       - text: Nondiscrimination
@@ -22,9 +22,9 @@ website:
     logo: assets/favicon.png
     logo-alt: "CS61C Logo"
     collapse-level: 1 # doesn't expand next level
-    # tools:
-      # - icon: github
-      #   href: https://github.com/data-6-berkeley/notes
+    tools:
+      - icon: github
+        href: "https://github.com/61c-teach/course-notes"
     contents:
       - href: index.qmd
         text: Home / About
