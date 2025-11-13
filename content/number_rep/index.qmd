@@ -3,10 +3,4 @@ title: "Number Representation"
 subtitle: "UC Berkeley, CS 61C"
 ---
 
-## What will I learn in this course?
-
-Check out our slides for today! No additional notes!
-
-## External Reading
-
-* _Computational and Inferential Thinking_, [Ch 1.1](https://inferentialthinking.com/chapters/01/1/intro.html)
+## TODO
