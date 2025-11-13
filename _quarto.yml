@@ -1,0 +1,49 @@
+project:
+  type: website
+
+website:
+  favicon: assets/favicon.png
+  # google-analytics: G-CES9J82GLL
+  page-footer: 
+    center:
+      - text: Home / About / License
+        href: index.qmd
+      # - text: GitHub
+      #   href: "https://github.com/data-6-berkeley"
+      - text: Accessibility
+        href: "https://dap.berkeley.edu/get-help/report-web-accessibility-issue"
+      - text: Nondiscrimination
+        href: "https://ophd.berkeley.edu/policies-and-procedures/nondiscrimination-policy-statement"
+    background: "dark"
+  page-navigation: true
+  sidebar:
+    style: "docked"
+    title: "CS 61C <br><small>Course Notes</small>"
+    logo: assets/favicon.png
+    logo-alt: "CS61C Logo"
+    collapse-level: 1 # doesn't expand next level
+    # tools:
+      # - icon: github
+      #   href: https://github.com/data-6-berkeley/notes
+    contents:
+      - href: index.qmd
+        text: Home / About
+      - section: "Introduction"
+        href: 01-intro/index.qmd
+        contents:
+          - href: 01-intro/index.qmd
+            text: "Course Introduction"
+          - href: 01-intro/jupyter-notebook.qmd
+            text: Jupyter Notebooks
+          - href: 01-intro/programming-basics.qmd
+            text: Programming Basics
+
+format:
+  html:
+    theme: lumen
+    fontsize: 1em
+    css: assets/styles.css
+    toc: true
+    include-in-header:
+      file: siteimprove.html
+

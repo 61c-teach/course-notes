@@ -1,0 +1,53 @@
+.label {
+    margin-right: 5px;
+    border-radius: 6px;
+    padding: 4px 6px 4px 7px;
+    width: 101px;
+    color: white;
+    font-size: 0.9em;
+    display: inline-block; // a bit of separation from text outside button
+}
+
+.label-Overview { background-color: #facd05}
+.label-Lecture { background-color: #c3c3c3}
+.label-Lectur2 { background-color: #ffffff}
+.label-Participation { background-color:  #7A77B9}
+.label-Labwork { background-color: #32c99a}
+.label-Labwork2 { background-color: #ffffff}
+.label-Homework { background-color: #ff6f36}
+.label-Shiny { background-color: #377eb8}
+.label-Midterm { background-color: #7A2CAB}
+.label-Final { background-color: #7A2CAB}
+.label-Review { background-color: #c3c3c3}
+
+
+th {
+    width: 9%;
+}
+
+/* td:first-of-type {
+    width: 55%;
+}
+
+td:last-of-type {
+    width: 20%;
+} */
+
+table {
+    border: 2px solid;
+}
+
+button > a {
+    color: white;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+}
+
+.border {
+  color:#069;
+  font-weight: bold;
+}
+

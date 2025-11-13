@@ -1,0 +1,13 @@
+---
+title: "About these Course Notes"
+---
+
+These course notes were compiled and created for **CS 61C: Great Ideas in Computer Architecture (Machine Structures)**.
+
+## License
+
+The contents of this work are licensed for free consumption under the following license: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="blank_"><strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</strong></a>
+
+## Acknowledgments
+
+The template used for these Course Notes are forked from [Data 6's course notes](https://data6.org/notes/)
