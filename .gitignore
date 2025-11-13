@@ -1,3 +1,5 @@
+.DS_STORE
+
 /.quarto/
 /_site/
 .*.swp
