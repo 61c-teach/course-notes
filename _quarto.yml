@@ -28,15 +28,15 @@ website:
     contents:
       - href: index.qmd
         text: Home / About
-      - section: "Introduction"
-        href: 01-intro/index.qmd
+      - section: Number Representation
+        href: content/number_rep/index.qmd
         contents:
-          - href: 01-intro/index.qmd
-            text: "Course Introduction"
-          - href: 01-intro/jupyter-notebook.qmd
-            text: Jupyter Notebooks
-          - href: 01-intro/programming-basics.qmd
-            text: Programming Basics
+          - href: content/number_rep/index.qmd
+            text: Number Representation
+          - href: content/number_rep/unsigned.qmd
+            text: Unsigned Representations
+          - href: content/number_rep/signed.qmd
+            text: Signed Representations
 
 format:
   html:
