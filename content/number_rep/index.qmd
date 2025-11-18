@@ -3,4 +3,63 @@ title: "Number Representation"
 subtitle: "UC Berkeley, CS 61C"
 ---
 
-## TODO
+![](astronaut-alien.png){fig-alt="A astronaut talking to an alien with 2 fingers per hand and there are 4 rocks on the ground. Alien says 
+'There are 10 rocks.' Astronaut says 'Oh, you must be using base 4. See, I use base 10.' Alien says 'No. I use base 10. What is base 4?' Caption reads 'Every base is base 10'"}
+
+## Precheck Questions
+1. **True/False**: Depending on the context, the same sequence of bits may represent different things.    
+
+::: {.callout-note title="Answer" collapse="true"}
+**True.** The same bits can be interpreted in many different ways with the exact same bits! The bits
+can represent anything from an unsigned number to a signed number or even, as we will cover
+later, a program. It is all dependent on its agreed upon interpretation.
+:::
+
+2. **True/False**: If you interpret a $N$-bit Two's complement number as an unsigned number, negative numbers would be smaller than 
+positive numbers.
+
+::: {.callout-note title="Answer" collapse="true"}
+**False.** In Two’s Complement, the MSB is always 1 for a negative number. This means EVERY
+negative number in Two’s Complement, when converted to unsigned, will be larger than the
+positive numbers.
+:::
+
+3. **True/False**: We can represent fractions and decimals in our given number representation formats (unsigned, biased, and Two’s Complement).
+
+::: {.callout-note title="Answer" collapse="true"}
+**False.** Our current representation formats has a major limitation; we can only represent and do
+arithmetic with integers. To successfully represent fractional values as well as numbers with
+extremely high magnitude beyond our current boundaries, we need another representation
+format.
+:::
+
+4. How many numbers can be represented by an unsigned, base-4, $n$-digit number.    
+    **A.** 1    
+    **B.** $2^n - 1$    
+    **C.** $4^n$    
+    **D.** $4^{n-1}$    
+    **E.** $4^n - 1$
+
+::: {.callout-note title="Answer" collapse="true"}
+**C.**
+:::
+
+5. How many bits are needed to represent decimal number 116 in binary?
+
+::: {.callout-note title="Answer" collapse="true"}
+**7 bits**. $(116)_{10} =$ `0b111 0100` or $log{_2}{116} \approx 6.85$ which we round to 7 bits.
+:::
+
+
+## Useful Links
+[Fall 25 Slides](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g3292f1ea280_3_0#slide=id.g3292f1ea280_3_0)    
+[Fall 25 Precheck](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre.pdf)    
+[Precheck Solutions](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre-sols.pdf)
+
+### Additional Reading
+**CS Illustrated Number Rep Handout**    
+
+* [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)    
+* [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)     
+* [Increments and Monotonicity](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-3-comparing-handout.pdf)    
+* [The Thrilling Conclusion!](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-4-comparing-handout.pdf)    
