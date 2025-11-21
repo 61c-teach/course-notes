@@ -23,10 +23,23 @@
       rec {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
+            just
+            tailwindcss
             quarto
             python314
             uv
           ];
+        };
+        apps.${system} = {
+          serve = {
+            type = "app";
+            program = toString (
+              pkgs.writers.writeBash "serve" ''
+                set -e
+                ${pkgs.quarto}/bin/quarto serve
+              ''
+            );
+          };
         };
       }
     );
