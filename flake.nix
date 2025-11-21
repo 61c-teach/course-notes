@@ -20,8 +20,8 @@
           inherit system;
         };
       in
-      rec {
-        devShell = pkgs.mkShell {
+      {
+        devShell.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             just
             tailwindcss
@@ -30,13 +30,13 @@
             uv
           ];
         };
-        apps.${system} = {
-          serve = {
+        apps = {
+          preview = {
             type = "app";
             program = toString (
-              pkgs.writers.writeBash "serve" ''
+              pkgs.writers.writeBash "preview" ''
                 set -e
-                ${pkgs.quarto}/bin/quarto serve
+                ${pkgs.quarto}/bin/quarto preview
               ''
             );
           };
