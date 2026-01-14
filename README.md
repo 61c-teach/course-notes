@@ -4,7 +4,7 @@ Course notes for CS 61C, based on the Stat course-site-quarto template.
 
 ## Deployment
 
-This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages. If redeployment is needed, follow the below instructions, which assume a freshly forked copy of this repository, and redeployment to an entirely new Pages project:
+This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages. If redeployment is needed, follow the below instructions, which assume **a freshly forked copy of this repository, and redeployment to an entirely new Pages project**:
 
 <details>
     
@@ -32,6 +32,8 @@ This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages.
     4. Make sure everything looks fine, then click "Activate domain". It may take up to 48 hours to propagate, but based on past experience, it is way faster than that.
 
 </details>
+
+If minor changes are needed, simply go to the [existing Cloudflare Pages project](https://dash.cloudflare.com/75ae6c7813df14d320647bbf553f2ba0/pages/view/course-notes/settings/production) (must be logged in to the CS61C Cloudflare), select "Settings", and configure as desired. Cloudflare pages expects a directory with HTML source to serve as a static site (currently set as `_site` since that is what Quarto produces), and a build command that generates that directory (currently set to `bash build.sh`, which wraps `quarto render` with dependency management using [asdf](https://asdf-vm.com/)).
 
 ## Quarto Course Site Template Documentation
 
