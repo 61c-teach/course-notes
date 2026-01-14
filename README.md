@@ -38,8 +38,8 @@ This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages.
 The documentation below is inherited from the template this repository was initialized from.
 
 <details>
-    
-    <summary> Quarto Course Website Documentation </summary>
+
+<summary> Quarto Course Website Documentation </summary>
 
 Quick reference:
 - Use VS Code with Quarto extensions to update and preview notes locally.
