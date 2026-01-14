@@ -2,6 +2,45 @@
 
 Course notes for CS 61C, based on the Stat course-site-quarto template.
 
+## Deployment
+
+This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages. If redeployment is needed, follow the below instructions, which assume a freshly forked copy of this repository, and redeployment to an entirely new Pages project:
+
+<details>
+    
+<summary> Redeployment from a fresh repo </summary>summary
+
+1. GitHub Setup
+    1. Go to GitHub organization settings => GitHub Apps => Cloudflare Pages => Configure => Repository Access, and ensure that the app has access to this repository.
+2. Create a Pages project in Cloudflare
+    1. Login to Cloudflare
+        1. If you are doing this for CS61C, please login as the CS61C Cloudflare account and use "CS61C DNS Account" to have access to the DNS records for <cs61c.org>
+    2. Go to Workers and Pages => Create Application => Looking to deploy Pages? Get started
+    3. Import an existing Git repository => Get Started
+    4. Make sure GitHub account is set to whichever organization has this repository
+    5. Select a repository => `this repository's name` => Begin Setup
+    6. Set the following:
+        - Production branch: `main`
+        - Framework preset: `None`
+        - Build command: `bash build.sh`
+        - Build output directory: `_site`
+    7. Click Save and Deploy. This should deploy the project. Once it completes, click "Continue to Project".
+3. Configure a custom domain in the project
+    1. Click "Custom domains" in the top navigation bar of the project
+    2. Add a custom domain => enter the desired domain. (e.g. `textbook.cs61c.org`
+    3. Click "Continue"
+    4. Make sure everything looks fine, then click "Activate domain". It may take up to 48 hours to propagate, but based on past experience, it is way faster than that.
+
+</details>
+
+## Quarto Course Site Template Documentation
+
+The documentation below is inherited from the template this repository was initialized from.
+
+<details>
+    
+    <summary> Quarto Course Website Documentation </summary>
+
 Quick reference:
 - Use VS Code with Quarto extensions to update and preview notes locally.
     - Edit files, then Ctrl/Cmd-Shift-K to preview (also available in the extensions docs)
@@ -17,8 +56,7 @@ numpy
 seaborn
 beautifulsoup4
 ```
-<details>
-    <summary> Quarto Course Website Documentation</summary>
+    
 ## course-site-quarto
 This repository contains a Quarto-based template for class website. You can see a preview of it at [https://berkeley-cdss.github.io/course-site-quarto](https://berkeley-cdss.github.io/course-site-quarto). This template is intended to be forked and altered for other courses.
 
