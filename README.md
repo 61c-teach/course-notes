@@ -17,7 +17,8 @@ numpy
 seaborn
 beautifulsoup4
 ```
-
+<details>
+    <summary> Quarto Course Website Documentation</summary>
 ## course-site-quarto
 This repository contains a Quarto-based template for class website. You can see a preview of it at [https://berkeley-cdss.github.io/course-site-quarto](https://berkeley-cdss.github.io/course-site-quarto). This template is intended to be forked and altered for other courses.
 
@@ -231,5 +232,5 @@ Staff are happy to help. Please [contact us](https://statistics.berkeley.edu/com
 
 This is the repository for the course website and course material for Department XYZ for Fall 2024. 
 The website for which this content is the source materials is available at <https://statXYZ.berkeley.edu/fall-2024>.
-
+</details>
 
