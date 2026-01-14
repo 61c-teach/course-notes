@@ -270,5 +270,6 @@ Staff are happy to help. Please [contact us](https://statistics.berkeley.edu/com
 
 This is the repository for the course website and course material for Department XYZ for Fall 2024. 
 The website for which this content is the source materials is available at <https://statXYZ.berkeley.edu/fall-2024>.
+
 </details>
 
