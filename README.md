@@ -8,7 +8,7 @@ This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages.
 
 <details>
     
-<summary> Redeployment from a fresh repo </summary>summary
+<summary> Redeployment from a fresh repo </summary>
 
 1. GitHub Setup
     1. Go to GitHub organization settings => GitHub Apps => Cloudflare Pages => Configure => Repository Access, and ensure that the app has access to this repository.
