@@ -42,4 +42,4 @@ Example: N = 4, bias = -7
 
 ## Amazing Illustrations by Ketrina (Yim) Thompson
 
-<!-- todo: put these images into extra references -->
+<!-- todo: put these images into extra references page-->
