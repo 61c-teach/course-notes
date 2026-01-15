@@ -1,0 +1,22 @@
+---
+title: "Summary"
+---
+
+## And in Summary...
+
+* We represent “things” in computers as particular bit patterns:
+  * With N bits, you can represent at most 2N things.
+* Today, we discussed five different encodings for integers:
+  * Unsigned integers
+  * Signed integers:
+  * Sign-Magnitude
+  * Ones’ Complement
+  * Two’s Complement
+  * Bias Encoding
+* Computer architects make design decisions to make HW simple
+  * Unsigned and Two’s complement are C standard. Learn them!!
+* Integer overflow: The result of an arithmetic operation is outside the representable range of integers.
+  * Numbers have infinite digits, but computers have finite precision. This can lead to arithmetic errors. More later!
+
+For you to consider:
+How could we represent -12.75?

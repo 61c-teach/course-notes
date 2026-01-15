@@ -1,0 +1,56 @@
+---
+title: "Integer Representations"
+subtitle: "How do we pick a representation for integers?"
+---
+
+## How do we pick a representation for integers?
+
+Want a representation that supports common integer operations:
+
+* Add them
+* Subtract them
+* Multiply them
+* Divide them
+* Compare them (<, =, ≠, ≤, etc.)
+
+* Example: 10 + 7 = 17
+  * 10, 7 can be represented with 4 bits:
+  * Addition, subtraction just as you would in decimal!!
+  * So simple to add in binary that we can build circuits to do it!
+    * **This design decision would make hardware simple!**
+  * …wait…
+
+![TODO: change to code](images/integer-strawman.png)
+
+## What if “too big”? Overflow
+
+* Strictly speaking, base 2 numerals have an ∞ number of digits.
+  * With almost all being same (00…0 or 11…1) except rightmost digits
+  * Just don’t normally show leading digits
+
+```
+  …00000001010
+```
+
+* However, **hardware has physical limits**. No infinite bits!
+  * Common representations: 8 bits, 16 bits, 32 bits, 64 bits, …
+  * Again: With N bits, you can represent at most 2N things.
+* If integer result of operation (+, -, *, /, >, <, =, etc.) cannot be represented by HW bits, we say **integer overflow** occurred
+
+**Integer overflow**: The arithmetic result is outside the representable range.
+
+![Number line wraps around](images/overflow.png)
+
+## Many Possible Number Representations
+
+* So far, we have only discussed **unsigned numbers** (non-negative).
+
+  * C’s `uint8_t`, `uint16_t`, etc.: $[0, 2^N-1]$
+  * Most computers use the “obvious” representation:
+
+* What about **signed numbers**? Need a way to represent **negative numbers**. Let’s discuss a few:
+  * Sign-Magnitude
+  * Ones’ Complement
+  * Two’s Complement (C23: the only signed integer rep permitted)
+  * Bias Encoding (if time, otherwise review on your own)
+

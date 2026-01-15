@@ -1,5 +1,5 @@
 ---
-title: "Number Representation"
+title: "Exercises"
 subtitle: "UC Berkeley, CS 61C"
 ---
 

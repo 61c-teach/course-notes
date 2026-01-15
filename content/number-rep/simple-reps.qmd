@@ -1,0 +1,53 @@
+---
+title: "Sign-Magnitude, Ones’ Complement"
+subtitle: "Older Representations for Signed Integers"
+---
+
+## Sign-Magnitude: [Ain’t No Free Lunch](http://en.wikipedia.org/wiki/No_such_thing_as_a_free_lunch) (tell story)
+
+
+* Strawman (“obvious”) solution:
+  * Leftmost **sign bit**: 0 → +, 1 → –
+  * Rest of bits: numerical value
+* Sign-magnitude is rarely used, due to many shortcomings:
+  * Incrementing “binary odometer” increases then decreases values 
+  * Arithmetic circuit complicated: depends on signs same/different
+  * Two zeros (how to compare??)
+* Reasonable for signal processing,
+not for general purpose computers
+
+```
+TODO: placeholder for two zeros diagram
+```
+
+## Ones' Complement: Another Try
+
+* To represent a negative number, complement ("**flip**") the bits of its positive representation:
+
+```
+TODO: placeholder for bit flips
+```
+
+```
+TODO: placeholder for number line
+```
+
+* Observations:
+  * Positive numbers: leading 0s
+  * Negative numbers: leading 1s
+* #s represented in N bits:
+  * Zero: 2
+  * Positive: $2^{N-1} - 1$
+  * Negative: (same as positive)
+
+## Shortcomings of Ones' Complement?
+
+* Advantages:
+  * Leftmost bit (“most significant bit”) is still effectively sign bit
+  * Incrementing binary odometer consistent on the # line
+
+* Some disadvantages still persist:
+  * Still two zeros
+  * Arithmetic still somewhat complicated (more later)
+* While used for a while on some computer products
+  * It’s not currently used in current hardware

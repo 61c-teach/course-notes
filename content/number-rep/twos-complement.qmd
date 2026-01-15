@@ -1,0 +1,70 @@
+---
+title: "Two's Complement"
+subtitle: "The C23 Standard Number Rep"
+---
+
+## Two's Complement
+
+* Ones’ complement:
+* The problem: Negative mappings “overlap” with the positive ones, creating the two 0s.
+* The solution: **Shift the negative mappings left by one.**
+
+```
+TODO: placeholder for number line
+```
+
+## Arithmetic in Two’s Complement is simple
+
+* Advantages:
+  * Leftmost bit (“most significant bit”) is still effectively sign bit
+  * Incrementing binary odometer consistent on the # line
+  * One zero, and one extra negative number (here, -8 vs 7)
+  * **Simple hardware for addition**
+
+```
+Insert addition pictures
+```
+
+## Two's Complement: Formula
+
+* Positive and negative numbers can be computed using the same formula:
+  * Highest bit multiplied by neg power of 2!
+
+0b1011
+= (1 x –23)	+ (0 x 22)	+ (1 x 21)	+ (1 x 20)
+=  -8 		+  0        		+  2        		+  1
+=  -5
+
+0b0101		
+= (0 x –23)	+ (1 x 22)	+ (0 x 21)	+ (1 x 20)
+=  0       		+  4        		+  0  	      	+  1
+=  5
+
+## Two’s Complement: Algorithm
+
+Hardware to convert positive to negative (& vice versa) is simple.
+1. Complement all bits
+1. Then add 1
+
+At home: Prove algorithm is equivalent to formula!
+
+```
+TODO: include picture of conversion
+```
+
+## Two’s Complement: C standard (as of 2025)
+
+Two’s complement is the C23 standard number representation for signed integers.
+
+* 2N-1 negatives
+* 2N-1 non-negatives
+  * 1 zero
+  * How many positives?
+
+## Two’s Complement: Integer Overflow
+
+**Integer overflow** in two’s complement can be conceptualized via a “number wheel”:
+
+```
+TODO: include warning on number line. fold the number line into a circle.
+```

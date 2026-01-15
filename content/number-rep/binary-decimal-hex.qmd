@@ -1,0 +1,225 @@
+---
+title: "Binary, Decimal, Hex"
+subtitle: "How do we represent a number?"
+---
+
+## Number vs Numeral
+
+**Numeral**
+
+* A symbol or name that stands for a number
+  * e.g., 4 , four , quatro , IV , IIII , …
+* …and Digits are symbols that make numerals
+
+**Number**
+
+* The “idea” in our minds…there is only ONE of these
+  * e.g., the concept of “4”
+
+![TODO: Abstraction Line Image](asdf.png)
+
+## Decimal: Base 10 (Ten) #s
+
+Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+Example:
+
+3271 = 327110 =  (3x103) + (2x102) + (7x101) + (1x100)
+
+<!--
+$$
+\begin{align}
+\texttt{3271} &= 3271_{10} \\
+&=  (3x10^3) + (2x10^2) + (7x10^1) + (1x10^0)
+\end{align}
+$$
+-->
+
+## Base 2 (Two) #s, Binary
+
+Digits: 0, 1 (**bi**nary digits $\rightarrow$ **b**its)
+
+Example: Binary number “1101”
+
+Convert to decimal:
+
+0b1101	= 11012	= (1x23) + (1x22) + (0x21) + (1x20)
+=  8         +  4        +  0         +  1
+=  13
+
+Common binary shorthand: `0b1101`
+
+## Base 16 (Sixteen) #s, Hexadecimal
+
+Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B,  C,  D,  E,  F
+                                                 10,  11,  12, 13, 14, 15
+Example: Hexadecimal number “A5” 
+
+Convert to decimal:
+0xA5 		= A516 	= (10x161) + (5x160)
+                              			=  160        +  5
+                              			=  165
+
+“Hex” for short. Common hex shorthand: `0xA5`
+
+## Convert from Decimal to Binary
+
+E.g., 13 to binary?
+Start with the columns
+
+![165 from a decimal to binary representation (TODO: animate)](images/dec-to-binary.png)
+
+Left to right, is (column) ≤ number n? 
+
+* If yes, put how many of that column fit in n, subtract col * that many from n, keep going. 
+* If not, put 0 and keep going. (and Stop at 0)
+
+## Convert from Decimal to Hexadecimal
+
+![165 from a decimal to hexadecimal representation (TODO: animate)](images/dec-to-hex.png)
+
+Left to right, is (column) ≤ number n? 
+
+* If yes, put how many of that column fit in n, subtract col * that many from n, keep going. 
+* If not, put 0 and keep going. (and Stop at 0)
+
+## Nibbles and Bytes
+
+* 4 Bits
+  * 1 “Nibble”
+  * 1 Hex Digit = 16 things
+* 8 Bits
+  * 1 “**Byte**”
+  * 2 Hex Digits = 256 things
+
+| `Dec` | `Hex` | `Bin` |
+| :--- | :--- | :--- |
+| `00` | `0` | `0000` |
+| `01` | `1` | `0001` |
+| `02` | `2` | `0010` |
+| `03` | `3` | `0011` |
+| `04` | `4` | `0100` |
+| `05` | `5` | `0101` |
+| `06` | `6` | `0110` |
+| `07` | `7` | `0111` |
+| `08` | `8` | `1000` |
+| `09` | `9` | `1001` |
+| `10` | `A` | `1010` |
+| `11` | `B` | `1011` |
+| `12` | `C` | `1100` |
+| `13` | `D` | `1101` |
+| `14` | `E` | `1110` |
+| `15` | `F` | `1111` |
+
+## Convert Binary -> Hexadecimal
+
+* Binary -> Hex? Easy!
+  * **Left-pad** with 0s
+  * (Group into full 4-bit values)
+  * Look it up
+  * `0b11110`
+  * `→ 0b00011110`
+  * `(→ 0b0001 1110)`
+  * `→ 0x1E`
+
+* Hex -> Binary? Easy!
+  * Just look it up
+  * `0x1E`
+  * `→ 0b00011110` 
+  * `→ 0b11110` (drop leading 0s)
+
+Binary odometer
+
+![Car odometer](images/odometer.png)
+
+## Which base do we use?
+
+* **Decimal**: great for humans, especially when doing arithmetic
+* **Hex**: if human looking at long strings of binary numbers, its much easier to convert to hex and see 4 bits/symbol
+  * Terrible for arithmetic on paper
+* **Binary**: what computers use
+  * To a computer, numbers are always binary
+  * Regardless of how number is written:
+  * 32ten == 3210 == 0x20 == 1000002 == 0b100000
+
+* To avoid confusion:
+  * Decimal: 	subscript “ten”		or		prefix (none)
+  * Hex:		subscript “hex”		or		prefix 0x 
+  * Binary:		subscript “two”		or		prefix 0b
+
+## Every Base is Base 10…?
+
+How many rocks?
+
+![Every base is base 10 ([web.archive.org](https://web.archive.org/web/20160505151914/http://cowbirdsinlove.com/43))](images/aliens.png)
+
+## The computer knows it, too
+
+```c
+#include <stdio.h>
+int main() {
+	const int N = 1234;
+	printf("Decimal: %d\n",N);
+	printf("Hex: 	  %x\n",N);
+	printf("Octal:   %o\n",N);
+
+	printf("Literals (not supported by all compilers):\n");
+	printf("0x4d2         = %d (hex)\n", 0x4d2);
+	printf("0b10011010010 = %d (binary)\n", 0b10011010010);
+	printf("02322         = %d (octal, prefix 0 - zero)\n", 0x4d2);
+	return 0;
+}
+```
+
+Output:
+```
+Decimal: 1234
+Hex: 	   4d2
+Octal:   2322
+Literals (not supported by all compilers):
+0x4d2     	= 1234 (hex)
+0b10011010010 = 1234 (binary)
+02322     	= 1234 (octal, prefix 0 - zero)
+```
+
+## BIG IDEA: Bits can represent anything!!
+
+* Logical values? 1 bit
+  * One possible convention: 0 → False, 1 → True
+* Characters? Several options:
+  * A, …, Z: 26 letters →  5 bits (26 ≤ 32)
+  * [ASCII](https://en.wikipedia.org/wiki/ASCII): upper/lower case + punctuation → 7 bits → round to 1 byte
+  * Unicode ([www.unicode.com](http://www.unicode.com)): standard code to cover all the world’s  languages ⇒ 8, 16, 32 bits
+
+* Colors?
+  * HTML color codes: 24 bits (3 bytes)
+* Locations / addresses? Commands?
+  * IPv4 (32 bit), IPv6 (64 bit), etc.
+
+With N bits, you can represent at most 2N things.
+
+
+![HTML Color Codes](images/hex-colors.png)
+
+## Pop quiz??
+
+1. How many “things” can be represented by 4 bits?
+
+A. 	4	
+B. 	8
+C. 	16	
+D. 	64
+E. 	Something else	
+
+2. How many bits do you need to represent π (pi)?
+
+A. 	1
+B. 	9 (π=3.14, so 0.011”.” 001100)
+C. 	64 (Macs are 64-bit machines)
+D. 	Every bit the machine has
+E. 	∞
+
+
+3. What does this particular 4-bit pattern represent?
+
+1011

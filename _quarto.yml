@@ -28,15 +28,27 @@ website:
     contents:
       - href: index.qmd
         text: Home / About
-      - section: Number Representation
-        href: content/number_rep/index.qmd
-        contents:
-          - href: content/number_rep/index.qmd
-            text: Number Representation
-          - href: content/number_rep/unsigned.qmd
-            text: Unsigned Representations
-          - href: content/number_rep/signed.qmd
-            text: Signed Representations
+      # - section: Number Representation
+      #   href: content/number_rep/index.qmd
+      #   contents:
+      #     - href: content/number_rep/index.qmd
+      #       text: Introduction
+      #     - href: content/number_rep/binary-decimal-hex.qmd
+      #       text: "Binary, Decimal, Hex"
+      #     - href: content/number_rep/integer-representations.qmd
+      #       text: "Integer Representations"
+      #     - href: content/number_rep/simple-reps.qmd"
+      #       text: "Sign-Magnitude, Ones’ Complement"
+      #     - href: content/number_rep/twos-complement.qmd
+      #       text: "Two's Complement"
+      #     - href: content/number_rep/summary.qmd
+      #       text: "Summary"
+      #     - href: content/number_rep/exercises.qmd
+      #       text: "General Exercises"
+      #     - href: content/number_rep/precheck-unsigned.qmd
+      #       text: "Unsigned Representations"
+      #     - href: content/number_rep/precheck-unsigned.qmd
+      #       text: "Signed Representations"
 
 format:
   html:
