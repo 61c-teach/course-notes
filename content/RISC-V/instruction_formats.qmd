@@ -1,0 +1,455 @@
+---
+title: "RISC-V Instruction Formats"
+subtitle: "UC Berkeley, CS 61C"
+---
+---
+title: "RISC-V Instruction Formats"
+subtitle: "UC Berkeley, CS 61C"
+---
+---
+title: "RISC-V Instruction Formats"
+subtitle: "UC Berkeley, CS 61C"
+---
+
+RISC-V uses **six standardized instruction formats** (with I-Type having a variant for shifts) to ensure that critical fields like register indices (`rs1`, `rs2`, `rd`) always appear in the same bit positions. This allows the hardware to decode instructions quickly. The processor can start reading from the Register File while simultaneously determining the instruction type.
+
+This standardization is part of the reason compiled languages are so much faster than interpreted ones: the processor can execute these fixed-format instructions directly, without needing to parse variable-length text or look up what each operation means.
+
+* **R-Type (Register):** Operations strictly between registers (e.g., `add`, `sub`, `xor`). Uses `funct3` and `funct7` to differentiate the specific ALU operation.
+* **I-Type (Immediate):** Operations with small constants or Memory Loads (e.g., `addi`, `lw`). The 12-bit signed immediate can represent values from $[-2048, 2047]$.
+    * **I$\star$-Type (Immediate Shift):** Shift operations with 5-bit shift amounts (e.g., `slli`, `srli`, `srai`). Uses `funct7` to distinguish shift types.
+* **S-Type (Store):** Stores to memory (`sw`). The immediate is **split** into two chunks (`imm[11:5]` and `imm[4:0]`) to keep `rs1` and `rs2` in consistent positions.
+* **B-Type (Branch):** Conditional jumps (`beq`). Structurally similar to S-Type, but the immediate bits are reordered for hardware efficiency.
+* **U-Type (Upper Immediate):** Large constants (`lui`, `auipc`). Loads a 20-bit immediate into the upper bits of a register.
+* **J-Type (Jump):** Unconditional jumps (`jal`). Similar to U-Type but with a reordered immediate for address calculation.
+
+---
+
+### Quick Warm-up
+*Fast-recall checks to ensure you can identify formats on sight.*
+
+**1. Classify each instruction by format:** `add`, `lw`, `sw`, `beq`, `lui`, `jal`, `slli`
+
+::: {.callout-note collapse="true" title="Check Answer"}
+**R, I, I*, B, U, J, I***
+
+- `add` uses three registers → R-Type
+- `lw` loads from memory → I-Type
+- `sw` stores to memory → S-Type
+- `beq` branches conditionally → B-Type
+- `lui` loads upper immediate → U-Type
+- `jal` jumps unconditionally → J-Type
+- `slli` shifts left immediate → I*-Type
+:::
+
+**2. Which fields decide the ALU operation for R-type instructions?**
+
+::: {.callout-note collapse="true" title="Check Answer"}
+**funct3, funct7, and opcode.**
+
+While the opcode identifies the instruction as R-Type, the `funct` fields select the specific operation (Add vs Sub vs Xor).
+:::
+
+**3. Why does the B-Type branch target have bit 0 equal to zero?**
+
+::: {.callout-note collapse="true" title="Check Answer"}
+**To increase range.**
+
+Instructions are 2-byte aligned. Since the address of an instruction always ends in `0`, we don't need to store that bit. By "discarding" it, we gain an extra bit of range in the immediate field.
+:::
+
+**4. What register field is missing in S-Type compared to R-Type?**
+
+::: {.callout-note collapse="true" title="Check Answer"}
+**rd (Destination Register).**
+
+Store instructions write data to memory, not back to the Register File. The bits usually reserved for `rd` are instead used to store part of the immediate offset.
+:::
+
+**5. In RV32I, what is the largest positive immediate that `addi` can encode? What about `slli`?**
+
+::: {.callout-note collapse="true" title="Check Answer"}
+**addi: 2047, slli: 31**
+
+`addi` uses a 12-bit signed immediate ($2^{11}-1$). The range is $[-2048, 2047]$.
+
+`slli` uses a 5-bit unsigned shift amount. The range is $[0, 31]$ because you can only shift a 32-bit register by 0-31 positions.
+:::
+
+---
+
+### Conceptual Pre-Check
+
+**1.1 True or False: The opcode field determines the instruction type (R, I, I$\star$, S, etc.).**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**True.**
+
+The opcode is the primary identifier that enables the Control Logic to determine how to interpret the remaining bits (the format). However, note that I-Type and I*-Type share the same opcode (`0010011` for arithmetic), so `funct3` is also needed to distinguish between standard immediate operations and immediate shifts.
+:::
+
+**1.2 Convert these registers to binary (5-bit):** `s0`, `sp`, `x9`, `t4`
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+* **s0** (`x8`): `01000`
+* **sp** (`x2`): `00010`
+* **x9**: `01001`
+* **t4** (`x29`): `11101`
+:::
+
+**1.3 True or False: The instruction `li x5, 0x44331416` is always encoded as 32 bits.**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**False.**
+
+`li` is a **pseudo-instruction**. Because `0x44331416` cannot fit into a single 12-bit or 20-bit immediate field, the assembler expands this into **two** instructions (`lui` followed by `addi`), requiring **64 bits** total.
+:::
+
+**1.4 True or False: We can use a branch instruction to move the PC by exactly one byte.**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**False.**
+
+Branch offsets are calculated in multiples of 2 bytes (half-words). The hardware appends a `0` to the LSB of the immediate, preventing jumps to odd addresses (which would cause a misalignment exception).
+:::
+
+---
+
+### Detailed Format Breakdown
+
+#### R-Type: Register Operations
+
+**Structure:**
+```
+| funct7 (7) | rs2 (5) | rs1 (5) | funct3 (3) | rd (5) | opcode (7) |
+31         25 24     20 19     15 14        12 11     7 6          0
+```
+
+**Purpose:** Arithmetic and logical operations using only registers.
+
+**Examples:** `add`, `sub`, `and`, `or`, `xor`, `slt`, `sll`, `sra`, `srl`
+
+**Key Point:** All three fields (`opcode`, `funct3`, `funct7`) are needed to identify the specific operation. For example:
+- `add`: `funct3=000`, `funct7=0000000`
+- `sub`: `funct3=000`, `funct7=0100000`
+- `sll`: `funct3=001`, `funct7=0000000` (shift left logical, register)
+- `srl`: `funct3=101`, `funct7=0000000` (shift right logical, register)
+- `sra`: `funct3=101`, `funct7=0100000` (shift right arithmetic, register)
+
+The operation performs: `rd = rs1 ⊕ rs2` where ⊕ depends on the function fields.
+
+**Note:** Register-based shifts (`sll`, `srl`, `sra`) use R-Type because they take the shift amount from a register (`rs2`), not an immediate.
+
+---
+
+#### I-Type: Immediate and Load Operations
+
+**Structure:**
+```
+| imm[11:0] (12) | rs1 (5) | funct3 (3) | rd (5) | opcode (7) |
+31             20 19     15 14        12 11     7 6          0
+```
+
+**Purpose:** Operations with small constants OR loading from memory.
+
+**Examples:** 
+- Arithmetic: `addi`, `xori`, `slti`, `ori`, `andi`
+- Loads: `lw`, `lh`, `lb`, `lbu`, `lhu`
+- Special: `jalr`
+
+**Immediate Range:** 12-bit signed: $[-2048, +2047]$
+
+**Two Uses:**
+- **Arithmetic:** `addi x5, x6, 100` → `x5 = x6 + 100`
+- **Load:** `lw x5, 8(x10)` → `x5 = Mem[x10 + 8]`
+
+Both share the same format because they have the same structure: one source register, one immediate, one destination.
+
+**Important:** Standard I-Type uses the full 12-bit immediate. For shift operations with immediates, see I*-Type below.
+
+---
+
+#### I*-Type: Immediate Shift Operations
+
+**Structure:**
+```
+| funct7 (7) | shamt (5) | rs1 (5) | funct3 (3) | rd (5) | opcode (7) |
+31         25 24       20 19     15 14        12 11     7 6          0
+```
+
+**Purpose:** Shift operations with immediate shift amounts.
+
+**Examples:** `slli` (shift left logical immediate), `srli` (shift right logical immediate), `srai` (shift right arithmetic immediate)
+
+**Key Difference from I-Type:** Instead of a full 12-bit immediate, I*-Type splits the top 12 bits into:
+- **shamt (5 bits):** Shift amount [0, 31] for 32-bit registers (bits 24-20)
+- **funct7 (7 bits):** Distinguishes between shift types (bits 31-25)
+
+**Why Separate Format?** For RV32I, you can only shift by 0-31 positions (5 bits is sufficient). The upper 7 bits act like `funct7` in R-Type to specify the shift type:
+- `slli`: shift left logical, `funct7 = 0000000`
+- `srli`: shift right logical, `funct7 = 0000000`
+- `srai`: shift right arithmetic, `funct7 = 0100000`
+
+**Example:** `slli x5, x6, 3` → `x5 = x6 << 3`
+
+**Encoding Detail:** The immediate field [31:20] is interpreted as:
+- Bits [31:25] must match the appropriate `funct7` value
+- Bits [24:20] contain the 5-bit shift amount
+- Bits [24:25] **must be 0** for valid RV32I shift operations (values > 31 are illegal)
+
+**Comparison with R-Type Shifts:**
+- **R-Type** (`sll`, `srl`, `sra`): Shift amount comes from register `rs2[4:0]`
+- **I*-Type** (`slli`, `srli`, `srai`): Shift amount is an immediate `shamt[4:0]`
+
+---
+
+#### S-Type: Store Operations
+
+**Structure:**
+```
+| imm[11:5] (7) | rs2 (5) | rs1 (5) | funct3 (3) | imm[4:0] (5) | opcode (7) |
+31            25 24     20 19     15 14        12 11           7 6          0
+```
+
+**Purpose:** Writing data from a register to memory.
+
+**Examples:** `sw`, `sh`, `sb`
+
+**The Split Immediate:** The 12-bit immediate is split around the register fields:
+- `imm[11:5]` goes where `funct7` was in R-Type
+- `imm[4:0]` goes where `rd` was in R-Type
+
+**Why?** Store instructions don't write to a register (no `rd` needed). Splitting the immediate keeps `rs1` and `rs2` in their standard positions, allowing the hardware to read both source registers in parallel with decoding.
+
+**Example:** `sw x5, 12(x10)` stores `x5` to address `x10 + 12`.
+
+---
+
+#### B-Type: Branch Operations
+
+**Structure:**
+```
+| imm[12|10:5] (7) | rs2 (5) | rs1 (5) | funct3 (3) | imm[4:1|11] (5) | opcode (7) |
+31               25 24     20 19     15 14        12 11              7 6          0
+```
+
+**Purpose:** Conditional branches based on register comparisons.
+
+**Examples:** `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu`
+
+**Immediate Range:** 13-bit signed (bit 0 implicit): $[-4096, +4094]$ in multiples of 2.
+
+**The Scrambled Immediate:** Similar to S-Type layout, but bits are reordered:
+- Bit 12 (sign) → position 31
+- Bit 11 → position 7
+- Bits [10:5] → high positions
+- Bits [4:1] → low positions
+- **Bit 0 = 0** (implicit, for 2-byte alignment)
+
+**Why Scramble?** Allows the immediate generator circuit to share hardware with S-Type while producing correct branch offsets.
+
+**Example:** `beq x5, x6, loop` branches to `PC + offset` if `x5 == x6`.
+
+---
+
+#### U-Type: Upper Immediate Operations
+
+**Structure:**
+```
+| imm[31:12] (20) | rd (5) | opcode (7) |
+31              12 11     7 6          0
+```
+
+**Purpose:** Loading large constants or PC-relative addresses.
+
+**Examples:** 
+- `lui` (Load Upper Immediate)
+- `auipc` (Add Upper Immediate to PC)
+
+**How They Work:**
+- `lui x5, 0x12345` → `x5 = 0x12345000` (zeros lower 12 bits)
+- `auipc x5, 0x12345` → `x5 = PC + 0x12345000`
+
+**Use Case:** Building 32-bit constants:
+```assembly
+lui  x5, 0x12345      # x5 = 0x12345000
+addi x5, x5, 0x678    # x5 = 0x12345678
+```
+
+---
+
+#### J-Type: Jump Operations
+
+**Structure:**
+```
+| imm[20|10:1|11|19:12] (20) | rd (5) | opcode (7) |
+31                         12 11     7 6          0
+```
+
+**Purpose:** Unconditional jumps with link (function calls).
+
+**Example:** `jal` (Jump and Link)
+
+**Immediate Range:** 21-bit signed (bit 0 implicit): $[-1048576, +1048574]$ in multiples of 2.
+
+**The Scrambled Immediate:** Bits are reordered for hardware optimization:
+- Bit 20 (sign) → position 31
+- Bits [10:1] → high positions
+- Bit 11 → middle
+- Bits [19:12] → lower positions
+- **Bit 0 = 0** (implicit)
+
+**How `jal` Works:**
+```assembly
+jal x1, function    # x1 = PC + 4 (return address)
+                    # PC = PC + offset (jump to function)
+```
+
+---
+
+### Format Summary Table
+
+| Format | Registers | Immediate Bits | Use Case | Example |
+|--------|-----------|----------------|----------|---------|
+| **R** | `rd`, `rs1`, `rs2` | None | Register arithmetic/logic | `add x5, x6, x7` |
+| **I** | `rd`, `rs1` | 12 (signed) | Immediate ops, Loads | `addi x5, x6, 10` |
+| **I*** | `rd`, `rs1` | 5 (shamt) + 7 (funct7) | Immediate shifts | `slli x5, x6, 3` |
+| **S** | `rs1`, `rs2` | 12 (split) | Stores | `sw x5, 8(x10)` |
+| **B** | `rs1`, `rs2` | 13 (scrambled) | Conditional branches | `beq x5, x6, loop` |
+| **U** | `rd` | 20 (upper) | Large immediates | `lui x5, 0x80000` |
+| **J** | `rd` | 21 (scrambled) | Jumps | `jal x1, func` |
+
+---
+
+### RISC-V Instruction Formats
+
+| Type | 31–25 (7) | 24–20 (5) | 19–15 (5) | 14–12 (3) | 11–7 (5) | 6–0 (7) |
+|------|-----------|-----------|-----------|-----------|----------|---------|
+| **R** | funct7 | rs2 | rs1 | funct3 | rd | opcode |
+| **I** | imm[11:0] | | rs1 | funct3 | rd | opcode |
+| **I$\star$** | funct7 | imm[4:0] | rs1 | funct3 | rd | opcode |
+| **S** | imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode |
+| **B** | imm[12\|10:5] | rs2 | rs1 | funct3 | imm[4:1\|11] | opcode |
+| **U** | imm[31:12] | | | | rd | opcode |
+| **J** | imm[20\|10:1\|11\|19:12] | | | | rd | opcode |
+
+: RISC-V Instruction Fields
+
+
+### Advanced Practice
+
+**2.1 What is the key difference between `sll` (R-Type) and `slli` (I$\star$-Type)?**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**The source of the shift amount.**
+
+- **`sll x5, x6, x7`** (R-Type): Shift `x6` left by the amount in `x7[4:0]`. The shift amount comes from a register.
+- **`slli x5, x6, 3`** (I*-Type): Shift `x6` left by 3 positions. The shift amount is an immediate constant.
+
+Both produce the same operation (`x5 = x6 << amount`), but one uses a register value and the other uses a compile-time constant.
+:::
+
+**2.2 Why are B-Type and J-Type immediates scrambled differently than they appear in the instruction encoding?**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**Hardware optimization for the immediate generator.**
+
+The scrambling allows the immediate generator to:
+1. Share hardware with S-Type (for B-Type)
+2. Share hardware with U-Type (for J-Type)
+3. Minimize the logic needed to sign-extend and shift the immediate
+
+The reordering means simpler muxing and wiring in the datapath, which reduces critical path delay.
+:::
+
+**2.3 Practice Translations:**
+
+**Encode these instructions in hexadecimal (use RISC-V reference card):**
+- `jal sp, -14`
+- `lui a6, 44`
+- `slli x5, x6, 4`
+
+::: {.callout-note collapse="true" title="Reveal Hex Values"}
+* `jal sp, -14` → `0xFF3FF16F`
+  - `sp` = `x2`, offset = -14 (signed, scrambled into J-Type format)
+  
+* `lui a6, 44` → `0x0002C837`
+  - `a6` = `x16`, immediate = 44 into upper 20 bits
+
+* `slli x5, x6, 4` → `0x00431293`
+  - `x5` = `rd=00101`, `x6` = `rs1=00110`, shamt = `4` = `00100`, `funct3=001`, `funct7=0000000`, `opcode=0010011`
+:::
+
+**2.4 What is the maximum forward branch distance for a `beq` instruction?**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**+4094 bytes (or +2047 instructions).**
+
+B-Type uses a 13-bit signed immediate (bit 0 implicit):
+- Range: $[-2^{12}, 2^{12} - 2]$ = $[-4096, +4094]$
+- Since bit 0 is always 0, we can only jump to even addresses
+- Forward maximum: +4094 bytes
+- Backward maximum: -4096 bytes
+:::
+
+**2.5 Can you load the value `0xFFFFFFFF` into a register using a single instruction?**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**Yes, using `addi x5, x0, -1`.**
+
+The 12-bit immediate `-1` (binary: `111111111111`) gets sign-extended to 32 bits, producing `0xFFFFFFFF`.
+
+Alternatively: `lui` cannot do this alone because it only sets the upper 20 bits and zeros the lower 12 bits.
+:::
+
+**2.6 Why can't we encode `srli x5, x6, 40` in RV32I?**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**The shift amount exceeds the register width.**
+
+In RV32I, registers are 32 bits wide. Shifting by more than 31 positions would always produce zero (for logical shifts) or propagate the sign bit entirely (for arithmetic shifts).
+
+The I*-Type format only allocates 5 bits for `shamt`, which limits shifts to [0, 31]. Attempting to encode `40` would require 6 bits (`101000`), which doesn't fit. This is a **hardware constraint** based on the register size.
+
+For RV64I (64-bit registers), the format is extended to allow 6-bit shift amounts [0, 63].
+:::
+
+**2.7 True or False: `slli x5, x6, 3` and `sll x5, x6, x3` (where `x3` contains 3) produce identical results.**
+
+::: {.callout-note collapse="true" title="Reveal Answer"}
+**True (if `x3` contains exactly 3).**
+
+Both instructions shift `x6` left by 3 positions and store the result in `x5`. The difference is:
+- `slli` uses an immediate (I*-Type, determined at compile time)
+- `sll` uses a register value (R-Type, determined at runtime)
+
+If `x3 = 3`, the operations are functionally equivalent. However, `slli` is typically faster because the hardware doesn't need to read the shift amount from the register file.
+:::
+
+---
+
+### Why These Formats Matter
+
+The instruction formats (R, I, I*, S, B, U, J) are a direct consequence of the RISC philosophy:
+
+1. **Fixed 32-bit length** → Simple instruction fetch and alignment
+2. **Consistent field positions** → Parallel decode and register read
+3. **Limited immediate sizes** → Smaller, faster hardware
+4. **Format determined by opcode** → Single-cycle decode
+
+This regularity is what allows modern processors to execute multiple instructions per cycle while maintaining high clock frequencies. Every constraint in these formats exists to make the hardware faster, simpler, and more efficient.
+
+---
+## References & Further Reading
+
+### Course Materials
+* **Lectures:** [Lecture 13](https://cs61c.org/fa25/lectures/lec13/) & [Lecture 14](https://cs61c.org/fa25/lectures/lec14/) (Instruction Formats & Datapath Intro)
+* **Reference:** [CS 61C Reference Card](https://cs61c.org/fa25/pdfs/resources/reference-card.pdf)
+* **Discussions:**  [Discussion 6](https://cs61c.org/fa25/discussions/disc06/) & [Discussion 4](https://cs61c.org/fa25/discussions/disc04/)
+
+### Practice Problems
+* **Homework 4:** The primary source for conversion/translation problems.
+
+### External Deep Dives
+* **[Fraser Innovations: RISC-V Instruction Set Explanation](https://fraserinnovations.com/risc-v/risc-v-instruction-set-explanation/)** *Detailed breakdown of individual instructions and bitwise operations.*
+* **[Daniel Mangum: RISC-V Bytes](https://danielmangum.com/posts/risc-v-bytes-intro-instruction-formats/)** *A blog post series that visualizes how formats map to bits.*

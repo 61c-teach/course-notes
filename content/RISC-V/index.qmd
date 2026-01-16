@@ -1,0 +1,33 @@
+---
+title: "RISC-V"
+subtitle: "UC Berkeley, CS 61C"
+---
+
+### What is RISC-V
+RISC-V is an assembly language composed of simple instructions that each perform a single task
+such as addition of two numbers or storing data to memory. Below is a comparison between RISCV code and its equivalent C code:
+
+
+::: {layout-ncol=2}
+
+<div>
+**C**
+```c
+int x = 5;
+y[0] = x;
+y[1] = x * x;
+```
+</div>
+
+<div> 
+**RISC-V**
+```mips
+addi s0, x0, 5
+sw   s0, 0(s1)
+mul  t0, s0, s0
+sw   t0, 4(s1)
+```
+</div>
+
+
+Man this side by side took took too long

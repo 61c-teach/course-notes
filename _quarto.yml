@@ -37,6 +37,11 @@ website:
             text: Unsigned Representations
           - href: content/number_rep/signed.qmd
             text: Signed Representations
+      - section: RISC-V
+        href: content/RISC-V/index.qmd
+        contents:
+          - href: content/RISC-V/instruction_formats.qmd
+            text: RISC-V Instruction Formats
 
 format:
   html:
