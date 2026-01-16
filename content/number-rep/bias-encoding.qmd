@@ -15,30 +15,28 @@ that can represent this:
   * To interpret stored binary: Read the data as an unsigned number, then **add the bias**
   * To store a data value: Subtract the bias, then store the resulting number as an unsigned number
 
-```
-TODO: include blue/red arrow diagram as a single diagram
-```
+![A bias-encoded representation effectively shifts the number line.](images/bias-encoding-shift.png){#fig-bias-encoding-number-line alt="A diagram presents two parallel horizontal number lines. Vertical lines connect specific points on the top line to corresponding values on the bottom line to indicate the mapping between the two systems."}
 
 ## Bias Encoding
 
-```
-Number line
-```
+
+!["Binary odometer" for bias-encoded integer representation.](images/bias-encoding-number-line.png){#fig-bias-encoding-number-line alt="A blue horizontal number line displays 4-bit binary values and their corresponding decimal equivalents from -7 (for 0000) to 8 (for 1111) to illustrate bias encoding. A single gold arrow points to the right to indicate that the decimal values increase monotonically as the binary sequence increments from 0000 to 1111."}
 
 * Number = (unsigned rep) + (bias)
-* With N bits, default bias is -(2N-1 - 1)
-  * E.g., 4 bits, bias = -(23-1) = -(8-1) = -7
+* With N bits, default bias is $-(2^{N-1} - 1)$
+  * E.g., 4 bits, bias $= -(2^3-1) = -(8-1) = -7$
 * Bias could be anything we want! (i.e., 4 bits could be #s 800-815)
 
 ## Bias Encoding: N = 4, bias = -7
 
 Example: N = 4, bias = -7
+
 * Consider:
   * One zero
   * How many positives?
   * How many negatives?
 
-![Number wheel for bias encoding](images/asdf.png)
+![Number wheel for bias encoding](images/bias-encoding-number-wheel.png){#fig-bias-encoding-number-wheel alt="A circular number wheel visually represents a 4-bit bias-encoded integer. Values inside and outside the wheel represent the numbers and bit representations, respectively; the wheel has tickmarks going from -7 (0000) to 1 (1000) to 8 (1111)." width=70%}
 
 ## Amazing Illustrations by Ketrina (Yim) Thompson
 

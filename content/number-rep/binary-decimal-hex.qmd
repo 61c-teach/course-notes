@@ -16,49 +16,69 @@ subtitle: "How do we represent a number?"
 * The “idea” in our minds…there is only ONE of these
   * e.g., the concept of “4”
 
-![TODO: Abstraction Line Image](asdf.png)
+![Numerals (and therefore digits) are representations of numbers.](images/numeral-number.png){#fig-numeral-number fig-alt="A diagram features a horizontal gold abstraction line separating the word Numeral at the top from the word Number at the bottom. This visual layout reinforces the caption by positioning numerals as the symbolic representations above the line and numbers as the underlying abstract concepts below it."}
 
 ## Decimal: Base 10 (Ten) #s
 
-Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+Digits:
+```
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+```
 
 Example:
 
-3271 = 327110 =  (3x103) + (2x102) + (7x101) + (1x100)
-
-<!--
 $$
 \begin{align}
-\texttt{3271} &= 3271_{10} \\
-&=  (3x10^3) + (2x10^2) + (7x10^1) + (1x10^0)
+3271
+&= 3271_{10} \\
+&=  (3 \times 10^3) + (2 \times 10^2) + (7 \times 10^1) + (1 \times 10^0)
 \end{align}
 $$
--->
 
 ## Base 2 (Two) #s, Binary
 
-Digits: 0, 1 (**bi**nary digits $\rightarrow$ **b**its)
+Digits:
+```
+0, 1
+```
+
+(**bi**nary digits $\rightarrow$ **b**its)
 
 Example: Binary number “1101”
 
 Convert to decimal:
 
-0b1101	= 11012	= (1x23) + (1x22) + (0x21) + (1x20)
-=  8         +  4        +  0         +  1
-=  13
+$$
+\begin{align}
+\texttt{0b1101}
+&= 1101_{2}	\\
+&= (1 \times 2^3) + (1 \times 2^2) + (0 \times 2^1) + (1 \times 2^0) \\
+&=  8         +  4        +  0         +  1 \\
+&=  13
+\end{align}
+$$
 
 Common binary shorthand: `0b1101`
 
 ## Base 16 (Sixteen) #s, Hexadecimal
 
-Digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B,  C,  D,  E,  F
-                                                 10,  11,  12, 13, 14, 15
+Digits:
+```
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A,  B,  C,  D,  E,  F
+                              10, 11, 12, 13, 14, 15
+```
 Example: Hexadecimal number “A5” 
 
 Convert to decimal:
-0xA5 		= A516 	= (10x161) + (5x160)
-                              			=  160        +  5
-                              			=  165
+$$
+\begin{align}
+\texttt{0xA5}
+&= A5_{16} \\
+& = (10 \times 16^1) + (5 \times 16^0) \\
+& =  160        +  5 \\
+& =  165
+\end{align}
+$$
 
 “Hex” for short. Common hex shorthand: `0xA5`
 
@@ -67,7 +87,12 @@ Convert to decimal:
 E.g., 13 to binary?
 Start with the columns
 
-![165 from a decimal to binary representation (TODO: animate)](images/dec-to-binary.png)
+<html>
+  <head>
+    <title>Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing)</title>
+  </head>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSRRi1DDwigsxmr5R_fPwZ1uAOKKJ-fblPQg6GFNICf9he20UUYX_gZLwdrMG4HRvrtcD3e9nkBwk29/pubembed?start=false&loop=false" frameborder="0" width="480" height="400" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</html>
 
 Left to right, is (column) ≤ number n? 
 
@@ -76,12 +101,17 @@ Left to right, is (column) ≤ number n?
 
 ## Convert from Decimal to Hexadecimal
 
-![165 from a decimal to hexadecimal representation (TODO: animate)](images/dec-to-hex.png)
-
 Left to right, is (column) ≤ number n? 
 
 * If yes, put how many of that column fit in n, subtract col * that many from n, keep going. 
 * If not, put 0 and keep going. (and Stop at 0)
+
+<html>
+  <head>
+    <title>Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1rHScPLQLom3OzhZyGzhct8vpXtO-AWRiXyr5C-9Qszs/edit?usp=sharing)</title>
+  </head>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTWgqxt2kl5ip7bRfRY7P81WiQGDJSrAuKmkqE1m3mnrerVBeN2s9PGJVVaIQu0aDlsNfuvcRCK09q9/pubembed?start=false&loop=false" frameborder="0" width="480" height="400" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
+</html>
 
 ## Nibbles and Bytes
 
@@ -130,7 +160,7 @@ Left to right, is (column) ≤ number n?
 
 Binary odometer
 
-![Car odometer](images/odometer.png)
+![Car odometer](images/odometer.jpg){#fig-odometer width=70%}
 
 ## Which base do we use?
 
@@ -140,12 +170,15 @@ Binary odometer
 * **Binary**: what computers use
   * To a computer, numbers are always binary
   * Regardless of how number is written:
-  * 32ten == 3210 == 0x20 == 1000002 == 0b100000
+  * 32~ten~ == 32~10~ == `0x20` == 100000~2~ == `0b100000`
 
 * To avoid confusion:
-  * Decimal: 	subscript “ten”		or		prefix (none)
-  * Hex:		subscript “hex”		or		prefix 0x 
-  * Binary:		subscript “two”		or		prefix 0b
+
+| Base | Subscript | Prefix |
+| :--- | :--- | :--- |
+| Decimal | "ten" | (none) |
+| Hex | "hex" | `0x` |
+| Binary | "two" | `0b` |
 
 ## Every Base is Base 10…?
 
@@ -187,19 +220,19 @@ Literals (not supported by all compilers):
 * Logical values? 1 bit
   * One possible convention: 0 → False, 1 → True
 * Characters? Several options:
-  * A, …, Z: 26 letters →  5 bits (26 ≤ 32)
-  * [ASCII](https://en.wikipedia.org/wiki/ASCII): upper/lower case + punctuation → 7 bits → round to 1 byte
-  * Unicode ([www.unicode.com](http://www.unicode.com)): standard code to cover all the world’s  languages ⇒ 8, 16, 32 bits
+  * A, ..., Z: 26 letters $\rightarrow$  5 bits (26 $\leq$ 32)
+  * [ASCII](https://en.wikipedia.org/wiki/ASCII): upper/lower case + punctuation $\rightarrow$ 7 bits $\rightarrow$ round to 1 byte
+  * Unicode ([www.unicode.com](http://www.unicode.com)): standard code to cover all the world’s  languages $\Rightarrow$ 8, 16, 32 bits
 
 * Colors?
   * HTML color codes: 24 bits (3 bytes)
 * Locations / addresses? Commands?
   * IPv4 (32 bit), IPv6 (64 bit), etc.
 
-With N bits, you can represent at most 2N things.
+With N bits, you can represent at most $2^N$ things.
 
 
-![HTML Color Codes](images/hex-colors.png)
+![HTML Color Codes](images/hex-colors.png){#fig-hex-colors width=70%}
 
 ## Pop quiz??
 

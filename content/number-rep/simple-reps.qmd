@@ -16,21 +16,18 @@ subtitle: "Older Representations for Signed Integers"
 * Reasonable for signal processing,
 not for general purpose computers
 
-```
-TODO: placeholder for two zeros diagram
-```
+
+![Sign-Magnitude has two representations for zero: "positive zero" and "negative zero."](images/sign-magnitude-two-zeros.png){#fig-sign-magnitude-two-zeros width=60% alt="Two equations display the hexadecimal values 0x00000000 and 0x80000000 equating to positive and negative zero, respectively. Curved lines map the hexadecimal digits to a binary expansion, illustrating that the leading bit determines the sign while the remaining bits represent the magnitude of zero."}
+
+!["Binary odometer" for sign-magnitude signed integer representation.](images/sign-magnitude-number-line.png){#fig-sign-magnitude alt="A blue horizontal number line displays 4-bit binary values to illustrate sign-magnitude representation, with 0000 at the center. Two gold arrows point in opposite directions from the center to indicate how values increase in magnitude for both positive and negative binary sequences."}
 
 ## Ones' Complement: Another Try
 
 * To represent a negative number, complement ("**flip**") the bits of its positive representation:
 
-```
-TODO: placeholder for bit flips
-```
+![One's complement: To change sign, flip the bits.](images/ones-complement-bitflip.png){#fig-ones-complement-bitflip width=60% alt="Two equations demonstrate the ones' complement operation by converting positive seven to negative seven. Curved orange arrows indicate that each bit in the binary sequence `0000 0111` is inverted to produce the resulting sequence `1111 1000`."}
 
-```
-TODO: placeholder for number line
-```
+!["Binary odometer" for ones' complement signed integer representation.](images/ones-complement-number-line.png){#fig-ones-complement alt=A blue horizontal number line displays 4-bit binary values to illustrate ones' complement representation, centered around the values 0000 and 1111. Two gold arrows point to the right to indicate that both positive and negative binary sequences increase in value as the odometer increments from left to right."}
 
 * Observations:
   * Positive numbers: leading 0s

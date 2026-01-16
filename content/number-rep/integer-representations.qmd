@@ -15,12 +15,25 @@ Want a representation that supports common integer operations:
 
 * Example: 10 + 7 = 17
   * 10, 7 can be represented with 4 bits:
+
+```
+  1010
++ 0111
+------
+```
+
   * Addition, subtraction just as you would in decimal!!
   * So simple to add in binary that we can build circuits to do it!
     * **This design decision would make hardware simple!**
   * …wait…
 
-![TODO: change to code](images/integer-strawman.png)
+```
+  11   carry bits
+  1010
++ 0111
+------
+ 10001
+```
 
 ## What if “too big”? Overflow
 
@@ -39,7 +52,7 @@ Want a representation that supports common integer operations:
 
 **Integer overflow**: The arithmetic result is outside the representable range.
 
-![Number line wraps around](images/overflow.png)
+![Number line wraps around](images/overflow.png){alt="A blue horizontal line marked with 4-bit binary values from 0000 to 1111 illustrates a finite number system. An gold curved line connects the maximum value back to the minimum value to visually represent the concept of arithmetic overflow in digital systems."}
 
 ## Many Possible Number Representations
 
