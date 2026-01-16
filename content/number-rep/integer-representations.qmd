@@ -67,3 +67,98 @@ Want a representation that supports common integer operations:
   * Two’s Complement (C23: the only signed integer rep permitted)
   * Bias Encoding (if time, otherwise review on your own)
 
+## Precheck: Unsigned Representation
+
+
+If we have an $n$-digit unsigned numeral $d_{n-1}$ $d_{n-2}$...$d_0$ in radix (or base) $r$, then the value of that numeral is:
+$$
+\sum_{i=0}^{n-1} r^i d_i
+$$
+which is just fancy notation to say that instead of a 10's or 100's place we have an $r$'s or $r^2$'s place. For the three radices binary, decimal, and hex, we just let $r$ be 2, 10, and 16, respectively. 
+
+
+## Sign-Magnitude: [Ain’t No Free Lunch](http://en.wikipedia.org/wiki/No_such_thing_as_a_free_lunch) (tell story)
+
+
+* Strawman (“obvious”) solution:
+  * Leftmost **sign bit**: 0 → +, 1 → –
+  * Rest of bits: numerical value
+* Sign-magnitude is rarely used, due to many shortcomings:
+  * Incrementing “binary odometer” increases then decreases values 
+  * Arithmetic circuit complicated: depends on signs same/different
+  * Two zeros (how to compare??)
+* Reasonable for signal processing,
+not for general purpose computers
+
+
+![Sign-Magnitude has two representations for zero: "positive zero" and "negative zero."](images/sign-magnitude-two-zeros.png){#fig-sign-magnitude-two-zeros width=60% alt="Two equations display the hexadecimal values 0x00000000 and 0x80000000 equating to positive and negative zero, respectively. Curved lines map the hexadecimal digits to a binary expansion, illustrating that the leading bit determines the sign while the remaining bits represent the magnitude of zero."}
+
+!["Binary odometer" for sign-magnitude signed integer representation.](images/sign-magnitude-number-line.png){#fig-sign-magnitude alt="A blue horizontal number line displays 4-bit binary values to illustrate sign-magnitude representation, with 0000 at the center. Two gold arrows point in opposite directions from the center to indicate how values increase in magnitude for both positive and negative binary sequences."}
+
+## Ones' Complement: Another Try
+
+* To represent a negative number, complement ("**flip**") the bits of its positive representation:
+
+![One's complement: To change sign, flip the bits.](images/ones-complement-bitflip.png){#fig-ones-complement-bitflip width=60% alt="Two equations demonstrate the ones' complement operation by converting positive seven to negative seven. Curved orange arrows indicate that each bit in the binary sequence `0000 0111` is inverted to produce the resulting sequence `1111 1000`."}
+
+!["Binary odometer" for ones' complement signed integer representation.](images/ones-complement-number-line.png){#fig-ones-complement alt=A blue horizontal number line displays 4-bit binary values to illustrate ones' complement representation, centered around the values 0000 and 1111. Two gold arrows point to the right to indicate that both positive and negative binary sequences increase in value as the odometer increments from left to right."}
+
+* Observations:
+  * Positive numbers: leading 0s
+  * Negative numbers: leading 1s
+* #s represented in N bits:
+  * Zero: 2
+  * Positive: $2^{N-1} - 1$
+  * Negative: (same as positive)
+
+## Shortcomings of Ones' Complement?
+
+* Advantages:
+  * Leftmost bit (“most significant bit”) is still effectively sign bit
+  * Incrementing binary odometer consistent on the # line
+
+* Some disadvantages still persist:
+  * Still two zeros
+  * Arithmetic still somewhat complicated (more later)
+* While used for a while on some computer products
+  * It’s not currently used in current hardware
+
+  ## Bias Encoding
+
+* We have a system
+that can represent this:
+* We want to represent this:
+* **Bias encoding**: “Shift” the numbers so that they center on zero
+
+* Formally:
+  * Define a “bias”
+  * To interpret stored binary: Read the data as an unsigned number, then **add the bias**
+  * To store a data value: Subtract the bias, then store the resulting number as an unsigned number
+
+![A bias-encoded representation effectively shifts the number line.](images/bias-encoding-shift.png){#fig-bias-encoding-number-line fig-alt="A diagram presents two parallel horizontal number lines. Vertical lines connect specific points on the top line to corresponding values on the bottom line to indicate the mapping between the two systems."}
+
+## Bias Encoding
+
+!["Binary odometer" for bias-encoded integer representation.](images/bias-encoding-number-line.png){#fig-bias-encoding-number-line fig-alt="A blue horizontal number line displays 4-bit binary values and their corresponding decimal equivalents from -7 (for 0000) to 8 (for 1111) to illustrate bias encoding. A single gold arrow points to the right to indicate that the decimal values increase monotonically as the binary sequence increments from 0000 to 1111."}
+
+* Number = (unsigned rep) + (bias)
+* With N bits, default bias is $-(2^{N-1} - 1)$
+  * E.g., 4 bits, bias $= -(2^3-1) = -(8-1) = -7$
+* Bias could be anything we want! (i.e., 4 bits could be #s 800-815)
+
+## Bias Encoding: N = 4, bias = -7
+
+Example: N = 4, bias = -7
+
+* Consider:
+  * One zero
+  * How many positives?
+  * How many negatives?
+
+![Number wheel for bias encoding](images/bias-encoding-number-wheel.png){#fig-bias-encoding-number-wheel fig-alt="A circular number wheel visually represents a 4-bit bias-encoded integer. Values inside and outside the wheel represent the numbers and bit representations, respectively; the wheel has tickmarks going from -7 (0000) to 1 (1000) to 8 (1111)." width=70%}
+
+
+### Pre-check: Biased Representation
+(a) The number line is shifted so that the smallest number we want to be representable would be `0b0...0`. 
+(b) To find out what the represented number is, read the representation as if it was an unsigned number, then add the bias. 
+(c) We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as much negative numbers as positive, a commonly-used bias for $N$-bits is $-(2^{N-1} - 1)$.

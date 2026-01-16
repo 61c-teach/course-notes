@@ -20,3 +20,34 @@ title: "Summary"
 
 For you to consider:
 How could we represent -12.75?
+
+
+## Pre-Check: Summary & Questions
+
+You should be able to do:
+
+* Conversion between binary, decimal, and hexademical
+* Conversion with signed numbers
+* Arithmetic with binary and hexadecimal numbers
+
+
+## Textbook readings
+
+Insert readings
+
+## Amazing Illustrations by Ketrina (Yim) Thompson
+
+<!-- todo: put these images into extra references page-->
+
+## Useful Links
+[Fall 25 Slides](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g3292f1ea280_3_0#slide=id.g3292f1ea280_3_0)    
+[Fall 25 Precheck](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre.pdf)    
+[Precheck Solutions](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre-sols.pdf)
+
+### Additional Reading
+**CS Illustrated Number Rep Handout**    
+
+* [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)    
+* [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)     
+* [Increments and Monotonicity](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-3-comparing-handout.pdf)    
+* [The Thrilling Conclusion!](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-4-comparing-handout.pdf)    

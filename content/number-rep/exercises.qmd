@@ -1,12 +1,51 @@
 ---
 title: "Exercises"
-subtitle: "UC Berkeley, CS 61C"
+subtitle: "Check your knowledge before section"
 ---
 
-![](astronaut-alien.png){fig-alt="A astronaut talking to an alien with 2 fingers per hand and there are 4 rocks on the ground. Alien says 
-'There are 10 rocks.' Astronaut says 'Oh, you must be using base 4. See, I use base 10.' Alien says 'No. I use base 10. What is base 4?' Caption reads 'Every base is base 10'"}
+### Conceptual Review
+1. What is a bit? How many bits are in a byte? Nibble?
 
-## Precheck Questions
+::: {.callout-note title="Answer" collapse="true"}
+A bit is the smallest unit of digital information and it can be either 0 of 1. There are 4 bits in a nibble and 8 bits in a byte.
+
+See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_154#slide=id.g2af3b38b3e2_1_154)
+:::
+
+2. What is overflow?
+
+::: {.callout-note title="Answer" collapse="true"}
+When the result of an arithmetic operation is outside the range of what is representable by given number of bits.
+
+See: [Lecture 2 Slide 26](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_186#slide=id.g2af3b38b3e2_1_186)
+:::
+
+3. What is the range of numbers representable by $n$-bit unsigned, sign-magnitude, one's complement, two's complement, and biased notation?
+
+::: {.callout-note title="Answer" collapse="true"} 
+* **Unsigned**: $[0, 2^n-1]$
+* **Sign-Magnitude**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
+* **One's complement**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
+* **Two's complement**: $[-2^{n-1}, 2^{n-1} - 1]$
+* **Bias**: $[0+$bias$, 2^n-1+$bias$]$
+
+See:  [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)
+:::
+
+4. How many ways to represent zero do these representations have, $n$-bit unsigned, sign-magnitude, one's complement, two's complement, and biased notation?
+
+::: {.callout-note title="Answer" collapse="true"}
+* **Unsigned**: 1
+* **Sign-Magnitude**: 2
+* **One's complement**: 2
+* **Two's complement**: 1
+* **Bias**: 1 or 0 (depending on bias)
+
+See: [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)
+:::
+
+
+## Short Exercises
 1. **True/False**: Depending on the context, the same sequence of bits may represent different things.    
 
 ::: {.callout-note title="Answer" collapse="true"}
@@ -50,16 +89,3 @@ format.
 **7 bits**. $(116)_{10} =$ `0b111 0100` or $log{_2}{116} \approx 6.85$ which we round to 7 bits.
 :::
 
-
-## Useful Links
-[Fall 25 Slides](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g3292f1ea280_3_0#slide=id.g3292f1ea280_3_0)    
-[Fall 25 Precheck](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre.pdf)    
-[Precheck Solutions](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre-sols.pdf)
-
-### Additional Reading
-**CS Illustrated Number Rep Handout**    
-
-* [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)    
-* [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)     
-* [Increments and Monotonicity](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-3-comparing-handout.pdf)    
-* [The Thrilling Conclusion!](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-4-comparing-handout.pdf)    

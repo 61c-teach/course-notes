@@ -37,20 +37,12 @@ website:
             text: "Binary, Decimal, Hex"
           - href: content/number-rep/integer-representations.qmd
             text: "Integer Representations"
-          - href: content/number-rep/simple-reps.qmd
-            text: "Sign-Magnitude, Ones’ Complement"
           - href: content/number-rep/twos-complement.qmd
             text: "Two's Complement"
-          - href: content/number-rep/bias-encoding.qmd
-            text: "Bias Encoding"
           - href: content/number-rep/summary.qmd
-            text: "Summary"
+            text: "Summary & References"
           - href: content/number-rep/exercises.qmd
-            text: "General Exercises"
-          - href: content/number-rep/precheck-unsigned.qmd
-            text: "Unsigned Representations"
-          - href: content/number-rep/precheck-unsigned.qmd
-            text: "Signed Representations"
+            text: "Exercises"
 
 format:
   html:

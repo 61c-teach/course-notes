@@ -3,29 +3,56 @@ title: "Binary, Decimal, Hex"
 subtitle: "How do we represent a number?"
 ---
 
-## Number vs Numeral
+Historically, computers were used as scientific calculators. We therefore dedicate most of our time to understanding how a string of bits (a **bit string**) can represent a number. In this section, we discuss a system for translating between **bits and numbers** (specifically, non-negative integers) grounded in math.
 
-**Numeral**
+While this mathematical system is not the only representation, it is a system that computer architects and computer scientists use frequently---to translate between the rich world that human sees and information, represented as bits.
 
-* A symbol or name that stands for a number
-  * e.g., 4 , four , quatro , IV , IIII , …
-* …and Digits are symbols that make numerals
+Learning Outcomes:
 
-**Number**
+* Translate between binary, decimal, and hexadecimal number representations
+* Understand that the hexadecimal representation is an easy shorthand for binary representations
 
-* The “idea” in our minds…there is only ONE of these
-  * e.g., the concept of “4”
+## Numerals as a representation of Numbers
+
+Let's discuss the idea of formally representing a **number** with many possible **numerals**, i.e., symbols.
+
+* **Numeral**: A symbol (or series of symbols) or name that stands for a number, e.g., 4 , four , quatro , IV , IIII , …. Numerals are composed of multiple symbols called **digits**.
+* **Number**: The “idea” in our minds, e.g., the concept of "4". There is only ONE concept of a number, but there can be many possible numeric representations via many possible numerals.
 
 ![Numerals (and therefore digits) are representations of numbers.](images/numeral-number.png){#fig-numeral-number fig-alt="A diagram features a horizontal gold abstraction line separating the word Numeral at the top from the word Number at the bottom. This visual layout reinforces the caption by positioning numerals as the symbolic representations above the line and numbers as the underlying abstract concepts below it."}
 
-## Decimal: Base 10 (Ten) #s
+@fig-aliens is a motivating (and humorous) example. An alien and an astronaut are discussing how to represent the number of rocks in a pile. 
 
-Digits:
-```
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-```
+![Every base is base 10 ([web.archive.org](https://web.archive.org/web/20160505151914/http://cowbirdsinlove.com/43))](images/aliens.png){#fig-aliens fig-alt="A astronaut talking to an alien with 2 fingers per hand and there are 4 rocks on the ground. Alien says 
+'There are 10 rocks.' Astronaut says 'Oh, you must be using base 4. See, I use base 10.' Alien says 'No. I use base 10. What is base 4?' Caption reads 'Every base is base 10'"}
 
-Example:
+The alien, the astronaut, and the pile of rocks are considering three different representations of the same number. The astronaut uses the numeral 4 to represent four as a base-10 integer. The alien uses the numeral 10 to represent four as a base-4 integer. The pile of rocks uses four rocks to represent four as, well, a pile of rocks.
+
+## Binary, Decimal, and Hexadecimal Numbers
+
+While there are an infinite number of bases with which to represent numbers, we discuss three will be the most useful to us, as computer scientists: **decimal**, **binary**, and **hexadecimal** representations.
+
+@tbl-dec-hex-bin probably makes little sense to you at the moment, but we present it first so you can make some educated guesses. We will expand this table at the end of this section.
+
+| System | \# Digits | Digits | 
+| :--- | :-: | :--- | 
+| Decimal  | 10 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9` |
+| Binary  | 2 | `0, 1` | 
+| Hexadecimal | 16 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A,  B,  C,  D,  E,  F` | 
+: Decimal, binary, and hexadecimal digits. {#tbl-dec-hex-bin}
+
+Let us first understand how the three representations above are rooted in mathematics. Then we will answer each of the following questions:
+
+1. What does the binary representation `1101` represent? What about the hexadecimal representation `A5`?
+1. How do we represent the number 3271? What about 165?
+1. How do we differentiate between binary, decimal, and hexadecimal digits?
+1. Why do we care? Why is hexadecimal useful?
+
+### Decimal: Base 10 (Ten) Numbers
+
+First, consider **decimal numbers**. The decimal value $3271$ is written in that order, because it describes how to count powers of **ten** to create the number three thousand, two hundred seventy-one.
+
+In the equation below, the superscript $10$ denotes a base-10 value. We then see how each of the four digits determine the number of times each power of ten is included in the number. Note that the smallest power of 10 we consider is $10^0 = 1$, because we are only considering non-negative integers at this time.
 
 $$
 \begin{align}
@@ -35,18 +62,15 @@ $$
 \end{align}
 $$
 
-## Base 2 (Two) #s, Binary
+### Base 2 (Two) Numbers, Binary
 
-Digits:
-```
-0, 1
-```
+Similarly, binary numbers like `1101` are written in that order to describe how to count powers of **two**. The two **bi**nary digi**ts**, `0` and `1`, are the namesake of the **b**it (which takes on those two values).
 
-(**bi**nary digits $\rightarrow$ **b**its)
+Let's address question 1:
 
-Example: Binary number “1101”
+> 1. What does the binary representation `1101` represent? 
 
-Convert to decimal:
+Because humans think in decimal, we convert this binary value to decimal. We prepend the prefix `0b` to denote that the numeral `1101` should be interpreted in base 2; the **shorthand** `0b1101`is equivalent to the mathematical notation $1101_2$ but can be written with a standard keyboard.
 
 $$
 \begin{align}
@@ -58,9 +82,9 @@ $$
 \end{align}
 $$
 
-Common binary shorthand: `0b1101`
-
 ## Base 16 (Sixteen) #s, Hexadecimal
+
+TODO: GOT TO HERE
 
 Digits:
 ```
@@ -83,6 +107,32 @@ $$
 “Hex” for short. Common hex shorthand: `0xA5`
 
 ## Convert from Decimal to Binary
+
+
+The following @tbl-dec-hex-bin will not make much sense to you at first. It shows each of the first sixteen numbers in three different representations: decimal (as two digits), hexadecimal (as one digit), and binary (as four digits):
+
+
+| Number | `Dec` | `Hex` | `Bin` |
+| :--- | :--- | :- | :--- | 
+|  0 | `00` | `0` | `0000` |
+|  1 | `01` | `1` | `0001` |
+|  2 | `02` | `2` | `0010` |
+|  3 | `03` | `3` | `0011` |
+|  4 | `04` | `4` | `0100` |
+|  5 | `05` | `5` | `0101` |
+|  6 | `06` | `6` | `0110` |
+|  7 | `07` | `7` | `0111` |
+|  8 | `08` | `8` | `1000` |
+|  9 | `09` | `9` | `1001` |
+| 10 | `10` | `A` | `1010` |
+| 11 | `11` | `B` | `1011` |
+| 12 | `12` | `C` | `1100` |
+| 13 | `13` | `D` | `1101` |
+| 14 | `14` | `E` | `1110` |
+| 15 | `15` | `F` | `1111` |
+: First sixteen numbers as decimal, hexadecimal, and binary representations. {#tbl-dec-hex-bin-16}
+
+One way to view these representations is as a symbol lookup table, where you memorize each row, then translate back and forth. However, this approach is not particularly scalable---for example, how would you represent the number 20?---so instead we describe how these representations are grounded in mathematics.
 
 E.g., 13 to binary?
 Start with the columns
@@ -113,33 +163,7 @@ Left to right, is (column) ≤ number n?
   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTWgqxt2kl5ip7bRfRY7P81WiQGDJSrAuKmkqE1m3mnrerVBeN2s9PGJVVaIQu0aDlsNfuvcRCK09q9/pubembed?start=false&loop=false" frameborder="0" width="480" height="400" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
 </html>
 
-## Nibbles and Bytes
 
-* 4 Bits
-  * 1 “Nibble”
-  * 1 Hex Digit = 16 things
-* 8 Bits
-  * 1 “**Byte**”
-  * 2 Hex Digits = 256 things
-
-| `Dec` | `Hex` | `Bin` |
-| :--- | :--- | :--- |
-| `00` | `0` | `0000` |
-| `01` | `1` | `0001` |
-| `02` | `2` | `0010` |
-| `03` | `3` | `0011` |
-| `04` | `4` | `0100` |
-| `05` | `5` | `0101` |
-| `06` | `6` | `0110` |
-| `07` | `7` | `0111` |
-| `08` | `8` | `1000` |
-| `09` | `9` | `1001` |
-| `10` | `A` | `1010` |
-| `11` | `B` | `1011` |
-| `12` | `C` | `1100` |
-| `13` | `D` | `1101` |
-| `14` | `E` | `1110` |
-| `15` | `F` | `1111` |
 
 ## Convert Binary -> Hexadecimal
 
@@ -174,17 +198,13 @@ Binary odometer
 
 * To avoid confusion:
 
-| Base | Subscript | Prefix |
-| :--- | :--- | :--- |
-| Decimal | "ten" | (none) |
-| Hex | "hex" | `0x` |
-| Binary | "two" | `0b` |
 
-## Every Base is Base 10…?
-
-How many rocks?
-
-![Every base is base 10 ([web.archive.org](https://web.archive.org/web/20160505151914/http://cowbirdsinlove.com/43))](images/aliens.png)
+| System | \# Digits | Subscript (informal) | Prefix | Digits | 
+| :--- | :-: | :--- | :-- | :----- |
+| Decimal  | 10 | "ten" | (none) | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9` |
+| Binary  | 2 | "two" | `0b` | `0, 1` | 
+| Hexadecimal | 16 | "hex" | `0x` | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A,  B,  C,  D,  E,  F` | 
+: Expanded view of @tbl-dec-hex-bin, with notation for informal math subscripts (if useful to avoid confusion) and numeral prefixes. {#tbl-dec-hex-bin-expanded}
 
 ## The computer knows it, too
 
@@ -214,45 +234,3 @@ Literals (not supported by all compilers):
 0b10011010010 = 1234 (binary)
 02322     	= 1234 (octal, prefix 0 - zero)
 ```
-
-## BIG IDEA: Bits can represent anything!!
-
-* Logical values? 1 bit
-  * One possible convention: 0 → False, 1 → True
-* Characters? Several options:
-  * A, ..., Z: 26 letters $\rightarrow$  5 bits (26 $\leq$ 32)
-  * [ASCII](https://en.wikipedia.org/wiki/ASCII): upper/lower case + punctuation $\rightarrow$ 7 bits $\rightarrow$ round to 1 byte
-  * Unicode ([www.unicode.com](http://www.unicode.com)): standard code to cover all the world’s  languages $\Rightarrow$ 8, 16, 32 bits
-
-* Colors?
-  * HTML color codes: 24 bits (3 bytes)
-* Locations / addresses? Commands?
-  * IPv4 (32 bit), IPv6 (64 bit), etc.
-
-With N bits, you can represent at most $2^N$ things.
-
-
-![HTML Color Codes](images/hex-colors.png){#fig-hex-colors width=70%}
-
-## Pop quiz??
-
-1. How many “things” can be represented by 4 bits?
-
-A. 	4	
-B. 	8
-C. 	16	
-D. 	64
-E. 	Something else	
-
-2. How many bits do you need to represent π (pi)?
-
-A. 	1
-B. 	9 (π=3.14, so 0.011”.” 001100)
-C. 	64 (Macs are 64-bit machines)
-D. 	Every bit the machine has
-E. 	∞
-
-
-3. What does this particular 4-bit pattern represent?
-
-1011
