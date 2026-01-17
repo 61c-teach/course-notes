@@ -2,7 +2,7 @@
 title: "Summary"
 ---
 
-## And in Summary...
+## And in Summary$\dots$
 
 * We represent “things” in computers as particular bit patterns:
   * With N bits, you can represent at most 2N things.
@@ -21,7 +21,6 @@ title: "Summary"
 For you to consider:
 How could we represent -12.75?
 
-
 ## Pre-Check: Summary & Questions
 
 You should be able to do:
@@ -29,7 +28,6 @@ You should be able to do:
 * Conversion between binary, decimal, and hexademical
 * Conversion with signed numbers
 * Arithmetic with binary and hexadecimal numbers
-
 
 ## Textbook readings
 

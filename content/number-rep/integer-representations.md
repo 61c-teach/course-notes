@@ -52,7 +52,13 @@ Want a representation that supports common integer operations:
 
 **Integer overflow**: The arithmetic result is outside the representable range.
 
-![Number line wraps around](images/overflow.png){alt="A blue horizontal line marked with 4-bit binary values from 0000 to 1111 illustrates a finite number system. An gold curved line connects the maximum value back to the minimum value to visually represent the concept of arithmetic overflow in digital systems."}
+:::{figure} images/overflow.png
+:label: fig-overflow
+:alt: "A blue horizontal line marked with 4-bit binary values from 0000 to 1111 illustrates a finite number system. An gold curved line connects the maximum value back to the minimum value to visually represent the concept of arithmetic overflow in digital systems."
+:align: center
+
+Number line wraps around
+:::
 
 ## Many Possible Number Representations
 
@@ -90,18 +96,49 @@ which is just fancy notation to say that instead of a 10's or 100's place we hav
 * Reasonable for signal processing,
 not for general purpose computers
 
+:::{figure} images/sign-magnitude-two-zeros.png
+:label: fig-sign-magnitude-two-zeros
+:width: 50%
+:alt: "Two equations display the hexadecimal values 0x00000000 and 0x80000000 equating to positive and negative zero, respectively. Curved lines map the hexadecimal digits to a binary expansion, illustrating that the leading bit determines the sign while the remaining bits represent the magnitude of zero."
+:align: center
 
-![Sign-Magnitude has two representations for zero: "positive zero" and "negative zero."](images/sign-magnitude-two-zeros.png){#fig-sign-magnitude-two-zeros width=60% alt="Two equations display the hexadecimal values 0x00000000 and 0x80000000 equating to positive and negative zero, respectively. Curved lines map the hexadecimal digits to a binary expansion, illustrating that the leading bit determines the sign while the remaining bits represent the magnitude of zero."}
+Sign-Magnitude has two representations for zero: "positive zero" and "negative zero.
 
-!["Binary odometer" for sign-magnitude signed integer representation.](images/sign-magnitude-number-line.png){#fig-sign-magnitude alt="A blue horizontal number line displays 4-bit binary values to illustrate sign-magnitude representation, with 0000 at the center. Two gold arrows point in opposite directions from the center to indicate how values increase in magnitude for both positive and negative binary sequences."}
+:::
+
+:::{figure} images/sign-magnitude-number-line.png
+:label: fig-sign-magnitude-number-line
+:width: 100%
+:alt: "A blue horizontal number line displays 4-bit binary values to illustrate sign-magnitude representation, with 0000 at the center. Two gold arrows point in opposite directions from the center to indicate how values increase in magnitude for both positive and negative binary sequences."
+:align: center
+
+"Binary odometer" for sign-magnitude signed integer representation.
+
+:::
 
 ## Ones' Complement: Another Try
 
 * To represent a negative number, complement ("**flip**") the bits of its positive representation:
 
-![One's complement: To change sign, flip the bits.](images/ones-complement-bitflip.png){#fig-ones-complement-bitflip width=60% alt="Two equations demonstrate the ones' complement operation by converting positive seven to negative seven. Curved orange arrows indicate that each bit in the binary sequence `0000 0111` is inverted to produce the resulting sequence `1111 1000`."}
+:::{figure} images/ones-complement-bitflip.png
+:label: fig-ones-complement-bitflip
+:width: 100%
+:align: center
+:alt: "Two equations demonstrate the ones' complement operation by converting positive seven to negative seven. Curved orange arrows indicate that each bit in the binary sequence `0000 0111` is inverted to produce the resulting sequence `1111 1000`."
 
-!["Binary odometer" for ones' complement signed integer representation.](images/ones-complement-number-line.png){#fig-ones-complement alt=A blue horizontal number line displays 4-bit binary values to illustrate ones' complement representation, centered around the values 0000 and 1111. Two gold arrows point to the right to indicate that both positive and negative binary sequences increase in value as the odometer increments from left to right."}
+One's complement: To change sign, flip the bits.
+
+:::
+
+:::{figure} images/ones-complement-number-line.png
+:label: fig-ones-complement-number-line
+:width: 100%
+:align: center
+:alt: "A blue horizontal number line displays 4-bit binary values to illustrate ones' complement representation, centered around the values 0000 and 1111. Two gold arrows point to the right to indicate that both positive and negative binary sequences increase in value as the odometer increments from left to right."
+
+"Binary odometer" for ones' complement signed integer representation.
+
+:::
 
 * Observations:
   * Positive numbers: leading 0s
@@ -135,11 +172,23 @@ that can represent this:
   * To interpret stored binary: Read the data as an unsigned number, then **add the bias**
   * To store a data value: Subtract the bias, then store the resulting number as an unsigned number
 
-![A bias-encoded representation effectively shifts the number line.](images/bias-encoding-shift.png){#fig-bias-encoding-number-line fig-alt="A diagram presents two parallel horizontal number lines. Vertical lines connect specific points on the top line to corresponding values on the bottom line to indicate the mapping between the two systems."}
+:::{figure} images/bias-encoding-shift.png
+:label: fig-bias-encoding-shift
+:width: 100%
+:align: center
+:alt: "A diagram presents two parallel horizontal number lines. Vertical lines connect specific points on the top line to corresponding values on the bottom line to indicate the mapping between the two systems."
 
-## Bias Encoding
+A bias-encoded representation effectively shifts the number line.
+:::
 
-!["Binary odometer" for bias-encoded integer representation.](images/bias-encoding-number-line.png){#fig-bias-encoding-number-line fig-alt="A blue horizontal number line displays 4-bit binary values and their corresponding decimal equivalents from -7 (for 0000) to 8 (for 1111) to illustrate bias encoding. A single gold arrow points to the right to indicate that the decimal values increase monotonically as the binary sequence increments from 0000 to 1111."}
+:::{figure} images/bias-encoding-number-line.png
+:label: fig-bias-encoding-number-line
+:width: 100%
+:align: center
+:alt: "A blue horizontal number line displays 4-bit binary values and their corresponding decimal equivalents from -7 (for 0000) to 8 (for 1111) to illustrate bias encoding. A single gold arrow points to the right to indicate that the decimal values increase monotonically as the binary sequence increments from 0000 to 1111."
+
+"Binary odometer" for bias-encoded integer representation.
+:::
 
 * Number = (unsigned rep) + (bias)
 * With N bits, default bias is $-(2^{N-1} - 1)$
@@ -155,10 +204,19 @@ Example: N = 4, bias = -7
   * How many positives?
   * How many negatives?
 
-![Number wheel for bias encoding](images/bias-encoding-number-wheel.png){#fig-bias-encoding-number-wheel fig-alt="A circular number wheel visually represents a 4-bit bias-encoded integer. Values inside and outside the wheel represent the numbers and bit representations, respectively; the wheel has tickmarks going from -7 (0000) to 1 (1000) to 8 (1111)." width=70%}
+:::{figure} images/bias-encoding-number-wheel.png
+:label: fig-bias-encoding-number-wheel
+:width: 70%
+:align: center
+:alt: "A circular number wheel visually represents a 4-bit bias-encoded integer. Values inside and outside the wheel represent the numbers and bit representations, respectively; the wheel has tickmarks going from -7 (0000) to 1 (1000) to 8 (1111)."
 
+Number wheel for bias encoding.
+
+TODO: With Jupyter Book, the legend feature (e.g., this line after the figure caption) can be used for further comparison across several similar figures.
+:::
 
 ### Pre-check: Biased Representation
-(a) The number line is shifted so that the smallest number we want to be representable would be `0b0...0`. 
-(b) To find out what the represented number is, read the representation as if it was an unsigned number, then add the bias. 
+
+(a) The number line is shifted so that the smallest number we want to be representable would be `0b0...0`.
+(b) To find out what the represented number is, read the representation as if it was an unsigned number, then add the bias.
 (c) We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as much negative numbers as positive, a commonly-used bias for $N$-bits is $-(2^{N-1} - 1)$.

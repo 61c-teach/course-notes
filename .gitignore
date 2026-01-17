@@ -7,3 +7,6 @@
 *.quarto_ipynb
 venv/
 **/*.quarto_ipynb
+
+# MyST build outputs
+_build

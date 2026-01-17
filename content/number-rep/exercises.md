@@ -3,33 +3,40 @@ title: "Exercises"
 subtitle: "Check your knowledge before section"
 ---
 
-### Conceptual Review
+## Conceptual Review
+
 1. What is a bit? How many bits are in a byte? Nibble?
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
+
 A bit is the smallest unit of digital information and it can be either 0 of 1. There are 4 bits in a nibble and 8 bits in a byte.
 
-See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_154#slide=id.g2af3b38b3e2_1_154)
+<!--See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_154#slide=id.g2af3b38b3e2_1_154)-->
 :::
 
 2. What is overflow?
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
+
 When the result of an arithmetic operation is outside the range of what is representable by given number of bits.
 
-See: [Lecture 2 Slide 26](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_186#slide=id.g2af3b38b3e2_1_186)
+<!--See: [Lecture 2 Slide 26](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_186#slide=id.g2af3b38b3e2_1_186)-->
 :::
 
 3. What is the range of numbers representable by $n$-bit unsigned, sign-magnitude, one's complement, two's complement, and biased notation?
 
-::: {.callout-note title="Answer" collapse="true"} 
+:::{note} Solution
+:class: dropdown
+
 * **Unsigned**: $[0, 2^n-1]$
 * **Sign-Magnitude**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
 * **One's complement**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
 * **Two's complement**: $[-2^{n-1}, 2^{n-1} - 1]$
 * **Bias**: $[0+$bias$, 2^n-1+$bias$]$
 
-See:  [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)
+<!--See:  [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)-->
 :::
 
 4. How many ways to represent zero do these representations have, $n$-bit unsigned, sign-magnitude, one's complement, two's complement, and biased notation?
@@ -44,9 +51,9 @@ See:  [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJi
 See: [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)
 :::
 
-
 ## Short Exercises
-1. **True/False**: Depending on the context, the same sequence of bits may represent different things.    
+
+1. **True/False**: Depending on the context, the same sequence of bits may represent different things.
 
 ::: {.callout-note title="Answer" collapse="true"}
 **True.** The same bits can be interpreted in many different ways with the exact same bits! The bits
