@@ -25,10 +25,18 @@
           buildInputs = with pkgs; [
             just
             tailwindcss
-            quarto
             python314
             uv
           ];
+          
+          shellHook = ''
+            # Create a virtualenv if it doesn't exist and install mystmd
+            if [ ! -d ".venv" ]; then
+              uv venv
+            fi
+            source .venv/bin/activate
+            uv pip install mystmd
+          '';
         };
         apps = {
           preview = {
@@ -36,7 +44,7 @@
             program = toString (
               pkgs.writers.writeBash "preview" ''
                 set -e
-                ${pkgs.quarto}/bin/quarto preview
+                uv run myst start
               ''
             );
           };

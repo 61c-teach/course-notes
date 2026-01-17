@@ -1,5 +1,8 @@
-asdf plugin add quarto https://github.com/lucaswilric/asdf-quarto.git
-asdf install quarto latest
-asdf global quarto latest
+#!/bin/bash
+set -e
 
-quarto render
+# Sync dependencies and install mystmd
+uv pip install mystmd
+
+# Run the build
+uv run myst build --html

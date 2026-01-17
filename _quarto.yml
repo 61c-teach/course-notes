@@ -29,14 +29,20 @@ website:
       - href: index.qmd
         text: Home / About
       - section: Number Representation
-        href: content/number_rep/index.qmd
+        href: content/number-rep/index.qmd
         contents:
-          - href: content/number_rep/index.qmd
-            text: Number Representation
-          - href: content/number_rep/unsigned.qmd
-            text: Unsigned Representations
-          - href: content/number_rep/signed.qmd
-            text: Signed Representations
+          - href: content/number-rep/index.qmd
+            text: Introduction
+          - href: content/number-rep/binary-decimal-hex.qmd
+            text: "Binary, Decimal, Hex"
+          - href: content/number-rep/integer-representations.qmd
+            text: "Integer Representations"
+          - href: content/number-rep/twos-complement.qmd
+            text: "Two's Complement"
+          - href: content/number-rep/summary.qmd
+            text: "Summary & References"
+          - href: content/number-rep/exercises.qmd
+            text: "Exercises"
 
 format:
   html:

@@ -35,6 +35,19 @@ This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages.
 
 If minor changes are needed, simply go to the [existing Cloudflare Pages project](https://dash.cloudflare.com/75ae6c7813df14d320647bbf553f2ba0/pages/view/course-notes/settings/production) (must be logged in to the CS61C Cloudflare), select "Settings", and configure as desired. Cloudflare pages expects a directory with HTML source to serve as a static site (currently set as `_site` since that is what Quarto produces), and a build command that generates that directory (currently set to `bash build.sh`, which wraps `quarto render` with dependency management using [asdf](https://asdf-vm.com/)).
 
+## Jupyter Book Setup
+
+* If you have `pip` on your machine, follow the "Install with `pip`" instructions on the [Jupyter Book website](https://jupyterbook.org/stable/get-started/install/).
+* Try locally serving the book: `jupyter book start`
+* If the above command fails, you may need to try a different installation method---likely because jupyter is incorrectly configured on your machine . If you have `npm`, use that. Otherwise here are the `uv` instructions that work on Mac M1 chips. Create a virtual environment with `uv` and then install via `uv pip`.
+
+```
+uv venv
+source .venv/bin/activate
+uv pip install "jupyter-book>=2.0.0"
+uv run —with jupyter jupyter book start # use this syntax for running all jupyter book commands
+```
+
 ## Quarto Course Site Template Documentation
 
 The documentation below is inherited from the template this repository was initialized from.
