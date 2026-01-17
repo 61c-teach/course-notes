@@ -13,6 +13,9 @@ project:
     - LICENSE.md
   github: 61c-teach/course-notes
   license: CC-BY-NC-ND-4.0
+  exports:
+  - format: html
+    output: _site/
 
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
