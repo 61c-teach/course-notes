@@ -45,7 +45,7 @@ If minor changes are needed, simply go to the [existing Cloudflare Pages project
 uv venv
 source .venv/bin/activate
 uv pip install "jupyter-book>=2.0.0"
-uv run —with jupyter jupyter book start # use this syntax for running all jupyter book commands
+uv run --with jupyter jupyter book start # use this syntax for running all jupyter book commands
 ```
 
 ## Quarto Course Site Template Documentation

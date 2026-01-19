@@ -3,6 +3,21 @@ title: "Integer Representations"
 subtitle: "How do we pick a representation for integers?"
 ---
 
+Historically, computers were used as scientific calculators. We therefore dedicate most of our time to understanding how a string of bits (a **bit string**) can represent a number. In this section, we discuss a system for translating between **bits and numbers** (specifically, non-negative integers) grounded in math.
+
+While this mathematical system is not the only representation, it is a system that 
+
+Binary odometer
+
+:::{figure} images/odometer.jpg
+:label: fig-odomter
+:alt: ""
+:width: 70%
+
+Car odometer
+:::
+
+
 ## How do we pick a representation for integers?
 
 Want a representation that supports common integer operations:
