@@ -1,125 +1,181 @@
 ---
 title: "Integer Representations"
-subtitle: "How do we pick a representation for integers?"
 ---
 
-Historically, computers were used as scientific calculators. We therefore dedicate most of our time to understanding how a string of bits (a **bit string**) can represent a number. In this section, we discuss a system for translating between **bits and numbers** (specifically, non-negative integers) grounded in math.
+## Learning Outcomes
 
-While this mathematical system is not the only representation, it is a system that 
+* Understand tradeoffs between integer representations:
+  * (unsigned) integers
+  * (signed) Sign-Magnitude
+  * (signed) Ones' Complement
+  * Bias Encoding
+* Identify when and why integer overflow occurs
+* Perform simple binary operations like addition
 
-Binary odometer
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/I6USbMvf7vg?si=5QGKCqMvrc4TZLSG
+:width: 100%
+:title: "[CS61C FA20] Lecture 02.3 - Number Representation: Overflow, Sign and Magnitude, One's Complement"
+:::
+
+::::
+
+## Introduction
+
+Historically, computers were used as scientific calculators. We therefore dedicate most of our time to understanding how a string of bits (a **bit string**) can represent a number.
+
+> How can we use $N$ bits to represent a set of integers?
+
+There are many systems we can use. Not all systems will help us represent $2^N$ unique integers in $N$ bits! We will focus on representing *signed* and *unsigned* integers.
+
+* Signed integers refer to positive integers, negative integers, and zero.
+* Unsigned integers refer to non-negative integers,  i.e., at least greater than zero.
+
+## $N$-bit Unsigned Integer Representation
+
+Let's get our standard unsigned integer representation out of the way first. The mathematical scheme discussed [earlier](#bin-dec-hex) is sufficient for representing $2^N$ **unsigned integers** with $N$ bits.
+
+* `0b0...0` ($N$ zeros) represents zero
+* `0b1...1` ($N$ ones) represents $2^N - 1$ (why?)
+* Everything else: Assume the bitstring is the base-2 representation of a number. Convert.
+
+This representation is supported in C (discussed more later). Built-in types like `unsigned int` can introduce ambiguity because it doesn't specify the width of an `int`. The header `inttypes.h` accommodates typedefs like `uint8_t`, `uint16_t`, `uint32_t`, etc. to specify unsigned integer representations that are 8-bit, 16-bit, 32-bit etc.
+
+:::{caution} How many bits do we need for a system that supports $10 + 7$?
+
+* 10 in binary is `1010`. 4 bits.
+* 7 in binary is `0111`. 4 bits.
+* 17 in binary is `10001`. **5 bits**.
+
+If we used a 4-bit unsigned integer representation, we wouldn't have enough room to represent the number 17. Instead, our "binary odometer" would truncate the result, cropping off the leftmost `1` and storing `0001`. So binary addition with 4-bit unsigned integers would imply that $10 + 7 = 1$...?!
+
+This is the concept of **integer overflow** ([more later](#integer-overflow)).
+:::
+
+## Design Considerations
+
+We will prefer certain systems over others, depending on what sorts of integer operations we want to support.
+
+### Common number operations
+
+In decimal, we like to add, subtract, multiply, divide, and compare numbers. So we must be able to do the same thing with bit representations of numbers.
+
+It turns out that many arithmetic operations translate reasonably well between decimal and binary.
+
+For example, let’s add $10$ and $7$, which are `1010` and `0111`, respectively, in binary. The result is the number 17, or `10001` in binary. 
+
+$$
+\begin{array}{rrl}
+  & \texttt{ 11  } & \text{carry bits} \\
+  & \texttt{ 1010} \\
++ & \texttt{ 0111} \\
+\hline
+  & \texttt{10001} &
+\end{array}
+$$
+
+:::{note} Explanation
+:class: dropdown
+
+Work right-to-left:
+
+1. `0+1=1`
+1. `1+1=0` carry `1`
+1. `1+0+1=0` carry `1`
+1. `1+0+1=0` carry `1`
+1. `1`
+
+(Double check that binary math matches decimal math: $10 + 7 = 17$)
+:::
+
+Subtraction in binary works similarly. We leave an in-depth discussion of implementing binary comparison (e.g., $X < Y$) to a future project.
+
+
+### The Odometer Analogy
+
+In theory, numbers have an infinite number of digits (usually leading zeros), but in computing, we must allocate a _finite_ number of bits. Hardware is limited! Binary bit patterns are therefore **abstractions**: they are simply representatives of numbers. 
+
+In choosing an integer representation, we must consider whether the operations supported will still work within the given **bit width** of an integer representation. One useful analogy for considering edge cases comes from the idea of an odometer:
 
 :::{figure} images/odometer.jpg
-:label: fig-odomter
+:label: fig-odometer
 :alt: ""
 :width: 70%
 
-Car odometer
+A car odometer measures mileage. It starts at 0 and slowly ticks up, then wraps around again. At some point, the odometer above will hit 999999; the next number is again 0.
 :::
 
+Two sets of values to consider:
 
-## How do we pick a representation for integers?
+* The binary values `000...000`, `000...001`, `000...010`, ..., `111...111`
+* Integers incrementing by one, as placed on a number line
 
-Want a representation that supports common integer operations:
+As we will see, there are systems in which the "directions" of these values may diverge.
 
-* Add them
-* Subtract them
-* Multiply them
-* Divide them
-* Compare them (<, =, ≠, ≤, etc.)
+(integer-overflow=)
+### Integer Overflow
 
-* Example: 10 + 7 = 17
-  * 10, 7 can be represented with 4 bits:
+> *Integer overflow*: The arithmetic result is outside the representable range of integers.
 
-```
-  1010
-+ 0111
-------
-```
-
-  * Addition, subtraction just as you would in decimal!!
-  * So simple to add in binary that we can build circuits to do it!
-    * **This design decision would make hardware simple!**
-  * …wait…
-
-```
-  11   carry bits
-  1010
-+ 0111
-------
- 10001
-```
-
-## What if “too big”? Overflow
-
-* Strictly speaking, base 2 numerals have an ∞ number of digits.
-  * With almost all being same (00…0 or 11…1) except rightmost digits
-  * Just don’t normally show leading digits
-
-```
-  …00000001010
-```
-
-* However, **hardware has physical limits**. No infinite bits!
-  * Common representations: 8 bits, 16 bits, 32 bits, 64 bits, …
-  * Again: With N bits, you can represent at most 2N things.
-* If integer result of operation (+, -, *, /, >, <, =, etc.) cannot be represented by HW bits, we say **integer overflow** occurred
-
-**Integer overflow**: The arithmetic result is outside the representable range.
+Suppose we use $N$ bits to represent integers in hardware. If the result of an integer operation ($+, -, \times, \div, <, =, \leq$, etc.) cannot be accurately represented in $N$ bits, we say that *integer overflow* occurred.
 
 :::{figure} images/overflow.png
 :label: fig-overflow
 :alt: "A blue horizontal line marked with 4-bit binary values from 0000 to 1111 illustrates a finite number system. An gold curved line connects the maximum value back to the minimum value to visually represent the concept of arithmetic overflow in digital systems."
 :align: center
 
-Number line wraps around
+With unsigned integers, the "binary odometer" wraps around.
 :::
 
-## Many Possible Number Representations
+4-bit unsigned integers: Using 4 bits, you can represent 0 through 15.
 
-* So far, we have only discussed **unsigned numbers** (non-negative).
+* *Positive Overflow*: If you are at 15 (`0b1111`) and add 1, the value wraps around to 0 (`0b0000`).
+* *Negative Overflow*: If you are at 0 (`0b0000`) and subtract 1, it wraps around to 15 (`0b1111`).
 
-  * C’s `uint8_t`, `uint16_t`, etc.: $[0, 2^N-1]$
-  * Most computers use the “obvious” representation:
+:::{caution} There is no such thing as integer overflow
 
-* What about **signed numbers**? Need a way to represent **negative numbers**. Let’s discuss a few:
-  * Sign-Magnitude
-  * Ones’ Complement
-  * Two’s Complement (C23: the only signed integer rep permitted)
-  * Bias Encoding (if time, otherwise review on your own)
+People often mistakenly call negative overflow "underflow," but underflow is a different concept we will discuss later when we consider representing fractions.
+:::
 
-## Precheck: Unsigned Representation
+### $N$-bit Signed Integer Representations
 
+How do you represent negative numbers? More generally, how do you represent _both_ positive _and_ negative numbers (and _zero_) with the same $N$ bits?
 
-If we have an $n$-digit unsigned numeral $d_{n-1}$ $d_{n-2}$...$d_0$ in radix (or base) $r$, then the value of that numeral is:
-$$
-\sum_{i=0}^{n-1} r^i d_i
-$$
-which is just fancy notation to say that instead of a 10's or 100's place we have an $r$'s or $r^2$'s place. For the three radices binary, decimal, and hex, we just let $r$ be 2, 10, and 16, respectively. 
+Sidebar: There was a king who asked his wise thinkers to teach him economics. They kept bringing him long books, and he kept sending them away to make it shorter. Finally, they came back and said, "Sire, we have the theory of economics in four words: '[Ain’t No Free Lunch](http://en.wikipedia.org/wiki/No_such_thing_as_a_free_lunch).' " It means you can't get something for nothing.
 
+If we want to represent *negative numbers*, you’ve got to give something up; you lose some of the positive numbers you used to have. If we borrow a bit, we can't go as high in the positive range, but now we can do negatives.
 
-## Sign-Magnitude: [Ain’t No Free Lunch](http://en.wikipedia.org/wiki/No_such_thing_as_a_free_lunch) (tell story)
+Next, we discuss a few reasonable ones and consider tradeoffs. In the [next section](#twos-complement), we'll reveal the standard representation used in modern architectures and supported by the C23 standard.
 
+## Sign-Magnitude
 
-* Strawman (“obvious”) solution:
-  * Leftmost **sign bit**: 0 → +, 1 → –
-  * Rest of bits: numerical value
-* Sign-magnitude is rarely used, due to many shortcomings:
-  * Incrementing “binary odometer” increases then decreases values 
-  * Arithmetic circuit complicated: depends on signs same/different
-  * Two zeros (how to compare??)
-* Reasonable for signal processing,
-not for general purpose computers
+> * Leftmost **sign bit**: the integer's **sign**. `0` is positive; `1` is negative.
+> * Rest of bits: **magnitude** of the integer in binary
+
+:::{card}
+4-bit Sign-Magnitude
+^^^
+
+* Positive numbers: $1$ (`0b0001`) to $7$ (`0b0111`)
+* Negative numbers: $-1$ (`0b1001`) to $-7$ (`0b1111`)
+* Two zeros: $+0$ (`0b0000`) and $+1$ (`0b1000`)
+
+:::
+
+We already see one problem! With a positive and a negative zero, we'd have to check for two different patterns in code, every time we want to compare values to zero.
 
 :::{figure} images/sign-magnitude-two-zeros.png
 :label: fig-sign-magnitude-two-zeros
 :width: 50%
 :alt: "Two equations display the hexadecimal values 0x00000000 and 0x80000000 equating to positive and negative zero, respectively. Curved lines map the hexadecimal digits to a binary expansion, illustrating that the leading bit determines the sign while the remaining bits represent the magnitude of zero."
 :align: center
-
 Sign-Magnitude has two representations for zero: "positive zero" and "negative zero.
-
 :::
+
+Let's examine a subtler problem, revealed via the binary odometer:
 
 :::{figure} images/sign-magnitude-number-line.png
 :label: fig-sign-magnitude-number-line
@@ -127,74 +183,116 @@ Sign-Magnitude has two representations for zero: "positive zero" and "negative z
 :alt: "A blue horizontal number line displays 4-bit binary values to illustrate sign-magnitude representation, with 0000 at the center. Two gold arrows point in opposite directions from the center to indicate how values increase in magnitude for both positive and negative binary sequences."
 :align: center
 
-"Binary odometer" for sign-magnitude signed integer representation.
+"Binary odometer" for 4-bit sign-magnitude.
 
 :::
 
-## Ones' Complement: Another Try
+The problem with Sign and Magnitude is that as the odometer goes up, it goes the wrong way: you go positive, positive, and then suddenly you hit the negative range. Incrementing the binary odometer `0000` to `1111` starts at $0$, then $1$, through to $7$, then wraps to $0$ again, then $-1$, then $-7$. In other words, sometimes integer addition corresponds to adding bits, and sometimes integer addition corresponds to subtracting bits. This would get complicated very quickly!
 
-* To represent a negative number, complement ("**flip**") the bits of its positive representation:
+Ultimately, Sign-Magnitude is considered a straw man[^strawman] approach for supporting general purpose computing with integers. Nevertheless, it has some reasonable applications in, say, signals processing, where users are more commonly looking to decouple sign from magnitude, much less add numbers together. Ask us for more.
 
+[^strawman]: Wikipedia: [Straw Man](https://en.wikipedia.org/wiki/Straw_man)
+
+## Ones' Complement
+
+> To represent a negative number, complement the bits of its positive representation.
+
+Here, "complement" means that if the bit is `0` change it to `1`, and vice versa. Equivalently, to change the sign of a number, **flip** all bits of its binary representation.
+
+::::{card}
+$-7$ with 8-bit Ones' Complement
+^^^
 :::{figure} images/ones-complement-bitflip.png
 :label: fig-ones-complement-bitflip
-:width: 100%
+:width: 70%
 :align: center
 :alt: "Two equations demonstrate the ones' complement operation by converting positive seven to negative seven. Curved orange arrows indicate that each bit in the binary sequence `0000 0111` is inverted to produce the resulting sequence `1111 1000`."
 
-One's complement: To change sign, flip the bits.
-
+Ones' complement: To change sign, flip the bits.
 :::
+
+1. Start with representing $+7$: `0b 0000 0111` (we add the spacing and the prefix for better visualization, but the actual bitstring is `00000111`)
+1. Flip all bits: `0b 1111 1000` (again, actual bitstring is `11111000`) This is the representation of $-7$.
+
+::::
+
+We've fixed one problem. We still get integer overflow, sure, but at least incrementing the binary odometer now corresponds to integer addition by one in most places of the timeline.
 
 :::{figure} images/ones-complement-number-line.png
 :label: fig-ones-complement-number-line
 :width: 100%
 :align: center
 :alt: "A blue horizontal number line displays 4-bit binary values to illustrate ones' complement representation, centered around the values 0000 and 1111. Two gold arrows point to the right to indicate that both positive and negative binary sequences increase in value as the odometer increments from left to right."
-
-"Binary odometer" for ones' complement signed integer representation.
-
+"Binary odometer" for 4-bit ones' complement.
 :::
 
-* Observations:
-  * Positive numbers: leading 0s
-  * Negative numbers: leading 1s
-* #s represented in N bits:
-  * Zero: 2
-  * Positive: $2^{N-1} - 1$
-  * Negative: (same as positive)
+:::{tip} Quick Check
 
-## Shortcomings of Ones' Complement?
+Suppose you interpret an N-bit pattern as a Ones' Complement integer. How do you determine if the bit pattern represents a positive number? a negative number?
+:::
 
-* Advantages:
-  * Leftmost bit (“most significant bit”) is still effectively sign bit
-  * Incrementing binary odometer consistent on the # line
+:::{note} Show Answer
+:class: dropdown
 
-* Some disadvantages still persist:
-  * Still two zeros
-  * Arithmetic still somewhat complicated (more later)
-* While used for a while on some computer products
-  * It’s not currently used in current hardware
+* Positive numbers: leading 0s
+* Negative numbers: leading 1s
+:::
 
-  ## Bias Encoding
+:::{tip} Quick Check
 
-* We have a system
-that can represent this:
-* We want to represent this:
-* **Bias encoding**: “Shift” the numbers so that they center on zero
+Suppose you use $N$ bits to represent integers with ones' complement. How many positive numbers? negative numbers? zero?
+:::
 
-* Formally:
-  * Define a “bias”
-  * To interpret stored binary: Read the data as an unsigned number, then **add the bias**
-  * To store a data value: Subtract the bias, then store the resulting number as an unsigned number
+:::{note} Show Answer
+:class: dropdown
+
+* Zero: 2
+* Positive: $2^{N-1} - 1$
+* Negative: (same as positive)
+:::
+
+:::{card}
+Another added benefit of Ones' Complement
+^^^
+The leftmost bit (also known as **most significant bit**) is still effectively the **sign bit**.
+:::
+
+...But we still have the problem of two zeros.
+
+Historically, this was used for a while, but eventually abandoned for [two's complement](#twos-complement-section).
+
+## Bias Encoding
+
+**Bias Encoding**:
+
+> * Keep track of a **bias**.
+> * To interpret stored binary: Read the data as an unsigned integer, then **add** the bias
+> * To store an integer as data: **Subtract** the bias, then store the resulting number as an unsigned integer.
+
+Imagine you are recording an electrical signal wavering between 0 and 31 volts. Wouldn't it be cool to grab that graph and pull it down so it wiggles around zero? That's bias encoding.
+
+We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as much negative numbers as positive, a **commonly-used bias** for $N$-bits is $-(2^{N-1} - 1)$.
 
 :::{figure} images/bias-encoding-shift.png
 :label: fig-bias-encoding-shift
-:width: 100%
+:width: 50%
 :align: center
 :alt: "A diagram presents two parallel horizontal number lines. Vertical lines connect specific points on the top line to corresponding values on the bottom line to indicate the mapping between the two systems."
 
-A bias-encoded representation effectively shifts the number line.
+A bias-encoded representation effectively shifts the number line to an unsigned representation.
 :::
+
+:::{card}
+Example: $N = 5$ with bias $-(2^{N-1} - 1)$
+^^^
+
+* 5-bit integer representation
+* Bias: $-(2^{5-1} - 1) = 15$
+* All zeros: smallest negative number
+The leftmost bit (also known as **most significant bit**) is still effectively the **sign bit**.
+:::
+
+Here are some diagrams in case they are useful. @fig-bias-encoding-number-line represents a bias encoding where $N = 4$ and bias $ = -7$. The odometer just does the right thing; it counts up through zero with nothing strange happening.
 
 :::{figure} images/bias-encoding-number-line.png
 :label: fig-bias-encoding-number-line
@@ -202,22 +300,10 @@ A bias-encoded representation effectively shifts the number line.
 :align: center
 :alt: "A blue horizontal number line displays 4-bit binary values and their corresponding decimal equivalents from -7 (for 0000) to 8 (for 1111) to illustrate bias encoding. A single gold arrow points to the right to indicate that the decimal values increase monotonically as the binary sequence increments from 0000 to 1111."
 
-"Binary odometer" for bias-encoded integer representation.
+"Binary odometer" for 4-bit bias-encoded integers, with bias -7.
 :::
 
-* Number = (unsigned rep) + (bias)
-* With N bits, default bias is $-(2^{N-1} - 1)$
-  * E.g., 4 bits, bias $= -(2^3-1) = -(8-1) = -7$
-* Bias could be anything we want! (i.e., 4 bits could be #s 800-815)
-
-## Bias Encoding: N = 4, bias = -7
-
-Example: N = 4, bias = -7
-
-* Consider:
-  * One zero
-  * How many positives?
-  * How many negatives?
+You may also find the **number wheel** useful for seeing where overflow happens, and how integers increase with respect to binary incrementing. See @fig-bias-encoding-number-wheel.
 
 :::{figure} images/bias-encoding-number-wheel.png
 :label: fig-bias-encoding-number-wheel
@@ -226,12 +312,6 @@ Example: N = 4, bias = -7
 :alt: "A circular number wheel visually represents a 4-bit bias-encoded integer. Values inside and outside the wheel represent the numbers and bit representations, respectively; the wheel has tickmarks going from -7 (0000) to 1 (1000) to 8 (1111)."
 
 Number wheel for bias encoding.
-
-TODO: With Jupyter Book, the legend feature (e.g., this line after the figure caption) can be used for further comparison across several similar figures.
 :::
 
-### Pre-check: Biased Representation
-
-(a) The number line is shifted so that the smallest number we want to be representable would be `0b0...0`.
-(b) To find out what the represented number is, read the representation as if it was an unsigned number, then add the bias.
-(c) We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as much negative numbers as positive, a commonly-used bias for $N$-bits is $-(2^{N-1} - 1)$.
+We really like biased encoding for some specific applications we'll see later in the course.

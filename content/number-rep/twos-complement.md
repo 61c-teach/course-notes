@@ -1,17 +1,28 @@
 ---
 title: "Signed Representation: Two's Complement"
 short_title: "Two's Complement"
-subtitle: "The C23 Standard Number Rep"
 ---
 
-## Precheck content
+(twos-complement-section)=
+## Learning Outcomes
 
-Unsigned binary numbers work for natural numbers, but many calculations use negative numbers as well. To deal with this, a number of different schemes have been used to represent signed numbers.
+* Translate between decimal numbers and two's complement representations
+* Compare two's complement to other signed and unsigned representations
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/opFCs4m7pW8?si=u3uolJHtdKzZRsBB
+:width: 100%
+:title: "[CS61C FA20] Lecture 02.4 - Number Representation: Two's Complement, Bias, and Summary"
+:::
+
+::::
 
 ## Two's Complement
 
-* Ones’ complement:
-* The problem: Negative mappings “overlap” with the positive ones, creating the two 0s.
+Ones' complement:
+* Problem: Negative mappings “overlap” with the positive ones, creating the two 0s.
 * The solution: **Shift the negative mappings left by one.**
 
 :::{figure} images/twos-complement-number-line.png
@@ -20,16 +31,38 @@ Unsigned binary numbers work for natural numbers, but many calculations use nega
 :align: center
 :alt: "A blue horizontal number line displays 4-bit binary values and their corresponding decimal equivalents from -8 to 7 to illustrate two's complement representation. Two gold arrows point to the right across the entire scale, indicating that adding to the binary value consistently increases the numerical value across both negative and positive ranges."
 
-"Binary odometer" for sign-magnitude signed integer representation.
+"Binary odometer" for 4-bit twos' complement.
 :::
 
-## Arithmetic in Two’s Complement is simple
+Of note:
+* Like in ones' complement, incrementing the binary odometer corresponds with integer addition by one.
+* `0b0000` is still $0$.
+* Positive numbers are the same as ones' complement.
+* Negative numbers are shifted over! For example, `0b111` now maps to $-1$. This gives us one extra negative number.
+* The most significant bit (leftmost bit) can still be interpreted as the **sign bit**.
 
-* Advantages:
-  * Leftmost bit (“most significant bit”) is still effectively sign bit
-  * Incrementing binary odometer consistent on the # line
-  * One zero, and one extra negative number (here, -8 vs 7)
-  * **Simple hardware for addition**
+> In Two's Complement, a bit pattern of all ones is $-1$.
+
+:::{tip} Quick Check
+
+Suppose you use $N$ bits to represent integers with two's complement. How many positive numbers? negative numbers? zero?
+:::
+
+:::{note} Show Answer
+:class: dropdown
+
+* Zero: 1
+* Positive: $2^{N-1} - 1$
+* Negative: $2^{n-1}$
+:::
+
+## Arithmetic and conversion
+
+Hardware for two's complement is now simple.
+
+> Addition is exactly the same as with an unsigned number.
+
+The numbers $5$ and $-5$ are represented in 4-bit two's complement with `0b0101` and `0b1011`, respectively. Adding them together should result in $0$, or `0b0000`.
 
 :::{figure} images/twos-complement-addition.png
 :label: fig-twos-complement-addition
@@ -37,13 +70,37 @@ Unsigned binary numbers work for natural numbers, but many calculations use nega
 :align: center
 :alt: "A diagram compares the decimal addition of positive and negative five with the equivalent operation in two's complement binary, adding 0101 and 1011. The binary calculation displays red carry bits and results in a five-bit sum where the leading bit is discarded to achieve the correct four-bit value of 0000, which is the number zero."
 
-Two's Complement addition is intuitive and follows decimal procedure.
+Addition in two's complement follows the decimal intuition.
 :::
 
-## Two's Complement: Formula
+:::{note} Explanation
+:class: dropdown
 
-* Positive and negative numbers can be computed using the same formula:
-  * Highest bit multiplied by neg power of 2
+Work right-to-left:
+
+1. `1+1=0` carry `1`
+1. `1+0+1=0` carry `1`
+1. `1+1+0=0` carry `1`
+1. `1+0+1=0` carry `1`
+1. `1` (is truncated and dropped in 4-bit representation)
+
+(Double check that binary math matches decimal math: $5 + -5 = 0$)
+:::
+
+
+## Formal definition
+
+We can write the value of an $n$-digit two's complement number as
+
+$$
+- 2^{n-1} d_{n-1} + \sum_{i=0}^{n-2} 2^i d_i
+$$
+
+Positive and negative numbers can be computed using the same formula. Above, the sign is computed by multiplying the highest bit by $(-2^{N-1})$.
+
+:::{card}
+Example: $5$ and $-5$ in 4-bit two's complement
+^^^
 
 $$
 \begin{align}
@@ -63,16 +120,16 @@ $$
 \end{align}
 $$
 
+:::
+
 <!--TODO: there is a pedagogically simpler way to think about this. We discuss later (as in, copy over the formula from precheck summary).-->
 
-## Two’s Complement: Algorithm
+## Two’s Complement: Flip sign
 
 Hardware to convert positive to negative (& vice versa) is simple.
 
 1. Complement all bits
 1. Then add 1
-
-At home: Prove algorithm is equivalent to formula!
 
 :::{figure} images/twos-complement-flip-shift.png
 :label: fig-twos-complement-flip-shift
@@ -83,18 +140,9 @@ At home: Prove algorithm is equivalent to formula!
 Two's Complement: To change sign, flip the bits and add one.
 :::
 
-## Two’s Complement: C standard (as of 2025)
+At home: Prove algorithm is equivalent to formula!
 
-Two’s complement is the C23 standard number representation for signed integers.
-
-* 2N-1 negatives
-* 2N-1 non-negatives
-  * 1 zero
-  * How many positives?
-
-## Two’s Complement: Integer Overflow
-
-**Integer overflow** in two’s complement can be conceptualized via a “number wheel”:
+The intuition comes from a "number wheel" representation of our binary odometer (Figure @fig-twos-complement-number-wheel). This wheel also helps us understand identify where integer overflow occurs:
 
 :::{figure} images/twos-complement-number-wheel.png
 :label: fig-twos-complement-number-wheel
@@ -105,27 +153,10 @@ Two’s complement is the C23 standard number representation for signed integers
 Top: A number line indicating where integer overflow occurs. Bottom: A number "wheel" indicating the same integer overflow location.
 :::
 
-## Precheck content: Two’s Complement
+In @fig-twos-complement-number-wheel, 0 through 7 stays the same as it has for every representation. But then it jumps to $-8$. That cool top-level term ($-8$) pulls all negative numbers down by **one** so there is no overlap at zero.
 
-(a) We can write the value of an $n$-digit two's complement number as
 
-$$
-\sum_{i=0}^{n-2} 2^i d_i - 2^{n-1} d_{n-1}
-$$
+## Two’s Complement: C standard (as of 2025)
 
-(b) Negative numbers will have a 1 as their most significant bit (MSB). Plugging in $d_{n-1} = 1$ to the formula above gets us
+Two’s complement is the C23 standard number representation for signed integers. Again, the built-in `int` is ambiguous because it does not specify bitwidth. And again, the header `inttypes.h` accommodates typedefs like `int8_t`, `int16_t`, `int32_t`, etc., for signed integer representations.
 
-$$
-\sum_{i=0}^{n-2} 2^i d_i - 2^{n-1}
-$$
-
-(c) Meanwhile, positive numbers will have a 0 as their MSB. Plugging in $d_{n-1} = 0$ gets us
-
-$$
-\sum_{i=0}^{n-2} 2^i d_i
-$$
-which is very similar to unsigned numbers.
-
-(d) To negate a two's complement number: flip all the bits and add 1.
-(e) Addition is exactly the same as with an unsigned number.
-(f) Only one 0, and it’s located at `0b0`.

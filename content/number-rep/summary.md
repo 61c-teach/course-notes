@@ -18,16 +18,10 @@ title: "Summary"
 * Integer overflow: The result of an arithmetic operation is outside the representable range of integers.
   * Numbers have infinite digits, but computers have finite precision. This can lead to arithmetic errors. More later!
 
-For you to consider:
-How could we represent -12.75?
+Meta takeaway: We make design decisions to make the **hardware simple**. We threw out **sign magnitude** and **ones' complement** because the hardware would be hard. But here's a secret: it's the same hardware for mathematics on **unsigned and two's complement numbers**. The only difference is how you calculate overflow.
 
-## Pre-Check: Summary & Questions
-
-You should be able to do:
-
-* Conversion between binary, decimal, and hexademical
-* Conversion with signed numbers
-* Arithmetic with binary and hexadecimal numbers
+<!--For you to consider:
+How could we represent -12.75?-->
 
 ## Textbook readings
 

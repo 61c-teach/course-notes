@@ -2,9 +2,8 @@
 title: "Binary, Decimal, Hex"
 ---
 
-In this section, we discuss how computer architects and computer scientists translate between the rich world that humans see and information that computers store. The former is framed by how humans think—after all, we have ten fingers, also known as "digits". The latter is in bits.
-
-Learning Outcomes:
+(bin-dec-hex)=
+## Learning Outcomes
 
 * Translate between binary, decimal, and hexadecimal number representations
 * Use hexadecimal as shorthand for binary
@@ -15,10 +14,15 @@ Learning Outcomes:
 
 :::{iframe} https://www.youtube.com/embed/5rmB4SvfDPo?si=7YF8BXMnDpFCQiCH
 :width: 100%
-:title: "[CS61C FA20] Lecture 02.2 - Number Representation: Conversions]"
+:title: "[CS61C FA20] Lecture 02.2 - Number Representation: Conversions"
 :::
 
 ::::
+
+## Introduction
+
+In this section, we discuss how computer architects and computer scientists translate between the rich world that humans see and information that computers store. The former is framed by how humans think—after all, we have ten fingers, also known as "digits". The latter is in bits.
+
 
 ## Numerals as a representation of Numbers
 
@@ -184,7 +188,13 @@ Memorize @tbl-dec-hex-bin-16. As you will soon see, it will be useful to quickly
 
 :::
 
-Let's discuss conversion in more detail.
+Let's discuss conversion in more detail. We only consider "unsigned" numerals, i.e., non-negative numbers.
+
+If we have an $n$-digit unsigned numeral $d_{n-1}$ $d_{n-2}$...$d_0$ in radix (or base) $r$, then the value of that numeral is:
+$$
+\sum_{i=0}^{n-1} r^i d_i
+$$
+which is just fancy notation to say that instead of a 10's or 100's place we have an $r$'s or $r^2$'s place. For the three radices binary, decimal, and hex, we just let $r$ be 2, 10, and 16, respectively. 
 
 ### Decimal $\rightarrow$ Binary
 
@@ -271,8 +281,6 @@ Given the above, consider the following process for converting to binary to hexi
 This process is tedious—computing powers of twos is doable, but does every computer architect memorize powers of sixteen? Instead, we can _directly_ convert between binary and hexadecimal with the observation:
 
 > There exists a one-to-one mapping between the set of hexadecimal digits and the set of length-four binary strings.
-
-We use the phrases **binary string**, **bitstring**, **bit sequence**, etc. to refer to sequences of binary digits. This phrasing will become more common when we start using bits to represent all sorts of things, beyond just numbers. In this case, the set of length-four binary strings refers to the sixteen bitstrings `0000`, `0001`, `0010`, ..., `1111`.
 
 The above observation implies that a $4k$-length binary string can be translated into a $k$-length hexadecimal string by independently converting each length-4 binary string into a hexadecimal digit, then concatenating the result. (We leave the proof of this to those of you that are enthusiastic mathematicians.) This makes conversion between binary and hexadecimal much easier:
 
