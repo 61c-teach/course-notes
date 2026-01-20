@@ -28,7 +28,7 @@ website:
     contents:
       - href: index.qmd
         text: Home / About
-      - section: Number Representation
+      - section: 02 Number Representation
         href: content/number-rep/index.qmd
         contents:
           - href: content/number-rep/index.qmd

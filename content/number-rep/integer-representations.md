@@ -42,7 +42,7 @@ Let's get our standard unsigned integer representation out of the way first. The
 * `0b1...1` ($N$ ones) represents $2^N - 1$ (why?)
 * Everything else: Assume the bitstring is the base-2 representation of a number. Convert.
 
-This representation is supported in C (discussed more later). Built-in types like `unsigned int` can introduce ambiguity because it doesn't specify the width of an `int`. The header `inttypes.h` accommodates typedefs like `uint8_t`, `uint16_t`, `uint32_t`, etc. to specify unsigned integer representations that are 8-bit, 16-bit, 32-bit etc.
+This representation is supported in C (discussed more later). Built-in types like `unsigned int` can introduce ambiguity because it doesn't specify the width of an `int`. The header `stdint.h` accommodates typedefs like `uint8_t`, `uint16_t`, `uint32_t`, etc. to specify unsigned integer representations that are 8-bit, 16-bit, 32-bit etc. [Read more](#inttypes) later.
 
 :::{caution} How many bits do we need for a system that supports $10 + 7$?
 
@@ -52,7 +52,7 @@ This representation is supported in C (discussed more later). Built-in types lik
 
 If we used a 4-bit unsigned integer representation, we wouldn't have enough room to represent the number 17. Instead, our "binary odometer" would truncate the result, cropping off the leftmost `1` and storing `0001`. So binary addition with 4-bit unsigned integers would imply that $10 + 7 = 1$...?!
 
-This is the concept of **integer overflow** ([more later](#integer-overflow)).
+This is the concept of **integer overflow** ([more later](#integer-overflow-sec)).
 :::
 
 ## Design Considerations
@@ -115,7 +115,7 @@ Two sets of values to consider:
 
 As we will see, there are systems in which the "directions" of these values may diverge.
 
-(integer-overflow=)
+(integer-overflow-sec)=
 ### Integer Overflow
 
 > *Integer overflow*: The arithmetic result is outside the representable range of integers.
@@ -148,7 +148,7 @@ Sidebar: There was a king who asked his wise thinkers to teach him economics. Th
 
 If we want to represent *negative numbers*, you’ve got to give something up; you lose some of the positive numbers you used to have. If we borrow a bit, we can't go as high in the positive range, but now we can do negatives.
 
-Next, we discuss a few reasonable ones and consider tradeoffs. In the [next section](#twos-complement), we'll reveal the standard representation used in modern architectures and supported by the C23 standard.
+Next, we discuss a few reasonable ones and consider tradeoffs. In the [next section](#twos-complement-section), we'll reveal the standard representation used in modern architectures and supported by the C23 standard.
 
 ## Sign-Magnitude
 

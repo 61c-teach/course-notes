@@ -9,9 +9,9 @@ title: "Summary"
 * Today, we discussed five different encodings for integers:
   * Unsigned integers
   * Signed integers:
-  * Sign-Magnitude
-  * Ones’ Complement
-  * Two’s Complement
+    * Sign-Magnitude
+    * Ones’ Complement
+    * Two’s Complement
   * Bias Encoding
 * Computer architects make design decisions to make HW simple
   * Unsigned and Two’s complement are C standard. Learn them!!
@@ -25,21 +25,17 @@ How could we represent -12.75?-->
 
 ## Textbook readings
 
-Insert readings
+* P&H: 2.4
+
+## Useful Links
+
+* [Fall 25 Slides](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g3292f1ea280_3_0#slide=id.g3292f1ea280_3_0)
+* [Fall 25 Precheck](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre.pdf)
+* [Precheck Solutions](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre-sols.pdf)
 
 ## Amazing Illustrations by Ketrina (Yim) Thompson
 
-<!-- todo: put these images into extra references page-->
-
-## Useful Links
-[Fall 25 Slides](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g3292f1ea280_3_0#slide=id.g3292f1ea280_3_0)    
-[Fall 25 Precheck](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre.pdf)    
-[Precheck Solutions](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre-sols.pdf)
-
-### Additional Reading
-**CS Illustrated Number Rep Handout**    
-
-* [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)    
-* [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)     
-* [Increments and Monotonicity](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-3-comparing-handout.pdf)    
-* [The Thrilling Conclusion!](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-4-comparing-handout.pdf)    
+* [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)
+* [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)
+* [Increments and Monotonicity](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-3-comparing-handout.pdf)
+* [The Thrilling Conclusion!](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-4-comparing-handout.pdf)
