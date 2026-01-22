@@ -1,5 +1,5 @@
-asdf plugin add quarto https://github.com/lucaswilric/asdf-quarto.git
-asdf install quarto latest
-asdf global quarto latest
+#!/bin/bash
+set -e
 
-quarto render
+# Run the build
+myst build --html

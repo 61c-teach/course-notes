@@ -1,0 +1,14 @@
+[project]
+name = "cs61c-course-notes"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "myst>=1.0.4",
+    "mystmd>=1.8.0",
+]
+
+# disable auto discovery
+[tool.setuptools]
+py-modules = []

@@ -1,6 +1,0 @@
----
-title: "Number Representation"
-subtitle: "UC Berkeley, CS 61C"
----
-
-## TODO
