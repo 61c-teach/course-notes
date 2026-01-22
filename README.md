@@ -1,6 +1,6 @@
 # CS 61C: Course Notes
 
-Course notes for CS 61C, based on the Stat course-site-quarto template.
+Course notes for CS 61C. A [Jupyter Book 2](https://jupyterbook.org/) project.
 
 ## Deployment
 
