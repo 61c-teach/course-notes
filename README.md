@@ -23,7 +23,7 @@ This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages.
         - Production branch: `main`
         - Framework preset: `None`
         - Build command: `bash build.sh`
-        - Build output directory: `_build`
+        - Build output directory: `_build/html` (see below)
     7. Click Save and Deploy. This should deploy the project. Once it completes, click "Continue to Project".
 3. Configure a custom domain in the project
     1. Click "Custom domains" in the top navigation bar of the project
@@ -33,7 +33,12 @@ This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages.
 
 </details>
 
-If minor changes are needed, simply go to the [existing Cloudflare Pages project](https://dash.cloudflare.com/75ae6c7813df14d320647bbf553f2ba0/pages/view/course-notes/settings/production) (must be logged in to the CS61C Cloudflare), select "Settings", and configure as desired. Cloudflare pages expects a directory with HTML source to serve as a static site (currently set as `_build` since that is what `mystmd` produces), and a build command that generates that directory (currently set to `bash build.sh`, which wraps `mystmd build` which is installed from the pywrangler config `pyproject.toml`.
+If minor changes are needed, go to the [existing Cloudflare Pages project](https://dash.cloudflare.com/75ae6c7813df14d320647bbf553f2ba0/pages/view/course-notes/settings/production) (must be logged in to the CS61C Cloudflare), select "Settings" and configure as desired.
+
+Cloudflare Pages expects:
+
+- a directory with HTML source to serve as a static site: `_build/html` ([mystmd docs](https://mystmd.org/guide/deployment-github-pages)), and
+- a build command that generates that directory: `bash build.sh` wraps `mystmd build` which is installed from the pywrangler config `pyproject.toml`.
 
 ## Jupyter Book Setup
 
