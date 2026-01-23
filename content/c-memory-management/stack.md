@@ -1,5 +1,5 @@
 ---
-title: "Memory Management"
+title: "The Stack"
 ---
 
 ## Learning Outcomes

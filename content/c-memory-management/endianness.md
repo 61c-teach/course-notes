@@ -218,4 +218,4 @@ Suppose we declare `struct foo s;` and compile a program onto a 32-bit architect
 
 :::
 
-Ultimately, the `struct` declaration is a guideline for how to arrange a bunch of bytes in a bucket. The precise size of a struct—and member order within a struct–depends on the C compiler and whether it is optimizing for padding or packing. We recommend you always check sizes with a debugger like `gdb`.
+Ultimately, the `struct` declaration is a guideline for how to arrange a bunch of bytes in a bucket. The precise size of a struct—and field order within a struct type–depends on the C compiler and whether it is optimizing for padding or packing. We recommend you always check sizes with a debugger like `gdb`.

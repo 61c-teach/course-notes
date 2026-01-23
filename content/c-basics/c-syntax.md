@@ -213,7 +213,7 @@ The above code defines `BYTE` as another name for `uint8_t`, allowing us to decl
 
 ### Structs
 
-`struct`s are structured groups of data. A `struct` is an abstract data type definition. Within the struct, each name refers to a **member** of the struct. It feels very much like Python where you have a class and dot fields, but you have a lot more control.
+`struct`s are structured groups of data. A `struct` is an abstract data type definition. Within the struct, each name is a **field** that refers to a **member** of the struct. It feels very much like Python where you have a class and dot fields, but you have a lot more control.
 
 Structs and `typedef`s are often used in tandem. Longer example:
 
@@ -237,8 +237,8 @@ song2.year_recorded      = 1988;
 :class: dropdown
 
 * Lines 1 - 4 `SONG` is an alias for `typedef struct {int length_in_seconds; int year_recorded; }`
-* Line 6: Declare `song1` as a struct that has two `uint16_t` variables, `length_in_seconds` and `year_recorded.
-* Line 7-8: Instantiate the data within the `song1` variable.
+* Line 6: Declare `song1` as a struct that has two `uint16_t` fields, `length_in_seconds` and `year_recorded.
+* Line 7-8: Initialize the members within the `song1` variable.
 * Lines 10-12: Do something similar for `song2`.
 :::
 

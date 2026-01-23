@@ -1,5 +1,5 @@
 ---
-title: "Memory Management"
+title: "The Heap"
 ---
 
 ## Learning Outcomes
@@ -20,3 +20,7 @@ title: "Memory Management"
 
 
 https://www.youtube.com/embed/Sq5tSeWfnGY?si=gbVacknPg3VNgQLZ
+
+[CS61C FA20] Lecture 05.4 - C Memory Management: Memory Management
+
+from 3:47
