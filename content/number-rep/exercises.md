@@ -41,21 +41,23 @@ When the result of an arithmetic operation is outside the range of what is repre
 
 4. How many ways to represent zero do these representations have, $n$-bit unsigned, sign-magnitude, one's complement, two's complement, and biased notation?
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
 * **Unsigned**: 1
 * **Sign-Magnitude**: 2
 * **One's complement**: 2
 * **Two's complement**: 1
 * **Bias**: 1 or 0 (depending on bias)
 
-See: [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)
+<!--See: [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)-->
 :::
 
 ## Short Exercises
 
 1. **True/False**: Depending on the context, the same sequence of bits may represent different things.
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
 **True.** The same bits can be interpreted in many different ways with the exact same bits! The bits
 can represent anything from an unsigned number to a signed number or even, as we will cover
 later, a program. It is all dependent on its agreed upon interpretation.
@@ -64,7 +66,8 @@ later, a program. It is all dependent on its agreed upon interpretation.
 2. **True/False**: If you interpret a $N$-bit Two's complement number as an unsigned number, negative numbers would be smaller than 
 positive numbers.
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
 **False.** In Two’s Complement, the MSB is always 1 for a negative number. This means EVERY
 negative number in Two’s Complement, when converted to unsigned, will be larger than the
 positive numbers.
@@ -72,27 +75,34 @@ positive numbers.
 
 3. **True/False**: We can represent fractions and decimals in our given number representation formats (unsigned, biased, and Two’s Complement).
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
 **False.** Our current representation formats has a major limitation; we can only represent and do
 arithmetic with integers. To successfully represent fractional values as well as numbers with
 extremely high magnitude beyond our current boundaries, we need another representation
 format.
 :::
 
-4. How many numbers can be represented by an unsigned, base-4, $n$-digit number.    
-    **A.** 1    
-    **B.** $2^n - 1$    
-    **C.** $4^n$    
-    **D.** $4^{n-1}$    
+4. How many numbers can be represented by an unsigned, base-4, $n$-digit number.
+
+    **A.** 1
+
+    **B.** $2^n - 1$
+
+    **C.** $4^n$
+
+    **D.** $4^{n-1}$
+
     **E.** $4^n - 1$
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
 **C.**
 :::
 
 5. How many bits are needed to represent decimal number 116 in binary?
 
-::: {.callout-note title="Answer" collapse="true"}
+:::{note} Solution
+:class: dropdown
 **7 bits**. $(116)_{10} =$ `0b111 0100` or $log{_2}{116} \approx 6.85$ which we round to 7 bits.
 :::
-
