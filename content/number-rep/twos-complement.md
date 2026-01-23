@@ -3,7 +3,7 @@ title: "Signed Representation: Two's Complement"
 short_title: "Two's Complement"
 ---
 
-(twos-complement-section)=
+(sec-twos-complement)=
 ## Learning Outcomes
 
 * Translate between decimal numbers and two's complement representations
@@ -105,7 +105,7 @@ Example: $5$ and $-5$ in 4-bit two's complement
 $$
 \begin{align}
 \texttt{0b1011}
-&= (1 \times –2^3)  + (0 \times 2^2)  + (1 \times 2^1)  + (1 \times 2^0) \\
+&= (1 \times -2^3)  + (0 \times 2^2)  + (1 \times 2^1)  + (1 \times 2^0) \\
 &=  -8    +  0          +  2            +  1 \\
 &=  -5 \\
 \end{align}
@@ -114,7 +114,7 @@ $$
 $$
 \begin{align}
 \texttt{0b0101}
-&= (0 \times –2^3)  + (1 \times 2^2)  + (0 \times 2^1)  + (1 \times 2^0) \\
+&= (0 \times -2^3)  + (1 \times 2^2)  + (0 \times 2^1)  + (1 \times 2^0) \\
 &=  0           +  4            +  0            +  1 \\
 &=  5 \\
 \end{align}

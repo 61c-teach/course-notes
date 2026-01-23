@@ -190,10 +190,13 @@ Memorize @tbl-dec-hex-bin-16. As you will soon see, it will be useful to quickly
 
 Let's discuss conversion in more detail. We only consider "unsigned" numerals, i.e., non-negative numbers.
 
-If we have an $n$-digit unsigned numeral $d_{n-1}$ $d_{n-2}$...$d_0$ in radix (or base) $r$, then the value of that numeral is:
+If we have an $n$-digit unsigned numeral $d_{n-1}$ $d_{n-2}$...$d_0$ in radix (or base) $r$, then the value of that numeral is
+
+(eq-unsigned-rep)=
 $$
-\sum_{i=0}^{n-1} r^i d_i
+\sum_{i=0}^{n-1} r^i d_i,
 $$
+
 which is just fancy notation to say that instead of a 10's or 100's place we have an $r$'s or $r^2$'s place. For the three radices binary, decimal, and hex, we just let $r$ be 2, 10, and 16, respectively. 
 
 ### Decimal $\rightarrow$ Binary
@@ -230,7 +233,7 @@ The process above relies on a few colloquial observations:
 * The smallest power of two we could possibly need is always the zero-th power, i.e., $2^0 = 1$.
 * Start with larger power of twos first. Otherwise you may run into scenarios where you count beyond the number of digits available (here, only `0` and `1`).
 
-Here is one attempt at colloquially describing the algorithm to convert a number `val` into its binary representation:
+Here is one attempt at describing the algorithm to convert a number `val` into its binary representation:
 
 * Make a set of columns, one for each power of two. This corresponds to your $n$-digit binary number, e.g., `0b _ _ ... _ _`, with $n$ blanks.
 * Start from the leftmost column and go right (i.e., for $i$ from $n-1$ to $0$, inclusive):
@@ -239,6 +242,8 @@ Here is one attempt at colloquially describing the algorithm to convert a number
         * If yes, count how many $2^i$ fit into `val`. For base 2, the count is `1`, so subtract $1 \times 2^i$ from `val`. Keep going.
         * If no, put `0` and keep going.
 * Stop this process once `val` hits zero.
+
+The point of this example is to teach you some tricks for converting between bases. Some students find the algorithmic description above more understandable than the mathematical description in @eq-unsigned-rep. If the latter makes more sense to you, then go for it.
 
 ### Decimal $\rightarrow$ Hexadecimal
 
@@ -342,12 +347,12 @@ We don't expect you to understand this code at this time. We will discuss C synt
 (which-base)=
 ## Which base do we use?
 
-Remember that there is only ever one number that can be represented in multiple ways. These are all the same number, thirty-two:
+Remember that there is only ever one number; this value that can be represented in multiple ways. The below are all representations of the same number, thirty-two:
 
 * $32_{10}$, or simply $32$. We recommend you write $32_{ten}$ if you're writing by hand.
 * `0x20`, or the hexadecimal numeral `20`
 * `0b10000`, or the binary numeral `10000`
-* $20_{16}$. We recommend $32_{hex}$ if you're writing by hand.
+* $20_{16}$. We recommend $20_{hex}$ if you're writing by hand.
 * $10000_{2}$. We recommend $10000_{two}$ if you're writing by hand.
 
 Different representations serve different purposes:
@@ -356,9 +361,9 @@ Different representations serve different purposes:
 * **Binary**: What computers use. To a computer, numbers are stored as binary data, regardless of how numbers are specified.
 * **Hex**: Hopefully you have realized by now that long strings of binary numbers are hard to parse. Hexadecimal is terrible for arithmetic on paper, but it is much more compact than binary while also being much much easier than decimal as a more compact way of representing binary values.
 
-    We use two strategies in this course to more easily visualize strings of 32 bits, 64 bits, etc.:
-    * Group 4 bits at a time
-    * Convert each group of 4 bits to its hexadecimal digit
+We use two strategies in this course to more easily visualize strings of 32 bits, 64 bits, etc.:
+  * Group 4 bits at a time, e.g., `0b0011 1010`
+  * Convert each group of 4 bits to its hexadecimal digit, e.g., `0x3A`
 
 Above all, remember that computers operate in binary, but humans don't. So it's good to get more comfortable with converting between these representations before we move further.
 

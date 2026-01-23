@@ -19,7 +19,7 @@ project:
 
   toc:
     - file: index.md
-    - title: Number Representation
+    - title: L02 Number Representation
       children:
         - file: content/number-rep/index.md
         - file: content/number-rep/binary-decimal-hex.md
