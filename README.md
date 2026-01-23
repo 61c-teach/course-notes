@@ -4,7 +4,7 @@ Course notes for CS 61C. A [Jupyter Book 2](https://jupyterbook.org/) project.
 
 ## Deployment
 
-This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages. If redeployment is needed, follow the below instructions, which assume **a freshly forked copy of this repository, and redeployment to an entirely new Pages project**:
+This website is currently deployed at <notes.cs61c.org> via Cloudflare pages. If redeployment is needed, follow the below instructions, which assume **a freshly forked copy of this repository, and redeployment to an entirely new Pages project**:
 
 <details>
     
@@ -27,7 +27,7 @@ This website is currently deployed at <textbook.cs61c.org> via Cloudflare pages.
     7. Click Save and Deploy. This should deploy the project. Once it completes, click "Continue to Project".
 3. Configure a custom domain in the project
     1. Click "Custom domains" in the top navigation bar of the project
-    2. Add a custom domain => enter the desired domain. (e.g. `textbook.cs61c.org`
+    2. Add a custom domain => enter the desired domain. (e.g. `notes.cs61c.org`
     3. Click "Continue"
     4. Make sure everything looks fine, then click "Activate domain". It may take up to 48 hours to propagate, but based on past experience, it is way faster than that.
 
