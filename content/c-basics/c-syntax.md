@@ -213,7 +213,7 @@ The above code defines `BYTE` as another name for `uint8_t`, allowing us to decl
 
 ### Structs
 
-`struct`s are structured groups of variables. A `struct` is an abstract data type definition.It feels very much like Python where you have a class and dot fields, but you have a lot more control.
+`struct`s are structured groups of data. A `struct` is an abstract data type definition. Within the struct, each name refers to a **member** of the struct. It feels very much like Python where you have a class and dot fields, but you have a lot more control.
 
 Structs and `typedef`s are often used in tandem. Longer example:
 

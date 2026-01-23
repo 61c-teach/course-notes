@@ -13,7 +13,7 @@ Course notes for the [Great Ideas in Computer Architecture](https://cs61c.org/) 
 
 These course notes cover the content you need to know from lecture. You can use them as reference as you go through the course assignments.
 
-* Come to lecture and get the high-level idea. Then, read these course notes. Alternatively, skim course notes first, then come to lecture and ask questions.
+* Come to lecture and get the high-level idea. Then, read these course notes. Alternatively, skim course notes first, then come to lecture and ask questions. We are developing course notes throughout the Spring 2026 semester, so course notes may not always be up before the corresponding lecture.
 * Before attending discussion section, try the precheck exercises. Solutions are provided.
 
 As of Spring 2026, these course notes are in active development. If you find an error in our first draft, please email cs61c@ or submit a pull request on GitHub.

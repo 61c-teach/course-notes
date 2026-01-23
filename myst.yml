@@ -27,21 +27,21 @@ project:
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
         - file: content/number-rep/exercises.md
-    # - title: "L03 C Basics"
-    #   children:
-    #     - file: content/c-basics/index.md
-    #     - file: content/c-basics/compile-vs-interpret.md
-    #     - file: content/c-basics/c-vs-java.md
-    #     - file: content/c-basics/c-syntax.md
-    # - title: "L04 C Pointers, Arrays, Strings"
-    # - title: "L05 C Memory Management"
-    #   children:
-    #     - file: content/c-memory-management/index.md
-    #     - file: content/c-memory-management/endianness.md
-    #     - file: content/c-memory-management/stack.md
-    #     - file: content/c-memory-mangement/heap.md
-    #     - file: content/c-memory-management/linked-list.md
-    #     - file: content/c-memory-management/heap-allocator.md
+    - title: "L03 C Basics"
+      children:
+        - file: content/c-basics/index.md
+        - file: content/c-basics/compile-vs-interpret.md
+        - file: content/c-basics/c-vs-java.md
+        - file: content/c-basics/c-syntax.md
+    - title: "L04 C Pointers, Arrays, Strings"
+    - title: "L05 C Memory Management"
+      children:
+        - file: content/c-memory-management/index.md
+        - file: content/c-memory-management/endianness.md
+        - file: content/c-memory-management/stack.md
+        - file: content/c-memory-mangement/heap.md
+        - file: content/c-memory-management/linked-list.md
+        - file: content/c-memory-management/heap-allocator.md
     
 site:
   template: book-theme
