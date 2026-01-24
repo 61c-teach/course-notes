@@ -139,7 +139,7 @@ Put another way, you can represent $k$ things in at minimum $N$ bits, where $N =
 ^^^
 There are 26 lowercase letters in the English language:  `a`, `b`, ..., `z`.
 
-$\log_2 (26) = \log_{10}(26)/\log_10(2) \approx 4.7$
+$\log_2 (26) = \log_{10}(26)/\log_{10}(2) \approx 4.7$
 
 We therefore need at least **5 bits**.
 
