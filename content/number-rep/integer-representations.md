@@ -135,7 +135,7 @@ With unsigned integers, the "binary odometer" wraps around.
 * *Positive Overflow*: If you are at 15 (`0b1111`) and add 1, the value wraps around to 0 (`0b0000`).
 * *Negative Overflow*: If you are at 0 (`0b0000`) and subtract 1, it wraps around to 15 (`0b1111`).
 
-:::{caution} There is no such thing as integer overflow
+:::{caution} There is no such thing as integer underflow
 
 People often mistakenly call negative overflow "underflow," but underflow is a different concept we will discuss later when we consider representing fractions.
 :::
@@ -161,7 +161,7 @@ Next, we discuss a few reasonable ones and consider tradeoffs. In the [next sect
 
 * Positive numbers: $1$ (`0b0001`) to $7$ (`0b0111`)
 * Negative numbers: $-1$ (`0b1001`) to $-7$ (`0b1111`)
-* Two zeros: $+0$ (`0b0000`) and $+1$ (`0b1000`)
+* Two zeros: $+0$ (`0b0000`) and $-0$ (`0b1000`)
 
 :::
 
@@ -235,6 +235,16 @@ We've fixed one problem. We still get integer overflow, sure, but at least incre
 :align: center
 :alt: "A blue horizontal number line displays 4-bit binary values to illustrate ones' complement representation, centered around the values 0000 and 1111. Two gold arrows point to the right to indicate that both positive and negative binary sequences increase in value as the odometer increments from left to right."
 "Binary odometer" for 4-bit ones' complement.
+
+:::{note} Further Explanation
+:class: Dropdown
+
+Consider adding $5+(-5)$ with 4-bit one's complement integers.
+
+* $+5$: `0101`
+* $-5$: `1010`
+
+Addition: `0101` + `1010` = `1111`, or $-0$. Arithmetic addition can be implemented with binary addition, regardless of operand sign.
 :::
 
 ::{note} Further Explanation
