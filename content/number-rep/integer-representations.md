@@ -135,7 +135,7 @@ With unsigned integers, the "binary odometer" wraps around.
 * *Positive Overflow*: If you are at 15 (`0b1111`) and add 1, the value wraps around to 0 (`0b0000`).
 * *Negative Overflow*: If you are at 0 (`0b0000`) and subtract 1, it wraps around to 15 (`0b1111`).
 
-:::{caution} There is no such thing as integer overflow
+:::{caution} There is no such thing as integer underflow
 
 People often mistakenly call negative overflow "underflow," but underflow is a different concept we will discuss later when we consider representing fractions.
 :::
@@ -161,7 +161,7 @@ Next, we discuss a few reasonable ones and consider tradeoffs. In the [next sect
 
 * Positive numbers: $1$ (`0b0001`) to $7$ (`0b0111`)
 * Negative numbers: $-1$ (`0b1001`) to $-7$ (`0b1111`)
-* Two zeros: $+0$ (`0b0000`) and $+1$ (`0b1000`)
+* Two zeros: $+0$ (`0b0000`) and $-0$ (`0b1000`)
 
 :::
 
