@@ -5,7 +5,7 @@ title: "Summary"
 ## And in Summary$\dots$
 
 * We represent “things” in computers as particular bit patterns:
-  * With N bits, you can represent at most 2N things.
+  * With $N$ bits, you can represent at most $2^N$ things.
 * Today, we discussed five different encodings for integers:
   * Unsigned integers
   * Signed integers:
