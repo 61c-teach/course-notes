@@ -3,6 +3,7 @@ title: "Implementing Memory Management"
 subtitle: "This content is not tested"
 ---
 
+(sec-heap-allocator)=
 ## Learning Outcomes
 
 This section is included as bonus content and is not tested. If you are curious about implementing your own heap allocator, take CS 162: Operating Systems!
@@ -12,6 +13,7 @@ This section is included as bonus content and is not tested. If you are curious 
 
 :::{iframe} https://www.youtube.com/embed/5rmB4SvfDPo?si=7YF8BXMnDpFCQiCH
 :width: 100%
+:enumerated: false
 :title: "[CS61C FA20] Lecture 02.2 - Number Representation: Conversions"
 :::
 

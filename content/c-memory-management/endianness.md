@@ -11,11 +11,21 @@ title: "Words, Endianness"
 
 No lecture video.
 
+(sec-words)=
 ## Words
 
 What's in a word? In computer architecture, a hardware **word** is an important unit of data. The word size determines many aspects of a computer's structure and operation, from how to load and store data from memory to how the compiler translates a single C arithmetic operation into multiple assembly instructions.
 
-On most modern architectures, the size of the word determines the **largest possible address size** and therefore the size of a C pointer. A 32-bit architecture has a word size of 32 bits, or 4 bytes. A 64-bit architecture has a word size of 64 bits, or 8 bytes.
+On most modern architectures, the size of the word determines the **largest possible address size** and therefore the size of a C pointer (see [address space](@sec-address-space). A 32-bit architecture has a word size of 32 bits, or 4 bytes. A 64-bit architecture has a word size of 64 bits, or 8 bytes.
+
+We will cover hardware words in much more detail when we learn about instruction set architectures. For now, we use the notion of a word to remind us that compiled C programs produce memory layouts that are *architecture-dependent*. We discuss a few architecture-dependent characteristics of compiled programs below.
+
+(sec-address-space)=
+## The Address Space
+
+The **address space** is the hypothetical range of addressable memory locations on a particular machine. For example, a 32-bit architecture, a pointer can address $2^32$ locations in memory[^in-practice]. Because memory is byte-addressable and contiguous, our address space size for a program is therefore $2^32$ bytes (or 4 GiB, "four gibi-bytes". We cover this notation later).
+
+[^in-practice]: Logically,  not in practice. Some areas of memory are read/write protected, e.g., accessing memory at the address `0` (`NULL`) causes an error.
 
 :::{tip} Quick check
 
@@ -25,20 +35,18 @@ On a 32-bit architecture, what is `sizeof(int *)`? `sizeof(char *)`?
 :::{note} Show answer
 :class: dropdown
 
-All pointers on a 32-bit architecture are 4 bytes wide, so `sizeof(int *)` is `sizeof(char *)` is `sizeof(int **)` is 4.
+A pointer on a 32-bit architecture must be large enough to represent all possible addresses in the address space. The address space of a 32-bit architecture is the $2^32$ byte addresses ranging from `0x00000000` to `0xFFFFFFFF`. These correspond to bit patterns of 32 bits, so a pointer must be able to store 32 bits of information.
+
+All pointers on a 32-bit architecture must therefore be 4 bytes wide[^why-not-larger], so `sizeof(int *)` is `sizeof(char *)` is `sizeof(int **)` is 4.
+
+[^why-not-larger]: Why do we not make 32-bit architecture pointers larger than 4 bytes? The primary reason is storage efficiency; if pointer addresses will never be larger than 4 bytes, do not waste bytes by allocating extra. The secondary reason is convention; by definition, a 32-bit architecture defines [word size](@sec-words), which defines pointer size. 
 :::
 
-We will cover hardware words in much more detail when we learn about instruction set architectures. For now, we use the notion of a word to remind us that compiled C programs produce memory layouts that are *architecture-dependent*. We discuss a few architecture-dependent characteristics of compiled programs below.
-
-## Address Space
-
-The **address space** is the hypothetical range of addressable memory locations on a particular machine. For example, a 32-bit architecture, a pointer can address $2^32$ locations in memory[^in-practice]. Because memory is byte-addressable and contiguous, our address space size for a program is therefore $2^32$ bytes (or 4 GiB, "four gibi-bytes". We cover this notation later).
-
-[^in-practice]: Logically,  not in practice. Some areas of memory are read/write protected, e.g., accessing memory at the address `0` (`NULL`) causes an error.
+## Another View of Address Space
 
 Before we discuss our example, we'd like to share a diagram of memory that, while confusing at first glance, will be extremely useful in interpreting the memory layout of any compiled C program.
 
-Memory on a 32-bit architecture is laid out as a very long array of $2^32$ bytes. A very long array would not fit on any page, whether horizontally or vertically. Instead, we use a visualization like @tab-mem-layout, which shows memory as rows of 4 bytes, from low to high addresses:
+Recall that memory on a 32-bit architecture is laid out as a very long array of $2^32$ bytes. A very long array would not fit on any page, whether horizontally or vertically. Instead, we use a visualization like @tab-mem-layout, which shows memory as rows of 4 bytes, from low to high addresses:
 
 * In the rightmost four columns, "xx" values refer to data (hypothetical or otherwise) at each of four bytes of memory. These four bytes have contiguous memory addresses. 
 * The leftmost column denotes the *lowest* address of the bytes in that row, i.e., the address of the rightmost byte.

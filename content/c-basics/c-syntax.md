@@ -243,8 +243,10 @@ song2.year_recorded      = 1988;
 :::
 
 Important:
+
 * Structs are **not** objects.
 * The dot (`.`) operator is therefore not a method call; it merely accesses data at a specific location. More later.
+* The struct declaration in Lines 1-4 simply defines a new type; it doesn't actually make any space for anything in memory. By contrast, the two variable declarations of Lines 6 and 10 make space in memory by respectively declaring `song1` and `song2` as variables with the `SONG` struct type.
 
 ### C Preprocessor Macros, `#define`
 
