@@ -27,7 +27,13 @@ project:
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
         - file: content/number-rep/exercises.md
-    
+    - title: L03 C Basics
+      children:
+        - file: content/c-basics/index.md
+        - file: content/c-basics/compile-vs-interpret.md
+        - file: content/c-basics/c-vs-java.md
+        - file: content/c-basics/c-variables.md
+        - file: content/c-basics/c-syntax.md
 site:
   template: book-theme
   options:

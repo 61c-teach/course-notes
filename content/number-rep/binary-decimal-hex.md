@@ -362,6 +362,7 @@ Different representations serve different purposes:
 * **Hex**: Hopefully you have realized by now that long strings of binary numbers are hard to parse. Hexadecimal is terrible for arithmetic on paper, but it is much more compact than binary while also being much much easier than decimal as a more compact way of representing binary values.
 
 We use two strategies in this course to more easily visualize strings of 32 bits, 64 bits, etc.:
+
   * Group 4 bits at a time, e.g., `0b0011 1010`
   * Convert each group of 4 bits to its hexadecimal digit, e.g., `0x3A`
 
