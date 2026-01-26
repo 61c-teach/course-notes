@@ -37,7 +37,6 @@ project:
       children:
         - file: content/c-pointers-arrays-strings/index.md
         - file: content/c-pointers-arrays-strings/pointers.md
-        - file: content/c-pointers-arrays-strings/pointers-more.md
         - file: content/c-pointers-arrays-strings/arrays.md
         - file: content/c-pointers-arrays-strings/array-pitfalls.md
         - file: content/c-pointers-arrays-strings/strings.md

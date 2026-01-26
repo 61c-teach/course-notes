@@ -241,6 +241,14 @@ char *str;
 struct llist *foo_ptr;
 ```
 
+:::{note} Explanation
+:class: dropdown
+
+* `int *xptr` declares a variable called `xptr` that points to an `int`.
+* `char *str` declares a variable called `str` that points to a `char`.
+* `struct llist *foo_ptr` declares a variable called `foo_ptr` that points to a `struct llist`.
+:::
+
 Declaring the type of a pointer determines how the **dereferencing operator** (`*`) works, i.e., how many bytes to read/write when we "follow" pointers.
 
 Normally a pointer can only point to one type. In a [future chapter](#sec-generics) we discuss the `void *` pointer, a **generic pointer** that can point to anything. In this course we will use the generic pointer sparingly to help avoid program bugs...and security issues...and other things... That being said, we will encounter generic pointers when working with memory management functions in the C standard library (`stdlib`).
