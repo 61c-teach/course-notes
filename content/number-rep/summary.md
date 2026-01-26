@@ -5,13 +5,13 @@ title: "Summary"
 ## And in Summary$\dots$
 
 * We represent “things” in computers as particular bit patterns:
-  * With N bits, you can represent at most 2N things.
+  * With $N$ bits, you can represent at most $2^N$ things.
 * Today, we discussed five different encodings for integers:
   * Unsigned integers
   * Signed integers:
-    * Sign-Magnitude
-    * Ones’ Complement
-    * Two’s Complement
+  * Sign-Magnitude
+  * Ones’ Complement
+  * Two’s Complement
   * Bias Encoding
 * Computer architects make design decisions to make HW simple
   * Unsigned and Two’s complement are C standard. Learn them!!
@@ -25,15 +25,13 @@ How could we represent -12.75?-->
 
 ## Textbook readings
 
-* P&H: 2.4
+P&H: 2.4
 
-## Useful Links
+## Additional Reading
 
-* [Fall 25 Slides](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g3292f1ea280_3_0#slide=id.g3292f1ea280_3_0)
-* [Fall 25 Precheck](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre.pdf)
-* [Precheck Solutions](https://cs61c.org/fa25/pdfs/discussions/disc01/disc01-pre-sols.pdf)
+[Dan Garcia's Binary Slides, Fall 2025](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/garcia_binary_slides.pdf)
 
-## Amazing Illustrations by Ketrina (Yim) Thompson
+Amazing Illustrations by Ketrina (Yim) Thompson: CS Illustrated Number Rep Handouts
 
 * [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)
 * [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)

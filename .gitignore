@@ -1,12 +1,8 @@
 .DS_STORE
 
-/.quarto/
-/_site/
 .*.swp
 .*.swo
-*.quarto_ipynb
 venv/
-**/*.quarto_ipynb
 
 # MyST build outputs
 _build
