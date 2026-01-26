@@ -2,7 +2,7 @@
 title: "C: IEC Standards, Bit Ops, ADTs"
 ---
 
-(sec-c-generics)=
+(sec-generics)=
 ## Learning Outcomes
 
 * TODO

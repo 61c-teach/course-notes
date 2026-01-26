@@ -33,24 +33,30 @@ project:
         - file: content/c-basics/compile-vs-interpret.md
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-syntax.md
-    # - title: "L04 C Pointers, Arrays, Strings"
-    #   children:
-    #     - file: content/c-pointers-arrays-strings/index.md
-    #     - file: content/c-pointers-arrays-strings/array-pitfalls.md
+    - title: "L04 C Pointers, Arrays, Strings"
+      children:
+        - file: content/c-pointers-arrays-strings/index.md
+        - file: content/c-pointers-arrays-strings/pointers.md
+        - file: content/c-pointers-arrays-strings/pointers-more.md
+        - file: content/c-pointers-arrays-strings/arrays.md
+        - file: content/c-pointers-arrays-strings/array-pitfalls.md
+        - file: content/c-pointers-arrays-strings/strings.md
+        - file: content/c-memory-management/endianness.md
+        - file: content/c-pointers-arrays-strings/summary.md
     - title: "L05 C Memory Management"
       children:
         - file: content/c-memory-management/index.md
-        - file: content/c-memory-management/endianness.md
         - file: content/c-memory-management/stack.md
         - file: content/c-memory-management/heap.md
         - file: content/c-memory-management/heap-allocator.md
-    # - title: "L06 C Bit Ops, IEC, ADTs"
-    #   children:
-    #     - file: content/c-bitops-adts/index.md
-    #     - file: content/c-bitops-adts/linked-list.md
-    # - title: "L07 C Generics"
-    #   children:
-    #     - file: content/c-generics/index.md
+        - file: content/c-memory-management/summary.md
+    - title: "L06 C Bit Ops, IEC, ADTs"
+      children:
+        - file: content/c-bitops-adts/index.md
+        - file: content/c-bitops-adts/linked-list.md
+    - title: "L07 C Generics"
+      children:
+        - file: content/c-generics/index.md
 site:
   template: book-theme
   options:

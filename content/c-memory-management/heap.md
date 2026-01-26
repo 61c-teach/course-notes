@@ -65,17 +65,14 @@ We do not expect you to know how a heap allocator decides where to allocate memo
 `malloc` is a function that takes in the number of bytes you want and returns a pointer to **uninitialized space**. In other words, the `n` bytes starting at that pointer initially contains garbage.
 
 * **Parameter** `size_t n`: An unsigned integer type big enough to "count" memory bytes.
-* **Return**: `void *` pointer, i.e., a pointer to generic space (read more in a [future section](#sec-c-generics)). A return value `NULL` indicates there is no more memory available on the heap.
-
-**Check for `NULL`**: We always want to check if `malloc` succeseds, so that we can safely exit instead of crashing. Contrast this failure mode with that of `main`, where returning a zero is success. Here, we know there is precisely one value that will never be a valid memory address: `NULL`, which upon access crashes your program.
-
-**Typecast `malloc`'s return value**. Generally, we will **typecast** the returned generic pointer to a typed pointer. This means we will interpret the address returned by `malloc` as the location of a particular variable type. For example, if we are allocating heap space for a `uint32_t` array, typecasting to a `uint32_t *` pointer will facilitate pointer arithmetic, array access, and integer operations.
+* **Return**: `void *` pointer, i.e., a pointer to generic space (read more in a [future section](#sec-generics)). A return value `NULL` indicates there is no more memory available on the heap.
 
 Assuming size of objects can lead to misleading, unportable code, so we use `sizeof` in the below examples[^explicit-typecast].
 
 :::{card} Allocate a struct
 ^^^
-```c
+```{code} c
+:linenos:
 typedef struct { ... } treenode_t; 
 treenode_t *tp = malloc(sizeof(treenode_t)); 
 if (!tp) { ... }
@@ -91,6 +88,22 @@ uint32_t *ptr = malloc(20*sizeof(uint32_t));
 
 [^explicit-typecast]: The **implicit typecast** shown in this section casts the return value of `malloc` from type `(void *)` to, say, `(treenode_t *)` and assumes it works. In **modern C, the implicit typecast is fine**. In pre-ANSI C, however, implicit pointer typecasting produces a warning, so **explicit** typecast syntax like `treenode_t *tp = (treenode_t *) malloc(sizeof(treenode_t)` is preferred. Finally, C++ is a different language entirely, and such implicit pointer typecasts will produce errors. These differences are important to keep in mind when you are porting C code between systems. Read more on [StackOverflow](https://stackoverflow.com/questions/605845/should-i-cast-the-result-of-malloc-in-c/33047365#33047365).
 
+**Check for `NULL`**: We always want to check if `malloc` succeeds, so that we can safely exit instead of crashing. Contrast this failure mode with that of `main`, where returning a zero is success. Here, we know there is precisely one value that will never be a valid memory address: `NULL`, which upon access crashes your program.
+
+**Typecast `malloc`'s return value**. Generally, we will **typecast** the returned generic pointer to a typed pointer. This means we will interpret the address returned by `malloc` as the location of a particular variable type. For example, if we are allocating heap space for a `uint32_t` array, typecasting to a `uint32_t *` pointer will facilitate pointer arithmetic, array access, and integer operations.
+
+:::{tip} Quick Check
+Consider the struct allocation code above. What is allocated on the heap, if any? What about on the stack, if any?
+:::
+
+:::{note} Show Answer
+:class: dropdown
+
+* Line 1: `typedef struct` does not allocate memory. It simply defines `treenode_t`.
+* Line 2, RHS (right-hand side): `malloc(sizeof(treenode_t))` allocates `sizeof(treenode_t)` bytes of memory on the heap.
+* Line 2, LHS (left-hand side): `treenode_t *tp` is a **local variable**. This declaration allocates at least `sizeof(tp *)` (i.e., the size of a pointer) onto the stack frame. Based on just the C code, we can't specify exactly how much data is allocated for the full stack frame, but it must be at least `sizeof(tp *)` unless the C compiler decides to optimize with hardware registers (more later).
+:::
+
 ### `void free(void *ptr)`
 
 `free` is a function that takes in a pointer on the heap to free.
@@ -100,9 +113,13 @@ uint32_t *ptr = malloc(20*sizeof(uint32_t));
 
 Because the C heap does not do automatic garbage collection, as C programmers we must always `free` memory that we allocate on the heap. A good analogy draws from the film [_Godfather_ (1972)](https://www.imdb.com/title/tt0068646/)[^godfather]:
 
-> ... It's almost like going to the Godfather and asking for a favor. You: "Godfather I would like some some memory from you..." Godfather: "Some day, and that day may never come, I may call on you to do a favor for me. But until that day, I will give you this under the contract that you must free it when you are done...
+> ... It's almost like going to the Godfather and asking for a favor.
+> 
+> You: [_clasps hands_] Godfather...I would like some some memory from you...
+> 
+> Godfather: [_strokes pet cat_] Some day–and that day may never come–I may call on you to do a favor for me. But until that day, I will give you this with `malloc` under the contract that you must free it when you are done...
 
-[^godfather]: Watch the lecture video for a good [_Godfather_ (1972)](https://www.imdb.com/title/tt0068646/impression.
+[^godfather]: Watch the lecture video for a good [_Godfather_ (1972)](https://www.imdb.com/title/tt0068646/)impression. Timestamp 3:24
 
 :::{card} Allocate/deallocate heap memory
 ^^^

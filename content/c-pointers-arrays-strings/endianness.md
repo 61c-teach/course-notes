@@ -2,6 +2,7 @@
 title: "Words, Endianness"
 ---
 
+(sec-endianness)=
 ## Learning Outcomes
 
 * Gain an intuition of how hardware word size can impact memory layout of a compiled C program.
