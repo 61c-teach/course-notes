@@ -34,6 +34,14 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: L15 Compilation, Assembly, Linking, Loading
+      children:
+        - file: content/call/index.md
+        - file: content/call/call-compiler.md
+        - file: content/call/call-assembler.md
+        - file: content/call/call-linker.md
+        - file: content/call/call-loader.md
+        - file: content/call/call-example.md
 site:
   template: book-theme
   options:
