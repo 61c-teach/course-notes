@@ -32,6 +32,7 @@ project:
         - file: content/c-basics/index.md
         - file: content/c-basics/compile-vs-interpret.md
         - file: content/c-basics/c-vs-java.md
+        - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
     - title: "L04 C Pointers, Arrays, Strings"
       children:

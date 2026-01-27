@@ -139,7 +139,7 @@ $ gdb hello_world
 
 [^conditional-evaluation]: `cond ? body_true : body_false`
 
-We highlight some more differences below.
+## More Highlights
 
 **1. Variable naming convention**: In C, use `snake_case`[^snake-case], NOT `camelCase` [^camelcase].
 
@@ -153,6 +153,23 @@ We highlight some more differences below.
 * `argv`: is a pointer to an array of the arguments themselves, as C strings. We discuss pointers, arrays, and strings in more detail next time. For now, if you run `./hello_world my_file`, the first[^zero-index] argument is the name of the program itself (`hello_world`) and the second argument is the string `my_file`.
 
 [^zero-index]: Like Python, C arrays and string are zero-indexed.
+
+:::{card}
+**Command-line arguments**: What looks familiar about array syntax?
+^^^
+
+```c
+#include <stdio.h>
+int main(int argc, char *argv[]) {
+  printf("Received %d args\n", argc);
+  for(int i = 0; i < argc; i++) {
+    printf("arg %d: %s\n", i, argv[i]);
+  }
+  return 0;
+}
+```
+
+:::
 
 **3. Curly braces**: The C language allows for some omission of curly braces for single-line statements—even for control structures like if-else and for. This is the same as in Java, but we didn't tell you. :-)
 
