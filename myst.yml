@@ -34,6 +34,18 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: L37 OS & Virtual Memory Intro
+      children:
+        - file: content/os-intro/index.md
+        - file: content/os-intro/os-intro-basics.md
+        - file: content/os-intro/os-intro-functions.md
+    - title: L00 I/O
+      children:
+        - file: content/io/index.md
+        - file: content/io/io-polling.md
+        - file: content/io/io-interrupts.md
+        - file: content/io/io-dma.md
+        - file: content/io/io-networking.md
 site:
   template: book-theme
   options:
