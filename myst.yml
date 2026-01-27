@@ -34,6 +34,19 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: L35 Virtual Memory I
+      children:
+        - file: content/vm-I/index.md
+        - file: content/vm-I/vm-I-physical-mem.md
+        - file: content/vm-I/vm-I-mem-manager.md
+        - file: content/vm-I/vm-I-paged-mem.md
+        - file: content/vm-I/vm-I-page-faults.md
+    - title: L36 Virtual Memory II
+      children:
+        - file: content/vm-II/index.md
+        - file: content/vm-II/vm-II-tlb.md
+        - file: content/vm-II/vm-II-tlb-datapath.md
+        - file: content/vm-II/vm-II-performance.md
 site:
   template: book-theme
   options:
