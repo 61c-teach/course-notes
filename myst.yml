@@ -34,6 +34,29 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: L20 Single-Cycle CPU Datapath I
+      children:
+        - file: content/datapath-I/index.md
+        - file: content/datapath-I/dpI-building.md
+        - file: content/datapath-I/dpI-r-type.md
+        - file: content/datapath-I/dpI-sub-datapath.md
+        - file: content/datapath-I/dpI-immediates.md
+    - title: L21 Single-Cycle CPU Datapath II
+      children:
+        - file: content/datapath-II/index.md
+        - file: content/datapath-II/dpII-stores.md
+        - file: content/datapath-II/dpII-branches.md
+        - file: content/datapath-II/dpII-jalr.md
+        - file: content/datapath-II/dpII-jal.md
+        - file: content/datapath-II/dpII-u-types.md
+        - file: content/datapath-II/dpII-summary.md
+    - title: L22 Single-Cycle CPU Control
+      children:
+        - file: content/datapath-control/index.md
+        - file: content/datapath-control/dp-control-datapath.md
+        - file: content/datapath-control/dp-control-timing.md
+        - file: content/datapath-control/dp-control-design.md
+        - file: content/datapath-control/dp-control-summary.md
 site:
   template: book-theme
   options:
