@@ -11,12 +11,13 @@ title: "The Stack"
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
-:::{iframe} https://www.youtube.com/embed/cFN0bX8mlmg?si=BRTt2o6rNEY9crMl
+:::{iframe} https://www.youtube.com/embed/Keducx5bp-g
 :width: 100%
 :enumerated: false
-:title: "[CS61C FA20] Lecture 03.2 - C Intro: Basics: Compile v. Interpret"
+:title: "[CS61C FA20] Lecture 05.3 - C Memory Management: Memory Locations"
 :::
 
+8:37 onwards
 ::::
 
 
