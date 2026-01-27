@@ -34,6 +34,28 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: L26 Caches I
+      children:
+        - file: content/cachesI/index.md
+        - file: content/cachesI/cachesI-library.md
+        - file: content/cachesI/cachesI-memory.md
+        - file: content/cachesI/cachesI-locality.md
+    - title: L27 Caches II
+      children:
+        - file: content/cachesII/index.md
+        - file: content/cachesII/cachesII-direct-example.md
+        - file: content/cachesII/cachesII-terminology.md
+    - title: L28 Caches III
+      children:
+        - file: content/cachesIII/index.md
+        - file: content/cachesIII/cachesIII-writes-misses.md
+        - file: content/cachesIII/cachesIII-associative.md
+    - title: L29 Caches IV
+      children:
+        - file: content/cachesIV/index.md
+        - file: content/cachesIV/cachesIV-block-placement.md
+        - file: content/cachesIV/cachesIV-amat.md
+        - file: content/cachesIV/cachesIV-cpus.md
 site:
   template: book-theme
   options:
