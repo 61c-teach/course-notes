@@ -34,6 +34,9 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: L06 Floating Point
+      children:
+        - file: content/floating-point/index.md
 site:
   template: book-theme
   options:
