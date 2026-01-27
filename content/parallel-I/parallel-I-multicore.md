@@ -1,0 +1,19 @@
+---
+title: "Multicore"
+subtitle: TODO
+---
+
+## Learning Outcomes
+
+* TODO
+* TODO
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/Fern5BEcdlg
+:width: 100%
+:title: "[CS61C FA20] Lecture 33.2 - Thread-Level Parallelism I: Multicore"
+:::
+
+::::
