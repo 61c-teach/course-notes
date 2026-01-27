@@ -9,9 +9,9 @@ title: "Summary"
 * Today, we discussed five different encodings for integers:
   * Unsigned integers
   * Signed integers:
-  * Sign-Magnitude
-  * Ones’ Complement
-  * Two’s Complement
+    * Sign-Magnitude
+    * Ones’ Complement
+    * Two’s Complement
   * Bias Encoding
 * Computer architects make design decisions to make HW simple
   * Unsigned and Two’s complement are C standard. Learn them!!
