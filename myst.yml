@@ -34,6 +34,31 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: L30 Flynn Taxonomy, SIMD Instructions
+      children:
+        - file: content/p-flynn/index.md
+        - file: content/p-flynn/p-flynn-matrix.md
+        - file: content/p-flynn/p-flynn-flynn.md
+        - file: content/p-flynn/p-flynn-simd-arch.md
+        - file: content/p-flynn/p-flynn-simd-array.md
+        - file: content/p-flynn/p-flynn-example.md
+    - title: L31 Thread-Level Parallelism I
+      children:
+        - file: content/parallel-I/index.md
+        - file: content/parallel-I/parallel-I-multicore.md
+        - file: content/parallel-I/parallel-I-threads.md
+        - file: content/parallel-I/parallel-I-multithreading.md
+    - title: L32 Thread-Level Parallelism II
+      children:
+        - file: content/parallel-II/index.md
+        - file: content/parallel-II/parallel-II-openmp.md
+        - file: content/parallel-II/parallel-II-computing-pi.md
+        - file: content/parallel-II/parallel-II-synch.md
+    - title: L33 Thread-Level Parallelism III
+      children:
+        - file: content/parallel-III/index.md
+        - file: content/parallel-III/parallel-III-shared-mem.md
+        - file: content/parallel-III/parallel-III-cache.md
 site:
   template: book-theme
   options:
