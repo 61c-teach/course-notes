@@ -19,7 +19,7 @@ project:
 
   toc:
     - file: index.md
-    - title: L02 Number Representation
+    - title: "L02 Number Representation"
       children:
         - file: content/number-rep/index.md
         - file: content/number-rep/binary-decimal-hex.md
@@ -27,13 +27,21 @@ project:
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
         - file: content/number-rep/exercises.md
-    - title: L03 C Basics
+    - title: "L03 C Basics"
       children:
         - file: content/c-basics/index.md
         - file: content/c-basics/compile-vs-interpret.md
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+    - title: "L04 C Pointers, Arrays, Strings"
+      children:
+        - file: content/c-pointers-arrays-strings/index.md
+        - file: content/c-pointers-arrays-strings/pointers.md
+        - file: content/c-pointers-arrays-strings/arrays.md
+        - file: content/c-pointers-arrays-strings/strings.md
+        - file: content/c-pointers-arrays-strings/endianness.md
+        - file: content/c-pointers-arrays-strings/summary.md
 site:
   template: book-theme
   options:

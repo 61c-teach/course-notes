@@ -116,13 +116,15 @@ Remember, C was built for efficiency. Early on, they determined that the size of
 To write a C program, then, one would _really_ need to know the intricacies of hardware. But this loses the benefit of portability; code that assumes an $N$-bit-wide datatype (say, because we want to represent $2^N$ non-integer things) might use `int`, then need to change types to work on another machine.
 
 (inttypes)=
-:::{hint} Use `inttypes.h`
+:::{hint} Use `inttypes.h` or `stdint.h`
 
-We encourage you to use `inttypes.h`, part of the C standard library. It specifies unsigned and signed types[^typedef-int] like `uint8_t` and `int32_t`, where width is specified in bits. So `int32_t x;` would declare `x` as a 32-bit wide signed integer that uses two's complement representation.
+We encourage you to use `inttypes.h` or `stdint.h`, part of the C standard library[^inttypes-vs-stdint]. It specifies unsigned and signed types[^typedef-int] like `uint8_t` and `int32_t`, where width is specified in bits. So `int32_t x;` would declare `x` as a 32-bit wide signed integer that uses two's complement representation.
 
 :::
 
 [^typedef-int]: More precisely, `inttypes.h` declares many `typedef` names of the form `intN_t` and `uintN_t` that designate two's complement and unsigned integer types, respectively, of specific bitwidth `N`.
+
+[^inttypes-vs-stdint]: See [StackOverflow](The array name `a` is the address of the first element in `a`; ) for differences between `inttypes.h` and `stdint.h`. For the purposes of this class, either is fine.
 
 ## Variable declaration and initialization
 
