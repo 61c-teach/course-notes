@@ -283,11 +283,13 @@ if(!p) { /* p is a null pointer */ }
 if(q) { /* q is not a null pointer */ }
 ```
 
+(foot-multiple-declarations)=
 ### Struct pointer syntax
 
 We often like to use struct pointers because structs themselves can get quite large in size. There are a few useful pieces of "syntactic sugar" we use with structs and pointers.
 
 The code below declares two pointers[^multiple-declarations] `ptr1` and `ptr2` to structs `coord1` and `coord2`, respectively:
+
 
 [^multiple-declarations]: You may notice that Line 8 declares two pointers by mashing the `*` next to `ptr1` and `ptr2`, respectively. We didn't discuss it, but a single-declaration `coord_t* ptr1;` is also valid. Most modern C programmers try to avoid declaring multiple variables on a single line where possible. But you'll see it often in legacy C applications. Read more on [Reddit](https://www.reddit.com/r/cpp/comments/vm8bwm/how_do_you_declare_pointer_variables/).
 

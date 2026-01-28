@@ -13,7 +13,9 @@ No video.
 
 A **C string** is just an array of characters, followed by a **null terminator**. A **null terminator** is the byte of all 0's, i.e., the '\0' character.
 
-The null terminator lets us determine the length of a C string from just a pointer to the beginning of the string. Consider the following code, which is a reasonable implementation of `strlen`, the standard C library function that computes the length of a string, minus the null terminator.
+The null terminator lets us determine the length of a C string from just a pointer to the beginning of the string. Consider the following code, which is a reasonable implementation of `strlen`[^strlen-practical], the standard C library function that computes the length of a string, minus the null terminator.
+
+[^strlen-practical]: See [glibc](https://github.com/lattera/glibc/blob/master/string/strlen.c) for a more practical, efficient implementation of `strlen`.
 
 ```{code} c
 :linenos:
@@ -33,5 +35,9 @@ int strlen(char s[]) {
   * Body: Increment `n` by one.
   * Condition:
     * Increment the value of `s` by one. This evaluates to the Before doing that, get the current value at `s`.
-
 :::
+
+
+## `<string.h>`
+
+C strings have functions in the C standard library, imported via the header `<string.h>`. See [Wikibooks](https://en.wikibooks.org/wiki/C_Programming/String_manipulation#The_%3Cstring.h%3E_standard_header) for descriptions of commonly used `<string.h>` functions.

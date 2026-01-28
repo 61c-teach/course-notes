@@ -80,7 +80,7 @@ You often see CPP macros defined to create small "functions". But remember that 
 Because `#define` is effectively string replacement, this can produce interesting errors. For example:
 
 ```c
-#define min(X,Y) ((X)<(Y))
+#define min(X,Y) ((X)<(Y)?(X):(Y))
 next = min(w, foo(z));
 ```
 
