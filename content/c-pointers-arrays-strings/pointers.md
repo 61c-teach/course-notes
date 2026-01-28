@@ -354,3 +354,84 @@ Starting state before executing the line `ptr1 = ptr2;
 Sometimes it is easier to return to our definition of pointers as variables that store **addresses**. In this case, we are reading the value at `ptr2` (`0x100`) and storing it into `ptr1`.
 
 ::::
+
+## Double Pointers ("Handles")
+
+How might a function change the value of a **pointer**? Let's see a (natural but) faulty approach before a solution.
+
+**A strawman[^strawman] approach**: Consider @code-pointer-handles-fail. Suppose that when compiled, the memory layout _before Line 10_ is as before, @fig-array-indexing.
+
+[^strawman]: Wikipedia: [Straw Man](https://en.wikipedia.org/wiki/Straw_man)
+
+(code-pointer-handles-fail)=
+```{code} c
+:linenos:
+#include <stdio.h>
+
+void increment_ptr(uint32_t *p) {
+    p = p + 1;
+}
+
+int main() {
+    uint32_t arr[] = {50, 60, 70};
+    uint32_t *q = arr;
+    increment_ptr(q);
+    printf("*q is %d\n", *q);
+  return 0;
+}
+```
+
+
+:::{figure} images/array-indexing.png
+:label: fig-array-indexing
+:width: 80%
+:alt: "TODO"
+
+Memory layout before executing Line 10 in @code-pointer-handles-fail. We discuss arrays in [another section](#sec-arrays).
+:::
+
+Print output: `*q is 50`
+
+:::{note} Faulty: @code-pointer-handles-fail does not update `q`
+Remember–C is **pass-by-value**. When we call `increment_ptr(q)`, the value of `q` gets passed in. As shown in the below diagram, this means that the parameter `p` gets a copy of q's value (the **address** `0x100`), then `p` gets updated to `0x104`. When the function returns, however, `q` remains unchanged.
+:::
+
+**A better approach**. The code in @code-pointer-handles-success fixes this issue by passing in a _pointer to a pointer_, also known as a **double pointer** or a **handle**. Running the below code will print: `*q is 60`.
+
+(code-pointer-handles-success)=
+```{code} c
+:linenos:
+#include <stdio.h>
+
+void increment_ptr(uint32_t **h) {
+    *h = *h + 1;
+}
+
+int main() {
+    uint32_t arr[3] = {50, 60, 70};
+    uint32_t *q = arr;
+    increment_ptr(&q);
+    printf("*q is %d\n", *q);
+  return 0;
+}
+```
+
+:::{figure} images/pointer-handles-success.png
+:label: fig-pointer-handles-success
+:width: 70%
+:alt: "TODO"
+
+@code-pointer-handles-success: Memory layout (top) during `increment_ptr` call and (bottom) after returning to `main`.
+:::
+
+:::{note} Success: @code-pointer-handles-success updates `q` with a double pointer
+
+* Line 10, function call (@fig-pointer-handles-success, top): `&q` passes in the **address* of `q`, `0x120`, as the argument to `increment_ptr`.
+* Line 3: The parameter `h` is assigned to `0x120`. `h` is a **double pointer**, meaning that following it twice should get us to a 32-bit unsigned integer:
+  * `h` is the value `0x120`.
+  * ("follow once") `*h` accesses the value at address `0x120`, which is itself an address, `0x100`.
+  * ("follow twice") `**h` is `*(*h)`, which access the value at address `0x100`, which is the 32-bit unsigned integer `50`.
+* Line 4, right-hand-side: `*h + 1` increments `0x100`, which is _typed_: it has an address of a 32-bit unsigned integer. Incrementing `0x100` therefore gives the next address of such a value, which is `0x104`.
+* Line 4, left-hand-side: Assign the value `0x104` to whatever `h` points to, which is the value at `0x120`. In other words, the value at memory address `0x120` gets updated to `0x104`.
+* Line 10, return (@fig-pointer-handles-success, bottom): The update in memory persists!
+:::

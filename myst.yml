@@ -39,9 +39,8 @@ project:
         - file: content/c-pointers-arrays-strings/index.md
         - file: content/c-pointers-arrays-strings/pointers.md
         - file: content/c-pointers-arrays-strings/arrays.md
-        - file: content/c-pointers-arrays-strings/array-pitfalls.md
         - file: content/c-pointers-arrays-strings/strings.md
-        - file: content/c-memory-management/endianness.md
+        - file: content/c-pointers-arrays-strings/endianness.md
         - file: content/c-pointers-arrays-strings/summary.md
     - title: "L05 C Memory Management"
       children:

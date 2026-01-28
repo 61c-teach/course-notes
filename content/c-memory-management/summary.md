@@ -1,5 +1,5 @@
 ---
-title: "Memory Management"
+title: "Summary"
 ---
 
 ## And in Conclusion$\dots$
@@ -35,7 +35,11 @@ Be careful when allocating buffers on the stack and heap! The heap is the bigges
 
 Take CS 162 for more!
 
-## Extra References
+## Textbook Reading
+
+K&R 7.8.5, 8.7
+
+## Additional References
 
 * Professor Emeritus Brian Harvey's [notes on C](https://inst.eecs.berkeley.edu/~cs61c/resources/HarveyNotesC1-3.pdf)
 * Professor Emeritus Paul Hilfinger's [notes on memory management](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/pnh.stg.mgmt.pdf)

@@ -1,5 +1,5 @@
 ---
-title: "Summary: Pointers, Arrays, and Strings"
+title: "Summary"
 ---
 
 ## And in Conclusion$\dots$
@@ -15,6 +15,10 @@ title: "Summary: Pointers, Arrays, and Strings"
 
 [^huge-caveat]: The biggest difference between arrays and pointers comes down to where they are located in memory; this difference leads to the many details you saw in this chapter. See the [next chapter](#sec-mem-layout) for an overarching framework of memory layout that will help you understand the distinction.
 
-## Extra References
+## Textbook Reading
+
+K&R: Chapters 5-6
+
+## Additional References
 
 * Professor Emeritus Brian Harvey's [notes on C](https://inst.eecs.berkeley.edu/~cs61c/resources/HarveyNotesC1-3.pdf)

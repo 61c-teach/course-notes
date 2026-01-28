@@ -23,11 +23,11 @@ Meta takeaway: We make design decisions to make the **hardware simple**. We thre
 <!--For you to consider:
 How could we represent -12.75?-->
 
-## Textbook readings
+## Textbook Readings
 
 P&H: 2.4
 
-## Additional Reading
+## Additional References
 
 [Dan Garcia's Binary Slides, Fall 2025](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/garcia_binary_slides.pdf)
 

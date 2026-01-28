@@ -2,6 +2,7 @@
 title: "Arrays"
 ---
 
+(sec-array)=
 ## Learning Outcomes
 
 * Declare and initialize C arrays.
@@ -30,7 +31,7 @@ title: "Arrays"
 Meet the jewelry making community
 [CS61C FA20] Lecture 05.1 - C Memory Management: Dynamic Memory Allocation s"
 :::
-Arrays are not pointers example from 9:36 onwards
+From 9:36 onwards: Arrays are not pointers example
 ::::
 
 We continue our exploration of memory by studying C arrays. On the surface, C arrays seem fairly similar to what you might recognize from Java. In this section, we learn that arrays in C are **neither variables nor pointers**. When used in C statements, array names often behave like pointer variable names, for reasons we will describe shortly.
@@ -80,9 +81,9 @@ The expression `arr[i]` is **equivalent** to the expression `*(arr+i)`. The latt
 
 In pointer arithmetic, the compiler uses the data type to determine how far to "stride" across memory to reach the next value. Remember that pointers store addresses of our byte-addressable memory:
 
-* `pointer + n` adds `n*sizeof("whatever  pointer is pointing to")` bytes to the memory address.
+* `ptr + n` adds `n*sizeof(*ptr)` bytes to the memory address stored in `ptr`.
 
-* `pointer - n` subtracts `n*sizeof("whatever  pointer is pointing to")` bytes from the memory address.
+* `pointer - n` subtracts `n*sizeof(*ptr)` bytes from the memory address stored in `ptr`.
 :::
 
 ### Example
@@ -178,15 +179,18 @@ The address of the array `a` is the address of the array itself, i.e., the addre
 
 [^multiple-declarations]: You may notice that Line 8 declares two pointers by mashing the `*` next to `ptr1` and `ptr2`, respectively. We didn't discuss it, but a single-declaration `coord_t* ptr1;` is also valid. Most modern C programmers try to avoid declaring multiple variables on a single line where possible. But you'll see it often in legacy C applications. Read more on [Reddit](https://www.reddit.com/r/cpp/comments/vm8bwm/how_do_you_declare_pointer_variables/).
 
-* The `int` pointer, `p`, is initialized to the address of the `int` variable `x`.
+* Line 3: The `int` pointer, `p`, is initialized to the address of the `int` variable `x` .
+  * Line 6: Take the value `p` points to; set it to 1.
   * `*p` dereferences `p` and gets the value at address `0x108`, which is `1`.
   * `p` is a pointer variable; `p`'s value is an address, which is `0x108`.
   * `&p` is the address of the variable `p`, which is `0x100`.
-* The `int` pointer `q` is initialized to the result of `a + 1`, which is **pointer arithmetic**! In the expression, the array name `a` is the address of the first element in `a`; incrementing by one yields the address of the _second_ element of `a`, at `0x110`.
+* Line 4: The `int` pointer `q` is initialized to the result of `a + 1`, which is **pointer arithmetic**! In the expression, the array name `a` is the address of the first element in `a`; incrementing by one yields the address of the _second_ element of `a`, at `0x110`.
+  * Line 9: Take the value `q` points to; set it to 2.
   * `*q` dereferences `q` and gets the value at address `0x110`, which is `2`.
   * `q` is a pointer variable; `q`'s value is an address, which is `0x110`.
   * `&q` is the address of the variable `q`, which is `0x104`.
-* The array `a` is a memory block of 4 `int`s. The array starts at address `0x10c`, which is also the address of its first element, `3`.
+* Line 2: The array `a` is a memory block of 4 `int`s. The array starts at address `0x10c`, which is also the address of its first element.
+  * Line 12: The array name `a` is the address of the first element in `a`; the statement `*a = 3;` gets this value and sets it to 3.
   * `*a` is **pointer arithmetic followed by a dereference**. The array name `a` is the address of the first element in `a`; dereferencing gets the element itself, which is `3`.
   * `a` is the address of the first element in `a` by definition, which is `0x10c`.
   * `&a` **gets the address of the array `a`**, which is `0x10c`.[^address-of-sizeof]
@@ -195,7 +199,7 @@ The address of the array `a` is the address of the array itself, i.e., the addre
 :::
 
 (sec-array-decay)=
-## Array name decay with functions
+## Array names "decay" with functions
 
 When used with functions, arrays **decay** to pointers in two ways. We use @code-decay below as an example.
 
@@ -260,7 +264,7 @@ Print output: `0 5 8`
 
 In practice, C programmers will commonly use `sizeof(nums)/sizeof(short)` to count the **number of elements** in the array `nums`. Note that `nums` must be declared in the same scope, otherwise it decays to a pointer.
 
-## Reminder: Arrays are primitive!
+## Arrays are primitive! Reminders
 
 Hopefully this section has convinced you that arrays are relatively primitive constructs:
 
@@ -318,78 +322,4 @@ Choose formal parameter definitions wisely.
 :::{warning} Reminder 4
 
 Always pass in array lengths. See @sec-array-decay.
-:::
-
-## Extra practice: "Handling" pointers
-
-Let's take a break from arrays to practice more with pointers.
-
-How might a function change the value of a **pointer**? Let's see a (natural but) faulty approach before a solution.
-
-**A strawman[^strawman] approach**: Consider @code-pointer-handles-fail. Suppose that when compiled, the memory layout _before Line 10_ is as before, @fig-array-indexing.
-
-[^strawman]: Wikipedia: [Straw Man](https://en.wikipedia.org/wiki/Straw_man)
-
-(code-pointer-handles-fail)=
-```{code} c
-:linenos:
-#include <stdio.h>
-
-void increment_ptr(uint32_t *p) {
-    p = p + 1;
-}
-
-int main() {
-    uint32_t arr[3] = {50, 60, 70};
-    uint32_t *q = arr;
-    increment_ptr(q);
-    printf("*q is %d\n", *q);
-  return 0;
-}
-```
-
-Print output: `*q is 50`
-
-:::{note} @code-pointer-handles-fail does not update `q`
-Remember–C is **pass-by-value**. When we call `increment_ptr(q)`, the value of `q` gets passed in. As shown in the below diagram, this means that the parameter `p` gets a copy of q's value (the **address** `0x100`), then `p` gets updated to `0x104`. When the function returns, however, `q` remains unchanged.
-:::
-
-**A better approach**. The code in @code-pointer-handles-success fixes this issue by passing in a _pointer to a pointer_, also known as a **double pointer** or a **handle**. Running the below code will print: `*q is 60`.
-
-(code-pointer-handles-success)=
-```{code} c
-:linenos:
-#include <stdio.h>
-
-void increment_ptr(uint32_t **h) {
-    *h = *h + 1;
-}
-
-int main() {
-    uint32_t arr[3] = {50, 60, 70};
-    uint32_t *q = arr;
-    increment_ptr(&q);
-    printf("*q is %d\n", *q);
-  return 0;
-}
-```
-
-:::{figure} images/pointer-handles-success.png
-:label: fig-pointer-handles-success
-:width: 70%
-:alt: "TODO"
-
-@code-pointer-handles-success: Memory layout (top) during `increment_ptr` call and (bottom) after returning to `main`.
-:::
-
-:::{note} @code-pointer-handles-success updates `q` with a double pointer
-
-* Line 10, function call (@fig-pointer-handles-success, top): `&q` passes in the **address* of `q`, `0x120`, as the argument to `increment_ptr`.
-* Line 3: The parameter `h` is assigned to `0x120`. `h` is a **double pointer**, meaning that following it twice should get us to a 32-bit unsigned integer:
-  * `h` is the value `0x120`.
-  * ("follow once") `*h` accesses the value at address `0x120`, which is itself an address, `0x100`.
-  * ("follow twice") `**h` is `*(*h)`, which access the value at address `0x100`, which is the 32-bit unsigned integer `50`.
-* Line 4, right-hand-side: `*h + 1` increments `0x100`, which is _typed_: it has an address of a 32-bit unsigned integer. Incrementing `0x100` therefore gives the next address of such a value, which is `0x104`.
-* Line 4, left-hand-side: Assign the value `0x104` to whatever `h` points to, which is the value at `0x120`. In other words, the value at memory address `0x120` gets updated to `0x104`.
-* Line 10, return (@fig-pointer-handles-success, bottom): The update in memory persists!
 :::
