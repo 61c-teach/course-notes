@@ -30,7 +30,7 @@ Let's understand a little bit about the basics of computer organization. One of 
 The ENIAC (Electronic Numerical Integrator and Computer) was the first programmable, electronic, general-purpose digital computer, completed in 1945. ([Wikipedia](https://en.wikipedia.org/wiki/ENIAC))
 :::
 
-The ENIAC the first electronic general-purpose computer. Following World War II, it was often used to compute trajectories of ballistics. It multiplied in 2.8 milliseconds! The problem is, it took two or three days to program.
+The ENIAC was the first electronic general-purpose computer. Following World War II, it was often used to compute trajectories of ballistics. It multiplied in 2.8 milliseconds! The problem is, it took two or three days to program.
 
 Note the patch cords in @fig-eniac; after reading the schematic, a human would write the patch cords. Not to mention—vacuum tubes were breaking all the time.
 
@@ -112,13 +112,13 @@ If performance matters:
 
 If scientific computation matters:
 
-* **Python** has good libraries for accessing GPU-specific resources. The Python interpreter is written in C. Python can use Cython to call low-level C code to do work. Pytorch, a popular Python library for machine learning, uses C++
+* **Python** has good libraries for accessing GPU-specific resources. The Python interpreter is written in C. Python can use Cython to call low-level C code to do work. PyTorch, a popular Python library for machine learning, uses C++.
 * **Spark** can manage many other machines in parallel.
 
 ### The C Language Is Constantly Evolving
 
 The C programming language standard has had several significant revisions since its inception in 1972.
-Just like Python2 vs Python 3 – same language, but slightly different syntax/features.
+Just like Python 2 vs Python 3 – same language, but slightly different syntax/features.
 
 A history, from [StackOverflow](https://stackoverflow.com/questions/17206568/what-is-the-difference-between-c-c99-ansi-c-and-gnu-c):
 
