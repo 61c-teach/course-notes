@@ -2,6 +2,7 @@
 title: "Pointers and Bugs"
 ---
 
+(sec-pointers)=
 ## Learning Outcomes
 
 * Know C pointer syntax, including struct pointer syntax.
@@ -283,6 +284,25 @@ if(!p) { /* p is a null pointer */ }
 if(q) { /* q is not a null pointer */ }
 ```
 
+(sec-pointer-arithmetic)=
+### Pointer Arithmetic
+
+Pointers can handle some arithmetic operations: addition and substraction. You can increment or decrement pointers by integer values with a paradigm called **pointer arithmetic**.
+
+In pointer arithmetic, the compiler uses the data type to determine how far to "stride" across memory to reach the next value. For example, if `ptr` is a pointer variable and you write `ptr + 5`, C will not always add 5 to `ptr`. Instead, C will add 5 times the size of the datatype that `ptr` points to. If ptr was an `int *` and `int`s take up 4 bytes in memory, `ptr + 5` adds 20 to the address held in ptr.
+
+Remember that pointers store addresses of our byte-addressable memory:
+
+* `ptr + n` adds `n*sizeof(*ptr)` bytes to the memory address stored in `ptr`.
+
+* `pointer - n` subtracts `n*sizeof(*ptr)` bytes from the memory address stored in `ptr`.
+
+Pointer arithmetic is particularly useful for accessing elements of arrays with [square-bracket indexing](#sec-array-indexing).
+
+Note you cannot add two pointers together (what is it mean to add two addresses??), but you can subtract two pointers[^pointer-subtraction].
+
+[^pointer-subtraction]: Pointer subtraction also depends on pointer type; read more on [StackOverflow](https://stackoverflow.com/questions/3238482/pointer-subtraction-confusion).
+
 (foot-multiple-declarations)=
 ### Struct pointer syntax
 
@@ -359,7 +379,7 @@ Sometimes it is easier to return to our definition of pointers as variables that
 
 How might a function change the value of a **pointer**? Let's see a (natural but) faulty approach before a solution.
 
-**A strawman[^strawman] approach**: Consider @code-pointer-handles-fail. Suppose that when compiled, the memory layout _before Line 10_ is as before, @fig-array-indexing.
+**A strawman[^strawman] approach**: Consider @code-pointer-handles-fail. Suppose that when compiled, the memory layout _before Line 10_ is in @fig-ptr-indexing.
 
 [^strawman]: Wikipedia: [Straw Man](https://en.wikipedia.org/wiki/Straw_man)
 
@@ -383,11 +403,11 @@ int main() {
 
 
 :::{figure} images/array-indexing.png
-:label: fig-array-indexing
+:label: fig-ptr-indexing
 :width: 80%
 :alt: "TODO"
 
-Memory layout before executing Line 10 in @code-pointer-handles-fail. We discuss arrays in [another section](#sec-arrays).
+Memory layout before executing Line 10 in @code-pointer-handles-fail. We discuss arrays [later in this chapter](#sec-array).
 :::
 
 Print output: `*q is 50`

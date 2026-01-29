@@ -54,17 +54,20 @@ C program memory layout.
 | :--- | :--- | :--- |
 | **Stack** | local variables, parameters, and return addresses [^stack-info] | automatic; grows _downward_[^stack-sec] |
 | **Heap** | dynamically allocated storage | resizes on demand (e.g. `malloc` to allocate storage, `free` to free storage); grows _upward_[^heap-sec] |
-| **Data** (aka **Static**) | global variables | size is fixed ("static") throughout the whole program |
-| **Text** (aka **Code**) | program code | size is fixed throughout the whole program; data is loaded when program starts |
+| **Data** (aka **Static**)[^data-rodata] | global variables | size is fixed ("static") throughout the whole program |
+| **Text** (aka **Code**)[^text] | program code | size is fixed throughout the whole program; data is loaded when program starts |
 
-The names of these four memory segments are hard to memorize at first, so we apologize on behalf of all computer scientists. While the **stack** operates very much like the stack data structure you learned in a Data Structures course, the **heap** is NOT a heap data structure; it is just a "heap of memory." Also, everything is technically data, but the **data** segment specifically refers to global data. Finally, the **text** can be remembered because program code should be read-only data, just like how many texts you read in real life are read-only.
+The names of these four memory segments are hard to memorize at first, so we apologize on behalf of all computer scientists. While the **stack** operates very much like the stack data structure you learned in a Data Structures course, the **heap** is NOT a heap data structure; it is just a "heap of memory." Also, everything is technically data, but the **data** segment specifically refers to global data[^data-rodata]. Finally, the **text** can be remembered because program code should be read-only data, just like how many texts you read in real life are read-only.
 
 Programming in C requires knowing where data is in memory[^java-python-mem]. Otherwise things don’t work as expected. In particular, memory in each of the four regions is **managed** differently. The biggest source of bugs in C is from incorrect assumptions about memory. This lecture is all about learning how memory is managed in order to avoid common bugs. We focus our discussion on the stack and the heap.
 
 [^stack-info]: Because parameters and return addresses are critical to function call and return, they are often stored directly in the CPU where possible—on special hardware called registers (which we talk about later). Because there are only a limited number of such registers, additional parameters and return addresses are stored in memory on the stack until they are needed.
-
 [^stack-sec]: Read more about [the stack](#sec-stack).
 
 [^heap-sec]: Read more about [the heap](#sec-heap).
+
+[^data-rodata]: We refer only to the `.data` segment in this course and ignore read-only data. Read more on [Wikipedia](https://en.wikipedia.org/wiki/Data_segment).
+
+[^text]: Read more on [Wikipedia](https://en.wikipedia.org/wiki/Code_segment).
 
 [^java-python-mem]: By contrast, Java and Python both hide locations of objects.

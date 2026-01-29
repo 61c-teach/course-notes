@@ -69,22 +69,14 @@ int arr2[2] = {795, 635};
 arr2[0]; // 795
 ```
 
+(sec-array-indexing)=
 ## Array indexing uses pointer arithmetic
 
 Is there another way to access array elements? Yes, otherwise we would not have been so cryptic earlier.
 
-Square-bracket indexing for C arrays is what we call "syntactic sugar"–meaning, it exists for human readability, but the C compiler will translate it to two operations: **pointer arithmetic** followed by **dereference**:
+Square-bracket indexing for C arrays is what we call "syntactic sugar"–meaning, it exists for human readability, but the C compiler will translate it to two operations: [pointer arithmetic](#sec-pointer-arithmetic) followed by **dereference**:
 
 The expression `arr[i]` is **equivalent** to the expression `*(arr+i)`. The latter treats the array name `arr` as a pointer, increments it, then dereferences.
-
-:::{note} Pointer arithmetic, defined
-
-In pointer arithmetic, the compiler uses the data type to determine how far to "stride" across memory to reach the next value. Remember that pointers store addresses of our byte-addressable memory:
-
-* `ptr + n` adds `n*sizeof(*ptr)` bytes to the memory address stored in `ptr`.
-
-* `pointer - n` subtracts `n*sizeof(*ptr)` bytes from the memory address stored in `ptr`.
-:::
 
 ### Example
 
@@ -223,10 +215,11 @@ int main(void) {
 
 :::{warning} Always pass in array lengths
 
-Called functions will never know the bounds of arrays passed in as arguments. In fact, they won't even know that their pointer parameters are decayed arrays. Because of this property, if you are writing code that passes arrays between functions, make sure the callee functions also define parameters for array lengths (see Line 1 of @code-decay).
+Called functions will never know the bounds of arrays passed in as arguments. In fact, they won't even know that their pointer parameters are decayed arrays.
+A pointer itself is not enough to deduce the length of the array, so if you need to keep track of the length of an array, you must use another variable or parameter (see Line 1 of @code-decay).
 :::
 
-
+(sec-array-sizeof)=
 ## `sizeof` with arrays
 
 We've discussed `sizeof` many times. For arrays, the compile-time operator will evaluate to the size of the array, in bytes.[^address-of-sizeof] This observation informs the behavior of @code-array-sizeof:

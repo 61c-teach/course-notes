@@ -89,13 +89,11 @@ Consider @fig-c-stack-anim. If you had a secret password like `"Bosco"` stored i
 
 At this point in your programming livelihoods, you have likely found it useful to pass data from one function to another function. We now also know that pointers into the stack may point to _stale data_, if the corresponding local variable's function has already finished executing! In these cases, C will not throw an error, but your program may have undefined behavior.
 
-Consider this warning we saw in an [earlier section](#sec-array-pitfall-scope).
+:::{warning} Declared array names only refer to arrays in their local scope.
 
-:::{warning} Declared arrays are only allocated while the scope is valid.
-
- This warning was accompanied with the notion that C arrays are a way of locally declaring storage. Astute readers will realize that C arrays must have known size at compile-time because C arrays are local variables and therefore must factor into the fixed size of a function's stack frame.
+Recall that [arrays in C](@sec-array) are a way of locally declaring a large block of memory. Now we know that this local declaration means that array declarations allocate space on the stack, and therefore must factor into the fixed size of a function's stack frame. Locally-declared arrays must have known size at compile-time, as shown in [this `sizeof` example](@sec-array-sizeof).
  
- When array names are passed to other functions, they **decay** to pointers to memory. Now, we know that array names, when passed between functions (either as arguments or return values), will decay to pointers to memory on the _stack_.
+When array names are passed as arguments to other functions, they **decay** to pointers to memory. Now, we know that arrays will decay to pointers to memory on the _stack_.
 :::
 
 :::{hint} Addresses higher in the stack
