@@ -42,6 +42,13 @@ project:
         - file: content/c-pointers-arrays-strings/strings.md
         - file: content/c-pointers-arrays-strings/endianness.md
         - file: content/c-pointers-arrays-strings/summary.md
+    - title: "L05 C Memory Management"
+      children:
+        - file: content/c-memory-management/index.md
+        - file: content/c-memory-management/stack.md
+        - file: content/c-memory-management/heap.md
+        - file: content/c-memory-management/heap-allocator.md
+        - file: content/c-memory-management/summary.md
 site:
   template: book-theme
   options:
