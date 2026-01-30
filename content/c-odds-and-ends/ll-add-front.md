@@ -1,15 +1,24 @@
 ---
-title: "Linked List"
+title: "Linked List: add_front"
 ---
 
+(sec-ll-add-front)=
 ## Learning Outcomes
 
-* Build the linked list, a recursive data structure, in dynamic memory.
-* Write code that uses structs and typedefs.
+* Write code that uses structs and typedefs in dynamic memory
 * Practice allocating memory on the heap with `malloc`
 * Write code that uses a function with a double pointer.
 
-Let's look at an example of using structures, pointers, and dynamic memory (the heap) to implement a linked list of strings.
+Over this section and the [next section](#sec-ll-full), we will see an example of using structures, pointers, and dynamic memory (the heap) to implement a linked list of C strings.
+
+:::{warning} Different code, different learning goals
+
+The code in this section and the [next section](#sec-ll-full) differ in their declaration of the linked list head. This is intentional to focus on different learning outcomes:
+
+* This section is practice with double pointers.
+* The [next section](#sec-ll-full) deliberately abstracts the definition of the linked list interface from its implementation.
+
+:::
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -22,10 +31,10 @@ Let's look at an example of using structures, pointers, and dynamic memory (the 
 
 ::::
 
-The code discussed in this course note differs slightly from the video below:
+The code discussed in this course note differs slightly from the lecture video:
 
 * Naming convention has been updated to be more C-like (e.g., `snake_case`; typedefs as suffixed with `_t`)
-* Course note code presents a realistic linked list scenario, where a `head` pointer is declared in `main` and then updated via the `add_to_front` function (hence, the double pointer parameter)
+* Course note code presents a somewhat realistic linked list scenario, where a `head` pointer is declared in `main` and then updated via the `add_to_front` function (hence, the double pointer parameter)
 
 ## The `node_t` struct
 
@@ -93,7 +102,6 @@ The first argument passed in is an address (`&head`); in other words, `head_ptr`
 
 `add_to_front` argument assignment
 :::
-
 
 ### [Line 9](#code-ll-add): Allocate heap space for new node
 

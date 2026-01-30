@@ -55,10 +55,10 @@ The alien, the astronaut, and the pile of rocks use three different representati
 
 While there are an infinite number of bases with which to represent numbers, we discuss three will be the most useful to us, as computer scientists: **decimal**, **binary**, and **hexadecimal** representations.
 
-@tbl-dec-hex-bin probably makes little sense to you at the moment, but we present it first so you can make some educated guesses.
+@tab-dec-hex-bin probably makes little sense to you at the moment, but we present it first so you can make some educated guesses.
 
 :::{table} Decimal, binary, and hexadecimal digits.
-:label: tbl-dec-hex-bin
+:label: tab-dec-hex-bin
 :align: center
 
 | System | \# Digits | Digits |
