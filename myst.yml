@@ -49,9 +49,6 @@ project:
         - file: content/c-memory-management/heap.md
         - file: content/c-memory-management/heap-allocator.md
         - file: content/c-memory-management/summary.md
-    - title: "Miscellaneous"
-      children:
-        - file: content/misc/unit-prefixes.md
 site:
   template: book-theme
   options:
