@@ -58,6 +58,7 @@ project:
       children:
         - file: content/c-generics/index.md
         - file: content/c-generics/fn-ptr-example.md
+        - file: content/c-generics/generics.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md

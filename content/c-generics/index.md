@@ -1,5 +1,5 @@
 ---
-title: "Function Pointers, Generics"
+title: "Introduction"
 ---
 
 (sec-generics)=
