@@ -40,7 +40,6 @@ project:
         - file: content/c-pointers-arrays-strings/pointers.md
         - file: content/c-pointers-arrays-strings/arrays.md
         - file: content/c-pointers-arrays-strings/strings.md
-        - file: content/c-pointers-arrays-strings/endianness.md
         - file: content/c-pointers-arrays-strings/summary.md
     - title: "L05 C Memory Management"
       children:
@@ -52,6 +51,7 @@ project:
     - title: "L06 C Odds and Ends"
       children:
         - file: content/c-odds-and-ends/index.md
+        - file: content/c-odds-and-ends/endianness.md
         - file: content/c-odds-and-ends/ll-add-front.md
         - file: content/c-odds-and-ends/ll-full.md
     - title: "L07 C Generics, Function Pointers"
