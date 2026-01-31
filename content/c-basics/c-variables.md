@@ -27,7 +27,7 @@ You are not expected to learn the many, many details of C off the bat. But you s
 Just like in Java, all C variables are typed.
 
 :::{table} C Basic Types; see [Wikibooks](https://en.wikibooks.org/wiki/C_Programming/Language_Reference#Table_of_data_types).
-:label: tbl-c-types
+:label: tab-c-types
 :align: center
 
 | Type | Description | Example |
@@ -103,7 +103,7 @@ $$
 Remember, C was built for efficiency. Early on, they determined that the size of `int` was the size most efficient to read, write, and operate on two's complement numbers. So a 32-bit machine would often have 4-byte integers (4 bytes = 32 bits) if the datapath was built for 32-bit values, and a 64-bit machine would have 8-byte integers (8 bytes = 64 bits), but not always.
 
 :::{table} Integer types in C, Java and Python
-:label: tbl-int-types
+:label: tab-int-types
 :align: center
 
 | Language | size of integer (in bits) |

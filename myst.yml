@@ -49,6 +49,19 @@ project:
         - file: content/c-memory-management/heap.md
         - file: content/c-memory-management/heap-allocator.md
         - file: content/c-memory-management/summary.md
+    - title: "L06 C Odds and Ends"
+      children:
+        - file: content/c-odds-and-ends/index.md
+        - file: content/c-odds-and-ends/ll-add-front.md
+        - file: content/c-odds-and-ends/ll-full.md
+    - title: "L07 C Generics, Function Pointers"
+      children:
+        - file: content/c-generics/index.md
+        - file: content/c-generics/fn-ptr-example.md
+        - file: content/c-generics/generics.md
+    - title: "Miscellaneous"
+      children:
+        - file: content/misc/unit-prefixes.md
 site:
   template: book-theme
   options:

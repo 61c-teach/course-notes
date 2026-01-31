@@ -2,6 +2,7 @@
 title: "Integer Representations"
 ---
 
+(sec-integer-reps)=
 ## Learning Outcomes
 
 * Understand tradeoffs between integer representations:
