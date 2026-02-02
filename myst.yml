@@ -63,8 +63,8 @@ project:
       children:
         - file: content/floating-point/index.md
         - file: content/floating-point/fp-floating-point.md
-        - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-examples.md
+        - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
     - title: "Miscellaneous"
       children:

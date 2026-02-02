@@ -13,7 +13,6 @@ title: "Integer Representations"
 * Identify when and why integer overflow occurs
 * Perform simple binary operations like addition
 
-
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
