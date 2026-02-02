@@ -90,10 +90,10 @@ The below properties in @tab-bitwise-props hold for a single-bit value `x`. We l
 | :--: | :--: | :--: | :-- |
 | AND | `x & 0` | `0` | set to 0 |
 | AND | `x & 1` | `x` | keep/pass-through |
-| OR | `x & 0` | `x` | keep/pass-through |
-| OR | `x & 1` | `1` | set to 1 |
-| XOR | `x & 0` | `~x` | flip/invert |
-| XOR | `x & 1` | `x` | keep/pass-through |
+| OR | `x \| 0` | `x` | keep/pass-through |
+| OR | `x \| 1` | `1` | set to 1 |
+| XOR | `x ^ 0` | `x` | keep/pass-through |
+| XOR | `x ^ 1` | `~x` | flip/invert |
 :::
 
 Because of its behavior, we also call XOR a "conditional inverter". We discuss this more when we design logic gates.
