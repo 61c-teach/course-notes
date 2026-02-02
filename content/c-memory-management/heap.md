@@ -234,3 +234,121 @@ shall be initialized to all bits 0.
 ```
 
 Like with `malloc` and `realloc`, any pointer returned by `calloc` should be always checked for `NULL` first.
+Like with `malloc` and `realloc`, any pointer returned by `calloc` should be always checked for `NULL` first.
+
+## When Heap Memory Goes Bad
+
+Working with the heap is tricky. Memory can be allocated / deallocated at any time! Some pitfalls:
+
+* **Memory leak**: You forget to deallocate unused heap memory.
+* **Use after free**: You free a memory block but still use that pointer somewhere later.
+* **Double free**: You free the same memory twice.
+
+:::{tip} Quick Check
+
+How many memory management errors are in this code? 0, 1, 2, 3, or something else?
+
+```{code}c
+:linenos:
+void free_mem_x() {
+  int fnh[3];
+  ...
+  free(fnh); 
+}
+
+void free_mem_y() {
+  int *fum = malloc(4*sizeof(int));
+  free(fum+1);
+  ...
+  free(fum);
+  ...
+  free(fum);
+  }
+```
+:::
+
+:::{note} Show Answer
+:class: dropdown
+
+There are 3 errors:
+
+* Line 4: `free()` on stack-allocated memory
+* Line 9: `free()` on memory that isn’t the pointer from `malloc()`
+* Line 13: Double `free()`
+:::
+
+### Memory leak / Failure to `free()`
+
+The runtime does not check for the programmer’s failure to manage memory. Memory is so performance-critical that early C language designers effectively decided there isn’t time to check and manage memory in the background. The usual result of failing to manage your own memory is that you corrupt heap allocator’s internal structure, and you find out much later in a totally unrelated part of your code!
+
+A **memory leak** is a failure to `free()` allocated memory.
+
+* Initial symptoms. Nothing. Until you hit a critical point, memory leaks aren’t actually a problem.
+* Later symptoms: Performance mysteriously falls off a cliff. Memory hierarchy behavior tends to be great just up until it isn’t, then it hits several cliffs.
+* …and then your program is killed off! Because the operating system (OS) says "no" when you ask for more memory. We discuss this when we talk about virtual memory.
+
+### Use after free
+
+Recall that a **dangling reference** is when you keep using a pointer, even after it has been deallocated. In the below code, Line 
+
+```{code} c
+:linenos:
+int *foo;
+… 
+foo = malloc(sizeof(int));
+…
+free(foo);
+…
+bar(foo); // !!!
+```
+
+Reads after the free may be corrupted! If something else takes over that memory, your program will probably read the wrong information. A dangling reference to already-freed memory can also corrupt other data, causing your program to crash _much_ later.
+
+### Double Free
+
+From the `man` pages (`man malloc`):
+
+```
+The  free() function frees the memory space pointed to by ptr,
+which must have been returned by a previous call to malloc(),
+calloc(),  or realloc().  Otherwise, or if free(ptr) has 
+already been called before, undefined behavior occurs.  If 
+ptr is NULL, no operation is performed.
+```
+
+The precise nature of the so-called "undefined behavior" depends on your program and your architecture but can include use-after-free (as before) or corrupting internal heap data (depending on how the heap allocator is implemented on your machine).
+
+### Forgetting realloc() Can Move Data
+
+From the `man` pages (`man malloc`):
+
+```
+The realloc() function returns a pointer to the newly allocated 
+memory, which is suitably aligned for any built-in type, or 
+NULL if the request failed.  The returned pointer may be the 
+same as ptr if the allocation was not moved (e.g., there was 
+room to expand the allocation in-place), or different from ptr 
+if the allocation was moved to a new address.
+```
+
+**Example**: The following code calls `realloc` in Line 3 without reassigning the `nums` pointer. In this case, if `realloc` reassigns the block, then `nums` could now point to invalid memory; furthermore, we would also no longer have a pointer to the newly allocated block.
+
+```{code} c
+:linenos:
+int *nums = malloc(10*sizeof(int));
+int *g = nums;
+realloc(nums, 20*sizeof(int));
+```
+
+The following code tries to fix the issue above by correctly reassigning `nums` in Line 3. However, because `g` still has the old value of `nums`, now `g` could point to invalid memory, since there is now no guarantee that `g == nums`.
+
+```{code} c
+:linenos:
+int *nums = malloc(10*sizeof(int));
+int *g = nums;
+nums = realloc(nums, 20*sizeof(int));
+```
+
+## Valgrind
+
+In general, to catch memory management errors, use tools like [Valgrind](https://valgrind.org/). Valgrind slows down your program by an order of magnitude, but is invaluable for testing and debugging C code.extremely useful for testing. It adds many checks to catch most errors (but not all), including the most common cases described in this chapter: memory leaks, misusing `free()`, and writing over the ends of the arrays.

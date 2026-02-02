@@ -9,14 +9,13 @@ Course notes for the [Great Ideas in Computer Architecture](https://cs61c.org/) 
 
 **By [Lisa Yan](https://www2.eecs.berkeley.edu/Faculty/Homepages/yanlisa.html) and countless semesters of CS 61C instructors.** Developed in Spring 2026.
 
-These course notes are for the [Great Ideas in Computer Architecture](https://cs61c.org/) class at UC Berkeley.
-
 ## To the Spring 2026 Student: How to Use These Notes
 
-These course notes cover the content you need to know from lecture. You can use them as reference as you go through the course assignments.
+These course notes cover the content you need to know from lecture and other parts of the course. You can use them as reference as you go through the course assignments.
 
-* Come to lecture and get the high-level idea. Then, read these course notes. Alternatively, skim course notes first, then come to lecture and ask questions. Because these course notes are still in development, the latter might not always be possible.
+* Come to lecture and get the high-level idea. Then, read these course notes. Alternatively, skim course notes first, then come to lecture and ask questions. (Because these course notes are still in development, this latter suggestion might not always be possible.)
 * Before attending discussion section, try the precheck exercises. Solutions are provided.
+* Lecture will not cover every single topic. We always will recommend you read the course notes.
 
 As of Spring 2026, these course notes are in active development. Due to course staff capacity, we may occasionally be unable to write course notes and will refer you to the lecture slides instead.
 
