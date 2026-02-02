@@ -92,7 +92,7 @@ The below properties in @tab-bitwise-props hold for a single-bit value `x`. We l
 | AND | `x & 1` | `x` | keep/pass-through |
 | OR | `x \| 0` | `x` | keep/pass-through |
 | OR | `x \| 1` | `1` | set to 1 |
-| XOR | `x ^ 0` | `x` | keep/pass-througuh |
+| XOR | `x ^ 0` | `x` | keep/pass-through |
 | XOR | `x ^ 1` | `~x` | flip/invert |
 :::
 
