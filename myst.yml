@@ -34,14 +34,15 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+        - file: content/c-basics/exercises.md
     - title: "L04 C Pointers, Arrays, Strings"
       children:
         - file: content/c-pointers-arrays-strings/index.md
         - file: content/c-pointers-arrays-strings/pointers.md
         - file: content/c-pointers-arrays-strings/arrays.md
         - file: content/c-pointers-arrays-strings/strings.md
-        - file: content/c-pointers-arrays-strings/endianness.md
         - file: content/c-pointers-arrays-strings/summary.md
+        - file: content/c-pointers-arrays-strings/exercises.md
     - title: "L05 C Memory Management"
       children:
         - file: content/c-memory-management/index.md
@@ -49,6 +50,7 @@ project:
         - file: content/c-memory-management/heap.md
         - file: content/c-memory-management/heap-allocator.md
         - file: content/c-memory-management/summary.md
+        - file: content/c-memory-management/exercises.md
     - title: "L06 C Odds and Ends"
       children:
         - file: content/c-odds-and-ends/index.md
