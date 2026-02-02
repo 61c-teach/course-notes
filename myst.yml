@@ -56,6 +56,7 @@ project:
         - file: content/c-odds-and-ends/index.md
         - file: content/c-odds-and-ends/ll-add-front.md
         - file: content/c-odds-and-ends/ll-full.md
+        - file: content/c-odds-and-ends/exercises.md
     - title: "L07 C Generics, Function Pointers"
       children:
         - file: content/c-generics/index.md
