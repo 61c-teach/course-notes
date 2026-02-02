@@ -18,7 +18,7 @@ subtitle: "This content is not tested"
 
 ::::
 
-In a previous version of the course, we covered floating point in much more detail. For now, we leave this content as general reference.
+In a previous version of the course, we covered floating point in much more detail over multiple lectures. In recent semesters, we have reduced floating point topics to focus on the core of the standard, and we have not covered more advanced topics like arithmetic, casting, and other floating-point representations. For now, we leave this out-of-scope content below as general reference.
 
 ## Floating Point Addition
 
@@ -106,3 +106,40 @@ It is possible to have high precision but low accuracy.
 For example, consider `float pi = 3.14;`. `pi` will be represented using all 23 bits of the significand ("highly precise"), but it is only an approximation of $\pi$ ("not accurate").
 
 Below, we discuss other floating point representations that can yield more accurate numbers in certain cases. However, because all of these representations are fixed precision (i.e., fixed bit-width) we cannot represent everything perfectly.
+
+### Even More Floating Point Representations
+
+Still more representations exist. Here are a few from the IEEE 754 standard:
+
+* **Quad-precision**, or IEEE 754 quadruple-precision format binary128. Defined as 128 bits (15 exponent bits, 112 significand bits) with unbelievable range and precision.
+* **Oct-Precision**, or IEEE 754 octuple-precision format binary256. Defined as 256 bits (19 exponent bits, 237 significand bits).
+* **Half-Precision**, or IEEE 754 half-precision format binary16. Defined as 16 bits (5 exponent bits, 10 significand bits).
+
+Domain-specific architectures demand different number formats (@tab-float-types). For example, the bfloat16[^bf16] on Google's Tensor Processing Unit (TPU) is defined over 16 bits (8 exponent bits, 7 significand bits); because of its wider exponent field, it covers the same range as IEEE 754 single-precision format at the expense of significand precision. This tradeoff is preferred given vanishing gradients towards zero for neural network training.
+
+:::{table} Different domain accelerators support various integer and floating-point formats.
+:label: tab-float-types
+:align: center
+
+| Accelerator | int4 | int8 | int16 | fp16 | bf16[^bf16] | fp32 | tf32[^tf32] |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Google TPU v1 | | x | | | | | |
+| Google TPU v2 | | | | | x | | |
+| Google TPU v3 | | | | | x | | |
+| Nvidia Volta TensorCore | | x | | x | | x | |
+| Nvidia Ampere TensorCore | x | x | x | x | x | x | x |
+| Nvidia DLA | | x | x | x | | | |
+| Intel AMX | | x | | | x | | |
+| Amazon AWS Inferentia | | x | | x | x | | |
+| Qualcomm Hexagon | | x | | | | | |
+| Huawei Da Vinci | | x | | x | | | |
+| MediaTek APU 3.0 | | x | x | x | | | |
+| Samsung NPU | | x | | | | | |
+| Tesla NPU | | x | | | | | |
+
+:::
+
+[^tf32]: See [Nvidia's TensorFloat-32](https://en.wikipedia.org/wiki/TensorFloat-32).
+[^bf16]: See [Google's bfloat16](https://docs.cloud.google.com/tpu/docs/bfloat16).
+
+For those interested, we recommend reading about the proposed [Unum format](https://en.wikipedia.org/wiki/Unum_%28number_format%29), which suggests using _variable_ field widths for the exponent and significand. This format adds a "u-bit" to tell whether the number is exact or in-between unums.

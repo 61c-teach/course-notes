@@ -6,9 +6,9 @@ title: "Special Numbers"
 ## Learning Outcomes
 
 * Understand how the IEEE 754 standard represents zero, infinity, and NaNs
+* Understand when floating point numbers trigger overflow or overflow
+* Understand how denormalized numbers implement "gradual" underflow
 * Convert denormalized numbers into their decimal counterpart
-* Understand when floating point numbers trigger overflow
-* Understand when floating point numbers trigger underflow
 
 
 ::::{note} 🎥 Lecture Video (overflow and underflow)
@@ -33,15 +33,23 @@ Overflow and Underflow, 6:54 - 8:40
 
 ::::
 
-Normalized numbers are only a _fraction_ (heh) of floating point representations. For single-precision (32-bit), IEEE defines the following numbers based on the exponent field (here, the "biased exponent"):
+**Normalized numbers** are only a _fraction_ (heh) of floating point representations. For single-precision (32-bit), IEEE defines the following numbers based on the exponent field (here, the "biased exponent"):
 
-| Biased Exponent | Significand field | Object |
+
+:::{table} Exponent field values for IEEE 754 single-precision.
+:label: tab-float-exp-fields
+:align: center
+
+| Biased Exponent | Significand field | Description |
 | :--- | :--- | :--- |
-| 0 | all zeros | $\pm 0$ |
-| 0 | nonzero | Denormalized numbers |
-| 1 – 254 | anything | Normalized floating point |
-| 255 | all zeros | $\pm \infty$ |
-| 255 | nonzero | `NaN`s |
+| 0 (`0000000`) | all zeros | $\pm 0$ |
+| 0 (`0000000`) | nonzero | Denormalized numbers |
+| 1 – 254 | anything | Normalized floating point (mantissa has implicit leading 1) |
+| 255 (`1111111`) | all zeros | $\pm \infty$ |
+| 255 (`1111111`) | nonzero | `NaN`s |
+
+:::
 
 In this section, we will motivate why these "special numbers" exist by considering the pitfalls of overflow **and** underflow. Then, we'll define each of the special numbers.
 
+## Overflow and Underflow

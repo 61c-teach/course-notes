@@ -95,9 +95,9 @@ In binary, there is only one non-zero digit: `1`. This means that a representati
 
 ## IEEE 754 Single-Precision Floating Point
 
-This discussion leads us to the definition of the **IEEE 754 Single-Precision Floating Point**, which is used for the C  `float` data type. This format leverages binary normalized form to represent a wide range of numbers for scientific use using **32 bits**.[^double]
+This discussion leads us to the definition of the **IEEE 754 Single-Precision Floating Point**, which is used for the C  `float` variable type. This format leverages binary normalized form to represent a wide range of numbers for scientific use using **32 bits**.[^double]
 
-[^double]: The IEEE 754 Double-Precision Floating Point is used for the C `double` data type, which is 64 bits.
+[^double]: The IEEE 754 Double-Precision Floating Point is used for the C `double` variable type, which is 64 bits. Read more in a [bonus section](#sec-double).
 
 This standard was pioneered by UC Berkeley Professor William ("Velvel") Kahan. Prior to Kahan's system, the ecosystem for representing floating points was chaotic, and calculations on one machine would give different answers on another. By leading the effort to centralize floating point arithmetic into the IEEE 754 standard, Professor Kahan [earned the Turing Award in 1988](https://people.eecs.berkeley.edu/~wkahan/ieee754status/754story.html).
 
@@ -133,13 +133,15 @@ This design will seem esoteric at first glance. Why is there a $1+$? Where did t
 :label: tab-float
 :align: center
 
-| Field Name | Represents | Normalized Numbers|
+| Field Name | Represents | Normalized Numbers[^exp-norm] |
 | :--- | :-- | :--- |
 | s | Sign | 1 is negative; 0 is positive |
 | exponent | Bias-Encoded Exponent | Subtract 127 from exponent field to get the exponent value. |
 | significand | Fractional Component of the Mantissa | Interpret the significand as a 23-bit fraction (`0.xx...xx`) and add 1 to get the mantissa value. |
 
 :::
+
+[^exp-norm]: Only valid when exponent field is in the range `0000001` (1) to `1111110` (254), i.e., when it is neither 0 nor 255.
 
 :::{note} Why use bias-encoded exponents?
 :class: dropdown
@@ -155,18 +157,29 @@ To support sorting numbers of the same sign with just integer hardware, a bigger
 
 Remember that in binary normalized form, the mantissa _always_ leads with a 1. IEEE 754 represents normalized numbers by assuming that there is _always_ an implicit 1, then having the significand explicitly representing the bits bits after the binary point. In other words, it is always true that for normalized numbers, 0 < significand < 1.
 
-This assumption for normalized numbers helps IEEE 754 single-precision pack more representable (normalized) numbers into the same 23 bits, because now we represent 24-bit (normalized) mantissas!
+This assumption for normalized numbers helps IEEE 754 single-precision pack more representable (normalized) numbers into the same 23 bits, because now we represent 24-bit (normalized) mantissas! In other words, the precision is 24 bits, though we only 23 bits.
 :::
 
 ## Zero, Infinity, and More
 
 [Normalized numbers](#sec-normalized) are not the only values that can be represented by the IEEE 754 standard. We discuss zero, infinity, and other numbers in [a later section](#sec-special-floats).
 
+(sec-double)=
+### IEEE 754 Double-Precision Floating Point
+
+The IEEE 754 double-precision floating point standard is used for the C `double` variable type. It has three fields, now over 64 bits:
+
+* Sign: Still 1 sign bit (most significant bit, bit index 63)
+* Exponent: 11 bits with bias -1023
+* Significand: now 52 bits
+
+The primary advantage is greater accuracy due to the larger significand. The normalized form can represent numbers from about $2.0 \times 10^{-308}$ to $2.0 \times 10^{308}$.
+
 ## Use a Floating Point Converter
 
 Check out [this web app](https://www.h-schmidt.net/FloatConverter/IEEE754.html) for a simple converter between decimal numbers and their IEEE 754 single-precision floating point format.
 
-While we would love for you to use the converter to understand the comic in @fig-smbc-float, it should be noted that the robot is assuming IEEE 754 **double**-precision format.
+While we would love for you to use the converter to understand the comic in @fig-smbc-float, it should be noted that the robot is assuming IEEE 754 **double**-precision format (see [another section](#sec-double)).
 
 :::{figure} images/smbc-float.png
 :label: fig-smbc-float
@@ -177,4 +190,4 @@ While we would love for you to use the converter to understand the comic in @fig
 Welcome to the Secret Robot Internet ([SMBC Comics](https://www.smbc-comics.com/comic/2013-06-05)).
 :::
 
-Because floating point is based on powers of two, it cannot represent most decimal fractions exactly. Here, 0.3 is inaccurately represented as `0.29999999999`, and $0.1 + 0.2$ with `double`s is `0.30000000000000004`.  Read more about `double`s, addition, and accuracy in the [optional section](#sec-float-discussion).
+Because floating point is based on powers of two, it cannot represent most decimal fractions exactly. Here, 0.3 is inaccurately represented as `0.29999999999`, and $0.1 + 0.2$ with `double`s is `0.30000000000000004`.  Read more about `double`s, addition, and accuracy in [another section](#sec-float-discussion).
