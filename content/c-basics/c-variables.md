@@ -27,7 +27,7 @@ You are not expected to learn the many, many details of C off the bat. But you s
 Just like in Java, all C variables are typed.
 
 :::{table} C Basic Types; see [Wikibooks](https://en.wikibooks.org/wiki/C_Programming/Language_Reference#Table_of_data_types).
-:label: tbl-c-types
+:label: tab-c-types
 :align: center
 
 | Type | Description | Example |
@@ -103,7 +103,7 @@ $$
 Remember, C was built for efficiency. Early on, they determined that the size of `int` was the size most efficient to read, write, and operate on two's complement numbers. So a 32-bit machine would often have 4-byte integers (4 bytes = 32 bits) if the datapath was built for 32-bit values, and a 64-bit machine would have 8-byte integers (8 bytes = 64 bits), but not always.
 
 :::{table} Integer types in C, Java and Python
-:label: tbl-int-types
+:label: tab-int-types
 :align: center
 
 | Language | size of integer (in bits) |
@@ -116,13 +116,15 @@ Remember, C was built for efficiency. Early on, they determined that the size of
 To write a C program, then, one would _really_ need to know the intricacies of hardware. But this loses the benefit of portability; code that assumes an $N$-bit-wide datatype (say, because we want to represent $2^N$ non-integer things) might use `int`, then need to change types to work on another machine.
 
 (inttypes)=
-:::{hint} Use `inttypes.h`
+:::{hint} Use `inttypes.h` or `stdint.h`
 
-We encourage you to use `inttypes.h`, part of the C standard library. It specifies unsigned and signed types[^typedef-int] like `uint8_t` and `int32_t`, where width is specified in bits. So `int32_t x;` would declare `x` as a 32-bit wide signed integer that uses two's complement representation.
+We encourage you to use `inttypes.h` or `stdint.h`, part of the C standard library[^inttypes-vs-stdint]. It specifies unsigned and signed types[^typedef-int] like `uint8_t` and `int32_t`, where width is specified in bits. So `int32_t x;` would declare `x` as a 32-bit wide signed integer that uses two's complement representation.
 
 :::
 
 [^typedef-int]: More precisely, `inttypes.h` declares many `typedef` names of the form `intN_t` and `uintN_t` that designate two's complement and unsigned integer types, respectively, of specific bitwidth `N`.
+
+[^inttypes-vs-stdint]: See [StackOverflow](The array name `a` is the address of the first element in `a`; ) for differences between `inttypes.h` and `stdint.h`. For the purposes of this class, either is fine.
 
 ## Variable declaration and initialization
 
