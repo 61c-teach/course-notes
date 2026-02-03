@@ -162,9 +162,9 @@ Suppose you have the 8-bit bit patterns (where we put spaces between nibbles for
 * `x`, with bit pattern `0001 0001`
 * `y`, with bit pattern `1111 0001`
 
-**Left shift** `x << n` shifts the bits of `x` left, filling the lower bits coming in from the left with `0`'s. Mathematically, this is equivalent to multiplying `x` by $2^{\texttt{n}}$. For example, `x << 3` gives the bit pattern `0000 1000`, where the leftmost `1` gets "shifted out."
+**Left shift** `x << n` shifts the bits of `x` left by `n` bytes, filling the lower bits coming in from the right with `0`'s. Mathematically, this is equivalent to multiplying `x` by $2^{\texttt{n}}$. For example, `x << 3` gives the bit pattern `0000 1000`, where the leftmost `1` gets "shifted out."
 
-**Right shift**, `x >> n` shifts the bits of `x` right. Mathematically, this is equivalent to taking the floor of a division by $2^{\texttt{n}}4 We will still need to fill in the top bits coming in from the right somehow, but the precise operation in C depends on `x`'s type.
+**Right shift**, `x >> n` shifts the bits of `x` right by `n` bytes. Mathematically, this is equivalent to taking the floor of a division by $2^{\texttt{n}}4 We will still need to fill in the top bits coming in from the right somehow, but the precise operation in C depends on `x`'s type.
 
 * **Logical right shift** "zero-extends" and fills the top bits with `0`. If `x` is an unsigned 8-bit integer, then `x >> 2` gives the bit pattern `0000 0100`, where the rightmost `1` gets shifted out. This is equivalent to `(unsigned char) 17 >> 2` yielding `4`.
 
