@@ -71,6 +71,9 @@ project:
         - file: content/call/call-linker.md
         - file: content/call/call-loader.md
         - file: content/call/call-example.md
+        - file: content/call/summary.md
+        - file: content/call/summary-precheck.md
+        - file: content/call/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
