@@ -69,22 +69,34 @@ project:
         - file: content/risc-v/rv-elements.md
         - file: content/risc-v/rv-add-sub.md
         - file: content/risc-v/rv-immediates.md
+        - file: content/risc-v/summary.md
+        - file: content/risc-v/summary-precheck.md
+        - file: content/risc-v/exercises.md
     - title: "L00 RISC-V Decisions I"
       children:
         - file: content/rv-decisionsI/index.md
         - file: content/rv-decisionsI/rv-d-transfer.md
         - file: content/rv-decisionsI/rv-d-decision-making
+        - file: content/rv-decisionsI/summary.md
+        - file: content/rv-decisionsI/summary-precheck.md
+        - file: content/rv-decisionsI/exercises.md
     - title: "L00 RISC-V Decisions II"
       children:
         - file: content/rv-decisionsII/index.md
         - file: content/rv-decisionsII/rv-d-machine-program.md
         - file: content/rv-decisionsII/rv-d-function-calls
+        - file: content/rv-decisionsII/summary.md
+        - file: content/rv-decisionsII/summary-precheck.md
+        - file: content/rv-decisionsII/exercises.md
     - title: "L00 RISC-V Procedures"
       children:
         - file: content/rv-procs/index.md
         - file: content/rv-procs/rv-d-register-conv.md
         - file: content/rv-procs/rv-d-memory-alloc.md
         - file: content/rv-procs/rv-d-summary.md
+        - file: content/rv-procs/summary.md
+        - file: content/rv-procs/summary-precheck.md
+        - file: content/rv-procs/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
