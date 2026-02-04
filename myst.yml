@@ -63,6 +63,24 @@ project:
         - file: content/c-generics/index.md
         - file: content/c-generics/fn-ptr-example.md
         - file: content/c-generics/generics.md
+    - title: "L37 OS & Virtual Memory Intro"
+      children:
+        - file: content/os-intro/index.md
+        - file: content/os-intro/os-intro-basics.md
+        - file: content/os-intro/os-intro-functions.md
+        - file: content/os-intro/summary.md
+        - file: content/os-intro/summary-precheck.md
+        - file: content/os-intro/exercises.md
+    - title: "L00 I/O"
+      children:
+        - file: content/io/index.md
+        - file: content/io/io-polling.md
+        - file: content/io/io-interrupts.md
+        - file: content/io/io-dma.md
+        - file: content/io/io-networking.md
+        - file: content/io/summary.md
+        - file: content/io/summary-precheck.md
+        - file: content/io/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
