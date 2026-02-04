@@ -19,7 +19,7 @@ project:
 
   toc:
     - file: index.md
-    - title: L02 Number Representation
+    - title: "L02 Number Representation"
       children:
         - file: content/number-rep/index.md
         - file: content/number-rep/binary-decimal-hex.md
@@ -27,21 +27,50 @@ project:
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
         - file: content/number-rep/exercises.md
-    - title: L03 C Basics
+    - title: "L03 C Basics"
       children:
         - file: content/c-basics/index.md
         - file: content/c-basics/compile-vs-interpret.md
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
-    - title: L20 Single-Cycle CPU Datapath I
+        - file: content/c-basics/exercises.md
+    - title: "L04 C Pointers, Arrays, Strings"
+      children:
+        - file: content/c-pointers-arrays-strings/index.md
+        - file: content/c-pointers-arrays-strings/pointers.md
+        - file: content/c-pointers-arrays-strings/arrays.md
+        - file: content/c-pointers-arrays-strings/strings.md
+        - file: content/c-pointers-arrays-strings/summary.md
+        - file: content/c-pointers-arrays-strings/exercises.md
+    - title: "L05 C Memory Management"
+      children:
+        - file: content/c-memory-management/index.md
+        - file: content/c-memory-management/stack.md
+        - file: content/c-memory-management/heap.md
+        - file: content/c-memory-management/heap-allocator.md
+        - file: content/c-memory-management/summary.md
+        - file: content/c-memory-management/exercises.md
+    - title: "L06 C Odds and Ends"
+      children:
+        - file: content/c-odds-and-ends/index.md
+        - file: content/c-odds-and-ends/endianness.md
+        - file: content/c-odds-and-ends/ll-add-front.md
+        - file: content/c-odds-and-ends/ll-full.md
+        - file: content/c-odds-and-ends/exercises.md
+    - title: "L07 C Generics, Function Pointers"
+      children:
+        - file: content/c-generics/index.md
+        - file: content/c-generics/fn-ptr-example.md
+        - file: content/c-generics/generics.md
+    - title: "L20 Single-Cycle CPU Datapath I"
       children:
         - file: content/datapath-I/index.md
         - file: content/datapath-I/dpI-building.md
         - file: content/datapath-I/dpI-r-type.md
         - file: content/datapath-I/dpI-sub-datapath.md
         - file: content/datapath-I/dpI-immediates.md
-    - title: L21 Single-Cycle CPU Datapath II
+    - title: "L21 Single-Cycle CPU Datapath II"
       children:
         - file: content/datapath-II/index.md
         - file: content/datapath-II/dpII-stores.md
@@ -50,13 +79,16 @@ project:
         - file: content/datapath-II/dpII-jal.md
         - file: content/datapath-II/dpII-u-types.md
         - file: content/datapath-II/dpII-summary.md
-    - title: L22 Single-Cycle CPU Control
+    - title: "L22 Single-Cycle CPU Control"
       children:
         - file: content/datapath-control/index.md
         - file: content/datapath-control/dp-control-datapath.md
         - file: content/datapath-control/dp-control-timing.md
         - file: content/datapath-control/dp-control-design.md
         - file: content/datapath-control/dp-control-summary.md
+    - title: "Miscellaneous"
+      children:
+        - file: content/misc/unit-prefixes.md
 site:
   template: book-theme
   options:

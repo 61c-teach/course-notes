@@ -93,10 +93,10 @@ $ gdb hello_world
 (c-vs-java-sec)=
 ## C vs. Java
 
-@tbl-c-vs-java below is adapted from the [C Programming vs. Java Programming](https://introcs.cs.princeton.edu/java/faq/c2java.html) table, created for Princeton University's introductory CS sequence. Hover over the footnote for more information about each row.
+@tab-c-vs-java below is adapted from the [C Programming vs. Java Programming](https://introcs.cs.princeton.edu/java/faq/c2java.html) table, created for Princeton University's introductory CS sequence. Hover over the footnote for more information about each row.
 
 :::{table} (a) C vs. Java; (b) similar operators
-:label: tbl-c-vs-java
+:label: tab-c-vs-java
 :align: center
 
 | Feature | C | Java |
