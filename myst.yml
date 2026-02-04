@@ -70,6 +70,7 @@ project:
     - title: "Miscellaneous"
       children:
         - file: content/misc/iec-prefixes.md
+    - file: content/reference.md
 site:
   template: book-theme
   options:
