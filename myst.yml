@@ -34,6 +34,7 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+        - file: content/c-basics/summary.md
         - file: content/c-basics/exercises.md
     - title: "L04 C Pointers, Arrays, Strings"
       children:
@@ -57,12 +58,15 @@ project:
         - file: content/c-odds-and-ends/endianness.md
         - file: content/c-odds-and-ends/ll-add-front.md
         - file: content/c-odds-and-ends/ll-full.md
+        - file: content/c-odds-and-ends/summary.md
         - file: content/c-odds-and-ends/exercises.md
     - title: "L07 C Generics, Function Pointers"
       children:
         - file: content/c-generics/index.md
-        - file: content/c-generics/fn-ptr-example.md
         - file: content/c-generics/generics.md
+        - file: content/c-generics/fn-ptr.md
+        - file: content/c-generics/summary.md
+        - file: content/c-generics/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
