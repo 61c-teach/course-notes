@@ -149,7 +149,7 @@ Together, these two observations tell us that the architecture is **little endia
 
 When data occupies multiple contiguous bytes in memory, the computer must determine which of the bytes is stored at the lowest address. This decision is often informed by the hardware architecture and in what order bytes are read from memory.
 
-This property is called **endianness**. For a given word:
+This property is called **endianness**.[^gulliver] For a given word:
 
 * **Little endian** machines store the _least_significant byte_ first, at the lowest address of the word.
 * **Big endian** machines store the _most_ significant byte_ first, at the lowest address of the word.
@@ -169,10 +169,38 @@ In @tab-word-program, data columns are enumerated in reverse order: +3, +2, +1, 
 
 :::
 
-
 Read more about endianness on [Wikipedia](https://en.wikipedia.org/wiki/Endianness).
 
+[^gulliver]: The "little-endian" and "big-endian" terminology is derived from _Gulliver's Travels_ (1726) by Jonathan Swift and coined by Danny Cohen. Read the Internet Experiment Note [Holy Wars and a Plea for Peace](https://www.rfc-editor.org/ien/ien137.txt) for more information.
+
 [^endianness]: Endianness can also refer to the order in which bytes are transmitted over networks and other data communication media; most modern internet networks prefer big endian. See a relatively interesting discussion on [Reddit](https://www.reddit.com/r/learnprogramming/comments/1emdohb/can_someone_explain_to_me_why_therere_big_endian/).
+
+### Run Demo
+
+The below instructions are mostly for reference. We suggest going through Lab 02 first so you have some experience with `gdb`. Note that in order to connect `gdb` to the source file, you will need 
+
+:::{note} Demo gdb commands
+:class: dropdown
+
+```bash
+$ make clean
+$ gdb endianness
+(gdb) b 9 # set breakpoint at line 9
+(gdb) r     # run, initializing all vars
+(gdb) p/x str  # see string bytes
+(gdb) p/x str2
+(gdb) # print one word, show in hex
+(gdb) x/1wx 0x7fffffffe164
+(gdb) <enter> # repeat last action
+(gdb) … # keep pressing <enter>
+(gdb) # LSB in lowest address/word
+(gdb) # print 4 bytes, show in hex
+(gdb) x/4bx 0x7fffffffe164
+(gdb) <enter> # repeat last action
+(gdb) … # keep pressing <enter>
+(gdb) q
+```
+:::
 
 ## Alignment
 
