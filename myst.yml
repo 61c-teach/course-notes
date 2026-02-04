@@ -69,7 +69,7 @@ project:
         - file: content/c-generics/exercises.md
     - title: "Miscellaneous"
       children:
-        - file: content/misc/unit-prefixes.md
+        - file: content/misc/iec-prefixes.md
 site:
   template: book-theme
   options:

@@ -1,5 +1,5 @@
 ---
-title: "Binary and Base-10 Prefixes"
+title: "IEC and Base-10 Prefixes"
 ---
 
 ## Learning Outcomes
@@ -58,7 +58,7 @@ What is 4 KB?
 4,000 bytes. 4 KB = $ 4 \times 10^3 $ B
 :::
 
-## Binary prefixes
+## IEC (Binary) prefixes
 
 The IEC (International Electrotechnical Commission) defined binary prefixes like "kibi", "mebi", etc., to describe large binary numbers. @tab-binary-prefixes describes the binary prefixes commonly used in this class.
 
