@@ -155,7 +155,6 @@ Bitwise operations will be very useful for boolean logic later on when we introd
 ## More C Bitwise Operators: Left and Right Shift
 
 Two additional operations describe **bit shifts**. 
-We will revisit bit shifting operations later in the course. For now, we define them for the sake of being comprehensive.
 
 Suppose you have the 8-bit bit patterns (where we put spaces between nibbles for readability):
 
@@ -164,7 +163,7 @@ Suppose you have the 8-bit bit patterns (where we put spaces between nibbles for
 
 **Left shift** `x << n` shifts the bits of `x` left by `n` bits, filling the `n` lower bits ("coming in from the right") with `0`'s. Mathematically, this is equivalent to multiplying `x` by $2^{\texttt{n}}$. For example, `x << 3` gives the bit pattern `0000 1000`, where the leftmost `1` gets "shifted out."
 
-**Right shift**, `x >> n` shifts the bits of `x` right by `n` bits. Mathematically, this is equivalent to taking the floor of a division by $2^{\texttt{n}}4 We will still need to fill in the top bits coming in from the right somehow, but the precise operation in C depends on `x`'s type.
+**Right shift**, `x >> n` shifts the bits of `x` right by `n` bits. Mathematically, this is equivalent to taking the floor of a division by $2^{\texttt{n}}$. We will still need to fill in the top bits coming in from the right somehow, but the precise operation in C depends on `x`'s type.
 
 * **Logical right shift** "zero-extends" and fills the upper bits with `0`. If `x` is an unsigned 8-bit integer, then `x >> 2` gives the bit pattern `0000 0100`, where the rightmost `1` gets shifted out. This is equivalent to `(unsigned char) 17 >> 2` yielding `4`.
 
