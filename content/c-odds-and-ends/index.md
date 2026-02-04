@@ -161,7 +161,10 @@ Suppose you have the 8-bit bit patterns (where we put spaces between nibbles for
 * `x`, with bit pattern `0001 0001`
 * `y`, with bit pattern `1111 0001`
 
-**Left shift** `x << n` shifts the bits of `x` left by `n` bits, filling the `n` lower bits ("coming in from the right") with `0`'s. Mathematically, this is equivalent to multiplying `x` by $2^{\texttt{n}}$. For example, `x << 3` gives the bit pattern `0000 1000`, where the leftmost `1` gets "shifted out."
+**Left shift** `x << n` shifts the bits of `x` left by `n` bits, filling the `n` lower bits ("coming in from the right") with `0`'s. Mathematically, this is equivalent to multiplying `x` by $2^{\texttt{n}}$.
+
+  * For example, `x << 2` gives the bit pattern `0100 0100`. If we interpret `x` as a signed 8-bit integer 17, then `x << 2` is indeed $17 \times 4 = 68$.
+  * Left shifting also encounters overflow: `x << 4` gives the bit pattern `0001 0000` where the leftmost `1` gets "shifted out" of the 8-bit type (to produce the signed 8-bit integer 16, which is certainly not $17 \times 2^4$).
 
 **Right shift**, `x >> n` shifts the bits of `x` right by `n` bits. Mathematically, this is equivalent to taking the floor of a division by $2^{\texttt{n}}$. We will still need to fill in the top bits coming in from the right somehow, but the precise operation in C depends on `x`'s type.
 
