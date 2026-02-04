@@ -78,11 +78,17 @@ project:
         - file: content/pipelineII/pipelineII-hazards.md
         - file: content/pipelineII/pipelineII-datapath.md
         - file: content/pipelineII/pipelineII-data-hazards.md
+        - file: content/pipelineII/summary.md
+        - file: content/pipelineII/summary-precheck.md
+        - file: content/pipelineII/exercises.md
     - title: "L25 Pipelining III"
       children:
         - file: content/pipelineIII/index.md
         - file: content/pipelineIII/pipelineIII-control-hazards.md
         - file: content/pipelineIII/pipelineIII-superscalar.md
+        - file: content/pipelineIII/summary.md
+        - file: content/pipelineIII/summary-precheck.md
+        - file: content/pipelineIII/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
