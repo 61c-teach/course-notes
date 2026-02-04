@@ -70,6 +70,9 @@ project:
         - file: content/datapath-I/dpI-r-type.md
         - file: content/datapath-I/dpI-sub-datapath.md
         - file: content/datapath-I/dpI-immediates.md
+        - file: content/datapath-I/summary.md
+        - file: content/datapath-I/summary-precheck.md
+        - file: content/datapath-I/exercises.md
     - title: "L21 Single-Cycle CPU Datapath II"
       children:
         - file: content/datapath-II/index.md
@@ -79,6 +82,9 @@ project:
         - file: content/datapath-II/dpII-jal.md
         - file: content/datapath-II/dpII-u-types.md
         - file: content/datapath-II/dpII-summary.md
+        - file: content/datapath-II/summary.md
+        - file: content/datapath-II/summary-precheck.md
+        - file: content/datapath-II/exercises.md
     - title: "L22 Single-Cycle CPU Control"
       children:
         - file: content/datapath-control/index.md
@@ -86,6 +92,9 @@ project:
         - file: content/datapath-control/dp-control-timing.md
         - file: content/datapath-control/dp-control-design.md
         - file: content/datapath-control/dp-control-summary.md
+        - file: content/datapath-control/summary.md
+        - file: content/datapath-control/summary-precheck.md
+        - file: content/datapath-control/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
