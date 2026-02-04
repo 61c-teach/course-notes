@@ -19,7 +19,7 @@ project:
 
   toc:
     - file: index.md
-    - title: L02 Number Representation
+    - title: "L02 Number Representation"
       children:
         - file: content/number-rep/index.md
         - file: content/number-rep/binary-decimal-hex.md
@@ -27,26 +27,58 @@ project:
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
         - file: content/number-rep/exercises.md
-    - title: L03 C Basics
+    - title: "L03 C Basics"
       children:
         - file: content/c-basics/index.md
         - file: content/c-basics/compile-vs-interpret.md
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
-    - title: L00 RISC-V Instruction Formats I
+        - file: content/c-basics/exercises.md
+    - title: "L04 C Pointers, Arrays, Strings"
+      children:
+        - file: content/c-pointers-arrays-strings/index.md
+        - file: content/c-pointers-arrays-strings/pointers.md
+        - file: content/c-pointers-arrays-strings/arrays.md
+        - file: content/c-pointers-arrays-strings/strings.md
+        - file: content/c-pointers-arrays-strings/summary.md
+        - file: content/c-pointers-arrays-strings/exercises.md
+    - title: "L05 C Memory Management"
+      children:
+        - file: content/c-memory-management/index.md
+        - file: content/c-memory-management/stack.md
+        - file: content/c-memory-management/heap.md
+        - file: content/c-memory-management/heap-allocator.md
+        - file: content/c-memory-management/summary.md
+        - file: content/c-memory-management/exercises.md
+    - title: "L06 C Odds and Ends"
+      children:
+        - file: content/c-odds-and-ends/index.md
+        - file: content/c-odds-and-ends/endianness.md
+        - file: content/c-odds-and-ends/ll-add-front.md
+        - file: content/c-odds-and-ends/ll-full.md
+        - file: content/c-odds-and-ends/exercises.md
+    - title: "L07 C Generics, Function Pointers"
+      children:
+        - file: content/c-generics/index.md
+        - file: content/c-generics/fn-ptr-example.md
+        - file: content/c-generics/generics.md
+    - title: "L00 RISC-V Instruction Formats I"
       children:
         - file: content/rv-isa-formatsI/index.md
         - file: content/rv-isa-formatsI/rv-isa-fI-r-format.md
         - file: content/rv-isa-formatsI/rv-isa-fI-i-format.md
         - file: content/rv-isa-formatsI/rv-isa-fI-loads.md
         - file: content/rv-isa-formatsI/rv-isa-fI-s-format.md
-    - title: L00 RISC-V Instruction Formats II
+    - title: "L00 RISC-V Instruction Formats II"
       children:
         - file: content/rv-isa-formatsII/index.md
         - file: content/rv-isa-formatsII/rv-isa-f2-upper-immediates.md
         - file: content/rv-isa-formatsII/rv-isa-f2-j-format.md
         - file: content/rv-isa-formatsII/rv-isa-f2-summary.md
+    - title: "Miscellaneous"
+      children:
+        - file: content/misc/unit-prefixes.md
 site:
   template: book-theme
   options:
