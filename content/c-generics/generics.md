@@ -203,6 +203,87 @@ The below slidedeck traces through `swap` in action using a toy example. Initial
 :title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1pIqociLW0G65W5Bm4kPh9Kjq7UB64VdcOkhaA1zStxg/edit?usp=sharing)"
 :::
 
+## Application: `swap_ends`
+
+Finally, let’s consider generics that operate on a generic array of values. We will need to do pointer arithmetic!
+
+We would like to use the `swap` function to write a function `swap_ends`, that swaps the first and last elements in an array.
+
+The [code below](#code-swap-ends-main) will update the array `arr` as shown in @fig-swap-ends:
+
+(code-swap-ends-main)=
+```{code} c
+int main() {
+  ...
+  int32_t arr[] = {1, 2, 3, 4, 5};
+  int32_t n = sizeof(arr)/sizeof(arr[0]);
+  swap_ends(arr, n, sizeof(arr[0]); // to implement
+  ...
+}
+```
+
+:::{figure} images/swap-ends.png
+:label: fig-swap-ends
+:width: 60%
+:alt: "TODO"
+
+`swap_ends` swaps the elements `1` and `5` in the `arr` array.
+:::
+
+The function `swap_ends` has the following inputs and output:
+
+```c
+void swap_ends(void *arr, size_t nelems, size_t nbytes);
+```
+
+* `arr`: A generic pointer to a memory block (recall that all "array" arguments decay to pointers)
+* `size_t nelems`: Number of elements in the array
+* `size_t nbytes`: Size of each element, in bytes
+
+The last two parameters specify (1) how large the block of memory ("array") at `arr` is and (2) how to access sequential elements within the block. Combined, `nelems` and `nbytes` should help us access the last element in the array.
+
+:::{tip} Fill in the blank
+
+Consider the partial implementation of `swap_ends` below. What goes in the blank?
+
+```c
+void swap_ends(void *arr, size_t nelems, size_t nbytes) {
+    swap(arr, ______ , nbytes); 
+}
+```
+
+* **A.** `arr + nelems - 1`
+* **B.** `arr + (nelems - 1)*nbytes`
+* **C.** `(char *) arr + (nelems - 1) * nbytes`
+* **D.** `(char *) (arr + (nelems - 1) * nbytes)`
+* **E.**  Something else
+
+:::
+
+**Answer**: Let's consider what `swap` does. It takes two pointers and swaps `nbytes` at those positions. To swap the ends of the array in @fig-swap-ends, we would like to pass in `0x100` and `0x104` to swap.
+
+Option C does this explicitly:
+
+* `(char *) arr`: Cast generic `arr` to a `char *` to perform **bytewise arithmetic**.
+* Add `(nelems - 1) * nbytes` to the `(char *) arr` pointer.
+  * Here, because the pointer is to a `char`, pointer arithmetic is **effectively bytewise**.
+  * To point to the last element, we jump to the end of the array (in bytes), then go back by one element's length, in bytes.
+
+The final implementation of `swap_ends`:
+
+```c
+void swap_ends(void *arr, size_t nelems, size_t nbytes) {
+    swap(arr, (char *) arr + (nelems - 1) * nbytes, nbytes); 
+}
+```
+
+:::{note} Other options: Non-standard C
+
+Options B and D also work (without the `(char *)` cast) but are [not standard C](https://stackoverflow.com/questions/10058234/void-vs-char-pointer-arithmetic), which does not define pointer arithmetic on `void *` pointers. However, these options will compile and run fine on the course machines with `gcc`, which is a compiler to _GNU_ C.
+
+:::
+
+
 (sec-generic-strings)=
 ## More Generics in `string.h`
 
