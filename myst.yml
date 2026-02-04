@@ -54,14 +54,15 @@ project:
     - title: "L06 C Odds and Ends"
       children:
         - file: content/c-odds-and-ends/index.md
+        - file: content/c-odds-and-ends/endianness.md
         - file: content/c-odds-and-ends/ll-add-front.md
         - file: content/c-odds-and-ends/ll-full.md
         - file: content/c-odds-and-ends/exercises.md
     - title: "L07 C Generics, Function Pointers"
       children:
         - file: content/c-generics/index.md
-        - file: content/c-generics/fn-ptr-example.md
         - file: content/c-generics/generics.md
+        - file: content/c-generics/fn-ptr.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
