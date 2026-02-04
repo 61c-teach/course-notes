@@ -63,6 +63,32 @@ project:
         - file: content/c-generics/index.md
         - file: content/c-generics/fn-ptr-example.md
         - file: content/c-generics/generics.md
+    - title: "L23 Pipelining I"
+      children:
+        - file: content/pipelineI/index.md
+        - file: content/pipelineI/pipelineI-iron-law.md
+        - file: content/pipelineI/pipelineI-energy.md
+        - file: content/pipelineI/pipelineI-intro.md
+        - file: content/pipelineI/summary.md
+        - file: content/pipelineI/summary-precheck.md
+        - file: content/pipelineI/exercises.md
+    - title: "L24 Pipelining II"
+      children:
+        - file: content/pipelineII/index.md
+        - file: content/pipelineII/pipelineII-hazards.md
+        - file: content/pipelineII/pipelineII-datapath.md
+        - file: content/pipelineII/pipelineII-data-hazards.md
+        - file: content/pipelineII/summary.md
+        - file: content/pipelineII/summary-precheck.md
+        - file: content/pipelineII/exercises.md
+    - title: "L25 Pipelining III"
+      children:
+        - file: content/pipelineIII/index.md
+        - file: content/pipelineIII/pipelineIII-control-hazards.md
+        - file: content/pipelineIII/pipelineIII-superscalar.md
+        - file: content/pipelineIII/summary.md
+        - file: content/pipelineIII/summary-precheck.md
+        - file: content/pipelineIII/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/unit-prefixes.md
