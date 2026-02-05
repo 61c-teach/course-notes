@@ -40,7 +40,9 @@ The above code defines `BYTE` as another name for `uint8_t`, allowing us to decl
 
 `struct`s are structured groups of variables. A `struct` is an abstract data type definition. It feels very much like Python where you have a class and dot fields, but you have a lot more control.
 
-Structs and `typedef`s are often used in tandem. Longer example:
+Structs and `typedef`s are often used in tandem[^typedef-struct]. Longer example:
+
+[^typedef-struct]: Read more on [StackOverflow](https://stackoverflow.com/questions/1675351/typedef-struct-vs-struct-definitions).
 
 ```{code} c
 :linenos:
@@ -102,10 +104,9 @@ All CPP commands begin with `#`:
 * `#define PI (3.14159)`: Define constant
 * `#if/#endif`: Conditionally include text. Useful if this C program will be compiled onto different machines and therefore require architecture-dependent libaries
 
-To see the result of preprocessing, you can use the `-save-temps` option in `gcc`. Read more about [CPP on the GCC docs](http://gcc.gnu.org/onlinedocs/cpp/)
+To see the result of preprocessing, you can use the `-save-temps` option in `gcc`. Read the GCC docs for more on [CPP](http://gcc.gnu.org/onlinedocs/cpp/) and [macros](https://gcc.gnu.org/onlinedocs/cpp/Macros.html).
 
 :::
-
 
 ### Constants and Enums
 
@@ -170,3 +171,7 @@ float dollars_and_cents(float cost) { return cost; }
 * Parameters also must be typed.
 
 Variables and functions must be declared before use. In older C versions, this meant that all function declarations needed to be at top of files, or included in headers. Function implementations could be described later in the file. In more recent C, functions can be used so long as they are declared in the file.
+
+## Header files
+
+Header files allow you to share functions and macros across different source files. For more info, see the [GCC header docs](https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html#Header-Files).

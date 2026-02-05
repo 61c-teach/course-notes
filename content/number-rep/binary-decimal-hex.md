@@ -55,10 +55,10 @@ The alien, the astronaut, and the pile of rocks use three different representati
 
 While there are an infinite number of bases with which to represent numbers, we discuss three will be the most useful to us, as computer scientists: **decimal**, **binary**, and **hexadecimal** representations.
 
-@tbl-dec-hex-bin probably makes little sense to you at the moment, but we present it first so you can make some educated guesses.
+@tab-dec-hex-bin probably makes little sense to you at the moment, but we present it first so you can make some educated guesses.
 
 :::{table} Decimal, binary, and hexadecimal digits.
-:label: tbl-dec-hex-bin
+:label: tab-dec-hex-bin
 :align: center
 
 | System | \# Digits | Digits |
@@ -203,13 +203,10 @@ which is just fancy notation to say that instead of a 10's or 100's place we hav
 
 The slidedeck below shows how we can convert the decimal $13$ into its binary representation, `0b1101`.
 
-<html>
-  <head>
-    <title>Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing)</title>
-  </head>
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSRRi1DDwigsxmr5R_fPwZ1uAOKKJ-fblPQg6GFNICf9he20UUYX_gZLwdrMG4HRvrtcD3e9nkBwk29/pubembed?start=false&loop=false" frameborder="0" width="480" height="400" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  <br/>
-</html>
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSRRi1DDwigsxmr5R_fPwZ1uAOKKJ-fblPQg6GFNICf9he20UUYX_gZLwdrMG4HRvrtcD3e9nkBwk29/pubembed?start=false&loop=false
+:width: 100%
+:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing"
+:::
 
 Let `val` be $13$ in the explanation below. Click to show.
 
@@ -249,12 +246,10 @@ The point of this example is to teach you some tricks for converting between bas
 
 The slidedeck below converts $165$ into its hexadecimal representation, `0xA5`.
 
-<html>
-  <head>
-    <title>Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1rHScPLQLom3OzhZyGzhct8vpXtO-AWRiXyr5C-9Qszs/edit?usp=sharing)</title>
-  </head>
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTWgqxt2kl5ip7bRfRY7P81WiQGDJSrAuKmkqE1m3mnrerVBeN2s9PGJVVaIQu0aDlsNfuvcRCK09q9/pubembed?start=false&loop=false" frameborder="0" width="480" height="400" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" ></iframe>
-</html>
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTWgqxt2kl5ip7bRfRY7P81WiQGDJSrAuKmkqE1m3mnrerVBeN2s9PGJVVaIQu0aDlsNfuvcRCK09q9/pubembed?start=false&loop=false
+:width: 100%
+:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1rHScPLQLom3OzhZyGzhct8vpXtO-AWRiXyr5C-9Qszs/edit?usp=sharing)"
+:::
 
 Let `val` be $165$ in the explanation below. Click to show.
 
