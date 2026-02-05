@@ -20,7 +20,7 @@ subtitle: TODO
 
 ## Visuals
 
-:::{figure} images/rv_12_frames_stackpointer.png
+:::{figure} images/frames-stackpointer.png
 :label: fig-rv-frames-sp
 :width: 50%
 :alt: "TODO"
@@ -28,7 +28,7 @@ subtitle: TODO
 Function Main's stack pointer example.
 :::
 
-:::{figure} images/rv_12_frames_stackpointer_foo.png
+:::{figure} images/frames-stackpointer-foo.png
 :label: fig-rv-frames-sp-foo
 :width: 50%
 :alt: "TODO"
@@ -36,7 +36,7 @@ Function Main's stack pointer example.
 Function Foo's stack pointer example.
 :::
 
-:::{figure} images/rv_12_frames_stackpointer_foo_2.png
+:::{figure} images/frames-stackpointer-foo-2.png
 :label: fig-rv-frames-sp-foo-2
 :width: 50%
 :alt: "TODO"
@@ -44,7 +44,7 @@ Function Foo's stack pointer example.
 Function Foo's stack pointer after function call.
 :::
 
-:::{figure} images/rv_12_frames_stackpointer_2.png
+:::{figure} images/frames-stackpointer-2.png
 :label: fig-rv-frames-sp-2
 :width: 50%
 :alt: "TODO"
@@ -52,7 +52,7 @@ Function Foo's stack pointer after function call.
 Function Main's stack pointer after Foo Function call.
 :::
 
-:::{figure} images/rv_12_clobbered_reg.png
+:::{figure} images/clobbered-reg.png
 :label: fig-rv-clobbered
 :width: 50%
 :alt: "TODO"
@@ -60,7 +60,7 @@ Function Main's stack pointer after Foo Function call.
 Registers in clobbered register example.
 :::
 
-:::{figure} images/rv_12_recursive_fac_1.png
+:::{figure} images/recursive-fac-1.png
 :label: fig-rv-recursive-fac-1
 :width: 50%
 :alt: "TODO"
@@ -68,7 +68,7 @@ Registers in clobbered register example.
 Code walkthrough for recursive factorial function call example (1).
 :::
 
-:::{figure} images/rv_12_recursive_fac_2.png
+:::{figure} images/recursive-fac-2.png
 :label: fig-rv-recursive-fac-2
 :width: 50%
 :alt: "TODO"
@@ -76,7 +76,7 @@ Code walkthrough for recursive factorial function call example (1).
 Code walkthrough for recursive factorial function call example (2).
 :::
 
-:::{figure} images/rv_12_recursive_fac_3.png
+:::{figure} images/recursive-fac-3.png
 :label: fig-rv-recursive-fac-3
 :width: 50%
 :alt: "TODO"
@@ -84,7 +84,7 @@ Code walkthrough for recursive factorial function call example (2).
 Code walkthrough for recursive factorial function call example (3).
 :::
 
-:::{figure} images/rv_12_recursive_fac_4.png
+:::{figure} images/recursive-fac-4.png
 :label: fig-rv-recursive-fac-4
 :width: 50%
 :alt: "TODO"
@@ -92,7 +92,7 @@ Code walkthrough for recursive factorial function call example (3).
 Code walkthrough for recursive factorial function call example (4).
 :::
 
-:::{figure} images/rv_12_recursive_fac_5.png
+:::{figure} images/recursive-fac-5.png
 :label: fig-rv-recursive-fac-5
 :width: 50%
 :alt: "TODO"
@@ -100,7 +100,7 @@ Code walkthrough for recursive factorial function call example (4).
 Code walkthrough for recursive factorial function call example (5).
 :::
 
-:::{figure} images/rv_12_recursive_fac_6.png
+:::{figure} images/recursive-fac-6.png
 :label: fig-rv-recursive-fac-6
 :width: 50%
 :alt: "TODO"
