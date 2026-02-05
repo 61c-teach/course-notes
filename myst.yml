@@ -65,13 +65,13 @@ project:
         - file: content/c-generics/generics.md
     - title: "L00 RISC-V Intro"
       children:
-        - file: content/risc-v/index.md
-        - file: content/risc-v/rv-elements.md
-        - file: content/risc-v/rv-add-sub.md
-        - file: content/risc-v/rv-immediates.md
-        - file: content/risc-v/summary.md
-        - file: content/risc-v/summary-precheck.md
-        - file: content/risc-v/exercises.md
+        - file: content/rv-intro/index.md
+        - file: content/rv-intro/rv-elements.md
+        - file: content/rv-intro/rv-add-sub.md
+        - file: content/rv-intro/rv-immediates.md
+        - file: content/rv-intro/summary.md
+        - file: content/rv-intro/summary-precheck.md
+        - file: content/rv-intro/exercises.md
     - title: "L00 RISC-V Decisions I"
       children:
         - file: content/rv-decisionsI/index.md

@@ -18,18 +18,29 @@ subtitle: TODO
 
 ::::
 
+## RISC-V Arithmetic Instruction Syntax
+
+
+:::{figure} images/r-format.png
+:label: fig-rv-add
+:width: 50%
+:alt: "TODO"
+
+Addition instruction in RISC-V and C.
+:::
+
 ## Visuals
 
 | Instruction | Name | Description |
 |-------|-------|-------|
 | `add  rd rs1 rs2` | ADD | `R[rd] = R[rs1] + R[rs2]` |
 
-:::{figure} images/rv_09_add.png
-:label: fig-rv-add
+:::{figure} images/r-format.png
+:label: fig-r-format
 :width: 50%
 :alt: "TODO"
 
-Addition instruction in RISC-V and C.
+Each arithmetic instruction has two source register and one destination register.
 :::
 
 :::{figure} images/rv_09_sub.png
