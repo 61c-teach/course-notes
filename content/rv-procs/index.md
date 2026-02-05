@@ -51,3 +51,59 @@ Function Foo's stack pointer after function call.
 
 Function Main's stack pointer after Foo Function call.
 :::
+
+:::{figure} images/rv_12_clobbered_reg.png
+:label: fig-rv-clobbered
+:width: 50%
+:alt: "TODO"
+
+Registers in clobbered register example.
+:::
+
+:::{figure} images/rv_12_recursive_fac_1.png
+:label: fig-rv-recursive-fac-1
+:width: 50%
+:alt: "TODO"
+
+Code walkthrough for recursive factorial function call example (1).
+:::
+
+:::{figure} images/rv_12_recursive_fac_2.png
+:label: fig-rv-recursive-fac-2
+:width: 50%
+:alt: "TODO"
+
+Code walkthrough for recursive factorial function call example (2).
+:::
+
+:::{figure} images/rv_12_recursive_fac_3.png
+:label: fig-rv-recursive-fac-3
+:width: 50%
+:alt: "TODO"
+
+Code walkthrough for recursive factorial function call example (3).
+:::
+
+:::{figure} images/rv_12_recursive_fac_4.png
+:label: fig-rv-recursive-fac-4
+:width: 50%
+:alt: "TODO"
+
+Code walkthrough for recursive factorial function call example (4).
+:::
+
+:::{figure} images/rv_12_recursive_fac_5.png
+:label: fig-rv-recursive-fac-5
+:width: 50%
+:alt: "TODO"
+
+Code walkthrough for recursive factorial function call example (5).
+:::
+
+:::{figure} images/rv_12_recursive_fac_6.png
+:label: fig-rv-recursive-fac-6
+:width: 50%
+:alt: "TODO"
+
+Code walkthrough for recursive factorial function call example (6).
+:::
