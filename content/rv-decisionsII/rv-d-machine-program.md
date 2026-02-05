@@ -17,3 +17,64 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/c-mem-layout.png
+:label: fig-mem-layout
+:width: 50%
+:alt: "TODO"
+
+Stack frame memory layout visualization (stack, heap, data, text).
+:::
+
+:::{figure} images/rv_11_programcounter.png
+:label: fig-pc
+:width: 50%
+:alt: "TODO"
+
+Program counter example in RISC-V.
+:::
+
+```{code} c
+:linenos:
+…
+… # li x10 0x34FF
+slli 	x12 x10 0x10
+srli  x12 x12 0x08
+and   x12 x12 x10
+```
+
+:::{figure} images/rv_11_control_flow.png
+:label: fig-rv-cf
+:width: 50%
+:alt: "TODO"
+
+Control flow in C.
+:::
+
+| Instruction | Name/Description |
+|-------|-------|
+| `beq rs1 rs2 Label` | Branch if Equal |
+| `bne rs1 rs2 Label` | Branch if Not Equal |
+| `blt rs1 rs2 Label` | Branch if Less Than (signed) (rs1 < rs2) |
+| `bge rs1 rs2 Label` | Branch if Greater or Equal (signed) (rs1 >= rs2) |
+| `bltu rs1 rs2 Label` | Branch if Less Than (unsigned) |
+| `bgeu rs1 rs2 Label` | Branch if Greater Than or Equal (unsigned) |
+| `j Label` | Unconditional jump |
+
+:::{figure} images/rv_11_loop_example1-3.png
+:label: fig-rv_loopassembly1
+:width: 100%
+:alt: "TODO"
+
+Loop in assembly example with register visualization (1).
+:::
+
+:::{figure} images/rv_11_loop_example4-6.png
+:label: fig-rv-loopassembly2
+:width: 100%
+:alt: "TODO"
+
+Loop in assembly example with register visualization (2).
+:::
