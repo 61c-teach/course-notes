@@ -164,8 +164,13 @@ This assumption for normalized numbers helps IEEE 754 single-precision pack more
 
 [Normalized numbers](#sec-normalized) are not the only values that can be represented by the IEEE 754 standard. We discuss zero, infinity, and other numbers in [a later section](#sec-special-floats).
 
+## Use a Floating Point Converter
+
+Check out [this web app](https://www.h-schmidt.net/FloatConverter/IEEE754.html) for a simple converter between decimal numbers and their IEEE 754 single-precision floating point format.
+
+
 (sec-double)=
-### IEEE 754 Double-Precision Floating Point
+## IEEE 754 Double-Precision Floating Point
 
 The IEEE 754 double-precision floating point standard is used for the C `double` variable type. It has three fields, now over 64 bits:
 
@@ -174,10 +179,6 @@ The IEEE 754 double-precision floating point standard is used for the C `double`
 * Significand: now 52 bits
 
 The primary advantage is greater accuracy due to the larger significand. The normalized form can represent numbers from about $2.0 \times 10^{-308}$ to $2.0 \times 10^{308}$.
-
-## Use a Floating Point Converter
-
-Check out [this web app](https://www.h-schmidt.net/FloatConverter/IEEE754.html) for a simple converter between decimal numbers and their IEEE 754 single-precision floating point format.
 
 While we would love for you to use the converter to understand the comic in @fig-smbc-float, it should be noted that the robot is assuming IEEE 754 **double**-precision format (see [another section](#sec-double)).
 
