@@ -84,9 +84,9 @@ When teaching, we have to choose an ISA. x86 is very complex, while older or "ma
 
 The RISC-V[^isa] ISA was developed in 2010 at UC Berkeley. After its emergence about 10 years ago, it has been used to develop all levels of computing systems, from microcontrollers in embeded systems to warehouse-scale supercomputers. It supports many processor variants–most commonly, 32-bit, 64-bit, and 128-bit.
 
-RISC-V is extremely popular for two primary reasons: It is **open-source** and **license-free**. Anyone can use it without paying rights, making it popular for teaching[^teaching], research, _and_ commercial use. The RISC-V development is supported by a growing shared, international ecosystem[^rv-international] of academic and industry leaders. 
+RISC-V is extremely popular for two primary reasons: It is **open-source** and **license-free**. Anyone can use it without paying rights, making it popular for teaching[^teaching], research, _and_ commercial use. The RISC-V development is supported by a growing shared, international ecosystem[^rv-international] of academic and industry leaders. The entire definition of the RISC-V architecture fits on a single page called the "Green Card,"[^green-card] named after the famous IBM 360 green card from the 1960s.
 
-We teach RISC-V in our class because it is simple and elegant–both for understanding assembly language _and_ for designing computer architecture. The entire definition of the RISC-V architecture fits on a single page called the "Green Card,"[^green-card] named after the famous IBM 360 green card from the 1960s, Go Bears :-)
+We teach RISC-V in our class because it is simple and elegant–both for understanding assembly language _and_ for designing computer architecture. Go Bears :-)
 
 [^isa]: [RISC-V Unprivileged Instruction Set Architecture Specification](https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html)
 

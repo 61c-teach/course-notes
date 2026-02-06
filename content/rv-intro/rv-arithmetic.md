@@ -273,6 +273,7 @@ To assign the C integer variable `f` to the value of another integer variable `g
 To assign the variable `f` to a numeric constant, use `addi` with `x0` as the source register operand.
 :::
 
+(sec-pseudoinstructions)=
 ## Pseudoinstructions
 
 We have just seen several cases where common C statements translate into other instructions in our reduced instruction set architecture. While this is fine and dandy for designing architecture, compilers (and you, as a human assembly instruction-writer) will find it useful to use **pseudoinstructions**. 
