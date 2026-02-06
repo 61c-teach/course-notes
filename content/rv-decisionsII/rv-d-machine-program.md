@@ -28,7 +28,7 @@ subtitle: TODO
 Stack frame memory layout visualization (stack, heap, data, text).
 :::
 
-:::{figure} images/rv_11_programcounter.png
+:::{figure} images/programcounter.png
 :label: fig-pc
 :width: 50%
 :alt: "TODO"
@@ -45,7 +45,7 @@ srli  x12 x12 0x08
 and   x12 x12 x10
 ```
 
-:::{figure} images/rv_11_control_flow.png
+:::{figure} images/control-flow.png
 :label: fig-rv-cf
 :width: 50%
 :alt: "TODO"
@@ -63,7 +63,7 @@ Control flow in C.
 | `bgeu rs1 rs2 Label` | Branch if Greater Than or Equal (unsigned) |
 | `j Label` | Unconditional jump |
 
-:::{figure} images/rv_11_loop_example1-3.png
+:::{figure} images/loop-example1-3.png
 :label: fig-rv_loopassembly1
 :width: 100%
 :alt: "TODO"
@@ -71,7 +71,7 @@ Control flow in C.
 Loop in assembly example with register visualization (1).
 :::
 
-:::{figure} images/rv_11_loop_example4-6.png
+:::{figure} images/loop-example4-6.png
 :label: fig-rv-loopassembly2
 :width: 100%
 :alt: "TODO"

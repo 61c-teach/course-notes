@@ -20,7 +20,7 @@ subtitle: TODO
 
 ## Visuals
 
-:::{figure} images/rv_10_memory.png
+:::{figure} images/memory.png
 :label: fig-rv-memory
 :width: 100%
 :alt: "TODO"
@@ -28,7 +28,7 @@ subtitle: TODO
 Diagram of processor and memory data transfer.
 :::
 
-:::{figure} images/rv_10_load_store.png
+:::{figure} images/load-store.png
 :label: fig-rv-load-store
 :width: 100%
 :alt: "TODO"
@@ -36,7 +36,7 @@ Diagram of processor and memory data transfer.
 Load and store between register and memory.
 :::
 
-:::{figure} images/rv_10_loadword_mem.png
+:::{figure} images/loadword-mem.png
 :label: fig-rv-loadword-mem
 :width: 50%
 :alt: "TODO"
@@ -44,7 +44,7 @@ Load and store between register and memory.
 Example memory contents during load word operation.
 :::
 
-:::{figure} images/rv_10_loadword_ex.png
+:::{figure} images/loadword-ex.png
 :label: fig-rv-loadword-ex
 :width: 100%
 :alt: "TODO"
@@ -52,7 +52,7 @@ Example memory contents during load word operation.
 Example load word instruction in memory.
 :::
 
-:::{figure} images/rv_10_storeword_mem.png
+:::{figure} images/storeword-mem.png
 :label: fig-rv-storeword-mem
 :width: 50%
 :alt: "TODO"
@@ -60,7 +60,7 @@ Example load word instruction in memory.
 Example memory contents during store word operation.
 :::
 
-:::{figure} images/rv_10_storeword_ex.png
+:::{figure} images/storeword-ex.png
 :label: fig-rv-storeword-ex
 :width: 100%
 :alt: "TODO"
@@ -68,7 +68,7 @@ Example memory contents during store word operation.
 Example store word instruction in memory.
 :::
 
-:::{figure} images/rv_10_loadbyte.png
+:::{figure} images/loadbyte.png
 :label: fig-rv-loadbyte
 :width: 100%
 :alt: "TODO"
@@ -76,7 +76,7 @@ Example store word instruction in memory.
 Example load byte instruction in memory.
 :::
 
-:::{figure} images/rv_10_storebyte.png
+:::{figure} images/storebyte.png
 :label: fig-rv-storebyte
 :width: 100%
 :alt: "TODO"
@@ -88,7 +88,7 @@ Example store byte instruction in memory.
 |-------|-------|-------|-------|
 | loading size in byte | 4 | 2 | 1 |
 
-:::{figure} images/rv_10_examplex12.png
+:::{figure} images/examplex12.png
 :label: fig-rv-example-x12
 :width: 100%
 :alt: "TODO"
@@ -96,7 +96,7 @@ Example store byte instruction in memory.
 Load instruction example with x12.
 :::
 
-:::{figure} images/rv_10_examplex12_sol1.png
+:::{figure} images/examplex12-sol1.png
 :label: fig-rv-example-x12-sol1
 :width: 100%
 :alt: "TODO"
@@ -104,7 +104,7 @@ Load instruction example with x12.
 Solution (1/3): load instruction example with x12.
 :::
 
-:::{figure} images/rv_10_examplex12_sol2.png
+:::{figure} images/examplex12-sol2.png
 :label: fig-rv-example-x12-sol2
 :width: 100%
 :alt: "TODO"
@@ -112,7 +112,7 @@ Solution (1/3): load instruction example with x12.
 Solution (2/3) (store): load instruction example with x12.
 :::
 
-:::{figure} images/rv_10_examplex12_sol3.png
+:::{figure} images/examplex12-sol3.png
 :label: fig-rv-example-x12-sol3
 :width: 100%
 :alt: "TODO"

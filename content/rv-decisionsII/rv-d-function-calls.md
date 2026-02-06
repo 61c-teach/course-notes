@@ -20,7 +20,7 @@ subtitle: TODO
 
 ## Visuals
 
-:::{figure} images/rv_12_jal_jr.png
+:::{figure} images/jal-jr.png
 :label: fig-rv-jal-jr
 :width: 100%
 :alt: "TODO"

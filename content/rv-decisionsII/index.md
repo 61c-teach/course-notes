@@ -31,7 +31,7 @@ subtitle: TODO
 | `x6` | `t1` | Temporary Register |
 | `x7` | `t2` | Temporary Register |
 
-:::{figure} images/rv_10_stackframe_1.png
+:::{figure} images/stackframe-1.png
 :label: fig-rv-stackframe-1
 :width: 50%
 :alt: "TODO"
@@ -39,7 +39,7 @@ subtitle: TODO
 Stack frame example (1).
 :::
 
-:::{figure} images/rv_10_stackframe_2.png
+:::{figure} images/stackframe-2.png
 :label: fig-rv-stackframe-2
 :width: 50%
 :alt: "TODO"
@@ -64,7 +64,7 @@ sb t0 9(sp)
 sb x0 10(sp)
 ```
 
-:::{figure} images/rv_10_stackframe_3.png
+:::{figure} images/stackframe-3.png
 :label: fig-rv-stackframe-3
 :width: 100%
 :alt: "TODO"
@@ -72,7 +72,7 @@ sb x0 10(sp)
 Stack frame example (3).
 :::
 
-:::{figure} images/rv_10_stackframe_4.png
+:::{figure} images/stackframe-4.png
 :label: fig-rv-stackframe-4
 :width: 50%
 :alt: "TODO"
@@ -80,7 +80,7 @@ Stack frame example (3).
 Stack frame example (4).
 :::
 
-:::{figure} images/rv_10_stackframe_5.png
+:::{figure} images/stackframe-5.png
 :label: fig-rv-stackframe-5
 :width: 50%
 :alt: "TODO"
@@ -96,7 +96,7 @@ li t1 0x0000676E
 sw t1 8(sp)
 ```
 
-:::{figure} images/rv_10_stackframe_6.png
+:::{figure} images/stackframe-6.png
 :label: fig-rv-stackframe-6
 :width: 50%
 :alt: "TODO"
@@ -104,7 +104,7 @@ sw t1 8(sp)
 Stack frame example (6).
 :::
 
-:::{figure} images/rv_10_stackframe_7.png
+:::{figure} images/stackframe-7.png
 :label: fig-rv-stackframe-7
 :width: 50%
 :alt: "TODO"
@@ -118,7 +118,7 @@ lb t0 7(sp)
 sb t0 52(sp)
 ```
 
-:::{figure} images/rv_10_stackframe_8.png
+:::{figure} images/stackframe-8.png
 :label: fig-rv-stackframe-8
 :width: 100%
 :alt: "TODO"
@@ -133,7 +133,7 @@ add t2 t0 t1
 sw t2 28(sp)
 ```
 
-:::{figure} images/rv_10_stackframe_9.png
+:::{figure} images/stackframe-9.png
 :label: fig-rv-stackframe-9
 :width: 50%
 :alt: "TODO"
