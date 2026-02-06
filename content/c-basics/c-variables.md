@@ -36,7 +36,7 @@ Just like in Java, all C variables are typed.
 | `unsigned int` | Unsigned Integers (i.e., non-negatives) | `0`, `6`, `35102` |
 | `float` | Floating point decimal | `0.0`, `3.14159`, `6.02e23` |
 | `double` | Equal or higher precision floating point | `0.0`, `3.14159`, `6.02e23` |
-| `char` | Single character | `'a'`, `'D'`, `'\\n'` |
+| `char` | Single character | `'a'`, `'D'`, `'\n'` |
 | `short` | Shorter int | `-7` |
 | `long` | Longer int | `0`, `78`, `-217`, `301720971` |
 | `long long` | Even longer int | `3170519272109251` |
@@ -128,9 +128,9 @@ We encourage you to use `inttypes.h` or `stdint.h`, part of the C standard libra
 
 ## Variable declaration and initialization
 
-**Cautionary note**: A lot of C has "undefined behavior." It is totally possible for a C program will run one way on one computer and some other way on another. It is even possible to run differently each time the program is executed on the same machine![^heisenbug]
+**Cautionary note**: A lot of C has "undefined behavior." It is totally possible for a C program to run one way on one computer and some other way on another. It is even possible to run differently each time the program is executed on the same machine![^heisenbug]
 
-[^heisenbug]: “Heisenbugs” are bugs that seem random/hard to reproduce, and seem to disappear or change when debugging. By comparison, "Borhbugs" are repeatable and reproducible.
+[^heisenbug]: “Heisenbugs” are bugs that seem random/hard to reproduce, and seem to disappear or change when debugging. By comparison, "Bohrbugs" are repeatable and reproducible.
 
 Consider the following code. What is printed?
 
