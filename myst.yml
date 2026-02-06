@@ -68,8 +68,7 @@ project:
       children:
         - file: content/rv-intro/index.md
         - file: content/rv-intro/rv-elements.md
-        - file: content/rv-intro/rv-add-sub.md
-        - file: content/rv-intro/rv-immediates.md
+        - file: content/rv-intro/rv-arithmetic.md
         - file: content/rv-intro/summary.md
         - file: content/rv-intro/summary-precheck.md
         - file: content/rv-intro/exercises.md

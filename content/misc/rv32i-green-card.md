@@ -3,15 +3,12 @@ title: "RV32I Green Card"
 subtitle: 32-bit RISC-V Processor, Integer Instruction Set
 ---
 
-**Reference**: The official RISC-V unprivileged specification, [RV32I Base Integer Instruction Set, Version 2.1](https://docs.riscv.org/reference/isa/unpriv/rv32.html)
+**Reference**: The official RISC-V unprivileged specification, [RV32I Base Integer Instruction Set, Version 2.1](https://docs.riscv.org/reference/isa/unpriv/rv32.html). In practice, the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc) will have everything you need.
 
-**Calling convention**: Volume I, V2.1, 2014: [Chapter 18
-Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.pdf). This chapter has been superseded by the RISC-V ELF psABI
-Specification ([RISC-V Calling Conventions](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc)), though the integer register convention remains the same.
-
-
+(sec-green-card)=
 ## RV32I Base Integer Instruction Set
 
+(sec-green-card-arithmetic)=
 ### Arithmetic
 
 :::{table} RV32I Instructions: Arithmetic
@@ -103,6 +100,8 @@ Extension:
 
 ## Pseudoinstructions
 
+See the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc#pseudoinstructions) and [this 2024 GitHub issue discussion](https://github.com/riscv/riscv-isa-manual/issues/1470).
+
 :::{table} RV32I Common Pseudoinstructions
 :label: tab-rv32i-pseudoinstructions
 :align: center
@@ -125,6 +124,10 @@ Extension:
 :::
 
 ## Register Convention
+
+**Reference**: Volume I, V2.1, 2014: [Chapter 18
+Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.pdf). This chapter has been superseded by the RISC-V ELF psABI
+Specification ([RISC-V Calling Conventions](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc)), though the integer register convention remains the same. Again, we find the table from the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc#general-registers) the most useful.
 
 :::{table} RV32I Register Convention
 :label: tab-calling-convention
