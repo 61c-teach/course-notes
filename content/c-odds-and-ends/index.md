@@ -154,7 +154,7 @@ Bitwise operations will be very useful for boolean logic later on when we introd
 
 ## More C Bitwise Operators: Left and Right Shift
 
-Two additional operations describe **bit shifts**. 
+Two additional operations describe **bit shifts**.
 
 Suppose you have the 8-bit bit patterns (where we put spaces between nibbles for readability):
 

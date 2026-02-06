@@ -67,6 +67,16 @@ project:
         - file: content/c-generics/fn-ptr.md
         - file: content/c-generics/summary.md
         - file: content/c-generics/exercises.md
+    - title: "L08 Floating Point"
+      children:
+        - file: content/floating-point/index.md
+        - file: content/floating-point/fp-floating-point.md
+        - file: content/floating-point/fp-examples.md
+        - file: content/floating-point/fp-special-numbers.md
+        - file: content/floating-point/fp-discussion.md
+        - file: content/floating-point/summary.md
+        # - file: content/floating-point/summary-precheck.md
+        # - file: content/floating-point/exercises.md
     - title: "Miscellaneous"
       children:
         - file: content/misc/iec-prefixes.md
