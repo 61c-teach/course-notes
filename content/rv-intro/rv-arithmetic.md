@@ -2,11 +2,12 @@
 title: "RISC-V Arithmetic Instructions"
 ---
 
+(sec-rv-arithmetic)=
 ## Learning Outcomes
 
 * Write assembly to perform arithmetic operations.
 * Write arithmetic instructions involving immediates.
-* Explain why "`subi`" is not defined as a separate instruction in RISC-V.
+* Understand how pseudoinstructions and the zero register help balance a reduced instruction set with flexibility of operations.
 
 ::::{note} 🎥 Lecture Video: `add`/`sub`
 :class: dropdown
@@ -107,6 +108,7 @@ One key difference to keep in mind is that addition is commutative, so it doesn'
 
 :::
 
+(sec-arithmetic-examples)=
 ### RISC Arithmetic: Examples
 
 As mentioned [earlier](#tab-hll-vs-assembly), a single line of C may translate into several lines of RISC-V. Consider the C integer arithmetic statement:
@@ -279,7 +281,7 @@ We have just seen several cases where common C statements translate into other i
 
 Consider two examples below (and see the full set in the [RISC-V green card](#tab-rv32i-pseudoinstructions)).
 
-:::{table} The `mv` and `li` pseudoinstructions.
+:::{table} The subset pseudoinstructions.
 :label: tab-mv-li
 :align: center
 
@@ -287,9 +289,11 @@ Consider two examples below (and see the full set in the [RISC-V green card](#ta
 | :--- | :--- | :--- | :--- |
 | `mv rd rs1` | MoVe | `R[rd] = R[rs1]` | `addi rd rs1 0`[^mv] |
 | `li rd imm` | Load Immediate | `R[rd] = imm` | `addi rd x0 imm`[^lui] |
+| `nop` | No OPeration | do nothing[^nop] | `addi x0 x0 0` |
 
 [^mv]: Why `addi` with immediate `0` and not `add` with `x0` (as in @fig-rv32i-x0-mv)? See the [ASM manual on GitHub](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc#pseudoinstructions).
 [^lui]: This description is incomplete given the range of `imm` in `addi`. See the [green-card](@tab-rv32i-pseudoinstructions) and future sections for the full translation of load immediates.
+[^nop]: We will see later how a "no-op" instruction can improve hardware performance (really).
 :::
 
 When assembling to machine instructions, the assembler replaces pseudoinstructions with their real instruction counterpart.

@@ -58,28 +58,29 @@ project:
         - file: content/c-odds-and-ends/endianness.md
         - file: content/c-odds-and-ends/ll-add-front.md
         - file: content/c-odds-and-ends/ll-full.md
-        - file: content/c-odds-and-ends/summary.md
         - file: content/c-odds-and-ends/exercises.md
     - title: "L07 C Generics, Function Pointers"
       children:
         - file: content/c-generics/index.md
         - file: content/c-generics/generics.md
-    - title: "L00 RISC-V Intro"
+        - file: content/c-generics/fn-ptr.md
+        - file: content/c-generics/summary.md
+    - title: "L09 RISC-V Intro"
       children:
         - file: content/rv-intro/index.md
-        - file: content/rv-intro/rv-elements.md
+        - file: content/rv-intro/elements.md
+        - file: content/rv-intro/rv-isa.md
         - file: content/rv-intro/rv-arithmetic.md
         - file: content/rv-intro/summary.md
-        - file: content/rv-intro/summary-precheck.md
         - file: content/rv-intro/exercises.md
-    - title: "L00 RISC-V Decisions I"
+    - title: "L10 RISC-V Data Transfer"
       children:
-        - file: content/rv-decisionsI/index.md
-        - file: content/rv-decisionsI/rv-d-transfer.md
-        - file: content/rv-decisionsI/rv-d-decision-making
-        - file: content/rv-decisionsI/summary.md
-        - file: content/rv-decisionsI/summary-precheck.md
-        - file: content/rv-decisionsI/exercises.md
+        - file: content/rv-data-transfer/index.md
+        - file: content/rv-data-transfer/rv-load-store.md
+        - file: content/rv-data-transfer/examples.md
+        - file: content/rv-data-transfer/example-sp.md
+        - file: content/rv-data-transfer/summary.md
+        # - file: content/rv-data-transfer/exercises.md
     - title: "L00 RISC-V Decisions II"
       children:
         - file: content/rv-decisionsII/index.md
@@ -97,9 +98,6 @@ project:
         - file: content/rv-procs/summary.md
         - file: content/rv-procs/summary-precheck.md
         - file: content/rv-procs/exercises.md
-        - file: content/c-generics/fn-ptr.md
-        - file: content/c-generics/summary.md
-        - file: content/c-generics/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md

@@ -1,7 +1,11 @@
 ---
-title: "RV32I Green Card"
+title: "RV32I \"Green Card\""
+short_title: "RV32I Green Card"
 subtitle: 32-bit RISC-V Processor, Integer Instruction Set
 ---
+
+
+This "green card" is longer than one page, due to the accessible web format. We compensate by supplementing these lookup tables with references to the official ISA and/or assembly manuals where appropriate. For a two-sided reference card with the same information, check out the PDF reference card on our course website.
 
 **Reference**: The official RISC-V unprivileged specification, [RV32I Base Integer Instruction Set, Version 2.1](https://docs.riscv.org/reference/isa/unpriv/rv32.html). In practice, the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc) will have everything you need.
 
@@ -125,9 +129,9 @@ See the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main
 
 ## Register Convention
 
-**Reference**: Volume I, V2.1, 2014: [Chapter 18
-Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.pdf). This chapter has been superseded by the RISC-V ELF psABI
-Specification ([RISC-V Calling Conventions](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc)), though the integer register convention remains the same. Again, we find the table from the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc#general-registers) the most useful.
+See the table from the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc#general-registers), which we find the most useful. Other references include the RISC-V ELF psABI
+Specification ([RISC-V Calling Conventions](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc)), which supercedes Volume I, V2.1, 2014: [Chapter 18
+Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.pdf).
 
 :::{table} RV32I Register Convention
 :label: tab-calling-convention

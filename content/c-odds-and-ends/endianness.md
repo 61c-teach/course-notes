@@ -10,7 +10,16 @@ title: "Words, Endianness"
 * Read memory layouts of C programs compiled on little endian machines.
 * Understand how padding and packing can impact the memory layout of members within a C struct.
 
-No lecture video.
+::::{note} 🎥 Lecture Video: Endianness
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/wXGhuhLKkqg
+:width: 100%
+:title: "[CS61C FA20] Lecture 07.3 - RISC-V Intro: RISC-V add/sub Instructions"
+
+This video is taken from later in Fall 2020 and references RISC-V assembly, which we'll talk about in a few units. For now, please start from 7:33 onwards.
+:::
+::::
 
 (sec-words)=
 ## Words

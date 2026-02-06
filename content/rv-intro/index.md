@@ -1,5 +1,5 @@
 ---
-title: "Intro: RISC-V Assembly Language"
+title: "Introduction"
 ---
 
 ## Learning Outcomes
