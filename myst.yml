@@ -74,8 +74,8 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-        # - file: content/floating-point/summary-precheck.md
-        # - file: content/floating-point/exercises.md
+        - file: content/floating-point/summary-precheck.md
+        - file: content/floating-point/exercises.md
     - title: "L09 RISC-V Intro"
       children:
         - file: content/rv-intro/index.md
