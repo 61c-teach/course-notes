@@ -4,11 +4,9 @@ title: "Summary"
 
 ## And in Conclusion$\dots$
 
-
-
 ## Textbook Readings
 
-
+P&H 3.5, 3.9
 
 ## Additional References
 
