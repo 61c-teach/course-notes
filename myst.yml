@@ -109,7 +109,6 @@ project:
         - file: content/rv-procs/summary.md
         - file: content/rv-procs/summary-precheck.md
         - file: content/rv-procs/exercises.md
-    - title: "Miscellaneous"
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
