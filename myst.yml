@@ -74,8 +74,8 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-        - file: content/floating-point/summary-precheck.md
-        - file: content/floating-point/exercises.md
+        # - file: content/floating-point/summary-precheck.md
+        # - file: content/floating-point/exercises.md
     - title: "L09 RISC-V Intro"
       children:
         - file: content/rv-intro/index.md
@@ -109,7 +109,6 @@ project:
         - file: content/rv-procs/summary.md
         - file: content/rv-procs/summary-precheck.md
         - file: content/rv-procs/exercises.md
-    - title: "Miscellaneous"
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
