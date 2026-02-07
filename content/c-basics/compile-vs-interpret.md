@@ -42,12 +42,12 @@ Note that depending on your application, you may still prefer Python because (1)
 
 ## Compilation: Disadvantages
 
-**1. Compiled files, including the executable, are architecture-specific.** The exeuctable depends on the processor type (e.g., MIPS vs. x86 vs. RISC-V) and the operating system (e.g., Windows vs. Linux vs. MacOS). 
+**1. Compiled files, including the executable, are architecture-specific.** The executable depends on the processor type (e.g., MIPS vs. x86 vs. RISC-V) and the operating system (e.g., Windows vs. Linux vs. MacOS). 
 "**Porting** your code" to a new architecture means rebuilding your executable: copying the `.c` file, then recompiling using `gcc`.
 
 **2. Slower development cycle**: Unlike Python, C doesn't really have a "read-evaluate-print" loop (REPL). Instead, the cycle is "edit file, compile, link, run, find error", meaning that development may be much slower.
 
-**3. Linking is a bottleneck** A program executable will need to be recompiled when any part of the program changes. Compilation is a lengthy process! While some parts of the compilation process can be sped up—for example, independent program subparts can be compiled in parallel—other parts remain serial, like the linking stage (which we will talk about much later). This "serial bottleneck" is an example of **Amdahl's Law**; more later.
+**3. Linking is a bottleneck.** A program executable will need to be recompiled when any part of the program changes. Compilation is a lengthy process! While some parts of the compilation process can be sped up—for example, independent program subparts can be compiled in parallel—other parts remain serial, like the linking stage (which we will talk about much later). This "serial bottleneck" is an example of **Amdahl's Law**; more later.
 
 ## "Compiling" as a Colloquial Term
 
