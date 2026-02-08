@@ -33,11 +33,11 @@ Overflow and Underflow, 6:54 - 8:40
 
 ::::
 
-**Normalized numbers** are only a _fraction_ (heh) of floating point representations. For single-precision (32-bit), IEEE defines the following numbers based on the exponent field (here, the "biased exponent"):
+**Normalized numbers** are only a _fraction_ (heh) of floating point representations. For single-precision (32-bit), IEEE defines @tab-float-exp-fields based on the exponent field (here, the "biased exponent"):
 
 
 :::{table} Exponent field values for IEEE 754 single-precision.
-:label: tab-float-exp-fields
+:label:  tab-float-exp-fields
 :align: center
 
 | Biased Exponent | Significand field | Description |
