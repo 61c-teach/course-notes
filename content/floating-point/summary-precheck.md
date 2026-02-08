@@ -10,8 +10,10 @@ The IEEE 754 standard defines a binary representation for floating point values 
 the significand of `1.010011` is `010011`.
 
 The table below shows the bit breakdown for the single-precision (32-bit) representation. The leftmost bit is the MSB, and the rightmost bit is the LSB.
-
-**TODO ADD IMAGE**
+:::{figure} images/float.png
+:label: fig-float
+:width: 100%
+:::
 
 For normalized floats:
 
