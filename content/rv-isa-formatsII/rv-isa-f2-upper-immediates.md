@@ -17,3 +17,18 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/utype-isa.png
+:label: fig-utype-isa
+:width: 100%
+:alt: "TODO"
+
+U-Type instruction set format.
+:::
+
+|   |   | opcode |   |
+| :-- | -- | -- | --: |
+| `imm[31:12]` | `rd` | `0010111` | `auipc` |
+| `imm[31:12]` | `rd` | `0110111` | `lui` |
