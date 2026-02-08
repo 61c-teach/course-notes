@@ -127,7 +127,7 @@ The three fields in @fig-float can be used to represent normalized numbers of th
 (-1)^\text{s} \times (1 + \text{significand}) \times 2^{(\text{exponent}-127)}
 :::
 
-This design will seem esoteric at first glance. Why is there a $1+$? Where did the mantissa go—what's a significand? Why is the exponent offset by $-127$? As stated before, these three fields are defined to maximize the accuracy of representable numbers in 32 bits. In other words, _none of the bit patterns in these three fields use two's complement_! Instead, the standard uses @tab-float defines precisely how to interpret each field's bit pattern for representing normalized numbers.
+This design will seem esoteric at first glance. Why is there a $1+$? Where did the mantissa go—what's a significand? Why is the exponent offset by $-127$? As stated before, these three fields are defined to maximize the accuracy of representable numbers in 32 bits. In other words, _none of the bit patterns in these three fields use two's complement_! Instead, the standard specifies how to interpret each field's bit pattern for representing normalized numbers (@tab-float):
 
 :::{table} Sign, exponent, and significand fields for normalized numbers.
 :label: tab-float

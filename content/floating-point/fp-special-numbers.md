@@ -33,11 +33,11 @@ Overflow and Underflow, 6:54 - 8:40
 
 ::::
 
-**Normalized numbers** are only a _fraction_ (heh) of floating point representations. For single-precision (32-bit), IEEE defines the following numbers based on the exponent field (here, the "biased exponent"):
+**Normalized numbers** are only a _fraction_ (heh) of floating point representations. For single-precision (32-bit), IEEE defines @tab-float-exp-fields based on the exponent field (here, the "biased exponent"):
 
 
 :::{table} Exponent field values for IEEE 754 single-precision.
-:label: tab-float-exp-fields
+:label:  tab-float-exp-fields
 :align: center
 
 | Biased Exponent | Significand field | Description |
@@ -54,11 +54,51 @@ In this section, we will motivate why these "special numbers" exist by consideri
 
 ## Overflow and Underflow
 
-Coming soon!
+Because 0 and 255 are reserved exponent fields, the range of **normalized** single-precision floating point is $[-3.4\times 10^{38}, -2^{-126}]$ and $[+2^{-126}, +3.4\times 10^{38}]$. Note $2^{-126} \approx 1.2 \times 10^{-38}$.
+
+:::{note} Show Explanation
+:class: dropdown
+
+Largest magnitude number: (`1.1…1`) $\times 2^{(254 - 127)} \approx 3.4 × 10^{38}$. Note the largest biased exponent is $254$, because $255$ is reserved for [infinity](#sec-infty) and [NaNs](#sec-nans).
+
+| s | exponent | significand |
+| :--: | :--: | :--: |
+| `s` | `1111 1110` | `111 1111 1111 1111 1111 1111` |
+
+Smallest magnitude number: (`1.0`) $\times 2^{(1-127)} = 2^{-126} \approx 1.2 × 10^{-38}$. Note the smallest biased exponent is $1$, because $0$ (all zeros) is reserved for [zero](#sec-zero) and [denorms](#sec-denorms).
+
+| s | exponent | significand |
+| :--: | :--: | :--: |
+| `s` | `0000 0001` | `000 0000 0000 0000 0000 0000` |
+
+:::
+
+Because the floating point standard represents fractional components, it must now consider both **overflow** and **_underflow_** (@fig-over-under-flow):
+
+* Overflow: Magnitude of value is too large to represent.
+* Underflow: Magnitude of value is too _small_ to represent.
+
+:::{figure} images/over-under-flow.png
+:label: fig-over-under-flow
+:width: 100%
+:alt: "TODO"
+
+Floating point representations can encounter both overflow and underflow.
+:::
+
+:::{warning} Why don't _integers_ experience underflow?
+
+In the IEEE 754 normalized floating point representation, underflow refers to the gap between the two disjoint ranges of representable numbers. With integer representations, we can represent all valid numbers (i.e., integers) within a given range [`INT_MIN`, `INT_MAX`] because integer representations have the same step size of "1". There is therefore no "gap" in representation within this representable range.
+
+:::
+
+Recall that with integers, integer overflow causes arithmetic results to "wrap around." This means adding large positive integers can result in negative integers. Unlike integer representations, floating point representations similar to the IEEE 754 standards can more “gracefully” handle overflow, underflow, and errors with special numbers, which we discuss next.
+
+When floating point arithmetic causes overflow, we signal [infinity](#sec-infinity) or directly represent arithmetic errors with [NaN](#sec-nans). With underflow, we _gradually_ move towards [zero](#sec-zero) with [denorms](#sec-denorms).
 
 ## Special Numbers
 
-Unlike integer representations, floating point representations similar to the IEEE 754 standards can more “gracefully” handle overflow, underflow, and errors with special numbers. We discuss the four non-normalized categories shown in @tab-float-exp-fields.
+See the four non-normalized categories shown in @tab-float-exp-fields.
 
 (sec-zero)=
 ### Zero
@@ -109,9 +149,9 @@ What if we try to compute invalid arithmetic, like $\sqrt{-4}$ or $0/0$? For sci
 :::{table} IEEE 754 single-precision: NaNs
 :label: tab-float-nan
 
-| value | s | exponent | significand |
-| :-- | :--: | :--: | :--: |
-| NaN | either | `1111 1111` | non-zero |
+| s | exponent | significand |
+| :--: | :--: | :--: |
+| either | `1111 1111` | non-zero |
 
 :::
 
@@ -122,4 +162,66 @@ Certain proprietary hardware for floating point go further and use the significa
 (sec-denorms)=
 ### Denormalized Numbers
 
-Coming soon!
+#### Gap around zero
+
+In the case of overflow, infinity seems reasonable—after all, it is one step size past the largest representable normalized float (approximately $3.4\times 10^{38}$). Similarly, with underflow, zero is indeed one step size past the _smallest_ representable normalized float ($2^{-126}$).
+
+However, when we consider the mathematical range in question in @fig-underflow, we observe a large **gap** around zero.
+
+:::{figure} images/underflow.png
+:label: fig-underflow
+:width: 100%
+:alt: "TODO"
+
+Because of underflow, there is a "gap" of representable numbers around zero.
+:::
+
+Magnitude-wise, this gap is _not huge_—$2^{-126}$ is tiny! However, consider the 23-bit precision of `float`s. For normalized numbers in this area, we can use our precision to take tiny step sizes of $2^{-149}$, so the second smallest number is $2^{-126} + 2^{-149}$.
+
+Ideally, for tiny numbers we hope for high precision to represent tiny steps between said tiny numbers. However, because of the **implicit 1 in the normalized mantissa**, and zero's lack thereof, there is a relatively huge difference in step size between 0 and the smallest normalized number compared to the smallest and the second-smallest normalized numbers.
+
+#### Gradual underflow
+
+Given the above, the IEEE 754 standard specifies a range of numbers that can be still be used when we encounter underflow, so that not all arithmetic is lost. **Denormalized numbers** in the standard help support **gradual** underflow.[^gradual]
+
+[^gradual]: If a denormalized number results from arithmetic of two normalized numbers, we _still say that underflow occured_. Put another way, denorms help preserve arithmetic precision during underflow.
+
+The IEEE 754 standard defines denormalized numbers of the form in Equation @eq-float-denorm. 
+
+(eq-float-denorm)=
+:::{math}
+:enumerated: true
+(-1)^\text{s} \times (\text{significand}) \times 2^{-126}
+:::
+
+The standard specifies how to interpret fields for representing denormalized numbers, also known as **denorms** (@tab-denorm):
+
+:::{table} Sign, exponent, and significand fields for denorms
+:label: tab-denorm
+:align: center
+
+| Field Name | Represents | Denormalized Numbers |
+| :--- | :-- | :--- |
+| s | Sign | 1 is negative; 0 is positive |
+| exponent | `0000 0000` | The exponent for denormalized numbers is always implicitly $-126$. |
+| significand | Fractional Component of the Mantissa | Interpret the significand as a 23-bit fraction (`0.xx...xx`). **Do not add implicit 1** to get the mantissa value. |
+
+:::
+
+:::{warning} Why is it called denormalized?
+
+Recall our intuition from scientific notation: normalized numbers in binary must have a leading implicit 1 in the mantissa. By contrast, denormalized numbers got their moniker because they don't have this 1.
+
+Put another way, denorms are definitely the exception. There are only $2^{23}$ of them, and they represent tiny numbers in the unrepresentable underflow range. Normalized numbers are by far the lion's share of representable values, and when we say "float" we often mean normalized numbers.
+
+:::
+
+We will leave it to you to realize that the above definition means that there are $2^{23}$ denormalized numbers, each $2^{-126}$ apart. Recall that $2^{-126}$ is the step size between the smallest two _normalized_ numbers. This uniform step size for denorms is intentional because it produces the **gradual underflow** we want, as shown in @fig-underflow-gradual:
+
+:::{figure} images/underflow-gradual.png
+:label: fig-underflow-gradual
+:width: 100%
+:alt: "TODO"
+
+Gradual underflow by specifying **denormalized numbers** in the IEEE 754 standard.
+:::
