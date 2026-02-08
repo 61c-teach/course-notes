@@ -58,7 +58,6 @@ project:
         - file: content/c-odds-and-ends/endianness.md
         - file: content/c-odds-and-ends/ll-add-front.md
         - file: content/c-odds-and-ends/ll-full.md
-        - file: content/c-odds-and-ends/summary.md
         - file: content/c-odds-and-ends/exercises.md
     - title: "L07 C Generics, Function Pointers"
       children:
@@ -77,9 +76,41 @@ project:
         - file: content/floating-point/summary.md
         # - file: content/floating-point/summary-precheck.md
         # - file: content/floating-point/exercises.md
-    - title: "Miscellaneous"
+    - title: "L09 RISC-V Intro"
       children:
-        - file: content/misc/iec-prefixes.md
+        - file: content/rv-intro/index.md
+        - file: content/rv-intro/elements.md
+        - file: content/rv-intro/rv-isa.md
+        - file: content/rv-intro/rv-arithmetic.md
+        - file: content/rv-intro/summary.md
+        - file: content/rv-intro/exercises.md
+    - title: "L10 RISC-V Data Transfer"
+      children:
+        - file: content/rv-data-transfer/index.md
+        - file: content/rv-data-transfer/rv-load-store.md
+        - file: content/rv-data-transfer/examples.md
+        - file: content/rv-data-transfer/example-sp.md
+        - file: content/rv-data-transfer/summary.md
+        # - file: content/rv-data-transfer/exercises.md
+    - title: "L00 RISC-V Decisions II"
+      children:
+        - file: content/rv-decisionsII/index.md
+        - file: content/rv-decisionsII/rv-d-machine-program.md
+        - file: content/rv-decisionsII/rv-d-function-calls
+        - file: content/rv-decisionsII/summary.md
+        - file: content/rv-decisionsII/summary-precheck.md
+        - file: content/rv-decisionsII/exercises.md
+    - title: "L00 RISC-V Procedures"
+      children:
+        - file: content/rv-procs/index.md
+        - file: content/rv-procs/rv-d-register-conv.md
+        - file: content/rv-procs/rv-d-memory-alloc.md
+        - file: content/rv-procs/rv-d-summary.md
+        - file: content/rv-procs/summary.md
+        - file: content/rv-procs/summary-precheck.md
+        - file: content/rv-procs/exercises.md
+    - file: content/misc/iec-prefixes.md
+    - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
 site:
   template: book-theme
