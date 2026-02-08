@@ -5,14 +5,18 @@ title: "Precheck Summary"
 
 The IEEE 754 standard defines a binary representation for floating point values using three fields.
 * The *sign* determines the sign of the number ($0 $ for positive, $1 $ for negative).
-* The *exponent* is in biased notation. For instance, the bias is $−127$, which comes from $-(2^{(8−1)} −1)$ for single-precision floating point numbers. For double-precision floating point numbers, the bias is $−1023$
+* The *exponent* is in biased notation. For instance, the bias is $−127$, which comes from $-(2^{(8−1)} −1)$ for single-precision floating point numbers. For double-precision floating point numbers, the bias is $−1023$. An exponent of `00000000` represents a *denormalized number* and an exponent of `11111111` represents either *NaN*, if there is a non-zero mantissa, or *infinity*, if there is a zero mantissa.
 * The *significand* (or *mantissa*) is akin to unsigned integers but used to store a fraction instead of an integer and refers to the bits to the right of the leading "`1`" when normalized. For example,
 the significand of `1.010011` is `010011`.
 
 The table below shows the bit breakdown for the single-precision (32-bit) representation. The leftmost bit is the MSB, and the rightmost bit is the LSB.
+
 :::{figure} images/float.png
 :label: fig-float
 :width: 100%
+:alt: "TODO"
+
+Bit fields in IEEE 754 single-precision floating point. The least significant bit (rightmost) is indexed 0; the most significant bit (leftmost) is indexed 31.
 :::
 
 For normalized floats:
