@@ -14,6 +14,8 @@ title: "Conditional Branches"
 :::{iframe} https://www.youtube.com/embed/OWxcAqFNkpo
 :width: 100%
 :title: "[CS61C FA20] Lecture 08.3 - RISC-V lw, sw, Decisions I: Decision Making"
+
+Until 8:50
 ::::
 
 In the past few chapters, we have learned how to use RISC-V as a calculator. We have learned [arithmetic](#sec-rv-arithmetic) and [bitwise](#sec-rv-bitwise) operations and [data transfers instructions](#sec-data-transfer) for accessing memory.
@@ -78,7 +80,7 @@ How do we use branch instructions? Let's check out `beq` and `bne` in @tab-rv-be
 
 :::
 
-:::{tip} 
+:::{hint} 
 For readable, efficient RISC-V programs, you may need to **negate the branch** condition.
 :::
 
@@ -172,7 +174,9 @@ Again, both choices are valid. Again, Choice B uses `bne` and more closely repre
 | `bgeu rs1 rs2 Label` | Branch if Greater Than or Equal (unsigned) |
 :::
 
-This set is sufficient to describe the C comparators: `==`, `!=`, `>`, `<`, `>=`, `<=` for signed and unsigned integers. From the [RV32I Specification](https://docs.riscv.org/reference/isa/unpriv/rv32.html#2-6-2-conditional-branches):
+This set[^mnemonic] is sufficient to describe the C comparators: `==`, `!=`, `>`, `<`, `>=`, `<=` for signed and unsigned integers. From the [RV32I Specification](https://docs.riscv.org/reference/isa/unpriv/rv32.html#2-6-2-conditional-branches):
+
+[^mnemonic]: Here is Professor Bora Nikolic's tip for remembering which branch instructions are supported: "There exists a BLT sandwich (Bacon, Lettuce, Tomato), but I have never seen a BGT sandwich."
 
 > Note, BGT, BGTU, BLE, and BLEU can be synthesized by reversing the operands to BLT, BLTU, BGE, and BGEU, respectively.
 
@@ -189,3 +193,9 @@ We have also discussed one jump **pseudo**instruction in @tab-rv-jump. We will e
 | `j Label` | Unconditional jump |
 
 :::
+
+
+<!--
+| Instruction | Name/Description |
+|:--- |:---|
+| <pre># Choice B<br/>bne x13 x14 End<br/>add x10 x11 x12<br/>End:   # …</pre> | asdf | -->
