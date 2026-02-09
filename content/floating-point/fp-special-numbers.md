@@ -65,6 +65,7 @@ Largest magnitude number: (`1.1…1`) $\times 2^{(254 - 127)} \approx 3.4 × 10^
 | :--: | :--: | :--: |
 | `s` | `1111 1110` | `111 1111 1111 1111 1111 1111` |
 
+(sec-float-range)=
 Smallest magnitude number: (`1.0`) $\times 2^{(1-127)} = 2^{-126} \approx 1.2 × 10^{-38}$. Note the smallest biased exponent is $1$, because $0$ (all zeros) is reserved for [zero](#sec-zero) and [denorms](#sec-denorms).
 
 | s | exponent | significand |
@@ -94,7 +95,7 @@ In the IEEE 754 normalized floating point representation, underflow refers to th
 
 Recall that with integers, integer overflow causes arithmetic results to "wrap around." This means adding large positive integers can result in negative integers. Unlike integer representations, floating point representations similar to the IEEE 754 standards can more “gracefully” handle overflow, underflow, and errors with special numbers, which we discuss next.
 
-When floating point arithmetic causes overflow, we signal [infinity](#sec-infinity) or directly represent arithmetic errors with [NaN](#sec-nans). With underflow, we _gradually_ move towards [zero](#sec-zero) with [denorms](#sec-denorms).
+When floating point arithmetic causes overflow, we signal [infinity](#sec-infty) or directly represent arithmetic errors with [NaN](#sec-nans). With underflow, we _gradually_ move towards [zero](#sec-zero) with [denorms](#sec-denorms).
 
 ## Special Numbers
 
@@ -176,13 +177,33 @@ However, when we consider the mathematical range in question in @fig-underflow, 
 Because of underflow, there is a "gap" of representable numbers around zero.
 :::
 
-Magnitude-wise, this gap is _not huge_—$2^{-126}$ is tiny! However, consider the 23-bit precision of `float`s. For normalized numbers in this area, we can use our precision to take tiny step sizes of $2^{-149}$, so the second smallest number is $2^{-126} + 2^{-149}$.
+Magnitude-wise, this gap is _not huge_—$2^{-126}$ is tiny! However, consider the 23-bit precision of `float`s. For normalized numbers in this area, we can use our precision to take tiny step sizes of $2^{-149}$.
 
-Ideally, for tiny numbers we hope for high precision to represent tiny steps between said tiny numbers. However, because of the **implicit 1 in the normalized mantissa**, and zero's lack thereof, there is a relatively huge difference in step size between 0 and the smallest normalized number compared to the smallest and the second-smallest normalized numbers.
+
+:::{note} Show Explanation
+:class: dropdown
+
+Smallest normalized number [from before](#sec-float-range): (`1.0`) $\times 2^{(1-127)} = 2^{-126}$
+
+| s | exponent | significand |
+| :--: | :--: | :--: |
+| `0` | `0000 0001` | `000 0000 0000 0000 0000 0000` |
+
+Second smallest normalized number: (`1.00...001`) $\times 2^{(1-127)} = (1 + 2^{-23}) \times 2^{-126} = 2^{-126} + 2^{-149}$
+
+| s | exponent | significand |
+| :--: | :--: | :--: |
+| `0` | `0000 0001` | `000 0000 0000 0000 0000 0000` |
+
+Smallest normalized step size is this difference: $2^{-149}$
+
+:::
+
+In this range, we want to maintain high precision to represent tiny steps between said tiny numbers. However, because of the **implicit 1 in the normalized mantissa**—and zero's lack thereof—there is a relatively huge difference in step size between 0 and the smallest normalized number compared to the smallest and the second-smallest normalized numbers.
 
 #### Gradual underflow
 
-Given the above, the IEEE 754 standard specifies a range of numbers that can be still be used when we encounter underflow, so that not all arithmetic is lost. **Denormalized numbers** in the standard help support **gradual** underflow.[^gradual]
+Given the above, the IEEE 754 standard specifies a range of numbers that can be still be used when we encounter underflow, so that not all arithmetic is lost. **Denormalized numbers** in the standard help support **gradual underflow**.[^gradual]
 
 [^gradual]: If a denormalized number results from arithmetic of two normalized numbers, we _still say that underflow occured_. Put another way, denorms help preserve arithmetic precision during underflow.
 
@@ -216,7 +237,10 @@ Put another way, denorms are definitely the exception. There are only $2^{23}$ o
 
 :::
 
-We will leave it to you to realize that the above definition means that there are $2^{23}$ denormalized numbers, each $2^{-126}$ apart. Recall that $2^{-126}$ is the step size between the smallest two _normalized_ numbers. This uniform step size for denorms is intentional because it produces the **gradual underflow** we want, as shown in @fig-underflow-gradual:
+
+The "implicit exponent" for denorms is the smallest normalized exponent: $2^{1 - 127} = 2^{126}$. This denormalized exponent therefore enforces a uniform step size of $2^{149}$ across the denormalized range and the smallest normalized numbers[^at-home]. This consistency also yields the **gradual underflow** we want, as shown in @fig-underflow-gradual:
+
+[^at-home]: We leave it to you to work this out.
 
 :::{figure} images/underflow-gradual.png
 :label: fig-underflow-gradual
