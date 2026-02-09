@@ -92,24 +92,24 @@ project:
         - file: content/rv-data-transfer/example-sp.md
         - file: content/rv-data-transfer/summary.md
         # - file: content/rv-data-transfer/exercises.md
-    - title: "L11 RISC-V Decision Making"
-      children:
-        - file: content/rv-decision-making/index.md
-        - file: content/rv-decision-making/branches.md
-        - file: content/rv-decision-making/rv-d-machine-program.md
-        - file: content/rv-decision-making/rv-d-function-calls
-        - file: content/rv-decision-making/summary.md
-        - file: content/rv-decision-making/summary-precheck.md
-        - file: content/rv-decision-making/exercises.md
-    - title: "L00 RISC-V Procedures"
-      children:
-        - file: content/rv-procs/index.md
-        - file: content/rv-procs/rv-d-register-conv.md
-        - file: content/rv-procs/rv-d-memory-alloc.md
-        - file: content/rv-procs/rv-d-summary.md
-        - file: content/rv-procs/summary.md
-        - file: content/rv-procs/summary-precheck.md
-        - file: content/rv-procs/exercises.md
+    # - title: "L11 RISC-V Decision Making"
+    #   children:
+    #     - file: content/rv-decision-making/index.md
+    #     - file: content/rv-decision-making/branches.md
+    #     - file: content/rv-decision-making/rv-d-machine-program.md
+    #     - file: content/rv-decision-making/rv-d-function-calls
+    #     - file: content/rv-decision-making/summary.md
+    #     - file: content/rv-decision-making/summary-precheck.md
+    #     - file: content/rv-decision-making/exercises.md
+    # - title: "L00 RISC-V Procedures"
+    #   children:
+    #     - file: content/rv-procs/index.md
+    #     - file: content/rv-procs/rv-d-register-conv.md
+    #     - file: content/rv-procs/rv-d-memory-alloc.md
+    #     - file: content/rv-procs/rv-d-summary.md
+    #     - file: content/rv-procs/summary.md
+    #     - file: content/rv-procs/summary-precheck.md
+    #     - file: content/rv-procs/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
