@@ -237,7 +237,10 @@ Put another way, denorms are definitely the exception. There are only $2^{23}$ o
 
 :::
 
-We will leave it to you to realize that the above definition means that there are $2^{23}$ denormalized numbers, each $2^{-149}$ apart. $2^{126} \times 2^{-23} = 2^{-126}$ is the step size between the smallest two _normalized_ numbers. This uniform step size for denorms is intentional because it produces the **gradual underflow** we want, as shown in @fig-underflow-gradual:
+
+The "implicit exponent" for denorms is the smallest normalized exponent: $2^{1 - 127} = 2^{126}$. This denormalized exponent therefore enforces a uniform step size of $2^{149}$ across the denormalized range and the smallest normalized numbers[^at-home]. This consistency also yields the **gradual underflow** we want, as shown in @fig-underflow-gradual:
+
+[^at-home]: We leave it to you to work this out.
 
 :::{figure} images/underflow-gradual.png
 :label: fig-underflow-gradual
