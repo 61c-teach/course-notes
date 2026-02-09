@@ -2,6 +2,7 @@
 title: "Data Transfer Instructions"
 ---
 
+(sec-data-transfer)=
 ## Learning Outcomes
 
 * Use load and store assembly instructions and compute memory addresses as base register plus immediate offset.

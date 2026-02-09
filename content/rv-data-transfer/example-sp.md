@@ -62,9 +62,10 @@ This notation is not conventional, but we use it to denote that all memory will 
 
 ## Solution
 
-Here is the full assembly translation of the [original C code](#code-example-sp):
+Here is the full assembly translation of the [original C code](#code-sp-example):
 
-```{code}
+(code-sp-example-rv)=
+```{code} bash
 :linenos:
 li t0 5            # R[t0] = 5
 sw t0 0(sp)        # store int a on stack
@@ -90,7 +91,7 @@ We discuss line-by-line translation below. For each section, try to use the imag
 
 ### Line 2: `int a = 5;`
 
-```{code}
+```{code} bash
 :linenos:
 li t0 5            # R[t0] = 5
 sw t0 0(sp)        # store int a on stack
@@ -117,7 +118,7 @@ We would like to store the bytes of `"string"` onto our stack, starting at locat
 
 One approach (straightforward but tedious):
 
-```{code}
+```{code} bash
 :linenos:
 li t0 0x73
 sb t0 4(sp)
@@ -149,7 +150,7 @@ The char bytes of `"string"` are `{0x73, 0x74, 0x72, 0x69, 0x6E, 0x67, 0x00}` as
 
 Alternate approach with much fewer instructions:
 
-```{code}
+```{code} bash
 :linenos:
 li t0 0x69727473   # load "stri"
 sw t0 4(sp)        # store first part of string
@@ -205,7 +206,7 @@ We're not actually storing any data into memory, so no instructions need to be e
 
 ### Line 4: Read array element `uint8_t d = b[3];`
 
-```{code}
+```{code} bash
 :linenos:
 lb t0 7(sp)        # 4(sp) from b, 3(sp) from [3] 
 sb t0 52(sp)       # store into d
@@ -227,7 +228,7 @@ This step practices how to do array indexing, thereby revealing the true reason 
 
 ### Line 5: Store array element `c[4] = a + d;`
 
-```{code}
+```{code} bash
 :linenos:
 lw t0 0(sp)        # load a 
 lbu t1 52(sp)      # load d
@@ -254,11 +255,12 @@ This step practices (1) more array indexing, and (2) how to add together two var
 
 :::
 
+(sec-sp-example-line-6)=
 ### Line 6: Variable array indexing `c[a] = 20;`
 
 This line is the most challenging of the bunch, so we recommend working it out via Venus once you learn how to use Venus in lab.
 
-```{code}
+```{code} bash
 :linenos:
 li t0 20           # R[t0] = 20
 lw t1 0(sp)        # R[t1] = a
@@ -299,3 +301,49 @@ This step is different from the previous one because we must compute the array a
 * **Line 6**: Store the desired data (register `t0`) at the desired address (register `t1` , with zero offset, because we've computed the absolute address already).
 :::
 
+## Quick Checks
+
+:::{tip} Quick Check 1
+
+Consider Line 18 from [the assembly translation](#code-sp-example-rv). As discussed in our explanation of [C line 6](#sec-sp-example-line-6), this is:
+
+```bash
+sw t0 0(t1)        # c[a] = 20
+```
+
+When this instruction is executed, what C expression is the closest representation of the value in register `t1`?
+
+* **A.** `&c`
+* **B.** `&a`
+* **C.** `c[20]`
+* **D.** `c[a]`
+* **E.** `&c[a]`
+* **F.** Something else
+
+:::
+
+:::{note} Show Answer
+:class: dropdown
+
+**E.** `&c[a]`. The value in register `t1` is defined (with Verilog syntax) as `R[t1]`; at this point, it is `(R[t1] * 4) + 12 + R[sp]`. The register value `R[t1]` is used as an address–it is the memory location to which we store the word `R[t0]`.
+
+:::
+
+
+:::{tip} Quick Check 2
+
+Consider C Line 6 itself.
+
+```c
+c[a] = 20;
+```
+
+Why translate into the six lines discussed in our explanation of [C line 6](#sec-sp-example-line-6)? Why might a compiler NOT simply translate this C statement to a single `sw` instruction like `sw t0 20(sp)`?
+
+:::
+
+:::{note} Show Answer
+:class: dropdown
+
+`a` is a variable. Its value happens to be `5` at runtime, but compilers can’t necessarily simulate program runtime!
+:::

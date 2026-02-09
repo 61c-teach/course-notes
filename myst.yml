@@ -81,6 +81,7 @@ project:
         - file: content/rv-intro/elements.md
         - file: content/rv-intro/rv-isa.md
         - file: content/rv-intro/rv-arithmetic.md
+        - file: content/rv-intro/rv-bitwise.md
         - file: content/rv-intro/summary.md
         - file: content/rv-intro/exercises.md
     - title: "L10 RISC-V Data Transfer"
@@ -91,14 +92,15 @@ project:
         - file: content/rv-data-transfer/example-sp.md
         - file: content/rv-data-transfer/summary.md
         # - file: content/rv-data-transfer/exercises.md
-    - title: "L00 RISC-V Decisions II"
+    - title: "L11 RISC-V Decision Making"
       children:
-        - file: content/rv-decisionsII/index.md
-        - file: content/rv-decisionsII/rv-d-machine-program.md
-        - file: content/rv-decisionsII/rv-d-function-calls
-        - file: content/rv-decisionsII/summary.md
-        - file: content/rv-decisionsII/summary-precheck.md
-        - file: content/rv-decisionsII/exercises.md
+        - file: content/rv-decision-making/index.md
+        - file: content/rv-decision-making/branches.md
+        - file: content/rv-decision-making/rv-d-machine-program.md
+        - file: content/rv-decision-making/rv-d-function-calls
+        - file: content/rv-decision-making/summary.md
+        - file: content/rv-decision-making/summary-precheck.md
+        - file: content/rv-decision-making/exercises.md
     - title: "L00 RISC-V Procedures"
       children:
         - file: content/rv-procs/index.md

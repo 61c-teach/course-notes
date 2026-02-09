@@ -39,12 +39,12 @@ The **address space** is the hypothetical range of addressable memory locations 
 
 [^in-practice]: Logically,  not in practice. Some areas of memory are read/write protected, e.g., accessing memory at the address `0` (`NULL`) causes an error.
 
-:::{tip} Quick check
+:::{tip} Quick Check
 
 On a 32-bit architecture, what is `sizeof(int *)`? `sizeof(char *)`?
 :::
 
-:::{note} Show answer
+:::{note} Show Answer
 :class: dropdown
 
 A pointer on a 32-bit architecture must be large enough to represent all possible addresses in the address space. The address space of a 32-bit architecture is the $2^32$ byte addresses ranging from `0x00000000` to `0xFFFFFFFF`. These correspond to bit patterns of 32 bits, so a pointer must be able to store 32 bits of information.
@@ -137,7 +137,8 @@ int main(int argc, char *argv[]) {
 Determine the addresses of `value` and `str1`.
 :::
 
-:::{note} Answer
+:::{note} Show Answer
+:class: dropdown
 
 Recall that the address of a stored value is the **lowest** address among the bytes of that value.
 
@@ -165,12 +166,13 @@ This property is called **endianness**.[^gulliver] For a given word:
 
 The choice of endianness is one of convention[^endianness]. Nearly all modern computer architectures are little endian.
 
-:::{tip} Quick check
+:::{tip} Quick Check
 
 How does the diagram in @tab-word-program help us read 32-bit integers?
 :::
 
-:::{note} Answer
+:::{note} Show Answer
+:class: dropdown
 
 The 32-bit architecture is **little endian**. We know this because the integer `0x12345678` has least significant byte, `0x78` which is stored first at the lowest address.
 

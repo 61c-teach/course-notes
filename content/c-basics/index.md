@@ -17,7 +17,8 @@ title: "Introduction"
 
 ::::
 
-## From ENIAC to EDSAC
+(sec-stored-program)=
+## The Stored-Program Computer
 
 Let's understand a little bit about the basics of computer organization. One of the earliest computers was the ENIAC at UPenn in 1945-46.
 
@@ -44,7 +45,7 @@ The women who worked for NASA ... were calculating equations to help improve the
 
 Early programmers were often women who were part of the UPenn group, and they don’t get enough press for being among the early programmers of the day. Watch the movie [_Hidden Figures_](https://www.imdb.com/title/tt4846340/) (2016) to learn about these early female programmers and mathematicians.
 
-Next, the **EDSAC** at Cambridge (1949) was the first general **stored-purpose** computer.
+Next, the **EDSAC** at Cambridge (1949) was the first general **stored-program** computer.
 
 :::{figure} images/edsac.jpg
 :label: fig-edsac

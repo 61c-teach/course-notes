@@ -94,7 +94,7 @@ In the IEEE 754 normalized floating point representation, underflow refers to th
 
 Recall that with integers, integer overflow causes arithmetic results to "wrap around." This means adding large positive integers can result in negative integers. Unlike integer representations, floating point representations similar to the IEEE 754 standards can more “gracefully” handle overflow, underflow, and errors with special numbers, which we discuss next.
 
-When floating point arithmetic causes overflow, we signal [infinity](#sec-infinity) or directly represent arithmetic errors with [NaN](#sec-nans). With underflow, we _gradually_ move towards [zero](#sec-zero) with [denorms](#sec-denorms).
+When floating point arithmetic causes overflow, we signal [infinity](#sec-infty) or directly represent arithmetic errors with [NaN](#sec-nans). With underflow, we _gradually_ move towards [zero](#sec-zero) with [denorms](#sec-denorms).
 
 ## Special Numbers
 
