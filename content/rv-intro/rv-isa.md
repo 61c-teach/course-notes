@@ -49,6 +49,7 @@ The RISC-V ISA specifies **32 registers**.
 This choice feels arbitrary but follows a "Goldilocks" principle.[^goldilocks] Too many registers would slow the machine down and be extremely expensive. However, too few registers would require (among other things) extremely complicated compiler logic. 32 registers, at least for the RISC-V architects, was considered "just right."
 :::
 
+(sec-reg-size)=
 ### Register size
 
 Remember a concept we discussed earlier in the course: the [hardware word](#sec-words). Word size also determines **register size**. In the RV32I ISA, the word size is 32 bits, meaning that each RV32I register is **32 bits wide**.

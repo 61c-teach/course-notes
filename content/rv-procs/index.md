@@ -18,6 +18,26 @@ subtitle: TODO
 
 ::::
 
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/XZAHwb7Smj0
+:width: 100%
+:title: "[CS61C FA20] Lecture 09.3 - RISC-V Decisions II: RISC-V Function Calls"
+:::
+
+::::
+
+## Visuals
+
+:::{figure} images/jal-jr.png
+:label: fig-rv-jal-jr
+:width: 100%
+:alt: "TODO"
+
+RISC-V Assembly with JAL and JR.
+:::
+
 ## Visuals
 
 :::{figure} images/frames-stackpointer.png
