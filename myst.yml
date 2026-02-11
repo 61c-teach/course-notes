@@ -84,6 +84,7 @@ project:
         - file: content/rv-intro/rv-arithmetic.md
         - file: content/rv-intro/summary.md
         - file: content/rv-intro/exercises.md
+        - file: content/rv-intro/summary-precheck.md
     - title: "L10 RISC-V Data Transfer"
       children:
         - file: content/rv-data-transfer/index.md
