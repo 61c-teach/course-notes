@@ -59,6 +59,7 @@ When run, this instruction will unconditionally **J**ump to the instruction labe
 
 **Conditional branch**. Condition on the comparison of two register values. If the condition is met, set PC to a different instruction. Otherwise, the condition is not met, so set PC to the next instruction. The general format for branch instructions is `bxx rs1 rs2 Label`, where "`xx`" specifies the type of comparison to make.
 
+(sec-labels)=
 :::{hint} What are labels?
 Labels are identifiers to specific lines of code (in C) or assembly instructions (in RISC-V). Labels do not themselves define a line of code, though they must have **unique names**. In assembly, labels are associated with specific instruction addresses. They are then used by the assembler to translate branch and jump instructions into their machine code counterparts.[^labels] 
 [^labels]: More later.
@@ -91,6 +92,7 @@ x    y    z    i    j
 x10  x11  x12  x13  x14
 ```
 
+(sec-branch-ex1)=
 :::{tip} Example 1
 
 ```{code} c
@@ -128,6 +130,7 @@ End:   # …
 Choice B uses `bne` to _invert_ the inequality condition in Line 1 of the C code. If `i` and `j` are not equal, _skip_ the conditional `add` instruction, and go to the `Else` label to execute the `sub` instruction. If the branch is _not_ taken (`i` and `j` are equal), then the processor naturally moves into the next instruction—the `add`, which is exactly what we want–and unconditionally jumps with `j End` to skip over the `Else`-labeled instruction.
 :::
 
+(sec-branch-ex2)=
 :::{tip} Example 2
 
 ```{code} c
