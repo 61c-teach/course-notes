@@ -1,5 +1,6 @@
 ---
-title: "RISC-V Arithmetic Instructions"
+title: "RISC-V Arithmetic Instructions I: Arithmetic Operations"
+short_title: "Arithmetic, Immediates, Pseudoinstructions"
 ---
 
 (sec-rv-arithmetic)=

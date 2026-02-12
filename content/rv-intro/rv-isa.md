@@ -55,7 +55,7 @@ Remember a concept we discussed earlier in the course: the [hardware word](#sec-
 
 [^goldilocks]: From the [British fairy tale](https://en.wikipedia.org/wiki/Goldilocks_and_the_Three_Bears): "This porridge is too hot; This porridge is too cold; this porridge is just right."
 
-(sec-register-names)
+(sec-register-names)=
 ### Register names and numbers
 
 Unlike high-level languages like C or Java, there are no variables in assembly. Instead, to operate on data, assembly instructions use **register names** or **register numbers**.
@@ -67,6 +67,7 @@ In RV32I, registers are numbered from 0 to 31. To refer to a register by number,
 
 For now, we define one very important register: register `x0`, which has register name `zero`. This special [zero register](https://en.wikipedia.org/wiki/Zero_register) is hardwired to zero, and you cannot change its value. Contrary to intuition, it is extremely helpful to have a register-sized representation of zero handy for a multitude of operations. The RISC-V architects thought so too, and were willing to sacrifice one fewer data register in order to specify zero directly on the processor.
 
+(sec-hll-vs-assembly)=
 ## Assembly Language vs. Higher-Level Language
 
 You may find this section more helpful after you see some examples of assembly [in our next section](#sec-rv-arithmetic).

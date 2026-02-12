@@ -24,6 +24,7 @@ subtitle: "What is the C Memory Model?"
 until 8:37
 ::::
 
+(sec-memory-layout)=
 ## C Memory Layout
 
 So far, we have discussed how different data types occupy space (i.e., how the compile-time operator `sizeof` works with different declarations of local variables), but we haven't discussed where all C things live in memory.

@@ -7,7 +7,7 @@ subtitle: 32-bit RISC-V Processor, Integer Instruction Set
 
 This "green card" is longer than one page, due to the accessible web format. We compensate by supplementing these lookup tables with references to the official ISA and/or assembly manuals where appropriate. For a two-sided reference card with the same information, check out the PDF reference card on our course website.
 
-**Reference**: The official RISC-V unprivileged specification, [RV32I Base Integer Instruction Set, Version 2.1](https://docs.riscv.org/reference/isa/unpriv/rv32.html). In practice, the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc) will have everything you need.
+**Reference**: The official RISC-V unprivileged ISA specification, [RV32I Base Integer Instruction Set, Version 2.1](https://docs.riscv.org/reference/isa/unpriv/rv32.html). In practice, the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc) will have everything you need.
 
 (sec-green-card)=
 ## RV32I Base Integer Instruction Set
@@ -96,11 +96,16 @@ This "green card" is longer than one page, due to the accessible web format. We 
 
 :::
 
-Extension:
+
+:::{table} RV32I Extension Instructions
+:label: tab-rv32i-extension
+:align: center
 
 | Instruction | Name | Description |
 | :--- | :--- | :--- |
 | `mul rd rs1 rs2` | Multiply (part of `mul` ISA extension) | `R[rd] = (R[rs1]) * (R[rs2])` |
+
+:::
 
 ## Pseudoinstructions
 
