@@ -49,19 +49,14 @@ c[a] = 20;
 
 We will use temporary registers to store addresses, arithmetic data, and so on. We will store local variable on the stack by assigning each variable to some offset from our stack pointer `sp`.
 
-The exact addresses of these local variables don't matter, so long as we're consistent. Let's suppose we use the following assignment:
+The exact addresses of these local variables don't matter, so long as we're consistent. Suppose we use the following assignment:
 
 | Variable | Address relative to stack pointer |
+| :-- | :--: |
 | `int a` | `0(sp)` |
-| `char b[]` | 
-```
-a: 0(sp)
-b: 4(sp)
-c: 12(sp)
-d: 52(sp)
-```
-
-This notation is not conventional, but we use it to denote that all memory will be relative to the stack pointer `sp`. `int a` is at address `R[sp]`, C string `b` is at address `R[sp] + 4`, 10-`int` array `c` is at `R[sp] + 12`, and `uint8_t d` is at address `R[sp] + 52`.
+| `char b[7]` | `4(sp)` | 
+| `int c[10]` | `12(sp)` | 
+| `uint8_t d` | `52(sp)` |
 
 ## Solution
 

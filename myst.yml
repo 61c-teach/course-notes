@@ -84,7 +84,7 @@ project:
         - file: content/rv-intro/rv-bitwise.md
         - file: content/rv-intro/summary.md
         - file: content/rv-intro/exercises.md
-        - file: content/rv-intro/summary-precheck.md
+        # - file: content/rv-intro/summary-precheck.md
     - title: "L10 RISC-V Data Transfer"
       children:
         - file: content/rv-data-transfer/index.md
@@ -99,6 +99,8 @@ project:
         - file: content/rv-decision-making/branches.md
         - file: content/rv-decision-making/loops.md
         - file: content/rv-decision-making/summary.md
+        # - file: content/rv-decision-making/precheck.md
+        # - file: content/rv-decision-makingr/exercises.md
     # - title: "L00 RISC-V Procedures"
     #   children:
     #     - file: content/rv-procs/index.md
