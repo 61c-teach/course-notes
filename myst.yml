@@ -34,6 +34,7 @@ project:
         - file: content/c-basics/c-vs-java.md
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
+        - file: content/c-basics/summary.md
         - file: content/c-basics/exercises.md
     - title: "L04 C Pointers, Arrays, Strings"
       children:
@@ -61,7 +62,6 @@ project:
     - title: "L07 C Generics, Function Pointers"
       children:
         - file: content/c-generics/index.md
-        - file: content/c-generics/fn-ptr-example.md
         - file: content/c-generics/generics.md
     - title: "L16 Intro to Synchronous Digital Systems"
       children:
@@ -101,8 +101,56 @@ project:
         - file: content/sds-logic-blocks/summary-precheck.md
         - file: content/sds-logic-blocks/exercises.md
     - title: "Miscellaneous"
+        - file: content/c-generics/fn-ptr.md
+        - file: content/c-generics/summary.md
+        - file: content/c-generics/exercises.md
+    - title: "L08 Floating Point"
       children:
-        - file: content/misc/unit-prefixes.md
+        - file: content/floating-point/index.md
+        - file: content/floating-point/fp-floating-point.md
+        - file: content/floating-point/fp-examples.md
+        - file: content/floating-point/fp-special-numbers.md
+        - file: content/floating-point/fp-discussion.md
+        - file: content/floating-point/summary.md
+        - file: content/floating-point/exercises.md
+    - title: "L09 RISC-V Intro"
+      children:
+        - file: content/rv-intro/index.md
+        - file: content/rv-intro/elements.md
+        - file: content/rv-intro/rv-isa.md
+        - file: content/rv-intro/rv-arithmetic.md
+        - file: content/rv-intro/rv-bitwise.md
+        - file: content/rv-intro/summary.md
+        - file: content/rv-intro/exercises.md
+        # - file: content/rv-intro/summary-precheck.md
+    - title: "L10 RISC-V Data Transfer"
+      children:
+        - file: content/rv-data-transfer/index.md
+        - file: content/rv-data-transfer/rv-load-store.md
+        - file: content/rv-data-transfer/examples.md
+        - file: content/rv-data-transfer/example-sp.md
+        - file: content/rv-data-transfer/summary.md
+        # - file: content/rv-data-transfer/exercises.md
+    - title: "L11 RISC-V Decision Making"
+      children:
+        - file: content/rv-decision-making/index.md
+        - file: content/rv-decision-making/branches.md
+        - file: content/rv-decision-making/loops.md
+        - file: content/rv-decision-making/summary.md
+        # - file: content/rv-decision-making/precheck.md
+        # - file: content/rv-decision-makingr/exercises.md
+    # - title: "L00 RISC-V Procedures"
+    #   children:
+    #     - file: content/rv-procs/index.md
+    #     - file: content/rv-procs/rv-d-register-conv.md
+    #     - file: content/rv-procs/rv-d-memory-alloc.md
+    #     - file: content/rv-procs/rv-d-summary.md
+    #     - file: content/rv-procs/summary.md
+    #     - file: content/rv-procs/summary-precheck.md
+    #     - file: content/rv-procs/exercises.md
+    - file: content/misc/iec-prefixes.md
+    - file: content/misc/rv32i-green-card.md
+    - file: content/reference.md
 site:
   template: book-theme
   options:

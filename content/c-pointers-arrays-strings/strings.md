@@ -22,7 +22,7 @@ When you make a character array, you should terminate the array with a null term
 char my_str[] = {'e', 'x', 'a', 'm', 'p', 'l', 'e', '\0'};
 ```
 
-declares an 8-byte `char` array on the stack, then initializes the array with the 8 specified `char`s. Read about the stack in [another section](@sec-stack).
+declares an 8-byte `char` array on the stack, then initializes the array with the 8 specified `char`s. Read about the stack in [another section](#sec-stack).
 
 If you are using double quotes (`"`) to create a string, the null terminator is implicitly added, so you should not add it yourself. For example the code
 
@@ -66,7 +66,7 @@ To read about any standard string function, we recomment the manual pages ("man 
 man strlen
 ```
 
-Consider the following code, which is a reasonable implementation of `strlen`[^strlen-practical], the standard C library function that computes the length of a string, minus the null terminator.
+Consider the following code, which is a reasonable implementation of `strlen`[^strlen-practical]. The `strlen` function is the standard C library function that computes the length of a string, minus the null terminator.
 
 [^strlen-practical]: See [glibc](https://github.com/lattera/glibc/blob/master/string/strlen.c) for a more practical, efficient implementation of `strlen`.
 
@@ -92,7 +92,7 @@ int strlen(char s[]) {
 
 ## String literals
 
-Strings created with the following syntax are read only, or **immutable**. After this **string literal* is created, a C program cannot dereference `my_immutable_str` and read its data, but it cannot alter the value of the string during execution.
+Strings created with the following syntax are read only, or **immutable**. After this **string literal** is created, a C program cannot dereference `my_immutable_str` and read its data, but it cannot alter the value of the string during execution.
 
 ```c
 char *my_immutable_str = "Hello";
@@ -106,13 +106,8 @@ char my_str[] = "hello";
 
 :::{note} Explanation
 
-Why is the first string immutable while the second string is mutable? The answer is [memory layout](#sec-mem-layout). The first string is stored in the data portion[^rodata] of memory which is read-only while the second string is stored on the stack.
+Why is the first string immutable while the second string is mutable? The answer is [memory layout](#sec-mem-layout). The first string is stored in the read-only data segment[^rodata] of memory, while the second string is stored on the stack.
 
 :::
-
- These **immutable strings** prevent This means that you cannot alter the value of the string after you have created it. In other words, it is immutable.
-char *my_str = "Hello";
-However, a string created using the following syntax is mutable.
-
 
 [^rodata]: String literals are located in a read-only data segment, which we don't discuss in this class. Read more in the footnotes when we discuss [memory layout](#sec-mem-layout).
