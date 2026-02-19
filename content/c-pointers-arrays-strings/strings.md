@@ -92,7 +92,7 @@ int strlen(char s[]) {
 
 ## String literals
 
-Strings created with the following syntax are read only, or **immutable**. After this **string literal** is created, a C program cannot dereference `my_immutable_str` and read its data, but it cannot alter the value of the string during execution.
+Strings created with the following syntax are read only, or **immutable**. After this **string literal** is created, a C program can dereference `my_immutable_str` and read its data, but it cannot alter the value of the string during execution.
 
 ```c
 char *my_immutable_str = "Hello";
