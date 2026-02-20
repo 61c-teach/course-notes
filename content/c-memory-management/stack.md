@@ -57,13 +57,11 @@ The slidedeck in @fig-c-stack-anim animates allocation and deallocation on the s
 :enumerated: false
 :title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/12ZVT3XK4WGY7nm_Z_9FKaTT1h6YxtwCu-sZMBnAROCc/edit?usp=sharing)"
 :::
-An extended animation of stack memory management.
+An extended animation of stack memory management in C.
 ::::
 
 :::{note} Explanation of @fig-c-stack-anim
 :class: dropdown
-
-In @fig-c-stack-anim:
 
 1. `main()` is called as soon as the program loads. One stack frame for `main` is allocated by moving stack pointer `sp` down to the start of this new frame (recall: blocks of memory are referred to by their lowest address).
 2. `a(0)` is called by `main`. `sp` moves down. Local variables for `a` are initialized in stack memory starting from `sp` and going upwards. `sp` creates enough space to store local variables, whose sizes are known at compile-time. So there is no risk that initializing these variables will spill into `main`'s frame.

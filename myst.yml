@@ -101,14 +101,13 @@ project:
         - file: content/rv-decision-making/summary.md
         # - file: content/rv-decision-making/precheck.md
         # - file: content/rv-decision-makingr/exercises.md
-    # - title: "L00 RISC-V Procedures"
-    #   children:
-    #     - file: content/rv-procs/index.md
-    #     - file: content/rv-procs/rv-d-register-conv.md
-    #     - file: content/rv-procs/rv-d-memory-alloc.md
-    #     - file: content/rv-procs/rv-d-summary.md
-    #     - file: content/rv-procs/summary.md
-    #     - file: content/rv-procs/summary-precheck.md
+    - title: "L12 RISC-V Procedures"
+      children:
+        - file: content/rv-procs/index.md
+        - file: content/rv-procs/rv-jumps-stack.md
+        - file: content/rv-procs/rv-calling-conv.md
+        - file: content/rv-procs/examples.md
+        - file: content/rv-procs/summary.md
     #     - file: content/rv-procs/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md

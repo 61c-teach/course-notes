@@ -146,17 +146,19 @@ Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.p
 | :--- | :--- | :--- | :---: |
 | `x0` | `zero` | Constant 0 | - |
 | `x1` | `ra` | Return Address | Caller |
-| `x2` | `sp` | Stack Pointer | |
-| `x3` | `gp` | Global Pointer | |
-| `x4` | `tp` | Thread Pointer | |
+| `x2` | `sp` | Stack Pointer | Callee |
+| `x3` | `gp` | Global Pointer[^gp-tp] | - |
+| `x4` | `tp` | Thread Pointer[^gp-tp] | - |
 | `x5-7` | `t0-2` | Temporary Registers | Caller |
-| `x8` | `s0` / `fp` | Saved Register 0 / Frame Pointer | |
-| `x9` | `s1` | Saved Register | |
+| `x8` | `s0` / `fp` | Saved Register 0 / Frame Pointer | Callee |
+| `x9` | `s1` | Saved Register | Callee |
 | `x10-11` | `a0-1` | Function Arguments / Return Values | Caller |
 | `x12-17` | `a2-7` | Function Arguments | Caller |
 | `x18-x27` | `s2-11` | Saved Registers | Callee |
 | `x28-31` | `t3-6` | Temporaries | Caller |
 :::
+
+[^gp-tp]: Out of scope: `gp` (global pointer, used to store a reference to the heap) and `tp` (thread pointer, used to store separate stacks for threads). Consider these registers "off-limits"–using them violates register conventions!
 
 ## Instruction Types
 

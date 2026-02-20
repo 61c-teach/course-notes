@@ -2,6 +2,7 @@
 title: "Example: Stack Arrays"
 ---
 
+(sec-example-sp)=
 ## Learning Outcomes
 
 * Use the stack pointer to push large amounts of data onto the stack.
