@@ -4,7 +4,8 @@ title: "Loops"
 
 ## Learning Outcomes
 
-* Implement a for loop in assembly.
+* Translate C loops into RISC-V assembly instructions
+* See a `for` loop in assembly.
 
 
 ::::{note} 🎥 Lecture Video
@@ -337,6 +338,17 @@ In C, the `goto Label;` statement sets the next line to execute to be the line [
 Do not write `goto` in real C code!
 
 The use of [goto](https://en.wikipedia.org/wiki/Goto) was historically popular in earlier programming languages, likely because it reflected how assembly languages execute instructions. Nowadays, modern C and higher-level languages advocate for structured control flow statements via `if-else`, `for` and `while` loops, etc.
+:::
+
+@fig-goto-xkcd gives us one humorous (if not fictional) reason why we should not use `goto` in C programming.
+
+:::{figure} images/goto-xkcd.png
+:label: fig-goto-xkcd
+:alt: "TODO"
+:align: center
+:width: 80%
+
+Using `goto` could lead to velociraptor attacks. ([xkcd](https://xkcd.com/292/), [explainxkcd](https://www.explainxkcd.com/wiki/index.php/292:_goto))
 :::
 
 Nevertheless, we share a few `goto` examples in C, for those of you who want more practice writing code more amicable to direct assembly translation. We encourage you to take these examples with a grain of salt.

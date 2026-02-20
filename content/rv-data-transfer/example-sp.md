@@ -2,6 +2,7 @@
 title: "Example: Stack Arrays"
 ---
 
+(sec-example-sp)=
 ## Learning Outcomes
 
 * Use the stack pointer to push large amounts of data onto the stack.
@@ -14,6 +15,7 @@ No video. We recommend pulling up the [memory section](#tab-rv32i-memory) of the
 
 So far, we have been able to translate very tiny amounts of C code to fit into registers. If we have too many (data) words to fit into registers, we must use memory.
 
+(sec-register-conventions)=
 ## Register Conventions and Register Names
 
 As mentioned [earlier](#sec-register-names), a register can also be referred to by its **register name**. Register names define **convention**—that is, specifying how assembly instructions should use specific registers for specific common functions. These restrictions help build "agreement" upon how to translate separate components of a program so that the assembly instructions slot together.
