@@ -4,7 +4,7 @@ title: "Loops"
 
 ## Learning Outcomes
 
-* Translate C loops into RISC-V assembly instructions
+* Translate C loops into RISC-V assembly instructions.
 * See a `for` loop in assembly.
 
 
@@ -177,6 +177,59 @@ End:
 **Line 11**: `j Loop` Jump to the branch instruction.
 
 **Line 12**: If we reached this instruction, we have exited the loop.
+
+### Run Demo
+
+You can run the below demo in a RISC-V simulator like Venus.
+
+:::{note} `arr20.s`
+:class: dropdown
+
+```bash
+.data
+output: .word   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+
+.text
+    # `output` is a pointer to an int array
+    # set x8 to `output`
+    la    x8 output
+
+    add   x9  x8  x0
+    add  x10  x0  x0
+    add  x11  x0  x0
+    addi x13  x0  20
+Loop:
+    bge  x11 x13 End
+    lw   x12  0(x9)
+    add  x10 x10 x12
+    addi  x9  x9   4
+    addi x11 x11   1
+    j Loop
+End:
+    mv a0 x10
+    jal print_int
+
+    # passing 10 to ecall will terminate the program
+    li a0 10
+    ecall
+
+# prints out one integer
+# input values: a0: the integer to print
+# does not return anything
+print_int:
+    # to print an integer, we need to make an ecall with a0 set to 1
+    # the thing that will be printed is stored in register a1
+    # this line copies the integer to be printed into a1
+    mv a1 a0
+    # set register a0 to 1 so that the ecall will print
+    li a0 1
+    # print the integer
+    ecall
+    # return to the calling function
+    jr ra
+```
+
+:::
 
 ## Control Structure Reductions
 

@@ -186,7 +186,7 @@ This set[^mnemonic] is sufficient to describe the C comparators: `==`, `!=`, `>`
 
 In other words, `bgt`, `bgtu`, `ble`, `bleu` are pseudoinstructions! We leave their translation as an exercise to you :-)
 
-We have also discussed one jump **pseudo**instruction in @tab-rv-jump. We will explain this pseudoinstruction in more detail in a future section.
+We have also discussed one jump **pseudo**instruction in @tab-rv-jump. We will explain this pseudoinstruction in more detail in a [future section](#sec-jumps).
 
 :::{table} RV32I unconditional jump pseudoinstruction
 :label: tab-rv-jump

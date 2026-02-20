@@ -120,7 +120,7 @@ See the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main
 | `beqz rs1 label` | Branch if EQuals Zero | `if (R[rs1] == 0)`<br/>`PC = PC + offset` | `beq rs1 x0 label` |
 | `bnez rs1 label` | Branch if Not Equals Zero | `if (R[rs1] != 0)`<br/>`PC = PC + offset` | `bne rs1 x0 label` |
 | `j label` | Jump | `PC = PC + offset` | `jal x0 label` |
-| `jal label` | Jump and Link | `R[ra] = PC + 4`<br/>`PC = PC + offset` | `jal ra label` |
+| `jal label` | Jump And Link (Pseudo) | `R[ra] = PC + 4`<br/>`PC = PC + offset` | `jal ra label` |
 | `jr rs1` | Jump Register | `PC = R[rs1]` | `jalr x0 rs1 0` |
 | `la rd label` | Load absolute Address | `R[rd] = &label` | `auipc`, `addi` |
 | `li rd imm` | Load Immediate | `R[rd] = imm` | `lui` (if needed), `addi` |
@@ -128,7 +128,7 @@ See the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main
 | `neg rd rs1` | NEGate | `R[rd] = -(R[rs1])` | `sub rd x0 rs1` |
 | `nop` | No OPeration | do nothing | `addi x0 x0 0` |
 | `not rd rs1` | bitwise NOT | `R[rd] = ~(R[rs1])` | `xori rd rs1 -1` |
-| `ret` | RETurn | `PC = R[ra]` | `jalr x0 ra 0` |
+| `ret` | RETurn (`jr ra`) | `PC = R[ra]` | `jalr x0 ra 0` |
 
 :::
 
