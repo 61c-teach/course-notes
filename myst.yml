@@ -126,15 +126,15 @@ project:
     #     - file: content/rv-decision-making/summary.md
     #     - file: content/rv-decision-making/summary-precheck.md
     #     - file: content/rv-decision-making/exercises.md
-    # - title: "L00 RISC-V Procedures"
-    #   children:
-    #     - file: content/rv-procs/index.md
-    #     - file: content/rv-procs/rv-d-register-conv.md
-    #     - file: content/rv-procs/rv-d-memory-alloc.md
-    #     - file: content/rv-procs/rv-d-summary.md
-    #     - file: content/rv-procs/summary.md
-    #     - file: content/rv-procs/summary-precheck.md
-    #     - file: content/rv-procs/exercises.md
+    - title: "L00 RISC-V Procedures"
+      children:
+        - file: content/rv-procs/index.md
+        - file: content/rv-procs/rv-d-register-conv.md
+        - file: content/rv-procs/rv-d-memory-alloc.md
+        - file: content/rv-procs/rv-d-summary.md
+        - file: content/rv-procs/summary.md
+        - file: content/rv-procs/summary-precheck.md
+        - file: content/rv-procs/exercises.md
 
 site:
   template: book-theme
