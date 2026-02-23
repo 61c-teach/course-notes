@@ -5,7 +5,8 @@ title: "RISC-V ISA"
 ## Learning Outcomes
 
 * Know that the RISC-V 32I ISA specifies 32 32-bit-wide registers. Of these, the zero register `x0` is hardwired to zero.
-* Compare and constrast assembly and higher-level languages.
+* Compare and contrast assembly and higher-level languages.
+* Know that the RISC-V 32I ISA specifies assembly instructions and how they translate to machine instructions.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -17,11 +18,18 @@ title: "RISC-V ISA"
 
 ::::
 
+Recall from [earlier](#sec-isa-note) that an ISA specifies assembly language instructions, machine instructions, and fundamental architecture features.
+
 ## Defining the RISC-V Instruction Set
 
-The instruction set for a particular architecture (e.g. RISC-V) defines the set of instructions we can use in **assembly language** for that architecture.
+A given architecture (e.g. RISC-V) supports a given **instruction set**, i.e., set of instructions we can use for that architecture.
 
-Each line of assembly code represents one instruction for the computer. In RISC-V, an **assembly instruction** has an **operation name** (**opname**) and **operands** that specify source and destination registers, values, memory locations, other instructions, etc.
+(sec-assembly-language)=
+### Assembly language
+
+Computer instructions can be precisely specified in **assembly language**. Executing a line of assembly code means executing one instruction on the computer.
+
+In RISC-V, an **assembly instruction** has an **operation name** (**opname**) and **operands** that specify source and destination registers, values, memory locations, other instructions, etc.
 
 ```
 add x1 x2 x3
@@ -39,8 +47,23 @@ To write a comment in RISC-V,  use a hash mark (`#`)[^apollo]. Everything to the
 
 [^apollo]: The `#` commenting style has a long history. For example, the 1966 Apollo Guidance Computer code (written by lead programmer [Margaret Hamilton](https://www.smithsonianmag.com/smithsonian-institution/margaret-hamilton-led-nasa-software-team-landed-astronauts-moon-180971575/)) used similar commenting conventions. the printout of the code for the lunar lander was famously taller than Hamilton herself. You can actually find the Apollo landing code on GitHub. As reported on [ABC News](https://abcnews.go.com/Technology/apollo-11s-source-code-tons-easter-eggs-including/story?id=40515222), the [code](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/THE_LUNAR_LANDING.agc#L245) has a [ton](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/LUNAR_LANDING_GUIDANCE_EQUATIONS.agc#L179) of [easter eggs](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/BURN_BABY_BURN--MASTER_IGNITION_ROUTINE.agc#L61) that belie the nature of early computer scientists.
 
+(sec-machine-language)=
+### Machine language
+
+Remember that a computer only understands `1`s and `0`s; text like `add x1 x2 x3` is somewhat meaningless to hardware. An ISA therefore actually defines instructions for a computer down to the _bit level_; it specifies both assembly language _and_  **machine language**.
+
+A **machine instruction** is the bit representation of an assembly instruction. The RISC-V ISA specifies that the instruction `add x1 x2 x3` translates to the following 32 bits of machine code:
+
+```
+00000000101010011000100100110011
+```
+
+These machine code bits specify how the computer architecture should perform arithmetic, read/write registers, access memory, transfer control, etc. We discuss machine instruction specifications in a [later section](#sec-machine-instructions).
+
 (sec-rv32i-registers)=
 ## RV32I Registers
+
+What defines "fundamental architecture features"? For now, we introduce **registers**; we leave [memory access](#sec-load-store) and [instruction execution](#sec-rv-pc) to later sections.
 
 The RISC-V ISA specifies **32 registers**.
 

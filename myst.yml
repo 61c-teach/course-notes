@@ -103,7 +103,7 @@ project:
     - title: "Miscellaneous"
         - file: content/c-generics/fn-ptr.md
         - file: content/c-generics/summary.md
-        - file: content/c-generics/exercises.md
+        # - file: content/c-generics/exercises.md
     - title: "L08 Floating Point"
       children:
         - file: content/floating-point/index.md
@@ -112,6 +112,7 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
+        # - file: content/floating-point/summary-precheck.md
         - file: content/floating-point/exercises.md
     - title: "L09 RISC-V Intro"
       children:
@@ -139,15 +140,33 @@ project:
         - file: content/rv-decision-making/summary.md
         # - file: content/rv-decision-making/precheck.md
         # - file: content/rv-decision-makingr/exercises.md
-    # - title: "L00 RISC-V Procedures"
-    #   children:
-    #     - file: content/rv-procs/index.md
-    #     - file: content/rv-procs/rv-d-register-conv.md
-    #     - file: content/rv-procs/rv-d-memory-alloc.md
-    #     - file: content/rv-procs/rv-d-summary.md
-    #     - file: content/rv-procs/summary.md
-    #     - file: content/rv-procs/summary-precheck.md
+    - title: "L12 RISC-V Procedures"
+      children:
+        - file: content/rv-procs/index.md
+        - file: content/rv-procs/rv-jumps-stack.md
+        - file: content/rv-procs/rv-calling-conv.md
+        - file: content/rv-procs/examples.md
+        - file: content/rv-procs/summary.md
     #     - file: content/rv-procs/exercises.md
+    - title: "L13 RISC-V Instruction Formats I"
+      children:
+        - file: content/rv-isa-formats-i/index.md
+        - file: content/rv-isa-formats-i/r-type.md
+        - file: content/rv-isa-formats-i/i-type.md
+        - file: content/rv-isa-formats-i/s-type.md
+        - file: content/rv-isa-formats-i/summary.md
+        # - file: content/rv-isa-formats-i/summary-precheck.md
+        # - file: content/rv-isa-formats-i/exercises.md
+    - title: "L14 RISC-V Instruction Formats II"
+      children:
+        - file: content/rv-isa-formats-ii/index.md
+        - file: content/rv-isa-formats-ii/b-type.md
+        - file: content/rv-isa-formats-ii/j-type.md
+        - file: content/rv-isa-formats-ii/rv-isa-f2-summary.md
+        - file: content/rv-isa-formats-ii/u-type.md
+        - file: content/rv-isa-formats-ii/summary.md
+        # - file: content/rv-isa-formats-ii/summary-precheck.md
+        # - file: content/rv-isa-formats-ii/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md

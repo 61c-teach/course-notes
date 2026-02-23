@@ -7,6 +7,7 @@ title: "Conditional Branches"
 
 * Write conditional statements in RISC-V.
 * Use `bne` instructions for if-conditions that compare on equality.
+* Differentiate between conditional branch instructions and unconditional jump instructions.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -41,8 +42,9 @@ If we consider the processor as a central component, we **transfer** control to 
 Illustration of unconditional and conditional control flow transfer.
 :::
 
-The conditional `if` statement conditionally executes Line 4 only if `n > 5`; otherwise, it executes the next statement, on Line 6. By contrast, the call to `foo` in Line 11 unconditionally transfers control to the first statement in `foo` on Line 2; then, when `foo` returns on Line 6, control unconditionally transfers back to Line 12. 
+The conditional `if` statement conditionally executes Line 4 only if `n > 5`; otherwise, it executes the next statement, on Line 6. By contrast, the call to `foo` in Line 11 unconditionally transfers control to the first statement in `foo` on Line 2; then, when `foo` returns on Line 6, control unconditionally transfers back to Line 12.
 
+(sec-branches-jumps)=
 ## Branches and Jumps
 
 RISC-V implements control flow by changing the order of execution in the code. Specifically, such instructions **transfer control** by updating the [program counter](#sec-program-counter) not to the next instruction as is the default, but _another_ instruction. There are two types[^philosophy] of such instructions in RV32I: **unconditional jumps** and **conditional branches**.
