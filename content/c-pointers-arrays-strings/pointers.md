@@ -401,7 +401,6 @@ int main() {
 }
 ```
 
-
 :::{figure} images/array-indexing.png
 :label: fig-ptr-indexing
 :width: 80%

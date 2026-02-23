@@ -1,7 +1,9 @@
 ---
-title: "Bitwise Operations"
+title: "C Bitwise Operations"
+short_title: "Bitwise Operations"
 ---
 
+(sec-c-bitwise-ops)=
 ## Learning Outcomes
 
 * Understand how bitwise operations "flip" or "keep" bits from operands.
@@ -98,6 +100,7 @@ The below properties in @tab-bitwise-props hold for a single-bit value `x`. We l
 
 Because of its behavior, we also call XOR a "conditional inverter". We discuss this more when we design logic gates.
 
+(sec-bitwise-ops-defined)=
 ## C: Bitwise Operations vs. Logical Operations
 
 The bitwise operators `&`, `|`, and `~` are used in C. With n-bit operands, bitwise operations are performed on the binary numeral(s) **one bit at a time**; the result's bitwidth depends on the input operands. See @tab-bitwise for examples on 8-bit `char` values.
@@ -154,21 +157,27 @@ Bitwise operations will be very useful for boolean logic later on when we introd
 
 ## More C Bitwise Operators: Left and Right Shift
 
-Two additional operations describe **bit shifts**. 
-We will revisit bit shifting operations later in the course. For now, we define them for the sake of being comprehensive.
+Two additional operations describe **bit shifts**.
 
 Suppose you have the 8-bit bit patterns (where we put spaces between nibbles for readability):
 
 * `x`, with bit pattern `0001 0001`
 * `y`, with bit pattern `1111 0001`
 
-**Left shift** `x << n` shifts the bits of `x` left, filling the lower bits coming in from the left with `0`'s. Mathematically, this is equivalent to multiplying `x` by $2^{\texttt{n}}$. For example, `x << 3` gives the bit pattern `0000 1000`, where the leftmost `1` gets "shifted out."
+(sec-left-shift)=
+**Left shift** `x << n` shifts the bits of `x` left by `n` bits, filling the `n` lower bits ("coming in from the right") with `0`'s. Mathematically, this is equivalent to multiplying `x` by $2^{\texttt{n}}$.
 
-**Right shift**, `x >> n` shifts the bits of `x` right. Mathematically, this is equivalent to taking the floor of a division by $2^{\texttt{n}}4 We will still need to fill in the top bits coming in from the right somehow, but the precise operation in C depends on `x`'s type.
+  * For example, `x << 2` gives the bit pattern `0100 0100`. If we interpret `x` as a signed 8-bit integer 17, then `x << 2` is indeed $17 \times 4 = 68$.
+  * Left shifting also encounters overflow: `x << 4` gives the bit pattern `0001 0000` where the leftmost `1` gets "shifted out" of the 8-bit type (to produce the signed 8-bit integer 16, which is certainly not $17 \times 2^4$).
 
-* **Logical right shift** "zero-extends" and fills the top bits with `0`. If `x` is an unsigned 8-bit integer, then `x >> 2` gives the bit pattern `0000 0100`, where the rightmost `1` gets shifted out. This is equivalent to `(unsigned char) 17 >> 2` yielding `4`.
+(sec-right-shift)=
+**Right shift**, `x >> n` shifts the bits of `x` right by `n` bits. Mathematically, this is equivalent to taking the floor of a division by $2^{\texttt{n}}$. We will still need to fill in the top bits coming in from the right somehow, but the precise operation in C depends on `x`'s type.
 
-* **Arithmetic right shift** "sign-extends" and fills the top bits with the sign bit of `x`. Arithmetic right shift therefore preserves the sign bit of the result when using signed operands.
+(sec-right-shift-logical)=
+* **Logical right shift** "zero-extends" and fills the upper bits with `0`. If `x` is an unsigned 8-bit integer, then `x >> 2` gives the bit pattern `0000 0100`, where the rightmost `1` gets shifted out. This is equivalent to `(unsigned char) 17 >> 2` yielding `4`.
+
+(sec-right-shift-arithmetic)=
+* **Arithmetic right shift** "sign-extends" and fills the upper bits with the sign bit of `x`. Arithmetic right shift therefore preserves the sign bit of the result when using signed operands.
 
 :::{note} Example
 
@@ -176,7 +185,8 @@ If `y` is a two's complement 8-bit signed integer with bit pattern `1111 0001`, 
 
 :::
 
-:::{tip} Quick check
+(sec-why-shift-left)=
+:::{warning} Quick check
 
 Why do we not define logical and arithmetic for _left_ shift?
 :::
@@ -186,6 +196,9 @@ Why do we not define logical and arithmetic for _left_ shift?
 
 Logically, left-shifting shifts a bit pattern left and inserts zeros. Arithmetically, left-shifting a number (regardless of its sign) multiplies it by a power of two, which also inserts zeros. Arithmetic and logical left shifts are therefore equivalent.
 :::
+
+(sec-c-bitwise-practice)=
+## Practice
 
 :::{tip} Practice
 After the below code is executed, what is `y`?
@@ -204,7 +217,8 @@ uint32_t y = N & ((N << 0x10) >> 0x8);
 
 :::
 
-::::{note} Explanation
+::::{note} Show answer
+:class: dropdown
 
 **B.** `0x3400`.
 
@@ -221,9 +235,5 @@ uint32_t y = N & ((N << 0x10) >> 0x8);
 
 Result of `N & (N << 0x10) >> 0x8`, i.e., `0x000034FF & 0x0034 FF00`
 :::
-
-
-
- 
 
 ::::
