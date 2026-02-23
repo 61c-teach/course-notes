@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/moores-law-graph.png
+:label: fig-moores-law
+:width: 100%
+:alt: "TODO"
+
+Visual of Moore's Law over time.
+:::

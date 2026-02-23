@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/AND-gate-equivalence-flow.png
+:label: fig-and-equivalence
+:width: 100%
+:alt: "TODO"
+
+Flow chart of equivalent representations of AND gate logic.
+:::

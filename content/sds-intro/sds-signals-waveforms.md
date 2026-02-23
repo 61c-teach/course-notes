@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/binary-rep-signals.png
+:label: fig-bin-rep-signals
+:width: 100%
+:alt: "TODO"
+
+Binary representation of signals.
+:::

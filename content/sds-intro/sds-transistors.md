@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/mos-network.png
+:label: fig-mos-network
+:width: 100%
+:alt: "TODO"
+
+Flow chart of MOS Network and gates.
+:::
