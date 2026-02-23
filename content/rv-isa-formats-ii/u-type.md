@@ -34,7 +34,7 @@ From the P&H textbook (Chapter 2.10), one such instruction, `lui`, is **L**oad *
 
 > ...load a 20-bit constant into bits 12 through 31 of a register. The rightmost 12 bits are filled with zeros.
 
-In @tab-lui, we call this upper immediate `immu` and the 32-bit immediate `imm`. Then, as shown in @fig-u-type-immu, `imm = immu << 12`; this 32-bit numeric constant `imm` is then written to register `rd`.
+In @tab-lui, we call this upper immediate `immu` and the 32-bit immediate `imm`.
 
 :::{table} The `lui` instruction.
 :label: tab-lui
@@ -45,14 +45,14 @@ In @tab-lui, we call this upper immediate `immu` and the 32-bit immediate `imm`.
 | `lui rd immu` | Load Upper Immediate | `imm = immu << 12`<br/>`R[rd] = imm` |
 :::
 
-The topmost bit of `immu` must also be encoded into the U-Type. In other words, 
+As shown in @fig-u-type-immu, `imm = immu << 12`; this 32-bit numeric constant `imm` is then written to register `rd`.
 
 :::{figure} images/u-type-immu.png
 :label: fig-u-type-immu
 :width: 50%
 :alt: "TODO"
 
-`immu` is the top 20 bits of a 32-bit-wide `imm` numeric constant.
+For U-Type instructions, `immu` is the top 20 bits of a 32-bit-wide numeric constant `imm` `imm`.
 :::
 
 (sec-li-lui)=
@@ -62,13 +62,13 @@ With this new instruction, we can now return to translating the `li` pseudoinstr
 
 > This description is incomplete given the range of `imm` in `addi`. See the [green-card](@tab-rv32i-pseudoinstructions) and a [later section](#sec-li-lui) for the full translation of load immediates.
 
-In other words, when `li` must use a numeric constant wider than the 12 bits accommodated by the I-Type `addi`'s `imm` field it translates to **two** instructions: `lui` and `addi`.
-
 | Pseudoinstruction | Name | Description | Translation |
 | :--- | :--- | :--- | :--- |
 | `li rd imm` | Load Immediate | `R[rd] = imm` | `lui` (if needed), `addi` |
 
-In general, the compiler or assembler will break large constants across the `addi` and `lui` instructions, as needed. After all, there are some important **caveats**; hover over the two footnotes below before continuing.
+In other words, `li` translates to `addi` when the immediate is between -2048 and 2047. For anything larger, `li` translates to **two** instructions: `lui` and `addi`.
+
+In general, the compiler or assembler will break large constants across the `lui` and `addi` instructions, as needed. After all, there are some important **caveats** to this process. Hover over the two footnotes below before continuing.
 
 * `lui` to set the upper 20 bits[^lui-caveat]
 * `addi` to "set" the lower 12 bits[^addi-caveat]
@@ -120,6 +120,7 @@ addi x10 x10 0xAFE
 :::
 
 ::::{note} Show Explanation
+:class: dropdown
 
 Let's first consider the strawman[^strawman], which **does not work**:
 
@@ -191,7 +192,7 @@ U-Type has only three fields (@fig-u-type):
 
 * **Opcode**: The U-Type field `opcode` specifies the operation: `auipc` or `lui` (@tab-u-type).
 
-* **Constant operand**: The **upper immediate field** (we'll call it `immu`) specifies a 20-bit immediate value. The upper immediate value `immu` is **unsigned** because both U-Type instructions `auipc` and `lui` **left-shift** `immu` to form the upper 20 bits of a numeric constant `imm`.
+* **Constant operand**: The **upper immediate field** (we'll call it `immu`) specifies a 20-bit immediate value. `immu` is **left-shifted** by 12 to form the upper 20 bits of a 32-bit numeric constant `imm` (@fig-u-type-immu).
 
 :::{table} RV32I Instructions: U-Type
 :label: tab-u-type

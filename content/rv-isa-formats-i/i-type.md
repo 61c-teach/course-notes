@@ -40,11 +40,16 @@ We first discuss arithmetic instructions of the form `opname rd rs1 imm` like `a
 The I-Type Instruction Format.
 :::
 
-**Register operands**: Notice that the register fields  `rs1` and `rd` are in the same positions in I-Type and R-type; this intentional design reduces hardware complexity.
+I-Type Fields:
 
-**Constant operand**: The **immediate field** `imm` specifies a 12-bit-wide immediate value. Again, immediates are called as such because their bit patterns are directly encoded into the machine instruction.
+* **Register operands**: Notice that the register fields  `rs1` and `rd` are in the same positions in I-Type and [R-type](#fig-r-type); this intentional design reduces hardware complexity.
+* **Constant operand**: The **immediate field**[^imm-reminder] `imm` specifies a 12-bit-wide numeric constant. The I-Type has no second source register `rs2`, so `imm` reuses those bit positions to encode a larger numeric constant across bits 15 to 31.
 
-The 12-bit immediate is a two's complement integer with range $-2^{11} = -2048$ to $2^{11} - 1 = 2047$. Before using this integer constant in an operation, the hardware **sign-extends** the 12-bit value to 32-bits.
+    The 12-bit immediate is a two's complement integer with range $-2^{11} = -2048$ to $2^{11} - 1 = 2047$. Before using this 12-bit-wide value in an operation, the hardware **sign-extends** it to a 32-bit-wide value.
+* **Operation fields**: `opcode`, `funct3`
+
+[^imm-reminder]: Again, immediates are called as such because their bit patterns are directly encoded into the machine instruction.
+
 
 
 ## Assembly Instruction $\rightarrow$ Machine Instruction
@@ -134,8 +139,9 @@ Observations:
 
 ## Load Instructions
 
-Remember, instruction formats are simply just formats. The operation specifies what the hardware actually does. However, keeping the same instruction format allows us to simplify and reuse certain hardware. **Load instructions** are one such example; loads use I-Type instruction format .
+Remember, instruction formats are simply just formats. The operation specifies what the hardware actually does. However, keeping the same instruction format allows us to simplify and reuse certain hardware.
 
+**Load instructions** are one such example.
 Recall from an [earlier section](#sec-load-word):
 
 > The **load word** instruction:
@@ -143,7 +149,7 @@ Recall from an [earlier section](#sec-load-word):
 > * **Computes a memory address** `R[rs1]+imm`
 > * **Load a word** from this address in memory, `M[R[rs1] + imm][31:0]` into a **destination register**, `rd`.
 
-Loads therefore need the following fields (@fig-load-operation-isa):
+Loads can therefore use I-Type instruction format (@fig-load-operation-isa):
 
 * `imm`, `rs1`, `rd` fields
 * `opcode` (as all instructions do). Loads use opcode `000 0011`.
@@ -157,7 +163,10 @@ Loads therefore need the following fields (@fig-load-operation-isa):
 Load instructions use I-Type instruction format.
 :::
 
-Notably, loads also perform **register-immediate addition** to compute the memory address as `R[rs1] + imm`. Loads can therefore reuse any hardware we use for register-immediate arithmetic instructions.
+Observations:
+
+* The fact that loads perform a memory access is irrelevant to how we specify the instruction. The instruction bits simply provide enough information for the hardware to decode and execute the correct instruction.
+* Loads _do_ share some similarities with other I-Type instructions. Notably, loads also perform **register-immediate addition** to compute the memory address as `R[rs1] + imm`. Loads can therefore reuse any hardware needed for register-immediate arithmetic instructions.
 
 We recommend reviewing [the earier chapter](#sec-data-transfer) for the description of each load instruction in @tab-i-type-loads.
 
@@ -232,7 +241,7 @@ jalr instruction format. The program counter is updated to the base register plu
 
 Observations:
 
-* The fact that `jalr` accesses PC is irrelevant to how we specify the instruction. The instruction bits simply  provide enough information for the hardware to decode and execute the correct instruction.
+* Like with loads, the fact that `jalr` accesses PC is irrelevant to how we specify the instruction. 
 * Like with loads, `jalr` also performs **register-immediate addition**, `jalr` can therefore reuse register-immediate arithmetic hardware to compute the jump address `R[rs1] + imm`.
 
 :::{warning} What about `jr` and `ret`?
