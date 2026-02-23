@@ -17,3 +17,21 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/linker-flow.png
+:label: fig-linker-flow
+:width: 100%
+:alt: "TODO"
+
+Flow chart for linker components.
+:::
+
+:::{figure} images/jump-isaformat-compare.png
+:label: fig-jump-isa-compare
+:width: 100%
+:alt: "TODO"
+
+Comparison of J/U-Type formats with I-Type and S-Type formats.
+:::

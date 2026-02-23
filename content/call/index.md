@@ -17,3 +17,37 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/compile-loader.png
+:label: fig-compile-loader
+:width: 100%
+:alt: "TODO"
+
+First and final steps for compiling and running a C program.
+:::
+
+:::{figure} images/call-flow.png
+:label: fig-call-flow
+:width: 100%
+:alt: "TODO"
+
+Flow chart for steps for compiling and running a C program.
+:::
+
+:::{figure} images/language-continuum.png
+:label: fig-language-continuum
+:width: 100%
+:alt: "TODO"
+
+Language execution continuum.
+:::
+
+:::{figure} images/python-interpreter.png
+:label: fig-python-interpreter
+:width: 100%
+:alt: "TODO"
+
+Python interpreter flow comparison.
+:::

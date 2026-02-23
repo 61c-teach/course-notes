@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/assembler-directive.png
+:label: fig-assem-dir
+:width: 100%
+:alt: "TODO"
+
+Example of directive: instructions for the assembler.
+:::
