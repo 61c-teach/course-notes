@@ -68,16 +68,16 @@ This "green card" is longer than one page, due to the accessible web format. We 
 :label: tab-rv32i-control
 :align: center
 
-| Instruction | Name | Description | Type | Opcode | Funct3 | Funct7 |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
-| `beq rs1 rs2 label` | Branch if EQual | `if (R[rs1] == R[rs2]) PC = PC + offset` | B | `110 0011` | `000` | |
-| `bne rs1 rs2 label` | Branch if Not Equal | `if (R[rs1] != R[rs2]) PC = PC + offset` | B | `110 0011` | `001` | |
-| `blt rs1 rs2 label` | Branch if Less Than (signed) | `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `100` | |
-| `bltu rs1 rs2 label`| Branch if Less Than (Unsigned)| `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `110` | |
-| `bge rs1 rs2 label` | Branch if Greater or Equal (signed)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `101` | |
-| `bgeu rs1 rs2 label`| Branch if Greater or Equal (Unsigned)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `111` | |
-| `jal rd label` | Jump And Link | `R[rd] = PC + 4;`<br/>`PC = PC + offset` | J | `110 1111` | | |
-| `jalr rd rs1 imm` | Jump And Link Register | `R[rd] = PC + 4;`<br/>`PC = R[rs1] + imm` | I | `110 0111` | `000` | |
+| Instruction | Name | Description | Type | Opcode | Funct3 |
+| :--- | :--- | :--- | :---: | :---: | :---: |
+| `beq rs1 rs2 label` | Branch if EQual | `if (R[rs1] == R[rs2]) PC = PC + offset` | B | `110 0011` | `000` |
+| `bne rs1 rs2 label` | Branch if Not Equal | `if (R[rs1] != R[rs2]) PC = PC + offset` | B | `110 0011` | `001` |
+| `blt rs1 rs2 label` | Branch if Less Than (signed) | `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `100` |
+| `bltu rs1 rs2 label`| Branch if Less Than (Unsigned)| `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `110` |
+| `bge rs1 rs2 label` | Branch if Greater or Equal (signed)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `101` |
+| `bgeu rs1 rs2 label`| Branch if Greater or Equal (Unsigned)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `111` |
+| `jal rd label` | Jump And Link | `R[rd] = PC + 4;`<br/>`PC = PC + offset` | J | `110 1111` | - |
+| `jalr rd rs1 imm` | Jump And Link Register | `R[rd] = PC + 4;`<br/>`PC = R[rs1] + imm` | I | `110 0111` | `000` |
 
 :::
 
@@ -89,8 +89,8 @@ This "green card" is longer than one page, due to the accessible web format. We 
 
 | Instruction | Name | Description | Type | Opcode | Funct3 | 
 | :--- | :--- | :--- | :---: | :---: | :---: | 
-| `auipc rd immu` | Add Upper Imm to PC | `imm = immu << 12`<br/>`R[rd] = PC + imm` | U | `001 0111` | |
-| `lui rd immu` | Load Upper Immediate | `imm = immu << 12`<br/>`R[rd] = imm` | U | `011 0111` | |
+| `auipc rd immu` | Add Upper Imm to PC | `imm = immu << 12`<br/>`R[rd] = PC + imm` | U | `001 0111` | - |
+| `lui rd immu` | Load Upper Immediate | `imm = immu << 12`<br/>`R[rd] = imm` | U | `011 0111` | - |
 | `ebreak` | Environment BREAK | Asks the debugger to do something (`imm = 0`)| I | `111 0011` | `000` |
 | `ecall` | Environment CALL | Asks the OS to do something (`imm = 1`) | I | `111 0011` | `000` |
 
