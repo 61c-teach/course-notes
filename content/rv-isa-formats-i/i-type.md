@@ -149,7 +149,7 @@ Recall from an [earlier section](#sec-load-word):
 > * **Computes a memory address** `R[rs1]+imm`
 > * **Load a word** from this address in memory, `M[R[rs1] + imm][31:0]` into a **destination register**, `rd`.
 
-Loads can therefore use I-Type instruction format (@fig-load-operation-isa):
+Loads can therefore use the I-Type instruction format (@fig-load-operation-isa):
 
 * `imm`, `rs1`, `rd` fields
 * `opcode` (as all instructions do). Loads use opcode `000 0011`.

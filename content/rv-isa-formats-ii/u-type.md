@@ -62,6 +62,8 @@ With this new instruction, we can now return to translating the `li` pseudoinstr
 
 > This description is incomplete given the range of `imm` in `addi`. See the [green-card](@tab-rv32i-pseudoinstructions) and a [later section](#sec-li-lui) for the full translation of load immediates.
 
+In other words, when `li` must use a numeric constant wider than the 12 bits accommodated by the I-Type `addi`'s `imm` field it translates to **two** instructions: `lui` and `addi`.
+
 | Pseudoinstruction | Name | Description | Translation |
 | :--- | :--- | :--- | :--- |
 | `li rd imm` | Load Immediate | `R[rd] = imm` | `lui` (if needed), `addi` |
