@@ -1,8 +1,9 @@
 ---
-title: "J-Format"
+title: "J-Type"
 subtitle: TODO
 ---
 
+(sec-j-type)=
 ## Learning Outcomes
 
 * TODO
@@ -18,23 +19,13 @@ subtitle: TODO
 
 ::::
 
+Coming soon!
+
+<!--
+
 ## Visuals
 
-:::{figure} images/jalr-isa.png
-:label: fig-jalr-isa
-:width: 100%
-:alt: "TODO"
 
-jalr instruction format.
-:::
-
-:::{figure} images/jump-operation-walkthrough.png
-:label: fig-jump-operation-walkthrough
-:width: 100%
-:alt: "TODO"
-
-Code illustrated example with jump operation.
-:::
 
 :::{figure} images/jal-isa.png
 :label: fig-jal-isa
@@ -62,3 +53,5 @@ subtitle: TODO
 TODO: unconditional branch "definition" -- include this later when we discuss instruction formats
 
 You might wonder if you can just make an unconditional branch using a conditional one, like beq x0, x0, label. While that would always jump, there is a catch: the range of a branch is shorter. Because RISC-V uses 32-bit instructions, we have to fit the instruction type, the registers being compared, and the label (an immediate value) into those 32 bits. A dedicated jump instruction doesn't need to specify registers to compare, so its immediate value can be larger, allowing it to reach farther in the program.
+
+-->

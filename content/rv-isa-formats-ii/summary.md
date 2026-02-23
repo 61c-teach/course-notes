@@ -1,12 +1,8 @@
 ---
 title: "Summary"
-subtitle: TODO
 ---
 
-## Learning Outcomes
-
-* TODO
-* TODO
+## And in Conclusion$\dots$
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -17,3 +13,10 @@ subtitle: TODO
 :::
 
 ::::
+
+## Textbook Readings
+
+P&H 2.5, 2.10
+
+## Additional References
+

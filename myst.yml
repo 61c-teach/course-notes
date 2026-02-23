@@ -65,7 +65,7 @@ project:
         - file: content/c-generics/generics.md
         - file: content/c-generics/fn-ptr.md
         - file: content/c-generics/summary.md
-        - file: content/c-generics/exercises.md
+        # - file: content/c-generics/exercises.md
     - title: "L08 Floating Point"
       children:
         - file: content/floating-point/index.md
@@ -74,7 +74,7 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-        - file: content/floating-point/summary-precheck.md
+        # - file: content/floating-point/summary-precheck.md
         - file: content/floating-point/exercises.md
     - title: "L09 RISC-V Intro"
       children:
@@ -110,25 +110,25 @@ project:
         - file: content/rv-procs/examples.md
         - file: content/rv-procs/summary.md
     #     - file: content/rv-procs/exercises.md
-    - title: "L00 RISC-V Instruction Formats I"
+    - title: "L13 RISC-V Instruction Formats I"
       children:
-        - file: content/rv-isa-formatsI/index.md
-        - file: content/rv-isa-formatsI/rv-isa-fI-r-format.md
-        - file: content/rv-isa-formatsI/rv-isa-fI-i-format.md
-        - file: content/rv-isa-formatsI/rv-isa-fI-loads.md
-        - file: content/rv-isa-formatsI/rv-isa-fI-s-format.md
-        - file: content/rv-isa-formatsI/summary.md
-        - file: content/rv-isa-formatsI/summary-precheck.md
-        - file: content/rv-isa-formatsI/exercises.md
-    - title: "L00 RISC-V Instruction Formats II"
+        - file: content/rv-isa-formats-i/index.md
+        - file: content/rv-isa-formats-i/r-type.md
+        - file: content/rv-isa-formats-i/i-type.md
+        - file: content/rv-isa-formats-i/s-type.md
+        - file: content/rv-isa-formats-i/summary.md
+        # - file: content/rv-isa-formats-i/summary-precheck.md
+        # - file: content/rv-isa-formats-i/exercises.md
+    - title: "L14 RISC-V Instruction Formats II"
       children:
-        - file: content/rv-isa-formatsII/index.md
-        - file: content/rv-isa-formatsII/rv-isa-f2-upper-immediates.md
-        - file: content/rv-isa-formatsII/rv-isa-f2-j-format.md
-        - file: content/rv-isa-formatsII/rv-isa-f2-summary.md
-        - file: content/rv-isa-formatsII/summary.md
-        - file: content/rv-isa-formatsII/summary-precheck.md
-        - file: content/rv-isa-formatsII/exercises.md
+        - file: content/rv-isa-formats-ii/index.md
+        - file: content/rv-isa-formats-ii/b-type.md
+        - file: content/rv-isa-formats-ii/j-type.md
+        - file: content/rv-isa-formats-ii/rv-isa-f2-summary.md
+        - file: content/rv-isa-formats-ii/u-type.md
+        - file: content/rv-isa-formats-ii/summary.md
+        # - file: content/rv-isa-formats-ii/summary-precheck.md
+        # - file: content/rv-isa-formats-ii/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md

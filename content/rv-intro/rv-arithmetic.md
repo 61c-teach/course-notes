@@ -32,14 +32,14 @@ short_title: "Arithmetic, Immediates, Pseudoinstructions"
 
 ## `add` and `sub` Instructions
 
-Generally, assembly instructions have a very rigid format. Consider **arithmetic and logic instructions** like addition (`add`), bitwise AND (`and`), etc., which operate on two registers and store the result in a third register. These instructions always follow the same rigid syntax shown in @fig-r-type:
+Generally, assembly instructions have a very rigid format. Consider **arithmetic and logical instructions** like addition (`add`), bitwise AND (`and`), etc., which operate on two registers and store the result in a third register. These instructions always follow the same rigid syntax shown in @fig-r-type-arithmetic:
 
-:::{figure} images/r-type.png
-:label: fig-r-type
+:::{figure} images/r-type-arithmetic.png
+:label: fig-r-type-arithmetic
 :width: 50%
 :alt: "TODO"
 
-R-Type instructions (arithmetic and logic involving two source registers).
+R-Type instructions (arithmetic and logical involving two source registers).
 :::
 
 The fields are separated by spaces[^commas], in order:
@@ -283,7 +283,7 @@ We have just seen several cases where common C statements translate into other i
 
 Consider two examples below (and see the full set in the [RISC-V green card](#tab-rv32i-pseudoinstructions)).
 
-:::{table} The subset pseudoinstructions.
+:::{table} A subset of pseudoinstructions.
 :label: tab-mv-li
 :align: center
 
@@ -294,7 +294,7 @@ Consider two examples below (and see the full set in the [RISC-V green card](#ta
 | `nop` | No OPeration | do nothing[^nop] | `addi x0 x0 0` |
 
 [^mv]: Why `addi` with immediate `0` and not `add` with `x0` (as in @fig-rv32i-x0-mv)? See the [ASM manual on GitHub](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc#pseudoinstructions).
-[^lui]: This description is incomplete given the range of `imm` in `addi`. See the [green-card](@tab-rv32i-pseudoinstructions) and future sections for the full translation of load immediates.
+[^lui]: This description is incomplete given the range of `imm` in `addi`. See the [green-card](@tab-rv32i-pseudoinstructions) and a [later section](#sec-li-lui) for the full translation of load immediates.
 [^nop]: We will see later how a "no-op" instruction can improve hardware performance (really).
 :::
 

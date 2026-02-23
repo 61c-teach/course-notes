@@ -1,5 +1,5 @@
 ---
-title: "B-Format"
+title: "B-Type"
 subtitle: TODO
 ---
 
@@ -18,6 +18,10 @@ subtitle: TODO
 
 ::::
 
+Coming soon!
+
+<!--
+
 ## Visuals
 
 :::{figure} images/branch-isa-register.png
@@ -35,6 +39,15 @@ Branch operation instruction format with registers.
 
 Branch operation instruction format with labeled offset.
 :::
+
+:::{figure} images/practice-beq.png
+:label: fig-practice-beq
+:width: 100%
+:alt: "TODO"
+
+Branch operation instruction example.
+:::
+
 
 :::{figure} images/branch-example.png
 :label: fig-branch-example
@@ -68,3 +81,5 @@ I-Type, S-Type, and B-Type instruction format comparison.
 | `imm[12\|10:5]` | `rs2` | `rs1` | `110` | `imm[4:1\|11]` | `1100011` | `bltu` |
 | `imm[12\|10:5]` | `rs2` | `rs1` | `101` | `imm[4:1\|11]` | `1100011` | `bge` |
 | `imm[12\|10:5]` | `rs2` | `rs1` | `111` | `imm[4:1\|11]` | `1100011` | `bgeu` |
+
+-->

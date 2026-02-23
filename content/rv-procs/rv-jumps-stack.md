@@ -2,6 +2,7 @@
 title: "Jumps and Stack Frames"
 ---
 
+(sec-jump-rv-stack)=
 ## Learning Outcomes
 
 * Identify use cases for unconditional jump instructions and pseudoinstructions–in particular, know how to jump to procedures and return from procedures.
@@ -75,7 +76,7 @@ There are two real instructions above.
 * Pseudoinstruction `j label` is used to implement conditional statements and loops, as discusssed in an [earlier section](#sec-branches). `jal x0 label` effectively discards the link/return addresss, because register `x0` is hardwired to zero.
 * Pseudoinstruction `jal label` is expanded to `jal ra label`, where register name `ra` is the **return address** or register number `x1`. We discuss this reasoning below.
 
-**J**ump **a**nd **L**ink **R**egister (`jalr rd rs1 imm`). Link the "return address" (`PC + 4`) to a register `rd`. Then perform an unconditional jump by setting `PC` to `rs1 + imm`.
+**J**ump **a**nd **L**ink **R**egister (`jalr rd rs1 imm`). Link the "return address" (`PC + 4`) to a register `rd`. Then perform an unconditional jump by setting `PC` to `R[rs1] + imm`.
 
 * Pseudoinstruction `jr rs1` is instruction `jalr x0 rs1 0`, meaning that we discard the link and jump directly to the address in register `rs1`.
 * Pseudoinstruction `ret` is instruction `jalr x0 ra 0` and is equivalent to `jr ra`. Discard the link and jump directly to the return address in named register `ra`.
