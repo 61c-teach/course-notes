@@ -20,7 +20,15 @@ subtitle: TODO
 
 ## Visuals
 
-:::{figure} images/AND-gate-equivalence-flow.png
+:::{figure} images/nand-equivalence.png
+:label: fig-nand-equivalence
+:width: 100%
+:alt: "TODO"
+
+Flow chart of equivalent representations of NAND gate logic.
+:::
+
+:::{figure} images/and-equivalence.png
 :label: fig-and-equivalence
 :width: 100%
 :alt: "TODO"

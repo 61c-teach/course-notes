@@ -20,6 +20,38 @@ subtitle: TODO
 
 ## Visuals
 
+:::{figure} images/switch-open.png
+:label: fig-switch-open
+:width: 100%
+:alt: "TODO"
+
+Diagram of circuit with open switch.
+:::
+
+:::{figure} images/switch-closed.png
+:label: fig-switch-closed
+:width: 100%
+:alt: "TODO"
+
+Diagram of circuit with closed switch.
+:::
+
+:::{figure} images/switch-series.png
+:label: fig-switch-series
+:width: 100%
+:alt: "TODO"
+
+Diagram of circuit with two switches in series.
+:::
+
+:::{figure} images/switch-parallel.png
+:label: fig-switch-parallel
+:width: 100%
+:alt: "TODO"
+
+Diagram of circuit with two switches in parallel.
+:::
+
 :::{figure} images/moores-law-graph.png
 :label: fig-moores-law
 :width: 100%

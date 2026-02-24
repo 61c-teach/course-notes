@@ -20,6 +20,22 @@ subtitle: TODO
 
 ## Visuals
 
+:::{figure} images/n-channel-mos.png
+:label: fig-n-mos
+:width: 100%
+:alt: "TODO"
+
+Diagram of drain, gate, source for n-channel CMOS.
+:::
+
+:::{figure} images/p-channel-mos.png
+:label: fig-p-mos
+:width: 100%
+:alt: "TODO"
+
+Diagram of drain, gate, source for p-channel CMOS.
+:::
+
 :::{figure} images/mos-network.png
 :label: fig-mos-network
 :width: 100%
