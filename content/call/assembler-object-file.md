@@ -1,6 +1,5 @@
 ---
-title: "Assembler and the Object File"
-subtitle: TODO
+title: "Assembler: Object File"
 ---
 
 (sec-assembler-details)=

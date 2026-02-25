@@ -1,6 +1,5 @@
 ---
 title: "Linker: Resolve References"
-subtitle: TODO
 ---
 
 (sec-linker-details)=
@@ -53,7 +52,7 @@ We have three types of addresses:
 
 2. External Function Reference, e.g., `jal` or `auipc`/`jalr`
 
-3. Static Data Reference, e.g., `lw`, `sw` (of static data), `lui`/`addi` (when part of `la` pseudoinstruction).
+3. Static Data Reference
 
 The first, PC-relative addressing within the object module, has already been completed by the assembler. The linker resolves the latter two, because
 
@@ -66,10 +65,12 @@ The first, PC-relative addressing within the object module, has already been com
 See @fig-linker-instructions:
 
 * J-Format External jumps (e.g., to C library):
-* `lui`/`addi`; `auipc`/`jalr` (for `li` or `la` pseudoinstructions)
+* Instructions with absolute addresses, e.g., `auipc`/`jalr` or `auipc`/`addi`
+* Instructions that specify static data references, e.g., `lw`/`sw` (of static data), `auip`lui`/`addi` (when part of `la`[^la] or `li` pseudoinstruction).
 * Loads/stores that access `.data` variables[^gp]
 
 [^gp]: Global pointer (`gp`) is a pointer to the data (static) segment. Out of scope for this course
+[^la]: See [example](#sec-call-example) for more details about load address pseudoinstruction `la`.
 
 (again, B-Type don’t need editing, because such conditional jumps are within each module)
 
@@ -109,3 +110,11 @@ Tradeoffs:
   * With DLL. replacing libXYZ.so upgrades every program using library XYZ. However, DLL introduces complexity: we now need **multiple files** to run a single program. Having the program executable isn’t enough anymore!
 
 Overall dynamic linking adds complexity to compiler, linker and OS. However, its benefits outweigh its complexities.
+
+:::{figure} images/compile-xkcd.jpg
+:label: fig-compile-xkcd
+:width: 50%
+:alt: "TODO"
+
+Compilation is a slow process. [xkcd](https://xkcd.com/303/), [explainxkcd](https://www.explainxkcd.com/wiki/index.php/303:_Compiling)
+:::
