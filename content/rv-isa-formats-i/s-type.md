@@ -1,5 +1,5 @@
 ---
-title: "S-Format"
+title: "S-Type"
 subtitle: TODO
 ---
 
