@@ -129,17 +129,16 @@ project:
         - file: content/rv-isa-formats-ii/summary.md
         # - file: content/rv-isa-formats-ii/summary-precheck.md
         # - file: content/rv-isa-formats-ii/exercises.md
-    - title: "L15 Compilation, Assembly, Linking, Loading"
+    - title: "L15 CALL"
       children:
         - file: content/call/index.md
-        - file: content/call/call-compiler.md
-        - file: content/call/call-assembler.md
-        - file: content/call/call-linker.md
-        - file: content/call/call-loader.md
-        - file: content/call/call-example.md
+        - file: content/call/assembler-object-file.md
+        - file: content/call/linker-resolve-references.md
+        - file: content/call/example.md
+        - file: content/call/interpret-translate.md
         - file: content/call/summary.md
-        - file: content/call/summary-precheck.md
-        - file: content/call/exercises.md
+        # - file: content/call/summary-precheck.md
+        # - file: content/call/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
