@@ -1,6 +1,5 @@
 ---
 title: "S-Type"
-subtitle: DRAFT
 ---
 
 (sec-s-type)=
