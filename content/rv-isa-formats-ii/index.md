@@ -79,6 +79,7 @@ Code illustrated example with jump operation.
 
 3. `j Loop`. In this case, PC updates to the instruction tagged with the `Loop` label (here, `beq`). Still considering @fig-offsets, the `pc` updates from `j` (at address `0x18`) to `Loop`'s instruction (at address `0x0C`). This difference is **$-12$**. This corresponds to three instructions _before_ `j`.
 
+(sec-absolute-addressing)=
 ### Absolute Addressing
 
 By contrast, **absolute addressing** supplies a new address to overwrite the PC. This addressing mode is **position-dependent** and is brittle to code movement (as we will see later). 

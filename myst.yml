@@ -129,6 +129,16 @@ project:
         - file: content/rv-isa-formats-ii/summary.md
         # - file: content/rv-isa-formats-ii/summary-precheck.md
         # - file: content/rv-isa-formats-ii/exercises.md
+    - title: "L15 CALL"
+      children:
+        - file: content/call/index.md
+        - file: content/call/assembler-object-file.md
+        - file: content/call/linker-resolve-references.md
+        - file: content/call/example.md
+        - file: content/call/interpret-translate.md
+        - file: content/call/summary.md
+        # - file: content/call/summary-precheck.md
+        # - file: content/call/exercises.md
     - title: "L16 Intro to Synchronous Digital Systems"
       children:
         - file: content/sds-intro/index.md

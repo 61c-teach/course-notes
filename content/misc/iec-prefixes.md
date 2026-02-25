@@ -2,6 +2,7 @@
 title: "IEC and Base-10 Prefixes"
 ---
 
+(sec-iec-prefixes)=
 ## Learning Outcomes
 
 * Use base-10 prefixes to characterize powers of ten.
