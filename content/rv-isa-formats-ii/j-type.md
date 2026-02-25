@@ -19,7 +19,47 @@ subtitle: TODO
 
 ::::
 
-Coming soon!
+More coming soon!
+
+## Conditionally Branching Far Away
+
+Conditional Branches are typically used for if-else statements, for/while loops. In general, because these control structure are usually _pretty small_ (<50 lines of C code), we can use **B-Type instructions**. However, as we saw earlier, B-Type instructions have limited range: $\pm 2^{10}$ instructions from the current instruction (PC).
+
+To jump even further, we can use **J-Type unconditional jumps** in combination with B-Type instructions.
+
+:::{note} `beq x10 x10 far`
+
+To branch to a far location, e.g., `beq x10 x10 far`, we can equivalently specify the assembly with one more instruction:
+
+```{code}bash
+    bne  x10 x0 next
+    j far
+next:
+    # next instr
+```
+:::
+
+Admittedly, J-Type instructions also have a limited range: $\pm 2^{18}$ instructions from the currrent insturction (PC).
+
+If we wanted to jump to **any** address, RISC-V opts for jumping with [absolute addressing](#sec-absolute-addressing) and `jalr`. As discussed in a [previous section](#sec-jalr-itype), `jalr` is an I-Type instruction that sets PC to `PC = R[rs1] + imm`, where `imm` specifies a 12-bit immediate `imm`.
+
+* To call functions with absolute addressing, instead of `jal ra Label`[^simultaneous]:
+
+    ```{code} bash
+    lui  ra <hi20bits*>
+    jalr ra ra <lo12bits>
+    ```
+
+[^simultaneous]: The `jalr` instruction will save the jump address to the PC and save the current `PC + 4` to the `ra` in the same cycle (effectively, "simultaneously")
+
+* To break out of loops using absolute addressing, instead of `j Label` (e.g., `jal x0 Label`):
+
+    ```{code} bash
+    auipc ra <hi20bits*>
+    jalr  x0 ra <lo12bits>
+    ```
+
+See the discussion of [U-Type instructions](#sec-u-type) `lui` and `auipc`. Just like with resolving [`li` pseudoinstructions](#sec-li-lui), `jalr` sign-extends immediates. So if `lo12bits` has sign bit set, increment `hi20bits` by 1.
 
 <!--
 
