@@ -3,6 +3,7 @@ title: "R-type Instruction Format"
 short_title: "R-Type"
 ---
 
+(sec-r-type)=
 ## Learning Outcomes
 
 * Identify an instruction format type by the `opcode` field.
