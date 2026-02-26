@@ -2,6 +2,7 @@
 title: "Load from, Store to"
 ---
 
+(sec-load-store)=
 ## Learning Outcomes
 
 * Remember the adage: Load _from_ memory, Store _to_ memory.

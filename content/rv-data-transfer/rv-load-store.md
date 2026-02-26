@@ -1,5 +1,6 @@
 ---
 title: "Data Transfer Instructions"
+subtitle: "Load Instructions and store Instructions"
 ---
 
 (sec-data-transfer)=
@@ -38,6 +39,7 @@ Consider the memory access syntax for loading and storing words shown in @tab-lw
 
 :::
 
+(sec-load-word)=
 ### Load Word
 
 The **load word** instruction:
