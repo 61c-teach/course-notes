@@ -139,14 +139,23 @@ project:
         - file: content/call/summary.md
         # - file: content/call/summary-precheck.md
         # - file: content/call/exercises.md
-    - title: "L16 Intro to Synchronous Digital Systems"
+    - title: "L16 Intro to SDS"
       children:
         - file: content/sds-intro/index.md
         - file: content/sds-intro/sds-transistors.md
-        - file: content/sds-intro/sds-signals-waveforms.md
         - file: content/sds-intro/summary.md
-        - file: content/sds-intro/summary-precheck.md
-        - file: content/sds-intro/exercises.md
+        # - file: content/sds-intro/summary-precheck.md
+        # - file: content/sds-intro/exercises.md
+    - title: "L17 Combinational Logic"
+      children:
+        - file: content/sds-logic/index.md
+        - file: content/sds-logic/boolean-algebra.md
+        - file: content/sds-logic/sds-logic-laws.md
+        - file: content/sds-logic/sds-logic-canonical-forms.md
+        # - file: content/sds-logic/truth-tables.md
+        - file: content/sds-logic/summary.md
+        - file: content/sds-logic/summary-precheck.md
+        - file: content/sds-logic/exercises.md
     - title: "L17 State, State Machines"
       children:
         - file: content/sds-state/index.md
@@ -157,16 +166,6 @@ project:
         - file: content/sds-state/summary.md
         - file: content/sds-state/summary-precheck.md
         - file: content/sds-state/exercises.md
-    - title: "L18 Combinational Logic"
-      children:
-        - file: content/sds-logic/index.md
-        - file: content/sds-logic/sds-logic-logic-gates.md
-        - file: content/sds-logic/sds-logic-boolean.md
-        - file: content/sds-logic/sds-logic-laws.md
-        - file: content/sds-logic/sds-logic-canonical-forms.md
-        - file: content/sds-logic/summary.md
-        - file: content/sds-logic/summary-precheck.md
-        - file: content/sds-logic/exercises.md
     - title: "L19 Combinational Logic Blocks"
       children:
         - file: content/sds-logic-blocks/index.md

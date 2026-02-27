@@ -3,7 +3,7 @@ title: "Summary"
 ---
 
 :::{warning} ⚠️⚠️⚠️ Looking for IEC Prefixes?
-IEC Prefixes like MiB, GiB are not technicall C material, but they are linked in the sidebar at the bottom: [IEC and Base-10 Prefixes](#sec-iec-prefixes).
+IEC Prefixes like MiB, GiB are not technically C material but were covered in this lecture. They are linked in the sidebar at the bottom: [IEC and Base-10 Prefixes](#sec-iec-prefixes).
 :::
 
 

@@ -31,7 +31,7 @@ Programs are distributed in binary form, i.e., as assembled machine code. Progra
 
 ## Instruction Formats
 
-Recall from our discussion of [instruction execution](#sec-rv-pc) and the program counter that all RV32I instructions are [word sized](#sec-rv32i-pc-4).[^instruction-word] Simplification works for RISC-V: Instructions are same size as a data word (32 bits) so that they can leverage the same hardware for memory access.
+In our discussion of [instruction execution](#sec-rv-pc) and the program counter, we learned that all RV32I instructions are [word sized](#sec-rv32i-pc-4).[^instruction-word] Simplification works for RISC-V: Instructions are same size as a data word (32 bits) so that they can leverage the same hardware for memory access.
 
 How do we go about translating `add x1 x2 x3` to the 32-bit word `00000000101010011000100100110011`?
 

@@ -32,4 +32,4 @@ The contents of this book are licensed for free consumption under the following 
 
 ## Acknowledgments
 
-Our deepest gratitude goes to the many, many faculty instructors and teaching assistants who have contributed to CS 61C course materials over the years. Special thanks to [CS 61C Fall 2020](http://cs61c.org/fa20) instructors Dan Garcia and Bora Nikolic for recording the high-quality set of videos used to build these notes. The videos are linked where possible.
+Our deepest gratitude goes to the many, many faculty instructors and teaching assistants who have contributed to CS 61C course materials over the years. Special thanks to [CS 61C Fall 2020](http://cs61c.org/fa20) instructors, Professors Dan Garcia and Bora Nikoli, for recording the high-quality set of videos used to build these notes. The videos are linked where possible. Special thanks also to Professor John Wawrzynek for his notes on Synchronous Digital Design from the early 2000s.

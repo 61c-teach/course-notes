@@ -23,7 +23,7 @@ So far, we have learned about arithmetic operations involving [binary numbers](#
 
 We denote the bitwise operations AND, OR, XOR, and NOT as the operators `&`, `|`, `^`, and `~`, respectively. Supposing `a` and `b` are single-bit values, the following **truth tables** specify the result `y` of each operation.[^bool-logic]
 
-[^bool-logic]: The name "truth table" comes from boolean logic itself. We discuss this later in logic design, when it is useful to represent signals as "high" or "low".
+[^bool-logic]: The name "truth table" comes from boolean logic itself. We discuss in a [later section](#sec-logic-gates) about logic design, when it is useful to represent signals as "high" or "low".
 
 @tab-and is bitwise AND. `a & b` is `1` only if **both** `a` **and** `b` are 1. Otherwise, it is `0`.
 

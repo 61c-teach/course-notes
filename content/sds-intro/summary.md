@@ -12,4 +12,7 @@ title: "Summary"
 
 ## Additional References
 
-* [SDS Handout](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/sds.pdf)
+These notes would not be possible without Professor John Wawrzynek's CS 61C handouts:
+
+* [SDS Handout](../resources/sds.pdf)
+* [Boolean Handout](../resources/boolean.pdf)
