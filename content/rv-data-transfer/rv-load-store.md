@@ -90,6 +90,7 @@ Read an [earlier section](#sec-address-space) for how to read the little endian 
 3. If we assume the memory layout is showing a **little endian** architecture, we construct the 32-bit value `0x00564253`. Set `x10` to this 32-bit word.
 :::
 
+(sec-store-word)=
 ### Store Word
 
 The **store word** instruction:

@@ -21,7 +21,7 @@ title: "S-Type"
 
 Our next instruction format is S-Type, the format used for **S**tore instructions `sb`, `sh`, and `sw`. While load instructions fit nicely into the [I-Type](#sec-i-type) format, store instructions use registers differently than the instructions we've seen so far. We need a special instruction format to translate store instructions into machine code.
 
-Recall from an [earlier section](#store-word):
+Recall from an [earlier section](#sec-store-word):
 
 > The **store word** instruction:
 >
