@@ -96,6 +96,14 @@ Here are some common logic gates. For each we define its name and show (left) it
 You have already seen many operations of basic logic gates with [C bitwise operations](#sec-c-bitwise-ops)! We recommend reviewing this section before continuing.
 :::
 
+:::{warning} Check the Truth Tables
+
+Click on the tabs below to show each gate's graphical representation and its **truth table**.
+
+For each input pattern of 1’s and 0’s, there exists a single output pattern. Truth tables enumerate this input/output relationship. For the 2-input logic gates below, there are four rows. 
+:::
+
+
 <!-- begin grid -->
 :::::::{grid} 3
 
@@ -232,16 +240,19 @@ Notes:
 * [NAND](#fig-nand-gate) is "NOT" AND. Note the bubble on its output.
 * [NOR](#fig-nor-gate) is "NOT" OR. Again, note the bubble.
 
-:::{hint}
+(sec-subset-gates)=
+:::{hint} Compose logic gates to build circuits
+
 In general, the complete set of logic gates shown above is not needed.
-Select subsets are sufficient; any combinational logic function can be implemented with:
+Select subsets are sufficient, though for simplicity a larger subset is usually employed.
+
+Any combinational logic function can be implemented with:
 
 * Just the set of AND and NOT
 * Just the set of OR and NOT
 * NAND gates only (NAND is known as a **universal gate**)
 * NOR gates only (again, also a universal gate)
-
-For simplicity, a larger subset is usually employed. We will see how it is useful to implement any combinational logic function with **AND, OR, and NOT**.
+* **AND, OR, and NOT** are particularly useful; we will see why when we discuss boolean algebra in a [later section](#sec-boolean-algebra).
 :::
 
 ## N-Input Logic Gates
@@ -257,12 +268,9 @@ than two inputs also exist. For performance reasons, the number of inputs to log
 4-input AND gate. The output `y` is `1` if and only if `a`, `b`, and `c` are all `1`.
 :::
 
-The function of these gates with more than two inputs
-is obvious from the function of the two input version, except in the case of the the exclusive-or gate,
+The function of these gates with more than two inputs is obvious from the function of the two input version, except in the case of the the exclusive-or gate,
 
-Except for NOT (which is unary), we have shown 2-input versions of these gates. Versions of these gates with more
-than two inputs also exist. However, for performance reasons, the number of inputs to logic gates is
-usually restricted to around a maximum of four.
+Except for NOT (which is unary), we have shown 2-input versions of these gates. Versions of these gates with more than two inputs also exist. However, for performance reasons, the number of inputs to logic gates is usually restricted to around a maximum of four.
 
 The function of these gates is generally self-evident and can deterined by repeatedly composing the equivalent 2-input gate; for example, `AND(a, b, c, d) = AND(AND(a, AND(b, AND(c, d)))) = AND(AND(a, b), AND(c, d))`, etc. There are a few exceptions; let's try your reasoning with some quick checks.
 
@@ -344,43 +352,41 @@ If we wanted to use this compare circuit in other circuits, we can! Just represe
 :width: 30%
 :alt: "TODO"
 
-2-bit comparator; a block representation of the mystery circuit in @fig-compare-2-circuit.
+Bitwise compare circuit; a block representation of the mystery circuit in @fig-compare-2-circuit.
 :::
 
 [^not-nand]: Notably, this circuit is not a NAND gate; we leave the proof to you. We suggest writing things out with truth tables.
 
 ## Composing Circuits: 32-Bit Comparator
 
-We would like to a circuit that **compares two 32-bit values**; this 32-bit comparator can be used in our processor to implement the equality comparison for the RV32I instruction `beq rs1 rs2 Label`.
+We would like to a circuit that **compares two 32-bit values**; this 32-bit compare circuit can be used in our processor to implement the equality comparison for the RV32I instruction `beq rs1 rs2 Label`.
 
 :::{figure} images/compare-32-block.png
 :label: fig-compare-32-block
 :width: 30%
 :alt: "TODO"
 
-32-bit comparator.
+32-bit compare circuit.
 :::
 
-Compare this new 32-bit comparator (@fig-compare-32-block) with our previous 1-bit comparator (@fig-compare-2-block):
+Compare this new 32-bit compare circuit(@fig-compare-32-block) with our previous 1-bit compare circuit (@fig-compare-2-block):
 
 * The value `A` is a 32-bit value, because of the **wire bundle** (the wire is marked with a notch). Similarly, value `B` is 32-bits.
 * The value `z` is a 1-bit value.
 
-Functionally, `z` is `1` only if all of `A`'s bits are equal to all of `B`'s bits. In other words, we can perform 32 bitwise comparisons, then AND them together. The underlying circuit for our comparator block is therefore as follows:
+Functionally, `z` is `1` only if all of `A`'s bits are equal to all of `B`'s bits. In other words, we can perform 32 bitwise comparisons, then AND them together. The underlying circuit for our compare block is therefore as follows:
 
 :::{figure} images/compare-32-circuit.png
 :label: fig-compare-32-circuit
 :width: 80%
 :alt: "TODO"
 
-32-bit comparator circuit diagram, assuming we have implemented the 2-bit comparator circuit. The 32-input AND gate can be implemented recursively with 2- or 4-input AND gates.
+32-bit compare circuit diagram, assuming we have implemented the bitwise compare circuit. The 32-input AND gate can be implemented recursively with 2- or 4-input AND gates.
 :::
 
 :::{hint} The power of **modular design**
 
-Notice that in this section we designed from the ground up. The truth table of the 32-bit comparator is too large for us to write by hand  (it has $2^{64}$ rows, for each combination of the bits of `A` and `B`). 
+The truth table of the 32-bit comparator is too large for us to write by hand  (it has $2^{64}$ rows, for each combination of the bits of `A` and `B`). If truth tables are too big to construct, decompose by defining smaller circuits first, then compose the larger circuit with these smaller circuit blocks. This is the power of **modular design**
 
-This is the power of **modular design**: If truth tables are too big to construct, decompose by defining smaller circuits first, then compose the larger circuit with these smaller circuit blocks.
-
-In the next section, we introduce [Boolean Algebra](#sec-boolean-algebra) to help us use truth tables to design circuits. 
+In the next section, we introduce [Boolean Algebra](#sec-boolean-algebra) to help us formulaically use truth tables to design circuits.
 :::

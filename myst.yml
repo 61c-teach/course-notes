@@ -148,7 +148,7 @@ project:
     - title: "L16 Intro to SDS"
       children:
         - file: content/sds-intro/index.md
-        - file: content/sds-intro/sds-transistors.md
+        - file: content/sds-intro/transistors.md
         - file: content/sds-intro/summary.md
         # - file: content/sds-intro/summary-precheck.md
         # - file: content/sds-intro/exercises.md

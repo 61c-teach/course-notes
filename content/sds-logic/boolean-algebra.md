@@ -27,7 +27,36 @@ We also [discussed](#sec-subset-gates) how any combinational logic circuit can b
 
 In the 19th Century, the mathematician George Boole (1815-1864), developed a mathematical system (algebra) involving logic, later becoming known as **Boolean Algebra**. His variables took on the values of TRUE and FALSE. Later, Claude Shannon (the father of information theory, 1916–2001) wrote his Master’s thesis on how to map Boolean algebra to digital circuits. There is a one-to-one correspondence between circuits composed of AND, OR, NOT gates and Boolean Algebra equations. Because of boolean algebra, we can now apply math to give theory to hardware design, minimization, and more.
 
-The primitive functions of Boolean algebra are AND, OR, and NOT, just as we defined them above.
+The three basic operations (i.e., primitive functions) of Boolean algebra are AND, OR, and NOT. They operate identically to how we defined them in a [previous section](#sec-logic-gates).
+
+:::{table} Boolean Algebra basic operations: AND, OR, and NOT.
+:label: tab-boolean-operations
+
+| Operation | Boolean Algebra Notation | Notes |
+| :-- | :--: | :-- |
+| AND(a, b) | $a \cdot b$, $ab$ | Basic operation. The $\cdot$ is often dropped, as in the second notation. |
+| OR(a, b) | $a + b$ | Basic operation. |
+| NOT(a) | $\overline{a}$ | Basic operation. |
+:::
+
+:::{warning} Boolean Algebra has neither multiplication nor addition!
+
+In Boolean Algebra operations $\cdot$ and $+$ _do not represent multiplication nor addition of integer values_! Rather, these operator symbols represent AND and NOT, respectively, on boolean variables $a$ and $b$.
+:::
+
+We can also define operations for NAND, NOR, and XOR.
+
+:::{table} Boolean Algebra NAND, NOR, XOR.
+:label: tab-boolean-operations-advanced
+
+| Operation | Boolean Algebra Notation | Notes |
+| :-- | :--: | :-- |
+| NAND(a, b) | $\overline{a \cdot b}$ </br>$\overline{ab}$ | "Not AND" |
+| NOR(a, b) | $\overline{a + b}$ | "Not OR" |
+| XOR(a, b) | $a \oplus b$ | Not a basic operation, but common <br/>enough to have its own symbol. |
+:::
+
+
 
 GOT TO HERE
 
