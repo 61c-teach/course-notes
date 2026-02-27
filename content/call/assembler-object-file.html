@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assembler and the Object File</title>
+<title>Assembler: Object File</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -46,8 +46,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assembler and the Object File</h1>
-<p class="subtitle lead">TODO</p>
+<h1 class="title">Assembler: Object File</h1>
 </div>
 
 
@@ -66,10 +65,9 @@ ul.task-list li input[type="checkbox"] {
 
 <p>(sec-assembler-details)= ## Learning Outcomes</p>
 <ul>
-<li>Explain why PC-relative address resolution requires a two-pass process.</li>
-<li>Identify assembly directives.</li>
 <li>Identify basic components of the object file.</li>
-<li>Explain why the assembler cannot resolve <em>all</em> addresses.</li>
+<li>Explain why the assembler can resolve PC-relative addresses but not absolute addresses.</li>
+<li>Explain why PC-relative address resolution requires a two-pass process.</li>
 </ul>
 <p>::::{note} 🎥 Lecture Video :class: dropdown</p>
 <p>:::{iframe} https://www.youtube.com/embed/87YbZ9x8QEY :width: 100% :title: “[CS61C FA20] Lecture 13.3 - Compilation, Assembly, Linking, Loading: Assembler” :::</p>
@@ -79,9 +77,23 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>The assembler translates assembly code to machine modules. It translates <strong>pseudoinstructions</strong> to real instructions and produces an <strong>object file</strong>. The assembler uses assembly <strong>directives</strong> to produce the object file, which contains portions of an executable’s <strong>text segment</strong>, <strong>data segment</strong>, and more.</p>
 </blockquote>
-<p>Let’s first describe the basics of translating assembly instructions into machine code for the <strong>text segment</strong>–that is, the exact instructions themselves. Then we’ll discuss the object file components. See the <a href="#sec-call-example">example</a> at the end of this chapter.</p>
+<section id="object-file" class="level2">
+<h2 class="anchored" data-anchor-id="object-file">Object File</h2>
+<p>The final <code>.o</code> object file is a machine module, which is in <strong>binary</strong>:</p>
+<ol type="1">
+<li><strong>Object File Header</strong>: size and position of other pieces of the object file. This is like the “table of contents”.</li>
+<li><strong>Text Segment</strong>: machine code.</li>
+<li><strong>Data Segment</strong>: binary representation of static data in the source file.</li>
+<li><strong>Symbol Table</strong>: List of file’s labels, static data that can be referenced by other programs</li>
+<li><strong>Relocation Table:</strong> Lines of code to fix later (by Linker)</li>
+<li>Debugging Information.</li>
+</ol>
+<p>The Text Segment and Data Segment (recall <a href="#fig-c-mem-layout">program memory layout</a>) translates into machine code where possible. The last three items (Symbol Table, Relocation Table, Debugging Information) are used for the downstream Linker to resolve everything and create a single executable.</p>
+<p>We highly recommend reading this section and then seeing the <a href="#sec-call-example">example</a> at the end of this chapter.</p>
+</section>
 <section id="text-segment" class="level2">
 <h2 class="anchored" data-anchor-id="text-segment">Text Segment</h2>
+<p>An <a href="#code-hello-o">example text segment</a> is discussed in the <a href="#sec-call-example">example</a> at the end of this chapter.</p>
 <p><strong>Arithmetic, Logical Instructions</strong>: For simple cases like <code>add</code> or <code>sub</code>, the 32-bit instruction contains all the information needed to build the machine code. This encompasses R-Format and some I-Format instructions.</p>
 <p><strong>PC-Relative Branches and Jumps</strong>, like <code>beq</code>/<code>bne</code>/etc. and <code>jal</code>. Once pseudoinstructions are replaced with real ones, all known <strong>PC-relative addressing</strong> <em>within the object file</em> can be computed. Determine the offset to encode by counting the number of half-word instructions between current instruction and target instruction.</p>
 <p>After replacing pseudoinstructions, the assembler performs <strong>two passes</strong> over the program to compute all offsets.</p>
@@ -97,11 +109,28 @@ ul.task-list li input[type="checkbox"] {
 <li>References to <strong>static data</strong>, e.g., the load address instruction <code>la</code> gets broken up into <code>lui</code> and <code>addi</code>. Resolving these two immediates requires knowing the full 32-bit <strong>absolute address</strong> of the data <em>in the executable</em>.</li>
 </ul>
 <p>Because <strong>absolute addresses</strong> cannot be determined yet, the assembler defers to downstream (Linker) any references that depend on knowing other object modules. The assembler records unresolved references in the Relocation Table and Symbol Table. :::</p>
-<p>:::{note} Directives</p>
-<p><a href="#co-hello-s">example</a></p>
-<p>Let us dive into the details of the <strong>object file</strong> output of the <a href="#sec-assembler">assembler</a></p>
-<p>:::{figure} images/assembler-directive.png :label: fig-assem-dir :width: 100% :alt: “TODO”</p>
-<p>Example of directive: instructions for the assembler. :::</p>
+</section>
+<section id="symbol-table" class="level2">
+<h2 class="anchored" data-anchor-id="symbol-table">Symbol Table</h2>
+<p>The <strong>symbol table</strong> is a list of labels (procedures) and data (like global arrays) in your file that could be used by other files. The Symbol Table is also used by the debugger <code>gdb</code>.</p>
+<ul>
+<li><strong>Instruction labels</strong>: Used to compute machine code for PC-relative addressing in branches, function calling, etc.
+<ul>
+<li>If you want to call a function like <code>printf</code> from a library, the linker will eventually need this symbol (additionally, see the relocation table below).</li>
+<li>Can use .globl <a href="#sec-directives">directive</a> to allow labels can be referenced by other files.</li>
+</ul></li>
+<li><strong>Data segment</strong>: anything in section marked by the <code>.data</code> directive. Recall that the data segment has global variables may be accessed/used by other files.</li>
+</ul>
+<p>An <a href="#tab-hello-symbol-table">example symbol table</a> is discussed in the <a href="#sec-call-example">example</a> at the end of this chapter.</p>
+</section>
+<section id="relocation-table" class="level2">
+<h2 class="anchored" data-anchor-id="relocation-table">Relocation Table</h2>
+<p>The <strong>relocation table</strong> is a “to-do list” of things to fix later (by the downstream <strong>linker</strong>). It contains placeholders for:</p>
+<ul>
+<li><strong>Absolute addresses for any external label</strong> used by a jump, e.g., in lib files, <code>jal ext_label</code></li>
+<li><strong>Absolute addresses for any data located in data segment</strong>. e.g., static variables from the <code>la</code> load address instruction. The assembler doesn’t know where the static section or the “final resting place” is; it delegates this “final resting place” resolution to the <strong>linker</strong>.</li>
+</ul>
+<p>An <a href="#tab-hello-symbol-table">example relocation table</a> is discussed in the <a href="#sec-call-example">example</a> at the end of this chapter.</p>
 </section>
 
 </main>

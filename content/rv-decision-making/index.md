@@ -28,11 +28,16 @@ In an [earlier section](#sec-stored-program) we discussed the concept of the **s
 
 > Data doesn't just have to represent numbers; it can represent the program itself.
 
-When we discussed the [C memory layout](#fig-c-mem-layout), we expanded on this concept. In a C program, the **text** segment stores the program code.
+[^call] Recall that assembly language is typically produced by a compiler. An assembler then produces the machine-readable code. Typically, this is stored as an executable file, which is then loaded in to the **text** segment of memory:
 
-Additionally,[^call] recall that assembly language is typically produced by a compiler. An assembler then produces the machine-readable code. Typically, this is stored as an executable file, which is then loaded in to the text segment of memory.
+:::{figure} #fig-c-mem-layout
+:width: 50%
+:alt: "TODO"
 
-[^call]: We expand on the compiler-assembler-linker-loader process later.
+The C memory layout (reprint of @fig-c-mem-layout from [this section](#sec-mem-layout)).
+:::
+
+[^call]: We expand on the compiler-assembler-linker-loader process in a [later section](#sec-call).
 
 RISC-V has a similar memory model. Each RISC-V assembly instruction is stored as **machine code**, i.e., bits. Each assembly instruction translates to a 32-bit machine instruction (in RV32I, our word size is 32 bits). For example, the instruction `slli x12 x10 0x10` translates to the bits `0x01051613`.[^instruction-formats]. These 32-bit machine instructions then compose the machine code executable file.
 
