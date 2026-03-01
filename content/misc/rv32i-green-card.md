@@ -68,16 +68,16 @@ This "green card" is longer than one page, due to the accessible web format. We 
 :label: tab-rv32i-control
 :align: center
 
-| Instruction | Name | Description | Type | Opcode | Funct3 | Funct7 |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
-| `beq rs1 rs2 label` | Branch if EQual | `if (R[rs1] == R[rs2]) PC = PC + offset` | B | `110 0011` | `000` | |
-| `bne rs1 rs2 label` | Branch if Not Equal | `if (R[rs1] != R[rs2]) PC = PC + offset` | B | `110 0011` | `001` | |
-| `blt rs1 rs2 label` | Branch if Less Than (signed) | `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `100` | |
-| `bltu rs1 rs2 label`| Branch if Less Than (Unsigned)| `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `110` | |
-| `bge rs1 rs2 label` | Branch if Greater or Equal (signed)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `101` | |
-| `bgeu rs1 rs2 label`| Branch if Greater or Equal (Unsigned)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `111` | |
-| `jal rd label` | Jump And Link | `R[rd] = PC + 4;`<br/>`PC = PC + offset` | J | `110 1111` | | |
-| `jalr rd rs1 imm` | Jump And Link Register | `R[rd] = PC + 4;`<br/>`PC = R[rs1] + imm` | I | `110 0111` | `000` | |
+| Instruction | Name | Description | Type | Opcode | Funct3 |
+| :--- | :--- | :--- | :---: | :---: | :---: |
+| `beq rs1 rs2 label` | Branch if EQual | `if (R[rs1] == R[rs2]) PC = PC + offset` | B | `110 0011` | `000` |
+| `bne rs1 rs2 label` | Branch if Not Equal | `if (R[rs1] != R[rs2]) PC = PC + offset` | B | `110 0011` | `001` |
+| `blt rs1 rs2 label` | Branch if Less Than (signed) | `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `100` |
+| `bltu rs1 rs2 label`| Branch if Less Than (Unsigned)| `if (R[rs1] < R[rs2]) PC = PC + offset` | B | `110 0011` | `110` |
+| `bge rs1 rs2 label` | Branch if Greater or Equal (signed)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `101` |
+| `bgeu rs1 rs2 label`| Branch if Greater or Equal (Unsigned)| `if (R[rs1] >= R[rs2]) PC = PC + offset`| B | `110 0011` | `111` |
+| `jal rd label` | Jump And Link | `R[rd] = PC + 4;`<br/>`PC = PC + offset` | J | `110 1111` | - |
+| `jalr rd rs1 imm` | Jump And Link Register | `R[rd] = PC + 4;`<br/>`PC = R[rs1] + imm` | I | `110 0111` | `000` |
 
 :::
 
@@ -89,8 +89,8 @@ This "green card" is longer than one page, due to the accessible web format. We 
 
 | Instruction | Name | Description | Type | Opcode | Funct3 | 
 | :--- | :--- | :--- | :---: | :---: | :---: | 
-| `auipc rd immu` | Add Upper Imm to PC | `imm = immu << 12`<br/>`R[rd] = PC + imm` | U | `001 0111` | |
-| `lui rd immu` | Load Upper Immediate | `imm = immu << 12`<br/>`R[rd] = imm` | U | `011 0111` | |
+| `auipc rd immu` | Add Upper Imm to PC | `imm = immu << 12`<br/>`R[rd] = PC + imm` | U | `001 0111` | - |
+| `lui rd immu` | Load Upper Immediate | `imm = immu << 12`<br/>`R[rd] = imm` | U | `011 0111` | - |
 | `ebreak` | Environment BREAK | Asks the debugger to do something (`imm = 0`)| I | `111 0011` | `000` |
 | `ecall` | Environment CALL | Asks the OS to do something (`imm = 1`) | I | `111 0011` | `000` |
 
@@ -120,7 +120,7 @@ See the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main
 | `beqz rs1 label` | Branch if EQuals Zero | `if (R[rs1] == 0)`<br/>`PC = PC + offset` | `beq rs1 x0 label` |
 | `bnez rs1 label` | Branch if Not Equals Zero | `if (R[rs1] != 0)`<br/>`PC = PC + offset` | `bne rs1 x0 label` |
 | `j label` | Jump | `PC = PC + offset` | `jal x0 label` |
-| `jal label` | Jump and Link | `R[ra] = PC + 4`<br/>`PC = PC + offset` | `jal ra label` |
+| `jal label` | Jump And Link (Pseudo) | `R[ra] = PC + 4`<br/>`PC = PC + offset` | `jal ra label` |
 | `jr rs1` | Jump Register | `PC = R[rs1]` | `jalr x0 rs1 0` |
 | `la rd label` | Load absolute Address | `R[rd] = &label` | `auipc`, `addi` |
 | `li rd imm` | Load Immediate | `R[rd] = imm` | `lui` (if needed), `addi` |
@@ -128,7 +128,7 @@ See the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main
 | `neg rd rs1` | NEGate | `R[rd] = -(R[rs1])` | `sub rd x0 rs1` |
 | `nop` | No OPeration | do nothing | `addi x0 x0 0` |
 | `not rd rs1` | bitwise NOT | `R[rd] = ~(R[rs1])` | `xori rd rs1 -1` |
-| `ret` | RETurn | `PC = R[ra]` | `jalr x0 ra 0` |
+| `ret` | RETurn (`jr ra`) | `PC = R[ra]` | `jalr x0 ra 0` |
 
 :::
 
@@ -146,17 +146,19 @@ Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.p
 | :--- | :--- | :--- | :---: |
 | `x0` | `zero` | Constant 0 | - |
 | `x1` | `ra` | Return Address | Caller |
-| `x2` | `sp` | Stack Pointer | |
-| `x3` | `gp` | Global Pointer | |
-| `x4` | `tp` | Thread Pointer | |
+| `x2` | `sp` | Stack Pointer | Callee |
+| `x3` | `gp` | Global Pointer[^gp-tp] | - |
+| `x4` | `tp` | Thread Pointer[^gp-tp] | - |
 | `x5-7` | `t0-2` | Temporary Registers | Caller |
-| `x8` | `s0` / `fp` | Saved Register 0 / Frame Pointer | |
-| `x9` | `s1` | Saved Register | |
+| `x8` | `s0` / `fp` | Saved Register 0 / Frame Pointer | Callee |
+| `x9` | `s1` | Saved Register | Callee |
 | `x10-11` | `a0-1` | Function Arguments / Return Values | Caller |
 | `x12-17` | `a2-7` | Function Arguments | Caller |
 | `x18-x27` | `s2-11` | Saved Registers | Callee |
 | `x28-31` | `t3-6` | Temporaries | Caller |
 :::
+
+[^gp-tp]: Out of scope: `gp` (global pointer, used to store a reference to the heap) and `tp` (thread pointer, used to store separate stacks for threads). Consider these registers "off-limits"–using them violates register conventions!
 
 ## Instruction Types
 
