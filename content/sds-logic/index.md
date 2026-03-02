@@ -38,8 +38,6 @@ The simplest logic gates are **binary** or **unary** operators that take as inpu
 ::::::{note} AND logic gate
 
 :::::{grid} 4
-:label: fig-test-label
-::::{grid-item}
 
 ::::{grid-item}
 :::{figure}
@@ -87,22 +85,10 @@ Four different representations:
 
 ::::::
 
+(sec-common-logic-gates)=
 ## Common Logic Gates
 
-Here are some common logic gates. For each we define its name and show (left) its graphical representation and (right) a truth table that defines its function.
-
-:::{warning} Review Bitwise Operations
-
-You have already seen many operations of basic logic gates with [C bitwise operations](#sec-c-bitwise-ops)! We recommend reviewing this section before continuing.
-:::
-
-:::{warning} Check the Truth Tables
-
-Click on the tabs below to show each gate's graphical representation and its **truth table**.
-
-For each input pattern of 1’s and 0’s, there exists a single output pattern. Truth tables enumerate this input/output relationship. For the 2-input logic gates below, there are four rows. 
-:::
-
+Here are some common logic gates, many of which you have already seen as [C bitwise operations](#sec-c-bitwise-ops). For each we define its name, a graphical representation, and a truth table that defines its function.
 
 <!-- begin grid -->
 :::::::{grid} 3
@@ -232,6 +218,12 @@ For each input pattern of 1’s and 0’s, there exists a single output pattern.
 :::::::
 <!-- end grid -->
 
+:::{warning} Check the Truth Tables
+
+Click on the tabs above to show each gate's graphical representation and its **truth table**.
+
+For each input pattern of 1’s and 0’s, there exists a single output pattern. Truth tables enumerate this input/output relationship. For the 2-input logic gates below, there are four rows.
+:::
 
 Notes:
 
@@ -308,85 +300,10 @@ Consider the 3-input XOR gate, where `y = XOR(a, b, c) = XOR(a, XOR(b, c))`, etc
 :::
 ```
 
-## Combinational Logic Circuit $\rightarrow$ Truth Table
+## Designing Combinational Logic Circuits
 
-Note that simple logic gates can be wired together to build useful circuits. In fact, any combinational logic block can be implemented with nothing but AND, OR, and NOT logic gates.
+Simple logic gates can be wired together to build useful circuits. In fact, any combinational logic block can be implemented with nothing but AND, OR, and NOT logic gates.
 
-However, to understand what a circuit actually does, we need more than just its circuit diagram: we need a concise description of its operation. Let's first try with **truth tables**.
+However, to understand what a circuit actually does, we need more than just its circuit diagram: we need a concise description of its operation.
 
-To generate a truth-table from a given circuit, we need to evaluate it for input combinations.
 
-::::{hint} What is the truth table of the below circuit?
-
-:::{figure} images/compare-2-circuit.png
-:label: fig-compare-2-circuit
-:width: 50%
-:alt: "TODO"
-Mystery circuit.
-:::
-
-::::
-
-:::{note} Truth Table
-
-| a | b | y |
-| :--: | :--- | :--- |
-| 0 | 0 | 1 |
-| 0 | 1 | 0 |
-| 1 | 0 | 0 |
-| 1 | 1 | 1 |
-
-* Top AND gate: This gate output is `1` only if `a` and `b` are both `1`.
-* Bottom AND gate. Because of the two NOT gates right before input, this gate output is `1` only if NOT `a` and NOT `b` are both `1`, i.e., `a` and `b` are both `0`.[^not-nand]
-* OR gate. The output `y` is `1` if at least one of the AND gates is `1`.
-:::
-
-So...what does this circuit do? Importantly, we note that the outputs of the two AND gates will never _both_ be `1`, so we could have replaced the OR gate with an XOR gate.
-
-After some thought, we may realize that this combinational logic circuit may actually be succinctly described as a **compare**: Take two inputs and returns `1` if the two inputs are equal and `0` otherwise. 
-
-If we wanted to use this compare circuit in other circuits, we can! Just represent it as a **combinational logic block**, as below:
-
-:::{figure} images/compare-2-block.png
-:label: fig-compare-2-block
-:width: 30%
-:alt: "TODO"
-
-Bitwise compare circuit; a block representation of the mystery circuit in @fig-compare-2-circuit.
-:::
-
-[^not-nand]: Notably, this circuit is not a NAND gate; we leave the proof to you. We suggest writing things out with truth tables.
-
-## Composing Circuits: 32-Bit Comparator
-
-We would like to a circuit that **compares two 32-bit values**; this 32-bit compare circuit can be used in our processor to implement the equality comparison for the RV32I instruction `beq rs1 rs2 Label`.
-
-:::{figure} images/compare-32-block.png
-:label: fig-compare-32-block
-:width: 30%
-:alt: "TODO"
-
-32-bit compare circuit.
-:::
-
-Compare this new 32-bit compare circuit(@fig-compare-32-block) with our previous 1-bit compare circuit (@fig-compare-2-block):
-
-* The value `A` is a 32-bit value, because of the **wire bundle** (the wire is marked with a notch). Similarly, value `B` is 32-bits.
-* The value `z` is a 1-bit value.
-
-Functionally, `z` is `1` only if all of `A`'s bits are equal to all of `B`'s bits. In other words, we can perform 32 bitwise comparisons, then AND them together. The underlying circuit for our compare block is therefore as follows:
-
-:::{figure} images/compare-32-circuit.png
-:label: fig-compare-32-circuit
-:width: 80%
-:alt: "TODO"
-
-32-bit compare circuit diagram, assuming we have implemented the bitwise compare circuit. The 32-input AND gate can be implemented recursively with 2- or 4-input AND gates.
-:::
-
-:::{hint} The power of **modular design**
-
-The truth table of the 32-bit comparator is too large for us to write by hand  (it has $2^{64}$ rows, for each combination of the bits of `A` and `B`). If truth tables are too big to construct, decompose by defining smaller circuits first, then compose the larger circuit with these smaller circuit blocks. This is the power of **modular design**
-
-In the next section, we introduce [Boolean Algebra](#sec-boolean-algebra) to help us formulaically use truth tables to design circuits.
-:::
