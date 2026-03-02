@@ -5,7 +5,7 @@ title: "Boolean Algebra"
 (sec-boolean-algebra)=
 ## Learning Outcomes
 
-* Identify the ANR, OR, and NOT operations in Boolean Algebra.
+* Identify the AND, OR, and NOT operations in Boolean Algebra.
 * Simplify Boolean Algebra expressions using laws of Boolean Algebra.
 
 ::::{note} 🎥 Lecture Video

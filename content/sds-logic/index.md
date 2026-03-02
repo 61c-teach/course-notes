@@ -7,7 +7,6 @@ title: "Logic Gates"
 
 * Use truth tables to enumerate the input-output relationships of a basic logic gate and a combinational logic circuit.
 * Describe the functionality of N-input logic gates (in particular, the 3-input XOR gate).
-* Practice modular design: compose complex circuits using smaller circuits.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -305,5 +304,3 @@ Consider the 3-input XOR gate, where `y = XOR(a, b, c) = XOR(a, XOR(b, c))`, etc
 Simple logic gates can be wired together to build useful circuits. In fact, any combinational logic block can be implemented with nothing but AND, OR, and NOT logic gates.
 
 However, to understand what a circuit actually does, we need more than just its circuit diagram: we need a concise description of its operation.
-
-
