@@ -25,7 +25,7 @@ diagram. Here is a summary:
 
 ## Textbook Readings
 
-P&H 4.8, 4.10
+P&H A.3-A.6
 
 ## Additional References
 
