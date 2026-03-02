@@ -154,10 +154,10 @@ project:
         # - file: content/sds-intro/exercises.md
     - title: "L17 Combinational Logic"
       children:
-        - file: content/sds-logic/index.md
-        - file: content/sds-logic/boolean-algebra.md
-        - file: content/sds-logic/cl-design.md
-        - file: content/sds-logic/summary.md
+        - file: content/sds-combinational-logic/index.md
+        - file: content/sds-combinational-logic/boolean-algebra.md
+        - file: content/sds-combinational-logic/cl-design.md
+        - file: content/sds-combinational-logic/summary.md
         # - file: content/sds-logic/summary-precheck.md
         # - file: content/sds-logic/exercises.md
     # - title: "L18 State, State Machines"
