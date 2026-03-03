@@ -10,7 +10,16 @@ title: "Words, Endianness"
 * Read memory layouts of C programs compiled on little endian machines.
 * Understand how padding and packing can impact the memory layout of members within a C struct.
 
-No lecture video.
+::::{note} 🎥 Lecture Video: Endianness
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/wXGhuhLKkqg
+:width: 100%
+:title: "[CS61C FA20] Lecture 07.3 - RISC-V Intro: RISC-V add/sub Instructions"
+
+This video is taken from later in Fall 2020 and references RISC-V assembly, which we'll talk about in a few units. For now, please start from 7:33 onwards.
+:::
+::::
 
 (sec-words)=
 ## Words
@@ -19,7 +28,7 @@ What's in a word? In computer architecture, a hardware **word** is an important 
 
 On most modern architectures, the size of the word often determines (among other things[^word]) the **largest possible address** and therefore the size of a C pointer (see [address space](@sec-address-space). A 32-bit architecture has 4-byte pointers; a 64-bit architecture has 8-byte pointers. The word size also often determines the **smallest accessible or most efficiently accessible unit of memory**. On a 32-bit architecture, memory reads and writes are often in units of 4-bytes; on a 64-bit architecture, in units of 8-bytes.
 
-[^word]: The hardware word size is a natural unit of access in a computer and corresponds to the hardware register size (to discuss in a later section). Correspondingly, this register size determines the smallest accessible unit of memory, the size of an address, etc.
+[^word]: The hardware word size is a natural unit of access in a computer and corresponds to the hardware register size (to discuss in [a later section](#sec-reg-size)). Correspondingly, this register size determines the smallest accessible unit of memory, the size of an address, etc.
 
 We will cover hardware words in much more detail when we learn about instruction set architectures. For now, we use the notion of a word to remind us that compiled C programs produce memory layouts that are *architecture-dependent*. We discuss a few architecture-dependent characteristics of compiled programs below.
 
@@ -30,12 +39,12 @@ The **address space** is the hypothetical range of addressable memory locations 
 
 [^in-practice]: Logically,  not in practice. Some areas of memory are read/write protected, e.g., accessing memory at the address `0` (`NULL`) causes an error.
 
-:::{tip} Quick check
+:::{tip} Quick Check
 
 On a 32-bit architecture, what is `sizeof(int *)`? `sizeof(char *)`?
 :::
 
-:::{note} Show answer
+:::{note} Show Answer
 :class: dropdown
 
 A pointer on a 32-bit architecture must be large enough to represent all possible addresses in the address space. The address space of a 32-bit architecture is the $2^32$ byte addresses ranging from `0x00000000` to `0xFFFFFFFF`. These correspond to bit patterns of 32 bits, so a pointer must be able to store 32 bits of information.
@@ -128,7 +137,8 @@ int main(int argc, char *argv[]) {
 Determine the addresses of `value` and `str1`.
 :::
 
-:::{note} Answer
+:::{note} Show Answer
+:class: dropdown
 
 Recall that the address of a stored value is the **lowest** address among the bytes of that value.
 
@@ -149,19 +159,20 @@ Together, these two observations tell us that the architecture is **little endia
 
 When data occupies multiple contiguous bytes in memory, the computer must determine which of the bytes is stored at the lowest address. This decision is often informed by the hardware architecture and in what order bytes are read from memory.
 
-This property is called **endianness**. For a given word:
+This property is called **endianness**.[^gulliver] For a given word:
 
 * **Little endian** machines store the _least_significant byte_ first, at the lowest address of the word.
 * **Big endian** machines store the _most_ significant byte_ first, at the lowest address of the word.
 
 The choice of endianness is one of convention[^endianness]. Nearly all modern computer architectures are little endian.
 
-:::{tip} Quick check
+:::{tip} Quick Check
 
 How does the diagram in @tab-word-program help us read 32-bit integers?
 :::
 
-:::{note} Answer
+:::{note} Show Answer
+:class: dropdown
 
 The 32-bit architecture is **little endian**. We know this because the integer `0x12345678` has least significant byte, `0x78` which is stored first at the lowest address.
 
@@ -169,10 +180,38 @@ In @tab-word-program, data columns are enumerated in reverse order: +3, +2, +1, 
 
 :::
 
-
 Read more about endianness on [Wikipedia](https://en.wikipedia.org/wiki/Endianness).
 
+[^gulliver]: The "little-endian" and "big-endian" terminology is derived from _Gulliver's Travels_ (1726) by Jonathan Swift and coined by Danny Cohen. Read the Internet Experiment Note [Holy Wars and a Plea for Peace](https://www.rfc-editor.org/ien/ien137.txt) for more information.
+
 [^endianness]: Endianness can also refer to the order in which bytes are transmitted over networks and other data communication media; most modern internet networks prefer big endian. See a relatively interesting discussion on [Reddit](https://www.reddit.com/r/learnprogramming/comments/1emdohb/can_someone_explain_to_me_why_therere_big_endian/).
+
+### Run Demo
+
+The below instructions are mostly for reference. We suggest going through Lab 02 first so you have some experience with `gdb`. Note that in order to connect `gdb` to the source file, you will need 
+
+:::{note} Demo gdb commands
+:class: dropdown
+
+```bash
+$ make clean
+$ gdb endianness
+(gdb) b 9 # set breakpoint at line 9
+(gdb) r     # run, initializing all vars
+(gdb) p/x str  # see string bytes
+(gdb) p/x str2
+(gdb) # print one word, show in hex
+(gdb) x/1wx 0x7fffffffe164
+(gdb) <enter> # repeat last action
+(gdb) … # keep pressing <enter>
+(gdb) # LSB in lowest address/word
+(gdb) # print 4 bytes, show in hex
+(gdb) x/4bx 0x7fffffffe164
+(gdb) <enter> # repeat last action
+(gdb) … # keep pressing <enter>
+(gdb) q
+```
+:::
 
 ## Alignment
 

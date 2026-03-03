@@ -13,7 +13,7 @@ Course notes for the [Great Ideas in Computer Architecture](https://cs61c.org/) 
 
 These course notes cover the content you need to know from lecture and other parts of the course. You can use them as reference as you go through the course assignments.
 
-* Come to lecture and get the high-level idea. Then, read these course notes. Alternatively, skim course notes first, then come to lecture and ask questions. (Because these course notes are still in development, this latter suggestion might not always be possible.)
+* Come to lecture and get the high-level idea. Then, read these course notes. Alternatively, skim course notes first, then come to lecture and ask questions. (Because these course notes are still in development, the latter might not always be possible.)
 * Before attending discussion section, try the precheck exercises. Solutions are provided.
 * Lecture will not cover every single topic. We always will recommend you read the course notes.
 
@@ -23,11 +23,7 @@ If you find an error in our first draft, please email cs61c@ or submit a pull re
 
 ## Textbooks
 
-Course notes are based on the following textbook references:
-
-* **P&H**: _Computer Organization and Design RISC-V Edition: The Hardware Software Interface, Second Edition_. David A. Patterson and John L. Hennessy. ISBN 0128203315.
-* **K&R**: [_The C Programming Language, Second Edition_](http://9p.io/cm/cs/cbook/) by Kernighan and Ritchie.
-* **WSC**: [_The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines_](https://research.google/pubs/the-datacenter-as-a-computer-an-introduction-to-the-design-of-warehouse-scale-machines-second-edition/). Luiz André Barroso, Jimmy Clidaras, Urs Hölzle. Morgan & Claypool Publishers. 2013
+See our [references page](#sec-textbook).
 
 ## License
 
