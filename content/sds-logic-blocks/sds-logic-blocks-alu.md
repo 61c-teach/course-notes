@@ -17,3 +17,21 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/alu.png
+:label: fig-alu
+:width: 55%
+:alt: "TODO"
+
+Simple ALU diagram.
+:::
+
+:::{figure} images/simple-alu.png
+:label: fig-alu-circuit
+:width: 100%
+:alt: "TODO"
+
+Simple ALU circuit iagram.
+:::

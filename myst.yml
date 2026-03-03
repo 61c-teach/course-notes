@@ -170,13 +170,13 @@ project:
         - file: content/sds-state/summary.md
     #     - file: content/sds-state/summary-precheck.md
     #     - file: content/sds-state/exercises.md
-    # - title: "L19 Combinational Logic Blocks"
-    #   children:
-    #     - file: content/sds-logic-blocks/index.md
-    #     - file: content/sds-logic-blocks/sds-logic-blocks-alu.md
-    #     - file: content/sds-logic-blocks/sds-logic-blocks-adder-sub.md
-    #     - file: content/sds-logic-blocks/sds-logic-blocks-subtractor.md
-    #     - file: content/sds-logic-blocks/summary.md
+    - title: "L19 Combinational Logic Blocks"
+      children:
+        - file: content/sds-logic-blocks/index.md
+        - file: content/sds-logic-blocks/sds-logic-blocks-alu.md
+        - file: content/sds-logic-blocks/sds-logic-blocks-adder-sub.md
+        - file: content/sds-logic-blocks/sds-logic-blocks-subtractor.md
+        - file: content/sds-logic-blocks/summary.md
     #     - file: content/sds-logic-blocks/summary-precheck.md
     #     - file: content/sds-logic-blocks/exercises.md
     - file: content/misc/iec-prefixes.md
