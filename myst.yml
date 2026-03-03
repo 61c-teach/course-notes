@@ -148,18 +148,16 @@ project:
     - title: "L16 Intro to SDS"
       children:
         - file: content/sds-intro/index.md
-        - file: content/sds-intro/sds-transistors.md
+        - file: content/sds-intro/transistors.md
         - file: content/sds-intro/summary.md
         # - file: content/sds-intro/summary-precheck.md
         # - file: content/sds-intro/exercises.md
     - title: "L17 Combinational Logic"
       children:
-        - file: content/sds-logic/index.md
-        # - file: content/sds-logic/boolean-algebra.md
-        # - file: content/sds-logic/sds-logic-laws.md
-        # - file: content/sds-logic/sds-logic-canonical-forms.md
-        # # - file: content/sds-logic/truth-tables.md
-        # - file: content/sds-logic/summary.md
+        - file: content/sds-combinational-logic/index.md
+        - file: content/sds-combinational-logic/boolean-algebra.md
+        - file: content/sds-combinational-logic/cl-design.md
+        - file: content/sds-combinational-logic/summary.md
         # - file: content/sds-logic/summary-precheck.md
         # - file: content/sds-logic/exercises.md
     # - title: "L18 State, State Machines"
