@@ -98,7 +98,7 @@ The below properties in @tab-bitwise-props hold for a single-bit value `x`. We l
 | XOR | `x ^ 1` | `~x` | flip/invert |
 :::
 
-Because of its behavior, we also call XOR a "conditional inverter". We discuss this more when we design logic gates.
+Because of its behavior, we also call XOR a "conditional inverter". We discuss this more when we design logic gates (see [later section](#sec-adder-subtractor)).
 
 (sec-bitwise-ops-defined)=
 ## C: Bitwise Operations vs. Logical Operations

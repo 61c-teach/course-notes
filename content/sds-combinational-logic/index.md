@@ -277,6 +277,7 @@ An N-input NAND is NOT of an (N-input AND).
 An N-input NOR is NOT of an (N-input OR).
 ```
 
+(sec-n-xor)=
 ```{hint} [Important] What is an N-input [XOR](#fig-xor-gate)?
 
 An N-input XOR is 1 if the number of 1s on all the inputs is **odd**.

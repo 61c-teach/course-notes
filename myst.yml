@@ -130,7 +130,7 @@ project:
           - file: content/rv-isa-formats-ii/index.md
           - file: content/rv-isa-formats-ii/b-type.md
           - file: content/rv-isa-formats-ii/j-type.md
-          - file: content/rv-isa-formats-ii/rv-isa-f2-summary.md
+          # - file: content/rv-isa-formats-ii/rv-isa-f2-summary.md
           - file: content/rv-isa-formats-ii/u-type.md
           - file: content/rv-isa-formats-ii/summary.md
           # - file: content/rv-isa-formats-ii/summary-precheck.md
@@ -160,23 +160,21 @@ project:
         - file: content/sds-combinational-logic/summary.md
         # - file: content/sds-logic/summary-precheck.md
         # - file: content/sds-logic/exercises.md
-    # - title: "L18 State, State Machines"
-    #   children:
-    #     - file: content/sds-state/index.md
-    #     - file: content/sds-state/sds-state-register-details.md
-    #     - file: content/sds-state/sds-state-accumulator.md
-    #     - file: content/sds-state/sds-state-pipelining.md
-    #     - file: content/sds-state/sds-state-fsm.md
-    #     - file: content/sds-state/summary.md
+    - file: content/sds-state/summary.md
+        # - file: content/sds-state/index.md
+        # - file: content/sds-state/sds-state-register-details.md
+        # - file: content/sds-state/sds-state-accumulator.md
+        # - file: content/sds-state/sds-state-pipelining.md
+        # - file: content/sds-state/sds-state-fsm.md
     #     - file: content/sds-state/summary-precheck.md
     #     - file: content/sds-state/exercises.md
-    # - title: "L19 Combinational Logic Blocks"
-    #   children:
-    #     - file: content/sds-logic-blocks/index.md
-    #     - file: content/sds-logic-blocks/sds-logic-blocks-alu.md
-    #     - file: content/sds-logic-blocks/sds-logic-blocks-adder-sub.md
-    #     - file: content/sds-logic-blocks/sds-logic-blocks-subtractor.md
-    #     - file: content/sds-logic-blocks/summary.md
+    - title: "L19 Combinational Logic Blocks"
+      children:
+        - file: content/sds-blocks/index.md
+        - file: content/sds-blocks/sds-logic-blocks-add-sub.md
+        - file: content/sds-blocks/sds-logic-blocks-alu.md
+        # - file: content/sds-blocks/sds-logic-blocks-subtractor.md
+        - file: content/sds-blocks/summary.md
     #     - file: content/sds-logic-blocks/summary-precheck.md
     #     - file: content/sds-logic-blocks/exercises.md
     - file: content/misc/iec-prefixes.md

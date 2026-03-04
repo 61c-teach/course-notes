@@ -17,3 +17,37 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/accumulator-circuit-diagram.png
+:label: fig-acc-circuit
+:width: 55%
+:alt: "TODO"
+
+Circuit diagram for accumulator.
+:::
+
+:::{figure} images/accumulator-timing.png
+:label: fig-acc-timing
+:width: 100%
+:alt: "TODO"
+
+Timing diagram for accumulator.
+:::
+
+:::{figure} images/acc-diagram-reset.png
+:label: fig-acc-reset
+:width: 55%
+:alt: "TODO"
+
+Circuit diagram for accumulator with reset.
+:::
+
+:::{figure} images/acc-timing-diagram-reset.png
+:label: fig-acc-timing-reset
+:width: 100%
+:alt: "TODO"
+
+Timing diagram for accumulator with reset.
+:::

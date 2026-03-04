@@ -1,6 +1,6 @@
 ---
 title: "Transistors and Switches"
-subtitle: "This content is not tested"
+subtitle: "This content is not tested. By John Wawrzynek"
 ---
 
 (sec-transistors)=
