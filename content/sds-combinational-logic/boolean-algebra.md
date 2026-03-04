@@ -1,5 +1,6 @@
 ---
 title: "Boolean Algebra"
+subtitle: By John Wawrzynek, with edits by Lisa Yan
 ---
 
 (sec-boolean-algebra)=

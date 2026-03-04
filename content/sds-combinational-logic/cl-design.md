@@ -1,5 +1,6 @@
 ---
 title: "Canonical Form, CL Design"
+subtitle: By John Wawrzynek, with edits by Lisa Yan
 ---
 
 (sec-cl-practice)=
@@ -31,7 +32,7 @@ Second equivalent circuit: $y = a + c$.
 
 @fig-cl-block-representation shows the three possible representation for a combinational logic block.
 
-* The **truth table** form is unique—for every combinational logic block, there is only one truth table. The uniqueness of the truth-table makes it a useful way to clearly define the function of a combinational logic block.
+* The **truth table** form is unique—for every combinational logic block, there is only one truth table. The uniqueness of the truth table makes it a useful way to clearly define the function of a combinational logic block.
 * There are multiple **Boolean expressions** possible for any combinational logic block. Boolean expressions are useful for algebraic manipulation, particularly simplification.
 * Multiple **gate level** representations for any combinational logic blocks. The gate diagram gives us a prescription for converting to an actual transistor circuit; each gate in the
 diagram can be replaced by a small transistor circuit that achieves is respective gate level function.
@@ -45,7 +46,8 @@ This section discusses how to translate between the diferent representations of 
 (sec-majority-circuit)=
 ### Example: Majority Circuit
 
-The equation
+Consider the below equation. This describes a **three-input majority circuit** because the output y takes on the value that matches the majority of the
+input values.
 
 ```{math}
 :label: eq-majority-circuit
@@ -53,7 +55,10 @@ The equation
 y = ab + bc + ac
 ```
 
-has the corresponding truth table
+Equation @eq-majority-circuit has the corresponding truth table
+
+:::{table}
+:label: tab-majority-circuit
 
 | a | b | c | y |
 | :---: | :---: | :---: | :---: |
@@ -65,6 +70,7 @@ has the corresponding truth table
 | 1 | 0 | 1 | 1 |
 | 1 | 1 | 0 | 1 |
 | 1 | 1 | 1 | 1 |
+:::
 
 and has the corresponding gate circuit
 
@@ -78,8 +84,7 @@ Circuit corresponding to $y = ab + bc + ac$.
 
 The equation says that the output y is the OR ($+$) of three terms, where each term is the AND of two input variables ($\cdot$ or concatenation). The correspondence between @eq-majority-circuit and the circuit in @fig-majority-circuit should be clear. The three product terms are implemented using AND gates and the final sum by the three input OR gate.
 
-We call this a **three-input majority circuit** because the output y takes on the value that matches the majority of the
-input values.
+
 
 (sec-sum-product)=
 ## Canonical Form
@@ -90,7 +95,7 @@ The canonical form gets its name from the fact that it is formed by taking the s
 
 * Every place (row) where a 1 appears in the output, we will use a product (AND) term in the Boolean expression.
 * Each AND term includes all the input variables in either complemented or uncomplemented form.
-* A variable appears in complemented form if it is a 0 in the row of the truth-table, and as a 1 if it appears as a 1 in
+* A variable appears in complemented form if it is a 0 in the row of the truth table, and as a 1 if it appears as a 1 in
 the row.
 
 :::{warning} Why does Sum-of-Products work?
@@ -105,7 +110,7 @@ Barring associativity and commutativity of terms, the sum-of-products canonical 
 (sec-sum-product-example)=
 ## Example: Truth Table $\rightarrow$ Boolean Expression $\rightarrow$ Gate Diagram
 
-Any CL circuit that can be practically specified as a truth-table can be represented with a Boolean
+Any CL circuit that can be practically specified as a truth table can be represented with a Boolean
 expression by writing its **canonical form**. Following that, through algebraic manipulation, it can be simplified, then translated to a circuit of logic gates.
 
 :::{tip} Example
@@ -186,8 +191,10 @@ In our [three-input majority circuit](#sec-majority-circuit), we can use the tru
 
 $$y = \overline{a}bc + a\overline{b}c + ab\overline{c} + abc$$
 
-:::{note} Click to show annotated truth table
+::::{note} Click to show annotated truth table
 :class: dropdown
+
+:::{table}
 
 | $a$ | $b$ | $c$ | $y$ | Product |
 | :---: | :---: | :---: | :---: | :--- |
@@ -199,8 +206,9 @@ $$y = \overline{a}bc + a\overline{b}c + ab\overline{c} + abc$$
 | 1 | 0 | 1 | 1 | $a \cdot \overline{b} \cdot c$ |
 | 1 | 1 | 0 | 1 | $a \cdot b \cdot \overline{c}$ |
 | 1 | 1 | 1 | 1 | $a \cdot b \cdot c$ |
-
 :::
+
+::::
 
 We can then use Boolean algebra to verify that the canonical form is equivalent to the intuitive [majority circuit equation](#eq-majority-circuit):
 

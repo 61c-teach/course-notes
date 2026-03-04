@@ -1,7 +1,9 @@
 ---
 title: "Synchronous Digital Systems"
+subtitle: With excerpts from John Wawrzynek
 ---
 
+(sec-intro-sds)=
 ## Learning Outcomes
 
 * Define a synchronous digital system.
@@ -17,16 +19,6 @@ title: "Synchronous Digital Systems"
 :::
 
 until 5:35
-
-::::
-
-::::{note} 🎥 Lecture Video
-:class: dropdown
-
-:::{iframe} https://www.youtube.com/embed/EQYtPrBWvrU
-:width: 100%
-:title: "[CS61C FA20] Lecture 14.3 - Intro to Synchronous Digital Systems: Signals and Waveforms"
-:::
 
 ::::
 
