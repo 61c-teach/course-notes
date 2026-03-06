@@ -1,8 +1,9 @@
 ---
-title: "Register Details Flip-flops"
+title: "The Register"
 subtitle: TODO
 ---
 
+(sec-registers)=
 ## Learning Outcomes
 
 * TODO
@@ -59,3 +60,7 @@ Timing diagram for flip flop.
 
 Waveform diagram for flip flop.
 :::
+
+asdf[^hold-time-clk-to-q]
+
+[^hold-time-clk-to-q]: There is no particular relation between hold time and clk-to-q delay, because the former describes the input and the latter describes the output. However, in practice hold time is less than clk-to-q delay.

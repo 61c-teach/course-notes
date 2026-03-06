@@ -8,16 +8,6 @@ subtitle: TODO
 * TODO
 * TODO
 
-::::{note} 🎥 Lecture Video
-:class: dropdown
-
-:::{iframe} https://www.youtube.com/embed/NJp8PSGsV9U
-:width: 100%
-:title: "[CS61C FA20] Lecture 15.1 - State, State Machines: Accumulator"
-:::
-
-::::
-
 ## Visuals
 
 :::{figure} images/simple-accumulator.png
@@ -44,13 +34,6 @@ Diagram of simple feedback for accumulator.
 Simple timing diagram.
 :::
 
-:::{figure} images/general-model-sds.png
-:label: fig-gen-model-sds
-:width: 100%
-:alt: "TODO"
-
-General model for SDS.
-:::
 
 :::{figure} images/max-delay.png
 :label: fig-max-delay

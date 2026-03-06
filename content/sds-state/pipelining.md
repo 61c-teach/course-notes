@@ -3,6 +3,7 @@ title: "Pipelining for Performance"
 subtitle: TODO
 ---
 
+(sec-pipelining)=
 ## Learning Outcomes
 
 * TODO
@@ -19,6 +20,14 @@ subtitle: TODO
 ::::
 
 ## Visuals
+
+
+:::{figure} #fig-general-model-sds
+:width: 100%
+:alt: "TODO"
+
+General model for SDS. @fig-general-model-sds in [a previous section](#sec-signal-waveform-clock).
+:::
 
 :::{figure} images/general-model-sds-pipeline.png
 :label: fig-general-model-pipeline
@@ -42,20 +51,4 @@ Example diagram of a non-pipelined adder/shifter circuit.
 :alt: "TODO"
 
 Example diagram of a pipelined adder/shifter circuit.
-:::
-
-:::{figure} images/max-clock-freq.png
-:label: fig-max-freq
-:width: 55%
-:alt: "TODO"
-
-Example circuit diagram to calculate max clock frequency.
-:::
-
-:::{figure} images/circuit-path.png
-:label: fig-circuit-path
-:width: 55%
-:alt: "TODO"
-
-Example circuit diagram for max frequency circuit path.
 :::

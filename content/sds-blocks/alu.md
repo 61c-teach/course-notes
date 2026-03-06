@@ -1,6 +1,6 @@
 ---
 title: "Arithmetic Logic Unit"
-subtitle: TODO
+subtitle: By John Wawrzynek, with edits by Lisa Yan
 ---
 
 (sec-alu)=
