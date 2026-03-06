@@ -18,6 +18,11 @@ subtitle: TODO
 
 ::::
 
+
+
+<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/ff68145d7c105b9f383e16a85cb1c9b5da5846b3/content/resources/datapath-add.pptx' width='100%' height='600px' frameborder='0'>
+
+
 From one view, designing a CPU is like designing a state machine.
 
 * State elements: registers and memory
