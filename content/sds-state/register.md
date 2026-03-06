@@ -1,13 +1,12 @@
 ---
 title: "The Register"
-subtitle: TODO
+subtitle: "Coming soon"
 ---
+
+Coming soon. For now, please read Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf)
 
 (sec-registers)=
 ## Learning Outcomes
-
-* TODO
-* TODO
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,6 +17,7 @@ subtitle: TODO
 :::
 
 ::::
+<!--
 
 ## Visuals
 
@@ -64,3 +64,4 @@ Waveform diagram for flip flop.
 asdf[^hold-time-clk-to-q]
 
 [^hold-time-clk-to-q]: There is no particular relation between hold time and clk-to-q delay, because the former describes the input and the latter describes the output. However, in practice hold time is less than clk-to-q delay.
+-->
