@@ -1,13 +1,12 @@
 ---
 title: "Pipelining for Performance"
-subtitle: This lecture section will be covered in a few weeks
+subtitle: "Out of scope for midterm exam"
 ---
 
+This lecture section will be covered in a few weeks.
 
 (sec-pipelining)=
 ## Learning Outcomes
-
-* TODO
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -19,7 +18,9 @@ subtitle: This lecture section will be covered in a few weeks
 
 ::::
 
-Coming soon. For now, please read Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf)
+Please read Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf)
+
+The webpage format of these notes is coming soon.
 
 <!--
 

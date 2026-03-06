@@ -1,5 +1,6 @@
 ---
 title: "Finite State Machines"
+subtitle: "Coming soon"
 ---
 
 ## Learning Outcomes
@@ -14,7 +15,9 @@ title: "Finite State Machines"
 
 ::::
 
-Coming soon. For now, please read Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf)
+Please read Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf)
+
+The webpage format of these notes is coming soon.
 
 <!--
 
