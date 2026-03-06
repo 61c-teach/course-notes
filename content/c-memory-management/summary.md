@@ -16,9 +16,9 @@ nested function calls (LIFO structure), and shrinks upwards as functions return.
 realloc. Used for data that needs to persist after the function returns. Grows upwards in
 memory to ‘meet’ the stack. Memory on the heap is only freed when the programmer explicitly
 frees it. Careful heap management is necessary to avoid tricky bugs called Heisenbugs!
-* **Static data**: Stores data that is a fixed size, like global variables and string literals. Does not
+* **Data (or Static)**: Stores data that is a fixed size, like global variables and string literals. Does not
 grow or shrink through function execution.
-* **Code (or Text)**: Is loaded at the start of the program and does not change after, contains
+* **Text (or Code)**: Is loaded at the start of the program and does not change after, contains
 executable instructions and any pre-processor macros.
 
 There are a number of functions in C that can be used to dynamically allocate memory on the

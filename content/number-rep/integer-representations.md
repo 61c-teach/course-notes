@@ -13,7 +13,6 @@ title: "Integer Representations"
 * Identify when and why integer overflow occurs
 * Perform simple binary operations like addition
 
-
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
@@ -321,9 +320,8 @@ Example: $N = 5$ with bias $-(2^{N-1} - 1)$
 ^^^
 
 * 5-bit integer representation
-* Bias: $-(2^{5-1} - 1) = 15$
+* Bias: $-(2^{5-1} - 1) = -15$
 * All zeros: smallest negative number
-The leftmost bit (also known as **most significant bit**) is still effectively the **sign bit**.
 :::
 
 Here are some diagrams in case they are useful. @fig-bias-encoding-number-line represents a bias encoding where $N = 4$ and bias $ = -7$. The odometer just does the right thing; it counts up through zero with nothing strange happening.
