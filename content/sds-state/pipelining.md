@@ -1,12 +1,12 @@
 ---
 title: "Pipelining for Performance"
-subtitle: TODO
+subtitle: This lecture section will be covered in a few weeks
 ---
+
 
 (sec-pipelining)=
 ## Learning Outcomes
 
-* TODO
 * TODO
 
 ::::{note} 🎥 Lecture Video
@@ -19,8 +19,11 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+Coming soon. For now, please read Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf)
 
+<!--
+
+## Visuals
 
 :::{figure} #fig-general-model-sds
 :width: 100%
@@ -52,3 +55,5 @@ Example diagram of a non-pipelined adder/shifter circuit.
 
 Example diagram of a pipelined adder/shifter circuit.
 :::
+
+-->

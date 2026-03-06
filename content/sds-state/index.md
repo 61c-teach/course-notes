@@ -31,7 +31,7 @@ The energy provided by the power supply drives the operation of the processor. T
 
 ## The Clock
 
-Coming soon. For now, please read Professor John Wawrzynek's notes: [Intro to SDS Handout](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/sds.pdf) 
+Coming soon. For now, please read Professor John Wawrzynek's notes: [Intro to SDS Handout](../resources/sds.pdf)
 
 <!--
 Another special connection to the chip is the **clock input signal**. The clock signal is generated on the motherboard and sent to the chip where it is distributed throughout the processor on internal wires.
@@ -47,7 +47,7 @@ We would see a blur, because the clock signal is oscillating at a very high freq
 
 ## Signals and Waveforms
 
-Coming soon. For now, please read Professor John Wawrzynek's notes: [Intro to SDS Handout](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/sds.pdf) 
+Coming soon. For now, please read Professor John Wawrzynek's notes: [Intro to SDS Handout](../resources/sds.pdf)
 
 ## Circuit Delay: Propagation Delay
 
