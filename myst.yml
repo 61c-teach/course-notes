@@ -160,20 +160,21 @@ project:
         - file: content/sds-combinational-logic/summary.md
         # - file: content/sds-logic/summary-precheck.md
         # - file: content/sds-logic/exercises.md
-    - file: content/sds-state/summary.md
-        # - file: content/sds-state/index.md
-        # - file: content/sds-state/sds-state-register-details.md
-        # - file: content/sds-state/sds-state-accumulator.md
-        # - file: content/sds-state/sds-state-pipelining.md
-        # - file: content/sds-state/sds-state-fsm.md
+    - title: "L18 State"
+      children:
+        - file: content/sds-state/index.md
+        # - file: content/sds-state/register.md
+        - file: content/sds-state/synchronous-system.md
+        # - file: content/sds-state/pipelining.md
+        # - file: content/sds-state/fsm.md
     #     - file: content/sds-state/summary-precheck.md
     #     - file: content/sds-state/exercises.md
+        - file: content/sds-state/summary.md
     - title: "L19 Combinational Logic Blocks"
       children:
         - file: content/sds-blocks/index.md
-        - file: content/sds-blocks/sds-logic-blocks-add-sub.md
-        - file: content/sds-blocks/sds-logic-blocks-alu.md
-        # - file: content/sds-blocks/sds-logic-blocks-subtractor.md
+        - file: content/sds-blocks/adder-subtractor.md
+        - file: content/sds-blocks/alu.md
         - file: content/sds-blocks/summary.md
     #     - file: content/sds-logic-blocks/summary-precheck.md
     #     - file: content/sds-logic-blocks/exercises.md
