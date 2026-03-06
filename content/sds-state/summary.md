@@ -1,5 +1,5 @@
 ---
-title: "Summary"
+title: "L18 State, State Machines"
 ---
 
 These notes are still in progress. For now, please see Professor John Wawrzynek's notes:
