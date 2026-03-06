@@ -181,9 +181,8 @@ project:
     - title: "L20 Single-Cycle CPU Datapath I"
       children:
         - file: content/datapath-I/index.md
-        - file: content/datapath-I/dpI-building.md
-        - file: content/datapath-I/dpI-r-type.md
-        - file: content/datapath-I/dpI-sub-datapath.md
+        - file: content/datapath-I/stages-components.md
+        - file: content/datapath-I/r-type.md
         - file: content/datapath-I/dpI-immediates.md
         - file: content/datapath-I/summary.md
         # - file: content/datapath-I/summary-precheck.md
