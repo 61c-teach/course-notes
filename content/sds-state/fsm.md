@@ -1,12 +1,9 @@
 ---
 title: "Finite State Machines"
-subtitle: TODO
+subtitle: "Coming soon"
 ---
 
 ## Learning Outcomes
-
-* TODO
-* TODO
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,7 +15,11 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+Please read Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf)
+
+The webpage format of these notes is coming soon.
+
+<!--
 
 :::{figure} images/fsm.png
 :label: fig-fsm
@@ -51,3 +52,5 @@ Example FSM timing diagram.
 
 Example diagram of FSM hardware implementation.
 :::
+
+-->
