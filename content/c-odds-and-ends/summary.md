@@ -1,9 +1,11 @@
 ---
-title: "Exercises"
-subtitle: "Check your knowledge before section"
+title: "Summary"
 ---
 
-## Short Exercises
+## Exercises
+Check your knowledge before section
+
+### Short Exercises
 
 1. Fill in the memory contents for each system after initializing `arr`. Assume `arr` begins at memory address `0x1000`.
 

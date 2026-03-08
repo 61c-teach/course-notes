@@ -26,7 +26,7 @@ project:
         - file: content/number-rep/integer-representations.md
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
-        - file: content/number-rep/exercises.md
+        # - file: content/number-rep/exercises.md
     - title: "L03 C Basics"
       children:
         - file: content/c-basics/index.md
@@ -35,7 +35,7 @@ project:
         - file: content/c-basics/c-variables.md
         - file: content/c-basics/c-syntax.md
         - file: content/c-basics/summary.md
-        - file: content/c-basics/exercises.md
+        # - file: content/c-basics/exercises.md
     - title: "L04 C Pointers, Arrays, Strings"
       children:
         - file: content/c-pointers-arrays-strings/index.md
@@ -43,7 +43,7 @@ project:
         - file: content/c-pointers-arrays-strings/arrays.md
         - file: content/c-pointers-arrays-strings/strings.md
         - file: content/c-pointers-arrays-strings/summary.md
-        - file: content/c-pointers-arrays-strings/exercises.md
+        # - file: content/c-pointers-arrays-strings/exercises.md
     - title: "L05 C Memory Management"
       children:
         - file: content/c-memory-management/index.md
@@ -51,21 +51,20 @@ project:
         - file: content/c-memory-management/heap.md
         - file: content/c-memory-management/heap-allocator.md
         - file: content/c-memory-management/summary.md
-        - file: content/c-memory-management/exercises.md
+        # - file: content/c-memory-management/exercises.md
     - title: "L06 C Odds and Ends"
       children:
         - file: content/c-odds-and-ends/index.md
         - file: content/c-odds-and-ends/endianness.md
         - file: content/c-odds-and-ends/ll-add-front.md
         - file: content/c-odds-and-ends/ll-full.md
-        - file: content/c-odds-and-ends/exercises.md
+        - file: content/c-odds-and-ends/summary.md
     - title: "L07 C Generics, Function Pointers"
       children:
         - file: content/c-generics/index.md
         - file: content/c-generics/generics.md
         - file: content/c-generics/fn-ptr.md
         - file: content/c-generics/summary.md
-        # - file: content/c-generics/exercises.md
     - title: "L08 Floating Point"
       children:
         - file: content/floating-point/index.md
@@ -74,8 +73,7 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-        # - file: content/floating-point/summary-precheck.md
-        - file: content/floating-point/exercises.md
+        # - file: content/floating-point/exercises.md
     - title: "L09 RISC-V Intro"
       children:
         - file: content/rv-intro/index.md
@@ -84,8 +82,7 @@ project:
         - file: content/rv-intro/rv-arithmetic.md
         - file: content/rv-intro/rv-bitwise.md
         - file: content/rv-intro/summary.md
-        - file: content/rv-intro/exercises.md
-        # - file: content/rv-intro/summary-precheck.md
+        # - file: content/rv-intro/exercises.md
     - title: "L10 RISC-V Data Transfer"
       children:
         - file: content/rv-data-transfer/index.md
@@ -93,15 +90,12 @@ project:
         - file: content/rv-data-transfer/examples.md
         - file: content/rv-data-transfer/example-sp.md
         - file: content/rv-data-transfer/summary.md
-        # - file: content/rv-data-transfer/exercises.md
     - title: "L11 RISC-V Decision Making"
       children:
         - file: content/rv-decision-making/index.md
         - file: content/rv-decision-making/branches.md
         - file: content/rv-decision-making/loops.md
         - file: content/rv-decision-making/summary.md
-        # - file: content/rv-decision-making/precheck.md
-        # - file: content/rv-decision-makingr/exercises.md
     - title: "L12 RISC-V Procedures"
       children:
         - file: content/rv-procs/index.md
@@ -109,7 +103,6 @@ project:
         - file: content/rv-procs/rv-calling-conv.md
         - file: content/rv-procs/examples.md
         - file: content/rv-procs/summary.md
-    #     - file: content/rv-procs/exercises.md
     - title: "L13 RISC-V Instruction Formats I"
       children:
         - file: content/rv-isa-formats-i/index.md
@@ -117,8 +110,6 @@ project:
         - file: content/rv-isa-formats-i/i-type.md
         - file: content/rv-isa-formats-i/s-type.md
         - file: content/rv-isa-formats-i/summary.md
-        # - file: content/rv-isa-formats-i/summary-precheck.md
-        # - file: content/rv-isa-formats-i/exercises.md
     - title: "L14 RISC-V Instruction Formats II"
       children:
         - file: content/rv-isa-formats-ii/index.md
@@ -127,8 +118,6 @@ project:
         - file: content/rv-isa-formats-ii/rv-isa-f2-summary.md
         - file: content/rv-isa-formats-ii/u-type.md
         - file: content/rv-isa-formats-ii/summary.md
-        # - file: content/rv-isa-formats-ii/summary-precheck.md
-        # - file: content/rv-isa-formats-ii/exercises.md
     - title: "L15 CALL"
       children:
         - file: content/call/index.md
@@ -137,8 +126,6 @@ project:
         - file: content/call/example.md
         - file: content/call/interpret-translate.md
         - file: content/call/summary.md
-        # - file: content/call/summary-precheck.md
-        # - file: content/call/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
