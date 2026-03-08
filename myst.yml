@@ -163,11 +163,11 @@ project:
     - title: "L18 State"
       children:
         - file: content/sds-state/index.md
-        # - file: content/sds-state/register.md
+        - file: content/sds-state/register.md
         - file: content/sds-state/synchronous-system.md
-        # - file: content/sds-state/pipelining.md
-        # - file: content/sds-state/fsm.md
-    #     - file: content/sds-state/summary-precheck.md
+        - file: content/sds-state/fsm.md
+        - file: content/sds-state/pipelining.md
+        # - file: content/sds-state/summary-precheck.md
     #     - file: content/sds-state/exercises.md
         - file: content/sds-state/summary.md
     - title: "L19 Combinational Logic Blocks"
