@@ -84,7 +84,7 @@ int factorial(int n) {
 :::
 
 :::{hint} Recursive call
-[Line 16](#code-factorial-recursive): As caller, what do we save before making the recursive call? Why?
+[Line 16](#code-factorial-recursive): As caller, why do we save `s0` before making the recursive call?
 :::
 
 :::{note} Show answer

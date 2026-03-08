@@ -19,16 +19,16 @@ title: "S-Type"
 
 ::::
 
-Our next instruction format is S-Type, the format used for **S**tore instructions `sb`, `sh`, and `sw`. While load instructions fit nicely into the [I-Type](sec-i-type) format, store instructions use registers differently than the instructions we've seen so far. We need a special instruction format to translate store instructions into machine code.
+Our next instruction format is S-Type, the format used for **S**tore instructions `sb`, `sh`, and `sw`. While load instructions fit nicely into the [I-Type](#sec-i-type) format, store instructions use registers differently than the instructions we've seen so far. We need a special instruction format to translate store instructions into machine code.
 
-Recall from an [earlier section](#store-word):
+Recall from an [earlier section](#sec-store-word):
 
 > The **store word** instruction:
 >
 > * **Computes a memory address** `R[rs1]+imm`
 > * **Store a word** from register `rs2`, `R[rs2][31:0]`, to this address in memory, `M[R[rs1] + imm][31:0]`.
 
-[Stores](tab-rv32i-memory) therefore need the following fields:
+[Stores](#tab-rv32i-memory) therefore need the following fields:
 
 * `rs1`: "base" register which stores the base memory address
 * `rs2`: "source" register which stores the data to be stored in memory
@@ -36,7 +36,7 @@ Recall from an [earlier section](#store-word):
 * `opcode` (as all instructions do). Stores use opcode `0100011`.
 * `funct3` specifies partial stores.
 
-Store instructions have two operand registers, like in [R-type](sec-r-type) instructions, but do not have a destination regsiter `rd`. Instead, S-type instructions have an immediate value, like in [I-type](sec-i-type) instructions. Therefore, we use a new instruction format: S-type for "Store"-type.
+Store instructions have two operand registers, like in [R-type](#sec-r-type) instructions, but do not have a destination regsiter `rd`. Instead, S-type instructions have an immediate value, like in [I-type](#sec-i-type) instructions. Therefore, we use a new instruction format: S-type for "Store"-type.
 
 ## S-Type: Fields
 
