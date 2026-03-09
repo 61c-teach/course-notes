@@ -1,6 +1,5 @@
 ---
 title: "State Elements"
-subtitle: TODO
 ---
 
 (sec-state-elements)=
