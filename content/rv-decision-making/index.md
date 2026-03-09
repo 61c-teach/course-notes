@@ -60,7 +60,7 @@ The **Program Counter** (PC[^pc]) is effectively a pointer to memory[^intel-pc] 
 [^pc-name] Verilog syntax is PC, though the [RISC-V Unprivileged Manual](https://docs.riscv.org/reference/isa/unpriv/rv32.html) calls it `pc`.
 
 
-We revisit our [conceptual computer layout](#fig-von-neumann) from earlier and focus on the program counter in @fig-program-counter.
+We revisit our [conceptual computer layout](#fig-von-neumann) from [earlier](#sec-architecture-elements) and focus on the program counter in @fig-program-counter.
 
 :::{figure} images/program-counter.png
 :label: fig-program-counter

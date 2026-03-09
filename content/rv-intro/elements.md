@@ -3,6 +3,7 @@ title: "Elements of Architecture: Processor, Registers, and Memory"
 short_title: "Processor, Registers, and Memory"
 ---
 
+(sec-architecture-elements)=
 ## Learning Outcomes
 
 * Understand that registers are extremely tiny, fast storage located within a processor. In the conceptual layout of a computer, the processor and memory are separately located.
@@ -34,7 +35,7 @@ Until 5:00
 
 In order to learn an ISA, we must first understand @fig-von-neumann, which shows a conceptual layout of a computer:
 
-* A **processor** (e.g., a **Central Processing Unit**, or CPU), responsible for computing. Inside the processor, there is a **control unit** and a **data path**. The main elements of the data path are the **registers** and the execution unit, typically called the **Arithmetic Logic Unit** (ALU). We will discuss all these details soon.
+* A **processor** (e.g., a **Central Processing Unit**, or CPU), responsible for computing. Inside the processor, there is a **control unit** and a **data path**. The main elements of the data path are the **registers** and the execution unit, typically called the **Arithmetic Logic Unit** (ALU). We will discuss all these details [soon](#sec-single-cycle).
 * **Main memory**, responsible for long-term data storage.
 * **I/O Devices**, i.e., Input/Output Devices like keyboards, displays, etc.
 
