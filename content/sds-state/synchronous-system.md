@@ -76,6 +76,7 @@ happen before $X_1$ is applied.**
 
 This is clearly not the correct operation of "sum". The circuit is out of control! We need some way to control the computation, **one step at a time**.
 
+(sec-use-register)=
 ### Use a Register
 
 The way to control the computation is to put a register in the **feedback path** (the connection from the output of the adder to its input), as shown in @fig-accumulator-circuit-register.
