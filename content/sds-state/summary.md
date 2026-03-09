@@ -1,8 +1,10 @@
 ---
-title: "L18 State, State Machines"
+title: "Summary"
 ---
 
-These notes are still in progress. For now, please see Professor John Wawrzynek's notes:
+## And in Conclusion$\dots$
+
+<!-- These notes are still in progress. For now, please see Professor John Wawrzynek's notes: -->
 
 ## Textbook Readings
 
