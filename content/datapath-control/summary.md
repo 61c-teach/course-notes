@@ -10,6 +10,28 @@ P&H 4.4, 4.5
 
 ## Additional References
 
+Our single-cycle datapath is a synchronous digital system (SDS) that has the capabilities of
+executing RISC-V instructions. It is divided into multiple stages of execution, where each stage is
+responsible for a completing a certain task.
+
+**IF** Instruction Fetch:
+• Send address to the instruction memory (IMEM), and read IMEM at that address.
+• Hardware units: PC register, +4 adder, PCSel mux, IMEM
+**ID** Instruction Decode:
+• Generate control signals from the instruction bits, generate the immediate, and read registers
+from the RegFile.
+• Hardware units: RegFile, ImmGen
+**EX** Execute:
+• Perform ALU operations, and do branch comparison.
+• Hardware units: ASel mux, BSel mux, branch comparator, ALU
+**MEM** Memory
+• Read from or write to the data memory (DMEM).
+• Hardware units: DMEM
+**WB** Writeback
+• Write back either PC + 4, the result of the ALU operation, or data from memory to the
+RegFile.
+• Hardware units: WBSel mux, RegFile
+
 ## Exercises
 Check your knowledge!
 
