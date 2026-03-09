@@ -6,8 +6,7 @@ subtitle: "add, sub"
 (sec-datapath-r-type)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Coming soon! We provide the animations for now.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -29,6 +28,6 @@ subtitle: "add, sub"
 
 ::::
 
+## Tracing the `add` Datapath
 
-
-<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/c6940ed7002de1a7b15cdda8d3f3bd3127cfea4d/content/resources/datapath-add.pptx' width='100%' height='600px' frameborder='0'>
+<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-add.pptx' width='100%' height='600px' frameborder='0'>
