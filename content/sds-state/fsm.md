@@ -100,7 +100,7 @@ The left half of the table shows the present state (PS), also called the current
 ### Circuit
 In the hardware implementation of a FSM, we assume that the state transitions are controlled by the clock. 
 
-On each clock cycle, the machine
+On each clock cycle, the machine:
 1. Checks the inputs
 2. Transitions to a new state
 3. Produces a new output
@@ -136,7 +136,7 @@ Recall that input bits are applied to the FSM one per clock cycle. Therefore, we
 
 :::{figure} images/three1s-circuit.png
 :label: fig-three1s-circuit
-:width: 100%
+:width: 70%
 :alt: "TODO"
 
 State register and combinational logic implementation of example sequence detector circuit.
@@ -144,7 +144,19 @@ State register and combinational logic implementation of example sequence detect
 
 On each clock cycle, the combinational logic block looks at the present state and input value to produce the bit pattern for the next state and value of the output (`0` or `1`). On the rising edge of the clock, the new state value is captured by the register and the process starts again.
 
-:::{note} What's inside the CL block?
+::::{note} What's inside the CL block?
 
-CL blocks contain the combinational logic needed to implement the circuit's truth table. More details on how to design this combinational logic for a specific circuit are outlined in [CL Design](#sec-cl-practice)!
+CL blocks contain the combinational logic needed to implement the circuit's truth table. In most cases, we use a collection of logic gates to implement any CL function. In CS 61C, we use these logic gates as the basic building blocks for our circuits!
+
+The CL for this example sequence detector circuit is shown in @fig-three1s-cl-gates.
+
+See [Logic Gates](#sec-logic-gates) and [Boolean Algebra](#sec-boolean-algebra) for more details on the common gates and how to translate a truth table into combinational logic!
+
+:::{figure} images/three1s-cl-gates.png
+:label: fig-three1s-cl-gates
+:width: 70%
+:alt: "TODO"
+
+Combinational logic for example sequence detector circuit.
 :::
+::::
