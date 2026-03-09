@@ -57,8 +57,8 @@ P&H A.3-A.6
 
 ## Additional References
 
-* [Intro to SDS Handout](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/sds.pdf) - Clocks, Delay
-* [State Handout](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/state.pdf) - Registers, FSMs
+* [Intro to SDS Handout](../resources/sds.pdf) - Clocks, Delay
+* [State Handout](../resources/state.pdf) - Registers, FSMs
 
 ## Exercises
 Check your knowledge!

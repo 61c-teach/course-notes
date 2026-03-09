@@ -9,7 +9,7 @@ subtitle: "Adapted from John Wawrzynek"
 (sec-pipelining)=
 ## Learning Outcomes
 
-* Explain how registers can be used to improve **results/time** performance of a circuit.
+* Explain how registers can be used to improve **throughput** performance of a circuit.
 * Compare how input data is fed through a *pipelined* circuit and a *non-pipelined* circuit.
 
 ::::{note} 🎥 Lecture Video
@@ -61,11 +61,9 @@ On each clock cycle, data moves from the output of `reg1`, through the adder, to
 **Yes!** An interesting thing about this new pipelined circuit is that, after the data moves through the adder and gets captured in `reg2`, on the next clock cycle, when the data moves into the shifter, new data can simultaneously move into the adder since the adder is now free. Therefore, new input data values can be fed into the circuit on each clock cycle.
 :::
 
-There will now be a two clock cycle delay from the insertion of a set of data into the circuit until when it appears at the output. However, the new clock period is shorter, so in absolute time, the delay from data insertion until output is not significantly worse. More importantly, because of the tranformation and the new higher clock rate, results will be generated at a higher rate (more outputs per second). This is a good transformation if you are evaluating on **results/time**! If you are more interested in latency (or delay) for any one set of input values, then this transformation is less ideal.
+There will now be a two clock cycle delay from the insertion of a set of data into the circuit until when it appears at the output. However, the new clock period is shorter, so in absolute time, the delay from data insertion until output is not significantly worse. More importantly, because of the tranformation and the new higher clock rate, results will be generated at a higher rate (more outputs per second). This is a good transformation if you are evaluating on results/time, or **throughput**! If you are more interested in latency (or delay) for any one set of input values, then this transformation is less ideal.
 
-<!--
-
-## Visuals
+<!-- ## Visuals
 
 :::{figure} #fig-general-model-sds
 :width: 100%
@@ -80,6 +78,4 @@ General model for SDS. @fig-general-model-sds in [a previous section](#sec-signa
 :alt: "TODO"
 
 Example diagram of pipelined general SDS model.
-:::
-
--->
+::: -->
