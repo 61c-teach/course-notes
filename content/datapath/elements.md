@@ -73,20 +73,21 @@ The **Register File** (regfile, or `Reg[]`) has 32 registers: register numbers `
 The RegFile is symbolically written as `Reg[]` and is composed of registers `x0` to `x31`.
 :::
 
-:::{note} Regfile Signals
-:class: dropdown
+::::{table} Regfile signals. Course project signal names, if different, are in parentheses.
+:label: tab-regfile-signals
+:align: center
 
-**Input**:
-
-* _Data_: One 32-bit input data bus, `wdata`.
-* _Control_: Three 5-bit select busses, `rs1`, `rs2`, and `rd`.
-* _Control_: `RegWEn` control bit.
-* Clock signal.
-
-**Output**:
-
-* _Data_: Two 32-bit output data busses, rdata1 and rdata2.
-:::
+| Name | Direction | Bit Width | Description |
+| :-- | :-- | :-- | :-- |
+| `rs1` (`ReadIndex1`) | Input | 5 | Determines which register's value is sent to the `rdata1` (`ReadData1`) output |
+| `rs2` (`ReadIndex2`) | Input | 5 | Determines which register's value is sent to the `rdata2` (`ReadData2`) output |
+| `rd` (`WriteIndex`) | Input | 5 | The register to write to on the next rising edge of the clock (if `RegWEn` is 1) |
+| `wdata` (`WriteData`) | Input | 32 | The data to write into `rd` on the next rising edge of the clock (if `RegWEn` is 1) |
+| `RegWEn` | Input | 1 | Determines whether data is written to the register file on the next rising edge of the clock |
+| `clk` | Input | 1 | Clock input |
+| `rdata1` (`ReadData1`) | Output | 32 | The value of the register identified by `rs1` (`ReadIndex1`) |
+| `rdata2` (`ReadData2`) | Output | 32 | The value of the register identified by `rs2`(`ReadIndex2`) |
+::::
 
 **Behavior**:
 
@@ -121,26 +122,30 @@ The Data Memory block `DMEM` has edge-triggered writes, just like `Reg[]`.
 The Data Memory block `DMEM`. Read operations behave like combinational logic, whereas write operations occur on the rising clock edge.
 :::
 
-:::{note} DMEM Signals
-:class: dropdown
 
-**Input**:
+::::{table} DMEM signals. Course project signal names, if different, are in parentheses.
+:label: tab-dmem-signals
+:align: center
 
-* _Data_: Two 32-bit input data busses, `addr` and `dataW`.
-* _Control_: `MemRW` control bit.
-* Clock signal.
+| Name | Direction | Bit Width | Description |
+| :-- | :-- | :-- | :-- |
+| `addr` (`MemAddress`) | Input | 32 | The address in memory to read from or write to |
+| `wdata` (`MemWriteData`) | Input | 32 | Data to write to memory |
+| `MemRW` (`MemWriteMask`) | Input | 4 | The write enable mask for writing data to memory |
+| `clk` | Input | 1 | Clock input |
+| `rdata` (`MemReadData`) | Output | 32 | Data at `addr` (`MemAddress`) from memory |
 
-**Output**:
-
-* _Data_: One 32-bit output data bus, `dataR`.
-:::
+::::
 
 **Behavior**: `DMEM` read/writes behave similarly to Regfile, though now we provide memory addresses as input, not register numbers.
 
 * Read: Address `addr` selects word to put on `rdata` bus. If `MemRW` is 0 and `addr` is valid, then `rdata` is valid after access time.
 * Write: **Rising-edge-triggered write**. On rising clock edge, if `MemRW` is set to 1, write `wdata` to address `addr`. 
 
+:::{note} Partial Loads and Stores
 
+We implement a more complicated DMEM block in our project; see the [Partial Loads and Stores section](#partial-loads-stores).
+:::
 
 (sec-element-imem)=
 ### `IMEM`: Instruction Memory
@@ -157,17 +162,16 @@ The Instruction Memory block `IMEM` is a **read-only memory** that fetches instr
 In our CPU, the Instruction Memory block `IMEM` is read-only and behaves like combinational logic.
 :::
 
-:::{note} IMEM Signals
-:class: dropdown
+::::{table} IMEM signals. Course project signal names, if different, are in parentheses.
+:label: tab-dmem-signals
+:align: center
 
-**Input**:
+| Name | Direction | Bit Width | Description |
+| :-- | :-- | :-- | :-- |
+| `addr` (N/A) | Input | 32 | The address in memory to read from |
+| `inst` (`Instruction`) | Output | 32 | The instruction at memory address `addr`(`ProgramCounter`) |
 
-* _Data_: One 32-bit input data bus, `addr`.
-
-**Output**:
-
-* _Data_: One 32-bit output data bus, `inst`.
-:::
+::::
 
 **Behavior**:
 

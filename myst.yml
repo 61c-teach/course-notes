@@ -159,16 +159,17 @@ project:
         - file: content/datapath/index.md
         - file: content/datapath/elements.md
         - file: content/datapath/r-type.md
-        # - file: content/datapath/i-type.md
-    # - title: "L21 Single-Cycle CPU Datapath II"
-    #   children:
-    #     - file: content/datapath/i-type-load.md
-    #     - file: content/datapath/s-type.md
-    #     - file: content/datapath/b-type.md
-    #     - file: content/datapath/j-type.md
-    #     - file: content/datapath/i-type-jal.md
-    #     - file: content/datapath/u-type.md
-    #     - file: content/datapath/summary.md
+        - file: content/datapath/i-type.md
+        - file: content/datapath/i-type-load.md
+    - title: "L21 Single-Cycle CPU Datapath II"
+      children:
+        - file: content/datapath/s-type.md
+        - file: content/datapath/b-type.md
+        - file: content/datapath/j-type.md
+        - file: content/datapath/i-type-jal.md
+        - file: content/datapath/u-type.md
+        - file: content/datapath/partial-load-store.md
+        # - file: content/datapath/summary.md
     #     # - file: content/datapath/summary-precheck.md
     #     # - file: content/datapath/exercises.md
     # - title: "L22 Single-Cycle CPU Control"
