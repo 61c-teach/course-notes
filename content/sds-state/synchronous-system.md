@@ -145,7 +145,7 @@ As seen above, on each cycle there is a small time period where the adder has in
 Notice that the maximum clock frequency (minimum clock period) is limited by the propagation delay of the add/shift operation. If we try to make the clock period too short, then the add/shift logic
 would not have sufficient time to generate its output and the output register would capture an incorrect value.
 
-At thge same time, we seek to create high-bandwidth circuits, which produce many outputs per second. We'd like to find an ideal balance between a high-frequency clock and stable outputs.
+At the same time, we seek to create high-bandwidth circuits, which produce many outputs per second. We'd like to find an ideal balance between a high-frequency clock and stable outputs.
 
 :::{hint} The minimum clock period (T) is the delay on the critical path.
 
