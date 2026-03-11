@@ -1,12 +1,10 @@
 ---
 title: "Implementing Branches"
-subtitle: TODO
 ---
 
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Coming soon! We provide the animations for now.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown

@@ -61,16 +61,16 @@ The Program Counter, `PC`, is a single 32-bit register in the CPU.
 * _Write_: **Rising-edge triggered**. On rising clock edge, if Write Enable is 1, set Data Out to Data In (delay of clk-to-q).
 
 (sec-element-regfile)=
-### Register File (Regfile)
+### Register File (`Regfile`)
 
-The **Register File** (regfile, or `Reg[]`) has 32 registers: register numbers `x0` to `x31`.
+The **Register File** (regfile, or `RegFile`) has 32 registers: register numbers `x0` to `x31`.
 
 :::{figure} images/element-regfile.png
 :label: fig-element-regfile
 :width: 50%
 :alt: "TODO"
 
-The RegFile is symbolically written as `Reg[]` and is composed of registers `x0` to `x31`.
+The RegFile is symbolically written as `RegFile` and is composed of registers `x0` to `x31`.
 :::
 
 ::::{table} Regfile signals. Course project signal names, if different, are in parentheses.
@@ -112,7 +112,7 @@ For our single-cycle datapath, we must access memory **twice**: once during `IF`
 
 [^imem-dmem-cache]: Under the hood, `IMEM` and `DMEM` are placeholders for L1 caches: `L1i`, `L1d`.
 
-The Data Memory block `DMEM` has edge-triggered writes, just like `Reg[]`.
+The Data Memory block `DMEM` has edge-triggered writes, just like `RegFile`.
 
 :::{figure} images/element-dmem.png
 :label: fig-dmem-block

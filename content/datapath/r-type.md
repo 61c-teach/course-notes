@@ -50,7 +50,7 @@ ALU Block.
 | :-- | :-- | :-- | :-- |
 | `A` | Input | 32  | Data to use for Input A in the ALU operation |
 | `B` | Input | 32  | Data to use for Input B in the ALU operation |
-| `ALUSel` | Input | 4 | Selects which operation the ALU should perform (see @table-ops) |
+| `ALUSel` | Input | 4 | Selects which operation the ALU should perform (see @tab-alu-operations) |
 | `ALUResult` | Output | 32 | Result of the ALU operation |
 
 :::

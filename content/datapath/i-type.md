@@ -1,5 +1,5 @@
 ---
-title: "Immediates on the Datapath"
+title: "Supporting Immediates"
 ---
 
 ## Learning Outcomes
@@ -21,7 +21,7 @@ title: "Immediates on the Datapath"
 <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-addi.pptx' width='100%' height='600px' frameborder='0'>
 
 
-Data `inst[24:20]` still feeds into `Reg[]`, which still outputs `R[rs2]`.
+Data `inst[24:20]` still feeds into `RegFile`, which still outputs `R[rs2]`.
 However, control `Bsel=1` means `R[rs2]` data line is ignored.
 
 ## Immediate Generator Block
@@ -123,4 +123,4 @@ The immediate storage formats are listed below:
 Observations/reminders:
 
 * You should treat I*-type immediates as I-type immediates, since the ALU should only use the lowest 5 bits of the B input when computing shifts.
-* Recall that all immediates are 32 bits and **sign-extended**. (Sign extension is shown in @tab-immgen-types as inst[31] repeated in the upper bits.)
+* Recall that all immediates are 32 bits and **sign-extended**. Sign extension is shown in @tab-immgen-types as `inst[31]` repeated in the upper bits.

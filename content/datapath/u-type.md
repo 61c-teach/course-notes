@@ -1,12 +1,10 @@
 ---
 title: "Adding U-Types"
-subtitle: TODO
 ---
 
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Coming soon! We provide the animations for now.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -20,10 +18,14 @@ subtitle: TODO
 
 ## Tracing the `lui` Datapath
 
+(most unselected data lines omitted from lighting)
+
 <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-lui.pptx' width='100%' height='600px' frameborder='0'>
 
 Note that the U-type instructions require left-shifting the immediate by 12 bits (e.g. `lui` is written as `rd = imm << 12` on the reference card). This should already be done by your immediate generator, so your datapath doesn't need to perform any extra shifting.
 
 ## Tracing the `auipc` Datapath
+
+(most unselected data lines omitted from lighting)
 
 <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-auipc.pptx' width='100%' height='600px' frameborder='0'>
