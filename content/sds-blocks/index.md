@@ -112,6 +112,27 @@ In most applications, you will have access to a mux; you will not need to build 
 Click to show the gate diagrams of two muxes: a 1-bit wide, 2-to-1 mux, and a 1-bit wide, 4-to-1 mux.
 
 ::::{note} 1-bit wide 2-to-1 mux
+:::{figure} #fig-mux-2
+:width: 25%
+:alt: "TODO"
+
+**@fig-mux-2, reprinted**: A 1-bit wide, 2-to-1 mux.
+:::
+::::
+
+::::{grid-item}
+:::{figure} images/mux-2-circuit.png
+:label: fig-mux-2-circuit
+:width: 100%
+:alt: "TODO"
+
+Gate diagram for a 1-bit wide, 2-to-1 mux.
+:::
+::::
+:::::
+
+::::{note} Show Truth Table
+:class: dropdown
 
 :::{table} Truth table for the 1-bit 2-to-1 mux in @fig-mux-2. Note that because there are three 1-bit inputs (`a`, `b`, and control `s`), the truth table has $3^2 = 8$ rows.
 :label: tab-mux-2
@@ -129,33 +150,31 @@ Click to show the gate diagrams of two muxes: a 1-bit wide, 2-to-1 mux, and a 1-
 | 1 | 11 | 1 |
 :::
 
+::::
+
+::::{note} Show Boolean Algebra Explanation
+:class: dropdown
+
 To come up with the logic equation and the associated gate-level circuit diagram we can apply
 the technique that we studied [last chapter](#sec-boolean-algebra). We write the sum-of-products canonical form and simplify through algebraic manipulation:
 
 ```{math}
 \begin{aligned}
-    y &= \overline{a} \overline{b} \overline{c} + \overline{a} \overline{b} c + a \overline{b} \overline{c} + a b \overline{c} && \text{Sum of Products} \\
-      &= \overline{a} \overline{b} (\overline{c} + c) + a \overline{c} (\overline{b} + b) && \text{Distributivity} \\
-      &= \overline{a} \overline{b} (1) + a \overline{c} (1) && \text{Inverse (OR) } x + \overline{x} = 1 \\
-      &= \overline{a} \overline{b} + a \overline{c} && \text{Identity (AND) } x \cdot 1 = x
+     c 
+     &= \overline{s} a \overline{b} + \overline{s} a b + s \overline{a} b + sab && \text{Sum of Products} \\
+     &= \overline{s} (a \overline{b} + ab) + s (\overline{a} b + ab) && \text{Distributive Property} \\
+     &= \overline{s} (a (\overline{b} + b)) + s ((\overline{a} + a) b) && \text{Distributive Property} \\
+     &= \overline{s} (a \cdot 1) + s (1 \cdot b) && \text{Inverse (OR)} \\
+     &= \overline{s} a + sb && \text{Identity (AND)} \\
 \end{aligned}
 ```
 
-Intuitively this result makes sense; When the control input, s, is a 0, the right hand side of the equation reduces to a, and when it is a 1, the expression reduces to b.
-
-:::{figure} images/mux-2-circuit.png
-:label: fig-mux-2-circuit
-:width: 80%
-:alt: "TODO"
-
-Gate diagram for a 1-bit 2-to-1 mux.
-:::
+Intuitively this result makes sense; When the control input, `s`, is a `0`, the expression on the right-hand side of the expression reduces to `a`, and when it is a `1`, the expression reduces to `b`.
 ::::
 
-::::{note} 1-bit wide 4-to-1 mux
+### 1-bit wide 4-to-1 mux
 
-Often times we find the need to extend the number of data inputs of a multiplexor. For instance
-consider a 4-to-1 multiplexor in @fig-mux-4-bits:
+Often times we find the need to extend the number of data inputs of a multiplexor. For instance consider a 4-to-1 multiplexor in @fig-mux-4-bits:
 
 :::{figure} images/mux-4-bits.png
 :label: fig-mux-4-bits
@@ -164,6 +183,21 @@ consider a 4-to-1 multiplexor in @fig-mux-4-bits:
 
 A 1-bit wide 4-to-1 MUX.
 :::
+
+@fig-mux-4-block shows how this larger mux can be formed by wiring together smaller MUXes.
+
+:::{figure} images/mux-4-block.png
+:label: fig-mux-4-block
+:width: 60%
+:alt: "TODO"
+
+4-to-1 multiplexor (MUX) circuit diagram.
+:::
+
+This circuit design leverages the hierarchical nature of multiplexing. The first layer of muxes uses the $s_0$ input to narrow the four inputs down to two, then the second layer uses $s_1$ to choose the final output.
+
+::::{note} Show Boolean Algebra Approach
+:class: dropdown
 
 ```{math}
 \texttt{e} = 
@@ -175,23 +209,12 @@ A 1-bit wide 4-to-1 MUX.
 \end{cases}
 ```
 
-How would we come up with the circuit for this mux?
-
-**Approach 1**. We could start by enumerating the truth-
-table—in this case the function has 4 single bit data inputs and one 2-bit wide control input, for a total of 6 single bit inputs. The truth table would have 26, or 64 rows. Certainly, a feasible approach. If we where to do this, we would end up with the following logic equation:
+An alternate approach could start by enumerating the truth-
+table—in this case the function has 4 single bit data inputs and one 2-bit wide control input, for a total of 6 single bit inputs. The truth table would have 26, or 64 rows. Certainly, a feasible approach. If we were to do this, we would end up with the following logic equation:
 
 $$e = \overline{s_1 s_0} a
      + \overline{s_1} s_0 b
      + s_1 \overline{s_0} c
      + s_1 s_0 d$$
 
-**Approach 2**. Another way to design the circuit is to base it on the hierarchical nature of multiplexing. We can build a 4-to-1 mux from three 2-to-1 muxes as shown in @fig-mux-4-block. The first layer of muxes uses the $s_0$ input to narrow the four inputs down to two, then the second
-layer uses $s_1$ to choose the final output.
-
-:::{figure} images/mux-4-block.png
-:label: fig-mux-4-block
-:width: 60%
-:alt: "TODO"
-
-4-to-1 multiplexor (MUX) circuit diagram.
-:::
+::::
