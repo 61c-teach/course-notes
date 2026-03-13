@@ -88,4 +88,23 @@ See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8Ved
 :::{note} Solution
 :class: dropdown
 **True** State elements will update their output on the rising edge of the clock signal. Between rising edges, the state element’s output will remain constant regardless of the inputs
+
+3. **True/False**: By pipelining the CPU datapath, each single instruction will execute faster because pipelining
+reduces the latency per instruction (resulting in a speed-up in performance).
+
+:::{note} Solution
+:class: dropdown
+**False** Because we insert registers between each stage in the datapath, the time it takes for an
+instruction to finish execution through the 5 stages will be longer than the single-cycle datapath.
+A single instruction will take multiple clock cycles to get through all the stages, with the clock
+cycle based on the critical path (the stage with the longest timing).
+:::
+
+4. **True/False**: A pipelined CPU datapath results in instructions being executed with higher throughput compared to the single-cycle CPU.
+
+:::{note} Solution
+:class: dropdown
+**True** Recall that throughput is the number of instructions processed per unit time. Pipelining
+results in a higher throughput because multiple instructions can be in a different stage of the
+datapath at the same time.
 :::
