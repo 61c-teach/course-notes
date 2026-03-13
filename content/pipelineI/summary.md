@@ -30,3 +30,25 @@ P&H 4.6, 4.7, 4.8
 
 ## Additional References
 
+### Short Exercises
+
+1. **True/False**: By pipelining the CPU datapath, each single instruction will execute faster because pipelining
+reduces the latency per instruction (resulting in a speed-up in performance).
+
+:::{note} Solution
+:class: dropdown
+**False** Because we insert registers between each stage in the datapath, the time it takes for an
+instruction to finish execution through the 5 stages will be longer than the single-cycle datapath.
+A single instruction will take multiple clock cycles to get through all the stages, with the clock
+cycle based on the critical path (the stage with the longest timing).
+::: 
+
+2. **True/False**: A pipelined CPU datapath results in instructions being executed with higher throughput compared to the single-cycle CPU.
+
+:::{note} Solution
+:class: dropdown
+**True** Recall that throughput is the number of instructions processed per unit time. Pipelining
+results in a higher throughput because multiple instructions can be in a different stage of the
+datapath at the same time.
+::: 
+
