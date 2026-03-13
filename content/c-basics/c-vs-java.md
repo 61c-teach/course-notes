@@ -104,7 +104,7 @@ $ gdb hello_world
 | Language Paradigm[^language-paradigm] | Function Oriented (programming unit: function) | Object Oriented (programming unit: Class = Abstract Data Type) |
 | Compilation[^compile-vs-interpret] | `gcc hello.c` creates machine language code | `javac Hello.java` creates Java virtual machine language bytecode |
 | Execution[^compile-vs-interpret] | `./a.out` loads, executes program | `java Hello` interprets bytecodes |
-| Dynamic Memory Management[^dmm] | Manual (malloc, free) (more later) | Automatic garbage collection; new both allocates and initializes |
+| Dynamic Memory Management[^dmm] | Manual (`malloc`, `free`) (more later) | Automatic garbage collection; `new` both allocates and initializes |
 | Variable declaration | Typed declaration; declare before you use it | (same) |
 | Function declaration | Use curly braces. `void` means no return value | (same) |
 | Accessing a library | `#include <stdio.h>` | `import java.util.*` |
@@ -150,9 +150,9 @@ $ gdb hello_world
 **2. Command-line arguments**: In our [`hello_world.c`](#hello_world_c) program, the `main` function can take in command-line arguments with two parameters:
 
 * `argc` is an integer count of how many arguments you have. The executable itself counts as one argument. If you run something like `./hello_world my_file`, `argc` is `2`.
-* `argv`: is a pointer to an array of the arguments themselves, as C strings. We discuss pointers, arrays, and strings in more detail next time. For now, if you run `./hello_world my_file`, the first[^zero-index] argument is the name of the program itself (`hello_world`) and the second argument is the string `my_file`.
+* `argv`: is a pointer to an array of the arguments themselves, as C strings. We discuss pointers, arrays, and strings in more detail next time. For now, if you run `./hello_world my_file`, the first[^zero-index] argument is the path of the program itself (`./hello_world`) and the second argument is the string `my_file`.
 
-[^zero-index]: Like Python, C arrays and string are zero-indexed.
+[^zero-index]: Like Python, C arrays and strings are zero-indexed.
 
 :::{card}
 **Command-line arguments**: What looks familiar about array syntax?
@@ -162,7 +162,7 @@ $ gdb hello_world
 #include <stdio.h>
 int main(int argc, char *argv[]) {
   printf("Received %d args\n", argc);
-  for(int i = 0; i < argc; i++) {
+  for (int i = 0; i < argc; i++) {
     printf("arg %d: %s\n", i, argv[i]);
   }
   return 0;
@@ -173,7 +173,7 @@ int main(int argc, char *argv[]) {
 
 **3. Curly braces**: The C language allows for some omission of curly braces for single-line statements—even for control structures like if-else and for. This is the same as in Java, but we didn't tell you. :-)
 
-But just because you can, doesn't mean you should. Because subsequent lines the control structure are considered outside of the body, omitting curly braces leads to many debugging errors[^curly-braces]:
+But just because you can, doesn't mean you should. Because subsequent lines of the control structure are considered outside of the body, omitting curly braces leads to many debugging errors[^curly-braces]:
 
 [^curly-braces]: Stack Overflow: [Is it a bad practice to use an if-statement without curly braces?](https://stackoverflow.com/questions/2125066/is-it-a-bad-practice-to-use-an-if-statement-without-curly-braces)
 

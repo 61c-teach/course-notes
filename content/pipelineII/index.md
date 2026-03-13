@@ -17,3 +17,37 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/sequential-inst-datapath.png
+:label: fig-seq-inst-datapath
+:width: 100%
+:alt: "TODO"
+
+Sequential RISC-V datapath for 3 instructions.
+:::
+
+:::{figure} images/pipelined-inst-datapath.png
+:label: fig-pip-inst-datapath
+:width: 100%
+:alt: "TODO"
+
+Pipelined RISC-V datapath for 3 instructions.
+:::
+
+:::{figure} images/single-cycle-datapath.png
+:label: fig-single-cycle-datapath
+:width: 100%
+:alt: "TODO"
+
+High-level diagram of single-cycle datapath.
+:::
+
+:::{figure} images/pipelined-datapath.png
+:label: fig-pipelined-datapath
+:width: 100%
+:alt: "TODO"
+
+High-level diagram of pipelined datapath.
+:::
