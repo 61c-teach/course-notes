@@ -2,6 +2,7 @@
 title: "Supporting Loads and Stores"
 ---
 
+(sec-datapath-load-store)=
 ## Learning Outcomes
 
 * Coming soon! We provide the animations for now.

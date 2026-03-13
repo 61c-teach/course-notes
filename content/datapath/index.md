@@ -122,6 +122,7 @@ A strawman, bulky approach to implementing our datapath. We discuss the state el
 While we could theoretically build a separate "bubble" of combinational logic for every single instruction and use multiplexers to select between them, that is not practical because many instructions share the same data path.
 :::
 
+(sec-five-steps)=
 ## 5 Steps to a RISC-V Instruction
 
 Instead of the complicated FSM approach above, we will break up the process into **five steps**, then connect the steps to create the whole processor circuit. For each instruction, we will determine whether additional logic needs to be incorporated into each phase.
@@ -143,7 +144,7 @@ All phases of one RV32I instruction will execute within the same cycle[^mem-phas
 
 :::{warning} Not all steps are needed for every instruction!
 
-For example, our [R-Type instructions](#sec-datapath-r-type), does not need memory access, and [stores](#sec-datapath-stores) do not need to write back to the register file. Nevertheless, across the different RISC-V instruction formats, the actions are largely the same, regardless of the exact instruction. From P&H 4.1:
+For example, our [R-Type instructions](#sec-datapath-r-type), does not need memory access, and [stores](#sec-datapath-load-store) do not need to write back to the register file. Nevertheless, across the different RISC-V instruction formats, the actions are largely the same, regardless of the exact instruction. From P&H 4.1:
 
 > The simplicity and regularity of the RISC-V instruction set simplify the implementation by making the execution of many of the instruction classes similar.
 
