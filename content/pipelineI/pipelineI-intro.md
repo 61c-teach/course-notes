@@ -53,6 +53,8 @@ Pipelining laundry analogy: parallel laundry.
 | Program execution time | Time to finish all 4 loads | 8 hours | 3.5 hours |
 | Instruction latency | Time to finish a single load | 2 hours | 2 hours |
 | Instruction throughput | Avg number of loads per 30 mins | 0.25 | 1 |
+| Clock period |   | 2 hours | 30 mins |
+| CPI |   | 1 | 1 |
 :::
 
 :::{figure} images/customers-different-phases.png
@@ -61,4 +63,12 @@ Pipelining laundry analogy: parallel laundry.
 :alt: "TODO"
 
 Two views of pipelined laundry task: per customer vs. per time increment (30 mins).
+:::
+
+:::{figure} images/ipc-timeline.png
+:label: fig-ipc-timeline
+:width: 100%
+:alt: "TODO"
+
+IPC Timeline diagram showing one customer per "cycle" in laundry analogy.
 :::

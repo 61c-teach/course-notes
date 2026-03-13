@@ -17,3 +17,37 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/five-stage-pipeline-1.png
+:label: fig-five-stage-1
+:width: 100%
+:alt: "TODO"
+
+Five-stage RISC-V datapath diagram.
+:::
+
+:::{figure} images/five-stage-pipeline-2.png
+:label: fig-five-stage-2
+:width: 100%
+:alt: "TODO"
+
+Five-stage RISC-V datapath diagram with labels at stage input/output.
+:::
+
+:::{figure} images/five-stage-with-control.png
+:label: fig-five-stage-control
+:width: 100%
+:alt: "TODO"
+
+Five-stage RISC-V datapath diagram with control.
+:::
+
+:::{figure} images/pipelined-control.png
+:label: fig-pipelined-control
+:width: 70%
+:alt: "TODO"
+
+Diagram of control signal for five-stage pipeline.
+:::
