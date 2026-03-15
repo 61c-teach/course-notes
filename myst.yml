@@ -146,7 +146,7 @@ project:
         - file: content/sds-state/fsm.md
         - file: content/sds-state/pipelining.md
         - file: content/sds-state/summary.md
-    - title: "L19 Combinational Logic Blocks"
+    - title: "L19-L20 Combinational Logic Blocks"
       children:
         - file: content/sds-blocks/index.md
         - file: content/sds-blocks/adder-subtractor.md
@@ -154,14 +154,14 @@ project:
         - file: content/sds-blocks/summary.md
     #     - file: content/sds-logic-blocks/summary-precheck.md
     #     - file: content/sds-logic-blocks/exercises.md
-    - title: "L20 Single-Cycle CPU Datapath I"
+    - title: "L21 Single-Cycle CPU Datapath I"
       children:
         - file: content/datapath/index.md
         - file: content/datapath/elements.md
         - file: content/datapath/r-type.md
         - file: content/datapath/i-type.md
         - file: content/datapath/load-store.md
-    - title: "L21 Single-Cycle CPU Datapath II"
+    - title: "L22 Single-Cycle CPU Datapath II"
       children:
         - file: content/datapath/b-type.md
         - file: content/datapath/jump.md
@@ -170,7 +170,7 @@ project:
     #     - file: content/datapath/summary.md
     #     # - file: content/datapath/summary-precheck.md
     #     # - file: content/datapath/exercises.md
-    # - title: "L22 Single-Cycle CPU Control"
+    # - title: "L23 Single-Cycle CPU Control"
     #   children:
     #     - file: content/datapath-control/index.md
     #     - file: content/datapath-control/dp-control-datapath.md

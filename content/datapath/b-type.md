@@ -2,6 +2,7 @@
 title: "Implementing Branches"
 ---
 
+(sec-datapath-b-type)=
 ## Learning Outcomes
 
 * Coming soon! We provide the animations for now.
@@ -37,7 +38,7 @@ This subcircuit takes two inputs and outputs the result of comparing the two inp
 :label: tab-branch-comparator-signals
 :align: center
 
-| Name | Directino | Bit Width | Description |
+| Name | Direction | Bit Width | Description |
 | :-- | :-- | :-- | :-- |
 | `A` (`BrData1`) | Input | 32 | First value to compare |
 | `B` (`BrData2`) | Input | 32 | Second value to compare |

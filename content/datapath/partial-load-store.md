@@ -3,6 +3,9 @@ title: "Partial Loads and Stores"
 subtitle: "Course Project Details"
 ---
 
+(sec-datapath-partial-load-store)=
+## Learning Outcomes
+
 Remember that every byte in C memory is referred to by a 32-bit address. In the CPU, store and load instructions access C memory (DMEM) by passing a 32-bit address to DMEM to request bytes of memory starting at that address.
 
 For example, if we wanted to load a byte from address `4` = `0b000100`, we can pass in the address `4` (sign-extended to 32 bits) to DMEM. But what if we wanted to load a half-word (16 bits) or a byte (8 bits) from memory? How does DMEM loading and storing a different number of bytes for different types of instructions?
