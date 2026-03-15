@@ -57,6 +57,7 @@ if (rs1(n + 1) == rd(n) && RegWen(n) == 1) {
 if (rs2(n + 1) == rd(n) && RegWen(n) == 1) {
     set BSel for (n + 1) to forward ALU output from n
 }
+```
 
 ## Textbook Readings
 

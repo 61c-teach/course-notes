@@ -33,7 +33,7 @@ Five-stage RISC-V datapath diagram.
 :width: 100%
 :alt: "TODO"
 
-Five-stage RISC-V datapath diagram with labels at stage input/output.
+Five-stage RISC-V datapath diagram with registers between stages to hold signals until next clock cycle.
 :::
 
 :::{figure} images/five-stage-with-control.png
