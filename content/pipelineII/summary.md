@@ -65,7 +65,7 @@ P&H 4.8, 4.10
 
 ## Additional References
 
- ## Exercises
+## Exercises
 Check your knowledge!
 
 ### Conceptual Review

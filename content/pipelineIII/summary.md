@@ -15,7 +15,7 @@ P&H 4.8, 4.10
 ## Exercises
 Check your knowledge!
 
-### Conceptual Review
+<!-- ### Conceptual Review
 
 1. Question
 
@@ -25,7 +25,7 @@ Check your knowledge!
 Solution
 
 See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_154#slide=id.g2af3b38b3e2_1_154)
-:::
+::: -->
 
 ### Short Exercises
 
