@@ -34,7 +34,6 @@ The Program Counter is a 32-bit register in @fig-element-pc and holds the value 
 :::{figure} images/element-pc.png
 :label: fig-element-pc
 :width: 50%
-:width: 100%
 :alt: "TODO"
 
 The Program Counter, `PC`, is a single 32-bit register in the CPU.
@@ -140,11 +139,11 @@ The Data Memory block `DMEM`. Read operations behave like combinational logic, w
 **Behavior**: `DMEM` read/writes behave similarly to Regfile, though now we provide memory addresses as input, not register numbers.
 
 * Read: Address `addr` selects word to put on `rdata` bus. If `MemRW` is 0 and `addr` is valid, then `rdata` is valid after access time.
-* Write: **Rising-edge-triggered write**. On rising clock edge, if `MemRW` is set to 1, write `wdata` to address `addr`. 
+* Write: **Rising-edge-triggered write**. On rising clock edge, if `MemRW` is set to 1, write `wdata` to address `addr`.
 
-:::{note} Partial Loads and Stores
+:::{warning} Partial Loads and Stores
 
-We implement a more complicated DMEM block in our project; see the [Partial Loads and Stores section](#partial-loads-stores).
+We implement a more complicated DMEM block in our project; see the [Partial Loads and Stores section](#sec-datapath-partial-load-store).
 :::
 
 (sec-element-imem)=
@@ -163,7 +162,7 @@ In our CPU, the Instruction Memory block `IMEM` is read-only and behaves like co
 :::
 
 ::::{table} IMEM signals. Course project signal names, if different, are in parentheses.
-:label: tab-dmem-signals
+:label: tab-imem-signals
 :align: center
 
 | Name | Direction | Bit Width | Description |

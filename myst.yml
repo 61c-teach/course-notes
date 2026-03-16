@@ -160,13 +160,12 @@ project:
         - file: content/datapath/elements.md
         - file: content/datapath/r-type.md
         - file: content/datapath/i-type.md
-        - file: content/datapath/load-store.md
     - title: "L22 Single-Cycle CPU Datapath II"
       children:
+        - file: content/datapath/load-store.md
         - file: content/datapath/b-type.md
         - file: content/datapath/jump.md
         - file: content/datapath/u-type.md
-        - file: content/datapath/partial-load-store.md
         # - file: content/datapath/summary.md
     #     # - file: content/datapath/summary-precheck.md
     #     # - file: content/datapath/exercises.md

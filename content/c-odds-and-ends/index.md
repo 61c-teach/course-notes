@@ -131,6 +131,7 @@ Given the 4-bit signed integers `0b0101` and `0b0100`:
 * Logical NOT: `!0b0101` is false.
 :::
 
+(sec-bitmasks)=
 ## Bitmasks
 
 This is our first foray into bitwise operations. Why do we care?

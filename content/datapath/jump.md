@@ -2,6 +2,7 @@
 title: "Supporting JAL, JALR"
 ---
 
+(sec-datapath-jump)=
 ## Learning Outcomes
 
 * Coming soon! We provide the animations for now.
@@ -18,9 +19,19 @@ title: "Supporting JAL, JALR"
 
 ## Tracing the `jalr` Datapath
 
-(most unselected data lines omitted from lighting)
 
-<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-jalr.pptx' width='100%' height='600px' frameborder='0'>
+::::{figure}
+:label: anim-datapath-jalr
+:::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-jalr.pptx
+:width: 100%
+:title: "Tracing the `jalr` Datapath"
+:::
+The `jalr` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+::::
+
+To support `jalr`, you should connect PC+4 to your multiplexer in the write-back stage so that PC+4 can be written back to `rd`.
+
+## Tracing the `jal` Datapath
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -32,10 +43,14 @@ title: "Supporting JAL, JALR"
 
 ::::
 
-## Tracing the `jal` Datapath
 
-(most unselected data lines omitted from lighting)
+::::{figure}
+:label: anim-datapath-jal
+:::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-jal.pptx
+:width: 100%
+:title: "Tracing the `jal` Datapath"
+:::
+The `jal` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+::::
 
-<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-jal.pptx' width='100%' height='600px' frameborder='0'>
-
-To support `jalr`, you should connect PC+4 to your multiplexer in the write-back stage so that PC+4 can be written back to `rd`.
+For `jal`, “don’t care” about branch.

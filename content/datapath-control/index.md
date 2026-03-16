@@ -1,12 +1,7 @@
 ---
 title: "Control and Status Registers"
-subtitle: TODO
+subtitle: This content is not tested
 ---
-
-## Learning Outcomes
-
-* TODO
-* TODO
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
