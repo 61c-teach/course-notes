@@ -4,27 +4,20 @@ title: "Summary"
 
 ## And in Conclusion$\dots$
 
-Our single-cycle datapath is a synchronous digital system (SDS) that has the capabilities of
-executing RISC-V instructions. It is divided into multiple stages of execution, where each stage is
-responsible for a completing a certain task.
 
-**IF** Instruction Fetch:
-• Send address to the instruction memory (IMEM), and read IMEM at that address.
-• Hardware units: PC register, +4 adder, PCSel mux, IMEM
-**ID** Instruction Decode:
-• Generate control signals from the instruction bits, generate the immediate, and read registers
-from the RegFile.
-• Hardware units: RegFile, ImmGen
-**EX** Execute:
-• Perform ALU operations, and do branch comparison.
-• Hardware units: ASel mux, BSel mux, branch comparator, ALU
-**MEM** Memory
-• Read from or write to the data memory (DMEM).
-• Hardware units: DMEM
-**WB** Writeback
-• Write back either PC + 4, the result of the ALU operation, or data from memory to the
-RegFile.
-• Hardware units: WBSel mux, RegFile
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/qgGy_Ra9hr0
+:width: 100%
+:title: "[CS61C FA20] Lecture 20.5 - Single-Cycle CPU Control: Summary"
+:::
+
+::::
+
+The **critical path** changed based on instruction. Not all instructions use all hardware units, and therefore not all instructions are active in all five phases of execution ("stages" is the terminology we use for pipelined processors).
+
+The **controller** pecifies how to execute instructions and it is implemented as ROM (read-only-memory) or as logic gates.
 
 ## Textbook Readings
 
@@ -32,17 +25,6 @@ P&H 4.4, 4.5
 
 ## Exercises
 Check your knowledge!
-
-### Conceptual Review
-
-1. Question
-
-:::{note} Solution
-:class: dropdown
-
-Solution
-
-See: 
 
 ### Short Exercises
 
