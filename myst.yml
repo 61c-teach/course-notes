@@ -166,7 +166,7 @@ project:
         - file: content/datapath/b-type.md
         - file: content/datapath/jump.md
         - file: content/datapath/u-type.md
-        # - file: content/datapath/summary.md
+        - file: content/datapath/summary.md
     #     # - file: content/datapath/summary-precheck.md
     #     # - file: content/datapath/exercises.md
     # - title: "L23 Single-Cycle CPU Control"
