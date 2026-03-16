@@ -34,7 +34,6 @@ The Program Counter is a 32-bit register in @fig-element-pc and holds the value 
 :::{figure} images/element-pc.png
 :label: fig-element-pc
 :width: 50%
-:width: 100%
 :alt: "TODO"
 
 The Program Counter, `PC`, is a single 32-bit register in the CPU.
@@ -144,17 +143,26 @@ The Instruction Memory block `IMEM` is a **read-only memory** that fetches instr
 In our CPU, the Instruction Memory block `IMEM` is read-only and behaves like combinational logic.
 :::
 
-**Input**:
+::::{table} IMEM signals. Course project signal names, if different, are in parentheses.
+:label: tab-dmem-signals
+:align: center
 
-* _Data_: One 32-bit input data bus, `addr`.
+| Name | Direction | Bit Width | Description |
+| :-- | :-- | :-- | :-- |
+| `addr` (N/A) | Input | 32 | The address in memory to read from |
+| `inst` (`Instruction`) | Output | 32 | The instruction at memory address `addr`(`ProgramCounter`) |
 
-**Output**:
-
-* _Data_: One 32-bit output data bus, `inst`.
+::::
 
 **Behavior**:
 
 * Read: Address `addr` selects word to put on `inst` bus. If `addr` is valid, then `inst` is valid after access time.
+
+:::{warning} IMEM is not clocked!
+
+In our CPU, we assume IMEM is a read-only state element and is **not clocked**. It therefore _always_ behaves like a combinational logic block.
+
+:::
 
 :::{warning} IMEM is not clocked!
 

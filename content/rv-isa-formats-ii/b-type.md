@@ -1,12 +1,12 @@
 ---
 title: "B-Type"
-subtitle: TODO
+subtitle: "TODO. These notes are incomplete; see Spring 2026 lecture"
 ---
 
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Translate between B-Type assembly instructions and machine instructions.
+* Identify which instructions use PC-relative addressing and which use absolute addressing.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,7 +18,13 @@ subtitle: TODO
 
 ::::
 
+:::{warning} These notes are incomplete, but lecture is still in scope
+
+Please refer to the [Spring 2026 lecture slides](https://docs.google.com/presentation/d/18YSyN37XjHEjfkWigPHJWXNJB17AsSiAKW8f9XebE-8/edit?usp=sharing).
+
 More coming soon!
+
+:::
 
 ### RISC-V Extension: 16-bit instructions
 
