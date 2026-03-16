@@ -1,13 +1,13 @@
 ---
-title: "State Elements"
-subtitle: TODO
+title: "State Elements on the Datapath"
 ---
 
 (sec-state-elements)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Describe the main state elements on the single-cycle RISC-V datapath.
+* Identify when data is written on synchronous state elements on the RISC-V datapath.
+* Compare and contrast read and write behaviors of RISC-V state elements.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -34,10 +34,14 @@ The Program Counter is a 32-bit register in @fig-element-pc and holds the value 
 :::{figure} images/element-pc.png
 :label: fig-element-pc
 :width: 50%
+:width: 100%
 :alt: "TODO"
 
 The Program Counter, `PC`, is a single 32-bit register in the CPU.
 :::
+
+:::{note} PC Signals
+:class: dropdown
 
 **Input**:
 
@@ -49,34 +53,41 @@ The Program Counter, `PC`, is a single 32-bit register in the CPU.
 
 * _Data_: N-bit data output bus
 
+:::
+
 **Behavior**:
 
 * _Read_: At all other times, Data Out will not change; it will output its current value.
 * _Write_: **Rising-edge triggered**. On rising clock edge, if Write Enable is 1, set Data Out to Data In (delay of clk-to-q).
 
 (sec-element-regfile)=
-### `RegFile`: Register File
+### Register File (`Regfile`)
 
-The **Register File** (RegFile, or `Reg[]`) has 32 registers: register numbers `x0` to `x31`.
+The **Register File** (regfile, or `RegFile`) has 32 registers: register numbers `x0` to `x31`.
 
 :::{figure} images/element-regfile.png
 :label: fig-element-regfile
 :width: 50%
 :alt: "TODO"
 
-The RegFile is symbolically written as `Reg[]` and is composed of registers `x0` to `x31`.
+The RegFile is symbolically written as `RegFile` and is composed of registers `x0` to `x31`.
 :::
 
-**Input**:
+::::{table} Regfile signals. Course project signal names, if different, are in parentheses.
+:label: tab-regfile-signals
+:align: center
 
-* _Data_: One 32-bit input data bus, `wdata`.
-* _Control_: Three 5-bit select busses, `rs1`, `rs2`, and `rd`.
-* _Control_: `RegWEn` control bit.
-* Clock signal.
-
-**Output**:
-
-* _Data_: Two 32-bit output data busses, rdata1 and rdata2.
+| Name | Direction | Bit Width | Description |
+| :-- | :-- | :-- | :-- |
+| `rs1` (`ReadIndex1`) | Input | 5 | Determines which register's value is sent to the `rdata1` (`ReadData1`) output |
+| `rs2` (`ReadIndex2`) | Input | 5 | Determines which register's value is sent to the `rdata2` (`ReadData2`) output |
+| `rd` (`WriteIndex`) | Input | 5 | The register to write to on the next rising edge of the clock (if `RegWEn` is 1) |
+| `wdata` (`WriteData`) | Input | 32 | The data to write into `rd` on the next rising edge of the clock (if `RegWEn` is 1) |
+| `RegWEn` | Input | 1 | Determines whether data is written to the register file on the next rising edge of the clock |
+| `clk` | Input | 1 | Clock input |
+| `rdata1` (`ReadData1`) | Output | 32 | The value of the register identified by `rs1` (`ReadIndex1`) |
+| `rdata2` (`ReadData2`) | Output | 32 | The value of the register identified by `rs2`(`ReadIndex2`) |
+::::
 
 **Behavior**:
 
@@ -87,7 +98,7 @@ The RegFile is symbolically written as `Reg[]` and is composed of registers `x0`
 * _Read_: As long as `rs1` and `rs2` are valid, then `rdata1` and `rdata2` are valid after access time, _regardless of what `RegWEn` is set to_.
 * _Write_: **Rising-edge-triggered write**. On rising clock edge, if `RegWEn` is set to 1, write `wdata` to `R[rd]`.
 
-:::{warning} The clock signal is only a factor on write!
+:::{note} The clock signal is only a factor on write!
 
 For _read_ operations, the RegFile behaves like **a combinational logic block**. Put another way, the read operation is _not_ timed to the rising clock edge and constantly occurs, updating data outputs based on inputs (after some access time delay). This is a necessary assumption to ensure our single-cycle datapath executes all phases of an instruction within one cycle.
 :::
@@ -95,13 +106,13 @@ For _read_ operations, the RegFile behaves like **a combinational logic block**.
 (sec-element-dmem)=
 ### `DMEM`: Data Memory
 
-For this class, memory is "magic." Assume a 32-bit byte-addressed memory space, and memory access occurs with 32-bit words. We go into a bit more detail in one of our course projects.
+For this class, memory is "magic." Assume a 32-bit byte-addressed memory space, and memory access occurs with 32-bit words. We go into more detail with our course projects.
 
-For our single-cycle datapath, we must access memory **twice**: once during `IF` (instruction fetch) to read the instruction from memory, and once during `MEM` if we load/store data from/to memory. We therefore need two memory blocks: `IMEM` and `DMEM` for instruction memory and data memory, respectively.[^imem-dmem-cache]
+For our single-cycle datapath, we must access memory **twice**: once during `IF` (Instruction Fetch) to read the instruction from memory, and once during `MEM` (Memory Access) if we load/store data from/to memory. We therefore need two memory blocks: `IMEM` and `DMEM` for instruction memory and data memory, respectively.[^imem-dmem-cache]
 
 [^imem-dmem-cache]: Under the hood, `IMEM` and `DMEM` are placeholders for L1 caches: `L1i`, `L1d`.
 
-The Data Memory block `DMEM` has edge-triggered writes, just like `Reg[]`.
+The Data Memory block `DMEM` has edge-triggered writes, just like `RegFile`.
 
 :::{figure} images/element-dmem.png
 :label: fig-dmem-block
@@ -111,22 +122,30 @@ The Data Memory block `DMEM` has edge-triggered writes, just like `Reg[]`.
 The Data Memory block `DMEM`. Read operations behave like combinational logic, whereas write operations occur on the rising clock edge.
 :::
 
-**Input**:
 
-* _Data_: Two 32-bit input data busses, `addr` and `dataW`.
-* _Control_: `MemRW` control bit.
-* Clock signal.
+::::{table} DMEM signals. Course project signal names, if different, are in parentheses.
+:label: tab-dmem-signals
+:align: center
 
-**Output**:
+| Name | Direction | Bit Width | Description |
+| :-- | :-- | :-- | :-- |
+| `addr` (`MemAddress`) | Input | 32 | The address in memory to read from or write to |
+| `wdata` (`MemWriteData`) | Input | 32 | Data to write to memory |
+| `MemRW` (`MemWriteMask`) | Input | 4 | The write enable mask for writing data to memory |
+| `clk` | Input | 1 | Clock input |
+| `rdata` (`MemReadData`) | Output | 32 | Data at `addr` (`MemAddress`) from memory |
 
-* _Data_: One 32-bit output data bus, `dataR`.
+::::
 
-**Behavior**:
+**Behavior**: `DMEM` read/writes behave similarly to Regfile, though now we provide memory addresses as input, not register numbers.
 
 * Read: Address `addr` selects word to put on `rdata` bus. If `MemRW` is 0 and `addr` is valid, then `rdata` is valid after access time.
 * Write: **Rising-edge-triggered write**. On rising clock edge, if `MemRW` is set to 1, write `wdata` to address `addr`. 
 
-Just like with RegFile, `DMEM` behaves like a combinational logic with read operations, which occur constantly; provided that `addr` is valid, this means that `rdata` is updated constantly after some access time.
+:::{note} Partial Loads and Stores
+
+We implement a more complicated DMEM block in our project; see the [Partial Loads and Stores section](#partial-loads-stores).
+:::
 
 (sec-element-imem)=
 ### `IMEM`: Instruction Memory
@@ -157,12 +176,6 @@ In our CPU, the Instruction Memory block `IMEM` is read-only and behaves like co
 **Behavior**:
 
 * Read: Address `addr` selects word to put on `inst` bus. If `addr` is valid, then `inst` is valid after access time.
-
-:::{warning} IMEM is not clocked!
-
-In our CPU, we assume IMEM is a read-only state element and is **not clocked**. It therefore _always_ behaves like a combinational logic block.
-
-:::
 
 :::{warning} IMEM is not clocked!
 

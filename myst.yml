@@ -26,7 +26,6 @@ project:
         - file: content/number-rep/integer-representations.md
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
-        - file: content/number-rep/exercises.md
     - title: "L03-L08 C"
       children:
       - title: "L03 C Basics"
@@ -37,7 +36,6 @@ project:
           - file: content/c-basics/c-variables.md
           - file: content/c-basics/c-syntax.md
           - file: content/c-basics/summary.md
-          - file: content/c-basics/exercises.md
       - title: "L04 C Pointers, Arrays, Strings"
         children:
           - file: content/c-pointers-arrays-strings/index.md
@@ -45,7 +43,6 @@ project:
           - file: content/c-pointers-arrays-strings/arrays.md
           - file: content/c-pointers-arrays-strings/strings.md
           - file: content/c-pointers-arrays-strings/summary.md
-          - file: content/c-pointers-arrays-strings/exercises.md
       - title: "L05 C Memory Management"
         children:
           - file: content/c-memory-management/index.md
@@ -53,21 +50,19 @@ project:
           - file: content/c-memory-management/heap.md
           - file: content/c-memory-management/heap-allocator.md
           - file: content/c-memory-management/summary.md
-          - file: content/c-memory-management/exercises.md
       - title: "L06 C Odds and Ends"
         children:
           - file: content/c-odds-and-ends/index.md
           - file: content/c-odds-and-ends/endianness.md
           - file: content/c-odds-and-ends/ll-add-front.md
           - file: content/c-odds-and-ends/ll-full.md
-          - file: content/c-odds-and-ends/exercises.md
+          - file: content/c-odds-and-ends/summary.md
       - title: "L07 C Generics, Function Pointers"
         children:
           - file: content/c-generics/index.md
           - file: content/c-generics/generics.md
           - file: content/c-generics/fn-ptr.md
           - file: content/c-generics/summary.md
-          # - file: content/c-generics/exercises.md
     - title: "L08 Floating Point"
       children:
         - file: content/floating-point/index.md
@@ -76,8 +71,6 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-        # - file: content/floating-point/summary-precheck.md
-        - file: content/floating-point/exercises.md
     - title: "L09-L12 RISC-V"
       children:
       - title: "L09 RISC-V Intro"
@@ -88,7 +81,6 @@ project:
           - file: content/rv-intro/rv-arithmetic.md
           - file: content/rv-intro/rv-bitwise.md
           - file: content/rv-intro/summary.md
-          - file: content/rv-intro/exercises.md
           # - file: content/rv-intro/summary-precheck.md
       - title: "L10 RISC-V Data Transfer"
         children:
@@ -97,15 +89,12 @@ project:
           - file: content/rv-data-transfer/examples.md
           - file: content/rv-data-transfer/example-sp.md
           - file: content/rv-data-transfer/summary.md
-          # - file: content/rv-data-transfer/exercises.md
       - title: "L11 RISC-V Decision Making"
         children:
           - file: content/rv-decision-making/index.md
           - file: content/rv-decision-making/branches.md
           - file: content/rv-decision-making/loops.md
           - file: content/rv-decision-making/summary.md
-          # - file: content/rv-decision-making/precheck.md
-          # - file: content/rv-decision-makingr/exercises.md
       - title: "L12 RISC-V Procedures"
         children:
           - file: content/rv-procs/index.md
@@ -113,7 +102,6 @@ project:
           - file: content/rv-procs/rv-calling-conv.md
           - file: content/rv-procs/examples.md
           - file: content/rv-procs/summary.md
-      #     - file: content/rv-procs/exercises.md
     - title: "L13-L14 RISC-V Instruction Formats"
       children:
       - title: "L13 RISC-V Instruction Formats I"
@@ -123,18 +111,13 @@ project:
           - file: content/rv-isa-formats-i/i-type.md
           - file: content/rv-isa-formats-i/s-type.md
           - file: content/rv-isa-formats-i/summary.md
-          # - file: content/rv-isa-formats-i/summary-precheck.md
-          #- file: content/rv-isa-formats-i/exercises.md
       - title: "L14 RISC-V Instruction Formats II"
         children:
           - file: content/rv-isa-formats-ii/index.md
           - file: content/rv-isa-formats-ii/b-type.md
           - file: content/rv-isa-formats-ii/j-type.md
-          # - file: content/rv-isa-formats-ii/rv-isa-f2-summary.md
           - file: content/rv-isa-formats-ii/u-type.md
           - file: content/rv-isa-formats-ii/summary.md
-          # - file: content/rv-isa-formats-ii/summary-precheck.md
-          - file: content/rv-isa-formats-ii/exercises.md
     - title: "L15 CALL"
       children:
         - file: content/call/index.md
@@ -143,34 +126,27 @@ project:
         - file: content/call/example.md
         - file: content/call/interpret-translate.md
         - file: content/call/summary.md
-        # - file: content/call/summary-precheck.md
-        - file: content/call/exercises.md
     - title: "L16 Intro to SDS"
       children:
         - file: content/sds-intro/index.md
         - file: content/sds-intro/transistors.md
         - file: content/sds-intro/summary.md
-        # - file: content/sds-intro/summary-precheck.md
-        # - file: content/sds-intro/exercises.md
     - title: "L17 Combinational Logic"
       children:
         - file: content/sds-combinational-logic/index.md
         - file: content/sds-combinational-logic/boolean-algebra.md
         - file: content/sds-combinational-logic/cl-design.md
         - file: content/sds-combinational-logic/summary.md
-        # - file: content/sds-logic/summary-precheck.md
-        # - file: content/sds-logic/exercises.md
     - title: "L18 State"
       children:
         - file: content/sds-state/index.md
         - file: content/sds-state/register.md
         - file: content/sds-state/synchronous-system.md
+        # - file: content/sds-state/accumulator.md
         - file: content/sds-state/fsm.md
         - file: content/sds-state/pipelining.md
-        # - file: content/sds-state/summary-precheck.md
-    #     - file: content/sds-state/exercises.md
         - file: content/sds-state/summary.md
-    - title: "L19 Combinational Logic Blocks"
+    - title: "L19-L20 Combinational Logic Blocks"
       children:
         - file: content/sds-blocks/index.md
         - file: content/sds-blocks/adder-subtractor.md
@@ -178,25 +154,23 @@ project:
         - file: content/sds-blocks/summary.md
     #     - file: content/sds-logic-blocks/summary-precheck.md
     #     - file: content/sds-logic-blocks/exercises.md
-    - title: "L20 Single-Cycle CPU Datapath I"
+    - title: "L21 Single-Cycle CPU Datapath I"
       children:
         - file: content/datapath/index.md
         - file: content/datapath/elements.md
-        # - file: content/datapath/r-type.md
-        # - file: content/datapath/i-type.md
-    # - title: "L21 Single-Cycle CPU Datapath II"
-    #   children:
-    #     - file: content/datapath/i-type-load.md
-    #     - file: content/datapath/dpII-stores.md
-    #     - file: content/datapath/dpII-branches.md
-    #     - file: content/datapath/dpII-jalr.md
-    #     - file: content/datapath/dpII-jal.md
-    #     - file: content/datapath/dpII-u-types.md
-    #     - file: content/datapath/dpII-summary.md
-    #     - file: content/datapath/summary.md
+        - file: content/datapath/r-type.md
+        - file: content/datapath/i-type.md
+        - file: content/datapath/load-store.md
+    - title: "L22 Single-Cycle CPU Datapath II"
+      children:
+        - file: content/datapath/b-type.md
+        - file: content/datapath/jump.md
+        - file: content/datapath/u-type.md
+        - file: content/datapath/partial-load-store.md
+        # - file: content/datapath/summary.md
     #     # - file: content/datapath/summary-precheck.md
     #     # - file: content/datapath/exercises.md
-    # - title: "L22 Single-Cycle CPU Control"
+    # - title: "L23 Single-Cycle CPU Control"
     #   children:
     #     - file: content/datapath-control/index.md
     #     - file: content/datapath-control/dp-control-datapath.md
@@ -204,8 +178,6 @@ project:
     #     - file: content/datapath-control/dp-control-design.md
     #     - file: content/datapath-control/dp-control-summary.md
     #     - file: content/datapath-control/summary.md
-        # - file: content/datapath-control/summary-precheck.md
-        # - file: content/datapath-control/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md

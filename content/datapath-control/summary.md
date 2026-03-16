@@ -4,12 +4,6 @@ title: "Summary"
 
 ## And in Conclusion$\dots$
 
-## Textbook Readings
-
-P&H 4.4, 4.5
-
-## Additional References
-
 Our single-cycle datapath is a synchronous digital system (SDS) that has the capabilities of
 executing RISC-V instructions. It is divided into multiple stages of execution, where each stage is
 responsible for a completing a certain task.
@@ -31,6 +25,10 @@ from the RegFile.
 • Write back either PC + 4, the result of the ALU operation, or data from memory to the
 RegFile.
 • Hardware units: WBSel mux, RegFile
+
+## Textbook Readings
+
+P&H 4.4, 4.5
 
 ## Exercises
 Check your knowledge!
