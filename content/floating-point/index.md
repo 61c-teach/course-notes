@@ -121,7 +121,7 @@ However, @fig-fixed-point-mul shows that fixed-point multiplication is more comp
 :::{figure} images/fixed-point-mul.png
 :label: fig-fixed-point-mul
 :width: 40%
-:alt: "TODO"
+:alt: ""
 
 $1.5 \times 0.5 = 0.75$ using the 6-bit fixed point representation from @fig-fixed-point.
 :::

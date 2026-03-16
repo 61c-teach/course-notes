@@ -1,13 +1,14 @@
 ---
 title: "J-Type"
-subtitle: TODO
+subtitle: "TODO. These notes are incomplete; see Spring 2026 lecture"
 ---
 
 (sec-j-type)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Translate between J-Type assembly instructions and machine instructions.
+* Identify use cases for different unconditional jump instructions and pseudoinstructions: `j`, `jr`, `jal`, `jalr`, `ret`.
+* Use J-Type instructions for conditional branches.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -19,7 +20,16 @@ subtitle: TODO
 
 ::::
 
-More coming soon!
+## Jump Instructions
+
+:::{warning} This portion of notes are unwritten, but content is still in scope.
+
+For this subsection, please refer to the [Spring 2026 lecture slides](https://docs.google.com/presentation/d/18YSyN37XjHEjfkWigPHJWXNJB17AsSiAKW8f9XebE-8/edit?usp=sharing), section "Jump Instructions."
+
+Additionally, see `jalr` covered in [I-Type](#sec-jalr-itype).
+:::
+
+The remainder of this page covers in-scope content that was not covered in lecture.
 
 ## Conditionally Branching Far Away
 
