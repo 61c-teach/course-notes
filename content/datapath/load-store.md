@@ -129,13 +129,9 @@ We **don't care** about the signal `WBSel` because `RegWEn` is set to `0`. We wr
 :::
 
 (sec-datapath-partial-load-store)=
-## Memory Circuit: Course project details
+## Partial Loads and Stores: Course project details
 
-The details in this section are specific to DMEM and the course project. This section discusses how to implement partial loads and stores. We start by introducing additional functions of the course project's DMEM block.
-
-:::{note} Don't think about endianness
-Endianness is relevant when you're trying to interpret a set of 4 bytes as a word (e.g. integer, address) to do some calculation on it. At this level of abstraction, we only need to worry about which bits are loaded and stored, not what they mean.
-:::
+This section discusses how to implement partial loads and stores. The details in this section are specific to the course project. We start by introducing additional functions of the course project's DMEM block.
 
 :::{note} Review Partial Loads and Stores
 
@@ -157,6 +153,10 @@ Consider @fig-aligned-memory, which shows each byte in memory, referred to by it
 :label: fig-aligned-memory
 :width: 30%
 Diagram of aligned memory (Red boxes around every 4 bytes).
+:::
+
+:::{note} Don't think about endianness
+Endianness is relevant when you're trying to interpret a set of 4 bytes as a word (e.g. integer, address) to do some calculation on it. At this level of abstraction, we only need to worry about which bits are loaded and stored, not what they mean.
 :::
 
 (sec-datapath-dmem-details)=
