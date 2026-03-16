@@ -169,7 +169,7 @@ project:
         - file: content/datapath/summary.md
     #     # - file: content/datapath/summary-precheck.md
     #     # - file: content/datapath/exercises.md
-    - title: "L23 Single-Cycle CPU Control"
+    - title: "L23 Single-Cycle CPU Control, Instruction Timing"
       children:
         - file: content/datapath-control/index.md
         - file: content/datapath-control/instruction-timing.md
