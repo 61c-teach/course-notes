@@ -137,6 +137,7 @@ Observations:
 
 [^itype-funct7]: The course [RISC-V green card](#sec-green-card) labels these upper 7 bits as "funct7"–a misnomer, because I-Types don't have a `funct7` field. As per the [RISC-V Unprivileged Manual](https://docs.riscv.org/reference/isa/unpriv/rv32.html#2-5-1-integer-register-immediate-instructions) these upper 7 bits should really be relabeled `imm[11:5]`–part of the `imm[11:0]` field, but not considered part of the numeric constant.
 
+(sec-rv-load)=
 ## Load Instructions
 
 Remember, instruction formats are simply just formats. The operation specifies what the hardware actually does. However, keeping the same instruction format allows us to simplify and reuse certain hardware.

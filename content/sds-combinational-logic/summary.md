@@ -47,6 +47,7 @@ You should notice that the output of this AND gate always changes 2ps after its 
 **State elements**, on the other hand, can remember their inputs even after the inputs change. State
 elements change value based on a clock signal. A rising edge-triggered register, for example,
 samples its input at the rising edge of the clock (when the clock signal goes from 0 to 1).
+
 ## Textbook Readings
 
 P&H A.3-A.6

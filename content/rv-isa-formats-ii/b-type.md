@@ -26,6 +26,7 @@ More coming soon!
 
 :::
 
+(sec-implicit-zero-b-type)=
 ### RISC-V Extension: 16-bit instructions
 
 RISC-V Base ISA for RV32, RV64, RV128 all have 32-bit wide instructions. The "Base" ISA is **extended** by instruction **extensions** that do a range of items: general multiplication, different architecture support, etc.
@@ -46,6 +47,7 @@ RISC-V conditional branches can only branch to $\pm 2^{10}$ instructions away fr
 **True**. In B-Type instructions, branch offsets are encoded as half-word offsets, meaning that `imm[0]` is `0`. If a program only has 32-bit instructions, then conditional branches will only ever be multiples of words, e.g., 4 bytes, and we will only ever jump by two half-words. In this case, constrain `imm[1]` and `imm[0]` to be `0`.
 :::
 
+(sec-imm-swirl)=
 ## B-Type vs. I-Type, S-Type: Immediate Formats
 
 Recall a core component of RISC-V design is to keep fields as consistent as possible across instruction formats. We have already seen how source/destination register fields `rs1`, `rs2`, and `rs2` are consistent across formats, allowing clearer consistency of which registers to **read** and which to **write**.
