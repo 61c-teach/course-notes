@@ -154,33 +154,33 @@ project:
         - file: content/sds-blocks/summary.md
     #     - file: content/sds-logic-blocks/summary-precheck.md
     #     - file: content/sds-logic-blocks/exercises.md
-    - title: "L21 Single-Cycle CPU Datapath I"
+    - title: "L21-L23 Single-Cycle CPU"
       children:
-        - file: content/datapath/index.md
-        - file: content/datapath/elements.md
-        - file: content/datapath/r-type.md
-        - file: content/datapath/i-type.md
-        - file: content/datapath/load-store.md
-    - title: "L22 Single-Cycle CPU Datapath II"
+      - title: "L21 Single-Cycle CPU Datapath I"
+        children:
+          - file: content/datapath/index.md
+          - file: content/datapath/elements.md
+          - file: content/datapath/r-type.md
+          - file: content/datapath/i-type.md
+      - title: "L22 Single-Cycle CPU Datapath II"
+        children:
+          - file: content/datapath/load-store.md
+          - file: content/datapath/b-type.md
+          - file: content/datapath/jump.md
+          - file: content/datapath/u-type.md
+          - file: content/datapath/partial-load-store.md
+          - file: content/datapath/summary.md
+      #     # - file: content/datapath/summary-precheck.md
+      #     # - file: content/datapath/exercises.md
+      - title: "L23 Single-Cycle CPU Control, Instruction Timing"
+        children:
+          - file: content/datapath-control/index.md
+          - file: content/datapath-control/instruction-timing.md
+          - file: content/datapath-control/special-regs.md
+          - file: content/datapath-control/summary.md
+    - title: "L24-L25 Pipelining"
       children:
-        - file: content/datapath/b-type.md
-        - file: content/datapath/jump.md
-        - file: content/datapath/u-type.md
-        - file: content/datapath/partial-load-store.md
-    #     - file: content/datapath/summary.md
-    #     # - file: content/datapath/summary-precheck.md
-    #     # - file: content/datapath/exercises.md
-    # - title: "L23 Single-Cycle CPU Control"
-    #   children:
-    #     - file: content/datapath-control/index.md
-    #     - file: content/datapath-control/dp-control-datapath.md
-    #     - file: content/datapath-control/dp-control-timing.md
-    #     - file: content/datapath-control/dp-control-design.md
-    #     - file: content/datapath-control/dp-control-summary.md
-    #     - file: content/datapath-control/summary.md
-    - title: "L23-L25 Pipelining"
-      children:
-      - title: "L23 Pipelining I"
+      - title: "L24 Pipelining I"
         children:
           - file: content/pipelineI/index.md
           - file: content/pipelineI/pipelineI-iron-law.md

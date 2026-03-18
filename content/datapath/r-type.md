@@ -1,12 +1,13 @@
 ---
 title: "R-Type Datapath, ALU"
-subtitle: "add, sub"
 ---
 
 (sec-datapath-r-type)=
 ## Learning Outcomes
 
-* Coming soon! We provide the animations for now.
+* Implement a datapath that supports R-Type instructions.
+* Compare the datapath elements and logic needed to support `add` and `sub` instructions.
+* Reason about the high-level design of an ALU element that supports RV32I instructions.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -30,7 +31,7 @@ subtitle: "add, sub"
 
 ## Building a processor that `add`s
 
-To start off, let's build the simplest processor we can: a processor that can process only one instruction: `add`. Programs will just be series of `add`s:
+To start off, let's build the simplest processor we can: a processor that can process only one instruction: `add`. Programs will just be a series of `add`s:
 
 ```bash
 add x18 x18 x10
@@ -47,13 +48,13 @@ add ...
 
 In order to support `add` in our datapath, we consider the  two state elements changed by this instruction's operations:
 
-* `RegFile`: The instruction performs the operation `R[rd] = R[rs1] + R[rs2]`. This involves **reading** two registers `rs1` and `rs2`, **adding** the values together, and **writing** the result to register `rd`.
-* `PC`: The instruction updates `PC = PC + 4` to update the program counter to the next instruction to execute. This involves **reading** the `PC` register, **adding** `4`, and **writing** the result back to the `PC` register.
+* `RegFile`: We **read** two registers `rs1` and `rs2` and write one register `rd`. The value to write is the **sum** between the two read register values, `R[rs1] + R[rs2]`.
+* `PC`: We **read** from and **write** to the `PC` register. The value to write is `PC + 4`.
 
 Other state elements:
 
 * `IMEM`: The processor must **read** the RV32I instruction from the read-only `IMEM` during the `IF` (Instruction Fetch) phase.
-* `DMEM`: The processor does not additionally access memory via a load or store. The `add` instruction does not participate in the `MEM` phase of [the five step process][Introduction](#sec-five-steps).
+* `DMEM`: The processor does not additionally access memory via a load or store. The `add` instruction does not participate in the `MEM` phase of [the five step process](#sec-five-steps).
 
 :::{warning} Goal: Iteratively Build Processor
 In these notes, we will iteratively build the processor, meaning we will introduce important combinational logic blocks as the processor supports more instructions. Some animations will therefore not include the entire datapath. For exercises involving the full datapath, see the end of this chapter.
@@ -64,11 +65,19 @@ In these notes, we will iteratively build the processor, meaning we will introdu
 For now, we disconnect `DMEM` since it is unused for `add` (@fig-add-no-dmem). We will add it back when we discuss [loads and stores](#sec-datapath-load-store).
 :::
 
+(sec-datapath-add)=
 ## Tracing the `add` Datapath
 
-Given the above analysis, we can now connect wires between key elements of our processor. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file. 
+Given the above analysis, we can now connect wires between key elements of our processor.
 
-<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-add.pptx' width='100%' height='600px' frameborder='0'>
+::::{figure}
+:label: anim-datapath-add
+:::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-add.pptx
+:width: 100%
+:title: "Tracing the `add` Datapath"
+:::
+The `add` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+::::
 
 1. **Instruction Fetch**:
     * On the rising clock edge, the `pc` wire updates to the instruction to execute in this cycle. It feeds into `IMEM` which, after some delay, updates the `inst` output signal.
@@ -85,14 +94,56 @@ Given the above analysis, we can now connect wires between key elements of our p
 
 1. **Memory**: (We don't access memory, so skip this.)
 
-1. **Write Back**: Connect the output signal of the ALU to the `wdata` input signal of the RegFile. This signal should be set up and ready to update on the next rising clock edge.
+1. **Write Back**: Connect the output signal of the ALU to the `wdata` input signal of the RegFile. Set the RegFile control signal `RegWEn` to `1` to indicate that `wdata` should be written to `R[rd]` on the next rising clock edge.
 
-<!-- GOT TO HERE -->
+    Around the next rising clock edge, `wdata`, `RegWEn`, and `rd` should be held stable through setup and hold time of RegFile.
+
+
+## Building a processor that `add`s and `sub`s
+
+Next, let's improve our processor by supporting two instructions: `add` and `sub`. Example program:
+
+```bash
+add x18 x18 x10
+sub x18 x18 x18
+sub ...
+add ...
+```
+
+Let's again consider the state elements changed by this instruction's operations:
+
+* `RegFile`: We still **read** two registers `rs1` and `rs2` and write one register `rd`. But now the value to write is the **difference** between the two read register values, `R[rs1] - R[rs2]`.
+* `PC`: We **read** from and **write** to the `PC` register. The value to write is `PC + 4`.
+
+`sub` is almost the same as `add`, except now the ALU subtracts. We implement the support for both `add` and `sub` by assuming more complexity in the Control Logic "block" (@fig-sub-datapath).
+
+:::{figure} images/sub-datapath.png
+:label: fig-sub-datapath
+To implement `sub` and `add`, we update control logic.
+:::
+
+:::{note} Show explanation
+
+* Control logic takes as input all 32 bits of the instruction `inst`.
+* Outputs the `RegWEn` signal, connected to RegFile. Set as `1` to ensure we write `wdata` to `R[rd]`.
+* Outputs `ALUSel` control signal, connected to ALU, which selects the ALU operation to output. Output an "add" or "sub" signal, depending on the instruction.
+:::
+
+How do we determine `add` or `sub`? Recall our discussion of [Design Decisions for R-Type](#tab-r-type): `add` and `sub` have the same `opcode` and `funct3` fields, but different `funct7` fields. Importantly, the `inst[30]` bit is `1` for `sub` and `0` for `add`.
+
+## Building an R-Type processor
+
+We can extend our reasoning above to build a processor that implements all [R-Type instructions](#tab-r-type):
+
+* Build an ALU that supports all R-Type arithmetic and logic operations on operands `R[rs1]` and `R[rs2]`.
+* Build a Control Logic block that use the instruction bits `inst` to select the appropriate ALU operations and set `ALUSel` accordingly.
 
 (sec-datapath-alu)=
 ## Arithmetic Logic Unit (ALU)
 
-In the [previous chapter](#sec-alu) we implemented a basic four-operation ALU. In the full RISC-V implementation, our ALU (@fig-element-alu) must support all operations for R-Type instructions:
+We encourage revisiting this section after reading a few more example datapath traces.
+
+In the [previous chapter](#sec-alu) we implemented a basic four-operation ALU. As shown in @fig-element-alu and @tab-alu-signals, the RISC-V ALU takes the same input and output, but the control signal `ALUSel` is much wider to accommodate the functionality needed for the full RISC-V datapath.
 
 :::{figure} images/element-alu.png
 :label: fig-element-alu
@@ -114,10 +165,26 @@ ALU Block.
 
 :::
 
+In the full RISC-V implementation, our ALU (@fig-element-alu) must perform arithmetic for many signals:
+
+* Register-register arithmetic and logical operations for R-Type instructions
+* Register-immediate arithmetic and logical operations for [I-Type](#sec-datapath-i-type) instructions
+* Base + Immediate address computation for [loads and stores](#sec-datapath-load-store)
+* PC-relative address computation (See datapath for [Branches](#sec-datapath-b-type) and [Jumps](#sec-datapath-jump))
+* Upper immediate computation (see datapath for [U-Type](#sec-datapath-u-type))
 
 ### Course Project Details
 
-Below, we detail the ALU operations that must be implemented for the **course project**'s datapath. We encourage revisiting this section after reading a few more example datapath traces.
+Below, we detail the ALU operations that must be implemented for the **course project**'s datapath.
+
+:::{warning} Course Project vs. RISC-V ISA
+
+Note that the implementation of functional units like the ALU are **intentionally unspecified** in the ISA. In general, you cannot/should not expect all RISC-V architectures to follow any of the specifications in @tab-alu-signals, including but not limited to:
+
+* The specified `ALUSel` values (e.g., that add has `ALUSel=0`)
+* Support for general multiplication (not in the Base RV32I ISA)
+* `bsel`, which is needed for our datapath's support for [U-Type](#sec-datapath-u-type).
+:::
 
 :::{table} Operations for ALU Block for the course project
 :label: tab-alu-operations
@@ -140,25 +207,16 @@ Below, we detail the ALU operations that must be implemented for the **course pr
 | 13 | sra    | `ALUResult = (signed) A >> B[4:0]` |
 | 14 | Unused | - |
 | 15 | bsel   | `ALUResult = B` |
+::::
 
 Observations/reminders:
 
 * When performing shifts, only the lower 5 bits of `B` are needed, because only shifts of up to 32 are supported.
 * The comparator component might be useful for implementing instructions that involve comparing inputs. See the [branch implementation](#sec-datapath-b-type) later in this chapter.
 * A multiplexer (MUX) might be useful when deciding between operation outputs (recall our [basic 4-operation ALU](#sec-alu)). Consider first processing the input for **all** operations first, and then outputting the one of your choice.
+* See general multiplication notes below.
 
-:::{warning} @tab-alu-signals is not specified in the RISC-V ISA
-
-Note that the implementation of functional units are **intentionally unspecified** in the ISA. In general, you cannot/should not expect all RISC-V architectures to follow any of the specifications in @tab-alu-signals, including but not limited to:
-
-* The specified `ALUSel` values
-* The operation names
-* Supporting general multiplication (not in the Base RV32I ISA)
-* bsel, which is needed for our course's RV32I datapath.
-
-:::
-
-(sec-general-multiplication)
+(sec-general-multiplication)=
 ### General Multiplication
 
 An ALU that implements the `mul`, `mulh`, and `mulhu` instructions can support parts of the [RISC-V "M" extension](https://docs.riscv.org/reference/isa/unpriv/m-st-ext.html).
@@ -170,5 +228,3 @@ An ALU that implements the `mul`, `mulh`, and `mulhu` instructions can support p
 | `mulhu rd rs1 rs2` | MULtiply Higher Bits (Unsigned) |  `R[rd] = (R[rs1] * R[rs2])[63:32]` (Unigned)  | R | `011 0011` | `011` | `000 0001` |
 
 The result of multiplying 2 32-bit numbers can be up to 64 bits of information, but we're limited to 32-bit data lines, so `mulh` and `mulhu` are used to get the upper 32 bits of the product. The `Multiplier` component has a `Carry Out` output (with the description "the upper bits of the product") which might be particularly useful for certain multiply operations.
-
-

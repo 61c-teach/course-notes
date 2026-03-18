@@ -109,20 +109,20 @@ Muxes find common use within the design of microprocessors, e.g., those that imp
 
 In most applications, you will have access to a mux; you will not need to build your own from scratch. Nevertheless, it is good to remember that like all combinational logic blocks, the function of muxes can be described using a truth table and thereby implemented as a logic gate circuit.
 
-<!-- Click to show the gate diagrams of two muxes: a 1-bit wide, 2-to-1 mux, and a 1-bit wide, 4-to-1 mux. -->
-Click to show the gate diagram, truth table, and boolean algebra explanation for a 1-bit wide, 2-to-1 mux.
+### 1-bit wide, 2-to-1 MUX
 
-::::{note} 1-bit wide 2-to-1 mux
-:::{figure} #fig-mux-2
-:width: 25%
-:alt: "TODO"
+How do we implement the mux in @fig-mux-2, discussed above?
 
-**@fig-mux-2, reprinted**: A 1-bit wide, 2-to-1 mux.
-:::
-::::
+This circuit can be expressed in Boolean algebra:
+
+$$ y = \overline{s} a + s b $$
+
+Expand the dropdown items below to show the gate circuit and derive the above expression.
 
 ::::{note} Show Gate Diagram
 :class: dropdown
+
+@fig-mux-2-circuit shows the gate diagram for a 1-bit wide, 2-to-1 mux with inputs `a` and `b` and output `c`. Below, $c = \overline{s} a + s b$.
 
 :::{figure} images/mux-2-circuit.png
 :label: fig-mux-2-circuit

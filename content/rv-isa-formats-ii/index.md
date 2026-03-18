@@ -5,7 +5,7 @@ subtitle: "PC-Relative Addressing and Absolute Addressing"
 
 ## Learning Outcomes
 
-* Contrast PC-Relative Addressing with Absolute Addressing.
+* Contrast PC-relative addressing with absolute addressing.
 * Given assembly code with labels, compute PC-relative offsets for conditional branches and unconditional jumps.
 
 We recommend reviewing RISC-V control flow before continuing.

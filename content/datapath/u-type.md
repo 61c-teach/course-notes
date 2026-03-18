@@ -2,6 +2,7 @@
 title: "Adding U-Types"
 ---
 
+(sec-datapath-u-type)=
 ## Learning Outcomes
 
 * Coming soon! We provide the animations for now.
