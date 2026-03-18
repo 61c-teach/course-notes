@@ -1,6 +1,6 @@
 ---
-title: "Pipelining"
-subtitle: TODO
+title: "Latency and Throughput"
+subtitle: Coming soon. Thanks for your patience. Watch video for now.
 ---
 
 ## Learning Outcomes
@@ -17,6 +17,8 @@ subtitle: TODO
 :::
 
 ::::
+
+<!--
 
 ## Visuals
 
@@ -69,3 +71,4 @@ Detailed timing diagram for 5 instruction phases.
 | Passengers/hour | **Throughput** | **Total tasks per unit time** (e.g. # of server requests handled per hour) |
 | Gallons per passenger | **Energy Efficiency** | **Energy per task** (e.g. how many movies you can watch per battery charge) |
 :::
+-->

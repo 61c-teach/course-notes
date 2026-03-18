@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Pipelining"
-subtitle: TODO
+title: "Laundry Analogy"
+subtitle: Coming soon. Thanks for your patience.
 ---
 
 ## Learning Outcomes
@@ -18,6 +18,7 @@ subtitle: TODO
 
 ::::
 
+<!--
 ## Visuals
 
 :::{figure} images/laundry-setup.png
@@ -72,3 +73,4 @@ Two views of pipelined laundry task: per customer vs. per time increment (30 min
 
 IPC Timeline diagram showing one customer per "cycle" in laundry analogy.
 :::
+-->

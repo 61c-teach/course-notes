@@ -1,6 +1,6 @@
 ---
-title: "Pipelining RISC-V"
-subtitle: TODO
+title: "RISC-V 5-Stage Pipeline"
+subtitle: Coming soon. Thanks for your patience. Watch video for now.
 ---
 
 ## Learning Outcomes
@@ -17,6 +17,8 @@ subtitle: TODO
 :::
 
 ::::
+
+<!--
 
 ## Visuals
 
@@ -55,6 +57,7 @@ High-level diagram of single-cycle datapath.
 ::: -->
 
 <!-- Numbers represent time steps; rows represent sequence of instructions -->
+<!--
 ```{list-table} Sequential Instructions.
 :header-rows: 1
 :label: tab-seq-inst
@@ -92,6 +95,9 @@ High-level diagram of single-cycle datapath.
   - M
   - WB
 ```
+-->
+
+<!--
 
 :::{figure} images/pipelined-datapath.png
 :label: fig-pipelined-datapath
@@ -100,8 +106,10 @@ High-level diagram of single-cycle datapath.
 
 High-level diagram of pipelined datapath.
 :::
+-->
 
 <!-- Numbers represent time steps; rows represent sequence of instructions -->
+<!--
 ```{list-table} Pipelined Instructions.
 :header-rows: 1
 :label: tab-pip-inst
@@ -127,3 +135,5 @@ High-level diagram of pipelined datapath.
   - M
   - WB
 ```
+
+-->

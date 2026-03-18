@@ -1,6 +1,6 @@
 ---
-title: "Processor Performance Iron Law"
-subtitle: TODO
+title: "CPI: Iron Law of Processor Performance"
+subtitle: Coming soon—will be covered post-Spring Break
 ---
 
 ## Learning Outcomes
@@ -18,6 +18,7 @@ subtitle: TODO
 
 ::::
 
+<!--
 ## Visuals
 
 ```{math} :label: iron-law
@@ -60,3 +61,4 @@ Which processor, A or B, will execute this program faster?
 :::
 
 ::::
+-->

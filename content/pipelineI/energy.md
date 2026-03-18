@@ -1,6 +1,6 @@
 ---
 title: "Energy Efficiency"
-subtitle: TODO
+subtitle: This content is not tested
 ---
 
 ## Learning Outcomes
@@ -17,6 +17,8 @@ subtitle: TODO
 :::
 
 ::::
+
+<!--
 
 ## Visuals
 
@@ -59,3 +61,4 @@ Inverter (INV) schematic.
 
 36 years of clock rate and power trends.
 :::
+-->
