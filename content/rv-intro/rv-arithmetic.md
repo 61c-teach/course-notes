@@ -30,6 +30,7 @@ short_title: "Arithmetic, Immediates, Pseudoinstructions"
 
 ::::
 
+(sec-rv-add)=
 ## `add` and `sub` Instructions
 
 Generally, assembly instructions have a very rigid format. Consider **arithmetic and logical instructions** like addition (`add`), bitwise AND (`and`), etc., which operate on two registers and store the result in a third register. These instructions always follow the same rigid syntax shown in @fig-r-type-arithmetic:
