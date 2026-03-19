@@ -31,8 +31,7 @@ executing RISC-V instructions in **one cycle each**. It is divided into multiple
     * Read from or write to the data memory (DMEM).
     * Hardware units: DMEM
 1. **WB** Writeback
-    * Write back either PC + 4, the result of the ALU operation, or data from memory to the
-RegFile.
+    * Write back either PC + 4, the result of the ALU operation, or data from memory to the RegFile.
     * Hardware units: WBSel mux, RegFile
 
 ## Textbook Readings

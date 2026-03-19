@@ -160,9 +160,9 @@ Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.p
 
 [^gp-tp]: Out of scope: `gp` (global pointer, used to store a reference to the heap) and `tp` (thread pointer, used to store separate stacks for threads). Consider these registers "off-limits"–using them violates register conventions!
 
-## Instruction Types
+## Instruction Format Types
 
-:::{table} RV32I Instruction Types
+:::{table} RV32I Instruction Format Types
 :label: tab-rv32i-types
 :align: center
 

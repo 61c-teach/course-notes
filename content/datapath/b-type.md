@@ -17,10 +17,12 @@ title: "Implementing Branches"
 
 ::::
 
+
 ## Tracing the Branch Datapath
 
 <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-branch.pptx' width='100%' height='600px' frameborder='0'>
 
+(sec-datapath-branch-comparator)=
 ## Branch Comparator Block
 
 :::{figure} images/element-branch-comparator.png
@@ -44,6 +46,6 @@ This subcircuit takes two inputs and outputs the result of comparing the two inp
 | `B` (`BrData2`) | Input | 32 | Second value to compare |
 | `BrUn` | Input | 1 | `1` when an **unsigned** comparison is wanted, and `0` when a **signed** comparison is wanted |
 | `BrEq` | Output | 1 | Set to `1` if the two values are equal |
-| `BrLt` | Output | 1 | Set to `1` if the value in rs1 is less than the value in rs2 |
+| `BrLT` (`BrLt`) | Output | 1 | Set to `1` if the value in rs1 is less than the value in rs2 |
 
 :::

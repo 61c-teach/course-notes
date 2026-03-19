@@ -265,3 +265,18 @@ Immediate Generator Block: I-Type, S-Type
 1. `imm[0]`: **Select**. `inst[20]` if I-Type, `inst[7]` if S-Type, and `0` ([implicit](#sec-implicit-zero-b-type)) if B-Type.
 
 :::
+
+### Course Project Details
+
+:::{table} Default `ImmSel` encodings for the course project. You are welcome to pick your own.
+:label: tab-immgen-operations
+
+| `ImmGen` Value <br/>(for Project) | Immediate Type |
+| :-- | :-- |
+| `0b000` | I |
+| `0b001` | S |
+| `0b010` | B |
+| `0b011` | U |
+| `0b100` | J |
+
+:::
