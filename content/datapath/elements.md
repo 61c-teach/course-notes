@@ -60,19 +60,19 @@ The Program Counter, `PC`, is a single 32-bit register in the CPU.
 * _Write_: **Rising-edge triggered**. On rising clock edge, if Write Enable is 1, set Data Out to Data In (delay of clk-to-q).
 
 (sec-element-regfile)=
-### Register File (`Regfile`)
+### Register File (Regfile)
 
-The **Register File** (regfile, or `RegFile`) has 32 registers: register numbers `x0` to `x31`.
+The **Register File** (or RegFile) has 32 registers: register numbers `x0` to `x31`.
 
 :::{figure} images/element-regfile.png
 :label: fig-element-regfile
 :width: 50%
 :alt: "TODO"
 
-The RegFile is symbolically written as `RegFile` and is composed of registers `x0` to `x31`.
+The RegFile is symbolically written as RegFile and is composed of registers `x0` to `x31`.
 :::
 
-::::{table} Regfile signals. Course project signal names, if different, are in parentheses.
+::::{table} RegFile signals. Course project signal names, if different, are in parentheses.
 :label: tab-regfile-signals
 :align: center
 
@@ -103,22 +103,22 @@ For _read_ operations, the RegFile behaves like **a combinational logic block**.
 :::
 
 (sec-element-dmem)=
-### `DMEM`: Data Memory
+### DMEM: Data Memory
 
 For this class, memory is "magic." Assume a 32-bit byte-addressed memory space, and memory access occurs with 32-bit words. We go into more detail with our course projects.
 
-For our single-cycle datapath, we must access memory **twice**: once during `IF` (Instruction Fetch) to read the instruction from memory, and once during `MEM` (Memory Access) if we load/store data from/to memory. We therefore need two memory blocks: `IMEM` and `DMEM` for instruction memory and data memory, respectively.[^imem-dmem-cache]
+For our single-cycle datapath, we must access memory **twice**: once during `IF` (Instruction Fetch) to read the instruction from memory, and once during `MEM` (Memory Access) if we load/store data from/to memory. We therefore need two memory blocks: IMEM and DMEM for instruction memory and data memory, respectively.[^imem-dmem-cache]
 
-[^imem-dmem-cache]: Under the hood, `IMEM` and `DMEM` are placeholders for L1 caches: `L1i`, `L1d`.
+[^imem-dmem-cache]: Under the hood, IMEM and DMEM are placeholders for L1 caches: `L1i`, `L1d`.
 
-The Data Memory block `DMEM` has edge-triggered writes, just like `RegFile`.
+The Data Memory block DMEM has edge-triggered writes, just like `RegFile`.
 
 :::{figure} images/element-dmem.png
 :label: fig-dmem-block
 :width: 50%
 :alt: "TODO"
 
-The Data Memory block `DMEM`. Read operations behave like combinational logic, whereas write operations occur on the rising clock edge.
+The Data Memory block DMEM. Read operations behave like combinational logic, whereas write operations occur on the rising clock edge.
 :::
 
 
@@ -136,7 +136,7 @@ The Data Memory block `DMEM`. Read operations behave like combinational logic, w
 
 ::::
 
-**Behavior**: `DMEM` read/writes behave similarly to Regfile, though now we provide memory addresses as input, not register numbers.
+**Behavior**: DMEM read/writes behave similarly to Regfile, though now we provide memory addresses as input, not register numbers.
 
 * Read: Address `addr` selects word to put on `rdata` bus. If `MemRW` is 0 and `addr` is valid, then `rdata` is valid after access time.
 * Write: **Rising-edge-triggered write**. On rising clock edge, if `MemRW` is set to 1, write `wdata` to address `addr`.
@@ -147,9 +147,9 @@ We implement a more complicated DMEM block in our project; see the [Partial Load
 :::
 
 (sec-element-imem)=
-### `IMEM`: Instruction Memory
+### IMEM: Instruction Memory
 
-The Instruction Memory block `IMEM` is a **read-only memory** that fetches instructions.[^imem-foot]
+The Instruction Memory block IMEM is a **read-only memory** that fetches instructions.[^imem-foot]
 
 [^imem-foot]: We will need to write the instruction memory when we load the program, which we ignore for simplicity.
 
@@ -158,7 +158,7 @@ The Instruction Memory block `IMEM` is a **read-only memory** that fetches instr
 :width: 50%
 :alt: "TODO"
 
-In our CPU, the Instruction Memory block `IMEM` is read-only and behaves like combinational logic.
+In our CPU, the Instruction Memory block IMEM is read-only and behaves like combinational logic.
 :::
 
 ::::{table} IMEM signals. Course project signal names, if different, are in parentheses.

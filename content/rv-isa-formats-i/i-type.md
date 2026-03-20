@@ -50,8 +50,6 @@ I-Type Fields:
 
 [^imm-reminder]: Again, immediates are called as such because their bit patterns are directly encoded into the machine instruction.
 
-
-
 ## Assembly Instruction $\rightarrow$ Machine Instruction
 
 Consider @fig-itype-addi-example, which translates `addi x15 x1 -50` to a machine instruction.
