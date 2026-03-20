@@ -3,6 +3,7 @@ title: "B-Type"
 subtitle: "TODO. These notes are incomplete; see Spring 2026 lecture"
 ---
 
+(sec-b-type)=
 ## Learning Outcomes
 
 * Translate between B-Type assembly instructions and machine instructions.
