@@ -2,6 +2,7 @@
 title: "Control Logic Design"
 ---
 
+(sec-datapath-control)=
 ## Learning Outcomes
 
 * Given an instruction, identify control signals.
@@ -112,7 +113,6 @@ In this course, we implement the controller design in @fig-control-design, which
 
 2. The **Take branch?** combinational logic block takes in the Branch Comparator outputs and outputs the `PCSel` control signal.
 
-
 :::{figure} images/control-design.png
 :label: fig-control-design
 
@@ -163,8 +163,27 @@ Why do we need a "Part 2"? Why is `PCSel` not directly encoded in the ROM?
 :class: dropdown
 
 The `PCSel` control signal cannot be encoded in the ROM since it depends on `BrEq` and `BrLT` for B-Type/branch instructions. These signals are computed with the branch comparator (from the datapath), which depends on outputs of datapath elements driven by control signals from the ROM unit.
-
 To complete the control logic, implement the "Take branch?" block as combinational logic to drive the `PCSel` output.
+:::
+
+:::{tip} Stable waveforms
+
+How can we ensure that `PCSel` is stable?
+:::
+
+:::{note} Show Answer
+:class: dropdown
+
+Because the two "parts" of control logic use different data signals that are stable at different parts of the clock cycle, it is possible that early in the cycle, `PCSel` may hold an incorrect value before `BrEq` and `BrLT` are computed using the stable inputs `R[rs1]` and `R[rs2]` of the [branch comparator](#fig-branch-branch-comparator). Close to the end of the cycle, `BrEq` and `BrLT` will be stable, thereby setting `PCSel` to the correct value.
+
+The clock cycle must be (at least) long enough to accommodate:
+
+* `ID`: Reading register values `R[rs1]` and `R[rs2]`
+* `EX`: Computing `PC + imm` with the ALU
+* Control: Setting up `BrUn` (and all other `inst`-based signals)
+* `EX`: Comparison using the branch comparator
+* Control: Setting up `PCSel` based on `BrEq` and `BrLT`
+
 :::
 
 (sec-control-cl)=

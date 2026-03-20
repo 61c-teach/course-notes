@@ -29,32 +29,31 @@ title: "Supporting Loads and Stores"
 
 ::::
 
-
 ## Building a Processor with DMEM access
 
 Recall that [load](#sec-load-word) instructions are [I-Type](#sec-rv-load) because they read a register, have an immediate, and write to a register a 32-bit value read from memory.
 
-To support `lw`, we use a similar datapath to `addi` but instead compute an address with which to access `DMEM`.
+To support `lw`, we use a similar datapath to `addi` but instead compute an address with which to access DMEM.
 
-* `RegFile`: We **read** _one_ register `rs1` and write one register `rd`. The value to write is a **word** read from memory.
-* `PC`: We **read** from and **write** to `PC`. The value to write is `PC + 4`.
-* `DMEM`: We **read** the memory word at address `R[rs1] + imm`.
+* RegFile: We **read** _one_ register `rs1` and write one register `rd`. The value to write is a **word** read from memory.
+* PC: We **read** from and **write** to PC. The value to write is `pc + 4`.
+* DMEM: We **read** the memory word at address `R[rs1] + imm`.
 
-Loads (and stores) participate in the `MEM` phase of [the five step process](#sec-five-steps). We therefore introduce additional logic connecting `DMEM` to the ALU and the `RegFile`, as shown in @fig-lw-dmem:
+Loads (and stores) participate in the `MEM` phase of [the five step process](#sec-five-steps). We therefore introduce additional logic connecting DMEM to the ALU and the RegFile, as shown in @fig-lw-new-blocks.
 
-::::{figure} images/lw-dmem.png
-:label: fig-lw-dmem
+::::{figure} images/lw-new-blocks.png
+:label: fig-lw-new-blocks
 :width: 100%
 
-`DMEM`: Connect and use a mux before `WB` (Write Back).
+DMEM: Connect and use a mux before `WB` (Write Back) phase.
 ::::
 
 **DMEM**: To read the memory at an address, we use the ALU to compute the address as `alu = R[rs1] + imm`. This  readily reuses the circuitry for arithmetic and logical I-Type instructions.
 
-**Mux**: We now include a mux after the ALU and DMEM that uses the control signal `WBSel` to select between two values for `wdata`, the data to write to `R[rd]`:
+**Mux**: We now include a mux after the ALU and DMEM that uses the control signal `WBSel` to select between two values for `wdata` (the data to write to `R[rd]`):
 
 * Arithmetic and Logical R-Type or I-Type instructions: The output of the ALU (`alu`), which is now wired both into `addr` and into the new mux.
-* Load instructions: The output of `DMEM` (`mem`).
+* Load instructions: The output of DMEM (`mem`).
 
 ::::{figure}
 :label: anim-datapath-lw
@@ -65,7 +64,7 @@ Loads (and stores) participate in the `MEM` phase of [the five step process](#se
 The `lw` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file. 
 ::::
 
-1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)).
+1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)). Read the instruction `inst` from IMEM.
 
 1. **Instruction Decode**: Fetch `R[rs1]` from RegFile, build the immediate `imm` for [I-Type instructions](#tab-i-type) (see [I-Type datapath](#sec-datapath-i-type)). Also configure control logic:
     * Configure `ImmSel` to `I`-type immediates.
@@ -81,10 +80,11 @@ The `lw` datapath. Use the menu bar to trace through the animation or download a
 
 1. **Memory**: Read memory at address `alu = R[rs1] + imm`. After some delay, the output signal `mem` has the value `Mem[R[rs1] + imm]`.
 
-1. **Write Back**: Write DMEM output to the destination register by connecting the output of the `WBSel` mux to RegFile's `wdata` input.
+1. **Write Back**: Write DMEM output to the destination register and connect the output of the `WBSel` mux to RegFile's `wdata` input.
 
     Around the next rising clock edge, `wdata`, `RegWEn`, and `rd` should be held stable through setup and hold time of RegFile.
 
+(sec-datapath-store)=
 ## Tracing the Store Datapath
 
 By contrast, [store](#sec-store-word) instructions, by contrast, are [S-Type](#sec-s-type) because they read two registers, have an immediate, and write to memory. Stores do not write data to registers.
@@ -105,7 +105,7 @@ The `sw` datapath. Use the menu bar to trace through the animation or download a
 
 1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)).
 
-1. **Instruction Decode**: Fetch `R[rs1]` and `R[rs2]` from RegFile, and build the immediate `imm` for [I-Type instructions](#tab-i-type) (see [I-Type datapath](#sec-datapath-i-type)). Also configure control logic (see below).
+1. **Instruction Decode**: Fetch `R[rs1]` and `R[rs2]` from RegFile, and build the immediate `imm` for S-Type instructions. Also configure control logic (see below).
 
 1. **Execute**: Because the control line `BSel=1` selects the generated immediate `imm` for ALU input `B`, our ALU computes `R[rs1] + imm`.
 
@@ -113,12 +113,13 @@ The `sw` datapath. Use the menu bar to trace through the animation or download a
 
     Around the next rising clock edge, `wdata` (DMEM input), `MemRW`, and `addr` should be held stable through setup and hold time of RegFile.
 
-1. **Write Back**: (We don't write to `RegFile`, so skip this.)
+1. **Write Back**: (We don't write to RegFile, so skip this.)
 
-:::{note} Store: Control Signals
+(sec-control-store)=
+:::{note} Control Signals for Stores
 
 * Configure `ImmSel` to `S`-type immediates.
-* Set `RegWEn` to `0`. This means **no** write back to `RegFile`.
+* Set `RegWEn` to `0`. This means **no** write back to RegFile.
 * Set `BSel` to `1`.
 * Set `ALUSel` to `Add`.
 * Set `MemRW` to `Write`. This means write to `DMEM` on next rising clock edge.

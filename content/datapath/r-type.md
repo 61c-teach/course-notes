@@ -48,13 +48,13 @@ add ...
 
 In order to support `add` in our datapath, we consider the  two state elements changed by this instruction's operations:
 
-* `RegFile`: We **read** two registers `rs1` and `rs2` and write one register `rd`. The value to write is the **sum** between the two read register values, `R[rs1] + R[rs2]`.
-* `PC`: We **read** from and **write** to the `PC` register. The value to write is `PC + 4`.
+* RegFile: We **read** two registers `rs1` and `rs2` and write one register `rd`. The value to write is the **sum** between the two read register values, `R[rs1] + R[rs2]`.
+* PC: We **read** from and **write** to the PC register. The value to write is `PC + 4`.
 
 Other state elements:
 
-* `IMEM`: The processor must **read** the RV32I instruction from the read-only `IMEM` during the `IF` (Instruction Fetch) phase.
-* `DMEM`: The processor does not additionally access memory via a load or store. The `add` instruction does not participate in the `MEM` phase of [the five step process](#sec-five-steps).
+* IMEM: The processor must **read** the RV32I instruction from the read-only IMEM during the `IF` (Instruction Fetch) phase.
+* DMEM: The processor does not additionally access memory via a load or store. The `add` instruction does not participate in the `MEM` phase of [the five step process](#sec-five-steps).
 
 :::{warning} Goal: Iteratively Build Processor
 In these notes, we will iteratively build the processor, meaning we will introduce important combinational logic blocks as the processor supports more instructions. Some animations will therefore not include the entire datapath. For exercises involving the full datapath, see the end of this chapter.
@@ -62,7 +62,7 @@ In these notes, we will iteratively build the processor, meaning we will introdu
 
 :::{figure} images/add-no-dmem.png
 :label: fig-add-no-dmem
-For now, we disconnect `DMEM` since it is unused for `add` (@fig-add-no-dmem). We will add it back when we discuss [loads and stores](#sec-datapath-load-store).
+For now, we disconnect DMEM since it is unused for `add` (@fig-add-no-dmem). We will add it back when we discuss [loads and stores](#sec-datapath-load-store).
 :::
 
 (sec-datapath-add)=
@@ -80,7 +80,7 @@ The `add` datapath. Use the menu bar to trace through the animation or download 
 ::::
 
 1. **Instruction Fetch**:
-    * On the rising clock edge, the `pc` wire updates to the instruction to execute in this cycle. It feeds into `IMEM` which, after some delay, updates the `inst` output signal.
+    * On the rising clock edge, the `pc` wire updates to the instruction to execute in this cycle. It feeds into IMEM which, after some delay, updates the `inst` output signal.
     * Increment the PC to the next instruction. The `pc` wire also feeds into a small adder that adds `4`. The output to this small adder is wired to the input of the `PC` register, set up and ready to update on the next rising clock edge.
 
 1. **Instruction Decode**: We only have one instruction, so decoding is simply decoding the specific bits to identify the registers. We use the green card and our [R-Type format](#tab-rv32i-types) to introduce a splitter on the `inst` signal to "index" into the RegFile as follows:
@@ -112,8 +112,8 @@ add ...
 
 Let's again consider the state elements changed by this instruction's operations:
 
-* `RegFile`: We still **read** two registers `rs1` and `rs2` and write one register `rd`. But now the value to write is the **difference** between the two read register values, `R[rs1] - R[rs2]`.
-* `PC`: We **read** from and **write** to the `PC` register. The value to write is `PC + 4`.
+* RegFile: We still **read** two registers `rs1` and `rs2` and write one register `rd`. But now the value to write is the **difference** between the two read register values, `R[rs1] - R[rs2]`.
+* PC: We **read** from and **write** to the PC register. The value to write is `pc + 4`.
 
 `sub` is almost the same as `add`, except now the ALU subtracts. We implement the support for both `add` and `sub` by assuming more complexity in the Control Logic "block" (@fig-sub-datapath).
 
@@ -189,7 +189,7 @@ Note that the implementation of functional units like the ALU are **intentionall
 :::{table} Operations for ALU Block for the course project
 :label: tab-alu-operations
 
-| ALUSel Value <br/>(for Project) | Operation | ALU Function |
+| `ALUSel` Value <br/>(for Project) | Operation | ALU Function |
 | :-- | :-- | :-- |
 | 0  |  add   | `ALUResult = A + B` |
 | 1  | sll    | `ALUResult = A << B[4:0]`|

@@ -174,9 +174,9 @@ project:
       - title: "L23 Single-Cycle CPU Control, Instruction Timing"
         children:
           - file: content/datapath/control.md
-          - file: content/datapath-control/instruction-timing.md
-          - file: content/datapath-control/special-regs.md
-          - file: content/datapath-control/summary.md
+          - file: content/datapath/instruction-timing.md
+          - file: content/datapath/special-regs.md
+          - file: content/datapath/summary.md
     - title: "L24 Pipelining I"
       children:
         - file: content/pipelineI/index.md

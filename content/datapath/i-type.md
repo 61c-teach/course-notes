@@ -24,8 +24,8 @@ title: "Supporting Immediates"
 
 Let's extend our R-Type datapath to support I-Type arithmetic and logical instructions, starting with `addi`. To support `addi`:
 
-* `RegFile`: We **read** _one_ register `rs1` and write one register `rd`. The value to write is the **sum** between the read register value and an immediate, `R[rs1] + imm`.
-* `PC`: We **read** from and **write** to `PC`. The value to write is `PC + 4`.
+* RegFile: We **read** _one_ register `rs1` and write one register `rd`. The value to write is `R[rs1] + imm`, the **sum** of the read register value and an immediate.
+* PC: We **read** from and **write** to PC. The value to write is `pc + 4`.
 
 The `addi` instruction updates the same two states as R-Type instructions. But we now need to build an immediate `imm`!
 
@@ -46,7 +46,7 @@ To do so, we **reuse** what already exists in our R-Type datapath, then consider
 
 We therefore need **additional logic** that, for I-Type instructions, feeds in an immediate `imm` to ALU input `B` (instead of `R[rs2]`, used for R-Type). @fig-addi-new-blocks introduces the two new blocks and wires them to our existing datapath:
 
-1. A new **mux** selects the immediate for the ALU input `B` based on a new control signal `BSel`. Read about muxes/multiplexors in a [previous section](#sec-mux).
+1. A new **mux** selects the ALU input `B` based on a new control signal `BSel`. Read about muxes/multiplexors in a [previous section](#sec-mux).
     * Set `BSel` to `1` to pass in the immediate `imm`.
     * Set `Bsel` to `0` to pass in the register value `R[rs2]`.
 1. A new block, the **immediate generator**, generates a 32-bit value `imm` from the instruction bits `inst`.
@@ -72,7 +72,7 @@ Let's walk through the `addi` datapath with this new knowledge.
 The `addi` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file. 
 ::::
 
-1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)).
+1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)). Read the instruction `inst` from IMEM.
 
 1. **Instruction Decode**:
     * Read `R[rs1]` from RegFile (see [R-Type](#sec-datapath-add)).
@@ -88,7 +88,7 @@ The `addi` datapath. Use the menu bar to trace through the animation or download
 
 1. **Execute**: Because the control line `BSel=1` selects the generated immediate `imm` for ALU input `B`, our ALU computes `R[rs1] + imm`.
 
-1. **Memory**: (We don't access memory, so skip this.)
+1. **Memory**: (We don't access DMEM, so skip this.)
 
 1. **Write Back**: Write ALU output to the destination register by connecting `alu` to RegFile's `wdata` input (see [R-Type](#sec-datapath-add)).
 
@@ -99,7 +99,7 @@ The `addi` datapath. Use the menu bar to trace through the animation or download
 
 In our datapath, read operations are like combinational logic, meaning RegFile, IMEM, and DMEM perform reads based on the input signals. There is no way to "turn off" read operations.
 
-Data `inst[24:20]` still feeds into `RegFile`, which still outputs `R[rs2]`.
+Data `inst[24:20]` still feeds into RegFile, which still outputs `R[rs2]`.
 However, control `Bsel=1` means `R[rs2]` data line is ignored.
 
 In general, our diagrams will omit unselected data lines from lighting.
@@ -206,8 +206,9 @@ Observations/reminders:
 
 * You should treat I*-type immediates as I-type immediates, since the ALU should only use the lowest 5 bits of the B input when computing shifts.
 * Recall that all immediates are 32 bits and **sign-extended**. Sign extension is shown in @tab-immgen-types as `inst[31]` repeated in the upper bits.
+* U-type instructions require left-shifting the immediate by 12 bits (e.g. `lui` is written as `rd = imm << 12` on the reference card). This should be done in the immediate generator so that the datapath doesn't need to perform any extra shifting.
 
-Like with the full datapath, we "iteratively" build the immediate generator to support I-Type, then S-Type, then B-Type. We leave the implementation of J-Type and U-Type immediates to you and the course project.
+In the following subsections, we "iteratively" build the immediate generator to support I-Type, then S-Type, then B-Type. We leave the implementation of J-Type and U-Type immediates to you and the course project.
 
 ### I-Type
 
@@ -245,6 +246,7 @@ Immediate Generator Block: I-Type, S-Type
 1. `imm[4:0]`: **Select**. Select the five bits to fill `imm[4:0]`: `inst[24:20]` if I-Type, and `inst[11:7]` if S-Type.
 :::
 
+(sec-immgen-b-type)=
 ### I-Type, S-Type, B-Type
 
 Finally, suppose our datapath supports I-Type, S-Type, and B-Type instructions. The immediate generator design is shown in @fig-immgen-i-s-b-type, now with even more MUXes.
