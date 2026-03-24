@@ -162,7 +162,7 @@ When data occupies multiple contiguous bytes in memory, the computer must determ
 This property is called **endianness**.[^gulliver] For a given word:
 
 * **Little endian** machines store the _least_significant byte_ first, at the lowest address of the word.
-* **Big endian** machines store the _most_ significant byte_ first, at the lowest address of the word.
+* **Big endian** machines store the _most_significant byte_ first, at the lowest address of the word.
 
 The choice of endianness is one of convention[^endianness]. Nearly all modern computer architectures are little endian.
 
