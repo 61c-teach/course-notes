@@ -47,7 +47,9 @@ Often the system clock signal **CLK** (see [The Clock](#sec-clock)), is used as 
 Diagram of a clocked register implemented through a memory circuit.
 :::
 
-## What's inside a register?
+
+(sec-flip-flops)=
+## What's inside a register? Flip-Flops
 
 As shown in @fig-reg-comps, an `n`-bit wide register is nothing other than `n` instances of a simpler circuit[^state-handout].
 
@@ -60,8 +62,6 @@ As shown in @fig-reg-comps, an `n`-bit wide register is nothing other than `n` i
 
 Diagram of a register built from `n` instances of simpler circuits called **flip-flops**.
 :::
-
-### Flip-Flops
 
 We call these simple circuits **flip-flops** (FF), which are 1-bit wide registers named from the fact that when in operation, it flips (and flops) between holding a `0` or a `1`. The `CLK` (or `LOAD`) signal is sent to the `CLK` (or `LOAD`) input of all `n` FFs. Each FF is responsible for storing one bit of the `n`-bit data stored by the register. By register convention, the input is labeled `D` and the output is labeled `Q`. In the case of a single bit, the input is labeled `d` and the output is labeled `q`.
 
