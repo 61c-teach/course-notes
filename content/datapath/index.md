@@ -122,7 +122,6 @@ A strawman, bulky approach to implementing our datapath. We discuss the state el
 While we could theoretically build a separate "bubble" of combinational logic for every single instruction and use multiplexers to select between them, that is not practical because many instructions share the same data path.
 :::
 
-(sec-five-steps)=
 ## 5 Steps to a RISC-V Instruction
 
 Instead of the complicated FSM approach above, we will break up the process into **five steps**, then connect the steps to create the whole processor circuit. For each instruction, we will determine whether additional logic needs to be incorporated into each phase.
@@ -132,15 +131,17 @@ The benefit of this approach is two-fold:
 1. Smaller steps are easier to design
 1. Modularity means that we can optimize one step without touching the others.
 
-Here are the five steps to executing a RISC-V instruction.
+(sec-five-steps)=
+:::{note} Five steps to a RISC-V instruction
 
 1. **Instruction Fetch (`IF`)**: Fetch the instruction from [memory](#sec-element-imem) and increment the [program counter](#sec-element-pc).
 1. **Instruction Decode (`ID`)**: Determine the operation from the bits of the instruction and read registers from the [register file](#sec-element-regfile).
 1. **Execute (`EX`)**: Use the [Arithmetic Logic Unit (ALU)](#sec-alu) to perform the operation.
 1. **Memory Access (`MEM`)**: Load data from [memory](#sec-element-dmem), or store data[^mem-phase] to memory.
 1. **Write Back (`WB`)**: Write back[^wb-phase] to the [register file](#sec-element-regfile).
+:::
 
-All phases of one RV32I instruction will execute within the same cycle[^mem-phase][^wb-phase]: Instruction Fetch (`IF`) starts on the first rising edge of a clock, and Write Back (`WB`) finishes[^wb-phase] the final result on the next rising edge.
+In the single-cycle datapath, all phases of one RV32I instruction will execute within the same cycle[^mem-phase][^wb-phase]: Instruction Fetch (`IF`) starts on the first rising edge of a clock, and Write Back (`WB`) finishes[^wb-phase] the final result on the next rising edge.
 
 :::{warning} Not all steps are needed for every instruction!
 
@@ -152,7 +153,7 @@ For example, our [R-Type instructions](#sec-datapath-r-type), does not need memo
 
 [^mem-phase]: It is more accurate to say that during `MEM`, we setup the data to store back to `DMEM` by ensuring that the input to `DMEM` is stable before the next rising edge of the clock. Then, on the rising edge, `MEM` stores the correct value to memory. See more: [DMEM](#sec-element-dmem)
 
-[^wb-phase]: It is more accurate to say that during `WB`, we set up the value to write back to the Register File by ensuring that the input D of register `rd` is stable at setup time, before the next rising edge of the clock. Then, on the rising edge, the register `rd` takes this value, then after a clk-to-q delay, has the correct value on its output Q. See more: [RegFile](#sec-element-regfile)
+[^wb-phase]: For our single-cycle datapath, it is more accurate to say that during `WB`, we set up the value to write back to the Register File by ensuring that the input D of register `rd` is stable at setup time, before the next rising edge of the clock. Then, on the rising edge, the register `rd` takes this value, then after a clk-to-q delay, has the correct value on its output Q. See more: [RegFile](#sec-element-regfile)
 
 In the next section, we introduce the key elements of a RISC-V **datapath**. For now, we share @fig-five-step-single-cycle-datapath and let you guess at the meaning of each hardware block.
 
@@ -178,4 +179,4 @@ You will see the literature refer to a "5-stage RISC-V pipeline." In our class, 
 
 :::
 
-Finally, it should be noted that this single-cycle approach is not practical, since the clock cycle must stretch to accommodate the longest instruction that takes all five steps. After designing the single-cycle datapath, we will look at faster implementations that leverage **pipelining**.
+Finally, we note that this single-cycle approach is not practical, since the clock cycle must stretch to accommodate the slowest instruction that takes all five steps. After designing the single-cycle datapath, we will look at faster implementations that leverage **pipelining**.

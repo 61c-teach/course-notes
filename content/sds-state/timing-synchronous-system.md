@@ -147,12 +147,14 @@ would not have sufficient time to generate its output and the output register wo
 
 At the same time, we seek to create high-bandwidth circuits, which produce many outputs per second. We'd like to find an ideal balance between a high-frequency clock and stable outputs.
 
-:::{hint} The minimum clock period (T) is the delay on the critical path.
+(sec-critical-path)=
+:::{hint} The minimum clock period is the delay on the critical path.
 
 **Critical path of a circuit**: The path between input(s) and output(s) that incurs worst-case (maximum) delay. Typically this is determined by identifying the longest delay from any register (flip-flop) output to any register (flip-flop) input.
 :::
 
-:::{hint} The maximum clock frequency (f) is the inverse of the minimum clock period.
+(sec-max-clock-frequency)=
+:::{hint} The maximum clock frequency is the inverse of the minimum clock period.
 
 $T$ is clock period (in seconds, or nanoseconds), and $f$ is clock frequency (in cycles/second, or s{sup}`-1`, or Hz, or GHz). 
 

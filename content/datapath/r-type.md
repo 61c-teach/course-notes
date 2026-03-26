@@ -17,6 +17,7 @@ title: "R-Type Datapath, ALU"
 :title: "[CS61C FA20] Lecture 18.3 - Single-Cycle CPU Datapath I: R-Type Add Datapath"
 :::
 
+Until 7:40. The add timing from 7:40 onwards is discussed in a [later section](#sec-instruction-timing).
 ::::
 
 ::::{note} 🎥 Lecture Video
