@@ -211,7 +211,7 @@ Let's compare this performance in @tab-processor-compare.
 
 Based on @tab-processor-compare, our **throughput gain**, or pipelining speedup, is close to the ratio of times between instructions. One approachis to time the single-cycle and pipelined processors against a benchmark program like 1 million `lw` instructions[^no-hazards]:
 
-[^no-hazards]: We assume no [load data hazards](#hazards-data-load) in this program.
+[^no-hazards]: We assume no [load data hazards](#sec-data-hazards-load) in this program.
 
 * The single-cycle processor takes $10^{6} \cdot t_{cycle}$ = 800,000,000 ps.
 * The pipelined processor takes $10^{6} \cdot t_cycle + 4 \cdot t_cycle$ = 200,000,800 ps, where there are four cycles to accommodate the "startup" time of the pipeline (where not all stages of pipeline are used).

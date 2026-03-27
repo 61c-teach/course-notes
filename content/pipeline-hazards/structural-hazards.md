@@ -1,6 +1,5 @@
 ---
 title: "Structural Hazards"
-subtitle: Coming soon. Watch video for now!
 ---
 
 (sec-pipeline-hazards)=
@@ -35,16 +34,21 @@ There are three types of hazards:
 
 In this unit, we describe each type of hazard and resolve hazards through various solutions in hardware, during execution time, or in the program code:
 
-* **Stalling** is one inefficient solution to resolving any type of hazard, where we delay instructions until we can execute them without incurring hazards. Because performance suffers with stalling, we will discuss ways to avoid stalling where possible (though it is always a good last resort). See [this section](#sec-data-stall).
+* **Stalling** is one inefficient solution to resolving any type of hazard, where we delay instructions until we can execute them without incurring hazards. Because performance suffers with stalling, we will discuss ways to avoid stalling where possible (though it is always a good last resort). See [this section](#sec-data-hazards-stall).
 * Specify **hardware requirements**, i.e., on specific hardware units within the pipeline.
-* **Forwarding**, also known as bypassing, is when we wire more connections in the datapath and instead use results when computed. See [this section](#sec-data-forward).
+* **Forwarding**, also known as bypassing, is when we wire more connections in the datapath and instead use results when computed. See [this section](#sec-data-hazards-forward).
 * **Code scheduling**, where we rearrange instructions at compile-time to avoid hazards.
 
 In practice, computers use a combination of the above techniques to maximize throughput and maintain the benefits of **instruction-level parallelism** that pipelining provides.
 
 ## Structural Hazards
 
-Structural hazards are about the **hardware**, not the instruction. From P&H 4.6:
+From earlier:
+
+:::{embed} #block-def-hazard-structural
+:::
+
+From P&H 4.6:
 
 > A structural hazard in the laundry room would occur if we used a washer-dryer combination instead of a separate washer dryer. Our carefully scheduled pipeline plans would be foiled.
 > 

@@ -19,11 +19,15 @@ subtitle: Coming soon. Watch video for now!
 
 ::::
 
-(sec-data-stall)=
+(sec-data-hazards-stall)=
 ## Stalling
 
-(sec-data-forward)=
+(sec-data-hazards-forward)=
 ## Forwarding
+
+
+(sec-data-hazards-load)=
+## Load Data Hazards
 
 ## Visuals
 
