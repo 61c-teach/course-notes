@@ -10,7 +10,11 @@ title: "Recursive Procedure Calls"
 * Identify use cases for unconditional jump instructions and pseudoinstructions–in particular, know how to jump to procedures and return from procedures.
 
 We recommend pulling up the [register convention section](#tab-calling-convention) of the [RISC-V Green Card](#sec-green-card). We also recommend referencing the [Fundamental Steps](#sec-rv-procedure-call-steps) ([revisited version](#sec-rv-procedure-call-steps-revisited)) of procedure calls.
-%
+
+
+```{embed} #sec-rv-procedure-call-steps-revisited
+```
+
 ## Recursive Example: `factorial`
 
 Consider the below assembly implementation of `factorial`. We have omitted some lines for simplicity; see the full code at the end of this section.

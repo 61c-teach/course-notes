@@ -1,12 +1,14 @@
 ---
 title: "Pipelining for Performance"
-subtitle: "Adapted from John Wawrzynek"
+subtitle: "By John Wawrzynek, with edits by Lisa Yan"
 ---
 
 :::{warning} This content is out of scope for the midterm exam.
+
+This content is covered when we discuss pipelining in the [five-stage RISC-V datapath](#sec-five-stage-pipeline).
 :::
 
-(sec-pipelining)=
+(sec-pipelining-circuits)=
 ## Learning Outcomes
 
 * Explain how registers can be used to improve **throughput** performance of a circuit.
@@ -26,7 +28,7 @@ In a [previous section](#sec-use-register), we saw an example of where a registe
 
 [^state-handout]: These notes are adapted from Professor John Wawrzynek's notes: [State Handout](../resources/state.pdf).
 
-## Adding Registers to Improve Performance
+## Non-Pipelined Circuit
 
 Suppose we had the need to cascade two combinational logic circuits, an adder and a shifter. The idea of this circuit is that, when input values arrive, they are added together and then shifted by some amount. We can imagine that this circuit composition is part of a processor. @fig-non-pipelined-adder illustrates this example circuit on the left and timing diagram on the right.
 
@@ -40,7 +42,7 @@ Diagram of a *non-pipelined* add/shift circuit and the associated timing diagram
 
 We assume that the input values come from a register (shown in @fig-non-pipelined-adder as one combined register block) and the output goes into a register. On each clock cycle, we simultaneously capture a new pair of input values in the input register and the previous result in the output register. The waveforms for the operation of this circuit are shown on the right in @fig-non-pipelined-adder. There is a delay of one clock cycle from input (output of the input register) to output (output of the output register $R_{i-1}$).
 
-## Pipelining Registers
+## Pipelined Circuit
 
 The maximum clock frequency (minimum clock period) is limited by the propagation delay of the add/shift operation. If we try to make the clock period too short, then the add/shift logic would not have sufficient time to generate its output. Consequently, the output register would capture an incorrect value.
 
@@ -58,10 +60,38 @@ On each clock cycle, data moves from the output of `reg1`, through the adder, to
 
 :::{note} Can this circuit take new input values on each clock cycle?
 
-**Yes!** An interesting thing about this new pipelined circuit is that, after the data moves through the adder and gets captured in `reg2`, on the next clock cycle, when the data moves into the shifter, new data can simultaneously move into the adder since the adder is now free. Therefore, new input data values can be fed into the circuit on each clock cycle.
+**Yes!** An interesting observation about this new pipelined circuit is that, after the data moves through the adder and gets captured in `reg2`, on the next clock cycle, when the data moves into the shifter, new data can simultaneously move into the adder since the adder is now free. Therefore, new input data values can be fed into the circuit on each clock cycle.
 :::
 
-There will now be a two clock cycle delay from the insertion of a set of data into the circuit until when it appears at the output. However, the new clock period is shorter, so in absolute time, the delay from data insertion until output is not significantly worse. More importantly, because of the tranformation and the new higher clock rate, results will be generated at a higher rate (more outputs per second). This is a good transformation if you are evaluating on results/time, or **throughput**! If you are more interested in latency (or delay) for any one set of input values, then this transformation is less ideal.
+## Adding Registers to Improve Performance
+
+As illustrated by the equations below, there will now be a **two** clock cycle delay from the insertion of a set of data into the circuit until when it appears at the output. However, the new clock period is shorter, so in absolute time, the delay from data insertion until output (i.e., **latency**) is not significantly worse. More importantly, because of the tranformation and the new higher clock rate, results will be generated at a higher rate (more outputs per second, i.e., **throughput**).
+
+::::{card}
+:header: Non-pipelined circuit (@fig-non-pipelined-adder)
+
+```{math}
+\begin{aligned}
+\text{Critical path delay} &= t_{\texttt{clk-to-q}} + t_{\texttt{add}} + t_{\texttt{shift}} + t_{\texttt{setup}} \\
+\text{latency} &= t_{\texttt{clk-to-q}} + t_{\texttt{add}} + t_{\texttt{shift}} + t_{\texttt{setup}} \\
+\end{aligned}
+```
+::::
+
+
+::::{card}
+:header: Pipelined circuit (@fig-pipelined-adder)
+
+```{math}
+\begin{aligned}
+\text{Critical path delay} &= \max \{ t_{\texttt{clk-to-q}} + t_{\texttt{add}} + t_{\texttt{setup}}, t_{\texttt{clk-to-q}} + t_{\texttt{shift}} + t_{\texttt{setup}} \} \\
+\\
+\text{Latency} &= t_{\texttt{clk-to-q}} + t_{\texttt{add}} + t_{\texttt{setup}} + t_{\texttt{clk-to-q}} + t_{\texttt{shift}} + t_{\texttt{setup}}
+\end{aligned}
+```
+::::
+
+Pipelining is a good transformation if you are evaluating on results/time, or **throughput**. If you are more interested in **latency** (or delay) for any one set of input values, then this transformation is less ideal.
 
 <!-- ## Visuals
 

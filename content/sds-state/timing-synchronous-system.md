@@ -42,7 +42,7 @@ Nevertheless, introducing state elements will impact how much can occur in a giv
 
 :::{tip} Registers can be used to increase the achievable clock frequency.
 
-With the concept of pipeline registers, we can add registers to a circuit to actually improve performance. We discuss this idea in the [next section](#sec-pipelining).
+With the concept of pipeline registers, we can add registers to a circuit to actually improve performance. We discuss this idea in the [next section](#sec-pipelining-circuits).
 :::
 
 ## Accumulator Example
