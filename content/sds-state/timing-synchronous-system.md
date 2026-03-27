@@ -202,7 +202,7 @@ Example circuit.
 ::::{note} Show Answer
 :class: dropdown
 
-* **C.** 500 MHz
+* **B.** 200 MHz
 
 The critical path is highlighted in @fig-critical-path-answer.
 
