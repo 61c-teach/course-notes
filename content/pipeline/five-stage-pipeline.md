@@ -6,7 +6,7 @@ title: "The RISC-V 5-Stage Pipeline"
 ## Learning Outcomes
 
 * Explain how pipeline registers pass data in-between stages of the 5-stage pipeline.
-* Contrast the ways that the five-steps of a RISC-V instruction are implemented in a 5-stage pipeline and a single-cycle datapath.
+* Contrast the ways that the five-steps of a RISC-V instruction are implemented in a 5-stage pipelined processor and a single-cycle processor.
 * Discuss approaches to pipelining control.
 
 ::::{note} 🎥 Lecture Video
@@ -25,17 +25,17 @@ We strongly recommend first reading about **registers in pipelined circuits**, c
 
 :::
 
-In this section, we transform the single-cycle datapath into our RISC-V **five-stage pipelined datapath**. 
-A pipelined datapath "separates" the [five steps to a RISC-V instruction](#sec-five-steps) in the RV32I datapath. Each of these steps correspond to one **stage** in the five-stage pipeline:
+In this section, we transform the single-cycle processor into our RISC-V **five-stage pipelined processor**. 
+A pipelined processor "separates" the [five steps to a RISC-V instruction](#sec-five-steps) into **stages**, where stages execute in parallel during the same clock cycle.
 
 ```{embed} #sec-five-steps
 ```
 
 :::{note} Pipeline registers
 
-Each stage needs to process data from a different instruction. To do so, the five-stage pipelined datapath inserts **pipeline registers** between each stage.
+Each stage needs to process data from a different instruction. To do so, the five-stage pipeline inserts **pipeline registers** between each stage.
 
-**Pipeline registers** are registers inserted between stages that retain the results of individual instructions computed in one stage to be used in the next stage. These registers allow for portions of a single datapath to be shared by multiple instructions.
+**Pipeline registers** are registers inserted between stages that retain the results of individual instructions computed in one stage to be used in the next stage. These registers allow for portions of a single processor to be shared by multiple instructions.
 
 :::
 
@@ -197,7 +197,7 @@ We note there is nothing special to control in the `IF` stage, because the contr
 :width: 100%
 :alt: "TODO"
 
-Five-stage RISC-V datapath diagram with control.
+Five-stage RISC-V processor diagram with control.
 :::
 
 
@@ -205,7 +205,7 @@ Five-stage RISC-V datapath diagram with control.
 
 Implementing control means setting these control lines to the correct values in each stage for each instruction. We discuss two approaches below.
 
-One approach computes as many control signals as possible during instruction decode (`ID`) because all control signals but `PCSel` can be derived from the instruction. As shown in @fig-pipelined-control, this extends the pipeline registers to include control information to pipeline control "words" between stages. This approach reuses much of the control circuitry from our single-cycle datapath.
+One approach computes as many control signals as possible during instruction decode (`ID`) because all control signals but `PCSel` can be derived from the instruction. As shown in @fig-pipelined-control, this extends the pipeline registers to include control information to pipeline control "words" between stages. This approach reuses much of the control circuitry from our single-cycle processor.
 
 :::{figure} images/pipelined-control.png
 :label: fig-pipelined-control
@@ -219,14 +219,14 @@ Diagram of additional pipelined register for control.
 
 ## Summary
 
-The full five-stage pipeline datapath is shown in @fig-five-stage-summary; this is also on the course reference card.
+The full five-stage pipeline processor is shown in @fig-five-stage-summary; this is also on the course reference card.
 
 :::{figure} images/five-stage-summary.png
 :label: fig-five-stage-summary
 :width: 100%
 :alt: "TODO"
 
-Five-stage RISC-V datapath diagram with control.
+Five-stage RISC-V processor diagram: datapath and control.
 :::
 
 The 5-stage pipeline we have studied is commonplace in many devices: cars, appliances, etc.

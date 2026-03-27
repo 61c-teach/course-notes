@@ -226,8 +226,12 @@ Stages are imperfectly balanced, and there is some additional overhead to pipeli
 
 :::
 
-:::{hint} Takeaway from P&H 4.6
+(sec-ilp)=
+:::{hint} Instruction-level parallelism
 
+Pipelining is a means of **executing instructions in parallel** using the same processor hardware.
+
+From P&H 4.6:
 > Pipelining improves performance by \*increasing instruction throughput, in contrast to decreasing the execution time of an individual instruction\*. but instruction throughput is the important metric because real programs execute billions of instructions.
 
 :::

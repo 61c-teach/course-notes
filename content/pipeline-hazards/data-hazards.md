@@ -19,6 +19,12 @@ subtitle: Coming soon. Watch video for now!
 
 ::::
 
+(sec-data-stall)=
+## Stalling
+
+(sec-data-forward)=
+## Forwarding
+
 ## Visuals
 
 <!-- :::{figure} images/read-write-data-hazard.png

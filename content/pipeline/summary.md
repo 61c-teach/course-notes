@@ -39,7 +39,7 @@ The RISC-V ISA is designed for pipelining:
 * A small set of standard instruction formats.
     * Can decode/read registers in one stage (2nd, `ID`).
 * Load/store addressing conceptually:
-    * Calculate address in 3rd stage (`EX`) with ALU; and 
+    * Calculate address in 3rd stage (`EX`) with ALU; and
 * Access memory in one stage (4th, `MEM`).
     * Memory operands are all aligned
     * Memory access takes only one cycle.
