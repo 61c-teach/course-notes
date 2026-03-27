@@ -3,6 +3,7 @@ title: "Data Hazards"
 subtitle: TODO
 ---
 
+(sec-data-hazards)=
 ## Learning Outcomes
 
 * TODO

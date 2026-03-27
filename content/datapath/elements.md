@@ -29,14 +29,14 @@ In this section, we discuss the **state elements** needed in a RISC-V processor.
 (sec-element-pc)=
 ### Program Counter
 
-The Program Counter is a 32-bit register in @fig-element-pc and holds the value of the **current instruction**, i.e., instruction to execute in the current clock cycle.
+The Program Counter (PC) is a 32-bit register in @fig-element-pc and holds the value of the **current instruction**, i.e., instruction to execute in the current clock cycle.
 
 :::{figure} images/element-pc.png
 :label: fig-element-pc
 :width: 50%
 :alt: "TODO"
 
-The Program Counter, `PC`, is a single 32-bit register in the CPU.
+The Program Counter, PC, is a single 32-bit register in the CPU.
 :::
 
 :::{note} PC Signals
@@ -111,7 +111,7 @@ For our single-cycle datapath, we must access memory **twice**: once during `IF`
 
 [^imem-dmem-cache]: Under the hood, IMEM and DMEM are placeholders for L1 caches: `L1i`, `L1d`.
 
-The Data Memory block DMEM has edge-triggered writes, just like `RegFile`.
+The Data Memory block DMEM has edge-triggered writes, just like RegFile.
 
 :::{figure} images/element-dmem.png
 :label: fig-dmem-block

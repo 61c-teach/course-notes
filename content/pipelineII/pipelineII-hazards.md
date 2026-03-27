@@ -3,6 +3,7 @@ title: "Pipeline Hazards"
 subtitle: TODO
 ---
 
+(sec-pipeline-hazards)=
 ## Learning Outcomes
 
 * TODO

@@ -21,6 +21,9 @@ title: "Instruction Timing"
 
 How should we time our single-cycle datapath? How should we set the clock frequency? In this section, we develop an approximation of instruction timing using the [five steps to a RISC-V instruction](#sec-five-steps).
 
+```{embed} #sec-five-steps
+```
+
 ## Timing Diagram for `add`
 
 First, let's consider the delays in our beloved `add` instruction. Review the `add` datapath in @anim-datapath-add-full.
@@ -195,10 +198,10 @@ While most all instructions use three or four of the five steps, loads are the o
 
 To determine the **clock frequency** for the single-cycle datapath, we compute delays of each instruction's critical path, then set the clock period as the **worst-case** delay incurred over all instructions.
 
-To put some numbers to our earlier analysis, we will _simplify_ our time estimates with @tab-timing-phases, which assumes that the timing of each of the [five steps to a RISC-V instruction](#sec-five-steps) are dominated by the major functional hardware units.
+To put some numbers to our earlier analysis, we will _simplify_ our time estimates with @tab-timing-steps, which assumes that the timing of each of the [five steps to a RISC-V instruction](#sec-five-steps) are dominated by the major functional hardware units.
 
 :::{table} Assume each of the [five steps](#sec-five-steps) is dominated by a major hardware unit. Multiplexors, control unit, PC accesses, immediate generation, and branch prediction incur minimal delay.
-:label: tab-timing-phases
+:label: tab-timing-steps
 
 | Step | Operation Time | Major Hardware Unit |
 | :--- | :--- | :--- |

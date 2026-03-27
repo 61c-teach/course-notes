@@ -171,6 +171,21 @@ We emphasize the layer of abstraction between datapath and control with @fig-fiv
 As the datapath computes values, the control logic selects the necessary values needed to execute the instruction.
 :::
 
+
+From P&H Section 4.7:
+
+:::{blockquote}
+Instructions and data move generally from left to right through the five [steps] as they complete execution.
+
+There are, however, two exceptions to this left-to-right flow of instructions:
+
+* The write-back [step], which places the results back into the register file in the middle of the datapath
+* The selection of the next value of the PC, choosing between the incremental PC and the branch address...
+
+Data flowing from right to left do not affect the current instruction; these reverse data movements influence only later instructions in the pipeline.
+:::
+
+
 :::{warning} 5 Phases? 5 Stages?
 
 For now for our current single-cycle datapath approach, we will use the term **phase** to refer to each of the five steps to execute an instruction within a single clock cycle.

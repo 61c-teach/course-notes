@@ -3,6 +3,7 @@ title: "Control Hazards"
 subtitle: TODO
 ---
 
+(sec-control-hazards)=
 ## Learning Outcomes
 
 * TODO
