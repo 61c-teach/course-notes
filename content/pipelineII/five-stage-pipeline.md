@@ -3,6 +3,7 @@ title: "RISC-V 5-Stage Pipeline"
 subtitle: Coming soon. Thanks for your patience. Watch video for now.
 ---
 
+(sec-five-stage-pipeline)=
 ## Learning Outcomes
 
 * TODO
@@ -18,7 +19,17 @@ subtitle: Coming soon. Thanks for your patience. Watch video for now.
 
 ::::
 
-<!--
+:::{warning} Review pipelined circuits
+
+We strongly recommend first reading about **registers in pipelined circuits**, covered in [this section](#sec-pipelining-circuits) of the Synchronous Digital Systems unit.
+
+:::
+
+:::{note} Pipeline registers
+
+**Pipeline registers** are registers inserted between stages that retain data values of individual instructions from one stage to be used in the next stage.
+
+:::
 
 ## Visuals
 
@@ -54,10 +65,10 @@ High-level diagram of single-cycle datapath.
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | `add s0 t0 t1` | IF | ID | EX | M | WB |   |   |   |   |   |
 | `sub t2 s0 t0` |   |   |   |   |   | IF | ID | EX | M | WB |
-::: -->
+:::
 
 <!-- Numbers represent time steps; rows represent sequence of instructions -->
-<!--
+
 ```{list-table} Sequential Instructions.
 :header-rows: 1
 :label: tab-seq-inst
@@ -97,8 +108,6 @@ High-level diagram of single-cycle datapath.
 ```
 -->
 
-<!--
-
 :::{figure} images/pipelined-datapath.png
 :label: fig-pipelined-datapath
 :width: 100%
@@ -106,10 +115,9 @@ High-level diagram of single-cycle datapath.
 
 High-level diagram of pipelined datapath.
 :::
--->
 
 <!-- Numbers represent time steps; rows represent sequence of instructions -->
-<!--
+
 ```{list-table} Pipelined Instructions.
 :header-rows: 1
 :label: tab-pip-inst
@@ -135,5 +143,3 @@ High-level diagram of pipelined datapath.
   - M
   - WB
 ```
-
--->

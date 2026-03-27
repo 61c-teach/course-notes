@@ -3,10 +3,10 @@ title: "Energy Efficiency"
 subtitle: This content is not tested
 ---
 
-## Learning Outcomes
+<!--## Learning Outcomes
 
 * TODO
-* TODO
+* TODO-->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -17,6 +17,13 @@ subtitle: This content is not tested
 :::
 
 ::::
+
+Energy efficiency is vital for both mobile devices and warehouse-scale computers in data centers.
+In a data center, the cost of energy can overshadow the hardware cost after just a year or two.
+
+It is also important to note that power is generally _not_ a good measure of efficiency. Power is merely the rate of exchange, whereas energy is what is actually stored in the battery and what the utility company charges us for.
+
+Watch the video for more information!
 
 <!--
 
