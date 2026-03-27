@@ -1,6 +1,6 @@
 ---
 title: "Data Hazards"
-subtitle: TODO
+subtitle: Coming soon. Watch video for now!
 ---
 
 (sec-data-hazards)=
@@ -21,7 +21,7 @@ subtitle: TODO
 
 ## Visuals
 
-:::{figure} images/read-write-data-hazard.png
+<!-- :::{figure} images/read-write-data-hazard.png
 :label: fig-data-hazard
 :width: 100%
 :alt: "TODO"
@@ -67,4 +67,4 @@ Pipeline diagram for forwarding with EX hazard.
 :alt: "TODO"
 
 Waterfall diagram for forwarding with EX hazard.
-:::
+::: -->

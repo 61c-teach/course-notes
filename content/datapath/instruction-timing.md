@@ -203,13 +203,13 @@ To put some numbers to our earlier analysis, we will _simplify_ our time estimat
 :::{table} Assume each of the [five steps](#sec-five-steps) is dominated by a major hardware unit. Multiplexors, control unit, PC accesses, immediate generation, and branch prediction incur minimal delay.
 :label: tab-timing-steps
 
-| Step | Operation Time | Major Hardware Unit |
+| Step | Operation time | Major hardware unit |
 | :--- | :--- | :--- |
-| Instruction Fetch (`IF`) | 200ps | Read an instruction word from IMEM. |
-| Instruction Decode (`ID`) | 100ps | Read register values from the RegFile. |
-| Execute (`EX`) | 200ps | Perform arithmetic/logical operations in the ALU. |
-| Memory Access (`MEM`) | 200ps | Read or write data from DMEM. |
-| Write Back (`WB`) | 100ps | Write back to the RegFile. For single-cycle, we assume this is the delay of the WBSel mux and setup time. |
+| Instruction Fetch (`IF`) | 200 ps | Read an instruction word from IMEM. |
+| Instruction Decode (`ID`) | 100 ps | Read register values from the RegFile. |
+| Execute (`EX`) | 200 ps | Perform arithmetic/logical operations in the ALU. |
+| Memory Access (`MEM`) | 200 ps | Read or write data from DMEM. |
+| Write Back (`WB`) | 100 ps | Write back to the RegFile. For single-cycle, we assume this is the delay of the WBSel mux and setup time. |
 
 :::
 

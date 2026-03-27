@@ -1,6 +1,6 @@
 ---
 title: "Superscalar"
-subtitle: TODO
+subtitle: This content is out of scope
 ---
 
 ## Learning Outcomes
@@ -27,6 +27,8 @@ subtitle: TODO
 
 Superscalar processors start multiple instructions per clock cycle.
 :::
+
+Superscalar processors start multiple instructions per clock cycle. In our [Iron Law of Processor Performance](#sec-iron-law), superscalar processors have CPI > 1.
 
 <!-- reprint of iron-law -->
 <!-- ```{math} :label: superscalar-law

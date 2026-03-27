@@ -1,6 +1,6 @@
 ---
 title: "Control Hazards"
-subtitle: TODO
+subtitle: Coming soon. Watch video for now!
 ---
 
 (sec-control-hazards)=
@@ -19,8 +19,9 @@ subtitle: TODO
 
 ::::
 
+<!--
 ## Visuals
-
+ 
 :::{figure} images/control-hazard.png
 :label: fig-control-hazard
 :width: 100%
@@ -52,3 +53,4 @@ Waterfall diagram if conditional branch taken.
 
 Waterfall diagram if conditional branch **not** taken.
 :::
+-->

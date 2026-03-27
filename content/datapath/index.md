@@ -185,7 +185,7 @@ There are, however, two exceptions to this left-to-right flow of instructions:
 Data flowing from right to left do not affect the current instruction; these reverse data movements influence only later instructions in the pipeline.
 :::
 
-
+(sec-phases-stages)=
 :::{warning} 5 Phases? 5 Stages?
 
 For now for our current single-cycle datapath approach, we will use the term **phase** to refer to each of the five steps to execute an instruction within a single clock cycle.
