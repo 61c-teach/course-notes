@@ -19,34 +19,34 @@ unless changes are made to the pipeline. The structural hazards that could exist
 RV32I’s hardware requirements.
 
 There are two main causes of structural hazards:
-**• Register File:** The register file is accessed both during ID, when it is read to decode the
+* **Register File:** The register file is accessed both during ID, when it is read to decode the
 instruction and fetch the corresponding register values; and during WB, when it is written to
 in the rd register.
-    ‣ We resolve this by having separate read and write ports. However, this only works if the read/
-written registers are different.
+    * We resolve this by having separate read and write ports. However, this only works if the read/written registers are different.
 
-**• Main Memory:** Main memory is accessed for both instructions and data. If memory could only
+* **Main Memory:** Main memory is accessed for both instructions and data. If memory could only
 support one read/write at a time, then instruction A (in the IF stage) attempting to fetch from
 memory would conflict with instruction B attempting to read or write to the data portion of
 memory.
-    ‣ Having separate instruction memory (IMEM) and data memory (DMEM) solves this hazard.
+    * Having separate instruction memory (IMEM) and data memory (DMEM) solves this hazard.
+
 Something to remember about structural hazards is that they can always be resolved by adding
 more hardware.
 
 **Data hazards** are caused by data dependencies between instructions. In CS 61C, where we always
 assume that instructions go through the processor in order, data hazards occur when an instruction reads a register before a previous instruction has finished writing to the same register.
 Data hazards occur between different stages. Some examples are:
-**• EX-ID:** This hazard exists because the output from the execute stage is not written back to the
+
+* **EX-ID:** This hazard exists because the output from the execute stage is not written back to the
 RegFile until the writeback stage, yet it can be requested by the subsequent instruction during
 the decode stage.
-**• MEM-ID:** This hazard exists because the output from the memory access stage is not written
-back to the RegFile until the writeback stage, but it can still be requested from the decode stage
-—just like in EX-ID.
-To account for reads and writes to the same register, processors usually write to the register
-during the first half of the clock cycle and read from it during the second half. This is an implementation of the idea of double pumping, where data is transferred along buses at double the rate by using both the rising and falling clock edges within a single clock cycle. With double pumping, we can reduce the number of stalls needed for data hazards by one.
+* **MEM-ID:** This hazard exists because the output from the memory access stage is not written
+back to the RegFile until the writeback stage, but it can still be requested from the decode stage—just like in EX-ID.
 
-**Detecting Data Hazards**
-Say we have the `rs1`, `rs2`, `RegWEn`, and `rd` signals for two instructions (instruction *n* and instruction *n* + 1) and we wish to determine if a data hazard exists across the instructions. We can simply check to see if the `rd` for instruction *n* matches either `rs1` or `rs2` of instruction *n* + 1, indicating that such a hazard exists. We could then use our hazard detection to determine which forwarding paths/number of stalls (if any) are necessary to take to ensure proper instruction execution.
+To account for reads and writes to the same register, some processors write to the register
+during the first half of the clock cycle and read from it during the second half. This is implemented as a **write-then-read** RegFile, where data is transferred along buses at double the rate by using both the rising and falling clock edges within a single clock cycle. With write-then-read, we can reduce the number of stalls needed for data hazards by one.
+
+**Detecting Data Hazards**: Say we have the `rs1`, `rs2`, `RegWEn`, and `rd` signals for two instructions (instruction *n* and instruction *n* + 1) and we wish to determine if a data hazard exists across the instructions. We can simply check to see if the `rd` for instruction *n* matches either `rs1` or `rs2` of instruction *n* + 1, indicating that such a hazard exists. We could then use our hazard detection to determine which forwarding paths/number of stalls (if any) are necessary to take to ensure proper instruction execution.
 
 In pseudo-code, part of this could look something like the following:
 
@@ -110,4 +110,12 @@ before it can begin its EX
 **False.** Hazards following lw cannot be fully resolved with forwarding because the output is not
 known until after the MEM stage. We still need a stall in addition to forwarding from the MEM/
 WB pipeline register to the EX stage.
+::: 
+
+1. **True/False**: Stalling is the only way to resolve control hazards
+
+:::{note} Solution
+:class: dropdown
+**False.** There are other more advanced techniques such as branch prediction, which predicts which
+path the branch will take and flushes the pipeline if the prediction is wrong.
 ::: 

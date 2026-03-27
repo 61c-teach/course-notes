@@ -1,6 +1,6 @@
 ---
-title: "Pipeline Hazards"
-subtitle: TODO
+title: "Structural Hazards"
+subtitle: Coming soon. Watch video for now!
 ---
 
 (sec-pipeline-hazards)=
@@ -19,7 +19,7 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+<!-- ## Visuals
 
 :::::{grid} 4
 
@@ -28,8 +28,6 @@ subtitle: TODO
 :label: fig-warning-fall
 :width: 100%
 :alt: "TODO"
-
-<!-- Warning: Fall! -->
 :::
 ::::
 
@@ -38,8 +36,6 @@ subtitle: TODO
 :label: fig-warning-rf
 :width: 100%
 :alt: "TODO"
-
-<!-- Warning: Radio Frequency! -->
 :::
 ::::
 
@@ -48,8 +44,6 @@ subtitle: TODO
 :label: fig-warning-voltage
 :width: 100%
 :alt: "TODO"
-
-<!-- Warning: High-Voltage! -->
 :::
 ::::
 
@@ -58,8 +52,6 @@ subtitle: TODO
 :label: fig-caution-xray
 :width: 100%
 :alt: "TODO"
-
-<!-- Caution: X-Ray! -->
 :::
 ::::
 
@@ -111,4 +103,4 @@ RV321 IMEM/DMEM design preventing structural hazard in memory.
 :alt: "TODO"
 
 Processor and Memory diagram of separate IMEM/DMEM in memory.
-:::
+::: -->

@@ -1,5 +1,5 @@
 ---
-title: "The 5-Stage RISC-V Pipeline"
+title: "The RISC-V 5-Stage Pipeline"
 ---
 
 (sec-five-stage-pipeline)=
@@ -86,23 +86,27 @@ We define pipeline registers by the two stages they are inserted between, e.g., 
 (sec-five-stages)=
 :::{note} Five _stages_ of a RISC-V instruction
 
-We now rewrite the [five steps to a RISC-V instruction](#sec-five-steps) in the context of our new five-stage pipelined datapath.
+We now rewrite the [five steps to a RISC-V instruction](#sec-five-steps) in the context of our new five-stage pipelined datapath in @fig-five-stage-pipeline.
 
 1. **Instruction Fetch (`IF`)**: Fetch the current instruction from IMEM and compute `PC + 4`.
 
-    An instruction concurrently executing in a later stage (`MEM`) determines the control signal `PCSel` to determine the next instruction to execute.
-1. **Instruction Decode (`ID`)**: Determine the operation from the bits of the instruction (i.e., _decode_ the instruction), read registers from the RegFile, and generate a 32-bit immediate.
+    An instruction concurrently executing in a later stage (`MEM`) sets the control signal `PCSel` to determine the next instruction to execute.
+1. **Instruction Decode (`ID`)**: Decode the operation from the bits of the instruction, read registers from the RegFile, and generate a 32-bit immediate.
 
-    The instruction bits are read from the `IF/ID` pipeline registers.
+    The `IF/ID` pipeline registers provide the instruction bits.
 1. **Execute (`EX`)**: Use the ALU to either perform register-register arithmetic (R-Type), register-immediate arithmetic (I-Type, S-Type), PC-immediate arithmetic (loads, B-Type, `jal`, `auipc`), or get the immediate (`lui`).
 
-    The ALU operation is determined from the instruction bits read from the `ID/EX` pipeline registers.
+    The `ID/EX` pipeline registers provide the operands for the ALU, as well as the instruction bits that determine the ALU operation.
 
     Additionally, use the Branch Comparator to compare the source register values, and pass the results into the control unit.
 1. **Memory Access (`MEM`)**: Load data from (or store data to) DMEM.
 
-    Additionally, the results of the Branch Comparator are known at this time. Use the control unit to determine the `PCSel` control signal for the instruction currently in the `IF` stage. In a [later section](#sec-control-hazards), we discuss how this design may lead to **control hazards**, or potential out-of-order execution of instructions.
+    The `EX/MEM` pipeline registers provide the memory address and the data to write.
+
+    Additionally, the results of the Branch Comparator are known at this time. Use the control unit to determine the `PCSel` control signal. In a [later section](#sec-control-hazards), we discuss how this design may lead to **control hazards**, or potential out-of-order execution of instructions.
 1. **Write Back (`WB`)**: Write back to the RegFile.
+
+    The `MEM/WB` pipeline registers provide the data to write, as well as the instruction bits that determine what to write (for the `WBSel` mux).
 
     Recall that in our discussion of [instruction timing](#sec-instruction-timing) the `WB` phase of the single-cycle datapath simply included a MUX and register setup time, because it was assumed that the RegFile element performed rising-edge triggered writes. In a [later section](#sec-data-hazards), we discuss a modified RegFile element that can perform writes on the _falling edge_ of the clock.
 :::
@@ -224,3 +228,5 @@ The full five-stage pipeline datapath is shown in @fig-five-stage-summary; this 
 
 Five-stage RISC-V datapath diagram with control.
 :::
+
+The 5-stage pipeline we have studied is commonplace in many devices: cars, appliances, etc.

@@ -1,6 +1,6 @@
 ---
 title: "Load Data Hazard"
-subtitle: TODO
+subtitle: Coming soon. Watch video for now!
 ---
 
 ## Learning Outcomes

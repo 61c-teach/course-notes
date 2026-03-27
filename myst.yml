@@ -178,25 +178,21 @@ project:
           - file: content/datapath/instruction-timing.md
           - file: content/datapath/special-regs.md
           - file: content/datapath/summary.md
-    - title: "L24 Pipelining I"
+    - title: "L24 Pipelining I: Throughput, Latency, and the 5-Stage Pipeline"
       children:
-        - file: content/pipelineI/index.md
-        # - file: content/pipelineI/iron-law-cpi.md
-        - file: content/pipelineI/laundry.md
-        - file: content/pipelineI/energy.md
-        # - file: content/pipelineI/five-stage-pipeline.md
-        # - file: content/pipelineI/summary.md
-    - title: "L25 Pipelining II"
+        - file: content/pipeline/index.md
+        # - file: content/pipeline-i/iron-law-cpi.md
+        - file: content/pipeline/laundry.md
+        - file: content/pipeline/five-stage-pipeline.md
+        - file: content/pipeline/energy.md
+        - file: content/pipeline/summary.md
+    - title: "L25 Pipelining II: Hazards"
       children:
-        # - file: content/pipelineII/index.md
-        # - file: content/pipelineII/pipelineII-hazards.md
-        - file: content/pipelineII/datapath.md
-        # - file: content/pipelineII/pipelineII-data-hazards.md
-        # - file: content/pipelineII/summary.md
-        # - file: content/pipelineIII/index.md
-        # - file: content/pipelineIII/pipelineIII-control-hazards.md
-        # - file: content/pipelineIII/pipelineIII-superscalar.md
-        - file: content/pipelineIII/summary.md
+        - file: content/pipeline-hazards/structural-hazards.md
+        - file: content/pipeline-hazards/data-hazards.md
+        - file: content/pipeline-hazards/control-hazards.md
+        - file: content/pipeline-hazards/superscalar.md
+        - file: content/pipeline-hazards/summary.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
