@@ -25,13 +25,13 @@ We strongly recommend first reading about **registers in pipelined circuits**, c
 
 :::
 
-In this section, we transform the single-cycle datapath into our RISC-V **five-stage pipelined datapath**. 
-A pipelined datapath "separates" the [five steps to a RISC-V instruction](#sec-five-steps) in the RV32I datapath. Each of these steps correspond to one **stage** in the five-stage pipeline.
+In this section, we transform the single-cycle processor into our RISC-V **five-stage pipelined processor**. 
+A pipelined processor "separates" the [five steps to a RISC-V instruction](#sec-five-steps) into **stages**, where instructions execute in stages, and stages of different instructions execute in **parallel** during the same clock cycle.
 
 (sec-pipeline-datapath)=
 ## Pipelined Datapath
 
-Toggle between the visualizations below to visualize the five-stage pipelined datapath; we discuss control [below](#sec-pipeline-control). At each rising clock edge, **pipeline registers** carry data and control signals to the next stage.
+Toggle between the visualizations below to visualize the five-stage pipelined datapath. At each rising clock edge, **pipeline registers** carry data and control signals to the next stage. We discuss control [below](#sec-pipeline-control).
 
 :::::{tab-set}
 ::::{tab-item} 5-Stage Pipelined Datapath
@@ -81,14 +81,12 @@ We define pipeline registers by the two stages they are inserted between, e.g., 
 
 ## Five Stages of the RISC-V Pipelined Processor
 
-
-
-We now rewrite the [five steps to a RISC-V instruction](#sec-five-steps) in the context of our new five-stage pipelined datapath in @fig-five-stage-pipeline. Here are the five steps.
+We now revisit the [five steps to a RISC-V instruction](#sec-five-steps) in the context of our new five-stage pipelined datapath in @fig-five-stage-pipeline. Here are the five steps.
 
 ```{embed} #sec-five-steps
 ```
 
-And here are the five stages as they pertain to the operations of the five-stage pipelined processor.
+And here are the stages of the five-stage RISC-V pipelined processor, one step per stage.
 
 (sec-five-stages)=
 :::{note} Five _stages_ of a RISC-V instruction
