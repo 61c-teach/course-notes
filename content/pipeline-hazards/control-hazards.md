@@ -23,7 +23,7 @@ From [earlier](#sec-pipeline-hazards):
 :::{embed} #block-def-hazard-control
 :::
 
-Control hazards occur when the instruction fetched may not be the one needed. From P&H 4.6:
+Control hazards occur when the instruction fetched may not be the one needed. In other words, _whether_ an instruction executes depends on the outcome of a previous execution. From P&H 4.6:
 
 > Suppose our laundry crew was given the happy task of cleaning the uniforms of a football team. Given how filthy the laundry is, we need to determine whether the detergent and water temperature setting we select are strong enough to get the unifroms clean...In our laundry pipeline, we have to wait until the second stage to examine the dry uniform to see if we need to change the washer setup or not.
 
@@ -105,11 +105,11 @@ If the branch is indeed taken, to avoid a control hazard we need to ensure that 
 
 ## Approach 1: Stall on branch
 
-One possibility is that whenever we detect a branch (or jump) instruction, we stall the pipeline when we detect a branch until the correct PC is known.
+One possibility is that whenever we detect a branch (or jump) instruction, we stall the pipeline when we detect a branch until the correct PC is known. This implementation would involve extra wiring so that as soon as a branch is decoded in the `ID` stage, other instructions are stalled until the branch outcome is determined in the `MEM` stage.
 
-This implementation would involve extra wiring so that as soon as a branch is decoded in the `ID` stage, other instructions are stalled until the branch outcome is determined in the `MEM` stage. In @tab-waterfall-branch-simple, **every branch instruction incurs a three-instruction stall**, regardless if the branch is taken or not.
+In @tab-waterfall-branch-simple, **every branch instruction incurs a three-instruction stall**, regardless if the branch is taken or not.
 
-```{list-table}
+```{list-table} Approach 1. On a branch instruction, always stall until the next instruction is determined. A dash (–) indicates that the pipeline is flushed and affected instructions do "nothing."
 :label: tab-waterfall-branch-simple
 :header-rows: 1
 
@@ -183,7 +183,7 @@ Another approach could be to _stall only when needed_. In other words, proceed w
 
 If a branch is taken, we stall **three cycles**. In @tab-waterfall-branch-taken, once it is determined that the branch is taken in cycle 4, flush the pipeline. This involves converting the instructions in the `IF`, `IF`, `EX` stages to no-ops. Then, in cycle 5, the correct instruction (the `sw` instruction branched to) is executed.
 
-```{list-table} In cycle 4, we determine that the branch is taken. Flush the pipeline.
+```{list-table} Approach 2. In cycle 4, we determine that the branch is taken. A dash (–) indicates that the pipeline is flushed and affected instructions do "nothing."
 :label: tab-waterfall-branch-taken
 :header-rows: 1
 
@@ -227,7 +227,7 @@ If a branch is taken, we stall **three cycles**. In @tab-waterfall-branch-taken,
   - –
   - 
   - 
-* - `xor → nop`
+* - `nop`
   - 
   - 
   - 
@@ -251,7 +251,7 @@ If a branch is taken, we stall **three cycles**. In @tab-waterfall-branch-taken,
 
 If the branch is not taken, we stall **zero cycles**. In @tab-waterfall-branch-not-taken, if it is determined that the branch is _not_ taken in cycle 4, do not do anything out of the ordinary. Because the instructions `sub`, `or`, and `xor` are already in the pipeline, we do not waste any cycles on stalling. 
 
-```{list-table} If the branch is not taken, proceed as normal. This table therefore looks identical to @tab-waterfall-branch!
+```{list-table} Approach 2. If the branch is not taken, proceed as normal. This table therefore looks identical to @tab-waterfall-branch!
 :label: tab-waterfall-branch-not-taken
 :header-rows: 1
 
