@@ -19,6 +19,16 @@ subtitle: Coming soon. Watch video for now!
 
 ::::
 
+(sec-data-hazards-stall)=
+## Stalling
+
+(sec-data-hazards-forward)=
+## Forwarding
+
+
+(sec-data-hazards-load)=
+## Load Data Hazards
+
 ## Visuals
 
 <!-- :::{figure} images/read-write-data-hazard.png
