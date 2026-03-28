@@ -26,23 +26,12 @@ We strongly recommend first reading about **registers in pipelined circuits**, c
 :::
 
 In this section, we transform the single-cycle processor into our RISC-V **five-stage pipelined processor**. 
-A pipelined processor "separates" the [five steps to a RISC-V instruction](#sec-five-steps) into **stages**, where stages execute in parallel during the same clock cycle.
-
-```{embed} #sec-five-steps
-```
-
-:::{note} Pipeline registers
-
-Each stage needs to process data from a different instruction. To do so, the five-stage pipeline inserts **pipeline registers** between each stage.
-
-**Pipeline registers** are registers inserted between stages that retain the results of individual instructions computed in one stage to be used in the next stage. These registers allow for portions of a single processor to be shared by multiple instructions.
-
-:::
+A pipelined processor "separates" the [five steps to a RISC-V instruction](#sec-five-steps) into **stages**, where instructions execute in stages, and stages of different instructions execute in **parallel** during the same clock cycle.
 
 (sec-pipeline-datapath)=
 ## Pipelined Datapath
 
-At each rising clock edge, pipeline registers carry data and control signals to the next stage. Toggle between the visualizations below to visualize the pipeline registers for the datapath; we discuss control pipeline registers [more later](#sec-pipeline-control).
+Toggle between the visualizations below to visualize the five-stage pipelined datapath. At each rising clock edge, **pipeline registers** carry data and control signals to the next stage. We discuss control [below](#sec-pipeline-control).
 
 :::::{tab-set}
 ::::{tab-item} 5-Stage Pipelined Datapath
@@ -65,6 +54,13 @@ Single-cycle RISC-V datapath, separated into the [five steps](#sec-five-steps).
 ::::
 :::::
 
+:::{note} Pipeline registers
+
+Each stage needs to process data from a different instruction. To do so, the five-stage pipeline inserts **pipeline registers** between each stage.
+
+**Pipeline registers** are registers inserted between stages that retain the results of individual instructions computed in one stage to be used in the next stage. These registers allow for portions of a single processor to be shared by multiple instructions.
+
+:::
 
 Just like [the single-cycle datapath](#sec-single-cycle), in the five-stage pipeline, data and control signals still generally move left to right. There are also still two loops. We extend our original quote from P&H 4.7:
 
@@ -83,10 +79,17 @@ We define pipeline registers by the two stages they are inserted between, e.g., 
 
 > Returning to our laundry analogy, we might have a basket between each pair of stages to hold the clothes for the next step.
 
+## Five Stages of the RISC-V Pipelined Processor
+
+We now revisit the [five steps to a RISC-V instruction](#sec-five-steps) in the context of our new five-stage pipelined datapath in @fig-five-stage-pipeline. Here are the five steps.
+
+```{embed} #sec-five-steps
+```
+
+And here are the stages of the five-stage RISC-V pipelined processor, one step per stage.
+
 (sec-five-stages)=
 :::{note} Five _stages_ of a RISC-V instruction
-
-We now rewrite the [five steps to a RISC-V instruction](#sec-five-steps) in the context of our new five-stage pipelined datapath in @fig-five-stage-pipeline.
 
 1. **Instruction Fetch (`IF`)**: Fetch the current instruction from IMEM and compute `PC + 4`.
 
@@ -111,9 +114,9 @@ We now rewrite the [five steps to a RISC-V instruction](#sec-five-steps) in the 
     Recall that in our discussion of [instruction timing](#sec-instruction-timing) the `WB` phase of the single-cycle datapath simply included a MUX and register setup time, because it was assumed that the RegFile element performed rising-edge triggered writes. In a [later section](#sec-data-hazards), we discuss a modified RegFile element that can perform writes on the _falling edge_ of the clock.
 :::
 
-### Pipeline Registers in the 5-Stage Datapath
+## Pipeline Registers in the 5-Stage Datapath
 
-Below, we explain @fig-five-stage-pipeline-registers from the perspective of what is fed _into_ each set of pipeline registers. For example, when discussing `IF/ID` registers, we describe the instruction currently executing in the `IF` stage. We discuss control [below](#sec-pipeline-control).
+Below, we explain @fig-five-stage-pipeline-registers from the perspective of what is fed _into_ each set of pipeline registers. For example, when discussing `IF/ID` registers, we describe the instruction currently executing in the `IF` stage.
 
 ::::{figure}
 :label: fig-five-stage-pipeline-registers

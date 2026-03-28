@@ -1,13 +1,12 @@
 ---
 title: "Control Hazards"
-subtitle: Coming soon. Watch video for now!
 ---
 
 (sec-control-hazards)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Given program instruction code and a processor architecture, identify when control hazards occur.
+* Explain the approach that the RISC-V five-stage pipeline uses to resolve control hazards.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -19,12 +18,12 @@ subtitle: Coming soon. Watch video for now!
 
 ::::
 
-From earlier:
+From [earlier](#sec-pipeline-hazards):
 
 :::{embed} #block-def-hazard-control
 :::
 
-**Control hazards** occur when the instruction fetched may not be the one needed. From P&H 4.6:
+Control hazards occur when the instruction fetched may not be the one needed. From P&H 4.6:
 
 > Suppose our laundry crew was given the happy task of cleaning the uniforms of a football team. Given how filthy the laundry is, we need to determine whether the detergent and water temperature setting we select are strong enough to get the unifroms clean...In our laundry pipeline, we have to wait until the second stage to examine the dry uniform to see if we need to change the washer setup or not.
 
@@ -318,13 +317,19 @@ If the branch is not taken, we stall **zero cycles**. In @tab-waterfall-branch-n
   - WB
 ```
 
-Like most all cases we have seen thus far, we can evaluate the performance of this "assume branch not taken" design on a program benchmark. If we have a program that takes many branches, this design will perform poorly. If we have a program that does not take many branches (even though many branch instructions exist), this design will work great!
+:::{hint} The 5-Stage Pipeline resolves control hazards by assuming that branches are not taken.
+
+From P&H 4.6:
+
+> One simple approach is to predict always that conditional branches will be untaken. When you're right, the pipeline proceeds at full speed. Only when conditional branches are taken does the pipeline stall.
+
+:::
+
+Like most all cases we have seen thus far, we can evaluate the performance of this design—that is, assuming that branches are not taken, then stalling if they are—design on a program benchmark. If we have a program that takes many branches, this design will perform poorly. If we have a program that does not take many branches (even though many branch instructions exist), this design will work great!
 
 ## Approach 3: Branch Prediction
 
-The simple approach we used in the previous subsection is an example of **branch prediction**. From P&H 4.6:
-
-> One simple approach is to predict always that conditional branches will be untaken. When you're right, the pipeline proceeds at full speed. Only when conditional branches are taken does the pipeline stall.
+The simple approach used by our five-stage pipeline, described in the previous subsection, is an example of **branch prediction**. 
 
 Computers nowadays use a more sophisticated version of branch prediction. A rigid version could predict before the program executes that some conditional branches are taken and some are untaken. This approach may rely on stereotypical behavior or the average case, or even a "coin flip" on each cycle
 
