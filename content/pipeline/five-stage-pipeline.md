@@ -114,6 +114,7 @@ And here are the stages of the five-stage RISC-V pipelined processor, one step p
     Recall that in our discussion of [instruction timing](#sec-instruction-timing) the `WB` phase of the single-cycle datapath simply included a MUX and register setup time, because it was assumed that the RegFile element performed rising-edge triggered writes. In a [later section](#sec-data-hazards), we discuss a modified RegFile element that can perform writes on the _falling edge_ of the clock.
 :::
 
+(sec-pipeline-registers)=
 ## Pipeline Registers in the 5-Stage Datapath
 
 Below, we explain @fig-five-stage-pipeline-registers from the perspective of what is fed _into_ each set of pipeline registers. For example, when discussing `IF/ID` registers, we describe the instruction currently executing in the `IF` stage.

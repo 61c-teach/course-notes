@@ -2,6 +2,7 @@
 title: "Pipelining Laundry"
 ---
 
+(sec-laundry-analogy)=
 ## Learning Outcomes
 
 * Use laundry as an analogy to understand pipelined architectures.
@@ -110,10 +111,10 @@ IPC Timeline diagram showing one customer per "cycle" in laundry analogy.
 :::
 -->
 
+(sec-processor-hl)=
+## RISC-V Processor: Sequential and Pipelined
 
-## RISC-V Processor: Pipelined and Sequential
-
-Let us translate this analogy back our RISC-V analogy.
+Let us translate this laundry analogy back our RISC-V processor.
 
 Consider how an instruction like `add t0 t1 t2` accesses the hardware in the **single-cycle processor**. Like when we computed [instruction timing](#sec-instruction-timing), @fig-single-cycle-processor-hl represents the five phases[^pedantic] with its [major hardware unit](#tab-timing-steps).
 
@@ -236,6 +237,7 @@ From P&H 4.6:
 
 :::
 
+(sec-waterfall)=
 ### Waterfall diagrams
 
 Instead of repeatedly drawing the same tiny diagram as in @fig-pipelined-processor, we will use @tab-pipelined-waterfall to illustrate instruction execution in pipelined processors. This **waterfall diagram** should be read left-to-right: the leftmost column is the RISC-V instruction; all other columns are indexed by their time step (clock cycle, starting from 1). For each row, an entry in a time step column indicates the stage that the instruction is currently executing, or blank otherwise. For simplicity, we write `MEM` as M.
