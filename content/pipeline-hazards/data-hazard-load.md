@@ -67,3 +67,17 @@ Simple compilation for 7 instructions (9 clock cycles).
 
 Code compilation with **code scheduling** for 7 instructions (7 clock cycles).
 :::
+
+
+**Data hazards** are caused by data dependencies between instructions. In CS 61C, where we always
+assume that instructions go through the processor in order, data hazards occur when an instruction reads a register before a previous instruction has finished writing to the same register.
+Data hazards occur between different stages. Some examples are:
+
+* **EX-ID:** This hazard exists because the output from the execute stage is not written back to the
+RegFile until the writeback stage, yet it can be requested by the subsequent instruction during
+the decode stage.
+* **MEM-ID:** This hazard exists because the output from the memory access stage is not written
+back to the RegFile until the writeback stage, but it can still be requested from the decode stage—just like in EX-ID.
+
+To account for reads and writes to the same register, some processors write to the register
+during the first half of the clock cycle and read from it during the second half. This is implemented as a **write-then-read** RegFile, where data is transferred along buses at double the rate by using both the rising and falling clock edges within a single clock cycle. With write-then-read, we can reduce the number of stalls needed for data hazards by one.

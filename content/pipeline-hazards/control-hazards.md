@@ -133,9 +133,9 @@ In @tab-waterfall-branch-simple, **every branch instruction incurs a three-instr
   - 
   - 
   - 
-* - `nop`
+* - `sub → nop`
   - 
-  - –
+  - IF
   - –
   - –
   - –
@@ -175,7 +175,7 @@ In @tab-waterfall-branch-simple, **every branch instruction incurs a three-instr
   - WB
 ```
 
-This approach is simple but slow. It is rather costly if our program has many branches. After all, if we _don't_ take the branch, we should proceed with executing the `sub` instruction, or `PC + 4`. 
+This approach is simple but slow. It is rather costly if our program has many branches. After all, if we _don't_ take the branch, we should proceed with executing the `sub` instruction after all.
 
 ## Approach 2: Assume branch not taken
 
@@ -211,7 +211,7 @@ If a branch is taken, we stall **three cycles**. In @tab-waterfall-branch-taken,
   - 
   - IF
   - ID
-  - –
+  - EX
   - –
   - –
   - 
@@ -221,17 +221,17 @@ If a branch is taken, we stall **three cycles**. In @tab-waterfall-branch-taken,
   - 
   - 
   - IF
-  - –
+  - ID
   - –
   - –
   - –
   - 
   - 
-* - `nop`
+* - `xor  → nop`
   - 
   - 
   - 
-  - –
+  - IF
   - –
   - –
   - –
