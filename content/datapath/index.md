@@ -44,7 +44,7 @@ Before we continue, remember that we emphasize parallelism in this course. Even 
 :width: 100%
 :enumerated: false
 :alt: "TODO"
-:label: #fig-great-idea-new-school
+:label: fig-great-idea-new-school
 
 "New-School" Machine Structures leverage parallelism in both software and hardware.
 :::
@@ -53,14 +53,9 @@ If we execute a single instruction on a single clock cycle, combinational logic 
 
 ## Datapath vs. Control
 
-To build a processor, recall the basic computer layout below. The processor on the left of the figure is the active part of the computer that does all the work. It accesses memory to read/write data, it executes instructions, and it makes decisions on which instruction to execute next.
+To build a processor, recall the basic computer layout below (from a [previous chapter](#sec-architecture-elements)). The processor on the left of the figure is the active part of the computer that does all the work. It accesses memory to read/write data, it executes instructions, and it makes decisions on which instruction to execute next.
 
-:::{figure} #fig-von-neumann
-:width: 100%
-:alt: "TODO"
-:enumerated: false
-
-Basic computer layout from a [previous chapter](#sec-architecture-elements).
+:::{embed} #fig-von-neumann
 :::
 
 Inside the processor, there are two main components:

@@ -19,11 +19,9 @@ title: "Control Logic Design"
 
 ::::
 
-In this section we discuss how to implement the **controller**, i.e., the control logic block. Here are two figures from previous sections to jog your memory.
+In this section we discuss how to implement the **controller**, i.e., the control logic block. Here is @fig-five-step-single-cycle-control from [our chapter introduction](#sec-single-cycle) to jog your memory.
 
-:::{figure} #fig-five-step-single-cycle-control
-
-As the datapath computes values, the control logic selects the necessary values needed to execute the instruction (@fig-five-step-single-cycle-control from [our chapter introduction](#sec-single-cycle)).
+:::{embed} #fig-five-step-single-cycle-control
 :::
 
 ## Review Control Signals
