@@ -18,9 +18,7 @@ short_title: "Average Memory Access Time"
 
 ::::
 
-
-
-Because performance is the major reason for a memory hierarchy, the time to service hits or misses is important. We therefore define the following terminology in @tab-cache-terminology:
+Because performance is the major reason for a memory hierarchy, it is important to measure the time to service hits or misses. We therefore define the following terminology in @tab-cache-terminology:
 
 :::{table} Key cache terminology
 :label: tab-cache-terminology
@@ -116,14 +114,14 @@ What is the Average Memory Access Time, in cycles?
 ::::{solution} ex-amat-l1-l2
 :label: ex-amat-l1-l2-sol
 
-Based on the [AMAT assumptions](#sec-amat), The miss rate of the L2 cache is the fraction of misses from the L1 cache that _also_ miss in the L2 cache.
+Based on [AMAT assumptions](#sec-amat), the miss rate of the L2 cache is the fraction of misses from the L1 cache that _also_ miss in the L2 cache.
 
 We can use Equation @eq-amat recursively:
 
 ```{math}
 \begin{aligned}
 \text{AMAT} &= \text{L1 Hit Time} + \text{L1 Miss Rate} \times \text{L1 Average Miss Penalty} \\
-&= \text{L1 Hit Time} + \text{L1 Miss Rate} \times \bigl(\text{L2 Hit Time} + \text{L2 Miss Rate} \times \text{L2 Average Miss Penalty}\bigr) \\
+&= \text{L1 Hit Time} + \text{L1 Miss Rate} \times \bigl(\text{L2 Hit Time} + \text{L2 Miss Rate} \times \text{L2 Miss Penalty}\bigr) \\
 &= \text{L1 Hit Time} + \text{L1 Miss Rate} \times \bigl(5 + 0.15 \cdot 200\bigr) \\
 &= 1 + 0.05 \cdot 35 \\
 &= 2.75 \text{ cycles} \\

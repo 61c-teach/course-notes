@@ -39,10 +39,20 @@ title: "Memory Hierarchy, Principle of Locality"
 
 ::::
 
+## Memory Wall
+
+While hardware performance has continued to improve, there is a persistent and increasing gap between the improvements in processor hardware and memory/device interconnects (the **Processor-DRAM gap**, or simply **memory gap**).[^att] The "**memory wall**"[^wulf-mckee] places a significant limit on performance for many modern workloads, especially in AI.[^arxiv]
+
+[^wulf-mckee]: Wm A. Wulf, Sally A. McKee. "Hitting the Memory Wall: Implications of the Obvious." ACM SIGARCH 1994. DOI: [10.1145/216585.216588](https://dl.acm.org/doi/10.1145/216585.216588)
+[^att]:  Maurice Willes. "The memory gap and the future of high performance memories." ACM SIGARCH 2001. DOI: [10.1145/373574.373576](https://dl.acm.org/doi/abs/10.1145/373574.373576)
+[^arxiv]: Amir Gholami et al. "AI and Memory Wall." IEEE Micro Journal 2024. Extended version on arXiV. DOI: [10.1109/MM.2024.3373763](https://doi.org/10.1109/MM.2024.3373763), [arXiV:20403.14123](https://arxiv.org/abs/2403.14123)/
+
+By designing a **memory hierarchy**, we can leverage smaller amounts of high-speed hardware without ballooning the cost of our architecture nor sacrificing data and storage capacity.
+
 (sec-memory-hierarchy-revisited)=
 ## The Memory Hierarchy, Revisited
 
-We now continue our [earlier discussion](#sec-memory-hierarchy) of memory hierarchy. Earlier, we assumed there were only **two** layers of our memory hierarchy: registers (on the CPU) and memory (DRAM is close, but on a separate chip).
+Earlier, we assumed there were only **two** layers of our memory hierarchy: registers (on the CPU) and memory (DRAM is close, but on a separate chip). We now continue our [earlier discussion](#sec-memory-hierarchy) of memory hierarchy.
 
 :::{embed} #fig-3-memory-hierarchy
 :::
@@ -62,6 +72,11 @@ Data moves differently between different levels of the memory hierarchy:
 * **Memory and disk**: Managed by the operating system  and special hardware via **virtual memory**, a concept that we will discuss later.[^vm-details] Additionally managed by the programer/user via files and file streams.
 
 [^vm-details]: For now, know that virtual memory is a virtual to physical address mapping assisted by the hardware (translation lookaside buffer, or TLB).
+
+To summarize, we aim for the illusion of a "very large and fast memory":
+
+* We make memory **fast** by using a hierarchy, where higher levels use faster, smaller, and more expensive hardware and are located physically closer to the processor.
+* We make memory **large** by leveraging the principle of **locality** by "caching" the "right" data in higher levels, and delegating lower levels to store more data. The lowest level contains all available data (though nowadays we don't go to magnetic disk and stop at SSD).
 
 
 If useful, we revisit [Jim Gray's analogy](#sec-memory-hierarchy) of data access time on registers, on the cache, in main memory, and on disk.
@@ -92,8 +107,8 @@ The L1 cache is often embedded into two parts: **L1i** (instruction memory) and 
 
 1. **L1 cache** (L1$[^cash-money]): Usually directly embedded on the CPU, hence why it is not labeled in the above diagram.  
     * Size: Tens or hundreds of [KiB](#sec-iec-prefixes).
-    * Hit Tim (see [below](#sec-cache-terminology)): Complete in one clock cycle or less.
-    * Miss rate (see [below](#sec-cache-terminology)): 1-5%
+    * Hit Time (see [cache terminology](#sec-cache-terminology)): Complete in one clock cycle or less.
+    * Miss rate (see [cache terminology](#sec-cache-terminology)): 1-5%
 2. **L2 cache** (L2$): Located on the integrated circuit, often adjacent to the CPU.
     * Size: Tens or hundreds of MiB.
     * Hit Time: Few clock cycles
