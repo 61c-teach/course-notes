@@ -17,3 +17,11 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+:::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
+:label: fig-principle-of-locality-memory-hierarchy-pyramid-2
+:width: 50%
+:alt: "TODO"
+The memory hierarchy.
+:::

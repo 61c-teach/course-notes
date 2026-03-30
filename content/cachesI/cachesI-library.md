@@ -17,3 +17,18 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+:::{figure} images/graph-processor-dram-gap.png
+:label: fig-graph-processor-dram-gap
+:width: 80%
+:alt: "TODO"
+Performance gap between DRAM and CPU.
+:::
+
+:::{figure} images/temporal-vs-spatial-table.png
+:label: fig-temporal-vs-spatial-table-w-library
+:width: 80%
+:alt: "TODO"
+Different types of localities and their library analogies.
+:::

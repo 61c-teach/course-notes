@@ -17,3 +17,10 @@ subtitle: TODO
 :::
 
 ::::
+
+:::{figure} images/prefixes-for-storage.png
+:label: fig-prefixes-for-storage-index
+:width: 90%
+:alt: "TODO"
+Table depicting the prefixes we use to measure storage.
+:::
