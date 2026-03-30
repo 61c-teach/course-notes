@@ -109,7 +109,7 @@ For this class, memory is "magic." Assume a 32-bit byte-addressed memory space, 
 
 For our single-cycle datapath, we must access memory **twice**: once during `IF` (Instruction Fetch) to read the instruction from memory, and once during `MEM` (Memory Access) if we load/store data from/to memory. We therefore need two memory blocks: IMEM and DMEM for instruction memory and data memory, respectively.[^imem-dmem-cache]
 
-[^imem-dmem-cache]: Under the hood, IMEM and DMEM are placeholders for L1 caches: `L1i`, `L1d`.
+[^imem-dmem-cache]: Under the hood, IMEM and DMEM are placeholders for L1 caches: `L1i`, `L1d`. See a [later section](#sec-multi-level-caches).
 
 The Data Memory block DMEM has edge-triggered writes, just like RegFile.
 

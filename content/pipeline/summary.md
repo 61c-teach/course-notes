@@ -4,7 +4,6 @@ title: "Summary"
 
 ## And in Conclusion$\dots$
 
-
 In order to pipeline, we separate the datapath into 5 discrete stages, each completing a different
 function and accessing different resources on the way to executing an entire instruction.
 Recall the five stages:

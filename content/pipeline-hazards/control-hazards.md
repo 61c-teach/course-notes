@@ -5,7 +5,7 @@ title: "Control Hazards"
 (sec-control-hazards)=
 ## Learning Outcomes
 
-* Given program instruction code and a processor architecture, identify when control hazards occur.
+* Given instruction sequences and a processor architecture, identify potential control hazards.
 * Explain the approach that the RISC-V five-stage pipeline uses to resolve control hazards.
 
 ::::{note} 🎥 Lecture Video

@@ -3,10 +3,10 @@ title: "Energy Efficiency"
 subtitle: This content is not tested
 ---
 
-<!--## Learning Outcomes
+(sec-energy-efficiency)=
+## Learning Outcomes
 
-* TODO
-* TODO-->
+* Develop a working framework for measuring energy efficiency.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -23,19 +23,21 @@ In a data center, the cost of energy can overshadow the hardware cost after just
 
 It is also important to note that power is generally _not_ a good measure of efficiency. Power is merely the rate of exchange, whereas energy is what is actually stored in the battery and what the utility company charges us for.
 
+```{math}
+:label: energy-efficiency
+\frac{\text{energy}}{\text{program}} = \frac{\text{instructions}}{\text{program}} * \frac{\text{energy}}{\text{instructions}}
+```
+
+```{math}
+:label: power-eq
+\text{power} = \frac{\text{energy (J)}}{\text{second}} = \frac{\text{energy (J)}}{\text{instruction}} * \frac{\text{instructions}}{\text{cycle}} * \frac{\text{cycles}}{\text{second}}
+```
+
 Watch the video for more information!
 
 <!--
 
 ## Visuals
-
-```{math} :label: energy-efficiency
-\frac{\text{energy}}{\text{program}} = \frac{\text{instructions}}{\text{program}} * \frac{\text{energy}}{\text{instructions}}
-```
-
-```{math} :label: power-eq
-\text{power} = \frac{\text{energy (J)}}{\text{second}} = \frac{\text{energy (J)}}{\text{instruction}} * \frac{\text{instructions}}{\text{cycle}} * \frac{\text{cycles}}{\text{second}}
-```
 
 :::{figure} images/processor-perf-trends.png
 :label: fig-processor-trends

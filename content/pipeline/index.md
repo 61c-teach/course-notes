@@ -70,7 +70,7 @@ Next, let's consider how the two vehicles fare on this task across several diffe
 :label: tab-transportation-measures
 :align: center
 
-| Performance Measure | Sports Car | Bus |
+| Measure | Sports Car | Bus |
 | :--- | :--- | :--- |
 | Time per trip | 15 mins | 60 mins |
 | Time for 100 passengers | 750 mins (50 2-person trips) | 120 mins (2 50-person trips) |
