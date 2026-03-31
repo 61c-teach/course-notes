@@ -2,6 +2,7 @@
 title: "The Program Counter"
 ---
 
+(sec-rv-pc)=
 ## Learning Outcomes
 
 * Understand how the program counter (PC) register updates between instructions.
@@ -21,17 +22,22 @@ So far, we have seen that during execution, values are stored in **registers**. 
 
 We discuss the basics of the RISC-V memory model across the next two chapters.
 
-## RISC-V Memory Model
+## Stored Program, Revisited
 
 In an [earlier section](#sec-stored-program) we discussed the concept of the **stored-program** computer, which is effectively used for all general-purpose computers today:
 
 > Data doesn't just have to represent numbers; it can represent the program itself.
 
-When we discussed the [C memory layout](#fig-c-mem-layout), we expanded on this concept. In a C program, the **text** segment stores the program code.
+[^call] Recall that assembly language is typically produced by a compiler. An assembler then produces the machine-readable code. Typically, this is stored as an executable file, which is then loaded in to the **text** segment of memory:
 
-Additionally,[^call] recall that assembly language is typically produced by a compiler. An assembler then produces the machine-readable code. Typically, this is stored as an executable file, which is then loaded in to the text segment of memory.
+:::{figure} #fig-c-mem-layout
+:width: 50%
+:alt: "TODO"
 
-[^call]: We expand on the compiler-assembler-linker-loader process later.
+The C memory layout (reprint of @fig-c-mem-layout from [this section](#sec-mem-layout)).
+:::
+
+[^call]: We expand on the compiler-assembler-linker-loader process in a [later section](#sec-call).
 
 RISC-V has a similar memory model. Each RISC-V assembly instruction is stored as **machine code**, i.e., bits. Each assembly instruction translates to a 32-bit machine instruction (in RV32I, our word size is 32 bits). For example, the instruction `slli x12 x10 0x10` translates to the bits `0x01051613`.[^instruction-formats]. These 32-bit machine instructions then compose the machine code executable file.
 
@@ -44,13 +50,17 @@ The machine code executable is too large to fit in registers, so it resides in *
 
 How does a computer know which instruction to execute? The processor also keeps track of this value in a **register**! From the [RV32I Specification](https://docs.riscv.org/reference/isa/unpriv/rv32.html#2-2-programmers-model-for-base-integer-isa):
 
-> There is one additional unprivileged register: the program counter `pc` holds the address of the current instruction.
+> There is one additional unprivileged register: the program counter `PC` holds the address of the current instruction.
 
-The **Program Counter**, or PC[^pc] (register name `pc`), is **not** one of the 32 registers numbered `x0` to `x31`. It is a _separate_ register that generally is not explicitly specified as a read/write destination for instructions.
+The **Program Counter** (PC[^pc]) is effectively a pointer to memory[^intel-pc] and is a register named `pc`[^pc-name]. The `pc` register is **not** one of the 32 registers numbered `x0` to `x31`. It is a _separate_ register that generally is not explicitly specified as a read/write destination for instructions.
 
-[^pc]: Program Counter, not Personal Computer.
+[^pc]: Program Counter, not Personal Computer. 
+[^intel-pc]: Intel calls the program counter an Instruction Pointer (PC).
 
-We revisit our [conceptual computer layout](#fig-von-neumann) from earlier and focus on the program counter in @fig-program-counter.
+[^pc-name] Verilog syntax is PC, though the [RISC-V Unprivileged Manual](https://docs.riscv.org/reference/isa/unpriv/rv32.html) calls it `pc`.
+
+
+We revisit our [conceptual computer layout](#fig-von-neumann) from [earlier](#sec-architecture-elements) and focus on the program counter in @fig-program-counter.
 
 :::{figure} images/program-counter.png
 :label: fig-program-counter
@@ -69,7 +79,12 @@ The control unit[^control] uses the PC as follows:
 1. Execute the instruction using the datapath, and
 1. Update the PC to point to the next instruction.
 
-By default, the PC is incremented by 4 bytes, corresponding to the next sequential instruction. Each instruction is one word wide, so consecutive instructions are located four bytes away from one another.
+(sec-rv32i-pc-4)=
+:::{warning} Instructions are word-sized
+Each RV32I instruction is one word wide, so consecutive instructions are located 4 bytes away from one another. This design choice follows the simplicity of RISC-V by keeping pretty much everything to word-width (e.g., register width and memory access with `lw` and `sw`).
+
+By default, the PC is incremented by 4 bytes, corresponding to the next sequential instruction.
+:::
 
 [^control]: We discuss the control unit later when we design our processor. For now, we introduce the program counter to explain the full set of assembly instructions.
 

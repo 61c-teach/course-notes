@@ -26,82 +26,44 @@ project:
         - file: content/number-rep/integer-representations.md
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
-        - file: content/number-rep/exercises.md
-    - title: "L03 C Basics"
+    - title: "L03-L08 C"
       children:
-        - file: content/c-basics/index.md
-        - file: content/c-basics/compile-vs-interpret.md
-        - file: content/c-basics/c-vs-java.md
-        - file: content/c-basics/c-variables.md
-        - file: content/c-basics/c-syntax.md
-        - file: content/c-basics/summary.md
-        - file: content/c-basics/exercises.md
-    - title: "L04 C Pointers, Arrays, Strings"
-      children:
-        - file: content/c-pointers-arrays-strings/index.md
-        - file: content/c-pointers-arrays-strings/pointers.md
-        - file: content/c-pointers-arrays-strings/arrays.md
-        - file: content/c-pointers-arrays-strings/strings.md
-        - file: content/c-pointers-arrays-strings/summary.md
-        - file: content/c-pointers-arrays-strings/exercises.md
-    - title: "L05 C Memory Management"
-      children:
-        - file: content/c-memory-management/index.md
-        - file: content/c-memory-management/stack.md
-        - file: content/c-memory-management/heap.md
-        - file: content/c-memory-management/heap-allocator.md
-        - file: content/c-memory-management/summary.md
-        - file: content/c-memory-management/exercises.md
-    - title: "L06 C Odds and Ends"
-      children:
-        - file: content/c-odds-and-ends/index.md
-        - file: content/c-odds-and-ends/endianness.md
-        - file: content/c-odds-and-ends/ll-add-front.md
-        - file: content/c-odds-and-ends/ll-full.md
-        - file: content/c-odds-and-ends/exercises.md
-    - title: "L07 C Generics, Function Pointers"
-      children:
-        - file: content/c-generics/index.md
-        - file: content/c-generics/generics.md
-        - file: content/c-generics/fn-ptr.md
-        - file: content/c-generics/summary.md
-        - file: content/c-generics/exercises.md
+      - title: "L03 C Basics"
+        children:
+          - file: content/c-basics/index.md
+          - file: content/c-basics/compile-vs-interpret.md
+          - file: content/c-basics/c-vs-java.md
+          - file: content/c-basics/c-variables.md
+          - file: content/c-basics/c-syntax.md
+          - file: content/c-basics/summary.md
+      - title: "L04 C Pointers, Arrays, Strings"
+        children:
+          - file: content/c-pointers-arrays-strings/index.md
+          - file: content/c-pointers-arrays-strings/pointers.md
+          - file: content/c-pointers-arrays-strings/arrays.md
+          - file: content/c-pointers-arrays-strings/strings.md
+          - file: content/c-pointers-arrays-strings/summary.md
+      - title: "L05 C Memory Management"
+        children:
+          - file: content/c-memory-management/index.md
+          - file: content/c-memory-management/stack.md
+          - file: content/c-memory-management/heap.md
+          - file: content/c-memory-management/heap-allocator.md
+          - file: content/c-memory-management/summary.md
+      - title: "L06 C Odds and Ends"
+        children:
+          - file: content/c-odds-and-ends/index.md
+          - file: content/c-odds-and-ends/endianness.md
+          - file: content/c-odds-and-ends/ll-add-front.md
+          - file: content/c-odds-and-ends/ll-full.md
+          - file: content/c-odds-and-ends/summary.md
+      - title: "L07 C Generics, Function Pointers"
+        children:
+          - file: content/c-generics/index.md
+          - file: content/c-generics/generics.md
+          - file: content/c-generics/fn-ptr.md
+          - file: content/c-generics/summary.md
     - title: "L08 Floating Point"
-    - title: "L26 Caches I"
-      children:
-        - file: content/cachesI/index.md
-        - file: content/cachesI/cachesI-library.md
-        - file: content/cachesI/cachesI-memory.md
-        - file: content/cachesI/cachesI-locality.md
-        - file: content/cachesI/summary.md
-        - file: content/cachesI/summary-precheck.md
-        - file: content/cachesI/exercises.md
-    - title: "L27 Caches II"
-      children:
-        - file: content/cachesII/index.md
-        - file: content/cachesII/cachesII-direct-example.md
-        - file: content/cachesII/cachesII-terminology.md
-        - file: content/cachesII/summary.md
-        - file: content/cachesII/summary-precheck.md
-        - file: content/cachesII/exercises.md
-    - title: "L28 Caches III"
-      children:
-        - file: content/cachesIII/index.md
-        - file: content/cachesIII/cachesIII-writes-misses.md
-        - file: content/cachesIII/cachesIII-associative.md
-        - file: content/cachesIII/summary.md
-        - file: content/cachesIII/summary-precheck.md
-        - file: content/cachesIII/exercises.md
-    - title: "L29 Caches IV"
-      children:
-        - file: content/cachesIV/index.md
-        - file: content/cachesIV/cachesIV-block-placement.md
-        - file: content/cachesIV/cachesIV-amat.md
-        - file: content/cachesIV/cachesIV-cpus.md
-        - file: content/cachesIV/summary.md
-        - file: content/cachesIV/summary-precheck.md
-        - file: content/cachesIV/exercises.md
-    - title: "Miscellaneous"
       children:
         - file: content/floating-point/index.md
         - file: content/floating-point/fp-floating-point.md
@@ -109,45 +71,206 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-        - file: content/floating-point/exercises.md
-    - title: "L09 RISC-V Intro"
+    - title: "L09-L12 RISC-V"
       children:
-        - file: content/rv-intro/index.md
-        - file: content/rv-intro/elements.md
-        - file: content/rv-intro/rv-isa.md
-        - file: content/rv-intro/rv-arithmetic.md
-        - file: content/rv-intro/rv-bitwise.md
-        - file: content/rv-intro/summary.md
-        - file: content/rv-intro/exercises.md
-    - title: "L10 RISC-V Data Transfer"
+      - title: "L09 RISC-V Intro"
+        children:
+          - file: content/rv-intro/index.md
+          - file: content/rv-intro/elements.md
+          - file: content/rv-intro/rv-isa.md
+          - file: content/rv-intro/rv-arithmetic.md
+          - file: content/rv-intro/rv-bitwise.md
+          - file: content/rv-intro/summary.md
+          # - file: content/rv-intro/summary-precheck.md
+      - title: "L10 RISC-V Data Transfer"
+        children:
+          - file: content/rv-data-transfer/index.md
+          - file: content/rv-data-transfer/rv-load-store.md
+          - file: content/rv-data-transfer/examples.md
+          - file: content/rv-data-transfer/example-sp.md
+          - file: content/rv-data-transfer/summary.md
+      - title: "L11 RISC-V Decision Making"
+        children:
+          - file: content/rv-decision-making/index.md
+          - file: content/rv-decision-making/branches.md
+          - file: content/rv-decision-making/loops.md
+          - file: content/rv-decision-making/summary.md
+      - title: "L12 RISC-V Procedures"
+        children:
+          - file: content/rv-procs/index.md
+          - file: content/rv-procs/rv-jumps-stack.md
+          - file: content/rv-procs/rv-calling-conv.md
+          - file: content/rv-procs/examples.md
+          - file: content/rv-procs/summary.md
+    - title: "L13-L14 RISC-V Instruction Formats"
       children:
-        - file: content/rv-data-transfer/index.md
-        - file: content/rv-data-transfer/rv-load-store.md
-        - file: content/rv-data-transfer/examples.md
-        - file: content/rv-data-transfer/example-sp.md
-        - file: content/rv-data-transfer/summary.md
-        # - file: content/rv-data-transfer/exercises.md
-    # - title: "L11 RISC-V Decision Making"
+      - title: "L13 RISC-V Instruction Formats I"
+        children:
+          - file: content/rv-isa-formats-i/index.md
+          - file: content/rv-isa-formats-i/r-type.md
+          - file: content/rv-isa-formats-i/i-type.md
+          - file: content/rv-isa-formats-i/s-type.md
+          - file: content/rv-isa-formats-i/summary.md
+      - title: "L14 RISC-V Instruction Formats II"
+        children:
+          - file: content/rv-isa-formats-ii/index.md
+          - file: content/rv-isa-formats-ii/b-type.md
+          - file: content/rv-isa-formats-ii/j-type.md
+          - file: content/rv-isa-formats-ii/u-type.md
+          - file: content/rv-isa-formats-ii/summary.md
+    - title: "L15 CALL"
+      children:
+        - file: content/call/index.md
+        - file: content/call/assembler-object-file.md
+        - file: content/call/linker-resolve-references.md
+        - file: content/call/example.md
+        - file: content/call/interpret-translate.md
+        - file: content/call/summary.md
+    - title: "L16-L20 Synchronous Digital Systems"
+      children:
+      - title: "L16 Intro to SDS"
+        children:
+          - file: content/sds-intro/index.md
+          - file: content/sds-intro/transistors.md
+          - file: content/sds-intro/summary.md
+      - title: "L17 Combinational Logic"
+        children:
+          - file: content/sds-combinational-logic/index.md
+          - file: content/sds-combinational-logic/boolean-algebra.md
+          - file: content/sds-combinational-logic/cl-design.md
+          - file: content/sds-combinational-logic/summary.md
+      - title: "L18 State, Timing"
+        children:
+          - file: content/sds-state/index.md
+          - file: content/sds-state/register.md
+          - file: content/sds-state/timing-synchronous-system.md
+          - file: content/sds-state/fsm.md
+          - file: content/sds-state/pipelining.md
+          - file: content/sds-state/summary.md
+      - title: "L19-L20 Combinational Logic Blocks"
+        children:
+          - file: content/sds-blocks/index.md
+          - file: content/sds-blocks/adder-subtractor.md
+          - file: content/sds-blocks/alu.md
+          - file: content/sds-blocks/summary.md
+      #     - file: content/sds-logic-blocks/summary-precheck.md
+      #     - file: content/sds-logic-blocks/exercises.md
+    - title: "L21-L23 Single-Cycle CPU"
+      children:
+      - title: "L21 Single-Cycle CPU Datapath I"
+        children:
+          - file: content/datapath/index.md
+          - file: content/datapath/elements.md
+          - file: content/datapath/r-type.md
+          - file: content/datapath/i-type.md
+      - title: "L22 Single-Cycle CPU Datapath II"
+        children:
+          - file: content/datapath/load-store.md
+          - file: content/datapath/b-type.md
+          - file: content/datapath/jump.md
+          - file: content/datapath/u-type.md
+          - file: content/datapath/summary.md
+      #     # - file: content/datapath/summary-precheck.md
+      #     # - file: content/datapath/exercises.md
+      - title: "L23 Single-Cycle CPU Control, Instruction Timing"
+        children:
+          - file: content/datapath/control.md
+          - file: content/datapath/instruction-timing.md
+          - file: content/datapath/special-regs.md
+          - file: content/datapath/summary.md
+    - title: "L24-L25 Pipelining"
+      children:
+      - title: "L24 Pipelining I: Throughput, Latency, and the 5-Stage Pipeline"
+        children:
+          - file: content/pipeline/index.md
+          - file: content/pipeline/laundry.md
+          - file: content/pipeline/five-stage-pipeline.md
+          - file: content/pipeline/iron-law-cpi.md
+          - file: content/pipeline/superscalar.md
+          - file: content/pipeline/energy.md
+          - file: content/pipeline/summary.md
+      - title: "L25 Pipelining II: Hazards"
+        children:
+          - file: content/pipeline-hazards/structural-hazards.md
+          - file: content/pipeline-hazards/data-hazards.md
+          - file: content/pipeline-hazards/control-hazards.md
+          - file: content/pipeline-hazards/summary.md
+    - title: "L26-L29 Caches"
+      children:
+      - title: "L26 Caches I"
+        children:
+          - file: content/cachesI/index.md
+          - file: content/cachesI/cachesI-library.md
+          - file: content/cachesI/cachesI-memory.md
+          - file: content/cachesI/cachesI-locality.md
+          - file: content/cachesI/summary.md
+          - file: content/cachesI/summary-precheck.md
+          - file: content/cachesI/exercises.md
+      - title: "L27 Caches II"
+        children:
+          - file: content/cachesII/index.md
+          - file: content/cachesII/cachesII-direct-example.md
+          - file: content/cachesII/cachesII-terminology.md
+          - file: content/cachesII/summary.md
+          - file: content/cachesII/summary-precheck.md
+          - file: content/cachesII/exercises.md
+      - title: "L28 Caches III"
+        children:
+          - file: content/cachesIII/index.md
+          - file: content/cachesIII/cachesIII-writes-misses.md
+          - file: content/cachesIII/cachesIII-associative.md
+          - file: content/cachesIII/summary.md
+          - file: content/cachesIII/summary-precheck.md
+          - file: content/cachesIII/exercises.md
+      - title: "L29 Caches IV"
+        children:
+          - file: content/cachesIV/index.md
+          - file: content/cachesIV/cachesIV-block-placement.md
+          - file: content/cachesIV/cachesIV-amat.md
+          - file: content/cachesIV/cachesIV-cpus.md
+          - file: content/cachesIV/summary.md
+          - file: content/cachesIV/summary-precheck.md
+          - file: content/cachesIV/exercises.md
+    - title: "L26 Caches I"
+      children:
+        - file: content/caches-intro/index.md
+        - file: content/caches-intro/memory-hierarchy.md
+        # - file: content/caches-intro/cachesI-library.md
+        # - file: content/caches-intro/cachesI-memory.md
+        # - file: content/caches-intro/cachesI-locality.md
+        - file: content/caches-intro/amat.md
+        # - file: content/caches-intro/summary.md
+        # - file: content/caches-intro/summary-precheck.md
+        # - file: content/caches-intro/exercises.md
+    # - title: "L27 Caches II"
     #   children:
-    #     - file: content/rv-decision-making/index.md
-    #     - file: content/rv-decision-making/branches.md
-    #     - file: content/rv-decision-making/rv-d-machine-program.md
-    #     - file: content/rv-decision-making/rv-d-function-calls
-    #     - file: content/rv-decision-making/summary.md
-    #     - file: content/rv-decision-making/summary-precheck.md
-    #     - file: content/rv-decision-making/exercises.md
-    # - title: "L00 RISC-V Procedures"
+    #     - file: content/cachesII/index.md
+    #     - file: content/cachesII/cachesII-direct-example.md
+    #     - file: content/cachesII/cachesII-terminology.md
+    #     - file: content/cachesII/summary.md
+    #     - file: content/cachesII/summary-precheck.md
+    #     - file: content/cachesII/exercises.md
+    # - title: "L28 Caches III"
     #   children:
-    #     - file: content/rv-procs/index.md
-    #     - file: content/rv-procs/rv-d-register-conv.md
-    #     - file: content/rv-procs/rv-d-memory-alloc.md
-    #     - file: content/rv-procs/rv-d-summary.md
-    #     - file: content/rv-procs/summary.md
-    #     - file: content/rv-procs/summary-precheck.md
-    #     - file: content/rv-procs/exercises.md
+    #     - file: content/cachesIII/index.md
+    #     - file: content/cachesIII/cachesIII-writes-misses.md
+    #     - file: content/cachesIII/cachesIII-associative.md
+    #     - file: content/cachesIII/summary.md
+    #     - file: content/cachesIII/summary-precheck.md
+    #     - file: content/cachesIII/exercises.md
+    # - title: "L29 Caches IV"
+    #   children:
+    #     - file: content/cachesIV/index.md
+    #     - file: content/cachesIV/cachesIV-block-placement.md
+
+    #     - file: content/cachesIV/cachesIV-cpus.md
+    #     - file: content/cachesIV/summary.md
+    #     - file: content/cachesIV/summary-precheck.md
+    #     - file: content/cachesIV/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
+    
 site:
   template: book-theme
   options:

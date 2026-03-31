@@ -7,6 +7,7 @@ title: "Conditional Branches"
 
 * Write conditional statements in RISC-V.
 * Use `bne` instructions for if-conditions that compare on equality.
+* Differentiate between conditional branch instructions and unconditional jump instructions.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -41,8 +42,9 @@ If we consider the processor as a central component, we **transfer** control to 
 Illustration of unconditional and conditional control flow transfer.
 :::
 
-The conditional `if` statement conditionally executes Line 4 only if `n > 5`; otherwise, it executes the next statement, on Line 6. By contrast, the call to `foo` in Line 11 unconditionally transfers control to the first statement in `foo` on Line 2; then, when `foo` returns on Line 6, control unconditionally transfers back to Line 12. 
+The conditional `if` statement conditionally executes Line 4 only if `n > 5`; otherwise, it executes the next statement, on Line 6. By contrast, the call to `foo` in Line 11 unconditionally transfers control to the first statement in `foo` on Line 2; then, when `foo` returns on Line 6, control unconditionally transfers back to Line 12.
 
+(sec-branches-jumps)=
 ## Branches and Jumps
 
 RISC-V implements control flow by changing the order of execution in the code. Specifically, such instructions **transfer control** by updating the [program counter](#sec-program-counter) not to the next instruction as is the default, but _another_ instruction. There are two types[^philosophy] of such instructions in RV32I: **unconditional jumps** and **conditional branches**.
@@ -59,6 +61,7 @@ When run, this instruction will unconditionally **J**ump to the instruction labe
 
 **Conditional branch**. Condition on the comparison of two register values. If the condition is met, set PC to a different instruction. Otherwise, the condition is not met, so set PC to the next instruction. The general format for branch instructions is `bxx rs1 rs2 Label`, where "`xx`" specifies the type of comparison to make.
 
+(sec-labels)=
 :::{hint} What are labels?
 Labels are identifiers to specific lines of code (in C) or assembly instructions (in RISC-V). Labels do not themselves define a line of code, though they must have **unique names**. In assembly, labels are associated with specific instruction addresses. They are then used by the assembler to translate branch and jump instructions into their machine code counterparts.[^labels] 
 [^labels]: More later.
@@ -91,6 +94,7 @@ x    y    z    i    j
 x10  x11  x12  x13  x14
 ```
 
+(sec-branch-ex1)=
 :::{tip} Example 1
 
 ```{code} c
@@ -128,6 +132,7 @@ End:   # …
 Choice B uses `bne` to _invert_ the inequality condition in Line 1 of the C code. If `i` and `j` are not equal, _skip_ the conditional `add` instruction, and go to the `Else` label to execute the `sub` instruction. If the branch is _not_ taken (`i` and `j` are equal), then the processor naturally moves into the next instruction—the `add`, which is exactly what we want–and unconditionally jumps with `j End` to skip over the `Else`-labeled instruction.
 :::
 
+(sec-branch-ex2)=
 :::{tip} Example 2
 
 ```{code} c
@@ -182,7 +187,7 @@ This set[^mnemonic] is sufficient to describe the C comparators: `==`, `!=`, `>`
 
 In other words, `bgt`, `bgtu`, `ble`, `bleu` are pseudoinstructions! We leave their translation as an exercise to you :-)
 
-We have also discussed one jump **pseudo**instruction in @tab-rv-jump. We will explain this pseudoinstruction in more detail in a future section.
+We have also discussed one jump **pseudo**instruction in @tab-rv-jump. We will explain this pseudoinstruction in more detail in a [future section](#sec-jumps).
 
 :::{table} RV32I unconditional jump pseudoinstruction
 :label: tab-rv-jump

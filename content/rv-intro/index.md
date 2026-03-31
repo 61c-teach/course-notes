@@ -29,7 +29,9 @@ Great Idea #1: Abstraction.
 
 At the top, there is a high-level language (like C). Below that is the assembly language; below that is the machine code (the machine-readable version); and below that are implementations like block diagrams. Even further down, we find logic gates, which are built then out of transistors.
 
-There are always _well-defined interfaces_ between these layers. In this unit, we focus on the **instruction set architecture** (@fig-old-school-machine-structures), which defines how software interfaces with hardware.
+### Instruction Set Architecture
+
+There are always _well-defined interfaces_ between these layers. In this unit, we focus on the **instruction set architecture (ISA)**, which defines how software interfaces with hardware.
 
 :::{figure} ../great-ideas/images/old-school-machine-structures.png
 :label: fig-old-school-machine-structures
@@ -41,9 +43,20 @@ Great Idea #1: Abstraction.
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Instruction_set_architecture):
 
-> In general, an ISA defines the instructions, data types, registers, and the programming interface for managing main memory such as addressing modes, virtual memory, and memory consistency mechanisms. The ISA also includes the input/output model of the programmable interface
+> In general, an ISA defines the instructions, data types, registers, and the programming interface for managing main memory such as addressing modes, virtual memory, and memory consistency mechanisms. The ISA also includes the input/output model of the programmable interface.
 
-On one side, the ISA is used as a standard by which we design and write instructions. On the other side, the ISA is used as a standard by which we design _computers and hardware_ (e.g., CPUs). Instructions written according to an ISA can then be executed by computers designed according to that same ISA.
+(sec-isa-note)=
+:::{note} Modern ISAs
+
+Modern computers adhere to ISA specifications–meaning, an ISA defines operations a particular computer supports, and how it implements them. It specifies several components:
+
+* **Assembly language**: the low-level computer instructions.
+* **Machine language**: how the instructions are represented in bits.
+* Fundamental architectural features and design.
+
+:::
+
+On one side, the ISA is used as a standard by which we plan and write computer instructions. On the other side, the ISA is used as a standard by which we design _computers and hardware_ (e.g., CPUs). Instructions written according to an ISA can then be executed by computers designed according to that same ISA.
 
 ### Why learn assembly?
 

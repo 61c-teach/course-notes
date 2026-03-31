@@ -2,6 +2,7 @@
 title: "Example: Stack Arrays"
 ---
 
+(sec-example-sp)=
 ## Learning Outcomes
 
 * Use the stack pointer to push large amounts of data onto the stack.
@@ -14,9 +15,10 @@ No video. We recommend pulling up the [memory section](#tab-rv32i-memory) of the
 
 So far, we have been able to translate very tiny amounts of C code to fit into registers. If we have too many (data) words to fit into registers, we must use memory.
 
+(sec-register-conventions)=
 ## Register Conventions and Register Names
 
-As mentioned [earlier](#sec-register-names), a register can also be referred to by its **register name**. Register names define **convention**—that is, specifying how assemblers should use specific registers for specific common functions. These restrictions help build "agreement" upon how to translate separate components of a program so that the assembly instructions slot together.
+As mentioned [earlier](#sec-register-names), a register can also be referred to by its **register name**. Register names define **convention**—that is, specifying how assembly instructions should use specific registers for specific common functions. These restrictions help build "agreement" upon how to translate separate components of a program so that the assembly instructions slot together.
 
 :::{warning} The stack pointer `sp`
 
@@ -47,18 +49,16 @@ c[a] = 20;
 (sec-sp-example-setup)=
 ## Setup
 
-We will use temporary registers to store addresses, arithmetic data, and so on.We will store local variable on the stack by assigning each variable to some offset from our stack pointer `sp`.
+We will use temporary registers to store addresses, arithmetic data, and so on. We will store local variable on the stack by assigning each variable to some offset from our stack pointer `sp`.
 
-The exact addresses of these local variables don't matter, so long as we're consistent. In this example, we'll use the following assignment:
+The exact addresses of these local variables don't matter, so long as we're consistent. Suppose we use the following assignment:
 
-```
-a: 0(sp)
-b: 4(sp)
-c: 12(sp)
-d: 52(sp)
-```
-
-This notation is not conventional, but we use it to denote that all memory will be relative to the stack pointer `sp`. `int a` is at address `R[sp]`, C string `b` is at address `R[sp] + 4`, 10-`int` array `c` is at `R[sp] + 12`, and `uint8_t d` is at address `R[sp] + 52`.
+| Variable | Address relative to stack pointer |
+| :-- | :--: |
+| `int a` | `0(sp)` |
+| `char b[7]` | `4(sp)` | 
+| `int c[10]` | `12(sp)` | 
+| `uint8_t d` | `52(sp)` |
 
 ## Solution
 

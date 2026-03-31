@@ -2,6 +2,7 @@
 title: "Normalized Numbers"
 ---
 
+(sec-fp)=
 ## Learning Outcomes
 
 * Understand how the normalized number representation in the IEEE 754 single-precision floating point standard is inspired by scientific notation.

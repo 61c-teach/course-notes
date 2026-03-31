@@ -28,7 +28,7 @@ What's in a word? In computer architecture, a hardware **word** is an important 
 
 On most modern architectures, the size of the word often determines (among other things[^word]) the **largest possible address** and therefore the size of a C pointer (see [address space](@sec-address-space). A 32-bit architecture has 4-byte pointers; a 64-bit architecture has 8-byte pointers. The word size also often determines the **smallest accessible or most efficiently accessible unit of memory**. On a 32-bit architecture, memory reads and writes are often in units of 4-bytes; on a 64-bit architecture, in units of 8-bytes.
 
-[^word]: The hardware word size is a natural unit of access in a computer and corresponds to the hardware register size (to discuss in a later section). Correspondingly, this register size determines the smallest accessible unit of memory, the size of an address, etc.
+[^word]: The hardware word size is a natural unit of access in a computer and corresponds to the hardware register size (to discuss in [a later section](#sec-reg-size)). Correspondingly, this register size determines the smallest accessible unit of memory, the size of an address, etc.
 
 We will cover hardware words in much more detail when we learn about instruction set architectures. For now, we use the notion of a word to remind us that compiled C programs produce memory layouts that are *architecture-dependent*. We discuss a few architecture-dependent characteristics of compiled programs below.
 
