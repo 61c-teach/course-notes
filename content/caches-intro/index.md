@@ -71,3 +71,17 @@ The critical part of this analogy is your **desk** that is in the library, close
 There is one caveat to this library analogy: unlike the books in a library, memory caches operate on **copies** of data from main memory. We will revisit this caveat when we formally define memory caches.
 :::
 
+## Visuals: Library Analogy
+:::{figure} images/graph-processor-dram-gap.png
+:label: fig-graph-processor-dram-gap
+:width: 80%
+:alt: "TODO"
+Performance gap between DRAM and CPU.
+:::
+
+:::{figure} images/temporal-vs-spatial-table.png
+:label: fig-temporal-vs-spatial-table-w-library
+:width: 80%
+:alt: "TODO"
+Different types of localities and their library analogies.
+:::
