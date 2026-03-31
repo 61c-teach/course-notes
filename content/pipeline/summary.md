@@ -59,7 +59,7 @@ reduces the latency per instruction (resulting in a speed-up in performance).
 
 :::{note} Solution
 :class: dropdown
-**False** Because we insert registers between each stage in the datapath, the time it takes for an
+**False.** Because we insert registers between each stage in the datapath, the time it takes for an
 instruction to finish execution through the 5 stages will be longer than the single-cycle datapath.
 A single instruction will take multiple clock cycles to get through all the stages, with the clock
 cycle based on the critical path (the stage with the longest timing).
@@ -69,7 +69,7 @@ cycle based on the critical path (the stage with the longest timing).
 
 :::{note} Solution
 :class: dropdown
-**True** Recall that throughput is the number of instructions processed per unit time. Pipelining
+**True.** Recall that throughput is the number of instructions processed per unit time. Pipelining
 results in a higher throughput because multiple instructions can be in a different stage of the
 datapath at the same time.
 ::: 
