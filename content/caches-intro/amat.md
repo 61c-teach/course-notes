@@ -131,6 +131,14 @@ We can use Equation @eq-amat recursively:
 
 The L1 and L2 cache design is **4 times** as fast as the L1-only cache design!
 
+:::{tip} Why is the L2$ Miss Rate (usually) higher than that of L1$?
+
+The L2 cache tends to receive only the "hard" memory accesses (the ones that miss in the L1 cache).[^mem-access-patterns] Put another way, L1 caches handle most memory access patterns for temporally local data. L2 caches offer better spatial locality to lower miss rates. However, because L1 cache data are a subset of L2 cache data, L2 caches will still miss if memory access patterns jump between many different addresses.
+
+[^mem-access-patterns] Hashemi et al. "Learning Memory Access Patterns." 2018 [arXiV:1803.02329](https://arxiv.org/abs/1803.02329)
+
+:::
+
 
 ## Reducing Miss Rate
 

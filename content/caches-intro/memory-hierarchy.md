@@ -1,23 +1,11 @@
 ---
-title: "Memory Hierarchy, Principle of Locality"
+title: "Memory Hierarchy"
 ---
 
+(sec-memory-hierarchy)=
 ## Learning Outcomes
 
 * Define key components of the memory hierarchy: processor, caches, memory, disk.
-* Explain how caches leverage temporal and spatial locality.
-* Trace memory access with caches.
-* Get familiar with key cache terminology: cache hit, cache miss, and cache line (i.e., block).
-
-::::{note} 🎥 Lecture Video: Locality, Design, and Management
-:class: dropdown
-
-:::{iframe} https://www.youtube.com/embed/xrCp6DKazuk
-:width: 100%
-:title: "[CS61C FA20] Lecture 24.4 - Caches I: Locality, Design, Management"
-:::
-
-::::
 
 ::::{note} 🎥 Lecture Video: Memory Hierarchy
 :class: dropdown
@@ -25,16 +13,6 @@ title: "Memory Hierarchy, Principle of Locality"
 :::{iframe} https://www.youtube.com/embed/7Lk5UacJeYA
 :width: 100%
 :title: "[CS61C FA20] Lecture 24.3 - Caches I: Memory Hierarchy"
-:::
-
-::::
-
-::::{note} 🎥 Lecture Video: Actual CPUs
-:class: dropdown
-
-:::{iframe} https://www.youtube.com/embed/isEHXkkPtE4
-:width: 100%
-:title: "[CS61C FA20] Lecture 27.4 - Caches IV: Actual CPUs"
 :::
 
 ::::
@@ -52,7 +30,7 @@ By designing a **memory hierarchy**, we can leverage smaller amounts of high-spe
 (sec-memory-hierarchy-revisited)=
 ## The Memory Hierarchy, Revisited
 
-Earlier, we assumed there were only **two** layers of our memory hierarchy: registers (on the CPU) and memory (DRAM is close, but on a separate chip). We now continue our [earlier discussion](#sec-memory-hierarchy) of memory hierarchy.
+Earlier, we assumed there were only **two** layers of our memory hierarchy: registers (on the CPU) and memory (DRAM is close, but on a separate chip). We now continue our [earlier discussion](#sec-memory-hierarchy-early) of memory hierarchy.
 
 :::{embed} #fig-3-memory-hierarchy
 :::
@@ -63,7 +41,11 @@ The mismatch between processor and memory speeds (the "careful tango" described 
 * **Speed**: Use hardware that is much faster than DRAM (used for main memory), but slower than registers.
 * **Cost**: Use hardware that is more expensive than DRAM.
 
-There are additional levels lower than main memory: disk is a huge one (literally). Just as the cache contains a **copy** of a subset of data in main memory, main memory contains **copies** of data on disk.
+There are additional levels lower than main memory: **disk** is a huge one (literally).
+
+:::{hint} Layers of the memory hierarchy contain copies of data in lower levels
+Just as the cache contains a **copy** of a subset of data in main memory, main memory contains **copies** of data on disk. We discuss later how layers "synchronize" these copies; different layers use different methods.
+:::
 
 Data moves differently between different levels of the memory hierarchy:
 
@@ -78,13 +60,10 @@ To summarize, we aim for the illusion of a "very large and fast memory":
 * We make memory **fast** by using a hierarchy, where higher levels use faster, smaller, and more expensive hardware and are located physically closer to the processor.
 * We make memory **large** by leveraging the principle of **locality** by "caching" the "right" data in higher levels, and delegating lower levels to store more data. The lowest level contains all available data (though nowadays we don't go to magnetic disk and stop at SSD).
 
-
 If useful, we revisit [Jim Gray's analogy](#sec-memory-hierarchy) of data access time on registers, on the cache, in main memory, and on disk.
 
 :::{embed} #fig-3-locality
 :::
-
-
 
 (sec-multi-level-caches)=
 ### Multi-Level Caches
@@ -174,90 +153,6 @@ In the above demo, what is the L2 cache size, in bytes?
 ```
 :::
 
-## Memory Caches
-
-Caches are the basis of the memory hierarchy.
-
-:::{warning} Caches contain copies of data from main memory
-
-This caveat discussed [earlier](#sec-library) is worth repeating.
-:::
-
-
-How do we create the illusion of a large memory that we can access fast? From P&H 5.1:
-
-> Just as you did not need to access all the books in the library at once with equal probability, a program does not access all of its code or data at once with equal probability. Otherwise, it would be impossible to make most memory accesses fast and still have large memory in computers, just as it would be impossible for you to fit all the library books on your desk and still find what you wanted quickly.
-
-:::{hint} Principle of locality
-
-A cache works on the principles of **temporal and spatial locality**.
-
-* **Temporal locality**: If an item is referenced, it will tend to be referenced soon.
-* **Spatial locality**: If an item is referenced, items whose addresses are close by will tend to be referenced soon.
-
-:::
-
-:::{table} Principles of temporal and spatial locality.
-:label: tab-locality
-
-| Property | Temporal Locality | Spatial Locality |
-| :--- | :--- | :--- |
-| Idea | If we use it now, chances are that we’ll want to use it again soon. | If we use a piece of memory, chances are we’ll use the neighboring pieces soon. |
-| Library Analogy | We keep a book on the desk while we check out another book. | If we check out volume 1 of a reference book, while we’re at it, we’ll also check out volume 2. Libraries put books on the same topic together on the same shelves to increase spatial locality. |
-| Memory | If a memory location is referenced, then it will tend to be referenced again soon. Therefore, keep most recently accessed data items closer to the processor. | If a memory location is referenced, the locations with nearby addresses will tend to be referenced soon. Move lines consisting of contiguous words closer to the processor. |
-
-:::
-
-(sec-cache-terminology)=
-## Key Cache Terminology
-
-**Lines** (also called **blocks**) of data are copied from memory to the cache.
-
-Memory is **byte-addressable**, meaning each byte in memory has a memory **address**. This is identical to our concept of memory from [earlier](#sec-address-space).
-
-Consider how memory access works with a cache, as in @fig-von-neumann-cache.
-
-:::{figure} images/von-neumann-cache.jpg
-:label: fig-von-neumann-cache
-:width: 100%
-:alt: "TODO"
-
-Caches in the [basic computer layout](#fig-von-neumann) (from an [earlier section](#sec-architecture-elements)).
-:::
-
-When a load or store instruction is accessed, memory data access is **requested**. There are two situations that can occur:
-
-* **Cache hit**: The data you were looking for is in the cache. Retrieve the data from the cache and bring it to the processor.
-* **Cache miss**: The data you were looking for is not in the cache. Go to a lower layer in the memory hierarchy to find the data, put the data in the cache. Then, bring the data to the processor.
-
-:::{note} Example: Memory access with/without caches
-
-Consider the load word instruction `lw t0 0(t1)`. Suppose register `t1` is `0x12F0`, and the word starting at memory address `0x12F0` is `1234`.
-
-Memory access **without cache**:
-
-1. Processor issues address `0x12F0` to memory
-1. Memory reads `1234` @ address `0x12F0`
-1. Memory sends `1234` to Processor
-1. Processor loads `1234` into register `t0`
-
-Memory access **with cache**:
-
-1. Processor issues address `0x12F0` to cache
-1. Cache checks for copy of data with address `0x12F0`
-
-    1. (2a) If hit (finds match): cache reads `1234`
-    2. (2b) If miss (no match): cache sends address `0x12F0` to Memory
-
-        1. (2b(i)) Memory reads `1234` @ address `0x12F0`
-        1. (2b(ii)) Memory sends `1234` to cache
-        1. (2b(iii)) Cache replaces some line to store `1234` address `0x12F0`
-1. Cache sends `1234` to Processor
-1. Processor loads `1234` into register `t0`
-
-:::
-
-
 (sec-storage)=
 ## Storage
 
@@ -276,5 +171,21 @@ Understanding this section is useful for understanding your computer.
 :::
 
 ::::
+
+::::{note} 🎥 Lecture Video: Actual CPUs
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/isEHXkkPtE4
+:width: 100%
+:title: "[CS61C FA20] Lecture 27.4 - Caches IV: Actual CPUs"
+:::
+
+::::
+
+
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR4TRAAB71WlQqQUetxcAhTBdq7QfT0xqjMlLU-qT0OH5GTiGZEUPqLNrroMw6Dg2ERrOyPfnJHIu2y/pubembed?start=false&loop=false
+:width: 100%
+:title: "Slides associated with the video in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
+:::
 
 Written version coming soon!
