@@ -194,7 +194,7 @@ project:
         - file: content/pipeline-hazards/data-hazards.md
         - file: content/pipeline-hazards/control-hazards.md
         - file: content/pipeline-hazards/summary.md
-    - title: "L26 Caches I"
+    - title: "L26 Caches I: Performance"
       children:
         - file: content/caches-intro/index.md
         - file: content/caches-intro/memory-hierarchy.md
@@ -205,7 +205,7 @@ project:
         - file: content/caches-intro/summary.md
         # - file: content/caches-intro/summary-precheck.md
         # - file: content/caches-intro/exercises.md
-    - title: "L27 Caches II"
+    - title: "L27 Caches II: Fully Associative"
       children:
         - file: content/caches-fully-associative/index.md
     #     - file: content/cachesII/cachesII-direct-example.md

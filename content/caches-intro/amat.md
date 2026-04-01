@@ -85,14 +85,14 @@ Using Equation @eq-amat:
 \end{aligned}
 :::
 
-When the miss penalty is incurred, we still incur round-trip hit time. The following probability tree may help.
+When the miss penalty is incurred, we _still incur round-trip hit time_. @fig-amat-l1-only-tree illustrates the two cases.
 
-:::{figure} images/amat-l1-only.png
-:label: fig-amat-l1-only
-:width: 80%
+:::{figure} images/amat-l1-only-tree.png
+:label: fig-amat-l1-only-tree
+:width: 40%
 :alt: "TODO"
 
-Memory hierarchy with only one L1 cache.
+Single-layer cache performance analysis. 95% of the time, we incur 1 cycle delay to access the L1 cache. 5% of time, we incur 201 cycles of delay (to access the L1 cache and to access memory).
 :::
 
 ::::
@@ -137,24 +137,36 @@ We can use Equation @eq-amat recursively:
 &= 2.75 \text{ cycles} \\
 \end{aligned}
 ```
+
+Now, L1 miss penalty includes L2 cache hit _and_ L2 cache hit miss, as shown in @fig-amat-l1-l2-tree.
+
+:::{figure} images/amat-l1-l2-tree.png
+:label: fig-amat-l1-l2-tree
+:width: 65%
+:alt: "TODO"
+
+Two-layer cache performance analysis. 95% of the time, we incur 1 cycle delay to access the L1 cache. 5% of the time, we miss the L1 cache. Of this L1 miss scenario, 85% of the time we incur 6 cycles of delay (to access both the L1 and L2 cache). 15% of the time we incur 206 cycles of delay (to access the L1 cache, the L2 cache, and memory).
+:::
 ::::
 
 The L1 and L2 cache design is **4 times** as fast as the L1-only cache design!
 
-:::{tip} Why is the L2$ Miss Rate (usually) higher than that of L1$?
+:::{tip} Why is the L2\$ miss rate (usually) higher than the L1\$ miss rate?
 
 The L2 cache tends to receive only the "hard" memory accesses (the ones that miss in the L1 cache).[^mem-access-patterns] Put another way, L1 caches handle most memory access patterns for temporally local data. L2 caches offer better spatial locality to lower miss rates. However, because L1 cache data are a subset of L2 cache data, L2 caches will still miss if memory access patterns jump between many different addresses.
 
-[^mem-access-patterns] Hashemi et al. "Learning Memory Access Patterns." 2018 [arXiV:1803.02329](https://arxiv.org/abs/1803.02329)
+[^mem-access-patterns]: Hashemi et al. "Learning Memory Access Patterns." 2018 [arXiV:1803.02329](https://arxiv.org/abs/1803.02329)
 
 :::
 
 
 ## Reducing Miss Rate
 
-We mentioned that AMAT is used to compare cache designs. The key performance hit to AMAT is **miss rate**. To reduce miss rate:
+We mentioned that AMAT is used to compare cache designs. The key performance hit to AMAT is **miss rate**. This can be measured over multiple program benchmarks, each with different memory access patterns.
+
+To reduce miss rate:
 
 * Get a larger cache. This is limited by cost and physical technology capabilities. Furthermore, bigger caches are slower. We would love for higher caches (like L1 cache) to have a hit time of less than the cycle time.
 * Place lines of the cache in a way that maximizes temporal and spatial locality as needed for the average program.
 
-The latter technique is the core of **cache design**. Up next!
+The latter technique is the core of **cache design** and placement policies. Up next!
