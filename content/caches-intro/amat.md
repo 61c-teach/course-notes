@@ -85,6 +85,16 @@ Using Equation @eq-amat:
 \end{aligned}
 :::
 
+When the miss penalty is incurred, we still incur round-trip hit time. The following probability tree may help.
+
+:::{figure} images/amat-l1-only.png
+:label: fig-amat-l1-only
+:width: 80%
+:alt: "TODO"
+
+Memory hierarchy with only one L1 cache.
+:::
+
 ::::
 
 ::::{exercise} L1 and L2 cache

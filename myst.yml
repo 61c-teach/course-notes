@@ -202,7 +202,7 @@ project:
         # - file: content/caches-intro/cachesI-memory.md
         - file: content/caches-intro/cache-terminology.md
         - file: content/caches-intro/amat.md
-        # - file: content/caches-intro/summary.md
+        - file: content/caches-intro/summary.md
         # - file: content/caches-intro/summary-precheck.md
         # - file: content/caches-intro/exercises.md
     - title: "L27 Caches II"
