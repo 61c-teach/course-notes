@@ -23,7 +23,7 @@ Given a cache, where do we place new lines from memory? We first discuss the mos
 
 :::{note} _Fully Associative_ cache placement policy
 
-The data can be stored anywhere in the cache.
+The data can be associated with any line of the cache.
 
 :::
 
