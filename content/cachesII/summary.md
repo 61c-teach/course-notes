@@ -61,6 +61,12 @@ P&H 5.1-5.4, 5.8, 5.9, 5.13
 
 * [Cache Flowchart](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/caches.pdf)
 
+Amazing Illustrations by Ketrina (Yim) Thompson: [CS Illustrated](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-79.html) Cache Handouts
+
+* [Cache Basics](https://csillustrated.berkeley.edu/PDFs/posters/cache-1-basics-poster.pdf)
+* [Cache Associativity](https://csillustrated.berkeley.edu/PDFs/posters/cache-3-associativity-poster.pdf)
+* [Cache Misses](https://csillustrated.berkeley.edu/PDFs/posters/cache-2-misses-poster.pdf)
+
 ## Exercises
 
 Check your knowledge!
@@ -77,3 +83,4 @@ separated by more than one block (e.g., if the block size is 8B but we access ev
 of an integer array, our accesses are separated by 16B). This results in compulsory misses, which
 cannot be reduced just by adding more blocks to the cache.
 :::
+

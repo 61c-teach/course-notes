@@ -13,8 +13,7 @@ Our goal this lecture was to build combinational logic blocks. We can summarize 
 @fig-cl-block-representation in [previous section](#sec-cl-practice).
 :::
 
-We discussed how to convert among these three representations, as represented by the arcs in the
-diagram. Here is a summary:
+We discussed how to convert among these three representations, as represented by the arcs in the diagram. Here is a summary:
 
 * **Truth table to Boolean Expression.** Write the canonical form (Sum-of-Products) and follow with algebraic simplification if desired.
 * **Boolean Expression to Truth table.** Evaluate expression for all input combinations and record output values.
@@ -35,8 +34,7 @@ Additionally, we have many boolean functions which take boolean signals (0 or 1)
 
 There are two basic types of circuits: **combinational logic** circuits and state elements.
 Combinational logic circuits simply change based on their inputs after whatever propagation
-delay is associated with them. For example, if an AND gate (pictured below) has an associated
-propagation delay of 2ps, its output will change based on its input as follows:
+delay is associated with them. For example, if an AND gate (pictured below) has an associated propagation delay of 2ps, its output will change based on its input as follows:
 
 :::{figure} images/SDS_Precheck_Disc8.png
 :width: 60%
@@ -44,9 +42,7 @@ propagation delay of 2ps, its output will change based on its input as follows:
 :::
 
 You should notice that the output of this AND gate always changes 2ps after its inputs change.
-**State elements**, on the other hand, can remember their inputs even after the inputs change. State
-elements change value based on a clock signal. A rising edge-triggered register, for example,
-samples its input at the rising edge of the clock (when the clock signal goes from 0 to 1).
+**State elements**, on the other hand, can remember their inputs even after the inputs change. State elements change value based on a clock signal. A rising edge-triggered register, for example, samples its input at the rising edge of the clock (when the clock signal goes from 0 to 1).
 
 ## Textbook Readings
 
