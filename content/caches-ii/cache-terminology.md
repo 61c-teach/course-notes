@@ -2,7 +2,7 @@
 title: "Cache Terminology, Locality"
 ---
 
-(sec-caches-terminology)=
+(sec-cache-terminology)=
 ## Learning Outcomes
 
 * Explain how caches leverage temporal and spatial locality.
@@ -123,7 +123,6 @@ Just like memory, caches need to look up data by memory address. However, now a 
 
 We discuss strategies for associating addresses with cache lines in detail ([later](#sec-fully-associative)).
 
-(sec-cache-terminology)=
 ## Key Cache Terminology
 
 (sec-cache-line)=
