@@ -68,7 +68,7 @@ Consider that the speed of light (approximately $3.0 \times 10^8$ m/s), which ph
 Great Idea 3: The Principle of Locality / Memory Hierarchy
 :::
 
-(sec-memory-hierarchy)=
+(sec-memory-hierarchy-early)=
 ## Memory Hierarchy
 
 Each ISA specifies a predetermined number of hardware registers, defining how each of the registers should be used for instruction execution. RISC-V defines 32 registers; read more in the [next section](#sec-rv32i-registers).

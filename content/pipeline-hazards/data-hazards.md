@@ -422,10 +422,9 @@ Consider the example in @tab-data-hazard-3, which has two data hazards because t
   - 
 :::
 
-The result of adding `t0` and `t1` is ready at the beginning of cycle 4, once the `add` instruction completes the `EX` stage in cycle 3. Similarly, 
-In other words, as soon as the ALU creates the sum for the `add` instruction, we could add extra hardware to supply it as the input for the `sub` instruction _and_ the `or` instruction.
+The result of adding `t0` and `t1` is ready at the beginning of cycle 4, once the `add` instruction completes the `EX` stage in cycle 3. So we could add extra hardware to supply this sum as the input for the `sub` instruction _and_ the `or` instruction.
 
-Wiring more connections in the datapath to use results when computed is a process known as **forwarding** or **bypassing**.[^forwarding-bypassing] Instead of waiting for the value to be written into the RegFile, we can instead grab the operand directly from the next pipeline stage.
+Wiring more connections in the datapath to use results when computed is a process known as **forwarding** or **bypassing**.[^forwarding-bypassing] Instead of waiting for the value to be written into the RegFile, we can instead grab the operand directly from the _next_ pipeline stage.
 
 [^forwarding-bypassing]: From P&H 4.6: "The name _forwarding_ comes from the idea that the result is passed forward from an earlier instruction to a later instruction. _Bypassing_ comes from passing the result around the register file to the desired unit."
 
@@ -459,7 +458,7 @@ In this course, we discuss **two** types of forwarding paths (i.e., bypasses) fr
 :width: 100%
 :alt: "TODO"
 
-Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw the the bypasses for the A input signal, though they are certainly needed. With the exception of the PC, registers between stages are pipeline registers.
+Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw the bypasses for the A input signal, though they are certainly needed. With the exception of the PC, registers between stages are pipeline registers.
 :::
 
 ::::{tip} Quick Check
