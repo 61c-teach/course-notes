@@ -1,5 +1,5 @@
 ---
-title: "Direct Mapped Cache"
+title: "Set-Associative Cache"
 subtitle: Coming soon!
 ---
 
@@ -8,27 +8,45 @@ subtitle: Coming soon!
 <!--* TODO
 * TODO-->
 
-::::{note} 🎥 Lecture Video: Direct Mapped Caches
+::::{note} 🎥 Lecture Video: Set-Associative Caches
 :class: dropdown
 
-:::{iframe} https://www.youtube.com/embed/wF3Ekt-ZHdg
+:::{iframe} https://www.youtube.com/embed/B4XiuH0kdEk
 :width: 100%
-:title: "[CS61C FA20] Lecture 26.1 - Caches II: Direct Mapped"
+:title: "[CS61C FA20] Lecture 27.1 - Caches IV: Set-Associative Caches"
 :::
 
 ::::
 
-::::{note} 🎥 Lecture Video: Direct Mapped Example
+::::{note} 🎥 Lecture Video: Set-Associative, Line Replacement
 :class: dropdown
 
-:::{iframe} https://www.youtube.com/embed/-OtUM6j6_xE
+:::{iframe} https://www.youtube.com/embed/a-ejTer1Ijg
 :width: 100%
-:title: "[CS61C FA20] Lecture 26.2 - Caches II: Direct Mapped Example"
+:title: "[CS61C FA20] Lecture 25.3 - Caches IV: Block Replacement with Example"
 :::
 
+7:00 onwards
+
 ::::
+
+
+
+:::{figure} images/placement-policies-next-time.png
+:label: fig-placement-policies-next-time
+:width: 75%
+:alt: "TODO"
+The spectrum of cache placement policies, with set-associative as the in-between approach to be covered next.
+:::
 
 <!--
+
+:::{figure} images/placement-policies-next-time.png
+:label: fig-placement-policies-next-time
+:width: 75%
+:alt: "TODO"
+The spectrum of cache placement policies, with set-associative as the in-between approach to be covered next.
+:::
 
 ## Visuals
 :::{figure} images/hardware-direct-mapped-cache.png

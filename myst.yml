@@ -209,9 +209,10 @@ project:
       children:
         - file: content/caches-ii/index.md
         - file: content/caches-ii/fully-associative.md
-        # - file: content/cachesII/cachesII-direct-example.md
+        - file: content/caches-ii/direct-mapped.md
+        - file: content/caches-ii/set-associative.md
         # - file: content/cachesII/cachesII-terminology.md
-        # - file: content/cachesII/summary.md
+        - file: content/cachesII/summary.md
         # - file: content/cachesII/summary-precheck.md
         # - file: content/cachesII/exercises.md
     # - title: "L28 Caches III"
