@@ -1,134 +1,206 @@
 ---
-title: "Tag and Offset"
-subtitle: Full version coming soon!
+title: "Cache Terminology"
 ---
 
-(sec-fully-associative)=
+(sec-cache-terminology)=
 ## Learning Outcomes
 
-<!--* TODO
--->
+* Explain how caches leverage temporal and spatial locality.
+* Trace memory access with caches.
+* Get familiar with key cache terminology: cache hit, cache miss, cache line (block), tag.
 
-::::{note} 🎥 Lecture Video
+::::{note} 🎥 Lecture Video: Locality, Design, and Management
 :class: dropdown
 
-:::{iframe} https://www.youtube.com/embed/-7TxNYUeFng
+:::{iframe} https://www.youtube.com/embed/xrCp6DKazuk
 :width: 100%
-:title: "[CS61C FA20] Lecture 26.3 - Caches III: Fully Associative Caches"
+:title: "[CS61C FA20] Lecture 24.4 - Caches I: Locality, Design, Management"
 :::
 
 ::::
 
-Given a cache, where do we place new lines from memory? We first discuss the most flexible policy, which is also the most challenging to implement in hardware.
 
-(sec-fully-associative-policy)=
-:::{note} _Fully Associative_ cache placement policy
+::::{note} 🎥 Lecture Video
+:class: dropdown
 
-The data can be associated with any line of the cache.
+:::{iframe} https://www.youtube.com/embed/lGp8FK1NW_k
+:width: 100%
+:title: "[CS61C FA20] Lecture 25.3 - Caches II: Cache Terminology"
+:::
+
+::::
+
+## Principle of Locality
+
+
+How do we create the illusion of a large memory that we can access fast? From P&H 5.1:
+
+> Just as you did not need to access all the books in the library at once with equal probability, a program does not access all of its code or data at once with equal probability. Otherwise, it would be impossible to make most memory accesses fast and still have large memory in computers, just as it would be impossible for you to fit all the library books on your desk and still find what you wanted quickly.
+
+Caches are the basis of the memory hierarchy. They contain **copies of a subset of data** from main memory.[^earlier]
+
+[^earlier]: This detail was discussed [earlier](#sec-library) but is always worth repeating.
+
+:::{hint} Principle of locality
+
+A cache works on the principles of **temporal and spatial locality**.
+
+* **Temporal locality**: If an item is referenced, it will tend to be referenced soon.
+* **Spatial locality**: If an item is referenced, items whose addresses are close by will tend to be referenced soon.
 
 :::
 
-## Tag and Offset
+:::{table} Principles of temporal and spatial locality.
+:label: tab-locality
 
-Recall from earlier:
+| Property | Temporal Locality | Spatial Locality |
+| :--- | :--- | :--- |
+| Idea | If we use it now, chances are that we’ll want to use it again soon. | If we use a piece of memory, chances are we’ll use the neighboring pieces soon. |
+| Library Analogy | We keep a book on the desk while we check out another book. | If we check out volume 1 of a reference book, while we’re at it, we’ll also check out volume 2. Libraries put books on the same topic together on the same shelves to increase spatial locality. |
+| Memory | If a memory location is referenced, then it will tend to be referenced again soon. Therefore, keep most recently accessed data items closer to the processor. | If a memory location is referenced, the locations with nearby addresses will tend to be referenced soon. Move **lines** consisting of contiguous words closer to the processor. |
 
-:::{embed} #sec-cache-address
 :::
 
-How do we keep track of address(es) associated with data in a cache line? We note that because the bytes in each line of data are from the same part of memory, their address will share a common set of upper bits (called a **tag**) and vary in their lower bits.
 
-We therefore store **tag**s with each line in our fully associative cache. In @fig-fully-associative-intro, the bytes in the first cache line share the same upper `0x10F` tag as the byte with address `0x43F`.
+## Key Cache Terminology
 
-:::{figure} images/fully-associative-intro.png
-:label: fig-fully-associative-intro
-:width: 50%
+From [Wikipedia](https://en.wikipedia.org/wiki/CPU_cache):
+
+> Data is transferred between memory and cache in blocks of fixed size, called cache lines or cache blocks. When a cache line is copied from memory into the cache, a cache entry is created. The cache entry will include the copied data as well as the requested memory location (called a tag).
+
+
+Memory is **byte-addressable**, meaning each byte in memory has a memory **address**. This is identical to our concept of memory from [earlier](#sec-address-space). Just like memory, caches need to look up data by memory address (see [below](#sec-cache-memory-access)). However, now a cache no longer has access to the entire memory address space because of its limited storage capacity.
+
+Each entry in the cache therefore needs to track (at least) **two** pieces of information:
+
+1. **Cache lines** (also called **cache blocks**)[^block-vs-line] are the unit of data are copied from memory to the cache. A cache line is the smallest unit of memory that can be transferred between the main memory and the cache. Copying over a _line_ of data (instead of simply a word, or a byte) helps us take advantage of **spatial locality**.
+
+    Each line has its own entry in the cache.
+
+1. **Tag**: The address(es) associated with data in a cache line.
+
+    From P&H 5.3: "A **tag** is a field in a table used for a memory hierarchy that contains the address information required to identify whether the associated [line] in the hierarchy corresponds to a requested [word or byte]."
+    
+    Each cache entry has its own tag. Each cache line is therefore associated with one tag.
+
+[^block-vs-line]: The literature is inconsistent on whether to refer to the unit of data transferred between a cache and main memory as a "block" or a "line." You will see both. We will try to stick to "line" where possible, except when in quoting the textbook.
+
+Size-related terminology:
+
+* **Line size** (also called **block size**) is the number of bytes of data stored in this cache line. Each line in a cache has the same line size.[^m1-line]
+* **Capacity** is the size of a cache, in bytes.
+
+:::{warning} Cache size/capacity
+
+From [Wikipedia](https://en.wikipedia.org/wiki/CPU_cache):
+> The "size" of the cache is the amount of main memory data it can hold. This size can be calculated as the number of bytes stored in each data block times the number of blocks stored in the cache. (The tag, [and other metadata] bits are not included in the size[^practice], although they do affect the physical area of a cache.)
+
+[^practice]: See size comparisons in Sadler et al., ICCD 2006. DOI: [10.1109/ICCD.2006.4380862](https://doi.org/10.1109/ICCD.2006.4380862)
+
+For this course, when we say a 32B cache, we mean a cache that can store 32 bytes of **data** from memory, i.e., 32 = (number of lines) x (line size).
+
+[^metadata]: Tag, valid bit, dirty bit, etc. Discussed in the [next chapter](#sec-fully-associative). 
+
+:::
+
+[^m1-line]: For the Apple M1 chip, L1 cache has 64-byte lines, whereas L2 cache has 128-byte lines. [GoFetch](https://gofetch.fail/).
+
+(sec-cache-memory-access)=
+## Memory Access with/without a Cache
+
+When a load or store instruction is accessed, the processor **requests** data at a particular address from the memory hierarchy. In this subsection we contrast how this memory access works—with and without a cache. Toggle between the two cards below.
+
+:::::{tab-set}
+::::{tab-item} Computer Layout with cache
+:sync: tab-with-cache
+
+:::{figure} images/von-neumann-cache.jpg
+:label: fig-von-neumann-cache
+:width: 100%
 :alt: "TODO"
-Cache tag and offset in a fully associative cache. Different addressable bytes in the same cache line share the same tag.
+
+A cache inserted into the basic computer layout from an [earlier section](#sec-architecture-elements).
 :::
 
-For all caches:
+::::
 
-* P&H 5.3: "A **tag** is a field in a table used for a memory hierarchy that contains the address information required to identify whether the associated [line] in the hierarchy corresponds to a requested [word or byte]."
-* All bytes in a cache line have different memory addresses (because memory is byte-addressable) that share the same tag associated with the line. They vary in the lower bits of the address, called an **offset**.
-* All bytes in a line (typically sized to a power of two) should be "addressable" by the bits in the offset.
+::::{tab-item} Computer Layout without cache
+:sync: tab-without-cache
 
-## Fully Associative Caches: Determining Cache Hit
-
-For **fully associative caches**[^later]:
-
-* The process of referring to memory by addresses tags effectively organizes memory into chunks equivalent to the **line size**.
-* The line size and cache size are sufficient to determine how an address can be split into two bitfields representing the tag and offset, respectively.
-
-[^later]: We discuss alternatives later.
-
-
-:::{note} Fully Associative Cache Example: Load byte `0x43F`
-
-Memory address `0x43F` is `0b1000 0011 1111`. To process this memory access request assuming the fully associative cache in @fig-fully-associative-intro:
-
-1. Split the memory address into tag and offset.
-  1. Tag: `0b1000001111`, or `0x10F`.
-  1. Offset: `0b11` (or `0x3`).
-1. Determine which of the cache lines, if any, share the `0x3F` tag. In @fig-fully-associative-intro, the first line has this tag, so this access is a **cache hit**.
-1. Read the byte of the line at the correct offset. In @fig-fully-associative-intro, the byte with offset `0b11` is the most significant byte (leftmost) byte of the line.
+:::{embed} #fig-von-neumann
 :::
 
-To summarize, for fully associative caches, we can check for a cache hit for a given address as follows:
+::::
+:::::
 
-1. Build tag and offset from the memory address by splitting it into two fields:
-    * **Tag**: upper bits of address
-    * **Offset**: byte offset within cache line
-1. In a fully associative cache, check the tag of every line.
-1. **Cache Hit** If a cache tag matches the provided tag, retrieve the byte with the given offset.
+Consider the load word instruction `lw t0 0(t1)`. Suppose register `t1` holds `0x12F0`, and the word starting at memory address `0x12F0` is `1234`.
 
-:::{tip} Quick check
+:::::{tab-set}
+::::{tab-item} Memory access with cache
+:sync: tab-with-cache
 
-Suppose we have the fully associative cache in @fig-fully-associative-intro.
+Memory access **with cache**:
 
-1. What is the line size, in bytes?
-1. What is the total data capacity across all lines, in bytes?
-1. If our memory space is $2^{12}$ bytes, we have 12-bit addresses. How many bits of this address should be reserved for the offset?
-1. Still assuming 12-bit addresses, how many bits of this address should be reserved for the tag?
+1. Processor issues address `0x12F0` to cache
+1. Cache checks for copy of data with address `0x12F0`
+
+    1. (2a) If **cache hit** (finds match): cache reads `1234`
+    2. (2b) If **cache miss** (no match): cache sends address `0x12F0` to Memory
+
+        1. (2b(i)) Memory reads line with `1234` (i.e., line contains data at address `0x12F0`)
+        1. (2b(ii)) Memory sends line with `1234` to cache
+        1. (2b(iii)) Cache replaces some line to store new line with `1234`
+        1. (2b(iv)) Cache reads `1234`
+1. Cache sends `1234` to Processor
+1. Processor loads `1234` into register `t0`
+::::
+
+::::{tab-item} Memory access without cache
+:sync: tab-without-cache
+
+Memory access **without cache**:
+
+1. Processor issues address `0x12F0` to memory
+1. Memory reads `1234` @ address `0x12F0`
+1. Memory sends `1234` to Processor
+1. Processor loads `1234` into register `t0`
+::::
+::::: 
+
+When a cache is in the picture, there are two situations that can occur on a memory access:
+
+* **Cache hit**: The data you were looking for is in the cache. Retrieve the data from the cache and bring it to the processor.
+* **Cache miss**: The data you were looking for is not in the cache. Go to a lower layer in the memory hierarchy to find the data, put the data in the cache. Then, bring the data to the processor.
+
+(sec-cache-temperatures)=
+## Cache Temperatures
+
+Our goal for cache design is temporal and spatial locality for a range of workloads. We borrow climate terminology to describe cache performance:
+
+* **Cold**: The cache is "empty".[^empty-analogy]
+* **Warming**: The cache is filling with values we will hopefully access again.
+* **Warm**: The cache is doing its job, with a fair percentage of hits.
+* **Hot**: The cache is doing very well with a high percentage of hits.
+
+[^empty-analogy]: Caches can never truly be "empty." Instead, cache lines may sometimes contain garbage data with respect to the currently running program. We discuss this in the [next section](#sec-valid-bit).
+
+## Four Memory Hierarchy Questions
+
+This section is adapted from Patterson and Hennessy. _Computer Architecture: A Quantitative Approach_, Fifth Edition. 2012. Appendix B.
+
+(sec-cache-design-policy)=
+:::{note} Cache design policies
+
+There are four high-level questions for cache design. We will call three of these **policies**:
+
+1. **Placement policy**: Where can a block (i.e., line) be placed in the cache? Which cache entry can this block (i.e., line) be associated with?
+1. **Identification**: How is a block (i.e., line) found if it is in the cache? Identification is closely tied with placement policy.
+1. **Replacement policy**: Which block (i.e., line) should be replaced on a miss?
+1. **Write policy**: What happens on a write?
 :::
 
-:::{note} Solution
+The answers to these questions help us understand the different tradeoffs of caches (and even of other levels of the memory hierarchy, as we will see in a later section). We will ask these four questions with every example. We start by introducing placement policies:
 
-1. **4 bytes**. Line size (aka block size) is the number of bytes per cache line. In @fig-fully-associative-intro, each cache line has a 4-byte "row" of data.
-1. **16 bytes.** Data capacity is the number of bytes across all cache lines. @fig-fully-associative-intro shows 4 lines, each of size 4 bytes.
-1. The offset identifies the byte address of data stored at a given cache line. To index into each of the line size = 4 bytes in a given line, we need $\log_2{(\text{line size})}$ = **2 bits**.
-1. The tag identifies a particular cache line as associated with a particular (set of) addresses. These set of addresses may vary in offsets (lower 2 bits) but will share the same tag. Because there are 12 bits in the address, for this fully associative cache our tags are (\# address bits) - (\# offset bits) = **10 bits**.
-:::
-
-
-
-<!--
-## Visuals
-
-:::{figure} images/fully-associative-cache-lru.png
-:label: fig-fully-associative-cache-lru
-:width: 60%
-:alt: "TODO"
-A fully associative cache with LRU replacement policy.
-:::
-
-:::{figure} images/warmed-up-cache-can-still-miss.png
-:label: fig-warmed-up-cache-can-still-miss
-:width: 60%
-:alt: "TODO"
-Even a fully warmed-up cache can still produce a miss.
-:::
-
-:::{figure} images/fully-associative-lru-write-back.png
-:label: fig-fully-associative-lru-write-back
-:width: 60%
-:alt: "TODO"
-A fully associative cache using LRU replacement and a write-back policy.
-:::
-
-:::{figure} images/placement-policies.png
-:label: fig-placement-policies
-:width: 75%
-:alt: "TODO"
-The spectrum of cache placement policies from fully associative to direct mapped.
-:::
--->
+* [Fully Associative Cache](#sec-fully-associative)
+* Set-Associative Cache
+* Direct Mapped Cache

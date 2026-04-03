@@ -64,7 +64,6 @@ project:
           - file: content/c-generics/fn-ptr.md
           - file: content/c-generics/summary.md
     - title: "L08 Floating Point"
-    - title: "Miscellaneous"
       children:
         - file: content/floating-point/index.md
         - file: content/floating-point/fp-floating-point.md
@@ -179,21 +178,23 @@ project:
           - file: content/datapath/instruction-timing.md
           - file: content/datapath/special-regs.md
           - file: content/datapath/summary.md
-    - title: "L24 Pipelining I: Throughput, Latency, and the 5-Stage Pipeline"
+    - title: "L24-L25 Pipelining"
       children:
-        - file: content/pipeline/index.md
-        - file: content/pipeline/laundry.md
-        - file: content/pipeline/five-stage-pipeline.md
-        - file: content/pipeline/iron-law-cpi.md
-        - file: content/pipeline/superscalar.md
-        - file: content/pipeline/energy.md
-        - file: content/pipeline/summary.md
-    - title: "L25 Pipelining II: Hazards"
-      children:
-        - file: content/pipeline-hazards/structural-hazards.md
-        - file: content/pipeline-hazards/data-hazards.md
-        - file: content/pipeline-hazards/control-hazards.md
-        - file: content/pipeline-hazards/summary.md
+      - title: "L24 Pipelining I: Throughput, Latency, and the 5-Stage Pipeline"
+        children:
+          - file: content/pipeline/index.md
+          - file: content/pipeline/laundry.md
+          - file: content/pipeline/five-stage-pipeline.md
+          - file: content/pipeline/iron-law-cpi.md
+          - file: content/pipeline/superscalar.md
+          - file: content/pipeline/energy.md
+          - file: content/pipeline/summary.md
+      - title: "L25 Pipelining II: Hazards"
+        children:
+          - file: content/pipeline-hazards/structural-hazards.md
+          - file: content/pipeline-hazards/data-hazards.md
+          - file: content/pipeline-hazards/control-hazards.md
+          - file: content/pipeline-hazards/summary.md
     - title: "L26 Caches I: Performance"
       children:
         - file: content/caches-intro/index.md
@@ -204,15 +205,15 @@ project:
         - file: content/caches-intro/summary.md
         # - file: content/caches-intro/summary-precheck.md
         # - file: content/caches-intro/exercises.md
-    - title: "L27 Caches II: Fully Associative"
+    - title: "L27 Caches II: Design"
       children:
-        - file: content/caches-ii/cache-terminology.md
         - file: content/caches-ii/index.md
-    #     - file: content/cachesII/cachesII-direct-example.md
-    #     - file: content/cachesII/cachesII-terminology.md
-    #     - file: content/cachesII/summary.md
-    #     - file: content/cachesII/summary-precheck.md
-    #     - file: content/cachesII/exercises.md
+        - file: content/caches-ii/fully-associative.md
+        # - file: content/cachesII/cachesII-direct-example.md
+        # - file: content/cachesII/cachesII-terminology.md
+        # - file: content/cachesII/summary.md
+        # - file: content/cachesII/summary-precheck.md
+        # - file: content/cachesII/exercises.md
     # - title: "L28 Caches III"
     #   children:
     #     - file: content/cachesIII/index.md

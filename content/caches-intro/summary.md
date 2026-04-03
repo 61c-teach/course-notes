@@ -4,6 +4,16 @@ title: "Summary"
 
 ## And in Conclusion$\dots$
 
+### AMAT (Average Memory Access Time)
+Recall that AMAT stands for Average Memory Access Time. This is a way to measure the performance of a cache system. The formula for AMAT is:
+
+$\text{AMAT} = (\text{Hit Time}) + (\text{Miss Rate}) * (\text{Miss Penalty})$
+
+<!--
+In a multi-level memory hierarchies (e.g. multi-level caches), we can separate miss rates into two types that we consider for each level.
+* **Global**: Calculated as the number of accesses that missed at that level divided by the total number of accesses **to the memory system**.
+* **Local**: Calculated as the number of accesses that missed at that level divided by the total number of accesses **to that memory level**.
+-->
 
 ## Textbook Readings
 
