@@ -1,4 +1,4 @@
----
+1.--
 title: "Average Memory Access Time (AMAT)"
 short_title: "Average Memory Access Time"
 ---
@@ -164,9 +164,14 @@ The L2 cache tends to receive only the "hard" memory accesses (the ones that mis
 
 We mentioned that AMAT is used to compare cache designs. The key performance hit to AMAT is **miss rate**. This can be measured over multiple program benchmarks, each with different memory access patterns.
 
-To reduce miss rate:
+In this section, we have seen one way to optimize cache performance by introducing multilevel caches to reduce miss penalty. 
 
-* Get a larger cache. This is limited by cost and physical technology capabilities. Furthermore, bigger caches are slower. We would love for higher caches (like L1 cache) to have a hit time of less than the cycle time.
-* Place lines of the cache in a way that maximizes temporal and spatial locality as needed for the average program.
+To optimize cache performance:
 
-The latter technique is the core of **cache design** and placement policies. Up next!
+1. Introduce multilevel caches to reduce miss penalty. We just saw this.
+1. Get a larger cache. This is limited by cost and physical technology capabilities. Furthermore, bigger caches are slower. We would love for higher caches (like L1 cache) to have a hit time of less than the cycle time.
+1. Place lines of the cache in a way that maximizes temporal and spatial locality as needed for the average program.
+    1. Larger cache line size to reduce miss rate, but can increase the miss penalty.
+    1. Higher associativity to reduce miss rate, but can increase hit time.¡ 
+
+The last group of techniques is the core of **cache design** and placement policies. Up next!

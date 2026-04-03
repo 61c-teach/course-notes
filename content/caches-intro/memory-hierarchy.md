@@ -17,6 +17,10 @@ title: "Memory Hierarchy"
 
 ::::
 
+> Ideally one would desire an indefinitely large memory capacity such that any particular ... word would be immediately available. ... We are ... forced to recognize the possibility of constructing a hierarchy of memories, each of which has greater capacity than the preceding but which is less quickly accessible.
+> 
+> -- Preliminary Discussion of the Logical Design of an Electronic Computing Instrument (1946)
+
 ## Memory Wall
 
 While hardware performance has continued to improve, there is a persistent and increasing gap between the improvements in processor hardware and memory/device interconnects (the **Processor-DRAM gap**, or simply **memory gap**).[^att] The "**memory wall**"[^wulf-mckee] places a significant limit on performance for many modern workloads, especially in AI.[^arxiv]
@@ -196,3 +200,5 @@ The memory hierarchy.
 :::
 
 Written version coming soon, but not too soon.
+
+For now, know that DRAM (the technology used for )
