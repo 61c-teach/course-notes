@@ -87,8 +87,10 @@ Each entry in the cache therefore needs to track (at least) **two** pieces of in
 
 Size-related terminology:
 
-* **Line size** (also called **block size**) is the number of bytes of data stored in this cache line. Each line in a cache has the same line size.[^m1-line]
+* **Line size** (also called **block size**) is the number of bytes of data stored in this cache line. Each line in a cache has the same line size. To take advantage of spatial locality, caches usually have a line size larger than one word.[^m1-line]
 * **Capacity** is the size of a cache, in bytes.
+
+[^m1-line]: For the Apple M1 chip, L1 cache has 64-byte lines, whereas L2 cache has 128-byte lines. [GoFetch](https://gofetch.fail/).
 
 :::{warning} Cache size/capacity
 
@@ -102,8 +104,6 @@ For this course, when we say a 32B cache, we mean a cache that can store 32 byte
 [^metadata]: Tag, valid bit, dirty bit, etc. Discussed in the [next chapter](#sec-fully-associative). 
 
 :::
-
-[^m1-line]: For the Apple M1 chip, L1 cache has 64-byte lines, whereas L2 cache has 128-byte lines. [GoFetch](https://gofetch.fail/).
 
 (sec-cache-memory-access)=
 ## Memory Access with/without a Cache

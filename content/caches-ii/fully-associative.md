@@ -1,15 +1,19 @@
 ---
-title: "Fully Associative"
-subtitle: Full version coming soon!
+title: "Fully Associative Cache"
 ---
 
 (sec-fully-associative)=
 ## Learning Outcomes
 
+* Using terminology, describe how to find a line in a fully associative cache: address, tag, and offset.
+* Explain why a valid bit is needed for cache design.
+* Compare different line replacement policies: LRU, FIFO, and random.
+* Compare two write policies: write-through and write-back. Optimize the latter with a dirty bit.
+* For a given pattern of memory accesses, identify if each memory access is a cache hit or cache miss.
 <!--* TODO
 -->
 
-::::{note} 🎥 Lecture Video
+::::{note} 🎥 Lecture Video: Fully Associative
 :class: dropdown
 
 :::{iframe} https://www.youtube.com/embed/-7TxNYUeFng
@@ -18,6 +22,43 @@ subtitle: Full version coming soon!
 :::
 
 ::::
+
+::::{note} 🎥 Lecture Video: Block (Line) Replacement
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/a-ejTer1Ijg
+:width: 100%
+:title: "[CS61C FA20] Lecture 25.3 - Caches IV: Block Replacement with Example"
+:::
+
+Until 7:00. The example assumes familiarity with set associative caches, a placement policy we discuss in a [later section](#sec-set-associative)
+
+::::
+
+::::{note} 🎥 Lecture Video: Writes
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/DiH8xtQeCJA
+:width: 100%
+:title: "[CS61C FA20] Lecture 25.3 - Caches III: Writes, Block Sizes, Misses"
+:::
+
+Until 13:00
+
+::::
+
+::::{note} 🎥 Lecture Video: Block Size
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/DiH8xtQeCJA
+:width: 100%
+:title: "[CS61C FA20] Lecture 25.3 - Caches III: Writes, Block Sizes, Misses"
+:::
+
+Until 22:45
+
+::::
+
 
 How do we design a cache? [From earlier](#sec-cache-terminology):
 
@@ -35,17 +76,17 @@ A line can be placed in any entry of the cache.
 
 :::
 
-In other words, **associativity** refers to the possible entries that a particular line of data can be associated with.
+**Associativity** refers to the possible entries that a particular line of data can be associated with.
 
 ## Identification
 
-How do we determine a **cache hit** on a memory address? In other words, how do we know if the data at a specific memory address is in a line of the cache? From _Computer Organization: A Quantitative Approach_ Appendix B.1:
+How do we determine a **cache hit** on a memory address? In other words, how do we know if the data at a specific memory address can be accessed from a line in the cache? From _Computer Organization: A Quantitative Approach_ Appendix B.1:
 
 > Caches have an address tag on each block frame that gives the block address. The tag of every cache block that might contain the desired information is checked to see if it matches the block address from the processor. As a rule, all possible tags are searched in parallel because speed is critical.
 
 There is a lot in this paragraph (not least of which is the block vs. line terminology[^block-vs-line]). We first explore the relationship between a memory address and the tag of a cache entry. We then explain how we determine cache hits.
 
-[^block-vs-line]: Here, "block frame" means the cache entry itself, "block" is the data unit, and "block address" is something that indicates the memory address of the least significant byte of this block.
+[^block-vs-line]: Here, "block frame" means the cache entry itself, "block" is the data unit, and "block address" is something that indicates the memory address of the least significant byte of this block. We will not use this terminology since it only appears here.
 
 ### Tag and Offset
 
@@ -132,6 +173,8 @@ The following animation traces through five memory accesses to a 12-bit address 
 Warming up a fully associative cache.[^replacement-policy]
 ::::
 
+To keep things simple for now, if we encounter a cache miss, we load the new line from memory into an invalid cache entry. We discuss _line replacement policies_ in [the next section](#sec-replacement-policy).
+
 :::{note} 1. Load byte @ `0x43F`. Cache miss.
 :class: dropdown
 
@@ -141,15 +184,14 @@ Address `0x43F` in binary: `0b0100 0011 1111`
 * Offset: `0b11`
 
 1. **Cache Miss**. No valid tags in the cache match `0x10F`.
-1. **Access lower level of memory hierarchy**. Load into a cache entry[^replacement-policy] the four bytes of data starting @ `0x43C`. Mark valid bit.
+1. **Access lower level of memory hierarchy**. Load into a selected cache entry a line's worth of data from memory starting @ address  @ `0x43C`. Write the tag `0x10F`. Mark valid bit.
 
     Spatial locality: Even if we only read in one byte, loading from memory will load the full line (here, 4B), where all bytes of data in the line share the same tag because they are from the same region of memory:
+
     * Least significant byte in line (offset `0b00`) is @ memory address `0x43C` (`0b0100 0011 1100`)
     * Most significant byte in line (offset `0b11`) is @ memory address `0x43F` (`0x0b100 0011 1111`)
 
 1. **Read**. Read byte in cache line at offset `0b11` (i.e., most significant byte in line)	and return to processor.
-
-[^replacement-policy]: To keep things simple for now, if we encounter a cache miss, we load the new line from memory into an invalid cache entry. This is consistent with most replacement policies, which we discuss in [this section](#sec-replacement-policy).
 
 :::
 
@@ -162,11 +204,11 @@ Address `0x5E2` in binary: `0b0101 1110 0010`
 * Offset: `0b10`
 
 1. **Cache Miss**. No valid tags in the cache match `0x178`.
-1. **Access lower level of memory hierarchy**. Load into a cache entry[^replacement-policy] the four bytes of data starting @ `0x5E0` (`0b0101 1110 0000`). Mark valid bit.
+1. **Access lower level of memory hierarchy**. Load into a selected cache entry a line's worth of data from memory starting @ address `0x5E0` (`0b0101 1110 0000`). Write the tag `0x178`. Mark valid bit.
 1. **Read**. Read byte in cache line at offset `0b10` and return to processor.
 :::
 
-:::{note} 3. Load_ word_ @ `0x824`. Cache miss.
+:::{note} 3. Load word @ `0x824`. Cache miss.
 :class: dropdown
 
 Address `0x824` in binary: `0b1000 0010 0100`
@@ -175,10 +217,8 @@ Address `0x824` in binary: `0b1000 0010 0100`
 * Offset: `0b00`
 
 1. **Cache Miss**. No valid tags in the cache match `0x209`.
-1. **Access lower level of memory hierarchy**. Load into a cache entry[^replacement-policy] the four bytes of data starting @ `0x824` (`0b1000 0010 0100`). Mark valid bit.
-1. **Read**. Read **word**[^word-vs-line] in cache line at offset `0b00` and return to processor.
-
-[^word-vs-line]: In our tiny cache with 4B-sized lines, reading a word is equivalent to reading the entire cache line, but in practice cache lines are composed of multiple words (e.g., 16 or 32 words per line).
+1. **Access lower level of memory hierarchy**. Load into a cache entry the four bytes of data starting @ `0x824` (`0b1000 0010 0100`). Write the tag `0x209`. Mark valid bit.
+1. **Read**. Read **word** in cache line at offset `0b00` and return to processor.
 :::
 
 :::{note} 4. Load byte @ `0x5E0`. Cache hit.
@@ -189,10 +229,22 @@ Address `0x5E0` in binary: `0b0101 1110 0000`
 * Tag: `0b0101111000`, or `0x178`
 * Offset: `0b00`
 
-1. **Cache Hit**. The first cache line has tag `0x178` **and is a valid tag**.
+1. **Cache Hit**. The requested tag `0x178` matches a **valid** cache tag.
 1. **Read**. Read byte in cache line at offset `0b00` and return to processor.
 :::
 
+:::{note} 5. Load byte @ `0x524`. Cache miss.
+:class: dropdown
+
+Address `0x524` in binary: `0b0101 0010 0100`
+
+* Tag: `0b0101001001`, or `0x149`
+* Offset: `0b00`
+
+1. **Cache Miss**. No valid tags in the cache match `0x178`.
+1. **Access lower level of memory hierarchy**. Load into a selected cache entry a line's worth of data from memory starting @ address `0x524` (`0b0101 0010 0100`). Write the tag `0x149`. Mark valid bit.
+1. **Read**. Read byte in cache line at offset `0b00` and return to processor.
+:::
 
 Of these **five memory accesses**:
 
@@ -213,10 +265,6 @@ After the previous five memory accesses, our fully associative cache is at capac
 After the five memory accesses described [above](#sec-fa-walkthrough), our small fully associative cache is full.
 :::
 
-Because our 16-byte cache can only ever contain a subset of the 2{sup}`16` bytes of main memory data, our _full cache can still miss_. Consider a **sixth** memory access that does not match any valid tags, triggering a cache miss. On this cache miss, we must again go to memory and retrieve a cache line, but now we must replace one of our valid cache entries.[^replacement-policy-continued]
-
-[^replacement-policy-continued]: To be precise, we still encountered the "replacement" policy question when we replaced invalid entries. Assume a consistent replacement policy for all cache misses, no matter the cache temperature.
-
 A **replacement policy** defines how the cache controller determines which line is replaced on a cache miss. For fully associative caches, there are several options for replacement policies.
 
 A natural replacement policy is called **least recently used**, or **LRU** for short. From _Computer Organization: A Quantitative Approach_ Appendix B.1:
@@ -225,14 +273,27 @@ A natural replacement policy is called **least recently used**, or **LRU** for s
 
 :::{hint} Quick Check
 
-Based on the the five memory access described [above](#sec-fa-walkthrough), which line is the least recently used in @fig-fa-full? Assign each entry to a number from 0 (**most** recently used) to 3 (**least** recently used).
+Based on the the five memory access described [above](#sec-fa-walkthrough), which line is the least recently used in @fig-fa-full?
 
 :::
 
-:::{note} Solution
+(sec-lru-implementation)=
+:::{note} Solution: Possible LRU implementation
 :class: dropdown
 
-Coming soon!
+Answer: Cache line with tag `0x10F`.
+
+One approach is to stare at the memory accesses until you figure it out. Another possible algorithm is to assign a number to each line that tracks access history. On each memory access, reset the number to zero if the tag is valid and matches (or after a cache miss, the updated tag matches), and increment the number if the tag is valid but not matched.The entry with the _highest_ such number[^ties] is the **least** recently used.
+
+[^ties]: Break ties in some reasonable way, e.g., randomly.
+
+1. Load byte @ `0x43F`. Tag `0x10F` is 0.
+2. Load byte @ `0x5E2`. Tag `0x10F` is 1, `0x178` is 0.
+3. Load **word** @ `0x824`. Tag `0x10F` is 2, `0x178` is 1, `0x209` is 0.
+4. Load byte @ `0x5E0`. Tag `0x10F` is 3, `0x178` is 0, `0x209` is 1.
+5. Load byte @ `0x524`. Tag `0x10F` is 4, `0x178` is 1, `0x209` is 2, `0x149` is 0.
+
+The tag with the highest number is `0x10F`.
 :::
 
 ::::{figure}
@@ -245,23 +306,66 @@ Coming soon!
 Fully associative cache with least recently used (LRU) replacement policy.
 ::::
 
-We summarize some common replacement policies:[^lifo]
+:::{note} 6. Load byte @ `0x972`. Cache miss.
+:class: dropdown
+
+Address `0x972` in binary: `0b1001 0111 0010`
+
+* Tag: `0b100101110010`, or `0x25C`
+* Offset: `0b10`
+
+1. **Cache Miss**. No valid tags in the cache match `0x25C`.
+1. **Access lower level of memory hierarchy**. Select the least recently used entry (tag `0x10F`). Replace its line with a line's worth of data from memory starting @ address `0x970` (`0b10001 0111 0000`). Write the tag `0x25C`. Mark valid bit.
+1. **Read**. Read byte in cache line at offset `0b10` and return to processor.
+:::
+
+Common replacement policies:[^lifo]
 
 1. **Least recently used (LRU)**: Select the most recently used line for replacement.
 1. **Random**: Select a line randomly for replacement.
-1. **First in, first out (FIFO)**: Select the _oldest_ line for replacement (even if the oldest block has been most recently used).[^fifo]
+1. **First in, first out (FIFO)**: Select the _oldest_ line for replacement (even if the oldest block has been most recently used). A queue (using terminology from Data Structures).
 
-The implementation of replacement policies is out of the scope. However, we note the following:
+While the implementation of replacement policies is out of the scope of this course, we note the following:
 
-* LRU incurs a significant hardware cost, because now we must keep track of access history.
+* LRU incurs a significant hardware cost because the cache must track access history.
 * FIFO is a reasonable approximation to LRU without adding too much excess hardware.[^fifo]
-* Random replacement works surprisingly okay when a workload has low temporal locality because it spreads replacement uniformly across the cache.
+* Random replacement spreads replacement uniformly across the cache, so this policy works surprisingly fine when a workload has low temporal locality.
 
-[^lifo]: Some of you may be wondering: Why not Most Recently Used (MRU)? Why not last in, first out (LIFO)? While LIFO approximates MRU, both of these policies go entirely against the idea of temporal locality. :-)
+[^lifo]: Some of you may be wondering: Why not Most Recently Used (MRU)? Why not last in, first out (LIFO)? While LIFO approximates MRU, both of these policies go entirely against the idea of temporal locality and are consequently a bit silly.
 
-[^fifo]: The implementation of a FIFO replacement policy is out of scope. Read _Computer Organization: A Quantitative Approach_ Appendix B.1 for more details.
+[^fifo]: Again, the implementation of a FIFO replacement policy is out of scope. Read _Computer Organization: A Quantitative Approach_ Appendix B.1 for more details.
+
+:::{table} Comparison of cache replacement policies.
+
+| Feature | LRU | FIFO | Random |
+| :-- | :-- | :-- | :-- |
+| **Description** | Replace the entry that has not been used for the longest time | Replace the oldest block in the set (queue) | Replace a random block |
+| **Implementation** | Bit counters for each cache block; see [quick check](#sec-lru-implementation) | FIFO queue or similar approximation | Flip a figurative hardware coin |
+| **Advantage** | Temporal locality | Reasonable approximation to LRU | Easy to implement |
+| **Disadvantage** | Complicated hardware to keep track of access history | – | Terrible if workload leverages high temporal locality |
+:::
 
 ## Write Policy
+
+So far, we have only focused on memory **reads** with load instructions. But what about store instructions, which **write** to data in memory?
+
+Recall that cache lines are **copies** of data in lower levels:
+
+:::{embed} #sec-memory-hierarchy-copy
+:::
+
+With a cache, we need to ensure that our main memory will (eventually) be in sync with our cache if we modify data.
+There are two basic options when writing to the cache:
+
+1. **Write-through**: The information is written to both the line in the cache _and_ to the corresponding location in the lower-level main memory.
+1. **Write-back**: The information is written only to the cache line. The modified cache line is written to the lower-level main memory **only** when it is replaced.
+
+To implement write-back, we note further that we can only need to write back _modified_ lines to main memory on replacement. This reduces the miss penalty. To reduce the frequency of writing back lines on replacement, use a **dirty bit** for each cache entry.
+
+* If the dirty bit is set (`1`), the line has been modified while in the cache. When this line is replaced, on a miss, write back this line to main memory.
+* If the dirty bit is not set (`0`), the line has not been modified ("clean"). When this line is replaced on a miss, no write-back is needed, since information identical to the cache is found in the lower-level main memory.
+
+@fig-fa-wb animates our fully associative cache with a write-back policy, using the dirty bit
 
 ::::{figure}
 :label: fig-fa-wb
@@ -274,15 +378,72 @@ Write back, with dirty bit animation.
 ::::
 
 
+:::{note} 7. Store byte @ `0x524`. Cache hit.
+:class: dropdown
 
-Coming soon!
+Address `0x524` in binary: `0b0101 0010 0100`
 
-* Write-through: Write to the cache and memory at the same time. (more writes to memory → longer AMAT)
-* Write data in cache and set a dirty bit to 1.
-When this line gets replaced from the cache
-(and “back” to memory), write to memory.
+* Tag: `0b0101001001`, or `0x149`
+* Offset: `0b00`
 
-## Hardware and Performance
+1. **Cache Hit**. The requested tag `0x149` matches a **valid** cache tag.
+1. **Write**. Write byte in cache line at offset `0b00`. Set dirty bit.
+
+In this write-back cache, this memory access does not incur a line replacement (because it was a cache hit). There is therefore no write to memory.
+:::
+
+:::{table} Comparison of cache write policies.
+:label: tab-cache-write
+
+| Feature | Write-through | Write-back |
+| :-- | :-- | :-- |
+| **Description** | Write to the cache and memory at the same time | Write to the cache. Only write back to memory when the line is replaced. |
+| **Implementation** | Easy | More complicated |
+| **"Synchronized" with memory?**[^coherency] | Yes | No. Sometimes cache will have the most current copy of data. |
+| **Optimization** | – | Include a **dirty bit** to only write back modified lines. |
+| **Hit time for writes** | Each write to a cache line also requires a write to memory. Longer. | Multiple writes within a cache line require only one write to memory (the latter happens only on replacement). Faster. |
+| **Miss penalty** | "Read" misses are fast and never result in a write to memory. Shorter. | A "read" miss has variable time, since a write to memory may also be needed if the block to be replaced is dirty. Longer on average. |
+| **AMAT** | Longer | Shorter |
+
+[^coherency]: Also known as data coherency, or cache coherency.
+:::
+
+Which write policy should we use? It depends on the level of memory hierarchy. We discuss this more later with virtual memory.
+
+Final note: Fortunately, most cache accesses are **reads**, not **writes**. reads dominate cache accesses (all instruction accesses are reads; furthermore, most instructions write to registers, not memory). A line can be read from the cache at the same time that the tag is read and compared. Unfortunately, for writes, modifying a block cannot begin until the tag is checked to see if the address is a hit. Nevertheless, processors do not have to wait for writes to complete and can begin executing other instructions during this time (consider the `MEM` stage of our five-stage pipeline).
+
+## Walkthrough Summary
+
+In this section, we traced through a cache design for a 12-bit address space with the following features:
+
+* Line size: 4B
+* Capacity: 16B
+* Placement policy: Fully associative
+* Replacement policy: Least Reecntly Used
+* Write policy: Write-back
+
+:::{figure} images/fa-all.png
+:label: fig-fa-all
+:width: 70%
+:alt: "TODO"
+
+Design of the fully associative cache described in this section's example.
+:::
+
+Cache "metadata":
+
+* Tag: 10 bits
+* Valid bit
+* LRU hardware (e.g., a counter)
+* Dirty bit (to optimize write-back)
+
+### Line size and performance
+
+In our tiny cache with 4B-sized lines, reading a word is equivalent to reading the entire cache line, but in practice cache lines are composed of multiple words (e.g., 16 or 32 words per line).
+
+From P&H 5.3: "The use of a bigger line takes advantage of spatial locality: it decreases the miss rate and improves the efficiency of cache hardware by reducing the amount of tag storage releative to the amount of data storage in the cache. Although a larger line size decreases the miss rate, it could also increase the miss penalty. If the miss penalty increases linearly with line size, larger lines can easily lead to lower performance.
+
+## Fully Associative: Hardware and Performance
 
 Fully associative caches employ the most flexible placement policy, which is also the most costly to implement in hardware. From P&H 5.4:
 
@@ -297,7 +458,7 @@ As shown in @fig-fa-hardware, the hardware is somewhat straightforward: Obtain t
 A fully associative placement increases hardware cost.
 :::
 
-Because of the additional hardware needed, higher associativity increases not only hardware but also power.[^power] We will see placement policies with lower associativity in the next section that reduce the number of comparators needed _and_ reduce the complexity of each comparator by reducing the width of the cache tag.
+Fully associative caches are not common in modern processors. Because of the additional hardware needed, higher associativity increases not only hardware but also power.[^power] We will see placement policies with lower associativity in the next section that reduce the number of comparators needed _and_ reduce the complexity of each comparator by reducing the width of the cache tag.
 
 [^power]: Read more in _Computer Organization: A Quantitative Appproach_, 5th edition, Section 2.1.
 <!--
