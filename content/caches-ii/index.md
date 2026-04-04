@@ -7,7 +7,7 @@ title: "Cache Terminology"
 
 * Explain how caches leverage temporal and spatial locality.
 * Trace memory access with caches.
-* Get familiar with key cache terminology: cache hit, cache miss, cache line (block), tag.
+* Get familiar with key cache terminology: cache hit, cache miss, block (cache line), tag.
 
 ::::{note} 🎥 Lecture Video: Locality, Design, and Management
 :class: dropdown
@@ -29,6 +29,8 @@ title: "Cache Terminology"
 :::
 
 ::::
+
+https://www.youtube.com/watch?v=DiH8xtQeCJA
 
 ## Principle of Locality
 
@@ -57,7 +59,7 @@ A cache works on the principles of **temporal and spatial locality**.
 | :--- | :--- | :--- |
 | Idea | If we use it now, chances are that we’ll want to use it again soon. | If we use a piece of memory, chances are we’ll use the neighboring pieces soon. |
 | Library Analogy | We keep a book on the desk while we check out another book. | If we check out volume 1 of a reference book, while we’re at it, we’ll also check out volume 2. Libraries put books on the same topic together on the same shelves to increase spatial locality. |
-| Memory | If a memory location is referenced, then it will tend to be referenced again soon. Therefore, keep most recently accessed data items closer to the processor. | If a memory location is referenced, the locations with nearby addresses will tend to be referenced soon. Move **lines** consisting of contiguous words closer to the processor. |
+| Memory | If a memory location is referenced, then it will tend to be referenced again soon. Therefore, keep most recently accessed data items closer to the processor. | If a memory location is referenced, the locations with nearby addresses will tend to be referenced soon. Move **blocks** consisting of contiguous words closer to the processor. |
 
 :::
 
@@ -73,24 +75,24 @@ Memory is **byte-addressable**, meaning each byte in memory has a memory **addre
 
 Each entry in the cache therefore needs to track (at least) **two** pieces of information:
 
-1. **Cache lines** (also called **cache blocks**)[^block-vs-line] are the unit of data are copied from memory to the cache. A cache line is the smallest unit of memory that can be transferred between the main memory and the cache. Copying over a _line_ of data (instead of simply a word, or a byte) helps us take advantage of **spatial locality**.
+1. **Cache blocks** (also called **blocks**, or **cache lines**)[^block-vs-line] are the unit of data are copied from memory to the cache. A block is the smallest unit of memory that can be transferred between the main memory and the cache. Copying over a _line_ of data (instead of simply a word, or a byte) helps us take advantage of **spatial locality**.
 
-    Each line has its own entry in the cache.
+    Each block has its own entry in the cache.
 
-1. **Tag**: The address(es) associated with data in a cache line.
+1. **Tag**: The address(es) associated with data in a block.
 
     From P&H 5.3: "A **tag** is a field in a table used for a memory hierarchy that contains the address information required to identify whether the associated [line] in the hierarchy corresponds to a requested [word or byte]."
     
-    Each cache entry has its own tag. Each cache line is therefore associated with one tag.
+    Each cache entry has its own tag. Each block is therefore associated with one tag.
 
-[^block-vs-line]: The literature is inconsistent on whether to refer to the unit of data transferred between a cache and main memory as a "block" or a "line." You will see both. We will try to stick to "line" where possible, except when in quoting the textbook.
+[^block-vs-line]: The literature is inconsistent on whether to refer to the unit of data transferred between a cache and main memory as a "block" or a "line." You will see both. We will try to stick to "block" where possible, except when quoting sources.
 
 Size-related terminology:
 
-* **Line size** (also called **block size**) is the number of bytes of data stored in this cache line. Each line in a cache has the same line size. To take advantage of spatial locality, caches usually have a line size larger than one word.[^m1-line]
+* **Block size** (also called **line size**) is the number of bytes of data stored in this block. Each block in a cache has the same block size. To take advantage of spatial locality, caches usually have a block size larger than one word.[^m1-line]
 * **Capacity** is the size of a cache, in bytes.
 
-[^m1-line]: For the Apple M1 chip, L1 cache has 64-byte lines, whereas L2 cache has 128-byte lines. [GoFetch](https://gofetch.fail/).
+[^m1-line]: For the Apple M1 chip, L1 cache has 64-byte blocks, whereas L2 cache has 128-byte blocks. [GoFetch](https://gofetch.fail/).
 
 :::{warning} Cache size/capacity
 
@@ -99,7 +101,7 @@ From [Wikipedia](https://en.wikipedia.org/wiki/CPU_cache):
 
 [^practice]: See size comparisons in Sadler et al., ICCD 2006. DOI: [10.1109/ICCD.2006.4380862](https://doi.org/10.1109/ICCD.2006.4380862)
 
-For this course, when we say a 32B cache, we mean a cache that can store 32 bytes of **data** from memory, i.e., 32 = (number of lines) x (line size).
+For this course, when we say a 32B cache, we mean a cache that can store 32 bytes of **data** from memory, i.e., 32 = (number of blocks) x (line size).
 
 [^metadata]: Tag, valid bit, dirty bit, etc. Discussed in the [next chapter](#sec-fully-associative). 
 
@@ -147,9 +149,9 @@ Memory access **with cache**:
     1. (2a) If **cache hit** (finds match): cache reads `1234`
     2. (2b) If **cache miss** (no match): cache sends address `0x12F0` to Memory
 
-        1. (2b(i)) Memory reads line with `1234` (i.e., line contains data at address `0x12F0`)
-        1. (2b(ii)) Memory sends line with `1234` to cache
-        1. (2b(iii)) Cache replaces some line to store new line with `1234`
+        1. (2b(i)) Memory reads block with `1234` (i.e., block contains data at address `0x12F0`)
+        1. (2b(ii)) Memory sends block with `1234` to cache
+        1. (2b(iii)) Cache replaces some block to store new block with `1234`
         1. (2b(iv)) Cache reads `1234`
 1. Cache sends `1234` to Processor
 1. Processor loads `1234` into register `t0`
@@ -182,7 +184,7 @@ Our goal for cache design is temporal and spatial locality for a range of worklo
 * **Warm**: The cache is doing its job, with a fair percentage of hits.
 * **Hot**: The cache is doing very well with a high percentage of hits.
 
-[^empty-analogy]: Caches can never truly be "empty." Instead, cache lines may sometimes contain garbage data with respect to the currently running program. We discuss this in the [next section](#sec-valid-bit).
+[^empty-analogy]: Caches can never truly be "empty." Instead, blocks may sometimes contain garbage data with respect to the currently running program. We discuss this in the [next section](#sec-valid-bit).
 
 ## Four Memory Hierarchy Questions
 
