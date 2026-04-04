@@ -3,6 +3,7 @@ title: "Set-Associative Cache"
 subtitle: Coming soon!
 ---
 
+(sec-set-associative)=
 ## Learning Outcomes
 
 <!--* TODO
