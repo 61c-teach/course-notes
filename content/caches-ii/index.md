@@ -70,7 +70,6 @@ From [Wikipedia](https://en.wikipedia.org/wiki/CPU_cache):
 
 > Data is transferred between memory and cache in blocks of fixed size, called cache lines or cache blocks. When a cache line is copied from memory into the cache, a cache entry is created. The cache entry will include the copied data as well as the requested memory location (called a tag).
 
-
 Memory is **byte-addressable**, meaning each byte in memory has a memory **address**. This is identical to our concept of memory from [earlier](#sec-address-space). Just like memory, caches need to look up data by memory address (see [below](#sec-cache-memory-access)). However, now a cache no longer has access to the entire memory address space because of its limited storage capacity.
 
 Each entry in the cache therefore needs to track (at least) **two** pieces of information:
@@ -82,7 +81,7 @@ Each entry in the cache therefore needs to track (at least) **two** pieces of in
 1. **Tag**: The address(es) associated with data in a block.
 
     From P&H 5.3: "A **tag** is a field in a table used for a memory hierarchy that contains the address information required to identify whether the associated [line] in the hierarchy corresponds to a requested [word or byte]."
-    
+
     Each cache entry has its own tag. Each block is therefore associated with one tag.
 
 [^block-vs-line]: The literature is inconsistent on whether to refer to the unit of data transferred between a cache and main memory as a "block" or a "line." You will see both. We will try to stick to "block" where possible, except when quoting sources.
