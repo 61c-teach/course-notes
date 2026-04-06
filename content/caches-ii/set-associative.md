@@ -36,7 +36,7 @@ title: "Set-Associative Cache"
 (sec-set-associative-policy)=
 :::{note} _Set Associative_ placement policy
 
-A block can be placed in a restricted set of places in the cache.
+A block can be placed in a restricted set of locations in the cache.
 
 :::
 

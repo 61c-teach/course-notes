@@ -39,7 +39,7 @@ In an [earlier section](#sec-fully-associative), we explained why hardware costs
 (sec-direct-mapped-policy)=
 :::{note} _Direct Mapped_ placement policy
 
-A block can be placed in any entry of the cache.
+A block can be placed in exactly one location of the cache.
 
 :::
 
