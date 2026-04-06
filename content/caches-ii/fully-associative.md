@@ -10,8 +10,6 @@ title: "Fully Associative Cache"
 * Compare different block replacement policies: LRU, FIFO, and random.
 * Compare two write policies: write-through and write-back. Optimize the latter with a dirty bit.
 * For a given pattern of memory accesses, identify if each memory access is a cache hit or cache miss.
-<!--* TODO
--->
 
 ::::{note} 🎥 Lecture Video: Fully Associative
 :class: dropdown
