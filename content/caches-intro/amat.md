@@ -1,4 +1,4 @@
-1.--
+---
 title: "Average Memory Access Time (AMAT)"
 short_title: "Average Memory Access Time"
 ---
@@ -159,12 +159,15 @@ The L2 cache tends to receive only the "hard" memory accesses (the ones that mis
 
 :::
 
-
-## Reducing Miss Rate
+## Preview: Cache Optimizations
 
 We mentioned that AMAT is used to compare cache designs. The key performance hit to AMAT is **miss rate**. This can be measured over multiple program benchmarks, each with different memory access patterns.
 
-In this section, we have seen one way to optimize cache performance by introducing multilevel caches to reduce miss penalty. 
+In this section, we have seen one way to optimize cache performance by introducing **multilevel caches** to reduce miss penalty.
+
+In this chapter, we will introduce the key principles of cache design. Then, with these design principles in mind, we revisit basic optimization techniques for improving cache performance.
+
+<!--
 
 To optimize cache performance:
 
@@ -175,3 +178,4 @@ To optimize cache performance:
     1. Higher associativity to reduce miss rate, but can increase hit time.¡ 
 
 The last group of techniques is the core of **cache design** and placement policies. Up next!
+-->

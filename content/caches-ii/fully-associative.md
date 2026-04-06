@@ -10,8 +10,6 @@ title: "Fully Associative Cache"
 * Compare different block replacement policies: LRU, FIFO, and random.
 * Compare two write policies: write-through and write-back. Optimize the latter with a dirty bit.
 * For a given pattern of memory accesses, identify if each memory access is a cache hit or cache miss.
-<!--* TODO
--->
 
 ::::{note} 🎥 Lecture Video: Fully Associative
 :class: dropdown
@@ -86,7 +84,7 @@ How do we determine a **cache hit** on a memory address? In other words, how do 
 
 There is a lot in this paragraph.[^block-description] We first explore the relationship between a memory address and the tag of a cache entry. We then explain how we determine cache hits.
 
-[^block-description]: Here, "block frame" means the cache entry itself, "block" is the data unit, and "block address" is something that indicates the memory address of the least significant byte of this block. We will more formally define "block address" in the [next section](#sec-direct-mapped).
+[^block-description]: Here, "block frame" means the cache entry itself, "block" is the data unit, and "block address" is something that indicates the memory address of the least significant byte of this block. We will more formally define "block address" in the [next section](#sec-block-address).
 
 ### Tag and Offset
 
@@ -103,7 +101,7 @@ Cache tag and offset in a 16B fully associative cache for 12-bit memory addresse
 :label: fig-fa-address
 :width: 60%
 :alt: "TODO"
-For a fully associative cache, the memory address is split into two fields: the tag and the offset. If blocks are 4 bytes, then a 12-bit memory address is split into a 10-bit tag and a 2-bit offset.
+For a fully associative cache, the memory address is split into two fields: the tag and the offset. For the blocks in @fig-fa-intro, a 12-bit memory address is split into a 10-bit tag and a 2-bit offset.
 
 :::
 
@@ -173,7 +171,7 @@ The following animation traces through five memory accesses to a 12-bit address 
 Warming up a fully associative cache.
 ::::
 
-To keep things simple for now, if we encounter a cache miss, we load the new block from memory into an invalid cache entry. We discuss _block replacement policies_ in [the next section](#sec-replacement-policy).
+To keep things simple for now, if we encounter a cache miss, we load the new block from memory into an invalid cache entry. We discuss _block replacement policies_ in [the next section](#sec-cache-replacement-policy).
 
 :::{note} 1. Load byte @ `0x43F`. Cache miss.
 :class: dropdown
@@ -252,7 +250,7 @@ Of these **five memory accesses**:
 * The fourth memory access is a cache hit, so no main memory access occurs.
 * The last memory access is also a cache miss.
 
-(sec-replacement-policy)=
+(sec-cache-replacement-policy)=
 ## Replacement Policy
 
 After the previous five memory accesses, our fully associative cache is at capacity (i.e., "full", because all cache entries are valid), as shown in @fig-fa-full.
@@ -336,6 +334,7 @@ While the implementation of replacement policies is out of the scope of this cou
 [^fifo]: Again, the implementation of a FIFO replacement policy is out of scope. Read _Computer Organization: A Quantitative Approach_ Appendix B.1 for more details.
 
 :::{table} Comparison of cache replacement policies.
+:label: tab-cache-replacement
 
 | Feature | LRU | FIFO | Random |
 | :-- | :-- | :-- | :-- |
@@ -345,6 +344,7 @@ While the implementation of replacement policies is out of the scope of this cou
 | **Disadvantage** | Complicated hardware to keep track of access history | – | Terrible if workload leverages high temporal locality |
 :::
 
+(sec-cache-write-policy)=
 ## Write Policy
 
 So far, we have only focused on memory **reads** with load instructions. But what about store instructions, which **write** to data in memory?
