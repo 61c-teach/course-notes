@@ -203,5 +203,5 @@ There are four high-level questions for cache design. We will call three of thes
 The answers to these questions help us understand the different tradeoffs of caches (and even of other levels of the memory hierarchy, as we will see in a later section). We will ask these four questions with every example. We start by introducing placement policies:
 
 * [Fully Associative Cache](#sec-fully-associative)
-* Set-Associative Cache
-* Direct Mapped Cache
+* [Set-Associative Cache](#sec-set-associative)
+* [Direct Mapped Cache](#sec-direct-mapped)
