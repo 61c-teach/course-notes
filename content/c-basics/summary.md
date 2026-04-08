@@ -31,7 +31,7 @@ Check your knowledge!
 ### Conceptual Review
 
 :::{exercise}
-:label: c-basisc-01
+:label: c-basics-01
 1. **True/False**: In compiled languages, the compile time is generally pretty fast, however the run-time is significantly slower than interpreted languages.
 :::
 

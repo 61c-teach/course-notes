@@ -45,7 +45,7 @@ The data in this section is from Patterson & Hennessy, _Computer Organization: A
 
 ### Short Exercises
 
-:::{exercises}
+:::{exercise}
 :label: caches-05
 1. **True/False**: Decreasing block size to increase the number of blocks held by the cache improves the program speed for all programs.
 :::
