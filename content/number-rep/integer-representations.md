@@ -102,7 +102,7 @@ In choosing an integer representation, we must consider whether the operations s
 
 :::{figure} images/odometer.jpg
 :label: fig-odometer
-:alt: ""
+:alt: "Close-up photograph of a mechanical car odometer showing the reading 999999 just before it rolls over. The image illustrates a finite counting device that will wrap back to 000000 after one more tick."
 :width: 70%
 
 A car odometer measures mileage. It starts at 0 and slowly ticks up, then wraps around again. At some point, the odometer above will hit 999999; the next number is again 0.
