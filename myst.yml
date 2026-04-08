@@ -180,6 +180,7 @@ project:
     #     - file: content/datapath-control/summary.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
+    - file: content/misc/gdb-guide.md
     - file: content/reference.md
     
 site:
