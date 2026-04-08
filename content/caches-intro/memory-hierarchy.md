@@ -80,7 +80,7 @@ Consider Apple's A14 bionic chip, which we introduced [earlier](#sec-intro-sds):
 :::{embed} #fig-apple-a14
 :::
 
-The L1 cache is  The L2 cache is located on the integrated circuit, often adjacent to the CPU. The System Level Cache labeled in the diagram is likely a Level 3 cache, shared across multiple CPU cores.[^system-level-cache]
+The L2 cache is located on the integrated circuit, often adjacent to the CPU. The System Level Cache labeled in the diagram is likely a Level 3 cache, shared across multiple CPU cores.[^system-level-cache]
 
 [^system-level-cache]: We don't discuss L3 caches much in this course. See [Wikipedia](https://en.wikipedia.org/wiki/CPU_cache).
 

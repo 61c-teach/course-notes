@@ -1,3 +1,8 @@
+---
+title: "Summary"
+---
+
+## And in Conclusion$\dots$
 
 ### Cache Misses
 In order to evaluate cache performance and hit rate, especially with determining how effective our current cache configuration is, it is useful to analyze the misses that do occur, and adjust accordingly. Below, we categorize cache misses into two types:
