@@ -40,7 +40,9 @@ The above code defines `BYTE` as another name for `uint8_t`, allowing us to decl
 
 `struct`s are structured groups of variables. A `struct` is an abstract data type definition. It feels very much like Python where you have a class and dot fields, but you have a lot more control.
 
-Structs and `typedef`s are often used in tandem. Longer example:
+Structs and `typedef`s are often used in tandem[^typedef-struct]. Longer example:
+
+[^typedef-struct]: Read more on [StackOverflow](https://stackoverflow.com/questions/1675351/typedef-struct-vs-struct-definitions).
 
 ```{code} c
 :linenos:
@@ -61,8 +63,8 @@ song2.year_recorded      = 1988;
 :::{note} Code, explained
 :class: dropdown
 
-* Lines 1 - 4 `SONG` is an alias for `typedef struct {int length_in_seconds; int year_recorded; }`
-* Line 6: Declare `song1` as a struct that has two `uint16_t` variables, `length_in_seconds` and `year_recorded.
+* Lines 1 - 4: `SONG` is an alias for `typedef struct {int length_in_seconds; int year_recorded; }`.
+* Line 6: Declare `song1` as a struct that has two `uint16_t` variables, `length_in_seconds` and `year_recorded`.
 * Line 7-8: Instantiate the data within the `song1` variable.
 * Lines 10-12: Do something similar for `song2`.
 :::
@@ -73,14 +75,14 @@ Important:
 
 ### C Preprocessor Macros, `#define`
 
-`#define PI (3.14159)` is a CPP (C Preprocessor) Macro. Prior to compilation, preprocess by performing string replacement in the program based on all `#define macros`. The line above replaces all `PI` with `(3.14159)` and in effect makes `PI` a "constant."
+`#define PI (3.14159)` is a CPP (C Preprocessor) macro. Prior to compilation, preprocess by performing string replacement in the program based on all `#define macros`. The line above replaces all `PI` with `(3.14159)` and in effect makes `PI` a "constant."
 
 You often see CPP macros defined to create small "functions". But remember that because `#define` is effectively string replacement, these aren't actual functions—instead, you are simply changing the text of the program.
 
 Because `#define` is effectively string replacement, this can produce interesting errors. For example:
 
 ```c
-#define min(X,Y) ((X)<(Y))
+#define min(X,Y) ((X)<(Y)?(X):(Y))
 next = min(w, foo(z));
 ```
 
@@ -94,7 +96,7 @@ If `foo(z)` has a side effect, that side effect will occur twice!
 
 :::{note} More about CPP
 
-C source files first pass through macro processor (C Pre-Processor, or CPP), before the compiler sees code. For example, the CPP replaces comments with a single space.
+C source files first pass through the macro preprocessor (C Preprocessor or CPP) before the compiler sees code. For example, the CPP replaces comments with a single space.
 
 All CPP commands begin with `#`:
 * `#include "file.h"`: Inserts `file.h` into output
@@ -102,10 +104,9 @@ All CPP commands begin with `#`:
 * `#define PI (3.14159)`: Define constant
 * `#if/#endif`: Conditionally include text. Useful if this C program will be compiled onto different machines and therefore require architecture-dependent libaries
 
-To see the result of preprocessing, you can use the `-save-temps` option in `gcc`. Read more about [CPP on the GCC docs](http://gcc.gnu.org/onlinedocs/cpp/)
+To see the result of preprocessing, you can use the `-save-temps` option in `gcc`. Read the GCC docs for more on [CPP](http://gcc.gnu.org/onlinedocs/cpp/) and [macros](https://gcc.gnu.org/onlinedocs/cpp/Macros.html).
 
 :::
-
 
 ### Constants and Enums
 
@@ -117,10 +118,10 @@ const int    days_in_week = 7;
 const double the_law      = 2.99792458e8;
 ```
 
-An **enum** is a nice feature for enumerated constants It declares a group of related integer constraints, like red=0, green=1, blue=2:
+An **enum** is a nice feature for enumerated constants. It declares a group of related integer constraints, like red=0, green=1, blue=2:
 
 ```c
-enum cardsuit {CLUBS,DIAMONDS,HEARTS,SPADES};
+enum cardsuit {CLUBS, DIAMONDS, HEARTS, SPADES};
 enum color {RED, GREEN, BLUE};
 ```
 
@@ -162,7 +163,7 @@ int number_of_people(int class1, int class2) {
   return class1 + class2;
 }
 
-float dollars_and_cents (float cost) {  return cost; }
+float dollars_and_cents(float cost) { return cost; }
 ```
 
 * You have to declare the type of data you plan to return from a function.
@@ -170,3 +171,7 @@ float dollars_and_cents (float cost) {  return cost; }
 * Parameters also must be typed.
 
 Variables and functions must be declared before use. In older C versions, this meant that all function declarations needed to be at top of files, or included in headers. Function implementations could be described later in the file. In more recent C, functions can be used so long as they are declared in the file.
+
+## Header files
+
+Header files allow you to share functions and macros across different source files. For more info, see the [GCC header docs](https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html#Header-Files).

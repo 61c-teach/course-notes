@@ -158,5 +158,5 @@ In @fig-twos-complement-number-wheel, 0 through 7 stays the same as it has for e
 
 ## Two’s Complement: C standard (as of 2025)
 
-Two’s complement is the C23 standard number representation for signed integers. Again, the built-in `int` is ambiguous because it does not specify bitwidth. And again, the header `inttypes.h` accommodates typedefs like `int8_t`, `int16_t`, `int32_t`, etc., for signed integer representations.
+Two’s complement is the C23 standard number representation for signed integers. Again, the built-in `int` is ambiguous because it does not specify bitwidth. And again, the header `stdint.h` accommodates typedefs like `int8_t`, `int16_t`, `int32_t`, etc., for signed integer representations.
 
