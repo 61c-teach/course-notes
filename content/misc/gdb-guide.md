@@ -140,7 +140,7 @@ When you just want one value, you can leave out **N**:
 
 
 ## Appendix
-Full `count_ones.s` code, adapted from [Su25 Exam Question](https://inst.eecs.berkeley.edu/~cs61c/exams/pdfs/su24-final-blank.pdf#page=4)
+Full `count_ones.s` code, adapted from [Su24 Exam Question](https://inst.eecs.berkeley.edu/~cs61c/exams/pdfs/su24-final-blank.pdf#page=4)
 
 ```{code} s
 :linenos:
