@@ -12,7 +12,7 @@ In this lecture, we will learn how to run a program. We will give more details t
 :::{figure} images/compile-high-level.png
 :label: fig-compile-high-level
 :width: 100%
-:alt: "TODO"
+:alt: "A schematic on the left shows source file foo.c passing through a step labeled compile colloquially to produce executable a.out, which the loader then loads into memory. A large question mark separates this view from a right-hand column that lists C code, assembly code, and machine code as successive representations."
 
 Colloquially, "compiling C code" has translated a program `foo.c` to some executable `a.out`. But how and where does assembly get involved?
 :::
@@ -30,7 +30,7 @@ The process of **translating** a C program `foo.c` from the high-level C code to
 :::{figure} images/call-flow.png
 :label: fig-call-flow
 :width: 60%
-:alt: "TODO"
+:alt: "Vertical flowchart of the translation and load pipeline: C source foo.c is compiled to assembly foo.s, assembled to object file foo.o, linked with lib.o to produce executable a.out, then loaded into memory. Each stage appears as a color-coded box with arrows showing inputs and outputs between files and the Compiler, Assembler, Linker, and Loader."
 
 Flow chart for steps for compiling and running a C program.
 :::
@@ -123,7 +123,7 @@ The linker patches together multiple object modules to produce an executable. It
 
 :::{figure} images/linker-flow.png
 :width: 40%
-:alt: "TODO"
+:alt: "Two object modules, file1.o and file2.o, are each drawn as rectangles with text, data, and info segments; arrows feed both into a central Linker box. The diagram shows the single output executable a.out as relocated text and data segments from both modules plus aggregated relocation information, illustrating how the linker combines object files into one executable."
 :::
 
 The linker enables **separate compilation** of different parts of the program. Importantly, it supports not _recompiling_ larger libraries. For example,. C standard libraries (e.g., `stdio`) are part of the Linux source, which is over 20 million lines of code. Because of the linker, recompiling a simple `foo.c` does not require recompiling `stdio` :-)

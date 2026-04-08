@@ -31,7 +31,7 @@ Consider @fig-language-continuum. On the left are higher-level languages; on the
 :::{figure} images/language-continuum.png
 :label: fig-language-continuum
 :width: 100%
-:alt: "TODO"
+:alt: "Horizontal continuum placing languages from left to right as Python, Java, C++, C, Java bytecode, Assembly, and Machine code. The left side of the continuum is labeled easy to program but inefficient to interpret, and the right side of the continuum is labeled difficult to program but efficient to interpret."
 
 Language execution continuum.
 :::
@@ -48,7 +48,7 @@ You may be familiar with Python, which is a high-level interpreted language. The
 :::{figure} images/python-interpreter.png
 :label: fig-python-interpreter
 :width: 50%
-:alt: "TODO"
+:alt: "Simple pipeline diagram where Python program foo.py flows into a box labeled Python Interpreter, and an arrow from that box points to Memory. The figure shows that the interpreter directly executes the source program rather than producing a separate machine-code executable."
 
 Python interpreter.
 :::
