@@ -58,55 +58,77 @@ These notes would not be possible without Professor John Wawrzynek's CS 61C hand
 Check your knowledge!
 
 ### Conceptual Review
-1. **True/False**: Simplifying boolean logic expressions will not affect the performance of the hardware implementation.
 
-:::{note} Solution
+:::{exercise}
+:label: sdscl-01
+1. **True/False**: Simplifying boolean logic expressions will not affect the performance of the hardware implementation.
+:::
+
+:::{solution} sdscl-01
+:label: sdscl-01-sol
 :class: dropdown
 **False**. Different gate arrangements that implement the same logic can have different propagation delays, which can affect the allowable clock speed.
 :::
 
+:::{exercise}
+:label: sdscl-02
 2. **True/False**: The fewer logic gates, the faster the circuit (assuming each gate has the same propagation delays).
+:::
 
-:::{note} Solution
+:::{solution} sdscl-02
+:label: sdscl-02-sol
 :class: dropdown
 **False**. A wide circuit with more gates in parallel can have less delay than just a few gates arranged in sequence.
 :::
 
+:::{exercise}
+:label: sdscl-03
 3. **True/False**: The time it takes for clock-to-q and register setup can be greater than one clock cycle.
+:::
 
-:::{note} Solution
+:::{solution} sdscl-03
+:label: sdscl-03-sol
 :class: dropdown
 **False**. This can result in instability if registers are connected to each other, as register outputs may not have propagated properly before the next rising edge.
 :::
 
+:::{exercise}
+:label: sdscl-04
 4. **True/False**: Every possible combinational logic circuit can be expressed by some combination of NOR gates.
-
-:::{note} Solution
-:class: dropdown
-**True**. NOR can be used to express AND, OR, and NOT gates. Thus, NOR is functionally complete and can be used to represent any possible Boolean expression, and thus any combinational logic
-circuit.
 :::
 
-5. **True/False**: The shortest combinational logic path between two state elements is useful in determining circuit frequency and minimum clock cycle.
-
-:::{note} Solution
+:::{solution} sdscl-04
+:label: sdscl-04-sol
 :class: dropdown
-**False**. The minimum clock cycle must allow enough time for every combinational logic delay to settle on an output, so the frequency is based on the longest combinational logic delay possible
-between state elements.
+**True**. NOR can be used to express AND, OR, and NOT gates. Thus, NOR is functionally complete and can be used to represent any possible Boolean expression, and thus any combinational logic circuit.
+:::
+
+:::{exercise}
+:label: sdscl-05
+5. **True/False**: The shortest combinational logic path between two state elements is useful in determining circuit frequency and minimum clock cycle.
+:::
+
+:::{solution} sdscl-05
+:label: sdscl-05-sol
+:class: dropdown
+**False**. The minimum clock cycle must allow enough time for every combinational logic delay to settle on an output, so the frequency is based on the longest combinational logic delay possible between state elements.
 :::
 
 ### Short Exercises
 
-1. Label each of the following logic gates with their respective boolean function, and draw a truth
-table representing their outputs:
+::::{exercise}
+:label: sdscl-06
+1. Label each of the following logic gates with their respective boolean function, and draw a truth table representing their outputs:
 
 :::{figure} images/exercises-1-gates.png
 :label: exercises-1-gates
 :width: 100%
 :alt: "TODO"
 :::
+::::
 
-:::{note} Solution
+::::{solution} sdscl-06
+:label: sdscl-06-sol
 :class: dropdown
 **NOT, AND, OR, XOR, NAND, NOR, XNOR**
 
@@ -118,4 +140,4 @@ Here are the outputs for each boolean function combined into a single truth tabl
 | 0  1 | 1 | 0 | 1 | 1 | 1 | 0 | 0 |
 | 1  0 | 0 | 0 | 1 | 1 | 1 | 0 | 0 |
 | 1  1 | 0 | 1 | 1 | 0 | 0 | 0 | 1 |
-:::
+::::

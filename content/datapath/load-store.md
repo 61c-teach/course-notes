@@ -55,13 +55,22 @@ DMEM: Connect and use a mux before `WB` (Write Back) phase.
 * Arithmetic and Logical R-Type or I-Type instructions: The output of the ALU (`alu`), which is now wired both into `addr` and into the new mux.
 * Load instructions: The output of DMEM (`mem`).
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-datapath-lw
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-load.pptx
 :width: 100%
 :title: "Tracing the `lw` Datapath"
 :::
 The `lw` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file. 
+:::: -->
+
+::::{figure}
+:label: anim-datapath-lw
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRxeC98vPTgADlY5t3P_seJfptV4jyHqG7xxR6X7tcr52EXVEiCtcOQBg_0cgacHA/pubembed?start=false&loop=false
+:width: 100%
+:title: "Tracing the `lw` Datapath"
+:::
+The `lw` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1UahZFjwYvnpvTWXY9JrPKPvzLzPE00Jg/edit?usp=sharing). 
 ::::
 
 1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)). Read the instruction `inst` from IMEM.
@@ -94,13 +103,22 @@ We **do not** need to add additional blocks for stores, but we will need to:
 * Upgrade the Immediate Generator to support immediates in S-Type instructions; we encourage you to read [that section](#sec-datapath-immgen) afterwards.
 * Wire `R[rs2]` to `wdata` (DMEM input signal).
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-datapath-sw
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-store.pptx
 :width: 100%
 :title: "Tracing the `sw` Datapath"
 :::
 The `sw` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+:::: -->
+
+::::{figure}
+:label: anim-datapath-sw
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRiHxdtVBLJ-3cMkMSg7t09c_DM0b4oXInmUggpSThdg0P3Cp4O7gh4ojtZhFfd8g/pubembed?start=false&loop=false
+:width: 100%
+:title: "Tracing the `sw` Datapath"
+:::
+The `sw` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1QO1RMuVSP-5Y_18RVc8Oy_QMXSK0JYqN/edit?usp=sharing).
 ::::
 
 1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)).

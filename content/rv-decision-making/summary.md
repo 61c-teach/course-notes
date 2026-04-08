@@ -25,27 +25,3 @@ P&H 2.6, 2.7, 3.2
 ## Additional References
 
 See the RISC-V manual links on our [RISC-V green card page](#sec-green-card).
-
-<!-- ## Exercises
-Check your knowledge!
-
-### Conceptual Review
-
-1. Question
-
-:::{note} Solution
-:class: dropdown
-
-Solution
-
-See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_154#slide=id.g2af3b38b3e2_1_154)
-:::
-
-### Short Exercises
-
-1. **True/False**: 
-
-:::{note} Solution
-:class: dropdown
-**True.** Explanation
-::: -->

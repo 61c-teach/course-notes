@@ -45,29 +45,37 @@ The data in this section is from Patterson & Hennessy, _Computer Organization: A
 
 ### Short Exercises
 
+:::{exercise}
+:label: caches-05
 1. **True/False**: Decreasing block size to increase the number of blocks held by the cache improves the program speed for all programs.
+:::
 
-:::{note} Solution
+:::{solution} caches-05
+:label: caches-05-sol
 :class: dropdown
 **False.** Similar to the previous question, the impact depends on the program. If a program iterates through contiguous memory (like an array), having larger block sizes with fewer blocks may be beneficial as each block contains more contiguous data. For instance, if Cache A has 10 blocks and a block size of 8 bytes while Cache B has 20 block and a block size of 4 bytes, and we loop through an array of 80 characters, Cache A will experience 10 cache misses and 70 hits, while Cache B will have 20 misses and 60 hits.
 :::
 
+:::{exercise}
+:label: caches-06
 1. **True/False**: Caches see an immediate improvement in memory access time at program execution.
+:::
 
-:::{note} Solution
+:::{solution} caches-06
+:label: caches-06-sol
 :class: dropdown
 **False.** A cache starts off "cold" and requires loading in values in blocks at first directly from memory, forcing compulsory misses. This can be somewhat alleviated by the use of a hardware prefetcher, which uses the current pattern of misses to predict and prefetch data that may be accessed later on. Prefetchers are out of scope for this course.
 :::
 
-1. **True/False**: Increasing cache size by adding more blocks always improves (increases) hit rate for all programs.
+:::{exercise}
+:label: caches-07
+2. **True/False**: Increasing cache size by adding more blocks always improves (increases) hit rate for all programs.
+:::
 
-:::{note} Solution
+:::{solution} caches-07
+:label: caches-07-sol
 :class: dropdown
-**False.** Whether this improves the hit rate for a given program depends on the characteristics of
-the program. For example, a program that loops through an array once may have each access be
-separated by more than one block (e.g., if the block size is 8B but we access every fourth element
-of an integer array, our accesses are separated by 16B). This results in compulsory misses, which
-cannot be reduced just by adding more blocks to the cache.
+**False.** Whether this improves the hit rate for a given program depends on the characteristics of the program. For example, a program that loops through an array once may have each access be separated by more than one block (e.g., if the block size is 8B but we access every fourth element of an integer array, our accesses are separated by 16B). This results in compulsory misses, which cannot be reduced just by adding more blocks to the cache.
 :::
 
 

@@ -98,16 +98,35 @@ Check your knowledge!
 
 ### Short Exercises
 
+:::{exercise}
+:label: caches-02
 **True/False**: We cannot use a 1KB cache in a 32-bit system because it is too small and cannot contain all possible addresses.
+:::
 
-:::{note} Solution
+:::{solution} caches-02
+:label: caches-02-sol
 :class: dropdown
 **False.**
 :::
 
+:::{exercise}
+:label: caches-03
 1. **True/False**: For the same cache size and block size, a 4-way set associative cache will have fewer index bits than a direct-mapped cache.
+:::
 
-:::{note} Solution
+:::{solution} caches-03
+:label: caches-03-sol
 :class: dropdown
 **True.** A direct-mapped cache needs to index every block of the cache, whereas a 4-way set associative cache needs to index every set of 4 blocks. The 4-way set associative cache will have 2 fewer index bits than the direct-mapped cache.
+:::
+
+:::{exercise}
+:label: caches-04
+2. **True/False**: Decreasing block size to increase the number of blocks held by the cache improves the program speed for all programs.
+:::
+
+:::{solution} caches-04
+:label: caches-04-sol
+:class: dropdown
+**False.** Similar to the previous question, the impact depends on the program. If a program iterates through contiguous memory (like an array), having larger block sizes with fewer blocks may be beneficial as each block contains more contiguous data. For instance, if Cache A has 10 blocks and a block size of 8 bytes while Cache B has 20 block and a block size of 4 bytes, and we loop through an array of 80 characters, Cache A will experience 10 cache misses and 70 hits, while Cache B will have 20 misses and 60 hits.
 :::

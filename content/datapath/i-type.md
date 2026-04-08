@@ -63,13 +63,22 @@ We therefore need **additional logic** that, for I-Type instructions, feeds in a
 
 Let's walk through the `addi` datapath with this new knowledge.
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-datapath-addi
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-addi.pptx
 :width: 100%
 :title: "Tracing the `addi` Datapath"
 :::
 The `addi` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file. 
+:::: -->
+
+::::{figure}
+:label: anim-datapath-addi
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTd4As46cq50NW45y6rUi3eNLajyd-yaaiO2hky-fUgX5G5i5vQCgvdo0hQ78c2Bg/pubembed?start=false&loop=false
+:width: 100%
+:title: "Tracing the `addi` Datapath"
+:::
+The `addi` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1P6cAJaZCHFy5jj-MFHh4L2hy7XHpCH47/edit?usp=sharing). 
 ::::
 
 1. **Instruction Fetch**: Increment PC to next instruction (see [R-Type datapath](#sec-datapath-add)). Read the instruction `inst` from IMEM.

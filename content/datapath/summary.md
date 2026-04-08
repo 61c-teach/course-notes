@@ -59,42 +59,57 @@ Check your knowledge!
 
 ### Short Exercises
 
-1. **True/False**: If the logic delay of reading from IMEM is reduced, then any (non-empty) program using the
-single cycle datapath will speed up
-
-:::{note} Solution
-:class: dropdown
-**True** Since every instruction must read from IMEM during the instruction fetch stage, making
-the IMEM faster will speed up every single instruction.
-::: 
-
-2. **True/False**: It is possible to feed both the immediate generator’s output and the value in rs2 to the ALU in a
-single instruction.
-
-:::{note} Solution
-:class: dropdown
-**False** You may only use either the immediate generator or the value in register rs2. Notice in
-our datapath, there is a mux with a signal (BSel) that decides whether we use the output of the
-immediate generator or the value in rs2.
+:::{exercise}
+:label: dp-01
+1. **True/False**: If the logic delay of reading from IMEM is reduced, then any (non-empty) program using the single cycle datapath will speed up.
 :::
 
-1. **True/False**: The single cycle datapath uses the outputs of all hardware units for each instruction.
-
-:::{note} Solution
+:::{solution} dp-01
+:label: dp-01-sol
 :class: dropdown
-**False** All units are active in each cycle, but their output may be ignored (gated) by control signals
+**True** Since every instruction must read from IMEM during the instruction fetch stage, making the IMEM faster will speed up every single instruction.
 ::: 
 
-2. **True/False**: It is possible to execute the stages of the single cycle datapath in parallel to speed up execution of a single instruction.
+:::{exercise}
+:label: dp-02
+2. **True/False**: It is possible to feed both the immediate generator’s output and the value in rs2 to the ALU in a single instruction.
+:::
 
-:::{note} Solution
+:::{solution} dp-02
+:label: dp-02-sol
+:class: dropdown
+**False** You may only use either the immediate generator or the value in register rs2. Notice in our datapath, there is a mux with a signal (BSel) that decides whether we use the output of the immediate generator or the value in rs2.
+:::
+
+:::{exercise}
+:label: dp-03
+3. **True/False**: The single cycle datapath uses the outputs of all hardware units for each instruction.
+:::
+
+:::{solution} dp-03
+:label: dp-03-sol
+:class: dropdown
+**False** All units are active in each cycle, but their output may be ignored (gated) by control signals.
+::: 
+
+:::{exercise}
+:label: dp-04
+4. **True/False**: It is possible to execute the stages of the single cycle datapath in parallel to speed up execution of a single instruction.
+:::
+
+:::{solution} dp-04
+:label: dp-04-sol
 :class: dropdown
 **False** Each stage depends on the value produced by the stage before it (e.g., instruction decode depends on the instruction fetched).
 :::
 
-3. **True/False**: Stores and loads are the only instructions that require input/output from DMEM.
+:::{exercise}
+:label: dp-05
+5. **True/False**: Stores and loads are the only instructions that require input/output from DMEM.
+:::
 
-:::{note} Solution
+:::{solution} dp-05
+:label: dp-05-sol
 :class: dropdown
 **True** For all other instructions, we don’t need to read the data that is read out from DMEM, and thus don’t need to wait for the output of the MEM stage.
 :::
