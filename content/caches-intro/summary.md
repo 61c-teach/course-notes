@@ -31,9 +31,13 @@ Amazing Illustrations by Ketrina (Yim) Thompson: [CS Illustrated](https://www2.e
 
 ## Exercises
 
+:::{exercise}
+:label: caches-01
 **True/False**: If a piece of data is both in the cache and in memory, reading it from cache is faster than reading from memory.
+:::
 
-:::{note} Solution
+:::{solution} caches-01
+:label: caches-01-sol
 :class: dropdown
 **True.** The cache is smaller and faster than memory.
 :::

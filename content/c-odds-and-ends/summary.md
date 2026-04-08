@@ -9,6 +9,8 @@ Check your knowledge!
 
 ### Short Exercises
 
+:::{exercise}
+:label: c-odds-01
 1. Fill in the memory contents for each system after initializing `arr`. Assume `arr` begins at memory address `0x1000`.
 
 ```
@@ -32,8 +34,10 @@ uint32_t arr[2] = {0xD3ADB33F, 0x61C0FFEE};
 | `0x1000` |       |       |       |       |
 | `0x1004` |       |       |       |       |
 |        | ...                   |
+:::
 
-:::{note} Solution
+:::{solution} c-odds-01
+:label: c-odds-01-sol
 :class: dropdown
 
 **(a)** Little-Endian System

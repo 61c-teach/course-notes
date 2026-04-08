@@ -32,27 +32,38 @@ Check your knowledge!
 
 ### Conceptual Review
 
+:::{exercise}
+:label: call-01
 1. How many passes through the code does the Assembler have to make? Why?
+:::
 
-:::{note} Solution
+:::{solution} call-01
+:label: call-01-sol
 :class: dropdown
 **Two**: The first finds all the label addresses, and the second resolves forward references while
 using these label addresses.
 :::
 
+:::{exercise}
+:label: call-02
 2. Which step in CALL resolves relative addressing? Absolute addressing?
+:::
 
-:::{note} Solution
+:::{solution} call-02
+:label: call-02-sol
 :class: dropdown
 
 The **assembler** usually handles relative addressing. The **linker** handles absolute addressing,
 resolving the references to memory locations outside.
 :::
 
-3. Describe the six main parts of the object files outputted by the Assembler (Header, Text, Data,
-Relocation Table, Symbol Table, Debugging Information).
+:::{exercise}
+:label: call-03
+3. Describe the six main parts of the object files outputted by the Assembler (Header, Text, Data, Relocation Table, Symbol Table, Debugging Information).
+:::
 
-:::{note} Solution
+:::{solution} call-03
+:label: call-03-sol
 :class: dropdown
 * **Header**: Sizes and positions of the other parts
 * **Text**: The machine code

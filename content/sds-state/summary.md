@@ -62,16 +62,24 @@ Check your knowledge!
 
 ### Conceptual Review
 
+:::{exercise}
+:label: state-01
 1. **True/False**: Register "clk-to-q" delay is the time between the rising edge of the clock signal and the register's hold time.
+:::
 
-:::{note} Solution
+:::{solution} state-01
+:label: state-01-sol
 :class: dropdown
 **False.** "clk-to-q" delay is the time between the rising edge of the clock signal and the time it takes for the register’s output to reflect the new input.
 ::: 
 
+:::{exercise}
+:label: state-02
 2. **True/False**: State elements only update their output on the rising edge of the clock, even if the inputs change between clock rising edges.
+:::
 
-:::{note} Solution
+:::{solution} state-02
+:label: state-02-sol
 :class: dropdown
-**True.** State elements will update their output on the rising edge of the clock signal. Between rising edges, the state element’s output will remain constant regardless of the inputs
+**True.** State elements will update their output on the rising edge of the clock signal. Between rising edges, the state element’s output will remain constant regardless of the inputs.
 :::
