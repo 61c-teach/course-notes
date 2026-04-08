@@ -169,3 +169,43 @@ Operating Systems alternate between the two but seem to have settled on base-10.
 Aside: Remember, base-10 numbers are smaller than their binary counterparts, e.g., 1TB is about 90% of 1TiB. This numeric difference has been the subject of numerous lawsuits against storage manufacturers accusing them of [false advertising](https://en.wikipedia.org/wiki/Vroegh_v._Eastman_Kodak_Co.), among other things.
 
 In this course, we will specify numbers with the abbreviations in @tab-base-10-prefixes and @tab-binary-prefixes.
+
+## Short Exercises
+
+**Conversions**: Convert the following numbers into the quantity of bytes each term represents (you may leave
+your answer in terms of powers of 2).
+
+**a) 4 KiB**
+
+:::{note} Solution
+:class: dropdown
+One KiB is $2^{10}$ and $4 = 2^2$, so $4 \text{ KiB} = 2^2 \times 2^{10} = 2^{12}$ bytes.
+:::
+
+**b) 2 MiB**
+
+:::{note} Solution
+:class: dropdown
+One MiB is $2^{20}$ and $2 = 2^1$, so $2 \text{ MiB} = 2^1 \times 2^{20} = 2^{21}$ bytes.
+:::
+
+**c) 8 Kib**
+
+:::{note} Solution
+:class: dropdown
+Notice how the unit is Kib (Kibibits) and not KiB (Kibibytes). One Kib is $2^{10}$ bits, so $8 \text{ Kib} = 2^3 \times 2^{10} = 2^{13}$ bits. Because there are $8 = 2^3$ bits in one byte, we divide our answer to get $8 \text{ Kib} = 2^{10}$ bytes.  
+*(Note that $8 \text{ Kib} = 1 \text{ KiB}$)*
+:::
+
+**d) 24 GiB**
+
+:::{note} Solution
+:class: dropdown
+We can factor $24 = 4 \times 6 = 2^2 \times 2 \times 3 = 2^3 \times 3$. One GiB = $2^{30}$, so we can write $24 \text{ GiB} = 2^3 \times 3 \times 2^{30} = 3 \times 2^{33}$ bytes (alternatively, just $24 \times 2^{30}$ bytes).
+:::
+
+**e) 19 TiB**
+:::{note} Solution
+:class: dropdown
+Note that 19 cannot be factored or easily representable in powers of 2. Following the same process as above, we can simplify to $19 \text{ TiB} = 19 \times 2^{40}$ bytes $\approx 19$ trillion bytes.
+:::

@@ -235,9 +235,11 @@ Which instructions share `funct3` fields? What are their corresponding `funct7` 
 :::{note} Show Explanation
 :class: dropdown
 
-`funct3` field `000`: `add` and `sub`. To differentiate, look at `funct7` field. `sub` has a `1` in bit 30, whereas `add` does not.
-
-`funct3` field `101`: `srl`, `sra`.  To differentiate, look at `funct7` field. `sra` has a `1` in bit 30, whereas `srl` does not.
+(sec-funct7-explanation)=
+* `funct3` field `000`: `add` and `sub`. To differentiate, look at `funct7` field.
+    * `sub` has a `1` in bit 30, whereas `add` does not.
+* `funct3` field `101`: `srl`, `sra`.  To differentiate, look at `funct7` field.
+    * `sra` has a `1` in bit 30, whereas `srl` does not.
 
 :::
 

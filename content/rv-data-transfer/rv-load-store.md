@@ -132,6 +132,7 @@ Read an [earlier section](#sec-address-space) for how to read the little endian 
 3. Store this word at address `0x100`. Starting from this address, the bytes should be `0x78`, `0x56`, `0x34`, and `0x12` (again, assuming a little endian architecture).
 :::
 
+(sec-rv-aligned)=
 ### Endianness and Alignment
 
 This section is a good time to step back and realize that we have now learned enough to interpret the _actual RISC-V specification_!
@@ -156,6 +157,7 @@ According to the RISC-V standard, loads and stores of words **should specify wor
 
 [^eei]: The execution environment interface (EEI). We do not discuss the EEI in this course.
 
+(sec-partial-load-store)=
 ## Partial Loads and Stores
 
 We often work with data types smaller than 32 bits, like 8-bit characters[^colors]. It would be wasteful to use a full word for these, so RISC-V supports instructions for **bytewise** data transfers.

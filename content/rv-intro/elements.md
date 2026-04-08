@@ -3,6 +3,7 @@ title: "Elements of Architecture: Processor, Registers, and Memory"
 short_title: "Processor, Registers, and Memory"
 ---
 
+(sec-architecture-elements)=
 ## Learning Outcomes
 
 * Understand that registers are extremely tiny, fast storage located within a processor. In the conceptual layout of a computer, the processor and memory are separately located.
@@ -34,7 +35,7 @@ Until 5:00
 
 In order to learn an ISA, we must first understand @fig-von-neumann, which shows a conceptual layout of a computer:
 
-* A **processor** (e.g., a **Central Processing Unit**, or CPU), responsible for computing. Inside the processor, there is a **control unit** and a **data path**. The main elements of the data path are the **registers** and the execution unit, typically called the **Arithmetic Logic Unit** (ALU). We will discuss all these details soon.
+* A **processor** (e.g., a **Central Processing Unit**, or CPU), responsible for computing. Inside the processor, there is a **control unit** and a **data path**. The main elements of the data path are the **registers** and the execution unit, typically called the **Arithmetic Logic Unit** (ALU). We will discuss all these details [soon](#sec-single-cycle).
 * **Main memory**, responsible for long-term data storage.
 * **I/O Devices**, i.e., Input/Output Devices like keyboards, displays, etc.
 
@@ -67,6 +68,7 @@ Consider that the speed of light (approximately $3.0 \times 10^8$ m/s), which ph
 Great Idea 3: The Principle of Locality / Memory Hierarchy
 :::
 
+(sec-memory-hierarchy-early)=
 ## Memory Hierarchy
 
 Each ISA specifies a predetermined number of hardware registers, defining how each of the registers should be used for instruction execution. RISC-V defines 32 registers; read more in the [next section](#sec-rv32i-registers).
@@ -89,4 +91,4 @@ Let's go back to Jim Gray’s storage latency analogy[^great-ideas] in @fig-3-lo
 
 [^great-ideas]: At some point, we will go back and write in Great Ideas (our introductory lecture). <!-- TODO -->
 
-We only have a small number of registers–they are extremely fast and share precious real estate with the processor core, making them extremely expensive.  Designing an ISA (and an associated architecture) therefore involves a careful (?) tango (?) of performing operations on data in registers where possible, and spacing out limited but hefty trips to memory and disk.
+We only have a small number of registers–they are extremely fast and share precious real estate with the processor core, making them extremely expensive.  Designing an ISA (and an associated architecture) therefore involves a careful (?) tango (?) of performing operations on data in registers where possible, and spacing out limited but hefty trips to memory and disk. We revisit this careful tango in a [later section](#sec-memory-hierarchy-revisited).

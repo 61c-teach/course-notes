@@ -31,7 +31,7 @@ P&H: 2.4
 
 [Dan Garcia's Binary Slides, Fall 2025](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/garcia_binary_slides.pdf)
 
-Amazing Illustrations by Ketrina (Yim) Thompson: CS Illustrated Number Rep Handouts
+Amazing Illustrations by Ketrina (Yim) Thompson: [CS Illustrated](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-79.html) Number Rep Handouts
 
 * [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)
 * [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)

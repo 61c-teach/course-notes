@@ -126,58 +126,118 @@ project:
         - file: content/call/example.md
         - file: content/call/interpret-translate.md
         - file: content/call/summary.md
-    - title: "L16 Intro to SDS"
+    - title: "L16-L20 Synchronous Digital Systems"
       children:
-        - file: content/sds-intro/index.md
-        - file: content/sds-intro/transistors.md
-        - file: content/sds-intro/summary.md
-    - title: "L17 Combinational Logic"
+      - title: "L16 Intro to SDS"
+        children:
+          - file: content/sds-intro/index.md
+          - file: content/sds-intro/transistors.md
+          - file: content/sds-intro/summary.md
+      - title: "L17 Combinational Logic"
+        children:
+          - file: content/sds-combinational-logic/index.md
+          - file: content/sds-combinational-logic/boolean-algebra.md
+          - file: content/sds-combinational-logic/cl-design.md
+          - file: content/sds-combinational-logic/summary.md
+      - title: "L18 State, Timing"
+        children:
+          - file: content/sds-state/index.md
+          - file: content/sds-state/register.md
+          - file: content/sds-state/timing-synchronous-system.md
+          - file: content/sds-state/fsm.md
+          - file: content/sds-state/pipelining.md
+          - file: content/sds-state/summary.md
+      - title: "L19-L20 Combinational Logic Blocks"
+        children:
+          - file: content/sds-blocks/index.md
+          - file: content/sds-blocks/adder-subtractor.md
+          - file: content/sds-blocks/alu.md
+          - file: content/sds-blocks/summary.md
+      #     - file: content/sds-logic-blocks/summary-precheck.md
+      #     - file: content/sds-logic-blocks/exercises.md
+    - title: "L21-L23 Single-Cycle CPU"
       children:
-        - file: content/sds-combinational-logic/index.md
-        - file: content/sds-combinational-logic/boolean-algebra.md
-        - file: content/sds-combinational-logic/cl-design.md
-        - file: content/sds-combinational-logic/summary.md
-    - title: "L18 State"
+      - title: "L21 Single-Cycle CPU Datapath I"
+        children:
+          - file: content/datapath/index.md
+          - file: content/datapath/elements.md
+          - file: content/datapath/r-type.md
+          - file: content/datapath/i-type.md
+      - title: "L22 Single-Cycle CPU Datapath II"
+        children:
+          - file: content/datapath/load-store.md
+          - file: content/datapath/b-type.md
+          - file: content/datapath/jump.md
+          - file: content/datapath/u-type.md
+          - file: content/datapath/summary.md
+      #     # - file: content/datapath/summary-precheck.md
+      #     # - file: content/datapath/exercises.md
+      - title: "L23 Single-Cycle CPU Control, Instruction Timing"
+        children:
+          - file: content/datapath/control.md
+          - file: content/datapath/instruction-timing.md
+          - file: content/datapath/special-regs.md
+          - file: content/datapath/summary.md
+    - title: "L24-L25 Pipelining"
       children:
-        - file: content/sds-state/index.md
-        - file: content/sds-state/register.md
-        - file: content/sds-state/synchronous-system.md
-        # - file: content/sds-state/accumulator.md
-        - file: content/sds-state/fsm.md
-        - file: content/sds-state/pipelining.md
-        - file: content/sds-state/summary.md
-    - title: "L19 Combinational Logic Blocks"
+      - title: "L24 Pipelining I: Throughput, Latency, and the 5-Stage Pipeline"
+        children:
+          - file: content/pipeline/index.md
+          - file: content/pipeline/laundry.md
+          - file: content/pipeline/five-stage-pipeline.md
+          - file: content/pipeline/iron-law-cpi.md
+          - file: content/pipeline/superscalar.md
+          - file: content/pipeline/energy.md
+          - file: content/pipeline/summary.md
+      - title: "L25 Pipelining II: Hazards"
+        children:
+          - file: content/pipeline-hazards/structural-hazards.md
+          - file: content/pipeline-hazards/data-hazards.md
+          - file: content/pipeline-hazards/control-hazards.md
+          - file: content/pipeline-hazards/summary.md
+    - title: "L26 Caches I: Performance"
       children:
-        - file: content/sds-blocks/index.md
-        - file: content/sds-blocks/adder-subtractor.md
-        - file: content/sds-blocks/alu.md
-        - file: content/sds-blocks/summary.md
-    # - title: "L20 Single-Cycle CPU Datapath I"
+        - file: content/caches-intro/index.md
+        - file: content/caches-intro/memory-hierarchy.md
+        # - file: content/caches-intro/cachesI-library.md
+        # - file: content/caches-intro/cachesI-memory.md
+        - file: content/caches-intro/amat.md
+        - file: content/caches-intro/summary.md
+        # - file: content/caches-intro/summary-precheck.md
+        # - file: content/caches-intro/exercises.md
+    - title: "L27-L28 Caches II: Design"
+      children:
+        - file: content/caches-ii/index.md
+        - file: content/caches-ii/fully-associative.md
+        - file: content/caches-ii/direct-mapped.md
+        - file: content/caches-ii/set-associative.md
+        # - file: content/cachesII/cachesII-terminology.md
+        - file: content/caches-ii/summary.md
+        # - file: content/cachesII/summary-precheck.md
+        # - file: content/cachesII/exercises.md
+    - title: "L29 Caches III: Optimization"
+      children:
+        - file: content/caches-iii/index.md
+        - file: content/caches-iii/optimizations.md
+        - file: content/caches-iii/blocking.md
+        - file: content/caches-iii/summary.md
+    # - title: "L28 Caches III"
     #   children:
-    #     - file: content/datapath-I/index.md
-    #     - file: content/datapath-I/stages-components.md
-    #     - file: content/datapath-I/dpI-r-type.md
-    #     - file: content/datapath-I/dpI-sub-datapath.md
-    #     - file: content/datapath-I/dpI-immediates.md
-    #     - file: content/datapath-I/summary.md
-    # - title: "L21 Single-Cycle CPU Datapath II"
+    #     - file: content/cachesIII/index.md
+    #     - file: content/cachesIII/cachesIII-writes-misses.md
+    #     - file: content/cachesIII/cachesIII-associative.md
+    #     - file: content/cachesIII/summary.md
+    #     - file: content/cachesIII/summary-precheck.md
+    #     - file: content/cachesIII/exercises.md
+    # - title: "L29 Caches IV"
     #   children:
-    #     - file: content/datapath-II/index.md
-    #     - file: content/datapath-II/dpII-stores.md
-    #     - file: content/datapath-II/dpII-branches.md
-    #     - file: content/datapath-II/dpII-jalr.md
-    #     - file: content/datapath-II/dpII-jal.md
-    #     - file: content/datapath-II/dpII-u-types.md
-    #     - file: content/datapath-II/dpII-summary.md
-    #     - file: content/datapath-II/summary.md
-    # - title: "L22 Single-Cycle CPU Control"
-    #   children:
-    #     - file: content/datapath-control/index.md
-    #     - file: content/datapath-control/dp-control-datapath.md
-    #     - file: content/datapath-control/dp-control-timing.md
-    #     - file: content/datapath-control/dp-control-design.md
-    #     - file: content/datapath-control/dp-control-summary.md
-    #     - file: content/datapath-control/summary.md
+    #     - file: content/cachesIV/index.md
+    #     - file: content/cachesIV/cachesIV-block-placement.md
+
+    #     - file: content/cachesIV/cachesIV-cpus.md
+    #     - file: content/cachesIV/summary.md
+    #     - file: content/cachesIV/summary-precheck.md
+    #     - file: content/cachesIV/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/misc/gdb-guide.md
