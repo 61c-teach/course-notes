@@ -81,7 +81,7 @@ These three notes together explain @fig-rv32i-not below.
 :::{figure} images/rv32i-not.png
 :label: fig-rv32i-not
 :width: 50%
-:alt: "TODO"
+:alt: "Three aligned 32-bit patterns labeled rs1, minus one, and rd showing how the XOR operation with an all-one immediate flips every bit of rs1, turning a value ending in 0111 into a result ending in 1000 in the destination register rd."
 
 Add immediate instruction in RISC-V and C with negative values.
 ::::

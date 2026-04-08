@@ -38,7 +38,7 @@ Generally, assembly instructions have a very rigid format. Consider **arithmetic
 :::{figure} images/r-type-arithmetic.png
 :label: fig-r-type-arithmetic
 :width: 50%
-:alt: "TODO"
+:alt: "Syntax template for an R-type instruction: opname rd rs1 rs2 with braces labeling operation, destination register, first source register, and second source register."
 
 R-Type instructions (arithmetic and logical involving two source registers).
 :::
@@ -85,7 +85,7 @@ is equivalent to the C statement `a = b + c;` for 32-bit integers[^signed-unsign
 :::{figure} images/rv32i-add.png
 :label: fig-rv32i-add
 :width: 50%
-:alt: "TODO"
+:alt: "Addition example pairing RISC-V add x1 x2 x3 with C a = b + c, with arrows from x1 to a, x2 to b, and x3 to c."
 
 Addition instruction `add` in RISC-V and C.
 :::
@@ -99,7 +99,7 @@ sub x3, x4, x5
 :::{figure} images/rv32i-sub.png
 :label: fig-rv32i-sub
 :width: 50%
-:alt: "TODO"
+:alt: "Subtraction example pairing RISC-V sub x4 x5 x6 with C d = e - f, with arrows linking destination and source registers to variables and a note that operand order matters."
 
 Subtraction instruction `sub` in RISC-V and C.
 :::
@@ -138,7 +138,7 @@ f = (g + h) - (i + j);
 :::{figure} images/example-2.png
 :label: fig-example-2
 :width: 50%
-:alt: "TODO"
+:alt: "C line f = (g + h) - (i + j) with register names under each variable: x19 for f, x20 through x23 for g through j."
 
 Mapping of C variables to RISC-V registers.
 :::
@@ -181,7 +181,7 @@ Immediates appear often in code; hence, they have separate instructions (@fig-i-
 :::{figure} images/i-type-arithmetic.png
 :label: fig-i-type-arithmetic
 :width: 50%
-:alt: "TODO"
+:alt: "Syntax template for an I-type arithmetic or logical instruction: opname rd rs1 imm with braces labeling operation, destination, first source register, and immediate operand."
 
 Arithmetic and Logical I-Type instructions involving one source register and one immediate.
 :::
@@ -220,7 +220,7 @@ is equivalent to the C statement `f = g + 10;`, where `f` and `g` are 32-bit int
 :::{figure} images/rv32i-addi.png
 :label: fig-rv32i-addi
 :width: 50%
-:alt: "TODO"
+:alt: "Add-immediate example pairing RISC-V addi x3 x4 10 with C f = g + 10, with arrows from x3 to f and x4 to g and matching emphasis on constant 10."
 
 Add immediate instruction in RISC-V and C.
 :::
@@ -248,7 +248,7 @@ is equivalent to the C statement `f = g - 10;` where `f` and `g` are 32-bit inte
 :::{figure} images/rv32i-subi.png
 :label: fig-rv32i-subi
 :width: 50%
-:alt: "TODO"
+:alt: "Subtraction via add-immediate example pairing RISC-V addi x3 x4 -10 with C f = g - 10, showing negative immediate as the subtracted constant."
 
 Add immediate instruction in RISC-V and C with negative values.
 ::::
@@ -261,7 +261,7 @@ Two toy examples are shown in  @fig-rv32i-x0-mv and @fig-rv32i-x0-li:
 :::{figure} images/rv32i-x0-mv.png
 :label: fig-rv32i-x0-mv
 :width: 50%
-:alt: "TODO"
+:alt: "Register-move idiom showing RISC-V add x3 x4 x0 equivalent to C f = g, with x0 highlighted as zero and arrows from x3 and x4 to f and g."
 
 To assign the C integer variable `f` to the value of another integer variable `g`, we _could_ use `add` with `x0` as a source operand (though we don't in practice[^mv]).
 :::
@@ -270,7 +270,7 @@ To assign the C integer variable `f` to the value of another integer variable `g
 :::{figure} images/rv32i-x0-li.png
 :label: fig-rv32i-x0-li
 :width: 50%
-:alt: "TODO"
+:alt: "Load-immediate idiom showing RISC-V addi x3 x0 0xff equivalent to C f = 0xff, with an arrow from destination register x3 to variable f and x0 as the source register with zero value."
 
 To assign the variable `f` to a numeric constant, use `addi` with `x0` as the source register operand.
 :::

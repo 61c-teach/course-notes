@@ -32,7 +32,7 @@ In an [earlier section](#sec-stored-program) we discussed the concept of the **s
 
 :::{figure} #fig-c-mem-layout
 :width: 50%
-:alt: "TODO"
+:alt: "Diagram of the C address space with text at the lowest addresses, data above text, heap above data growing upward, stack growing downward from the highest addresses, and unused space between heap and stack."
 
 The C memory layout (reprint of @fig-c-mem-layout from [this section](#sec-mem-layout)).
 :::
@@ -65,7 +65,7 @@ We revisit our [conceptual computer layout](#fig-von-neumann) from [earlier](#se
 :::{figure} images/program-counter.png
 :label: fig-program-counter
 :width: 80%
-:alt: "TODO"
+:alt: "Processor and memory block diagram: the datapath contains the program counter, registers, and ALU; an orange arrow labeled instruction address runs from the PC to the program region in memory, and read instruction returns to the control unit."
 
 The program counter holds the address of the current instruction.
 :::

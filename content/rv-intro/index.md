@@ -22,7 +22,7 @@ We are going to dive down to the next level of abstraction and cover the RISC-V 
 :::{figure} ../great-ideas/images/1-abstraction.png
 :label: fig-great-idea-1
 :width: 100%
-:alt: "TODO"
+:alt: "Layered abstraction diagram: compiler, assembler, then machine code above an ISA line, with hardware architecture and logic circuits below. The right side shows matching examples from C and RISC-V assembly through binary, a processor block diagram, and NAND gate logic."
 
 Great Idea #1: Abstraction.
 :::
@@ -36,7 +36,7 @@ There are always _well-defined interfaces_ between these layers. In this unit, w
 :::{figure} ../great-ideas/images/old-school-machine-structures.png
 :label: fig-old-school-machine-structures
 :width: 100%
-:alt: "TODO"
+:alt: "Software stack from application and operating system through compiler and assembler down to an Instruction Set Architecture bar, with hardware layers below spanning processor, memory, I/O, datapath, digital and circuit design, transistors, and fabrication. The center region, from Digital Design to Operating Systems is highlighted as a focus for this course."
 
 Great Idea #1: Abstraction.
 :::
