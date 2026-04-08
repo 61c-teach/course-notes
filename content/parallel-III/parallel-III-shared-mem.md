@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/smp.png
+:label: fig-smp
+:width: 65%
+:alt: "TODO"
+
+Shared-memory Multiprocessor (SMP) with multiple cores and a single, coherent memory.
+:::

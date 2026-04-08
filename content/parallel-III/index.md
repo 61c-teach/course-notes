@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/hardware-multithreading.png
+:label: fig-hardware-multithreading
+:width: 90%
+:alt: "TODO"
+
+Hardware multi-threading: multiple threads *active* in the same processor.
+:::

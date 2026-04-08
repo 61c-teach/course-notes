@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/multiple-cpus.png
+:label: fig-mult-cpus
+:width: 90%
+:alt: "TODO"
+
+Parallelism Motivation: What if we had multiple CPUs?
+:::

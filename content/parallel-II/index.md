@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/data-race.png
+:label: fig-data-race
+:width: 100%
+:alt: "TODO"
+
+Data race example with RISC-V Instructions.
+:::

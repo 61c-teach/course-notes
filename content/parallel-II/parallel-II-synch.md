@@ -17,3 +17,21 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/deadlock.png
+:label: fig-deadlock
+:width: 65%
+:alt: "TODO"
+
+Real life deadlock example with traffic jam.
+:::
+
+:::{figure} images/imp-locks.png
+:label: fig-imp-locks
+:width: 100%
+:alt: "TODO"
+
+Implementation of locks for thread synchronization.
+:::

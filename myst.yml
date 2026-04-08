@@ -216,7 +216,7 @@ project:
           - file: content/caches-iii/optimizations.md
           - file: content/caches-iii/blocking.md
           - file: content/caches-iii/summary.md
-    - title: "L30-34 Parallelism"
+    - title: "L30-L34 Parallelism"
       children:
       - title: "L30 Flynn Taxonomy, SIMD Instructions"
         children:
@@ -227,8 +227,6 @@ project:
           - file: content/p-flynn/p-flynn-simd-array.md
           - file: content/p-flynn/p-flynn-example.md
           - file: content/p-flynn/summary.md
-          # - file: content/p-flynn/summary-precheck.md
-          # - file: content/p-flynn/exercises.md
       - title: "L31 Thread-Level Parallelism I"
         children:
           - file: content/parallel-I/index.md
@@ -236,8 +234,6 @@ project:
           - file: content/parallel-I/parallel-I-threads.md
           - file: content/parallel-I/parallel-I-multithreading.md
           - file: content/parallel-I/summary.md
-          # - file: content/parallel-I/summary-precheck.md
-          # - file: content/parallel-I/exercises.md
       - title: "L32 Thread-Level Parallelism II"
         children:
           - file: content/parallel-II/index.md
@@ -245,16 +241,12 @@ project:
           - file: content/parallel-II/parallel-II-computing-pi.md
           - file: content/parallel-II/parallel-II-synch.md
           - file: content/parallel-II/summary.md
-          # - file: content/parallel-II/summary-precheck.md
-          # - file: content/parallel-II/exercises.md
       - title: "L33 Thread-Level Parallelism III"
         children:
           - file: content/parallel-III/index.md
           - file: content/parallel-III/parallel-III-shared-mem.md
           - file: content/parallel-III/parallel-III-cache.md
           - file: content/parallel-III/summary.md
-          # - file: content/parallel-III/summary-precheck.md
-          # - file: content/parallel-III/exercises.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md

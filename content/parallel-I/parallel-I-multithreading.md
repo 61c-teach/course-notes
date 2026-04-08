@@ -17,3 +17,13 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+
+:::{figure} images/fork-join-model.png
+:label: fig-fork-join
+:width: 100%
+:alt: "TODO"
+
+Fork-join model over time with multiple parallel tasks off the main thread.
+:::
