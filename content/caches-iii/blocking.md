@@ -76,13 +76,22 @@ How does matrix multiplication fare? Assume the cache starts out cold.
 
 Suppose we first compute $C_{00}$, which is the dot-product of the (zero-indexed) zero-th row of $A$ and the (zero-indexed) zero-th column of $B$.
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-matmul-00
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/caches-iii/pptx/matmul-00.pptx
 :width: 100%
 :title: "C[0][0] Memory Access Pattern"
 :::
 Computing $C_00$ as vector multiplication of the zero-th row of $A$ and the zero-th column of $B$. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+:::: -->
+
+::::{figure}
+:label: anim-matmul-00
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTAFRr4VJ6o2brFhpjCS_edmdWM0j2cKViq6OjTX1XqDhRJWYa68FU07IyZw2oG6g/pubembed?start=false&loop=false
+:width: 100%
+:title: "C[0][0] Memory Access Pattern"
+:::
+Computing $C_00$ as vector multiplication of the zero-th row of $A$ and the zero-th column of $B$. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1GJiXwZ8gGuZxLxSU5raiTPY_E0I4AQVU/edit?usp=sharing).
 ::::
 
 :::{note} Show cache hits/misses
@@ -197,13 +206,22 @@ Cache contents after computing $C_{00}$, in order of most recently used:
 
 Next, suppose we computed $C_{01}$, which is the dot-product of the (zero-indexed) zero-th row of $A$ and the (zero-indexed) first column of $B$.
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-matmul-ij
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/caches-iii/pptx/matmul-00.pptx
 :width: 100%
 :title: "C[i][j] Memory Access Pattern"
 :::
 Computing $C_{ij}$ as vector multiplication of the i-th row of $A$ and the j-th column of $B$. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+:::: -->
+
+::::{figure}
+:label: anim-matmul-ij
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
+:width: 100%
+:title: "C[i][j] Memory Access Pattern"
+:::
+Computing $C_{ij}$ as vector multiplication of the i-th row of $A$ and the j-th column of $B$. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1AekxfV7tcsUA0CcpvY4J9jg1YvnWKMfZ/edit?usp=sharing).
 ::::
 
 :::{note} Show cache hits/misses

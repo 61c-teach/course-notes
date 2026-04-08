@@ -80,7 +80,9 @@ We must also update the Immediate Generator block, `ImmGen`. Immediates in B-Typ
 
 Let's walk through the updated datapath for branch instructions (B-Type):
 
-<iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-branch.pptx' width='100%' height='600px' frameborder='0'>
+<!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-branch.pptx' width='100%' height='600px' frameborder='0'> -->
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTmG8BNrBej6JPZP0ojYqkOD7YGviC9zxdYq340Lr6970db52IUXk4_5-v8tt4Cpw/pubembed?start=false&loop=false" frameborder="0" width="100%" height="600px"></iframe>
 
 1. **Instruction Fetch**: At the beginning of the clock cycle, read PC and fetch the current instruction from IMEM.
 

@@ -28,13 +28,22 @@ How should we time our single-cycle datapath? How should we set the clock freque
 
 First, let's consider the delays in our beloved `add` instruction. Review the `add` datapath in @anim-datapath-add-full.
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-datapath-add-full
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-add-full.pptx
 :width: 100%
 :title: "Tracing the `add` Datapath (Full)"
 :::
 The `add` datapath, updated from an [earlier section](#sec-datapath-r-type)'s simple `add`-only datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+:::: -->
+
+::::{figure}
+:label: anim-datapath-add-full
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTNTZZVVOA6hREQLorL6y7AEwzfidYgLpsBBc9YEAda0Dxih_yFBL3ykPOPSysa7w/pubembed?start=false&loop=false
+:width: 100%
+:title: "Tracing the `add` Datapath (Full)"
+:::
+The `add` datapath, updated from an [earlier section](#sec-datapath-r-type)'s simple `add`-only datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/10ORU8oWu4rSY7J6uSWl_6OxrJLVLt9EQ/edit?usp=sharing).
 ::::
 
 @fig-timing-add shows the waveforms for executing an `add x1 x2 x3` instruction at address `0x100`, followed by `add x6 x7 x9` at address `0x104`.
@@ -137,13 +146,22 @@ Options:
 The critical path uses the longer loop through the ALU.
 ::::
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-datapath-beq-full
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-beq-full.pptx
 :width: 100%
 :title: "Tracing the `beq` Datapath (Full)"
 :::
 The `beq` datapath, updated from an [earlier section](#sec-datapath-b-type)'s simpler datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+:::: -->
+
+::::{figure}
+:label: anim-datapath-beq-full
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRFDNojlD-1rvzMR9dQTJ8JZ2CllIZwaS6yYCdE1CumfoKjRXqeOekErcrTywda-w/pubembed?start=false&loop=false
+:width: 100%
+:title: "Tracing the `beq` Datapath (Full)"
+:::
+The `beq` datapath, updated from an [earlier section](#sec-datapath-b-type)'s simpler datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1iI-seGm2A7lSpHoGKM81b67utfyINT1H/edit?usp=sharing).
 ::::
 
 :::{note} Show Answer for `beq`
@@ -154,13 +172,22 @@ The `beq` datapath, updated from an [earlier section](#sec-datapath-b-type)'s si
 We leave this derivation to you. Note you may need to make new placeholder delays for control logic...!
 :::
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-datapath-lw-full
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-lw-full.pptx
 :width: 100%
 :title: "Tracing the `lw` Datapath (Full)"
 :::
 The `lw` datapath, updated from an [earlier section](#sec-datapath-load-store)'s simpler datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+:::: -->
+
+::::{figure}
+:label: anim-datapath-lw-full
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQqpuC67HJ6YsCXhnQ5YA1zqtUPBy-KRSnwjJzHgYdry8wwPkA6fm5pvToseVpxhQ/pubembed?start=false&loop=false
+:width: 100%
+:title: "Tracing the `lw` Datapath (Full)"
+:::
+The `lw` datapath, updated from an [earlier section](#sec-datapath-load-store)'s simpler datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1QV6naVOhLr3PVoKszzY-ipUCigknXs3D/edit?usp=sharing).
 ::::
 
 ::::{note} Show Answer for `lw`

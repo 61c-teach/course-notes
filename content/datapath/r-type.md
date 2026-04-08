@@ -71,13 +71,22 @@ For now, we disconnect DMEM since it is unused for `add` (@fig-add-no-dmem). We 
 
 Given the above analysis, we can now connect wires between key elements of our processor.
 
-::::{figure}
+<!-- ::::{figure}
 :label: anim-datapath-add
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-add.pptx
 :width: 100%
 :title: "Tracing the `add` Datapath"
 :::
 The `add` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
+:::: -->
+
+::::{figure}
+:label: anim-datapath-add
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTjoG1_5TXfFBOQnHyRBwkrcRobHXJH4WCXyt57uABZuIpE3eBShew6e1ma0qVJ3A/pubembed?start=false&loop=false
+:width: 100%
+:title: "Tracing the `add` Datapath"
+:::
+The `add` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1Md-1g2Cme3ScuGS4jPW23wFhUi8ysedu/edit?usp=sharing).
 ::::
 
 1. **Instruction Fetch**:
