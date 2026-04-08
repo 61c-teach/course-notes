@@ -51,7 +51,7 @@ Next, the **EDSAC** at Cambridge (1949) was the first general **stored-program**
 :label: fig-edsac
 :width: 60%
 :align: center
-:alt: "A black and white photograph shows multiple tall vertical racks of the EDSAC computer system densely populated with vacuum tubes and electronic components. The image captures the large-scale physical architecture of early stored-program computers within a laboratory setting.."
+:alt: "A black and white photograph shows multiple tall vertical racks of the EDSAC computer system densely populated with vacuum tubes and electronic components. The image captures the large-scale physical architecture of early stored-program computers within a laboratory setting."
 
 The EDSAC (Electronic Delay Storage Automatic Calculator) was one of the first general stored-program computers, completed in 1949. 
 [Wikipedia](https://en.wikipedia.org/wiki/EDSAC)

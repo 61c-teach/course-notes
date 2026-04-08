@@ -129,7 +129,7 @@ swap_string(&s1, &s2);
 :::{figure} images/swap-string-before.png
 :label: fig-swap-string-before
 :width: 60%
-:alt: "TODO"
+:alt: "Initial swap_string state: ptr1 and ptr2 point to variables s1 and s2, where s1 stores address 0x0FACE0 for string CS and s2 stores address 0x0ABBA0 for string 61C, both with a null terminator."
 
 `swap_string` is called.
 :::
@@ -137,7 +137,7 @@ swap_string(&s1, &s2);
 :::{figure} images/swap-string-after.png
 :label: fig-swap-string-after
 :width: 60%
-:alt: "TODO"
+:alt: "Final swap_string state before return: s1 now stores 0x0ABBA0 and points to string 61C, while s2 stores 0x0FACE0 and points to string CS; the string data in memory is unchanged."
 
 Right before `swap_string` call returns.
 :::

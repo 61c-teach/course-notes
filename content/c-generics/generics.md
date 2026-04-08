@@ -230,7 +230,7 @@ int main() {
 :::{figure} images/swap-ends.png
 :label: fig-swap-ends
 :width: 60%
-:alt: "TODO"
+:alt: "Array example after swap_ends: five consecutive integers at addresses 0x100 through 0x110 now read 5, 2, 3, 4, 1, showing that the first and last elements were exchanged."
 
 `swap_ends` swaps the elements `1` and `5` in the `arr` array.
 :::

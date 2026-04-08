@@ -43,7 +43,7 @@ In @fig-c-stack, notice the stack's **downward** growth means that `fooB()`’s 
 :::{figure} images/c-stack.png
 :label: fig-c-stack
 :width: 80%
-:alt: "TODO"
+:alt: "Call chain fooA to fooB to fooC is shown beside stacked frames. The stack is built downward as the call chain executes, having fooA on top, followed by fooB and then fooC, and finally the stack pointer sp at the lowest current frame boundary. A downward arrow indicates that new stack frames are allocated toward lower addresses."
 
 The stack grows downward. The stack pointer (`sp`) points to the top of the stack, i.e., the address of the current stack frame.
 :::
@@ -120,7 +120,7 @@ int main() {
 :::{figure} images/c-stack-buf-ok.png
 :label: fig-c-stack-buf-ok
 :width: 70%
-:alt: "TODO"
+:alt: "Safe stack-buffer pattern: main allocates local array buf in its own frame and passes a pointer to load_buf in a callee frame below. Because main remains active during the call, load_buf can write into buf safely."
 
 `main` passes its own local variable `buf` into a function call `load_buf`.
 :::
@@ -151,7 +151,7 @@ int main(){
 :::{figure} images/c-stack-buf-bad.png
 :label: fig-c-stack-buf-bad
 :width: 70%
-:alt: "TODO"
+:alt: "Unsafe returned-stack-pointer pattern shown in two panels: on the left, make_buf creates local buf and returns its address to main; on the right, a later call to foo reuses that lower stack region. Pointer ptr in main now dangles and may reference overwritten data."
 
 Left: Stack layout when `make_buf` returns. Right: Stack layout when `foo` is executing.
 :::
