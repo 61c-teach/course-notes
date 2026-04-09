@@ -47,7 +47,7 @@ The format for these `storeop rs2 imm(rs1)` instructions is shown in @fig-s-type
 :::{figure} images/s-type.png
 :label: fig-s-type
 :width: 100%
-:alt: "TODO"
+:alt: "RISC-V S-type for stores: syntax is storeop rs2 imm(rs1) with imm split as imm[11:5] and imm[4:0]. rs2 is the data source register, rs1 is the base address source register, and funct3 and opcode specify the type of store; a bracket shows the two immediate pieces concatenating to form imm[11:0] added to the contents of the base register for the target memory address."
 
 The S-Type Instruction Format.
 :::
@@ -65,7 +65,7 @@ Consider the translation of `sw x14 36(x2)` to the machine instruction shown in 
 :::{figure} images/practice-sw.png
 :label: fig-practice-sw
 :width: 100%
-:alt: "TODO"
+:alt: "Encoding of sw x14 36(x2): imm[11:5] is 0b0000001, rs2 is 0b01110 for register x14, rs1 is 0b00010 for register x2, funct3 is 0b010, imm[4:0] is 0b00100, and opcode is 0b0100011, concatenating the split immediate and translating the store fields for a word store."
 
 The S-Type instruction `sw x14 36(x2)`.
 :::
@@ -92,7 +92,7 @@ We follow the [steps for translating assembly into machine code](#sec-assembly-t
 :::{figure} images/practice-sw-imm.png
 :label: fig-practice-sw-imm
 :width: 35%
-:alt: "TODO"
+:alt: "Two-cell table showing how offset 36 is packed into S-type immediate fields: imm[11:5] is 0b0000001 and imm[4:0] is 0b00100, which concatenate to the 12-bit offset."
 
 Immediate (offset) value for the S-Type instruction `sw x14 36(x2)`.
 :::
@@ -104,7 +104,7 @@ Immediate (offset) value for the S-Type instruction `sw x14 36(x2)`.
 :::{figure} images/R-I-S-type-comparison.png
 :label: fig-R-I-S-type-comparison
 :width: 100%
-:alt: "TODO"
+:alt: "Three 32-bit instruction formats comparing R-type (funct7, rs2, rs1, funct3, rd, opcode), I-type (imm[11:0], rs1, funct3, rd, opcode), and S-type (imm[11:5], rs2, rs1, funct3, imm[4:0], opcode), with shared positions for opcode, funct3, and rs1 and color coding denoting different register and immediate fields."
 
 S-Type instruction set comparison to I-type and R-Type instruction sets.
 :::

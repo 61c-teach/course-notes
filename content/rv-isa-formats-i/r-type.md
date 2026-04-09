@@ -26,7 +26,7 @@ As an example, an R-type instruction is shown in @fig-opcode-field. The field na
 :::{figure} images/opcode-field.png
 :label: fig-opcode-field
 :width: 100%
-:alt: "TODO"
+:alt: "Template for reading a 32-bit RISC-V instruction word: annotations show bit positions, field names (for example opcode), and field widths; the bar is partitioned into funct7, rs2, rs1, funct3, rd, and opcode from bits 31 down to 0."
 
 Field names and locations depend on the instruction format.
 :::
@@ -53,7 +53,7 @@ We recommend you reference the [arithmetic instructions table](#tab-rv32i-arithm
 :::{figure} images/r-type.png
 :label: fig-r-type
 :width: 100%
-:alt: "TODO"
+:alt: "RISC-V R-type layout depicting assembly format: opname rd rs1 rs2 above a 32-bit bar with fields funct7 (bits 31–25), rs2 (bits 24–20), rs1 (bits 19–15), funct3 (bits 14–12), rd (bits 11–7), and opcode (bits 6–0), with rs1 and rs2 as source registers and rd as a destination register."
 
 The R-Type Instruction Format.
 :::
@@ -83,7 +83,7 @@ Consider @fig-rtype-add-example, which translates `add x18 x19 x10` to a machine
 :::{figure} images/rtype-add-example.png
 :label: fig-rtype-add-example
 :width: 100%
-:alt: "TODO"
+:alt: "Encoding of add x18 x19 x10: funct7 is 0b0000000, rs2 is 0b01010 for register x10, rs1 is 0b10011 for register x19, funct3 is 0b000, rd is 0b10010 for register x18, and opcode is 0b0110011, with arrows tying add to funct7 and funct3 and register names to their five-bit fields."
 
 The R-Type instruction `add x18 x19 x10`.
 :::
@@ -164,7 +164,7 @@ Explanation:
 :::{figure} images/practice-hex-xor.png
 :label: fig-practice-hex-xor
 :width: 100%
-:alt: "TODO"
+:alt: "Worked R-type example: funct7 is 0b0000000, rs2 is 0b11011, rs1 is 0b00110, funct3 is 0b100, rd is 0b00101, and opcode is 0b0110011, corresponding to xor x5 x6 x27 once fields are translated."
 
 Once an instruction's type is known, the instruction bits can be mapped to fields.
 :::

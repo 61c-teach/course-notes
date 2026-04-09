@@ -59,7 +59,7 @@ RISC-V also tries to keep bit positions of immediates consistent. The "**swirlin
 :::{figure} images/ISB-type-comparison.png
 :label: fig-ISB-type-comparison
 :width: 100%
-:alt: "TODO"
+:alt: "Side-by-side comparison of I-type, S-type, and B-type instruction formats, showing how the same immediate bits are packed into each format and how B-type instructions rearrange bits 11 and 12 relative to I-type and S-type while keeping rs1, rs2, funct3, and opcode field bit positions aligned."
 
 I-Type, S-Type, and B-Type instruction format comparison.
 :::
@@ -85,7 +85,7 @@ RV32I: For 32-bit instructions, imm[1] = imm[0] = 0.
 :::{figure} images/branch-isa-register.png
 :label: fig-branch-isa-register
 :width: 100%
-:alt: "TODO"
+:alt: "B-type instruction format layout: branchop rs1 rs2 Label with fields imm[12|10:5], rs2, rs1, funct3, imm[4:1|11], and opcode; brackets label rs1 and rs2 as the two source registers compared by the branch."
 
 Branch operation instruction format with registers.
 :::
@@ -93,7 +93,7 @@ Branch operation instruction format with registers.
 :::{figure} images/branch-isa-offset.png
 :label: fig-branch-isa-offset
 :width: 100%
-:alt: "TODO"
+:alt: "B-type encoding plus a second bar reconstructing the 13-bit signed branch offset: instruction bits map to offset bits 12:1, with an implied 0 in the least significant bit 0 position for instruction alignment."
 
 Branch operation instruction format with labeled offset.
 :::
@@ -101,7 +101,7 @@ Branch operation instruction format with labeled offset.
 :::{figure} images/practice-beq.png
 :label: fig-practice-beq
 :width: 100%
-:alt: "TODO"
+:alt: "Compact B-type field table with binary values: imm[12|10:5] as 0b0000000, rs2 as 0b01010, rs1 as 0b10011, funct3 as 0b000, imm[4:1|11] as 0b10000, and opcode as 0b1100011, consistent with the instruction beq."
 
 Branch operation instruction example.
 :::
@@ -110,7 +110,7 @@ Branch operation instruction example.
 :::{figure} images/branch-example.png
 :label: fig-branch-example
 :width: 100%
-:alt: "TODO"
+:alt: "Annotated encoding of beq x19 x10 End: brackets map rs1 to x19 and rs2 to x10, an arrow ties beq to funct3 000, the opcode field is labeled B-type, and the branch offset is split across imm[12|10:5] and imm[4:1|11] with an implicit bit zero for imm[0]."
 
 Branch operation instruction example.
 :::
@@ -118,7 +118,7 @@ Branch operation instruction example.
 :::{figure} images/branch-example-sol.png
 :label: fig-branch-example-sol
 :width: 100%
-:alt: "TODO"
+:alt: "Same beq machine word as above with a second diagram assembling the immediate into a 13-bit signed byte offset 16 (four instructions), matching a forward branch to the End label."
 
 Branch operation instruction example solution.
 :::
