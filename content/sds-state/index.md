@@ -47,7 +47,7 @@ We would see a blur, because the clock signal is oscillating at a very high freq
 :::{figure} images/clock-waveform.png
 :label: fig-clock-waveform
 :width: 100%
-:alt: "TODO"
+:alt: "Ideal square-wave clock waveform: alternating low and high plateaus with period T and sharp rising and falling edges."
 
 Waveform for a clock signal if recorded and plotted over time.
 :::
@@ -74,7 +74,7 @@ Similarly to the clock signal, we can look at other signals in the circuit. For 
 :::{figure} images/adder-waveform.png
 :label: fig-adder-waveform
 :width: 70%
-:alt: "TODO"
+:alt: "Top depicts a block representing adder circuit with many single bit inputs and many outputs. Bottom depicts a clock waveform, showing adder input bits holding stable levels between transitions and changing in relation to clock edges."
 
 Waveform for signals in an adder circuit if recorded and plotted over time.
 :::
@@ -114,7 +114,7 @@ Signal wires are often grouped together to transmit words of data, as shown in @
 :::{figure} images/signal-wires.png
 :label: fig-sig-wires
 :width: 70%
-:alt: "TODO"
+:alt: "Four individual signal waveforms for x3, x2, x1, and x0, plus a bus waveform drawn with crossed transition bands, labeling the 4-bit value held on the bus in each stable interval."
 
 Waveform diagram of signal change over time along 4 wires.
 :::
@@ -135,7 +135,7 @@ However, the propagation delay of a circuit, like the adder, is always less than
 :::{figure} images/general-model-sds.png
 :label: fig-general-model-sds
 :width: 100%
-:alt: "TODO"
+:alt: "Synchronous system sketch: combinational logic blocks interleaved with registers, optional feedback, and a clock distribution that connects only to register clock pins."
 
 General model for SDS.
 :::

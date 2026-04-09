@@ -99,7 +99,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/and-gate.png
 :label: fig-and-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input AND gate symbol: flat left edge with inputs a and b, rounded right edge with output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -116,7 +116,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/or-gate.png
 :label: fig-or-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input OR gate symbol: curved input edge with inputs a and b, pointed output edge with output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -133,7 +133,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/not-gate.png
 :label: fig-not-gate
 :width: 100%
-:alt: "TODO"
+:alt: "NOT gate symbol: triangle pointing right with inversion bubble on the tip, input a, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -150,7 +150,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/nand-gate.png
 :label: fig-nand-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input NAND gate symbol: AND shape with inversion bubble on the output side, inputs a and b, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -177,7 +177,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/nor-gate.png
 :label: fig-nor-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input NOR gate symbol: OR shape with inversion bubble on the output side, inputs a and b, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -204,7 +204,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/xor-gate.png
 :label: fig-xor-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input XOR gate symbol: OR outline with extra curved line on the input side, inputs a and b, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -254,7 +254,7 @@ than two inputs also exist. For performance reasons, the number of inputs to log
 :::{figure} images/and-gate-n.png
 :label: fig-and-gate-n
 :width: 30%
-:alt: "TODO"
+:alt: "Four-input AND gate symbol: stacked inputs a, b, c, and d on the left and single output y on the curved right edge."
 
 4-input AND gate. The output `y` is `1` if and only if `a`, `b`, and `c` are all `1`.
 :::

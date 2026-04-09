@@ -52,7 +52,7 @@ Consider the design of a circuit whose job is to form the sum of a list of integ
 :::{figure} images/accumulator-block.png
 :label: fig-acc-block
 :width: 45%
-:alt: "TODO"
+:alt: "Abstract accumulator box symbol with inputs x_i applied and accumulated in sum S, available after n clock cycles."
 
 Block diagram for accumulator.
 :::
@@ -66,7 +66,7 @@ What should we put inside the sum block to achieve the desired function? Obvious
 :::{figure} images/accumulator-circuit-unstable.png
 :label: fig-accumulator-circuit-unstable
 :width: 55%
-:alt: "TODO"
+:alt: "Strawman adder with its sum output fed straight back to the adder input, lacking a register so the sum races and over-counts within one cycle."
 
 Circuit diagram for accumulator.
 :::
@@ -84,7 +84,7 @@ The way to control the computation is to put a register in the **feedback path**
 :::{figure} images/accumulator-circuit-register.png
 :label: fig-accumulator-circuit-register
 :width: 55%
-:alt: "TODO"
+:alt: "Adder circuit with a feedback path through a clocked register with reset, holding the partial sum stable between X updates."
 
 Circuit diagram for accumulator with reset.
 :::
@@ -111,7 +111,7 @@ The output of the circuit is labeled $S_i$, and the output of the register is la
 :::{figure} images/accumulator-timing.png
 :label: fig-accumulator-timing
 :width: 100%
-:alt: "TODO"
+:alt: "Timing diagram with aligned waveforms for clock, input X, adder output S_i, and one-cycle-delayed register output S_i-1, showing one accumulation per period in this circuit."
 
 Rough timing diagram for accumulator, now with the waveform for the register output $S_{i-1}$.
 :::
@@ -129,6 +129,8 @@ In practice $X_i$ may not necessarily arrive at the same time as the feedback va
 :::{figure} images/accumulator-timing-realistic.png
 :label: fig-accumulator-timing-realistic
 :width: 100%
+:alt: "Similar accumulator timing diagram as the ideal case, but X switches slightly after S_i-1 so the adder output briefly becomes undefined while input is unstable, and then settles before the next sample edge."
+
 Even though $X_i$ and $S_{i-1}$ arrive at different times to the accumulator, the clock period is long enough that $S_i$ is stable before the next rising edge of the clock.
 :::
 
@@ -166,7 +168,7 @@ Relationship: $f = 1/T$.
 :::{figure} images/critical-path.png
 :label: fig-critical-path
 :width: 55%
-:alt: "TODO"
+:alt: "Template register-to-register path: clk-to-q(blue arrow), combinational logic delay (pink arrow), and setup time (green arrow) budget show what factors in the path set the minimum clock period."
 
 To determine the minimum clock period, compute the delay on the critical path.
 :::
@@ -193,7 +195,7 @@ Assume all registers have 1 ns clk-to-q delay, setup time, and hold time; AND ga
 :::{figure} images/critical-path-practice.png
 :label: fig-critical-path-practice
 :width: 55%
-:alt: "TODO"
+:alt: "Practice combinational logic drawing with several 2-input AND gates and a flip-flop. The critical-path delay is currently unlabeled and left for an exercise."
 
 Example circuit.
 :::
@@ -209,7 +211,7 @@ The critical path is highlighted in @fig-critical-path-answer.
 :::{figure} images/critical-path-answer.png
 :label: fig-critical-path-answer
 :width: 55%
-:alt: "TODO"
+:alt: "Same AND-chain circuit with the longest register-to-register criticial path highlighted in yellow. This critical path passes through three of the four total AND gates."
 
 Example circuit, with highlighted critical path.
 :::

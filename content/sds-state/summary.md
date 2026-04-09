@@ -15,7 +15,7 @@ input is 0, and switches back to state 0 with an output of 1 when the input is 1
 :::{figure} images/FSM_Precheck_Disc8.png
 :label: fig-disc8-fsm
 :width: 60%
-:alt: "TODO"
+:alt: "Two-state machine with state bubbles 0 and 1: input 0 in either state creates a self-loop with output 0, where input 1 in either state changes state and results in output 1. A start state is labeled to the left and points immediately to state 0."
 
 FSM diagram for the description above.
 :::
@@ -29,7 +29,7 @@ Logically, the fact that clk-to-q ≥ hold time makes sense since it only takes 
 :::{figure} images/register_circuit_example.png
 :label: fig-reg-circuit-ex-disc8
 :width: 100%
-:alt: "TODO"
+:alt: "Register block diagram on the left beside a waveform timing diagram with clock, data, and output waves showing setup, hold, and clk-to-q times. The timing diagram also depicts a shaded unstable interval until after the clk-to-q time of the first rising clock edge (when the first output stabilizes)."
 
 Example register circuit with timing diagram.
 :::

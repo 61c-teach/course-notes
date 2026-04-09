@@ -8,7 +8,7 @@ Our goal this lecture was to build combinational logic blocks. We can summarize 
 
 :::{figure} #fig-cl-block-representation
 :width: 60%
-:alt: "TODO"
+:alt: "Diagram with three bubbles describing three representations of combinational logic: Truth Table, Boolean Expression, and Gate Diagram. The representations are connected with curved arrows showing conversions between them."
 
 @fig-cl-block-representation in [previous section](#sec-cl-practice).
 :::
@@ -38,7 +38,7 @@ delay is associated with them. For example, if an AND gate (pictured below) has 
 
 :::{figure} images/SDS_Precheck_Disc8.png
 :width: 60%
-:alt: "TODO"
+:alt: "The left diagram depicts a two-input AND gate with inputs INPUT_A and INPUT_B and low output; the right diagram shows the associated timing waveforms for a, b, and output showing AND behavior with visible propagation delay after input edges."
 :::
 
 You should notice that the output of this AND gate always changes 2ps after its inputs change.
@@ -123,7 +123,7 @@ Check your knowledge!
 :::{figure} images/exercises-1-gates.png
 :label: exercises-1-gates
 :width: 100%
-:alt: "TODO"
+:alt: "Row of seven standard gate symbols: NOT, AND, OR, XOR, NAND, NOR, and XNOR."
 :::
 ::::
 
