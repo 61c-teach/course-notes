@@ -22,7 +22,7 @@ To compute each element of the resulting matrix $C$, we take the dot-product of 
 :label: fig-matmul-00
 :width: 60%
 
-Compute $C_00$ by taking the dot product of row $0$ of $A$ and column $0$ of $B$.
+Compute $C_{00}$ by taking the dot product of row $0$ of $A$ and column $0$ of $B$.
 :::
 
 Similarly, to compute $C_{01}$, we can multiply element-wise the zero-th row of $A$ and first column of $B$, then sum everything together, as in @fig-matmul-ij.
@@ -39,12 +39,18 @@ Compute $C_ij$ by taking the dot product of row $i$ of $A$ and column $j$ of $B$
 If `A`, `B`, and `C` are the matrix representation of $A$, $B$, and $C$, respectively, and memory is appropriately allocated, we can write straight-forward C to implement matrix multiplication code:
 
 ```c
-// for row i, col j of C
-int sum = 0; // sizeof(int) = 4
-for (int k = 0; k < size; k++) {
-  sum += A[i][k] * B[k][j];
+void dgemm(int N, int *A, int *B, int *C) {
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < N; j++) {
+        // for row i, col j of C
+        int sum = 0; // sizeof(int) = 4
+        for (int k = 0; k < size; k++) {
+        sum += A[i][k] * B[k][j];
+        }
+        C[i][j] = sum;
+    }
+  }
 }
-C[i][j] = sum;
 ```
 
 ::::{warning} Row-major order
@@ -91,7 +97,7 @@ Computing $C_00$ as vector multiplication of the zero-th row of $A$ and the zero
 :width: 100%
 :title: "C[0][0] Memory Access Pattern"
 :::
-Computing $C_00$ as vector multiplication of the zero-th row of $A$ and the zero-th column of $B$. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1GJiXwZ8gGuZxLxSU5raiTPY_E0I4AQVU/edit?usp=sharing).
+Computing $C_{00}$ as vector multiplication of the zero-th row of $A$ and the zero-th column of $B$. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1GJiXwZ8gGuZxLxSU5raiTPY_E0I4AQVU/edit?usp=sharing).
 ::::
 
 :::{note} Show cache hits/misses
@@ -356,20 +362,31 @@ In matrix multiplication, computing subsequent elements of $C$ results in non-co
 B's row-major layout in memory causes excessive memory accesses. We are constantly replacing rows of $B$!
 :::
 
-We have seen in a [previous section](#sec-cache-optimizations) how as computer architects, we can reduce these misses by increasing the capacity of our cache. However, as programmers, we often may not have control over the hardware of our computer. It is not trivial to swap out the cache. Instead, we must assume that we have some fixed hardware architecture, then see how we can rewrite our programmer to maximize use of the hardware.
+In our matmul example, we know that `B` is stored in row-major-layout. To access a **column** of $B$ as is needed in matrix multiplication, we must load in all 8 rows of `B`.
+
+From P&H 4.4 for square matrices (N-by-N):
+
+> If the cache can hold one N-by-N matrix and one row of N, then at least the `i`th row of `A` and the entire matrix `B` may stay in the cache. Less than that and misses may occur for both `B` and `C`. In the worst case, there would be 2 N{sup}`3`+ N{sup}`2` memory words accesed for N{sup}`3` operations.
 
 ## Cache Blocking
 
+We have seen in a [previous section](#sec-cache-optimizations) how as computer architects, we can reduce these misses by increasing the capacity of our cache. However, as programmers, we often may not have control over the hardware of our computer. It is not trivial to swap out the cache. Instead, we must assume that we have some fixed hardware architecture, then see how we can rewrite our programmer to maximize use of the hardware.
+
 **Cache blocking** is a programmer technique that rearranges data accesses to make better use of the data brought into the cache.
 
-In our matmul example, we know that `B` is stored in row-major-layout. To access a **column** of $B$ as is needed in matrix multiplication, we must load in all 8 rows of `B`. It would be much better to load in just the 8 elements in the _column_ of `B`, and not elements in other columns needed for later matrix multiplications.
+### Approach 1: Transpose
 
-A cache blocking technique could **transpose** B before matrix multiplication. The transpose of $B$ is written as $B^T$ and is defined where $B^T_jk = B_kj$ for all indices $j$ and $k$, as shown in @fig-matmul-transpose.
+One observation is that it would be much better to load in just the 8 elements in the _column_ of `B`, and not elements in other columns needed for later matrix multiplications.
+
+A cache blocking technique could **transpose** B before matrix multiplication. The transpose of $B$ is written as $B^T$ and is defined where $B^T_{jk} = B_{kj}$ for all indices $j$ and $k$, as shown in @fig-matmul-transpose.
 
 :::{figure} images/matmul-transpose.png
 :label: fig-matmul-transpose
+:width: 60%
 
 $B^T$ is the matrix transpose of $B$ 
+
+:::
 
 If we maintain a copy of `B_T` (mathematically $B^T$), we can therefore redefine our matrix multiplication as follows:
 
@@ -387,3 +404,83 @@ Notes:
 
 * `B_T` is still a matrix stored in row-major order. However, now our original matrix $B$ is effectively stored in column-major order.
 * With the above optimization, we prevent repeatedly replacing and fetching the same data from main memory. Instead, we load in each column of `B`, two memory accesses at a time.
+
+Transposing is quite slow; it also requires a N{sup}`2` overhead to complete and triggers the same types of cache misses as we observed in our original computation. We have simply moved our poor cache performance from matrix multiplication to another part of the program.
+
+### Approach 2: Submatrix computation
+
+Our second cache blocking approach observes that matrix multiplication can be computed piecewise. A **submatrix** (i.e.,  **tile**) of $C$ can be computed as the sum of multiplying different submatrices of $A$ and $B$.
+
+@anim-matmul-block-2 illustrates cache blocking with a **blocking factor** or `BLOCKSIZE` of 2. We compute the 2x2 tile of $C$ with elements $C_{ij}$, where $i \in {0, 1}$ and $j \in {0, 1}$. This tile can be computed as four submatrix multiplications.
+
+::::{figure}
+:label: anim-matmul-block-2
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
+:width: 100%
+:title: "C[i][j] Memory Access Pattern"
+:::
+Cache blocking. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1HY9AE2z3eb1eWPx0VQvVusZ83caTvZ5s/edit?usp=drive_link&ouid=113745915748997113650&rtpof=true&sd=true).
+::::
+
+:::{note} Show Explanation
+:class: dropdown
+
+1. Multiply the first two elements in Rows 0 and 1 of A by the first two elements in Rows 0 and 1 of B. Store the four results in the target C tile.
+
+    Cache contents[^not-lru]:
+    * Row $0$ of A, first half
+    * Row $1$ of A, first half
+    * Row $0$ of B
+    * Row $1$ of B
+    * Row $0$ of C
+    * Row $1$ of C
+
+[^not-lru]: Not in LRU order for now. Marking this as TODO for future semesters.
+
+1. Multiply the next two elements of A by the first two elements in Rows 2 and 3 of B. Add to the results in the target C tile.
+
+    Cache contents[^not-lru]:
+    * Row $0$ of A, first half
+    * Row $1$ of A, first half
+    * Row $0$ of B
+    * Row $1$ of B
+    * Row $0$ of C
+    * Row $1$ of C
+    * Row $2$ of B
+    * Row $3$ of B
+
+1. Multiply the next two elements of A by the first two elements in Rows 4 and 5 of B. Add to the results in the target C tile.
+
+    Cache contents[^not-lru]:
+    * Row $3$ of A, first half
+    * Row $4$ of A, first half
+    * Row $0$ of C
+    * Row $1$ of C
+    * Row $4$ of B
+    * Row $5$ of B
+
+1. Multiply the last two elements of A by the first two elements in Rows 6 and 7 of B. Add to the results in the target C tile.
+
+    Cache contents[^not-lru]:
+    * Row $3$ of A, first half
+    * Row $4$ of A, first half
+    * Row $0$ of C
+    * Row $1$ of C
+    * Row $6$ of B
+    * Row $7$ of B
+
+:::
+
+### Summary: Cache Blocking
+
+Note that cache blocking may still replace rows of $B$ that will be needed later; it does not avoid all capacity misses. However, it reduces the **total number of memory accesses**, thereby reducing the total number of compulsory misses.
+
+From P&H 4.4 for square matrices (N-by-N):
+
+> Looking only at capacity misses, the total number of memory words accessed is 2 N{sup}`3`/`BLOCKSIZE` + N{sup}`2`. This total is an improvement by about a factor of `BLOCKSIZE`.
+
+Blocking exploits a combination of spatial and temporal locality:
+
+* $A$ benefits from spatial locality
+* $B$ benefits from temporal locality
+* $C$ benefits from spatial locality (more results of $C$ are computed for the same memory accesses to $A$ and $B$).
