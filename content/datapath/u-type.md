@@ -76,7 +76,7 @@ The `lui` datapath. Use the menu bar to trace through the animation or access th
 * Set `ALUSel` to connect the input `B` directly to the output (project name: `bsel`).
 * Set `MemRW` to `Read`. This means **no** write to `DMEM`.
 * Set `WBSel` to `1` (to select `alu` output in @anim-datapath-lui).
-* Set `PCSel` to `taken`.
+* Set `PCSel` to `not taken`.
 
 [^dont-care]: Review [Control Signals for Stores](#sec-control-store) for an explanation of "don't care."
 
@@ -126,6 +126,6 @@ The `auipc` datapath. Use the menu bar to trace through the animation or access 
 * Set `ALUSel` to `Add`.
 * Set `MemRW` to `Read`. This means **no** write to `DMEM`.
 * Set `WBSel` to `1` (to select `alu` output in @anim-datapath-auipc).
-* Set `PCSel` to `taken`.
+* Set `PCSel` to `not taken`.
 
 :::
