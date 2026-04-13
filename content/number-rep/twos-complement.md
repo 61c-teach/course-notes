@@ -38,7 +38,7 @@ Of note:
 * Like in ones' complement, incrementing the binary odometer corresponds with integer addition by one.
 * `0b0000` is still $0$.
 * Positive numbers are the same as ones' complement.
-* Negative numbers are shifted over! For example, `0b111` now maps to $-1$. This gives us one extra negative number.
+* Negative numbers are shifted over! For example, `0b1111` now maps to $-1$. This gives us one extra negative number.
 * The most significant bit (leftmost bit) can still be interpreted as the **sign bit**.
 
 > In Two's Complement, a bit pattern of all ones is $-1$.
