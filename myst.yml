@@ -216,28 +216,27 @@ project:
           - file: content/caches-iii/optimizations.md
           - file: content/caches-iii/blocking.md
           - file: content/caches-iii/summary.md
-    - title: "L30-L34 Parallelism"
+    - title: "L30-L34 Parallelism and Performance"
       children:
-        - file: content/parallel-i-performance/index.md
-      # - title: "L30 Flynn Taxonomy, SIMD Instructions"
+      - title: "L30 Performance Programming, Amdahl's Law"
+        children:
+          - file: content/parallel-performance/index.md
+          - file: content/parallel-performance/dgemm.md
+          - file: content/parallel-performance/dgemm-sequential.md
+          - file: content/parallel-performance/summary.md
+      - title: "L31 Parallelism I: Flynn's Taxonomy, SIMD"
+        children:
+          - file: content/parallel-simd/index.md
+          - file: content/parallel-simd/simd.md
+          - file: content/parallel-simd/dgemm-simd.md
+          - file: content/parallel-simd/intrinsics.md
+          - file: content/parallel-simd/summary.md
+      # - title: "L32 Parallelism III: MIMD, Thread-Level Parallelism"
       #   children:
-      #     - file: content/p-flynn/index.md
-      #     - file: content/p-flynn/p-flynn-matrix.md
-      #     - file: content/p-flynn/p-flynn-flynn.md
-      #     - file: content/p-flynn/p-flynn-simd-arch.md
-      #     - file: content/p-flynn/p-flynn-simd-array.md
-      #     - file: content/p-flynn/p-flynn-example.md
-      #     - file: content/p-flynn/summary.md
-      # - title: "L31 Thread-Level Parallelism I"
-      #   children:
-      #     - file: content/parallel-I/index.md
+      #     - file: content/parallel-II/index.md
       #     - file: content/parallel-I/parallel-I-multicore.md
       #     - file: content/parallel-I/parallel-I-threads.md
       #     - file: content/parallel-I/parallel-I-multithreading.md
-      #     - file: content/parallel-I/summary.md
-      # - title: "L32 Thread-Level Parallelism II"
-      #   children:
-      #     - file: content/parallel-II/index.md
       #     - file: content/parallel-II/parallel-II-openmp.md
       #     - file: content/parallel-II/parallel-II-computing-pi.md
       #     - file: content/parallel-II/parallel-II-synch.md

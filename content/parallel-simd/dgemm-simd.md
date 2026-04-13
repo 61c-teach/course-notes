@@ -1,12 +1,12 @@
 ---
-title: "Matrix Multiplication: dgemm"
-subtitle: TODO
+title: "dgemm: SIMD"
+subtitle: Coming soon! Thanks for your patience.
 ---
 
-## Learning Outcomes
+<!-- ## Learning Outcomes
 
 * TODO
-* TODO
+* TODO -->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -29,6 +29,9 @@ subtitle: TODO
 SIMD `dgemm` matrix multiplication with four-double vector. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1luqaX7cXBd158mvN9ZJDBcNa5O2MK4aWIZcrm1wsXeo/edit?usp=sharing).
 ::::
 
+<!-- 
+
+
 :::{figure} images/simd-col-major.png
 :label: fig-simd-col-major
 :width: 100%
@@ -36,3 +39,15 @@ SIMD `dgemm` matrix multiplication with four-double vector. Use the menu bar to 
 
 SIMD Scalar `dgemm` Matrix Multiplication - result stored in column major order.
 :::
+
+:::{table} SIMD Pseudo Functions and their Descriptions
+:label: tab-simd-funcs
+
+| SIMD Pseudo Functions | Description |
+| :--- | :--- |
+| `vector vec_load(double *A);` | Loads four doubles at memory address A into a vector. | 
+| `void vec_store(double *dst, vector src);` | Stores `src` to `dst`. |
+| `vector vec_setnum(double num);` | Creates a vector where every element is equal to `num`. |
+| `vector vec_add(vector A, vector B);` | Returns the result of adding A and B element-wise. |
+
+::: -->

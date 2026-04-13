@@ -113,4 +113,3 @@ Check your knowledge!
 :class: dropdown
 **True** For all other instructions, we don’t need to read the data that is read out from DMEM, and thus don’t need to wait for the output of the MEM stage.
 :::
-

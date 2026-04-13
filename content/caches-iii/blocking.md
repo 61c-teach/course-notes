@@ -2,7 +2,7 @@
 title: "Cache Blocking"
 ---
 
-(sec-cache-matmul)=
+(sec-cache-blocking)=
 ## Learning Outcomes
 
 * Write programs that leverage understanding of the underlying cache design.
@@ -12,57 +12,21 @@ In this section, we consider how knowing the underlying design of our cache can 
 
 ## Matrix Multiplication
 
-Recall that matrix multiplication is defined as $AB = C$ for matrices $A$, $B$, and $C$ with appropriate dimensions. In this example, we will consider multiplying matrix $A$ (4 rows $\times$ 8 columns) by matrix $B$ (8 rows $\times$ 4 columns) to produce the matrix $C$ (4 rows $\times$ 4 columns).[^real-numbers]
+In this section, we use a matrix multiplication benchmark.
+In this example, we will consider multiplying matrix $A$ (4 rows $\times$ 8 columns) by matrix $B$ (8 rows $\times$ 4 columns) to produce the matrix $C$ (4 rows $\times$ 4 columns).[^int-notation] 
 
-[^real-numbers]: Using proper mathematical notation: $A \in \mathbb{R}^{n \times m}, B \in \mathbb{R}^{m \times p}, C \in \mathbb{R}^{n \times p}$. In our example, $n = p = 4, m = 8$.
+[^int-notation]: Using proper mathematical notation, where $\mathbb{Z}$ is the set of all integers: $A \in \mathbb{Z}^{n \times d}, B \in \mathbb{Z}^{d \times m}, C \in \mathbb{Z}^{n \times m}$. In our example, $n = m = 4, d = 8$.
 
-To compute each element of the resulting matrix $C$, we take the dot-product of a row of $A$ and a column of $B$. @fig-matmul-00 shows how we can compute the zero-th row, zero-th column element of $C$, $C_{00}$, by multiplying element-wise the (zero-indexed) zero-th row of $A$ and zero-th column of $B$, then summing everything together.
-
-:::{figure} images/matmul-00.png
-:label: fig-matmul-00
-:width: 60%
-
-Compute $C_{00}$ by taking the dot product of row $0$ of $A$ and column $0$ of $B$.
-:::
-
-Similarly, to compute $C_{01}$, we can multiply element-wise the zero-th row of $A$ and first column of $B$, then sum everything together, as in @fig-matmul-ij.
-
-:::{figure} images/matmul-ij.png
-:label: fig-matmul-ij
-:width: 60%
-
-Compute $C_ij$ by taking the dot product of row $i$ of $A$ and column $j$ of $B$.
-:::
-
-## C code: `matmul`
-
-If `A`, `B`, and `C` are the matrix representation of $A$, $B$, and $C$, respectively, and memory is appropriately allocated, we can write straight-forward C to implement matrix multiplication code:
-
-```c
-void dgemm(int N, int *A, int *B, int *C) {
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
-        // for row i, col j of C
-        int sum = 0; // sizeof(int) = 4
-        for (int k = 0; k < size; k++) {
-        sum += A[i][k] * B[k][j];
-        }
-        C[i][j] = sum;
-    }
-  }
-}
+```{note} Matrix Multiplication details
+Review [this section](#sec-dgemm) that describes the row-major order matrix multiplication benchmark in this section.
 ```
 
-::::{warning} Row-major order
+Assume that matrices $A$, $B$, and $C$ are stored in **row-major order** as `int A[]`, `int B[]`, and `int C[]`.
 
-Assume that matrices $A$, $B$, and $C$ are stored as `A`, `B`, and `C`. In the code, these variables are arrays of `int` arrays. The matrices therefore by definition are stored in **row-major order**. For example, each element of `A[i]` is the $i$-th row of matrix $A$; furthermore, the zero-th element of the $i+1$-th row immediately follows the last element of the $i$-th row, as shown in @fig-matmul-row-major.
+C code, for your reference:
 
-:::{figure} images/matmul-row-major.png
-:label: fig-matmul-row-major
-
-Assume that all matrices are stored in **row-major order**.
+:::{embed} #code-igemm-simple
 :::
-::::
 
 ## Architecture details
 
