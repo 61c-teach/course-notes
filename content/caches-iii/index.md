@@ -89,7 +89,7 @@ This section is useful if you are still confused about the difference between th
 ### Example
 
 Let's compare the hit patterns of a few cache types.
-The below diagram shows the hit/miss pattern of various caches when run on a [Matrix Multiply](#sec-cache-matmul) Example.
+The below diagram shows the hit/miss pattern of various caches when run on a [Matrix Multiply](#sec-cache-blocking) Example.
 
 1. FA 1M (Fully Associative, 1 million blocks. This is our "infinite" cache with as many hits as possible)
 1. FA 4 blocks (Fully Associative)
