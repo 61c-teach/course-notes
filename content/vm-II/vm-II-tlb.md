@@ -17,3 +17,46 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+:::{figure} images/just-tlb.png
+:label: fig-just-tlb
+:width: 50%
+The Translation Lookaside Buffer (TLB).
+:::
+
+:::{figure} images/page-table-walk-necessary.png
+:label: fig-page-table-walk-necessary
+:width: 50%
+Page table walk is inefficient.
+:::
+
+:::{figure} images/tlb-cuts-page-table-walk.png
+:label: tlb-cuts-page-table-walk
+:width: 70%
+The TLB helps decrease amount of page table walks necessary.
+:::
+
+:::{figure} images/address-translation-ex-1.png
+:label: address-translation-ex-1
+:width: 80%
+Example of address translation with TLB.
+:::
+
+:::{figure} images/address-translation-tlb-hit-case.png
+:label: address-translation-tlb-hit-case
+:width: 80%
+Example of address translation with TLB (hit).
+:::
+
+:::{figure} images/address-translation-tlb-miss-case-1.png
+:label: address-translation-tlb-miss-case-1
+:width: 80%
+Example of address translation with TLB (miss).
+:::
+
+:::{figure} images/address-translation-tlb-miss-case-2.png
+:label: address-translation-tlb-miss-case-2
+:width: 80%
+Example of address translation with TLB (miss).
+:::

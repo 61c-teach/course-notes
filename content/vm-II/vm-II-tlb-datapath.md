@@ -17,3 +17,35 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+:::{figure} images/pipt-1.png
+:label: fig-pipt-1
+:width: 60%
+Putting it all together: what is the order in which we access things?
+:::
+
+:::{figure} images/memory-access-workflow.png
+:label: fig-memory-access-workflow
+:width: 60%
+Full memory access workflow.
+:::
+
+:::{figure} images/address-translation-ex-1.png
+:label: address-translation-ex-2
+:width: 80%
+Example of address translation with TLB.
+:::
+
+:::{figure} images/address-translation-page-fault-case-1.png
+:label: address-translation-page-fault-case-1
+:width: 80%
+Example of address translation with TLB (page fault).
+:::
+
+
+:::{figure} images/address-translation-page-fault-case-2.png
+:label: address-translation-page-fault-case-2
+:width: 80%
+Example of address translation with TLB (update TLB and page table).
+:::

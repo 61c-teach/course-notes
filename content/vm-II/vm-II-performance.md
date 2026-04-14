@@ -17,3 +17,22 @@ subtitle: TODO
 :::
 
 ::::
+
+## Visuals
+:::{figure} images/cache-vs-vm.png
+:label: fig-cache-vs-vm
+:width: 80%
+Cache vs VM.
+:::
+
+:::{figure} images/wasteful-paging.png
+:label: fig-wasteful-paging
+:width: 60%
+How do we deal with unused pages?
+:::
+
+:::{figure} images/demand-paging-less-wasteful.png
+:label: fig-demand-paging-less-wasteful
+:width: 60%
+We use demand paging.
+:::

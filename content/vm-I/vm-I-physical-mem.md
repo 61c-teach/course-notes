@@ -17,3 +17,10 @@ subtitle: TODO
 :::
 
 ::::
+## Visuals
+:::{figure} images/physical-mem-too-small.png
+:label: fig-physical-mem-too-small-1
+:width: 100%
+What happens if physical memory is too small?
+:::
+
