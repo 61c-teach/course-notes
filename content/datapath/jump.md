@@ -51,6 +51,7 @@ We can reuse many components of our R-, I-, S-, and B-Type datapath. We will nee
 ::::{figure} images/jal-new-blocks.png
 :label: fig-jal-new-blocks
 :width: 100%
+:alt: "Depiction of jump datapath updates: immediate generator extended for J-type and writeback mux widened to include the PC plus four link value."
 
 Update the Immediate Generator block and the `WBSel` mux.
 ::::

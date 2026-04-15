@@ -34,7 +34,7 @@ The Program Counter (PC) is a 32-bit register in @fig-element-pc and holds the v
 :::{figure} images/element-pc.png
 :label: fig-element-pc
 :width: 50%
-:alt: "TODO"
+:alt: "Program counter block: one N-bit register with data-in, write-enable, clock input, and N-bit data output."
 
 The Program Counter, PC, is a single 32-bit register in the CPU.
 :::
@@ -67,7 +67,7 @@ The **Register File** (or RegFile) has 32 registers: register numbers `x0` to `x
 :::{figure} images/element-regfile.png
 :label: fig-element-regfile
 :width: 50%
-:alt: "TODO"
+:alt: "Register file block taking in a 32-bit wdata, 5-bit rd, 5-bit rs1 register value, and 5-bit rs2 register value inputs. The register block outputs two 32-bit rdata1 and rdata2 output values and is controlled by a RegWEn and clk signal."
 
 The RegFile is symbolically written as RegFile and is composed of registers `x0` to `x31`.
 :::
@@ -116,7 +116,7 @@ The Data Memory block DMEM has edge-triggered writes, just like RegFile.
 :::{figure} images/element-dmem.png
 :label: fig-dmem-block
 :width: 50%
-:alt: "TODO"
+:alt: "Data memory block with 32-bit address and 32-bit write-data inputs, MemRW and clk control signals, and 32-bit rdata output."
 
 The Data Memory block DMEM. Read operations behave like combinational logic, whereas write operations occur on the rising clock edge.
 :::
@@ -156,7 +156,7 @@ The Instruction Memory block IMEM is a **read-only memory** that fetches instruc
 :::{figure} images/element-imem.png
 :label: fig-element-imem
 :width: 50%
-:alt: "TODO"
+:alt: "Instruction memory block with 32-bit address input and 32-bit instruction output, modeled as read-only combinational fetch logic. On the right, IMEM block signal."
 
 In our CPU, the Instruction Memory block IMEM is read-only and behaves like combinational logic.
 :::

@@ -44,6 +44,7 @@ Loads (and stores) participate in the `MEM` phase of [the five step process](#se
 ::::{figure} images/lw-new-blocks.png
 :label: fig-lw-new-blocks
 :width: 100%
+:alt: "Load datapath additions: DMEM connected to the ALU-computed address and a writeback mux selecting between ALU result and memory data."
 
 DMEM: Connect and use a mux before `WB` (Write Back) phase.
 ::::
@@ -171,6 +172,7 @@ Consider @fig-aligned-memory, which shows each byte in memory, referred to by it
 :::{figure} images/aligned-memory.svg
 :label: fig-aligned-memory
 :width: 30%
+:alt: "Byte-addressed memory drawn in rows with red boxes around each aligned 4-byte word boundary to illustrate valid word accesses."
 Diagram of aligned memory (Red boxes around every 4 bytes).
 :::
 

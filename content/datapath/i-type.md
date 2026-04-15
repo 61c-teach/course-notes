@@ -40,6 +40,7 @@ To do so, we **reuse** what already exists in our R-Type datapath, then consider
 ::::{figure} images/addi-cloud.png
 :label: fig-addi-cloud
 :width: 100%
+:alt: "Datapath overlay for addi showing reused R-type paths and highlighted need for immediate generation and ALU input selection."
 
 `addi`: Reuse `PC = PC + 4` loop and ideally the "add" operation in the ALU.
 ::::
@@ -54,6 +55,7 @@ We therefore need **additional logic** that, for I-Type instructions, feeds in a
 ::::{figure} images/addi-new-blocks.png
 :label: fig-addi-new-blocks
 :width: 100%
+:alt: "Updated datapath introducing an ImmGen block and BSel mux feeding the ALU B input with either register data or immediate."
 
 `addi`: Add the `BSel` mux and the `ImmGen` block.
 ::::
@@ -67,6 +69,7 @@ Let's walk through the `addi` datapath with this new knowledge.
 :label: anim-datapath-addi
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-addi.pptx
 :width: 100%
+:alt: "Addi datapath trace slide showing control choices and data flow from IMEM and RegFile through ALU to writeback."
 :title: "Tracing the `addi` Datapath"
 :::
 The `addi` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file. 
@@ -77,6 +80,7 @@ The `addi` datapath. Use the menu bar to trace through the animation or download
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTd4As46cq50NW45y6rUi3eNLajyd-yaaiO2hky-fUgX5G5i5vQCgvdo0hQ78c2Bg/pubembed?start=false&loop=false
 :width: 100%
 :title: "Tracing the `addi` Datapath"
+:alt: "Immediate generator block taking instruction bits and ImmSel control to produce a 32-bit sign-extended immediate output."
 :::
 The `addi` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1P6cAJaZCHFy5jj-MFHh4L2hy7XHpCH47/edit?usp=sharing). 
 ::::
@@ -133,6 +137,7 @@ We recommend reviewing the "bit swirling" of immediates from a [previous section
 
 :::{figure} images/element-immgen.png
 :label: fig-element-immgen
+:alt: "ImmGen block for I-type immediates: input is inst[31:20] and output is imm[31:0] using sign extension. Block is controlled by ImmSel control signal."
 
 Immediate Generator Block
 :::
@@ -224,6 +229,7 @@ In the following subsections, we "iteratively" build the immediate generator to 
 First, suppose our datapath only supported immediates from I-Type instructions. In this case, the immediate generator would perform two operations as shown in @fig-immgen-i-type.
 :::{figure} images/immgen-i-type.png
 :label: fig-immgen-i-type
+:alt: "Depiction of ImmGen for I-type and S-type using a mux to select low immediate bits while sharing sign extension and mid-bit wiring."
 
 Immediate Generator Block: I-Type
 :::
@@ -243,6 +249,7 @@ Next, suppose our datapath supported immediates from both I-Type and S-Type inst
 
 :::{figure} images/immgen-i-s-type.png
 :label: fig-immgen-i-s-type
+:alt: "ImmGen for I-type, S-type, and B-type with multiple muxes routing scattered instruction bits and implicit zero placement."
 
 Immediate Generator Block: I-Type, S-Type
 :::
@@ -262,6 +269,7 @@ Finally, suppose our datapath supports I-Type, S-Type, and B-Type instructions. 
 
 :::{figure} images/immgen-i-s-b-type.png
 :label: fig-immgen-i-s-b-type
+:alt: "ImmGen for I-type, S-type, and B-type with multiple muxes routing scattered instruction bits, sign extension, and implicit zero placement."
 
 Immediate Generator Block: I-Type, S-Type
 :::

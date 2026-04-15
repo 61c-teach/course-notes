@@ -63,6 +63,7 @@ In these notes, we will iteratively build the processor, meaning we will introdu
 
 :::{figure} images/add-no-dmem.png
 :label: fig-add-no-dmem
+:alt: "Datapath variant for add-only execution with IMEM, PC, RegFile, and ALU active while DMEM is disconnected and unused."
 For now, we disconnect DMEM since it is unused for `add` (@fig-add-no-dmem). We will add it back when we discuss [loads and stores](#sec-datapath-load-store).
 :::
 
@@ -129,6 +130,7 @@ Let's again consider the state elements changed by this instruction's operations
 
 :::{figure} images/sub-datapath.png
 :label: fig-sub-datapath
+:alt: "Datapath for add and sub where control logic decodes instruction bits and drives ALUSel while register and PC paths remain the same."
 To implement `sub` and `add`, we update control logic.
 :::
 
@@ -158,6 +160,7 @@ In the [previous chapter](#sec-alu) we implemented a basic four-operation ALU. A
 :::{figure} images/element-alu.png
 :label: fig-element-alu
 :width: 40%
+:alt: "ALU block symbol with inputs A, B, and ALUSel and output ALUResult, representing arithmetic and logic operations used across instruction types."
 ALU Block.
 
 :::
