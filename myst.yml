@@ -216,21 +216,22 @@ project:
           - file: content/caches-iii/optimizations.md
           - file: content/caches-iii/blocking.md
           - file: content/caches-iii/summary.md
-    - title: "L30-L34 Parallelism and Performance"
+    # - title: "L30-L34 Parallelism and Performance"
+    #   children:
+    - title: "L30 Performance Programming, Amdahl's Law"
       children:
-      - title: "L30 Performance Programming, Amdahl's Law"
-        children:
-          - file: content/parallel-performance/index.md
-          - file: content/parallel-performance/dgemm.md
-          - file: content/parallel-performance/dgemm-sequential.md
-          - file: content/parallel-performance/summary.md
-      - title: "L31 Parallelism I: Flynn's Taxonomy, SIMD"
-        children:
-          - file: content/parallel-simd/index.md
-          - file: content/parallel-simd/simd.md
-          - file: content/parallel-simd/dgemm-simd.md
-          - file: content/parallel-simd/intrinsics.md
-          - file: content/parallel-simd/summary.md
+        - file: content/parallel-performance/index.md
+        - file: content/parallel-performance/optimization-gcc.md
+        - file: content/parallel-performance/dgemm.md
+        - file: content/parallel-performance/dgemm-sisd.md
+        - file: content/parallel-performance/summary.md
+    - title: "L31 Flynn's Taxonomy, SIMD"
+      children:
+        - file: content/parallel-simd/index.md
+        - file: content/parallel-simd/simd.md
+        - file: content/parallel-simd/dgemm-simd.md
+        - file: content/parallel-simd/intrinsics.md
+        - file: content/parallel-simd/summary.md
       # - title: "L32 Parallelism III: MIMD, Thread-Level Parallelism"
       #   children:
       #     - file: content/parallel-II/index.md

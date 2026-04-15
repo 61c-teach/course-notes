@@ -371,6 +371,7 @@ Notes:
 
 Transposing is quite slow; it also requires a N{sup}`2` overhead to complete and triggers the same types of cache misses as we observed in our original computation. We have simply moved our poor cache performance from matrix multiplication to another part of the program.
 
+(sec-cache-blocking-tiling)=
 ### Approach 2: Submatrix computation
 
 Our second cache blocking approach observes that matrix multiplication can be computed piecewise. A **submatrix** (i.e.,  **tile**) of $C$ can be computed as the sum of multiplying different submatrices of $A$ and $B$.
