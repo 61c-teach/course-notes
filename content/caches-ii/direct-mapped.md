@@ -50,7 +50,7 @@ Consider our visualization for a 16B, direct-mapped cache with 4B blocks in @fig
 :::{figure} images/dm-valid.png
 :label: fig-dm-valid
 :width: 60%
-:alt: "TODO"
+:alt: "Cold direct-mapped cache table with valid and dirty bits and empty data contents."
 A [cold](#sec-cache-temperatures) snapshot of a 16B direct-mapped cache with 4B blocks and a dirty bit for write-back.
 :::
 
@@ -81,7 +81,7 @@ As an example, we can connect the direct-mapped cache in @fig-dm-valid to the 12
 :::{figure} images/dm-address.png
 :label: fig-dm-address
 :width: 60%
-:alt: "TODO"
+:alt: "Direct-mapped address decomposition into fields: tag at bits 11 through 4, index at bits 3 through 2, and block-offset at bits 1 through 0."
 For a direct-mapped cache, the memory address is split into **three** fields: the tag, the index, and the offset. For the cache in @fig-dm-valid, a 12-bit memory address is split into an 8-bit tag, a 2-bit index, and a 2-bit offset.
 
 :::
@@ -247,6 +247,6 @@ Implementing a direct-mapped cache in hardware is much simpler than the fully as
 :::{figure} images/hardware-direct-mapped-cache.png
 :label: fig-hardware-direct-mapped-cache
 :width: 70%
-:alt: "TODO"
+:alt: "Hardware block diagram of a direct-mapped cache. A 32-bit address is broken into tag, index, and offset. Arrows connect the three fields of the address to where they are used in the memory space diagram to depict index selection, tag check, and data output path."
 Hardware implementation of a direct-mapped cache.
 :::

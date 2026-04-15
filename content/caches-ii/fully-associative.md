@@ -93,14 +93,14 @@ We would like to connect the blocks in to the cache shown in @fig-fa-intro, whic
 :::{figure} images/fa-intro.png
 :label: fig-fa-intro
 :width: 50%
-:alt: "TODO"
+:alt: "Cache table showing tag and data for a 16-byte capacity fully associative cache. Each of the four cache lines have a unique tag. Byte 3 of the first cache line is highlighted, showing the result of accessing that tag with an offset of 3."
 Cache tag and offset in a 16B fully associative cache for 12-bit memory addresses. The bytes in the first entry's block share the same upper 10 bits of their memory addresses: `0b0100001111`, or `0x10F`, which is the tag. The address of the most significant byte in the first block is therefore `0x43F`.
 :::
 
 :::{figure} images/fa-address.png
 :label: fig-fa-address
 :width: 60%
-:alt: "TODO"
+:alt: "Memory address-field split for fully associative cache into only tag and block offset fields. The tag occupies bits 11 through 2, and the offset occupies bits 1 through 0."
 For a fully associative cache, the memory address is split into two fields: the tag and the offset. For the blocks in @fig-fa-intro, a 12-bit memory address is split into a 10-bit tag and a 2-bit offset.
 
 :::
@@ -150,7 +150,7 @@ The **valid bit** indicates if the tag for the block is valid. If the valid bit 
 :::{figure} images/fa-valid.png
 :label: fig-fa-valid
 :width: 50%
-:alt: "TODO"
+:alt: "Cold fully associative cache table with all valid bits unset and all 16 bytes of data empty."
 A [cold](#sec-cache-temperatures) snapshot of the fully associative cache in @fig-fa-intro, where valid bits for all blocks are unset (i.e., set to `0`). We illustrate the valid bit in our tabular visualization as an additional column of metadata.[^valid-hardware]
 :::
 
@@ -258,7 +258,7 @@ After the previous five memory accesses, our fully associative cache is at capac
 :::{figure} images/fa-full.png
 :label: fig-fa-full
 :width: 60%
-:alt: "TODO"
+:alt: "Fully associative cache state after a sequence of accesses showing all entries occupied. All four rows have their valid bit on and a unique tag."
 
 After the five memory accesses described [above](#sec-fa-walkthrough), our small fully associative cache is full.
 :::
@@ -424,7 +424,7 @@ In this section, we traced through a cache design for a 12-bit address space wit
 :::{figure} images/fa-all.png
 :label: fig-fa-all
 :width: 70%
-:alt: "TODO"
+:alt: "Complete design table showing an example of a fully associative cache. Each row the four rows in the cache have a valid bit, dirty bit, LRU value, tag, and four bytes for data."
 
 Design of the fully associative cache described in this section's example.
 :::
@@ -453,7 +453,7 @@ As shown in @fig-fa-hardware, the hardware is somewhat straightforward: Obtain t
 :::{figure} images/fa-hardware.png
 :label: fig-fa-hardware
 :width: 100%
-:alt: "TODO"
+:alt: "Hardware view emphasizing extra parallel tag comparisons required by fully associative placement. Rectangles depict the cache tag, valid bit, and data."
 A fully associative placement increases hardware cost.
 :::
 
@@ -466,28 +466,28 @@ Fully associative caches are not common in modern processors. Because of the add
 :::{figure} images/fully-associative-cache-lru.png
 :label: fig-fully-associative-cache-lru
 :width: 60%
-:alt: "TODO"
+:alt: "Fully associative cache table with least-recently-used replacement metadata."
 A fully associative cache with LRU replacement policy.
 :::
 
 :::{figure} images/warmed-up-cache-can-still-miss.png
 :label: fig-warmed-up-cache-can-still-miss
 :width: 60%
-:alt: "TODO"
+:alt: "Example showing that a warmed-up cache can still miss due to replacement and access pattern."
 Even a fully warmed-up cache can still produce a miss.
 :::
 
 :::{figure} images/fully-associative-lru-write-back.png
 :label: fig-fully-associative-lru-write-back
 :width: 60%
-:alt: "TODO"
+:alt: "Fully associative cache state using LRU replacement and write-back dirty tracking."
 A fully associative cache using LRU replacement and a write-back policy.
 :::
 
 :::{figure} images/placement-policies.png
 :label: fig-placement-policies
 :width: 75%
-:alt: "TODO"
+:alt: "Placement-policy spectrum from fully associative through set-associative to direct-mapped."
 The spectrum of cache placement policies from fully associative to direct mapped.
 :::
 1-->

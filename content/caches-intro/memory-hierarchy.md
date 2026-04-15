@@ -181,7 +181,7 @@ Understanding this section is useful for understanding your computer.
 :::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
 :label: fig-principle-of-locality-memory-hierarchy-pyramid-2
 :width: 50%
-:alt: "TODO"
+:alt: "Memory-hierarchy pyramid ordering storage levels by speed, size, and proximity to the processor. From bottom layer of the pryamid to the top, the visual covers magnetic disks, solid-state memory (flash), and virtual memory as SSD, HDD drives, then random-access memory (RAM) and physical memory as DRAM chip, and finally L3 through L1 caches, CPU cache, registers, and CPU core as the processor chip."
 The memory hierarchy.
 :::
 ::::{note} 🎥 Lecture Video: Actual CPUs

@@ -58,7 +58,7 @@ Consider a memory hierarchy design in @fig-amat-l1-only:
 :::{figure} images/amat-l1-only.png
 :label: fig-amat-l1-only
 :width: 80%
-:alt: "TODO"
+:alt: "Rectangle representing CPU with L1 cache and processor. Blue arrows show the processor accessing L1 cache and the return from L1 cache on a hit. A second rectangle on the right shows DRAM, connected to the L1 cache inside the CPU with a green access arrow when there is a miss from L1 cache, including the return arrow incurring the miss penalty for accessing outside the CPU box."
 
 Memory hierarchy with only one L1 cache.
 :::
@@ -90,7 +90,7 @@ When the miss penalty is incurred, we _still incur round-trip hit time_. @fig-am
 :::{figure} images/amat-l1-only-tree.png
 :label: fig-amat-l1-only-tree
 :width: 40%
-:alt: "TODO"
+:alt: "Probability tree for L1-only cache with AMAT calculation for both hit and miss branches and their cycle costs."
 
 Single-layer cache performance analysis. 95% of the time, we incur 1 cycle delay to access the L1 cache. 5% of time, we incur 201 cycles of delay (to access the L1 cache and to access memory).
 :::
@@ -105,7 +105,7 @@ Now, consider inserting an L2 cache into the hierarchy, as shown in @fig-amat-l1
 :::{figure} images/amat-l1-l2.png
 :label: fig-amat-l1-l2
 :width: 100%
-:alt: "TODO"
+:alt: "Two-level memory hierarchy diagram with rectangles for CPU with internal L1 cache, L2 cache, and main memory (DRAM). Access arrows show an access of L1 cache with L1 hit time between processor and L1 cache, an access of L2 cache with L2 hit time between L1 and L2 caches, and an access of DRAM with miss penalty between DRAM and L2 cache."
 Memory hierarchy with an L1 cache and an L2 cache.
 :::
 
@@ -143,7 +143,7 @@ Now, L1 miss penalty includes L2 cache hit _and_ L2 cache hit miss, as shown in 
 :::{figure} images/amat-l1-l2-tree.png
 :label: fig-amat-l1-l2-tree
 :width: 65%
-:alt: "TODO"
+:alt: "Two-level AMAT probability tree splitting on L1 hit-miss with 95% hit rate, and then L2 hit-miss outcomes with 85% hit rate. The tree also calculates delay times from accessing caches."
 
 Two-layer cache performance analysis. 95% of the time, we incur 1 cycle delay to access the L1 cache. 5% of the time, we miss the L1 cache. Of this L1 miss scenario, 85% of the time we incur 6 cycles of delay (to access both the L1 and L2 cache). 15% of the time we incur 206 cycles of delay (to access the L1 cache, the L2 cache, and memory).
 :::

@@ -100,6 +100,7 @@ The below diagram shows the hit/miss pattern of various caches when run on a [Ma
 
 :::{figure} images/cache-pedantic-misses.png
 :label: fig-cache-pedantic-misses
+:alt: "Cache-access sequence graphic marking misses in red and hits in white to contrast miss categories for fully associative cache with 1M blocks, fully associative cache with 4 blocks, 2-way-set-associative cache with 4 blocks, and direct mapped cache with 4 blocks."
 
 Cache misses are in red, and cache hits are transparent (in white).
 :::

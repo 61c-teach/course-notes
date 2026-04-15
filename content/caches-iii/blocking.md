@@ -21,6 +21,7 @@ To compute each element of the resulting matrix $C$, we take the dot-product of 
 :::{figure} images/matmul-00.png
 :label: fig-matmul-00
 :width: 60%
+:alt: "Matrix-multiply visualization for calculating C00 as a dot product of row 0 of wide matrix A and column 0 of tall matrix B."
 
 Compute $C_00$ by taking the dot product of row $0$ of $A$ and column $0$ of $B$.
 :::
@@ -30,6 +31,7 @@ Similarly, to compute $C_{01}$, we can multiply element-wise the zero-th row of 
 :::{figure} images/matmul-ij.png
 :label: fig-matmul-ij
 :width: 60%
+:alt: "General matrix-multiply visualization for Cij as dot product of row i of wide matrix A and column j of tall matrix B. Each matrix is represented as a rectangle with smaller sub-squares to show their individual matrix elements, as well as column and row locations."
 
 Compute $C_ij$ by taking the dot product of row $i$ of $A$ and column $j$ of $B$.
 :::
@@ -53,6 +55,7 @@ Assume that matrices $A$, $B$, and $C$ are stored as `A`, `B`, and `C`. In the c
 
 :::{figure} images/matmul-row-major.png
 :label: fig-matmul-row-major
+:alt: "Matrix memory-layout illustration showing row-major storage order for A, B, and C matrices in memory. The top rectangle shows the wide Nx8 matrix with elements labeled 1 through 16. The bottom rectangle shows the Nx8 elements of the matrix layed out in contiguous space in memory where the matrix is stored."
 
 Assume that all matrices are stored in **row-major order**.
 :::
@@ -368,6 +371,7 @@ A cache blocking technique could **transpose** B before matrix multiplication. T
 
 :::{figure} images/matmul-transpose.png
 :label: fig-matmul-transpose
+:alt: "Matrix transpose diagram illustrating B transpose used to improve contiguous-memory access in multiplication. The left rectangle shows the original tall matrix B with column 1 highlighted, and elements 0 and 4 highlighted further. The right rectangle shows B transpose with the same elements highlighted, but now in their new transpose locations. An arrow between the two rectangles shows the ability to transform between B and B transpose."
 
 $B^T$ is the matrix transpose of $B$ 
 

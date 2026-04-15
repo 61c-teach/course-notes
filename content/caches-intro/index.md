@@ -75,13 +75,13 @@ There is one caveat to this library analogy: unlike the books in a library, memo
 :::{figure} images/graph-processor-dram-gap.png
 :label: fig-graph-processor-dram-gap
 :width: 80%
-:alt: "TODO"
+:alt: "Time-series graph showing the widening performance gap between processor speed and DRAM access speed over 30 years from 1980 to 2010."
 Performance gap between DRAM and CPU.
 :::
 
 :::{figure} images/temporal-vs-spatial-table.png
 :label: fig-temporal-vs-spatial-table-w-library
 :width: 80%
-:alt: "TODO"
+:alt: "Table contrasting temporal and spatial locality. The comparison states the general idea, how the locality would corresponds with the library analogies, and how it is then applied in memory."
 Different types of localities and their library analogies.
 :::
