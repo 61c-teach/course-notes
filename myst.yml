@@ -220,10 +220,11 @@ project:
       children:
       - title: "L30 Performance Programming, Amdahl's Law"
         children:
-          - file: content/parallel-performance/index.md
-          - file: content/parallel-performance/dgemm.md
-          - file: content/parallel-performance/dgemm-sequential.md
-          - file: content/parallel-performance/summary.md
+          - file: content/parallel-i-performance/index.md
+          - file: content/parallel-i-performance/optimization-gcc.md
+          - file: content/parallel-i-performance/dgemm.md
+          - file: content/parallel-i-performance/dgemm-sisd.md
+          - file: content/parallel-i-performance/summary.md
       - title: "L31 Parallelism I: Flynn's Taxonomy, SIMD"
         children:
           - file: content/parallel-simd/index.md
