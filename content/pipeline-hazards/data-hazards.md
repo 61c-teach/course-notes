@@ -433,6 +433,7 @@ We use @fig-forwarding-hl to describe at a high-level what data is forwarded.
 :::{figure} images/forwarding-hl.png
 :label: fig-forwarding-hl
 :width: 80%
+:alt: "High-level forwarding diagram showing three instructions with staggered pipeline stages. The result of the EX stage from instruction 1 (add s0 t0 t1) is forwarded straight to the beginning of the EX stage of the second instruction (sub t2 s0 t0) so that it is able to be used without stalling. Additionally, the result of the MEM stage in instruction 1 is forwarded to the beginning of the EX stage for the third instrution (or t6 s0 t3) so that it can also execute without having to stall to wait three cycles before the register write-back from instruction 1 occurs."
 
 Forwarding adds extra connections between [pipeline registers](#sec-pipeline-registers) and other components in the datapath.
 :::
@@ -456,7 +457,7 @@ In this course, we discuss **two** types of forwarding paths (i.e., bypasses) fr
 :::{figure} images/forwarding-all-hl.png
 :label: fig-forwarding-all-hl
 :width: 100%
-:alt: "TODO"
+:alt: "Expanded high-level forwarding diagram explaining the purpose of the five stages. The Write-back to Execute stage forwarding path is highlighted in purple from the output of the pipeline register between MEM and WB stages to the input of a mux within the EX stage before the ALU. The MEM to EX stage forwarding path is highlighted in pink from the output of the pipeline register between EX and MEM stages to the input of the mux within the EX stage before the ALU."
 
 Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw the bypasses for the A input signal, though they are certainly needed. With the exception of the PC, registers between stages are pipeline registers.
 :::
@@ -486,7 +487,7 @@ Forwarding is implemented by adding bypass wires between pipeline registers and 
 :::{figure} images/forwarding-ex-mem.png
 :label: fig-forwarding-ex-mem
 :width: 100%
-:alt: "TODO"
+:alt: "Full five-stage pipeline diagram with labeled stages showing the highlighted EX-MEM forwarding case. The yellow path indicates the forwarding path taken by values output from the EX stage pipeline registers, back into the muxes within the Execute stage for the following instruction to use during its EX stage to resolve a read-after-write dependency."
 
 :::
 
@@ -705,7 +706,7 @@ sw  t4 16(a0)
 <!-- :::{figure} images/read-write-data-hazard.png
 :label: fig-data-hazard
 :width: 100%
-:alt: "TODO"
+:alt: "Pipeline waterfall diagram table with 5 instructions in the first column. The sequence of instructions illustrates a read-after-write data hazard between dependent instructions 1 and 4."
 
 Waterfall diagram for read-write data hazard.
 :::
@@ -713,7 +714,7 @@ Waterfall diagram for read-write data hazard.
 :::{figure} images/alu-hazard-result.png
 :label: fig-alu-hazard
 :width: 100%
-:alt: "TODO"
+:alt: "ALU-result hazard waterfall diagram table showing three sequential instructions that rely on the ALU output of dependent combinations of registers. The second and third instructions need the updated value of register s0, which is the destination register of the add operation in instruction 1, before the normal write-back stage of instruction 1 is complete."
 
 Waterfall diagram for ALU problem: WB in `inst1` must happen before EX in `inst2`.
 :::
@@ -721,7 +722,7 @@ Waterfall diagram for ALU problem: WB in `inst1` must happen before EX in `inst2
 :::{figure} images/stalling.png
 :label: fig-stalling
 :width: 100%
-:alt: "TODO"
+:alt: "Waterfall diagram table illustrating stalling. This solution inserts two nop instructions between two dependent instructions to delay the second instruction until data from the first is ready."
 
 Solution 1: Stalling pipeline with `nop`.
 :::
@@ -731,7 +732,7 @@ Solution 1: Stalling pipeline with `nop`.
 :::{figure} images/forwarding-pipeline-table.png
 :label: fig-forwarding-table
 :width: 100%
-:alt: "TODO"
+:alt: "Forwarding pipeline table showing hazard resolution by bypassing values instead of stalling. The EX stages of both instructions in the table are highlighted, and the output of the EX stage of instruction 1 is connected to the input of the EX stage of instruction 2 via a vertical arrow."
 
 Waterfall diagram for forwarding with EX hazard.
 ::: -->

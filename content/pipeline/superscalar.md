@@ -29,7 +29,7 @@ At a high-level, superscalar processors are **multiple-issue**, meaning they sta
 :::{figure} images/superscalar-processors.png
 :label: fig-superscalar
 :width: 100%
-:alt: "TODO"
+:alt: "Superscalar timeline showing multiple instructions beginning execution in the same clock cycle using parallel issue slots."
 
 Superscalar processors start multiple instructions per clock cycle.
 :::
@@ -48,7 +48,7 @@ Superscalar processors start multiple instructions per clock cycle. In our [Iron
 :::{figure} images/arm-a53-benchmark.png
 :label: fig-arm-a53-benchmark
 :width: 70%
-:alt: "TODO"
+:alt: "ARM Cortex-A53 benchmark plot with CPI on the y-axis and a highlighted horizontal reference line at CPI equals one."
 
 ARM A53 Benchmark (horizontal yellow line where $\text{CPI}=1$).
 :::
