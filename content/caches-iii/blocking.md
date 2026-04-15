@@ -380,9 +380,9 @@ Our second cache blocking approach observes that matrix multiplication can be co
 
 ::::{figure}
 :label: anim-matmul-block-2
-:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQU5B3-twc1_pBY024sp72KsxJ6O8tieO_QwOYPj4VgLt7--ONJ0BbG-Lj1CDwdoQ/pubembed?start=false&loop=false
 :width: 100%
-:title: "C[i][j] Memory Access Pattern"
+:title: "2x2 tile: Top left of C"
 :::
 Cache blocking. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1HY9AE2z3eb1eWPx0VQvVusZ83caTvZ5s/edit?usp=drive_link&ouid=113745915748997113650&rtpof=true&sd=true).
 ::::

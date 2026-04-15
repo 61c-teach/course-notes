@@ -173,7 +173,7 @@ Generally speaking, most of the speedup comes not from doing multiple math opera
 
 ## DGEMM SIMD Code
 
-The three algorithsm discussed in this section leverage Intel SIMD extensions. You will see in the code below that the SIMD instructions are written in C as [Intel Intrinsics](#sec-intrinsics). More next!
+The three algorithms discussed in this section leverage Intel SIMD extensions. You will see in the code below that the SIMD instructions are written in C as [Intel Intrinsics](#sec-intrinsics). More next!
 
 
 ::::{tab-set}
