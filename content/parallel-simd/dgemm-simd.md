@@ -44,7 +44,7 @@ With the ability to perform SIMD multiplication, it is tempting to use our new 2
 :::{figure} images/dgemm-simd-naive.png
 :label: fig-dgemm-simd-naive
 :width: 90%
-:alt: "TODO"
+:alt: "Visual of matrix matrix muliplication using three separate matrix grids. The first, on the left, has row 0 highlighted and differentiated into two segments. The second matrix in the middle has columns 0 through 3 highlighted in different colors. The first column is similarly differentiated into two segments. The third matrix on the right has the 0,0 element highlighted, showing where the result of multiplying row 0 of matrix A and column 0 of matrix B is stored in matrix C. The segments in row 0 and column 0 show the idea of a naive SIMD implementation to parallelize mulitplications within a single dot product."
 
 "Naive" SIMD DGEMM that leverages SIMD architecture registers to parallelize multiplications _within_ a single dot product. The outlined boxes indicate which values are loaded into the 256-bit-wide registers.[^block-assumption]
 
@@ -68,7 +68,7 @@ We next apply cache blocking by first transposing B, then leveraging our 256-bit
 :::{figure} images/dgemm-simd-transpose.png
 :label: fig-dgemm-simd-transpose
 :width: 90%
-:alt: "TODO"
+:alt: "Visual of matrix matrix muliplication using three separate matrix grids. The first, on the left, has row 0 highlighted and differentiated into two segments. The second matrix in the middle has column 0 highlighted and is similarly differentiated into two segments to indicate which values are loaded into the 256-bit-wide registers. The third matrix on the right has the 0,0 element highlighted, showing where the result of multiplying row 0 of matrix A and column 0 of matrix B is stored in matrix C. The segments in row 0 and column 0 show the idea of a naive SIMD implementation to parallelize mulitplications within a single dot product."
 
 "Transposed" SIMD DGEMM that uses a transposed B to load in columns of B to streamline memory accesses. The outlined boxes indicate which values are loaded into the 256-bit-wide registers.
 :::
@@ -91,7 +91,7 @@ In @fig-dgemm-simd-block, we assume that the product of a scalar with a vector c
 :::{figure} images/dgemm-simd-block.png
 :label: fig-dgemm-simd-block
 :width: 90%
-:alt: "TODO"
+:alt: "Illustration of matrix multiplication: on the right, a cloud symbol encompassing the four element kth row of B times the single i,k element of A, which is computed repeatedly for rows 0 through N. On the left, the resulting 4-element accumulated sum in a row of C, starting with element C_i,j."
 
 Compute four elements of C (starting with $C_{ij}$) by iteratively adding the result of scaling four elements of the $k$-th row of B (starting with $B_{kj}$) with $A_{ik}$.
 :::
@@ -318,7 +318,7 @@ static inline avx256_t avx_mul_add(avx256_t A, avx256_t B, avx256_t C) {
 :::{figure} images/simd-col-major.png
 :label: fig-simd-col-major
 :width: 100%
-:alt: "TODO"
+:alt: "On the left: cloud symbol encompassing a 4-element column vector times a single element. On the right, two column vectors multiplied together, the first identical to the original column vector, and the second is a new 4-element column vector set with four copies of the original single element. A right-pointing arrow connects the two sides and is labeled vec_setnum."
 
 SIMD Scalar `dgemm` Matrix Multiplication - result stored in column major order.
 :::

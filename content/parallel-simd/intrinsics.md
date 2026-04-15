@@ -32,9 +32,9 @@ The "wide" registers that Intel SIMD architectures use are separate from the gen
 :::{figure} images/intel-simd-regs.png
 :label: fig-intel-simd-regs
 :width: 100%
-:alt: "TODO"
+:alt: "On top: rectangles showing SSE and AVX-128 data types. The stacked layout of the rectangles shows that, for the same register space, we can pack 4 floats, 2 doubles, 16 bytes, 8 16-bit words, 4 32-bit doublewords, 2 64-bit quadwords, or 1 128-bit doublequadword. On the bottom, two longer rectangles show two AVX-256 data types. The stacked layout shows that we can pack 8 floats or 4 doubles in the same register space for this data type."
 
-Inte SSE/AVX-128 128-bit-wide registers and AVX 256-bit-wide registers pack different numbers of data types. On Intel architectures, words are 16-bits, so single-precision floating point is a double-word (32bit) and double-precision floating point is a quadword (64-bit).
+Intel SSE/AVX-128 128-bit-wide registers and AVX 256-bit-wide registers pack different numbers of data types. On Intel architectures, words are 16-bits, so single-precision floating point is a double-word (32bit) and double-precision floating point is a quadword (64-bit).
 :::
 
 As a side note, registers from legacy extensions operate on the lower bits of modern extensions, as shown in @fig-intel-simd-regs-compatible.
@@ -42,7 +42,7 @@ As a side note, registers from legacy extensions operate on the lower bits of mo
 :::{figure} images/intel-simd-regs-compatible.png
 :label: fig-intel-simd-regs-compatible
 :width: 50%
-:alt: "TODO"
+:alt: "Enlarged view with three main rectangles for AVM 256-bit-wide YMM registers, where dots represent that more registers exist. Semi-transparent rectangles half the width behind the front rectangles show the legacy 128-bit XMM registers and how they can still use the lower half of 256-bit YMM registers."
 
 AVX 256-bit-wide YMM registers. Legacy SSE instructions (which use the XMM registers) can still be used to operate on the lower 128 bits of the YMM registers.
 :::
@@ -105,7 +105,7 @@ C has typed variables (in contrast to assembly, which only has hardware register
 :::{figure} images/intrinsic-reg.png
 :label: fig-intrinsic-reg
 :width: 90%
-:alt: "TODO"
+:alt: "Rectangular layout of a 256-bit-wide Intel intrinsic register declaration. The rectangle is split into four sections, labeled X3 through X0, and annotated to show that this single 256-bit-wide intrinsic __m256d register holds 4 AVX doubles."
 
 In the Intel AVX family of extensions, registers are 256-bits wide. The corresponding Intel intrinsic `__m256d reg;` declaration indicates that `reg` is a 256-bit-wide AVX register that packs four double-precision floating point values.
 :::
@@ -145,7 +145,7 @@ Luckily, most intel intrinsic procedures and data types are formatted similarly.
 :::{figure} images/intrinsics-format.png
 :label: fig-intrinsics-format
 :width: 100%
-:alt: "TODO"
+:alt: "Overview of Intel intrinsic naming and instruction-format conventions used to select vector operations. Top provides a general instruction format. Middle labels an example instruction for an add operation with a 32-bit integer and 256-bit intrinsic register and is next to a depiction of 8 32-bit integers in the intrinsic register. Bottom is another example instruction for a load operation with a 32-bit float for a 128-bit intrinsic register, similarly with a register breakdown visual that shows the 128-bit register split into four 32-bit floats."
 
 Intel Instructions and Formats.
 :::

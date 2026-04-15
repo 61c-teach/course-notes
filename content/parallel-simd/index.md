@@ -151,7 +151,7 @@ Toggle the tabs below to discover examples of each type of architecture.
 :::{figure} images/sisd.png
 :label: fig-sisd
 :width: 100%
-:alt: "TODO"
+:alt: "Flynn taxonomy SISD diagram with a data pool on the left and an instruction pool on the top that both feed into a processor unit box in the center."
 SISD: Single Instruction/Single Data Stream
 :::
 :::::
@@ -169,7 +169,7 @@ A sequential processor steps through the instruction pool, matches it with the d
 :::{figure} images/simd.png
 :label: fig-simd
 :width: 100%
-:alt: "TODO"
+:alt: "Flynn taxonomy SIMD diagram a data pool on the left that feeds into four parallel processor unit boxes in the center. A single instruction pool at the top similarly feeds into the four parallel processor units."
 SIMD: Single Instruction/Multiple Data Stream
 :::
 :::::
@@ -189,7 +189,7 @@ Issue one instruction (e.g., "add") that operates on multiple data pairs at the 
 :::{figure} images/misd.png
 :label: fig-misd
 :width: 100%
-:alt: "TODO"
+:alt: "Flynn taxonomy MISD diagram with a single stream data pool that feeds into one processor unit and then the other, and an instruction pool that feeds into both processor units in parallel."
 MISD: Multiple Instruction/Single Data Stream
 :::
 :::::
@@ -208,7 +208,7 @@ None nowadays.
 :::{figure} images/mimd.png
 :label: fig-mimd
 :width: 100%
-:alt: "TODO"
+:alt: "Flynn taxonomy MIMD diagram with a data pool that feeds four streams of data through four parallel processor units and then another four parallel processor units, and an instruction pool that feeds the first set of processor units in parallel and the second set of four processor units in parallel with a second instruction stream."
 MIMD: Multiple Instruction/Multiple Data Stream
 :::
 :::::

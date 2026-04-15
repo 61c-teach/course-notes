@@ -33,6 +33,7 @@ How might we begin evaluating performance? Remember from our discussion of the [
 
 :::{figure} images/matmul-ml.png
 :label: fig-matmul-ml
+:alt: "Machine-learning style matrix multiplication diagram showing sequential layers of a neural network from inputs to outputs where, at each layer, there are input weights and either matrix matrix or matrix vector mulitplication."
 :width: 80%
 
 A machine learning application is shown. There are many matrix-matrix and matrix-vector multiplications, e.g., in each layer of a multi-layer neural network. Matrix multiplication is also core to tasks in other domains, e.g., image filtering and noise reduction.
@@ -46,6 +47,7 @@ To compute each element of the resulting matrix $C$, we take the **dot product**
 
 :::{figure} images/matmul-00.png
 :label: fig-matmul-00
+:alt: "Visualization with three matrix rectangles, composed of smaller square representing individual elements. The first rectangle shows a wide matrix A with row 0 highlighted. The middle matrix shows a tall matrix B with the column 0 highlighted. The resulting right matrix is a square matrix with the 0,0 element highlighted, depicting how the dot product of row 0 of A and column 0 of B results in element 0,0 of C."
 :width: 60%
 
 Compute $C_{00}$ by taking the dot product of row $0$ of $A$ and column $0$ of $B$.
@@ -55,6 +57,7 @@ Similarly, to compute $C_{01}$, we can multiply element-wise the zero-th row of 
 
 :::{figure} images/matmul-ij.png
 :label: fig-matmul-ij
+:alt: "General visualization of computing Cij in a result matrix by dot product of row i of matrix A with column j of matrix B. The visual again shows three rectangles with highlighted row, column, and resulting element to depict the matrix multiplication."
 :width: 60%
 
 Compute $C_{ij}$ by taking the dot product of row $i$ of $A$ and column $j$ of $B$.
@@ -120,6 +123,7 @@ matrix_d_t *dgemm(matrix_d_t *A, matrix_d_t *B) {
 
 :::{figure} images/dgemm.png
 :label: fig-dgemm
+:alt: "Three matrix diagram showing DGEMM nested-loop structure and index mapping over i, j, and k dimensions. Multiplication of row 0 in matrix A with column 0 of matrix B results in element 0,0 in matrix C."
 :width: 100%
 
 DGEMM for $8 \times 8$ square matrices A and B. $C_{00}$ is computed as the dot product of row `i = 0` of A and column `j = 0` of B. 
@@ -179,6 +183,7 @@ In @fig-matmul-row-major, each element of `A[i]` is the $i$-th row of matrix $A$
 
 :::{figure} images/matmul-row-major.png
 :label: fig-matmul-row-major
+:alt: "Matrix memory-layout illustration showing row-major storage order for A, B, and C matrices in memory. The top rectangle shows the wide Nx8 matrix with elements labeled 1 through 16. The bottom rectangle shows the Nx8 elements of the matrix layed out in contiguous space in memory where the matrix is stored."
 
 Assume that all matrices are stored in **row-major order**.
 :::
