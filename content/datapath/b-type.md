@@ -172,7 +172,7 @@ In other words, the control logic subcircuit feeds input into the branch compara
 Note that the two output signals `BrLT` and `BrEq` are sufficient for determining the results of all branch comparisons:
 
 * `beq`, `bne`: Check `BrEq` and set `PCSel` accordingly.
-* `blt` (and `bltu`): If `BrLT=1` and `BrEq=1`, then `PCSel=taken`.
-* `bge` (and `bgeu`): If `BrLT=0`, then `PCSel=taken`. This is because checking $A \geq B$ is equivalent to checking $A \nless B$.
+* `blt` (and `bltu`): If `BrLT=1`, then `PCSel=taken`.
+* `bge` (and `bgeu`): If `BrLT=0`, then `PCSel=taken`. For integers $A$ and $B$, checking $A \geq B$ is equivalent to checking $A \nless B$.
 
 [^control-logic]: See a [later section](#sec-datapath-control) for more details.

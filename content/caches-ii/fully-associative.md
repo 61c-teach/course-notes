@@ -319,7 +319,7 @@ Address `0x972` in binary: `0b1001 0111 0010`
 
 Common replacement policies:[^lifo]
 
-1. **Least recently used (LRU)**: Select the most recently used block for replacement.
+1. **Least recently used (LRU)**: Select the least recently used block for replacement.
 1. **Random**: Select a block randomly for replacement.
 1. **First in, first out (FIFO)**: Select the _oldest_ block for replacement (even if the oldest block has been most recently used). A queue (using terminology from Data Structures).
 
