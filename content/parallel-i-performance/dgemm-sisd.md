@@ -138,10 +138,7 @@ To measure **instruction count**, we may find it useful to use a secondary metri
 
 :::
 
-
 ## DGEMM 2: C vs. Python
-
-### Naive Python
 
 The analogous Python code to the the [C DGEMM benchmark](#code-dgemm):
 
@@ -173,7 +170,7 @@ Implementing DGEMM in C yields more than a 40x improvement than implementing DGE
 
 > The reasons for the speedup are fundamentally using a compiler instead of an interpreter and because the type declarations of C allow the compiler to produce much more efficient code.
 
-### NumPy
+## DGEMM 3: C vs. Python NumPy
 
 Should we move back to C for all our mathematical and scientific computations? In practice, no. Modern scientific computing libraries leverage many of the performance optimizations we will discuss in the next few sections. 
 

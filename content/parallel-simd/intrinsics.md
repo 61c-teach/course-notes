@@ -153,7 +153,9 @@ Intel Instructions and Formats.
 :::{note} Show Explanation
 :class: dropdown
 
-In @fig-intrinsics-format:
+In @fig-intrinsics-format, we see that intrinsic signatures follow the form: `_mm<register_width>_<instruction>_<datatype>`.[^epi]
+
+[^epi]: The `p` in `epi32` and `ps` stands for "packed." The `e` in `epi32` likely stands for "extended" (e.g., from MMX to SSE), and the `s` in `si64` likely stands for "scalar." [Stack Overflow](https://stackoverflow.com/questions/70911872/what-are-the-names-and-meanings-of-the-intrinsic-vector-element-types-like-epi6)
 
 `__m256i _mm256_add_epi32 (__m256i a, __m256i b);` Two 256-bit-wide parameters packed with 32-bit integers, returns one 256-bit-wide result packed with 32-bit integers. From [Intel Intrinsics Guide](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=4760,4769,986,305,3107,4022,4016,6546,4648,218,476,92&techs=SSE_ALL,AVX_ALL&text=_mm256_add_epi32):
 
