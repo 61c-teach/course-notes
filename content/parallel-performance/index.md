@@ -26,7 +26,7 @@ Pipelining was the primary way people tried to increase processor performance fr
 :::{figure} images/power-density-prediction.png
 :label: fig-power-density-pred
 :width: 80%
-:alt: "Projected power-density over time trend chart from early multicore-era analysis in 1970 through 2010. The plot shows annotations to compare power density to other thermal items over time, as well, including the hot plate, nuclear reactor rocket nozzle, and the surface of the sun."
+:alt: "Projected power-density-over-time trend chart from multicore-era analysis spanning 1970 through 2010. The plot includes labeled comparisons to other thermal references, including a hot plate, a nuclear reactor rocket nozzle, and the surface of the sun."
 
 Power-Density prediction plot. Source: S. Borkar, Intel, circa 2000.
 :::
@@ -87,7 +87,7 @@ The execution time of a third of a program can be accelerated by a factor of 2, 
 :::{figure} images/amdahl-ex01.png
 :label: fig-amdahl-ex01
 :width: 90%
-:alt: "Two rectangles depicting a comparison between program execution time with and without enhancement, as calculated with Amdahl's law. In the top rectangle, the one-third of the original program is highlighted to show fraction that can be optimized with parallel programming. The bottom rectangle, with enhancement, shows the two time speed up of that optimizable section of the code, resulting in less total execution time with enhancement."
+:alt: "Two rectangles compare program execution time with and without enhancement using Amdahl's Law. In the top rectangle, one-third of the original program is highlighted as the fraction that can be optimized with parallel programming. In the bottom rectangle, that portion is shown with a two-times speedup, resulting in a shorter total execution time."
 
 The execution time of a third of a program can be accelerated by a factor of 2 due to some enhancement.
 :::
@@ -110,7 +110,7 @@ If we are looking to write a program that gets a **10x speedup** from this paral
 :::{figure} images/amdahl-ex02.png
 :label: fig-amdahl-ex02
 :width: 90%
-:alt: "Amdahl's law equation showing the speedup with enhancement calculated as the inverse of the sum of the serial fraction of the program and the parallel fraction divided by the amount that section can be sped up. This equation calculates the possible total speedup for the program is the given parallel fraction incurs the specified speedup improvement from parallelization."
+:alt: "Amdahl's Law equation showing speedup with enhancement as the inverse of the sum of the serial fraction and the parallel fraction divided by the improvement factor. The equation expresses total program speedup given a parallelizable fraction and a specified parallel speedup."
 
 Assuming a program can be optimized with parallelism, the sequential fraction of program is $s = (1 - \text{fract}_{\text{optimized}})$.
 :::

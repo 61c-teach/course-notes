@@ -211,7 +211,7 @@ The critical path is highlighted in @fig-critical-path-answer.
 :::{figure} images/critical-path-answer.png
 :label: fig-critical-path-answer
 :width: 55%
-:alt: "Same AND-chain circuit with the longest register-to-register criticial path highlighted in yellow. This critical path passes through three of the four total AND gates."
+:alt: "Same AND-chain circuit with the longest register-to-register critical path highlighted in yellow. This critical path passes through three of the four total AND gates."
 
 Example circuit, with highlighted critical path.
 :::

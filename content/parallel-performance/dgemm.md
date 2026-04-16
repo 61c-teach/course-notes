@@ -183,7 +183,7 @@ In @fig-matmul-row-major, each element of `A[i]` is the $i$-th row of matrix $A$
 
 :::{figure} images/matmul-row-major.png
 :label: fig-matmul-row-major
-:alt: "Matrix memory-layout illustration showing row-major storage order for A, B, and C matrices in memory. The top rectangle shows the wide Nx8 matrix with elements labeled 1 through 16. The bottom rectangle shows the Nx8 elements of the matrix layed out in contiguous space in memory where the matrix is stored."
+:alt: "Matrix memory-layout illustration showing row-major storage order for A, B, and C matrices in memory. The top rectangle shows the wide Nx8 matrix with elements labeled 1 through 16. The bottom rectangle shows the Nx8 elements of the matrix laid out in contiguous space in memory where the matrix is stored."
 
 Assume that all matrices are stored in **row-major order**.
 :::

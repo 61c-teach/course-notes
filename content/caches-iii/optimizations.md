@@ -57,7 +57,7 @@ Larger blocks take advantage of spatial locality and so will reduce compulsory m
 
 :::{figure} images/figurative-block-size.png
 :label: fig-figurative-block-size
-:alt: "Three graphs showing the conceptual trend curve for: miss penality vs. block size, miss rate vs. block size, and AMAT vs. block size. The left trend shows a relatively positive linear relationship between miss penalty and block size. The middle trend line appears similar to an exponential decay that rises again after plateauing for miss rate vs. block size. The right trend appears like a positive quadratic relationship between AMAT and block size."
+:alt: "Three conceptual trend graphs compare miss penalty, miss rate, and AMAT versus block size. The miss-penalty graph rises with block size, the miss-rate graph decreases at first and then increases for larger blocks, and the AMAT graph decreases initially before rising again."
 
 While larger blocks can initially reduce miss rate because they improve spatial locality, they also reduce the number of blocks in the cache and can compromise temporal locality. Past a certain point, average memory access time will increase with larger block size.
 :::

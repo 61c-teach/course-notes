@@ -433,7 +433,7 @@ We use @fig-forwarding-hl to describe at a high-level what data is forwarded.
 :::{figure} images/forwarding-hl.png
 :label: fig-forwarding-hl
 :width: 80%
-:alt: "High-level forwarding diagram showing three instructions with staggered pipeline stages. The result of the EX stage from instruction 1 (add s0 t0 t1) is forwarded straight to the beginning of the EX stage of the second instruction (sub t2 s0 t0) so that it is able to be used without stalling. Additionally, the result of the MEM stage in instruction 1 is forwarded to the beginning of the EX stage for the third instrution (or t6 s0 t3) so that it can also execute without having to stall to wait three cycles before the register write-back from instruction 1 occurs."
+:alt: "High-level forwarding diagram showing three instructions with staggered pipeline stages. The result of the EX stage from instruction 1 (add s0 t0 t1) is forwarded straight to the beginning of the EX stage of the second instruction (sub t2 s0 t0) so that it can be used without stalling. Additionally, the result of the MEM stage in instruction 1 is forwarded to the beginning of the EX stage for the third instruction (or t6 s0 t3) so that it can also execute without waiting for register write-back from instruction 1."
 
 Forwarding adds extra connections between [pipeline registers](#sec-pipeline-registers) and other components in the datapath.
 :::
@@ -574,7 +574,7 @@ In @tab-data-hazard-4, which potential data hazards are resolved by inserting th
 :class: dropdown
 
 * **A.** The `add`-`lw` data hazard is **resolved** by `MEM` to `EX` forwarding. The `add` instruction result (of adding `t1` and `t2`) is available in the `EX/MEM` pipeline registers at the beginning of cycle 4. Cycle 4 is also the `lw` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `EX/MEM` pipeline registers to the A input of the ALU, overriding the stale value of register `s0` fetched during the `lw` instruction's `ID` stage in cycle 4.
-* **C.** The `lw` `and` data hazard is **resolved** by `WB` to `EX` forwarding. The memory read result from the `lw` instrution is available from the `MWM/WB` pipeline registers at the beginning of cycle 6. Cycle 6 is also the `and` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `MEM/WB` pipeline registers to the A input of the ALU, overriding the stale value of register `s1` fetched during the `and` instruction's `ID` stage in cycle 5.
+* **C.** The `lw` `and` data hazard is **resolved** by `WB` to `EX` forwarding. The memory read result from the `lw` instruction is available from the `MEM/WB` pipeline registers at the beginning of cycle 6. Cycle 6 is also the `and` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `MEM/WB` pipeline registers to the A input of the ALU, overriding the stale value of register `s1` fetched during the `and` instruction's `ID` stage in cycle 5.
 :::
 
 The `lw`-`or` data hazard in option B is **not resolved** by the proposed forwarding logic. Cycle 5 is the `or` instruction's `EX` stage. However, the `lw` instruction does not finish reading the value from DMEM (to be loaded into register `s1`) until the end of cycle 5. The result of this memory read is not available in the `MEM/WB` pipeline registers until _cycle 6_.

@@ -93,7 +93,7 @@ We would like to connect the blocks in to the cache shown in @fig-fa-intro, whic
 :::{figure} images/fa-intro.png
 :label: fig-fa-intro
 :width: 50%
-:alt: "Cache table showing tag and data for a 16-byte capacity fully associative cache. Each of the four cache lines have a unique tag. Byte 3 of the first cache line is highlighted, showing the result of accessing that tag with an offset of 3."
+:alt: "Cache table showing tag and data for a 16-byte fully associative cache. Each of the four cache lines has a unique tag. Byte 3 of the first cache line is highlighted, showing the result of accessing that tag with an offset of 3."
 Cache tag and offset in a 16B fully associative cache for 12-bit memory addresses. The bytes in the first entry's block share the same upper 10 bits of their memory addresses: `0b0100001111`, or `0x10F`, which is the tag. The address of the most significant byte in the first block is therefore `0x43F`.
 :::
 
@@ -424,7 +424,7 @@ In this section, we traced through a cache design for a 12-bit address space wit
 :::{figure} images/fa-all.png
 :label: fig-fa-all
 :width: 70%
-:alt: "Complete design table showing an example of a fully associative cache. Each row the four rows in the cache have a valid bit, dirty bit, LRU value, tag, and four bytes for data."
+:alt: "Complete design table showing an example of a fully associative cache. Each of the four rows in the cache has a valid bit, dirty bit, LRU value, tag, and four data bytes."
 
 Design of the fully associative cache described in this section's example.
 :::

@@ -42,7 +42,7 @@ As a side note, registers from legacy extensions operate on the lower bits of mo
 :::{figure} images/intel-simd-regs-compatible.png
 :label: fig-intel-simd-regs-compatible
 :width: 50%
-:alt: "Enlarged view with three main rectangles for AVM 256-bit-wide YMM registers, where dots represent that more registers exist. Semi-transparent rectangles half the width behind the front rectangles show the legacy 128-bit XMM registers and how they can still use the lower half of 256-bit YMM registers."
+:alt: "Enlarged view with three main rectangles for AVX 256-bit-wide YMM registers, where dots represent additional registers. Semi-transparent rectangles half the width behind the front rectangles show the legacy 128-bit XMM registers and how they can still use the lower half of 256-bit YMM registers."
 
 AVX 256-bit-wide YMM registers. Legacy SSE instructions (which use the XMM registers) can still be used to operate on the lower 128 bits of the YMM registers.
 :::

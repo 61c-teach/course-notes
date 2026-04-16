@@ -156,7 +156,7 @@ This branch block is used to implement branches on the datapath with logic shown
 :::{figure} images/branch-branch-comparator.png
 :label: fig-branch-branch-comparator
 :width: 60%
-:alt: "Datapath diagram with branch comparator taking in the value of two registers, using the BrUn flag as a select input, and outputing signals BrEq and BrLT into the control logic block. The control logic block also holds the PCSel signal for whether the branch is taken or not, and the inst[31:0] word."
+:alt: "Datapath diagram with a branch comparator taking values from two registers, using the BrUn flag as a select input, and outputting BrEq and BrLT signals to the control-logic block. The control-logic block also determines PCSel for whether the branch is taken, and receives inst[31:0]."
 :::
 
 The control logic sets two control signals:

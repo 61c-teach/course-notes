@@ -138,7 +138,7 @@ We can use Equation @eq-amat recursively:
 \end{aligned}
 ```
 
-Now, L1 miss penalty includes L2 cache hit _and_ L2 cache hit miss, as shown in @fig-amat-l1-l2-tree.
+Now, L1 miss penalty includes both the L2-hit case and the L2-miss case, as shown in @fig-amat-l1-l2-tree.
 
 :::{figure} images/amat-l1-l2-tree.png
 :label: fig-amat-l1-l2-tree
