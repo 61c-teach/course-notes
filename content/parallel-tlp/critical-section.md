@@ -1,8 +1,11 @@
 ---
-title: "Computing Pi"
-subtitle: TODO
+title: "Data Races, Critical Section"
+subtitle: This section provides example code. Explanations coming soon, but not too soon.
 ---
 
+<!-- TODO  -->
+
+(sec-critical-section)=
 ## Learning Outcomes
 
 * TODO

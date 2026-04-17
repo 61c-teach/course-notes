@@ -2,6 +2,7 @@
 title: "Flynn's Taxonomy"
 ---
 
+(sec-flynn)=
 ## Learning Outcomes
 
 * Explain what "parallelizing a program" means.
@@ -225,6 +226,7 @@ Anything system involving multiple processors operating concurrently.
 :::::::
 <!-- end grid -->
 
+(#sec-spmd)=
 :::{note} What is most common?
 
 SISD is what we have done up to now in CS 61C. However, in modern architectures, **SIMD and MIMD** are the most commonly encountered today—usually both in the same system.[^spmd]

@@ -1,5 +1,5 @@
 ---
-title: "Synchronization"
+title: "Synchronization, Locks"
 subtitle: TODO
 ---
 
