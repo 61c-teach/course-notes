@@ -40,11 +40,13 @@ We discuss `gcc` optimization flags in a [later section](#sec-dgemm-sequential).
 gcc -g3 -std=c11 -Wall -O0 matmul.c run_matmul.c -o run_matmul
 ```
 
-**Timing**: For non-threaded programs (no [OpenMP](#sec-openmp)), we use the clock from the C standard library `<time.h>`. The `CLOCKS_PER_SEC` name[^time-h] is used to convert the value returned by the clock() function into seconds.
+(sec-time-h-timing)=
+**Timing**: For non-threaded programs (no [OpenMP](#sec-openmp)[^openmp-timing]), we use the clock from the C standard library `<time.h>`. The `CLOCKS_PER_SEC` name[^time-h] is used to convert the value returned by the clock() function into seconds.
 
 [^time-h]: See the [UNIX specification](https://pubs.opengroup.org/onlinepubs/7908799/xsh/time.h.html) of `<time.h>` for more information on `CLOCKS_PER_SEC` and `clock()`.
 
-```c
+```{code} c
+:label: code-time-h
 #include <time.h>
 int main() {
   ...
@@ -58,6 +60,8 @@ int main() {
   ...
 }
 ```
+
+[^openmp-timing]: For timing multi-threaded programs, see a [later section](#sec-dgemm-openmp).
 
 **Machine**: The demos in **this section** run on the **shared** course hive machines.  Intel(R) Core(TM) [i7-8700T](https://www.intel.com/content/www/us/en/products/sku/129948/intel-core-i78700t-processor-12m-cache-up-to-4-00-ghz/specifications.html) Processor. 6 cores (2 threads per core) and cache size 12MiB.
 
