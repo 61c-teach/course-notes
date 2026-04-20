@@ -22,6 +22,16 @@ subtitle: Coming soon. Thanks for your patience!
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
+:::{iframe} https://www.youtube.com/embed/zSONGMSsMgM
+:width: 100%
+:title: "[CS61C FA20] Lecture 35.2 - Thread-Level Parallelism III: Shared Memory and Caches"
+:::
+
+::::
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
 :::{iframe} https://www.youtube.com/embed/tf3rSHDsevM
 :width: 100%
 :title: "[CS61C FA20] Lecture 35.3 - Thread-Level Parallelism III: Cache Coherency"
@@ -30,6 +40,14 @@ subtitle: Coming soon. Thanks for your patience!
 ::::
 
 <!-- ## Visuals
+
+:::{figure} images/smp.png
+:label: fig-smp
+:width: 65%
+:alt: "TODO"
+
+Shared-memory Multiprocessor (SMP) with multiple cores and a single, coherent memory.
+:::
 
 :::{figure} images/smp.png
 :label: fig-smp

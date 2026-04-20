@@ -1,5 +1,5 @@
 ---
-title: "MIMD Architectures, Multicore"
+title: "MIMD Architectures"
 ---
 
 ## Learning Outcomes
