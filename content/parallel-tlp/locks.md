@@ -1,12 +1,12 @@
 ---
-title: "Synchronization"
-subtitle: TODO
+title: "Synchronization, Locks"
+subtitle: Coming soon. Thanks for your patience!
 ---
 
 ## Learning Outcomes
 
-* TODO
-* TODO
+<!-- * TODO
+* TODO -->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,7 +18,7 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+<!-- ## Visuals
 
 :::{figure} images/deadlock.png
 :label: fig-deadlock
@@ -34,4 +34,4 @@ Real life deadlock example with traffic jam.
 :alt: "TODO"
 
 Implementation of locks for thread synchronization.
-:::
+::: -->

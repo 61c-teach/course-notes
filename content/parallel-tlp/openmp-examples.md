@@ -1,8 +1,11 @@
 ---
-title: "Computing Pi"
-subtitle: TODO
+title: "OpenMP Practice"
+subtitle: This section provides example code. Explanations coming soon, but not too soon.
 ---
 
+<!-- TODO  -->
+
+(sec-openmp-practices)=
 ## Learning Outcomes
 
 * TODO

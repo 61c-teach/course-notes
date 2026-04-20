@@ -1,12 +1,23 @@
 ---
 title: "Cache Coherency"
-subtitle: TODO
+subtitle: Coming soon. Thanks for your patience!
 ---
 
+(sec-cache-coherency)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+<!-- * TODO
+* TODO -->
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/zSONGMSsMgM
+:width: 100%
+:title: "[CS61C FA20] Lecture 35.2 - Thread-Level Parallelism III: Shared Memory and Caches"
+:::
+
+::::
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,7 +29,15 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+<!-- ## Visuals
+
+:::{figure} images/smp.png
+:label: fig-smp
+:width: 65%
+:alt: "TODO"
+
+Shared-memory Multiprocessor (SMP) with multiple cores and a single, coherent memory.
+:::
 
 :::{figure} images/multiprocessor-cache.png
 :label: fig-mp-cache
@@ -50,4 +69,4 @@ Read/write result with cache incoherence.
 :alt: "TODO"
 
 MOESI Cache Protocol.
-:::
+::: -->
