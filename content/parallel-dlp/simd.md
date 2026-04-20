@@ -2,6 +2,7 @@
 title: "SIMD Architectures"
 ---
 
+(sec-simd)=
 ## Learning Outcomes
 
 * Explain how element-wise vector addition and element-wise vector multiplication are SIMD operations.

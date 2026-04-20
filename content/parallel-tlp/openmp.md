@@ -1,13 +1,15 @@
 ---
 title: "OpenMP"
-subtitle: TODO
+subtitle: Coming soon. Thanks for your patience!
 ---
 
 (sec-openmp)=
 ## Learning Outcomes
 
+<!--
 * TODO
 * TODO
+-->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -30,7 +32,7 @@ subtitle: TODO
 ::::
 
 
-## Visuals
+<!-- ## Visuals
 
 :::{table} OpenMP Software Threads
 :label: tab-openmp-threads
@@ -58,3 +60,16 @@ Equivalent code for OpenMP work-sharing.
 
 Data race example with RISC-V Instructions.
 :::
+
+
+@tab-tlp-pros-cons evaluates OpenMP for thread-level parallelism.
+
+:::{table} Thread-level parallelism with OpenMP: pros and cons.
+:label: tab-tlp-pros-cons
+
+| Assumption | Pros | Cons | 
+| :-- | :-- | :-- |
+| Threads are an explicit programming model with full programmer control over parallelization | - Compiler directives are simple and easy to use <br/> - Legacy serial code does not need to be rewritten | - Compiler must support OpenMP (e.g. gcc 4.2)<br/> -Amdahl's law is gonna get you after not too many cores |
+| Multiple threads operate in a shared memory environment. | - Reduces memory requirements<br/>- Programmer need not worry (that much) about data placement | - Code can only be run in shared memory environments<br/> -Synchronizing use of shared resources is hard |
+
+::: -->

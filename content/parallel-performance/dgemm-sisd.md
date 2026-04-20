@@ -61,7 +61,7 @@ int main() {
 }
 ```
 
-[^openmp-timing]: For timing multi-threaded programs, see a [later section](#sec-dgemm-openmp).
+[^openmp-timing]: For timing multi-threaded programs, see a [later section](#sec-dgemm-mimd).
 
 **Machine**: The demos in **this section** run on the **shared** course hive machines.  Intel(R) Core(TM) [i7-8700T](https://www.intel.com/content/www/us/en/products/sku/129948/intel-core-i78700t-processor-12m-cache-up-to-4-00-ghz/specifications.html) Processor. 6 cores (2 threads per core) and cache size 12MiB.
 
