@@ -1,12 +1,13 @@
 ---
 title: "Cache Coherency"
-subtitle: TODO
+subtitle: Coming soon. Thanks for your patience!
 ---
 
+(sec-cache-coherency)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+<!-- * TODO
+* TODO -->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -28,7 +29,7 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+<!-- ## Visuals
 
 :::{figure} images/smp.png
 :label: fig-smp
@@ -68,4 +69,4 @@ Read/write result with cache incoherence.
 :alt: "TODO"
 
 MOESI Cache Protocol.
-:::
+::: -->

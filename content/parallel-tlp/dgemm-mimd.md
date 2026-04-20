@@ -107,7 +107,7 @@ openmp:            0.0000001401 seconds
 
 ## DGEMM 12: OpenMP Tiled SIMD DGEMM
 
-This is our final program optimization. Recall what we said [earlier](#sec-flynn):
+This is our final program optimization. Recall what we said [earlier](#sec-flynns-taxonomy):
 
 :::{embed} #sec-spmd
 :::
@@ -204,12 +204,12 @@ Again, let's compile using different `gcc` optimization flags in @tab-dgemm-gcc-
   - 0.033386
   - 0.035177
   - 0.037030
-* - [DGEMM, threaded](#code-dgemm-mimd-naive)
+* - [DGEMM, threaded](#code-dgemm-openmp)
   - 0.0000001401
   - 0.0000000347
   - 0.0000000456
   - 0.0000000467
-* - [DGEMM, threaded, tile SIMD](#code-dgemm-mimd-simd-tile)
+* - [DGEMM, threaded, tile SIMD](#code-dgemm-openmp-simd-tile)
   - 0.0000000686
   - 0.0000000124
   - 0.0000000131

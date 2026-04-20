@@ -1,12 +1,13 @@
 ---
 title: "Threads"
-subtitle: TODO
 ---
 
+(sec-threads)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Define thread, program, and process.
+* Differentiate between software thread and hardware threads.
+* Explain how (and why!) the OS performs context switches.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,43 +19,19 @@ subtitle: TODO
 
 ::::
 
-::::{note} 🎥 Lecture Video
-:class: dropdown
+A **thread** (short for a **thread of execution**) is a single stream of instructions. A **process** is an instance of a currently running program. A process is composed of a single thread's execution, or multiple threads, which execute **concurrently**.
 
-:::{iframe} https://www.youtube.com/embed/_ZL8Z81yI5w
-:width: 100%
-:title: "[CS61C FA20] Lecture 33.4 - Thread-Level Parallelism I: Multithreading"
-:::
+Threads are an easy way to describe/think about parallelism, but their implementation is quite complicated and out of the scope of this course. Nevertheless, we describe some details that will help you understand the **thread model of execution**.
 
-::::
+## Thread model of execution
 
-## Visuals
+### Thread state
 
-:::{figure} images/fork-join-model.png
-:label: fig-fork-join
-:width: 100%
-:alt: "TODO"
+Each thread maintains state as shown in @fig-single-multi-thread:
 
-Fork-join model over time with multiple parallel tasks off the main thread.
-:::
-
-## Visuals
-
-:::{figure} images/thread-ordering.png
-:label: fig-thread-order
-:width: 65%
-:alt: "TODO"
-
-Possible CPU task ordering while using multiple threads.
-:::
-
-:::{figure} images/process-v-time-threads.png
-:label: fig-process-v-time-threads
-:width: 65%
-:alt: "TODO"
-
-Process over time when using multiple threads.
-:::
+* Values of its own registers (including stack pointer)
+* Value of its own program counter (PC)
+* Shared memory (heap, global variables) with other threads
 
 :::{figure} images/single-v-multi-thread.png
 :label: fig-single-multi-thread
@@ -64,13 +41,36 @@ Process over time when using multiple threads.
 Single-threaded process vs. multi-threaded process.
 :::
 
-:::{figure} images/concurrency-parallelism.png
-:label: fig-concurr-parallel
-:width: 90%
+### Fork-Join Model
+
+We assume that multi-threaded processes run using the **fork-join model** in @fig-fork-join:
+
+:::{figure} images/fork-join-model.png
+:label: fig-fork-join
+:width: 100%
 :alt: "TODO"
 
-Concurrency vs. Parallelism process flow chart.
+Fork-join model over time with multiple parallel tasks off the main thread. **Top**: Parallel Task I is composed of concurrent threads A, B, C; Task II is composed of A, B, C, and D; Task III is composed of A, B. **Bottom**: Main Thread forks into the three threads for Parallel Task I, then joins, then forks into the four threads for Parallel Task II, then joins, then forks into the two threads for Parallel Task III, then joins and finishes execution.
 :::
+
+* The "main thread" executes sequentially until the first parallel task region.
+* **Fork**: When the first parallel task region is encountered, the main thread then creates a team of parallel subthreads, which execute to completion.
+* **Join**: When subthreads complete their parallel task region, they synchronize and terminate, leaving only the main thread. The main thread then executes sequentially until it needs to fork another parallel task region.
+
+::::{warning} Multi-threaded programs can run on single-core _and_ multi-core systems!
+
+A thread is simply a single stream of instructions that must be executed sequentially to peform some task. Up until now, we have effectively called this a "program" or "process." Given the above definition, it is therefore possible to execute a multi-threaded program on **both multi-core and single-core architectures.**
+
+Revisiting our terminology from an [earlier section](#sec-flynns-taxonomy):
+
+:::{embed} #tab-hw-sw-parallelism
+:::
+
+Threads enable **concurrent** execution of different parts of a process. Multicore systems enable **parallel** execution of multiple threads.
+
+::::
+
+## A Warning about Threads
 
 From UC Berkeley Professor Emeritus Edward Lee:
 
@@ -81,6 +81,103 @@ computation, in fact, they represent a huge step. They discard the most essentia
 
 [^lee]: Edward A. Lee. "The Problem with Threads."
 [Technical Report No. UCB/EECS-2006-1](http://www.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-1.html). January 2006.
-See also: Computer 39, 5 (May 2006), 33–42. [DOI](https://doi.org/10.1109/MC.2006.180)
+See also: _Computer_ 39, 5 (May 2006), 33–42. [DOI](https://doi.org/10.1109/MC.2006.180)
 
-As we will see over the next few sections, thread-level programming is **hard**. Let's try it out!
+As we will see over the next few sections, thread-level programming is **hard**.
+
+## Executing Threads on Hardware
+
+We are so sorry,[^note-terminology] but we will introduce one more set of terms to describe how threading works in hardware:
+
+* A **software thread** is one of the threads that composes a multi-thread process. When we colloquially say "thread," we are usually referring to a software thread.
+* Each core provides one (or more) **hardware threads** that actively execute instructions.
+* An **active thread** is a software thread that is currently mapped to a hardware thread and executing. All software threads that are not active wait until they are able to execute.
+
+[^note-terminology]: From an [earlier section](#sec-flynns-taxonomy): "Because of the abrupt shift in processor design towards parallelism, there are a LOT of closely related terms when it comes to paralellism."
+
+A special program called the **Operating System** "multiplexes"[^multiplex] multiple software threads onto the available hardware threads. With the OS's help, a single-core CPU can "concurrently" execute many threads by time-sharing the processor between the threads, as shown in @fig-process-v-time-threads.
+
+[^multiplex]: To **multiplex** means to combine multiple channels into one shared channel (e.g., [MUX](#sec-mux)). In this case, think of multiplexing as a way that multiple software threads can "time share" the same hardware thread.
+
+:::{figure} images/process-v-time-threads.png
+:label: fig-process-v-time-threads
+:width: 40%
+:alt: "TODO"
+
+Process over time when executing multiple threads on a single-core CPU.
+:::
+
+## The OS: Thread Context Switch
+
+On most modern computers, the number of active threads is much larger than the number of available cores, so most (software) threads are idle at any given time. The **Operating System**, or **OS**, is responsible for (among other tasks) managing which threads get run on which CPU via a process called **context switching**.
+
+The OS performs a **thread context switch** for two main reasons:
+
+* Switch out blocked threads (e.g., cache miss, user input, network access). The OS switches to another thread to avoid stalling the CPU for an extended amount of time.
+* Timer (e.g., switch active thread every 1 ms). The OS switches to another thread to allow multiple threads to execute concurrently, even when hardware threads are limited.
+
+:::{note} The OS enables thread concurrency
+The OS uses context switching to give the illusion of many active, concurrently executing threads.
+:::
+
+To switch to a different thread in the process, the OS does the following:
+
+1. Removes the old software thread from the hardware thread by interrupting its execution. Save the old software thread's state, e.g., register values (including PC value) and stack pointer to memory. Because threads in the same process share memory, we keep any memory tables.[^vm]
+1. Start executing a different software thread. Load its state into the hardware thread's registers (including the thread's PC value). Then, run the hardware thread by reading the value of the PC (which is the address of the next instruction of the newly active thread).
+
+[^vm]: We describe memory tables in our section on [virtual memory](#sec-virtual-memory).
+
+The OS also performs context switches to multiplex different processes; for now, we won't discuss this. Most of the details of the operating system are out of scope, but we hope a future version of these course note will go into the operating system in more detail. For those interested, please check out CS 61C Spring 2025.
+
+## Hardware Multithreading
+
+Up until now we have maintained that **one core** has **one hardware therad** running on it. Some architectures can support **hardware multithreading**—when we run *m*ultiple hardware threads* on the same core.
+
+* **Logical CPUs**: Effectively, the number of hardware threads.
+* **Physical CPUs** are the true number of hardware cores, where each core could potentially have multiple logical CPUs due to multithreading.
+
+Intel chips use hardware multithreading[^intel], whereas many modern Apple chips do not. The below `lscpu` command run on our course hive machines tells us that we have six physical cores and two threads per core for a total of 12 logical CPUs.
+
+```{code} bash
+$ lscpu
+CPU(s):                   12
+  On-line CPU(s) list:    0-11
+Vendor ID:                GenuineIntel
+  Model name:             Intel(R) Core(TM) 
+                          i7-8700T CPU @ 2.40GHz
+    CPU family:           6
+    Model:                158
+    Thread(s) per core:   2
+    Core(s) per socket:   6
+    Socket(s):            1
+```
+
+[^intel]: Intel uses yet another term to describe hardware multithreading: hyperthreading. Woo terminology!!
+
+:::{warning} Hardware multithreading is out of scope
+
+Hardware multithreading is out of scope for this course. Just know that it exists so that you can understand your computer's specifications. Watch the lecture video for more information.
+
+:::
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/_ZL8Z81yI5w
+:width: 100%
+:title: "[CS61C FA20] Lecture 33.4 - Thread-Level Parallelism I: Multithreading"
+:::
+
+::::
+
+Briefly—the hardware multithreading model is in @fig-hardware-multithreading. Here, each core can run multiple threads at the same time. The two hardware threads share resources like the cache, the ALU unit, etc., but have separate state (PC, registers, etc.) This design leverages "Moore's Law" because transistors are aplenty.
+
+:::{figure} images/hardware-multithreading.png
+:label: fig-hardware-multithreading
+:width: 70%
+:alt: "TODO"
+
+Hardware multithreading: multiple threads *active* in the same processor.
+:::
+
+Hardware multithreading reduces the overhead of a context switch. When the active hardware thread encounters a cache miss, the other hardware thread can be swapped in quickly and run until the data for the original hardware thread available.

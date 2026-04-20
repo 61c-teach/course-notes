@@ -1,6 +1,6 @@
 ---
 title: "Data Races, Critical Section"
-subtitle: This section provides example code. Explanations coming soon, but not too soon.
+subtitle: Coming soon. Thanks for your patience!
 ---
 
 <!-- TODO  -->
@@ -8,8 +8,8 @@ subtitle: This section provides example code. Explanations coming soon, but not 
 (sec-critical-section)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+<!-- * TODO
+* TODO -->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -20,3 +20,7 @@ subtitle: This section provides example code. Explanations coming soon, but not 
 :::
 
 ::::
+
+## Data Race
+
+Coming soon! See lecture for now.
