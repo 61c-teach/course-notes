@@ -172,7 +172,7 @@ The immediate storage formats are listed below in @tab-immgen-types.
     <tr>
       <td style="border: 1px solid black; padding: 5px;">I</td>
       <td style="border: 1px solid black; padding: 5px;"><code>0b000</code></td>
-      <td style="border: 1px solid black; padding: 5px; text-align: center;" colspan="3"><code>inst[31:20]</code></td>
+      <td style="border: 1px solid black; padding: 5px; text-align: center;" colspan="3"><code>inst[31]</code></td>
       <td style="border: 1px solid black; padding: 5px; text-align: center;" colspan="3"><code>inst[30:20]</code></td>
     </tr>
     <tr>
