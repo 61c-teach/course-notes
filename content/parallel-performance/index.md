@@ -139,7 +139,7 @@ As an analogy, consider @fig-parallel-analogy, where we collaborate with an infi
 
 :::{figure} images/parallel-analogy.png
 :label: fig-parallel-analogy
-:alt: "Flow diagram showing a beginning sequential task being split into three parallel accesses to urgent files. Each of the three parallel tasks are propagated through arrows labeled for three different employees, and then combined on the right into a final sequential task."
+:alt: "Process-flow analogy for Amdahl’s limits: a single sequential prelude box leads to three parallel swimlanes where different workers fetch or update files simultaneously, each lane labeled with a distinct employee name; curved arrows show concurrent progress. The three lanes reconverge into a final sequential box representing reporting or integration work that cannot overlap, underscoring that parallel segments still leave serial bookends."
 
 Reasonable assumption: Even with parallelization, some fraction of a program will need to run sequentially, e.g., to coordinate the parallel work itself.
 :::

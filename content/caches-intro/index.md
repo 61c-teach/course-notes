@@ -82,6 +82,6 @@ Performance gap between DRAM and CPU.
 :::{figure} images/temporal-vs-spatial-table.png
 :label: fig-temporal-vs-spatial-table-w-library
 :width: 80%
-:alt: "Table contrasting temporal and spatial locality. The comparison states the general idea, how the locality would corresponds with the library analogies, and how it is then applied in memory."
+:alt: "Three-column table contrasting temporal locality and spatial locality. Rows describe, for each locality type: the core idea (reuse of nearby items in time versus space), a library analogy (revisiting the same book versus borrowing adjacent books), and how programmers exploit it in memory (reusing variables or scanning arrays and cache lines)."
 Different types of localities and their library analogies.
 :::

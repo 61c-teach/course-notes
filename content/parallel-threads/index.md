@@ -23,7 +23,7 @@ subtitle: TODO
 :::{figure} images/data-race.png
 :label: fig-data-race
 :width: 100%
-:alt: "TODO"
+:alt: "Instruction-sequence diagram on two threads or harts showing interleaved loads and stores to the same memory address without synchronization. Register operands and memory operands are labeled so the race manifests as a final value depending on scheduling order; arrows highlight the conflicting accesses that define the bug."
 
 Data race example with RISC-V Instructions.
 :::

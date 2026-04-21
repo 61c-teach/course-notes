@@ -28,7 +28,7 @@ SIMD architectures exploit **Data-Level Parallelism** (DLP) with simultaneous op
 :::{figure} images/simd-add.png
 :label: fig-simd-add
 :width: 90%
-:alt: "Side-by-side SIMD and scalar addition diagrams showing vector element-wise addition performing multiple adds per instruction. On the left, the SIMD addition adds two 8 section rectangles, element wise, to get the resulting 8 section rectangle. On the right, the scalar addition performs one A + B add to get a single resulting value."
+:alt: "Side-by-side comparison of SIMD versus scalar addition. Left: eight parallel lanes drawn as paired segments so one add instruction updates eight independent sums at once. Right: a single add operates on one A and one B operand producing one result. Labels and lane groupings make clear that SIMD amortizes decode and issue cost across many data elements while scalar issues one result per instruction."
 
 (left) SIMD addition; (right) Scalar addition.
 :::
@@ -38,7 +38,7 @@ SIMD architectures exploit **Data-Level Parallelism** (DLP) with simultaneous op
 :::{figure} images/simd-mul.png
 :label: fig-simd-mul
 :width: 90%
-:alt: "Python, C, and Snap! code for vectorized multiplication. On the bottom, a visual of vector multiplication uses four segmented rectangles resulting in a single four-element rectangle product."
+:alt: "Upper portion: short code snippets in Python, C, and Snap! illustrating vectorized multiply idioms. Lower portion: schematic with four side-by-side operand lanes feeding element-wise multiplies that merge into one four-wide result register block. The juxtaposition highlights that one vectorized multiply maps to multiple scalar products executed together."
 
 (left) SIMD multiplication; (right) Scalar multiplication.
 :::
@@ -64,7 +64,7 @@ Vector architectures and SIMD architectures[^vector-vs-simd] have existed for a 
 :::{figure} images/simd-ext.png
 :label: fig-simd-ext
 :width: 100%
-:alt: "Historical timeline of early SIMD extensions and a tabular visual of their intrinsic registers."
+:alt: "Composite slide with a horizontal timeline of early SIMD-related systems (including MIT Lincoln Lab TX-2 milestones) beside a small table summarizing register widths or intrinsic register families coexisting with those systems. Timeline ticks and table headers are legible enough to convey chronological progression next to hardware capabilities."
 
 First SIMD Extensions: MIT Lincoln Labs TX-2, 1957.
 :::
@@ -74,7 +74,7 @@ First SIMD Extensions: MIT Lincoln Labs TX-2, 1957.
 :::{figure} images/simd-tx2.png
 :label: fig-simd-tx2
 :width: 100%
-:alt: "Black and white photo of the TX-2 computer memory-bank hardware used in early SIMD-related architecture history."
+:alt: "Black-and-white photograph of the TX-2 memory-bank hardware at MIT Lincoln Laboratory: rows of cabinet frames, wiring bundles, and indicator hardware typical of late-1950s machines. The image grounds the historical discussion of early partitioned arithmetic in real physical equipment."
 
 Memory Bank of the TX-2 Computer. MIT Lincoln Lab. [source](https://www.billbuxton.com/Lincoln.html)
 :::
@@ -95,7 +95,7 @@ As a result, SIMD architectures were implemented that performed operations like 
 :::{figure} images/simd-ops.png
 :label: fig-simd-ops
 :width: 100%
-:alt: "Visual breakdown of a vectorized SIMD instruction. The top two rectangles are split into four sections and represent two SIMD source registers holding X3 through X0 and Y3 through Y0. Elements X3 and Y3 are directed through an operator bubble below with downward vertical arrows. Elements X2 and Y2, X1 and Y1, and X0 and Y0 are similarly fed downward through operator symbols. The outputs of the four operator bubbles are connected to the four elements in the destination SIMD register format, showing that the result of this SIMD operation is a SIMD register with elements X3 OP Y3, X2 OP Y2, X1 OP Y1, and X0 OP Y0."
+:alt: "Block diagram of a SIMD arithmetic instruction with four parallel lanes. Two source SIMD registers are labeled X3 through X0 and Y3 through Y0; each lane feeds a dedicated operator bubble (add, multiply, or other OP) drawn beneath the sources. A destination SIMD register on the right collects lane outputs X3 OP Y3 through X0 OP Y0, emphasizing identical opcode semantics across lanes."
 
 SIMD operands: two source SIMD register operands, one destination SIMD register. If the source registers pack four values of equal width, then the destination register similarly packs four values of the same width.
 :::
@@ -115,7 +115,7 @@ Intel SIMD instruction set architectures (ISAs) are **extensions** to the base I
 :::{figure} images/intel-evolution.png
 :label: fig-intel-evolution
 :width: 90%
-:alt: "Timeline showing Intel SIMD extension evolution across MMX, SSE, AVX, and newer vector ISA generations. Starting in 1997 with just MMX, each subsequent step in the timeline adds more extensions, resulting in the most recent Core that includes MMX, all versions of SSE, all versions of AVX, and more."
+:alt: "Horizontal timeline of Intel SIMD ISA generations from MMX (1997, 64-bit multimedia registers) through SSE family (128-bit XMM), AVX and AVX2 (256-bit YMM), toward AVX-512 (512-bit ZMM) on recent cores. Tick marks or callouts note wider vectors and added instruction groups while emphasizing that newer CPUs retain decoding for older SIMD opcodes for backward compatibility."
 
 Intel x86 SIMD Evolution: SIMD extensions on top of x86 and x87 ([floating point](https://en.wikipedia.org/wiki/X87)).
 :::

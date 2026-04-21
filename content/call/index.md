@@ -12,7 +12,7 @@ In this lecture, we will learn how to run a program. We will give more details t
 :::{figure} images/compile-high-level.png
 :label: fig-compile-high-level
 :width: 100%
-:alt: "A schematic on the left shows source file foo.c passing through a step labeled compile colloquially to produce executable a.out, which the loader then loads into memory. A large question mark separates this view from a right-hand column that lists C code, assembly code, and machine code as successive representations."
+:alt: "Two-panel figure comparing informal versus concrete views of translation. Left panel: schematic flow from source file foo.c through a colloquially labeled compile step to executable a.out, then loading into memory. Right panel: vertical list naming C source, assembly, and machine code as successive textual representations of one program. A large question mark between panels emphasizes that the left story is conceptual while the right enumerates actual artifacts students must relate to that story."
 
 Colloquially, "compiling C code" has translated a program `foo.c` to some executable `a.out`. But how and where does assembly get involved?
 :::
@@ -123,7 +123,7 @@ The linker patches together multiple object modules to produce an executable. It
 
 :::{figure} images/linker-flow.png
 :width: 40%
-:alt: "Two object modules, file1.o and file2.o, are each drawn as rectangles with text, data, and info segments; arrows feed both into a central Linker box. The diagram shows the single output executable a.out as relocated text and data segments from both modules plus aggregated relocation information, illustrating how the linker combines object files into one executable."
+:alt: "Linker combination diagram: object modules file1.o and file2.o are drawn as rectangles each subdivided into text, data, and auxiliary information segments; arrows from both modules enter a central Linker block. A single outgoing path shows one merged executable a.out whose text and data segments contain relocated addresses from both inputs, with relocation and symbol tables folded together so the loader receives one coherent image rather than two independent objects."
 :::
 
 The linker enables **separate compilation** of different parts of the program. Importantly, it supports not _recompiling_ larger libraries. For example,. C standard libraries (e.g., `stdio`) are part of the Linux source, which is over 20 million lines of code. Because of the linker, recompiling a simple `foo.c` does not require recompiling `stdio` :-)

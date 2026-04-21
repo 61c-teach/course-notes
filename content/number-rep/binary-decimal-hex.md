@@ -43,7 +43,7 @@ Numerals (and therefore digits) are representations of numbers.
 
 :::{figure} images/every-base-is-base-10.png
 :label: fig-every-base-is-base-10
-:alt: "A astronaut talking to an alien with 2 fingers per hand and there are 4 rocks on the ground. Alien says  'There are 10 rocks.' Astronaut says 'Oh, you must be using base 4. See, I use base 10.' Alien says 'No. I use base 10. What is base 4?' Caption reads 'Every base is base 10'"
+:alt: "An astronaut talking to an alien with 2 fingers per hand and there are 4 rocks on the ground. Alien says 'There are 10 rocks.' Astronaut says 'Oh, you must be using base 4. See, I use base 10.' Alien says 'No. I use base 10. What is base 4?' Caption reads 'Every base is base 10'"
 :align: center
 
 Every base is base 10 ([web.archive.org](https://web.archive.org/web/20160505151914/http://cowbirdsinlove.com/43))

@@ -23,7 +23,7 @@ subtitle: TODO
 :::{figure} images/smp.png
 :label: fig-smp
 :width: 65%
-:alt: "TODO"
+:alt: "Symmetric multiprocessing diagram: several cores or sockets connect through an interconnect or crossbar to a unified physical memory and optionally a shared last-level cache. Coherence control blocks or snoop filters appear on the path to show one address space visible to all processors."
 
 Shared-memory Multiprocessor (SMP) with multiple cores and a single, coherent memory.
 :::

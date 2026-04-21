@@ -433,7 +433,7 @@ We use @fig-forwarding-hl to describe at a high-level what data is forwarded.
 :::{figure} images/forwarding-hl.png
 :label: fig-forwarding-hl
 :width: 80%
-:alt: "High-level forwarding diagram showing three instructions with staggered pipeline stages. The result of the EX stage from instruction 1 (add s0 t0 t1) is forwarded straight to the beginning of the EX stage of the second instruction (sub t2 s0 t0) so that it can be used without stalling. Additionally, the result of the MEM stage in instruction 1 is forwarded to the beginning of the EX stage for the third instruction (or t6 s0 t3) so that it can also execute without waiting for register write-back from instruction 1."
+:alt: "High-level five-stage pipeline cartoon with three instructions in flight: ADD writing s0, SUB consuming s0, and OR also consuming s0. Colored bypass arrows show the ADD’s ALU result forwarded from the EX/MEM boundary straight into the SUB’s EX-stage operand mux, and a second bypass from MEM/WB into the OR’s EX-stage mux so neither dependent instruction waits for register file write-back. Stage labels IF through WB bracket each instruction row so viewers can see cycle alignment."
 
 Forwarding adds extra connections between [pipeline registers](#sec-pipeline-registers) and other components in the datapath.
 :::
@@ -457,7 +457,7 @@ In this course, we discuss **two** types of forwarding paths (i.e., bypasses) fr
 :::{figure} images/forwarding-all-hl.png
 :label: fig-forwarding-all-hl
 :width: 100%
-:alt: "Expanded high-level forwarding diagram explaining the purpose of the five stages. The Write-back to Execute stage forwarding path is highlighted in purple from the output of the pipeline register between MEM and WB stages to the input of a mux within the EX stage before the ALU. The MEM to EX stage forwarding path is highlighted in pink from the output of the pipeline register between EX and MEM stages to the input of the mux within the EX stage before the ALU."
+:alt: "Expanded forwarding schematic with every pipeline stage labeled and two highlighted bypass nets. Purple path: from the register after MEM/WB back to the ALU mux feeding operand B, annotated as WB-to-EX forwarding. Pink path: from the register after EX/MEM to the same mux, annotated as MEM-to-EX forwarding. Pipeline registers between stages are drawn explicitly so students can trace where forwarded values are tapped relative to the register file read ports."
 
 Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw the bypasses for the A input signal, though they are certainly needed. With the exception of the PC, registers between stages are pipeline registers.
 :::

@@ -34,7 +34,7 @@ subtitle: TODO
 :::{figure} images/openmp-workshare.png
 :label: fig-openmp-workshare
 :width: 100%
-:alt: "TODO"
+:alt: "Side-by-side code comparing a serial loop with an OpenMP-parallel version using pragma directives for parallel for, reduction, or scheduling clauses. Color or callouts map each pragma to the team of threads and shared versus private variables."
 
 Equivalent code for OpenMP work-sharing.
 :::

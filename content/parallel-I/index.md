@@ -23,7 +23,7 @@ subtitle: TODO
 :::{figure} images/multiple-cpus.png
 :label: fig-mult-cpus
 :width: 90%
-:alt: "TODO"
+:alt: "Conceptual illustration placing multiple CPU icons or processor blocks side by side or on a shared bus, contrasting one serial execution lane with several independent cores or sockets that could run tasks concurrently. Arrows or workload icons hint at throughput scaling when work is partitioned across CPUs."
 
 Parallelism Motivation: What if we had multiple CPUs?
 :::

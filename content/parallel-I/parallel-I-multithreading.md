@@ -23,7 +23,7 @@ subtitle: TODO
 :::{figure} images/fork-join-model.png
 :label: fig-fork-join
 :width: 100%
-:alt: "TODO"
+:alt: "Fork-join timeline: a main thread proceeds serially, then a fork point fans out into several parallel child segments that execute concurrently, each with its own labeled interval, before a join barrier resynchronizes all paths back to a single continuation on the main thread. Vertical synchronization lines mark fork and join events."
 
 Fork-join model over time with multiple parallel tasks off the main thread.
 :::
