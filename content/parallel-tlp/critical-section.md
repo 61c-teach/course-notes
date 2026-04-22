@@ -25,9 +25,7 @@ subtitle: Coming soon. Thanks for your patience!
 
 Coming soon! See lecture for now.
 
-
-
-## Visuals
+<!-- ## Visuals
 
 :::{figure} images/openmp-workshare.png
 :label: fig-openmp-workshare
@@ -43,4 +41,4 @@ Equivalent code for OpenMP work-sharing.
 :alt: "TODO"
 
 Data race example with RISC-V Instructions.
-:::
+::: -->

@@ -234,7 +234,7 @@ An ALU that implements the `mul`, `mulh`, and `mulhu` instructions can support p
 | Instruction | Name | Description | Type | Opcode | Funct3 | Funct7 |
 | :--- | :--- | :--- | :---: | :------ | :--- | :--- |
 | `mul rd rs1 rs2` | MULtiply | `R[rd] = (R[rs1] * R[rs2])[31:0]` | R | `011 0011` | `000` | `000 0001` |
-| `mulh rd rs1 rs2` | MULtiply Higher Bits | `R[rd] = (R[rs1] * R[rs2])[63:32]` (Signed) | R | `011 0011` | `0001` | `000 0001` |
+| `mulh rd rs1 rs2` | MULtiply Higher Bits | `R[rd] = (R[rs1] * R[rs2])[63:32]` (Signed) | R | `011 0011` | `001` | `000 0001` |
 | `mulhu rd rs1 rs2` | MULtiply Higher Bits (Unsigned) |  `R[rd] = (R[rs1] * R[rs2])[63:32]` (Unigned)  | R | `011 0011` | `011` | `000 0001` |
 
 The result of multiplying 2 32-bit numbers can be up to 64 bits of information, but we're limited to 32-bit data lines, so `mulh` and `mulhu` are used to get the upper 32 bits of the product. The `Multiplier` component has a `Carry Out` output (with the description "the upper bits of the product") which might be particularly useful for certain multiply operations.
