@@ -174,7 +174,6 @@ In the above demo, what is the L2 cache size, in bytes?
 Understanding this section is useful for understanding your computer.
 :::
 
-
 ::::{note} 🎥 Lecture Video: Storage
 :class: dropdown
 
@@ -191,6 +190,15 @@ Understanding this section is useful for understanding your computer.
 :::{iframe} https://www.youtube.com/embed/isEHXkkPtE4
 :width: 100%
 :title: "[CS61C FA20] Lecture 27.4 - Caches IV: Actual CPUs"
+:::
+
+::::
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/MJwBmN8L2Lo
+:width: 100%
+:title: "[CS61C FA20] Lecture 29.2 - Virtual Memory I: Physical Memory and Storage"
 :::
 
 ::::

@@ -3,6 +3,7 @@ title: "Virtual Memory Concepts"
 subtitle: TODO
 ---
 
+(sec-virtual-memory)=
 ## Learning Outcomes
 
 * TODO
@@ -44,4 +45,10 @@ Give programs the illusion of having their own memory.
 :width: 100%
 :alt: "TODO"
 Ignore caches for now.
+:::
+
+:::{figure} images/physical-mem-too-small.png
+:label: fig-physical-mem-too-small-1
+:width: 100%
+What happens if physical memory is too small?
 :::

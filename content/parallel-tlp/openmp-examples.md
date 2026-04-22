@@ -21,7 +21,6 @@ More OpenMP examples if useful.
 OpenMP C program: `for.c`
 ^^^
 ```{code} c
-:label: code-hello-world-openmp
 :linenos:
 #include <stdio.h>
 #include <omp.h>

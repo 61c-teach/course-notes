@@ -1,5 +1,5 @@
 ---
-title: "TLBs in Datapath"
+title: "Address Translation with TLB"
 subtitle: TODO
 ---
 
@@ -48,4 +48,26 @@ Example of address translation with TLB (page fault).
 :label: address-translation-page-fault-case-2
 :width: 80%
 Example of address translation with TLB (update TLB and page table).
+:::
+
+:::{table} Three address translation cases. Two cache misses may now occur: on the TLB and on the memory access itself.
+:label: tab-address-translation-vm
+
+| Case | Performance | TLB | Page Table |
+| :-- | :--- | :--- | :--- |
+| 1 | Best | Hit ✅ | Not visited |
+| 2 | Worse | Miss ❌ | Hit (Page Table Entry Valid) ✅ |
+| 3 | Worst | Miss ❌ | Miss (Page Fault) ❌ |
+:::
+
+:::{hint} Quick Check
+
+**True or False**: On a TLB data, the data is definitely in main memory.
+
+:::
+
+:::{note} Show Answer
+
+**True**. Remember: The TLB caches recent page table entries. If the entry is valid in the TLB, it **must also** be valid in the page table, and the data must therefore be in memory.
+
 :::

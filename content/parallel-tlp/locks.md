@@ -3,6 +3,7 @@ title: "Synchronization, Locks"
 subtitle: Coming soon. Thanks for your patience!
 ---
 
+(sec-locks)=
 ## Learning Outcomes
 
 <!-- * TODO
