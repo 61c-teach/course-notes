@@ -1,5 +1,5 @@
 ---
-title: "DGEMM: SIMD"
+title: "DGEMM: SIMD with Intel Intrinsics"
 ---
 
 (sec-dgemm-simd)=
@@ -18,7 +18,10 @@ title: "DGEMM: SIMD"
 
 ::::
 
-Before continuing, we recommend reviewing the [DGEMM benchmark](#sec-dgemm-benchmark) and the [performance optimizations](#sec-dgemm-sisd) we tried on a SISD architecture.
+Before continuing, we recommend reviewing:
+
+* [DGEMM benchmark](#sec-dgemm-benchmark)
+* [Performance optimizations](#sec-dgemm-sisd) on a sequential program
 
 :::{embed} #fig-dgemm
 :::
@@ -173,7 +176,7 @@ Generally speaking, most of the speedup comes not from doing multiple math opera
 
 ## DGEMM SIMD Code
 
-The three algorithsm discussed in this section leverage Intel SIMD extensions. You will see in the code below that the SIMD instructions are written in C as [Intel Intrinsics](#sec-intrinsics). More next!
+The three algorithms discussed in this section leverage Intel SIMD extensions. You will see in the code below that the SIMD instructions are written in C as [Intel Intrinsics](#sec-intrinsics). More next!
 
 
 ::::{tab-set}
@@ -185,7 +188,7 @@ The three algorithsm discussed in this section leverage Intel SIMD extensions. Y
 
 matrix_d_t *dgemm_simd(matrix_d_t *A, matrix_d_t *B) {
   if (A->ncols!=B->nrows) return NULL; 
-    matrix_d_t *C = init_mat_d(A->nrows, B->ncols);
+  matrix_d_t *C = init_mat_d(A->nrows, B->ncols);
   for (int i = 0; i < A->nrows; i++) {
     for (int j = 0; j < B->ncols; j+=4) { // 4 doubles at a time
             avx256_t v_C = avx_load(C->data + i*C->ncols +j);
@@ -209,8 +212,8 @@ matrix_d_t *dgemm_simd(matrix_d_t *A, matrix_d_t *B) {
 
 matrix_d_t *dgemm_simd_transpose(matrix_d_t *A, matrix_d_t *B) {
   if (A->ncols!=B->nrows) return NULL;
-    matrix_d_t *C = init_mat_d(A->nrows, B->ncols);
-    matrix_d_t *B_T = transpose_mat_d(B);
+  matrix_d_t *C = init_mat_d(A->nrows, B->ncols);
+  matrix_d_t *B_T = transpose_mat_d(B);
   for (int i = 0; i < A->nrows; i++) {
     for (int j = 0; j < B->ncols; j++) {
       double *ptr_A = A->data+(i*A->ncols);
@@ -263,7 +266,7 @@ static inline void matmul_simd_tile(int si, int sj, int sk,
 }
 matrix_d_t *dgemm_simd_block(matrix_d_t *A, matrix_d_t *B) {
   if (A->ncols!=B->nrows) return NULL;
-    matrix_d_t *C = init_mat_d(A->nrows, B->ncols);
+  matrix_d_t *C = init_mat_d(A->nrows, B->ncols);
   for (int si = 0; si < A->nrows; si += BLOCKSIZE) {
     for (int sj = 0; sj < B->ncols; sj += BLOCKSIZE) {
             for (int sk = 0; sk < A->ncols; sk+= BLOCKSIZE) {

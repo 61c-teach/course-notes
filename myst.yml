@@ -227,27 +227,25 @@ project:
         - file: content/parallel-performance/summary.md
     - title: "L31 Flynn's Taxonomy, SIMD"
       children:
-        - file: content/parallel-simd/index.md
-        - file: content/parallel-simd/simd.md
-        - file: content/parallel-simd/dgemm-simd.md
-        - file: content/parallel-simd/intrinsics.md
-        - file: content/parallel-simd/summary.md
-      # - title: "L32 Parallelism III: MIMD, Thread-Level Parallelism"
-      #   children:
-      #     - file: content/parallel-II/index.md
-      #     - file: content/parallel-I/parallel-I-multicore.md
-      #     - file: content/parallel-I/parallel-I-threads.md
-      #     - file: content/parallel-I/parallel-I-multithreading.md
-      #     - file: content/parallel-II/parallel-II-openmp.md
-      #     - file: content/parallel-II/parallel-II-computing-pi.md
-      #     - file: content/parallel-II/parallel-II-synch.md
-      #     - file: content/parallel-II/summary.md
-      # - title: "L33 Thread-Level Parallelism III"
-      #   children:
-      #     - file: content/parallel-III/index.md
-      #     - file: content/parallel-III/parallel-III-shared-mem.md
-      #     - file: content/parallel-III/parallel-III-cache.md
-      #     - file: content/parallel-III/summary.md
+        - file: content/parallel-dlp/index.md
+        - file: content/parallel-dlp/simd.md
+        - file: content/parallel-dlp/dgemm-simd.md
+        - file: content/parallel-dlp/intrinsics.md
+        - file: content/parallel-dlp/summary.md
+    - title: "L32 MIMD, Thread-Level Parallelism"
+      children:
+        - file: content/parallel-tlp/index.md
+        - file: content/parallel-tlp/threads.md
+        - file: content/parallel-tlp/openmp.md
+        - file: content/parallel-tlp/dgemm-mimd.md
+        - file: content/parallel-tlp/openmp-examples.md
+    - title: "L33-L34 Parallelism IV: Synchronization"
+      children:
+        - file: content/parallel-tlp/critical-section.md
+        - file: content/parallel-tlp/cache-coherency.md
+        - file: content/parallel-tlp/locks.md
+        - file: content/parallel-tlp/atomic-operations.md
+        - file: content/parallel-II/summary.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md

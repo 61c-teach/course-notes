@@ -1,6 +1,6 @@
 ---
-title: "Hardware Synchronization"
-subtitle: TODO
+title: "Atomic Operations"
+subtitle: This section is out of scope
 ---
 
 ## Learning Outcomes
@@ -15,6 +15,16 @@ subtitle: TODO
 :width: 100%
 :title: "[CS61C FA20] Lecture 35.1 - Thread-Level Parallelism III: Hardware Synchronization"
 :::
+
+<!-- TODO: find timestamps and break up this section.
+atomic operations
+RISC-V critical section
+openMP critical section
+openMP locks
+openMP for loop
+deadlock
+openMP timing
+-->
 
 ::::
 

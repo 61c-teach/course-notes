@@ -2,6 +2,7 @@
 title: "Flynn's Taxonomy"
 ---
 
+(sec-flynns-taxonomy)=
 ## Learning Outcomes
 
 * Explain what "parallelizing a program" means.
@@ -21,10 +22,11 @@ Can we be more efficient in writing sequential C code on a serial processor? We 
 
 But how do we leverage **hardware** improvements? That is the topic of this section.
 
-
 ## Parallelism: Software vs. Hardware
 
-Because of the abrupt shift in processor design towards parallelism, there are a LOT of closely related terms when it comes to paralellism. @tab-hw-sw-parallelism is an adaptaion of P&H 6.1 to clarify the terms used in software versus hardware.
+Because of the abrupt shift in processor design towards parallelism, there are a LOT of closely related terms when it comes to paralellism. @tab-hw-sw-parallelism is an adaptaion of P&H 6.1 to clarify the terms used in software versus hardware. The biggest confusion is often between **concurrency** and **parallelism**.[^stackoverflow]
+
+[^stackoverflow]: For more about concurrency and parallelism, see [StackOverflow](https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism).
 
 :::{table} Software perspective on concurrency vs. hardware perspective on parallelism.
 :label: tab-hw-sw-parallelism
@@ -225,6 +227,7 @@ Anything system involving multiple processors operating concurrently.
 :::::::
 <!-- end grid -->
 
+(#sec-spmd)=
 :::{note} What is most common?
 
 SISD is what we have done up to now in CS 61C. However, in modern architectures, **SIMD and MIMD** are the most commonly encountered today—usually both in the same system.[^spmd]

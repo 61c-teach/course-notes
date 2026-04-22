@@ -2,6 +2,7 @@
 title: "Amdahl's Law"
 ---
 
+(sec-amdahls-law)=
 ## Learning Outcomes
 
 * Use Amdahl's Law to quantify the speedup to program execution time, given a specific optimization.

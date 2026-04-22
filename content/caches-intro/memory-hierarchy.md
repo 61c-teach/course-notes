@@ -17,6 +17,14 @@ title: "Memory Hierarchy"
 
 ::::
 
+
+<!-- :::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
+:label: fig-principle-of-locality-memory-hierarchy-pyramid-2
+:width: 50%
+:alt: "TODO"
+The memory hierarchy.
+::: -->
+
 > Ideally one would desire an indefinitely large memory capacity such that any particular ... word would be immediately available. ... We are ... forced to recognize the possibility of constructing a hierarchy of memories, each of which has greater capacity than the preceding but which is less quickly accessible.
 > 
 > -- Preliminary Discussion of the Logical Design of an Electronic Computing Instrument (1946)
@@ -71,7 +79,7 @@ If useful, we revisit [Jim Gray's analogy](#sec-memory-hierarchy) of data access
 :::
 
 (sec-multi-level-caches)=
-### Multi-Level Caches
+## Multi-Level Caches
 
 You may have noticed that the [memory hierarchy diagram](#fig-3-memory-hierarchy) contains multiple caches labeled Level 1, Level 2, and Level 3.  A computer can have multiple caches, where each cache is a **copy** of data from lower in the memory hierarchy.
 
@@ -184,6 +192,7 @@ Understanding this section is useful for understanding your computer.
 :alt: "Memory-hierarchy pyramid ordering storage levels by speed, size, and proximity to the processor. From the bottom layer of the pyramid to the top, the visual shows magnetic disks, solid-state memory (flash), and virtual memory as SSD and HDD drives; then random-access memory (RAM) and physical memory as a DRAM chip; and finally L3 through L1 caches, CPU cache, registers, and CPU core on the processor chip."
 The memory hierarchy.
 :::
+
 ::::{note} 🎥 Lecture Video: Actual CPUs
 :class: dropdown
 
@@ -194,12 +203,11 @@ The memory hierarchy.
 
 ::::
 
+Written version coming soon, but not too soon.
+
+For now, know that DRAM is the technology used for memory (primary storage), and SSD is the prevalent technology used for disk (secondary storage).
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR4TRAAB71WlQqQUetxcAhTBdq7QfT0xqjMlLU-qT0OH5GTiGZEUPqLNrroMw6Dg2ERrOyPfnJHIu2y/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through storage and the memory hierarchy. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
 :::
-
-Written version coming soon, but not too soon.
-
-For now, know that DRAM (the technology used for )

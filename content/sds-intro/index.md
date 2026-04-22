@@ -50,7 +50,7 @@ Core (heh) to the modern computer are many types of **integrated circuits**, whi
 :width: 70%
 :alt: "Labeled die photograph of a system-on-chip: major regions outlined for GPU, system cache, CPU clusters with L2 caches, neural engine, and DDR memory interfaces along the die edges."
 
-Apple A14 Bionic Chip (sources: [Wikipedia](https://en.wikipedia.org/wiki/Apple_A14), [TechInsights]((https://www.techinsights.com/blog/two-new-apple-socs-two-market-events-apple-a14-and-m1))
+Apple A14 Bionic Chip (sources: [Wikipedia](https://en.wikipedia.org/wiki/Apple_A14), [TechInsights](https://www.techinsights.com/blog/two-new-apple-socs-two-market-events-apple-a14-and-m1))
 :::
 
 Notice the various blocks labeled on the photograph. We will be discussing these later this semester. Here are the specifications for this particular processor:

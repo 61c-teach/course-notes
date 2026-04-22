@@ -8,9 +8,13 @@ title: "Cache Blocking"
 * Write programs that leverage understanding of the underlying cache design.
 * Define cache blocking.
 
-In this section, we consider how knowing the underlying design of our cache can actually improve how we write programs.
+We have seen in a [previous section](#sec-cache-optimizations) how as computer architects, we can reduce cache misses by increasing the capacity of our cache. However, as programmers, we often may not have control over the hardware of our computer. It is not trivial to swap out the cache. Instead, we must assume that we have some fixed hardware architecture, then see how we can rewrite our programmer to maximize use of the hardware.
 
-## Matrix Multiplication
+**Cache blocking** is a programmer technique that rearranges data accesses to make better use of the data brought into the cache and reduce cache misses.
+
+In this section, we consider one specific program benchmark: [matrix multiplication](#sec-dgemm). After trying an initial naive implementatno, we hhow knowing the underlying design of our cache can actually improve how we write programs.
+
+## Matrix Multiplication (DGEMM)
 
 In this section, we use a matrix multiplication benchmark.
 In this example, we will consider multiplying matrix $A$ (4 rows $\times$ 8 columns) by matrix $B$ (8 rows $\times$ 4 columns) to produce the matrix $C$ (4 rows $\times$ 4 columns).[^int-notation] 
@@ -47,9 +51,9 @@ Suppose we run our C program on a 32-bit architecture that has a single-layer ca
 
 For our matrix multiplication example, we will assume that on this architecture, `sizeof(int)` is `4`, so each block holds four `int`s.
 
-## `matmul` Memory Access Pattern
+## Approach 1: Naive DGEMM Memory Access Pattern
 
-How does matrix multiplication fare? Assume the cache starts out cold.
+Assume the cache starts out cold.
 
 Suppose we first compute $C_{00}$, which is the dot-product of the (zero-indexed) zero-th row of $A$ and the (zero-indexed) zero-th column of $B$.
 
@@ -339,13 +343,7 @@ From P&H 4.4 for square matrices (N-by-N):
 
 > If the cache can hold one N-by-N matrix and one row of N, then at least the `i`th row of `A` and the entire matrix `B` may stay in the cache. Less than that and misses may occur for both `B` and `C`. In the worst case, there would be 2 N{sup}`3`+ N{sup}`2` memory words accesed for N{sup}`3` operations.
 
-## Cache Blocking
-
-We have seen in a [previous section](#sec-cache-optimizations) how as computer architects, we can reduce these misses by increasing the capacity of our cache. However, as programmers, we often may not have control over the hardware of our computer. It is not trivial to swap out the cache. Instead, we must assume that we have some fixed hardware architecture, then see how we can rewrite our programmer to maximize use of the hardware.
-
-**Cache blocking** is a programmer technique that rearranges data accesses to make better use of the data brought into the cache.
-
-### Approach 1: Transpose
+## Approach 2: Cache Blocking with Transpose
 
 One observation is that it would be much better to load in just the 8 elements in the _column_ of `B`, and not elements in other columns needed for later matrix multiplications.
 
@@ -380,7 +378,7 @@ Notes:
 Transposing is quite slow; it also requires a N{sup}`2` overhead to complete and triggers the same types of cache misses as we observed in our original computation. We have simply moved our poor cache performance from matrix multiplication to another part of the program.
 
 (sec-cache-blocking-tiling)=
-### Approach 2: Submatrix computation
+## Approach 3: Cache Blocking with Submatrix Computation (Tiling)
 
 Our second cache blocking approach observes that matrix multiplication can be computed piecewise. A **submatrix** (i.e.,  **tile**) of $C$ can be computed as the sum of multiplying different submatrices of $A$ and $B$.
 
@@ -388,7 +386,7 @@ Our second cache blocking approach observes that matrix multiplication can be co
 
 ::::{figure}
 :label: anim-matmul-block-2
-:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
+:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQU5B3-twc1_pBY024sp72KsxJ6O8tieO_QwOYPj4VgLt7--ONJ0BbG-Lj1CDwdoQ/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides illustrating cache blocking with a C[i][j] Memory Access Pattern."
 :::
@@ -444,7 +442,17 @@ Cache blocking. Use the menu bar to trace through the animation or access the [o
 
 :::
 
-### Summary: Cache Blocking
+## Performance Analysis
+
+See the following two sections:
+
+* [Approach 1](#sec-dgemm-sisd): Naive DGEMM
+* [Approach 2](#sec-dgemm-sisd): DGEMM Transpose
+* [Approach 3](#sec-dgemm-simd): DGEMM Tiled (with SIMD)
+
+A tiled approach to matrix multiplication is much more efficient when we can leverage parallelism in hardware.
+
+## Summary: Cache Blocking
 
 Note that cache blocking may still replace rows of $B$ that will be needed later; it does not avoid all capacity misses. However, it reduces the **total number of memory accesses**, thereby reducing the total number of compulsory misses.
 
