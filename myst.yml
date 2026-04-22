@@ -257,3 +257,4 @@ site:
     logo: icon.png
     folders: true
     hide_authors: true
+    style: assets/styles.css
