@@ -24,3 +24,23 @@ subtitle: Coming soon. Thanks for your patience!
 ## Data Race
 
 Coming soon! See lecture for now.
+
+
+
+## Visuals
+
+:::{figure} images/openmp-workshare.png
+:label: fig-openmp-workshare
+:width: 100%
+:alt: "TODO"
+
+Equivalent code for OpenMP work-sharing.
+:::
+
+:::{figure} images/data-race.png
+:label: fig-data-race
+:width: 100%
+:alt: "TODO"
+
+Data race example with RISC-V Instructions.
+:::
