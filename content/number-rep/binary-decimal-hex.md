@@ -205,7 +205,7 @@ The slidedeck below shows how we can convert the decimal $13$ into its binary re
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSRRi1DDwigsxmr5R_fPwZ1uAOKKJ-fblPQg6GFNICf9he20UUYX_gZLwdrMG4HRvrtcD3e9nkBwk29/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing"
+:title: "Animation that steps through how to convert the decimal value 13 into its binary equivalent, as shown in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing"
 :::
 
 Let `val` be $13$ in the explanation below. Click to show.
@@ -248,7 +248,7 @@ The slidedeck below converts $165$ into its hexadecimal representation, `0xA5`.
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTWgqxt2kl5ip7bRfRY7P81WiQGDJSrAuKmkqE1m3mnrerVBeN2s9PGJVVaIQu0aDlsNfuvcRCK09q9/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1rHScPLQLom3OzhZyGzhct8vpXtO-AWRiXyr5C-9Qszs/edit?usp=sharing)"
+:title: "Animation that steps through how to convert the decimal value 165 into its hexadecimal representation, as shown in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1rHScPLQLom3OzhZyGzhct8vpXtO-AWRiXyr5C-9Qszs/edit?usp=sharing)"
 :::
 
 Let `val` be $165$ in the explanation below. Click to show.

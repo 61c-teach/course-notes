@@ -70,7 +70,7 @@ Update the Immediate Generator block and the `WBSel` mux.
 :label: anim-datapath-jal
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-jal.pptx
 :width: 100%
-:title: "Tracing the `jal` Datapath"
+:title: "Slides tracing through the `jal` Datapath."
 :::
 The `jal` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
@@ -79,7 +79,7 @@ The `jal` datapath. Use the menu bar to trace through the animation or download 
 :label: anim-datapath-jal
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRG-3tt1Kr0wyvIhKtNd4_QUT38Kn7gL8ulf_jXpKi8sUlQJ4Vk9cRW0woMIXuXbQ/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `jal` Datapath"
+:title: "Slides tracing through the `jal` Datapath."
 :::
 The `jal` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1NTWJNNbw4Pk-2SlUlo8JLNw8fOSHKXvQ/edit?usp=sharing).
 ::::
@@ -130,7 +130,7 @@ We do **not need any updates** to our datapath to support `jalr`! Because `jalr`
 :label: anim-datapath-jalr
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-jalr.pptx
 :width: 100%
-:title: "Tracing the `jalr` Datapath"
+:title: "Slides tracing through the `jalr` Datapath."
 :::
 The `jalr` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
@@ -139,7 +139,7 @@ The `jalr` datapath. Use the menu bar to trace through the animation or download
 :label: anim-datapath-jalr
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTeMjM-GcVH1ueYM4pQwmgUPEBfKJ4xf3PgkGmcv3eYiSOGlLuUZ4ty02YeXq1gqw/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `jalr` Datapath"
+:title: "Slides tracing through the `jalr` Datapath."
 :::
 The `jalr` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1E4qsF1FVE6fhnl1wTnp824rWql7BIc6r/edit?usp=sharing).
 ::::

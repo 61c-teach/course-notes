@@ -165,7 +165,7 @@ The following animation traces through five memory accesses to a 12-bit address 
 :label: fig-fa-warmup
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQU9l8AzNd5IkR1OUoqNtUygI4anobQJsrXgAXObfGH_eoSDy3iCIVqHMtZE8p-TvSI06dUoLIb8Y-z/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/1NxTminubfgSHzH2S_N7SxTyquI5B4QidA8b6W4mnRlU/edit?usp=sharing)"
+:title: "Slides walking through a warm up of a fully associative cache from this section. Access [original Google Slides](https://docs.google.com/presentation/d/1NxTminubfgSHzH2S_N7SxTyquI5B4QidA8b6W4mnRlU/edit?usp=sharing)"
 :::
 
 Warming up a fully associative cache.
@@ -298,7 +298,7 @@ The tag with the highest number is `0x10F`.
 :label: fig-fa-lru
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQZlQhRUK7d3f5-2SHQnPPSsyHFmG2xZ5hgEr5p8PyNZLKBl7zVK8UojiqD6OipYsRVa5v7t-ChQjT7/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/1vHYBxCYjtFT8vSbVFioz_o1K4T2e0mNykhJ89-yactQ/edit?usp=sharing)"
+:title: "Slides walking through the replacement policy for a fully associative cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1vHYBxCYjtFT8vSbVFioz_o1K4T2e0mNykhJ89-yactQ/edit?usp=sharing)"
 :::
 
 Fully associative cache with least recently used (LRU) replacement policy.
@@ -371,7 +371,7 @@ To implement write-back, we note further that we can only need to write back _mo
 :label: fig-fa-wb
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSBzBoel_J30XSTEfEQJDsk1OjVQ-Jnii6At7ZyqDKed1wADBar24FT5vhoT92bKNfIsKh5XVwz5rqc/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/15Nz0bRbUMH1EW45UmeayDK5D_D8eLSKCBL-CvlEjvls/edit?usp=sharing)"
+:title: "Slides detailing the write policy for a fully associative cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/15Nz0bRbUMH1EW45UmeayDK5D_D8eLSKCBL-CvlEjvls/edit?usp=sharing)"
 :::
 
 Write back, with dirty bit animation.

@@ -130,7 +130,7 @@ The slidedeck in @fig-rv-stack-anim animates allocation and deallocation on the 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRmZPYooswNdpDJwrvmnf4LB5h0emERgb162lLWy88ytNPuWI-qcS0X_HiNt5XQgIPvtQ4Ed-6nW2I2/pubembed?start=false&loop=false
 :width: 100%
 :enumerated: false
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1Ns11j8poIPDE7Bwg-qg5Dk6pokKuU-LdP_c8SwWpFTU/edit?usp=sharing)"
+:title: "Animation that steps through allocation and deallocation on the memory stack using the stack pointer, as detailed in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1Ns11j8poIPDE7Bwg-qg5Dk6pokKuU-LdP_c8SwWpFTU/edit?usp=sharing)"
 :::
 An extended animation of stack memory management in RISC-V.
 ::::

@@ -166,7 +166,7 @@ The following animation traces through four memory accesses to a 12-bit address 
 :label: fig-dm-warmup
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSfQ89lj8_qzjh6yX5lGIOVEzC3909wUDUGC5FRbyT060KMbeTBKLFvUIlPyHIkna968TML6yoBnGbe/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/1SIM8fNAVuRooMmNGsFzuiB2MwlKYi_ZPWQrQYEh0dmE/edit?usp=sharing)"
+:title: "Slides walking through the write policy of a direct-mapped cache from this section. Access [original Google Slides](https://docs.google.com/presentation/d/1SIM8fNAVuRooMmNGsFzuiB2MwlKYi_ZPWQrQYEh0dmE/edit?usp=sharing)"
 :::
 
 Warming up a direct-mapped cache.

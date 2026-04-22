@@ -197,7 +197,7 @@ The memory hierarchy.
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR4TRAAB71WlQqQUetxcAhTBdq7QfT0xqjMlLU-qT0OH5GTiGZEUPqLNrroMw6Dg2ERrOyPfnJHIu2y/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the video in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
+:title: "Slides walking through storage and the memory hierarchy. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
 :::
 
 Written version coming soon, but not too soon.

@@ -69,7 +69,7 @@ The slidedeck below traces through a toy example that assumes that initially, `x
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSPi9zeMb9_6MHbefYmj3qLUG360ZXXl6jFvy4nCSf5dhSJN7BmIVoT5x2LWBnNAUktlzvhtYoNuZ2G/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1pjgFhJh-Rx3CapS7gbUSkjjqCC3OrL9k7MMT14lau8o/edit?usp=sharing)"
+:title: "Animation that steps through the enumerated text in this section motivating swap_int, swap_short, and swap_string. Access [original Google Slides](https://docs.google.com/presentation/d/1pjgFhJh-Rx3CapS7gbUSkjjqCC3OrL9k7MMT14lau8o/edit?usp=sharing)"
 :::
 
 Click below to show the explanation of the animation.

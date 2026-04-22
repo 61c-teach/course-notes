@@ -123,7 +123,7 @@ Below, we explain @fig-five-stage-pipeline-registers from the perspective of wha
 :label: fig-five-stage-pipeline-registers
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSMgaBei-28IrooFMzb-ygC5ZURZV2WCwkfozWm8e6q74JxnLWYUySPoWurEwVVUgAL7rDPgbnxmULt/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1U2q6p5iPYqNPFLD4cDYgE2T4o7FA0dfSVsiAt0qBCsA/edit?usp=sharing)"
+:title: "Animation that steps through the pipeline registers in the five stage datapath, including what is fed into each, as discussed in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1U2q6p5iPYqNPFLD4cDYgE2T4o7FA0dfSVsiAt0qBCsA/edit?usp=sharing)"
 :::
 Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1U2q6p5iPYqNPFLD4cDYgE2T4o7FA0dfSVsiAt0qBCsA/edit?usp=sharing). A more complete picture is in @fig-five-stage-summary.
 ::::

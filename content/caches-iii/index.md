@@ -111,7 +111,7 @@ As we go through each of the three cache misses by definition, we realize there 
 :label: anim-cache-pedantic-misses
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR259Lvwi0mq_JUcQbeLD7oLLF-ZvFn1PBihG3YMV09mwtIhw0U08XBnmQXHDced7-vGWrc9RTXOc8B/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nL8eIuc16BVBKdSvs-z3B5huPgI5AHZy3s6wT7nfu4A/edit?usp=sharing)"
+:title: "Slides walking through conflict misses for cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nL8eIuc16BVBKdSvs-z3B5huPgI5AHZy3s6wT7nfu4A/edit?usp=sharing)"
 :::
 ::::
 

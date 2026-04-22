@@ -169,7 +169,7 @@ A [cold](#sec-cache-temperatures) snapshot of a 32B, 2-way set-associative cache
 :label: fig-sa-2way-warmup
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQwW0AI7yiWfn0L5EVQQOVNbs6ke7nQDHkKwM7CHQ-IRMSnOn-88QXC9LCTtORDQmWLXp9wK_Vd_U0b/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/1Wi_d703PYdJgahH0bjxTKVvwT6KQ0dCFLZF7q6O0e9o/edit?usp=sharing)"
+:title: "Slides walking through four memory accesses with a 2-way set associative cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1Wi_d703PYdJgahH0bjxTKVvwT6KQ0dCFLZF7q6O0e9o/edit?usp=sharing)"
 :::
 
 :::{note} 1. Load byte @ `0xFE2`. Cache miss.

@@ -55,7 +55,7 @@ The slidedeck in @fig-c-stack-anim animates allocation and deallocation on the s
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vT4VF2QQM8HQDb84y2sg6Bie_PURuJfOZ5yyrFh3AWCJY2lay45Vqy33iN7XIrV1fO2tIb3G7590KcW/pubembed?start=false&loop=false
 :width: 100%
 :enumerated: false
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/12ZVT3XK4WGY7nm_Z_9FKaTT1h6YxtwCu-sZMBnAROCc/edit?usp=sharing)"
+:title: "Animation that steps through the enumerated text in this section about how the memory stack works. Access [original Google Slides](https://docs.google.com/presentation/d/12ZVT3XK4WGY7nm_Z_9FKaTT1h6YxtwCu-sZMBnAROCc/edit?usp=sharing)"
 :::
 An extended animation of stack memory management in C.
 ::::

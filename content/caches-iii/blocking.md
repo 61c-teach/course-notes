@@ -66,7 +66,7 @@ Computing $C_00$ as vector multiplication of the zero-th row of $A$ and the zero
 :label: anim-matmul-00
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTAFRr4VJ6o2brFhpjCS_edmdWM0j2cKViq6OjTX1XqDhRJWYa68FU07IyZw2oG6g/pubembed?start=false&loop=false
 :width: 100%
-:title: "C[0][0] Memory Access Pattern"
+:title: "Slides walking through a C[0][0] Memory Access Pattern."
 :::
 Computing $C_{00}$ as vector multiplication of the zero-th row of $A$ and the zero-th column of $B$. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1GJiXwZ8gGuZxLxSU5raiTPY_E0I4AQVU/edit?usp=sharing).
 ::::
@@ -196,7 +196,7 @@ Computing $C_{ij}$ as vector multiplication of the i-th row of $A$ and the j-th 
 :label: anim-matmul-ij
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
 :width: 100%
-:title: "C[i][j] Memory Access Pattern"
+:title: "Slides walking through a C[i][j] Memory Access Pattern."
 :::
 Computing $C_{ij}$ as vector multiplication of the i-th row of $A$ and the j-th column of $B$. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1AekxfV7tcsUA0CcpvY4J9jg1YvnWKMfZ/edit?usp=sharing).
 ::::
@@ -390,7 +390,7 @@ Our second cache blocking approach observes that matrix multiplication can be co
 :label: anim-matmul-block-2
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
 :width: 100%
-:title: "C[i][j] Memory Access Pattern"
+:title: "Slides illustrating cache blocking with a C[i][j] Memory Access Pattern."
 :::
 Cache blocking. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1HY9AE2z3eb1eWPx0VQvVusZ83caTvZ5s/edit?usp=drive_link&ouid=113745915748997113650&rtpof=true&sd=true).
 ::::

@@ -205,7 +205,7 @@ The below slidedeck traces through `swap` in action using a toy example. Initial
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTd9HX8X0gtVYXfqM9Fv7-BkzzX7HHsRTjQLMV8zu9FqBTT0-NKepc9RWIJW9lKReYLZAPo16cX3G4V/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1pIqociLW0G65W5Bm4kPh9Kjq7UB64VdcOkhaA1zStxg/edit?usp=sharing)"
+:title: "Animation that steps through the enumerated text in Section C Generics Implementation. Access [original Google Slides](https://docs.google.com/presentation/d/1pIqociLW0G65W5Bm4kPh9Kjq7UB64VdcOkhaA1zStxg/edit?usp=sharing)"
 :::
 
 ## Application: `swap_ends`

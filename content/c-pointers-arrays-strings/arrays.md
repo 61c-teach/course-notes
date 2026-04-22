@@ -27,9 +27,7 @@ title: "Arrays"
 :::{iframe} https://www.youtube.com/embed/J6mhHw7UTPM
 :width: 100%
 :enumerated: false
-:title: "Meet the jewelry making community
-Meet the jewelry making community
-[CS61C FA20] Lecture 05.1 - C Memory Management: Dynamic Memory Allocation s"
+:title: "Lecture 05.1 - C Memory Management: Dynamic Memory Allocation"
 :::
 From 9:36 onwards: Arrays are not pointers example
 ::::

@@ -94,7 +94,7 @@ The below animation traces through a toy example of how a executing arithmetic i
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRzEG3hI-o7XL7oL1njxPvQq0jr7uR3pVlBTtBX6KM82YUC1wROduPqaLwCiS7iU_y9p0hbTTiooPYn/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nt1Qum-w_TcAtcdsT9iVIBhmDbTvjEuiFnK4bv7NeRE/edit?usp=sharing)"
+:title: "Animation that steps through an example of how executing arthimetic instructions will update both the destination register and the program counter register, as detailed in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nt1Qum-w_TcAtcdsT9iVIBhmDbTvjEuiFnK4bv7NeRE/edit?usp=sharing)"
 :::
 
 Above, the processor executes one instruction as follows:

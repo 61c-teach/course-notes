@@ -102,7 +102,7 @@ We can extend this idea to a tiled SIMD approach shown in @fig-simd-dgemm-animat
 :label: fig-simd-dgemm-animate
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQmMcdwMl4VdgEpOtv6WFcddT58fZmS6APz_ZPHzDX4LasA6KPpDdgOZGdtShY4J4cdS3htIpi4wSZz/pubembed?start=false&loop=false
 :width: 100%
-:title: "SIMD `dgemm`"
+:title: "Slides walking through tiled SIMD `dgemm` matrix multiplication, as discussed in this section."
 :::
 SIMD `dgemm` tiled matrix multiplication. The outlined boxes indicate which values are loaded into the 256-bit-wide registers. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1luqaX7cXBd158mvN9ZJDBcNa5O2MK4aWIZcrm1wsXeo/edit?usp=sharing).
 ::::

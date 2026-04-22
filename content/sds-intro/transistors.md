@@ -36,7 +36,7 @@ subtitle: "This content is not tested. By John Wawrzynek"
 
 :::{iframe} https://www.youtube.com/embed/BoRlclML3tE?
 :width: 100%
-:title: "Water analogy of electrical systems"
+:title: "Video detailing a water analogy for electrical systems."
 :::
 
 ::::
@@ -46,7 +46,7 @@ subtitle: "This content is not tested. By John Wawrzynek"
 :class: dropdown
 :::{iframe} https://www.youtube.com/embed/8f3l8KaVcBg?
 :width: 100%
-:title: "Bipolar transistor model - Blender animation"
+:title: "Video detailing a Bipolar transistor model - Blender animation."
 :::
 
 ::::
@@ -57,7 +57,7 @@ Relevant slides:
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRnOm001_KVT3IhaHdSJ_6GxXhB5wQAtLrV0c60tdlgD35vtewNsprWXJ9sX-TurxiyCmlE-QHuF7Aj/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the content described in the videos in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1qe4xrtkAFFO6dUE7RPB5main2ESWy51Q-_-6_RjboqQ/edit?usp=sharing"
+:title: "Animation that steps through the background and details of switches and transistors, as shown in the videos in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1qe4xrtkAFFO6dUE7RPB5main2ESWy51Q-_-6_RjboqQ/edit?usp=sharing"
 :::
 
 
