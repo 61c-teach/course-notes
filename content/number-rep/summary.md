@@ -31,9 +31,146 @@ P&H: 2.4
 
 [Dan Garcia's Binary Slides, Fall 2025](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/garcia_binary_slides.pdf)
 
-Amazing Illustrations by Ketrina (Yim) Thompson: CS Illustrated Number Rep Handouts
+Amazing Illustrations by Ketrina (Yim) Thompson: [CS Illustrated](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-79.html) Number Rep Handouts
 
 * [Comparing Binary Integer Representations](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-1-handout.pdf)
 * [Negation and Zeroes](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-2-comparing-handout.pdf)
 * [Increments and Monotonicity](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-3-comparing-handout.pdf)
 * [The Thrilling Conclusion!](https://csillustrated.berkeley.edu/PDFs/handouts/integer-representations-4-comparing-handout.pdf)
+
+## Exercises
+Check your knowledge!
+
+### Conceptual Review
+
+:::{exercise}
+:label: num-01
+1. What is a bit? How many bits are in a byte? Nibble?
+:::
+
+:::{solution} num-01
+:label: num-01-sol
+:class: dropdown
+
+A bit is the smallest unit of digital information and it can be either 0 of 1. There are 4 bits in a nibble and 8 bits in a byte.
+
+<!--See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_154#slide=id.g2af3b38b3e2_1_154)-->
+:::
+
+:::{exercise}
+:label: num-02
+2. What is overflow?
+:::
+
+:::{solution} num-02
+:label: num-02-sol
+:class: dropdown
+
+When the result of an arithmetic operation is outside the range of what is representable by given number of bits.
+
+<!--See: [Lecture 2 Slide 26](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_186#slide=id.g2af3b38b3e2_1_186)-->
+:::
+
+:::{exercise}
+:label: num-03
+3. What is the range of numbers representable by $n$-bit unsigned, sign-magnitude, one's complement, two's complement, and biased notation?
+:::
+
+:::{solution} num-03
+:label: num-03-sol
+:class: dropdown
+
+* **Unsigned**: $[0, 2^n-1]$
+* **Sign-Magnitude**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
+* **One's complement**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
+* **Two's complement**: $[-2^{n-1}, 2^{n-1} - 1]$
+* **Bias**: $[0+$bias$, 2^n-1+$bias$]$
+
+<!--See:  [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)-->
+:::
+
+:::{exercise}
+:label: num-04
+4. How many ways to represent zero do these representations have, $n$-bit unsigned, sign-magnitude, one's complement, two's complement, and biased notation?
+:::
+
+:::{solution} num-04
+:label: num-04-sol
+:class: dropdown
+* **Unsigned**: 1
+* **Sign-Magnitude**: 2
+* **One's complement**: 2
+* **Two's complement**: 1
+* **Bias**: 1 or 0 (depending on bias)
+
+<!--See: [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)-->
+:::
+
+### Short Exercises
+
+:::{exercise}
+:label: num-05
+1. **True/False**: Depending on the context, the same sequence of bits may represent different things.
+:::
+
+:::{solution} num-05
+:label: num-05-sol
+:class: dropdown
+**True.** The same bits can be interpreted in many different ways with the exact same bits! The bits can represent anything from an unsigned number to a signed number or even, as we will cover later, a program. It is all dependent on its agreed upon interpretation.
+:::
+
+:::{exercise}
+:label: num-06
+2. **True/False**: If you interpret a $N$-bit Two's complement number as an unsigned number, negative numbers would be smaller than positive numbers.
+:::
+
+:::{solution} num-06
+:label: num-06-sol
+:class: dropdown
+**False.** In Two’s Complement, the MSB is always 1 for a negative number. This means EVERY
+negative number in Two’s Complement, when converted to unsigned, will be larger than the
+positive numbers.
+:::
+
+:::{exercise}
+:label: num-07
+3. **True/False**: We can represent fractions and decimals in our given number representation formats (unsigned, biased, and Two’s Complement).
+:::
+
+:::{solution} num-07
+:label: num-07-sol
+:class: dropdown
+**False.** Our current representation formats has a major limitation; we can only represent and do arithmetic with integers. To successfully represent fractional values as well as numbers with extremely high magnitude beyond our current boundaries, we need another representation format.
+:::
+
+:::{exercise}
+:label: num-08
+4. How many numbers can be represented by an unsigned, base-4, $n$-digit number.
+
+    **A.** 1
+
+    **B.** $2^n - 1$
+
+    **C.** $4^n$
+
+    **D.** $4^{n-1}$
+
+    **E.** $4^n - 1$
+:::
+
+:::{solution} num-08
+:label: num-08-sol
+:class: dropdown
+**C.**
+:::
+
+:::{exercise}
+:label: num-09
+5. How many bits are needed to represent decimal number 116 in binary?
+:::
+
+:::{solution} num-09
+:label: num-09-sol
+:class: dropdown
+**7 bits**. $(116)_{10} =$ `0b111 0100` or $log{_2}{116} \approx 6.85$ which we round to 7 bits.
+:::

@@ -16,9 +16,9 @@ nested function calls (LIFO structure), and shrinks upwards as functions return.
 realloc. Used for data that needs to persist after the function returns. Grows upwards in
 memory to ‘meet’ the stack. Memory on the heap is only freed when the programmer explicitly
 frees it. Careful heap management is necessary to avoid tricky bugs called Heisenbugs!
-* **Static data**: Stores data that is a fixed size, like global variables and string literals. Does not
+* **Data (or Static)**: Stores data that is a fixed size, like global variables and string literals. Does not
 grow or shrink through function execution.
-* **Code (or Text)**: Is loaded at the start of the program and does not change after, contains
+* **Text (or Code)**: Is loaded at the start of the program and does not change after, contains
 executable instructions and any pre-processor macros.
 
 There are a number of functions in C that can be used to dynamically allocate memory on the
@@ -43,3 +43,54 @@ K&R 7.8.5, 8.7
 
 * Professor Emeritus Brian Harvey's [notes on C](https://inst.eecs.berkeley.edu/~cs61c/resources/HarveyNotesC1-3.pdf)
 * Professor Emeritus Paul Hilfinger's [notes on memory management](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/pnh.stg.mgmt.pdf)
+
+## Exercises
+Check your knowledge!
+
+### Conceptual Review
+
+:::{exercise}
+:label: c-mm-01
+1. **True/False**: Memory sectors are defined by the hardware, and cannot be altered.
+:::
+
+:::{solution} c-mm-01
+:label: c-mm-01-sol
+:class: dropdown
+
+**False.** The four major memory sectors, stack, heap, static/data, and text/code for any given process (application) are defined by the operating system and may differ depending on what kind of memory is needed for it to run.
+:::
+
+:::{exercise}
+:label: c-mm-02
+2. What's an example of this process that might need significant stack space, but very little text, static data, and heap space?
+:::
+
+:::{solution} c-mm-02
+:label: c-mm-01-sol
+:class: dropdown
+
+(Almost any basic deep recursive scheme, since you're making many new function calls on top of each other without closing the previous ones, and thus, stack frames.)
+:::
+
+:::{exercise}
+:label: c-mm-03
+3. What's an example of a text- and static data- heavy process?
+:::
+
+:::{solution} c-mm-03
+:label: c-mm-03-sol
+:class: dropdown
+(Perhaps a process that is incredibly complicated but has efficient stack usage and does not dynamically allocate memory.)
+:::
+
+:::{exercise}
+:label: c-mm-04
+4. What's an example of a heap-heavy process?
+:::
+
+:::{solution} c-mm-04
+:label: c-mm-04-sol
+:class: dropdown
+(Maybe if you're using a lot of dynamic memory that the user attempts to access.)
+:::

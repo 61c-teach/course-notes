@@ -83,6 +83,7 @@ if (!tp) { ... }
 ^^^
 ```c
 uint32_t *ptr = malloc(20*sizeof(uint32_t));
+if (!ptr) { ... }
 ```
 :::
 
