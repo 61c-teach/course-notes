@@ -270,7 +270,7 @@ The `partial_store.circ` circuit in the course project is designed to take data 
 
 * Of the word's byte addresses `0-1-2-3`, we actually want to just write one byte at address `3`, because the bottom 2 bits of the address `3` are `0b11` (and it is an `sb` instruction).
 * Make a 32-bit value where bits 24-31 are the 8 bits we want to store to memory.[^doesnt-matter]
-* Make a 4-bit writemask `0b0001`, which says to only write the zeroth byte to memory, leaving the other bytes in the memory word unchanged.
+* Make a 4-bit writemask `0b1000`, which says to only write the third byte to memory, leaving the other bytes in the memory word unchanged.
 
 **Example 2**: Suppose we had a `sh` instruction on address `2` = `0b000010`.
 

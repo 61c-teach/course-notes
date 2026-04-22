@@ -25,6 +25,7 @@ Threads are an easy way to describe/think about parallelism, but their implement
 
 ## Thread model of execution
 
+(sec-thread-state)=
 ### Thread state
 
 Each thread maintains state as shown in @fig-single-multi-thread:
@@ -136,9 +137,11 @@ Up until now we have maintained that **one core** has **one hardware therad** ru
 * **Logical CPUs**: Effectively, the number of hardware threads.
 * **Physical CPUs** are the true number of hardware cores, where each core could potentially have multiple logical CPUs due to multithreading.
 
-Intel chips use hardware multithreading[^intel], whereas many modern Apple chips do not. The below `lscpu` command run on our course hive machines tells us that we have six physical cores and two threads per core for a total of 12 logical CPUs.
+Intel chips use hardware multithreading[^intel], whereas many modern Apple chips do not. The below `lscpu` command[^hive-lscpu] run on our course hive machines tells us that we have six physical cores and two threads per core for a total of 12 logical CPUs.
 
 ```{code} bash
+:label: code-hive-lscpu
+
 $ lscpu
 CPU(s):                   12
   On-line CPU(s) list:    0-11
@@ -153,6 +156,8 @@ Vendor ID:                GenuineIntel
 ```
 
 [^intel]: Intel uses yet another term to describe hardware multithreading: hyperthreading. Woo terminology!!
+
+[^hive-lscpu]: `lscpu` also lists the extensions available on this machine: `pu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2a pic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp vnmimd_clear flush_l1d arch_capabilities ibpb_exit_to_user`
 
 :::{warning} Hardware multithreading is out of scope
 
