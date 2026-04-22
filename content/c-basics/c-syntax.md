@@ -73,6 +73,7 @@ Important:
 * Structs are **not** objects.
 * The dot (`.`) operator is therefore not a method call; it merely accesses data at a specific location. More later.
 
+(sec-preprocessor)=
 ### C Preprocessor Macros, `#define`
 
 `#define PI (3.14159)` is a CPP (C Preprocessor) macro. Prior to compilation, preprocess by performing string replacement in the program based on all `#define macros`. The line above replaces all `PI` with `(3.14159)` and in effect makes `PI` a "constant."
