@@ -82,7 +82,7 @@ Because the floating point standard represents fractional components, it must no
 :::{figure} images/over-under-flow.png
 :label: fig-over-under-flow
 :width: 100%
-:alt: "TODO"
+:alt: "Number-line sketch of floating-point range showing overflow beyond about plus or minus 3.4 times 10^38 and an underflow gap around zero between approximately minus 1.2 times 10^-38 and plus 1.2 times 10^-38."
 
 Floating point representations can encounter both overflow and underflow.
 :::
@@ -172,7 +172,7 @@ However, when we consider the mathematical range in question in @fig-underflow, 
 :::{figure} images/underflow.png
 :label: fig-underflow
 :width: 100%
-:alt: "TODO"
+:alt: "Zoomed number line near zero showing the smallest normalized positive value at 2^-126 and a much smaller local spacing of 2^-149 between nearby normalized values."
 
 Because of underflow, there is a "gap" of representable numbers around zero.
 :::
@@ -245,7 +245,7 @@ The "implicit exponent" for denorms is the smallest normalized exponent: $2^{1 -
 :::{figure} images/underflow-gradual.png
 :label: fig-underflow-gradual
 :width: 100%
-:alt: "TODO"
+:alt: "Gradual-underflow diagram showing denormalized values filling the region between zero and the smallest normalized value, with uniform tiny steps that connect smoothly to the normalized range."
 
 Gradual underflow by specifying **denormalized numbers** in the IEEE 754 standard.
 :::

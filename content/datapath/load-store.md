@@ -44,6 +44,7 @@ Loads (and stores) participate in the `MEM` phase of [the five step process](#se
 ::::{figure} images/lw-new-blocks.png
 :label: fig-lw-new-blocks
 :width: 100%
+:alt: "Load datapath additions: DMEM connected to the ALU-computed address and a writeback mux selecting between ALU result and memory data."
 
 DMEM: Connect and use a mux before `WB` (Write Back) phase.
 ::::
@@ -59,16 +60,17 @@ DMEM: Connect and use a mux before `WB` (Write Back) phase.
 :label: anim-datapath-lw
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-load.pptx
 :width: 100%
-:title: "Tracing the `lw` Datapath"
+:title: "Slides tracing through the `lw` Datapath."
 :::
 The `lw` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file. 
 :::: -->
 
 ::::{figure}
 :label: anim-datapath-lw
+:alt: "Embedded slides tracing address calculation, memory read, and register write-back on the single-cycle datapath for a load-word instruction."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRxeC98vPTgADlY5t3P_seJfptV4jyHqG7xxR6X7tcr52EXVEiCtcOQBg_0cgacHA/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `lw` Datapath"
+:title: "Slides tracing through the `lw` Datapath."
 :::
 The `lw` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1UahZFjwYvnpvTWXY9JrPKPvzLzPE00Jg/edit?usp=sharing). 
 ::::
@@ -107,16 +109,17 @@ We **do not** need to add additional blocks for stores, but we will need to:
 :label: anim-datapath-sw
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-store.pptx
 :width: 100%
-:title: "Tracing the `sw` Datapath"
+:title: "Slides tracing through the `sw` Datapath."
 :::
 The `sw` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
 
 ::::{figure}
 :label: anim-datapath-sw
+:alt: "Embedded slides tracing address calculation and memory write on the single-cycle datapath for a store-word instruction."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRiHxdtVBLJ-3cMkMSg7t09c_DM0b4oXInmUggpSThdg0P3Cp4O7gh4ojtZhFfd8g/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `sw` Datapath"
+:title: "Slides tracing through the `sw` Datapath."
 :::
 The `sw` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1QO1RMuVSP-5Y_18RVc8Oy_QMXSK0JYqN/edit?usp=sharing).
 ::::
@@ -171,6 +174,7 @@ Consider @fig-aligned-memory, which shows each byte in memory, referred to by it
 :::{figure} images/aligned-memory.svg
 :label: fig-aligned-memory
 :width: 30%
+:alt: "Byte-addressed memory drawn in rows with red boxes around each aligned 4-byte word boundary to illustrate valid word accesses."
 Diagram of aligned memory (Red boxes around every 4 bytes).
 :::
 

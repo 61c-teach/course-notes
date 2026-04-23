@@ -72,7 +72,7 @@ Consider the assembly code above. In each of the following cases, what is the PC
 :label: fig-offsets
 :width: 80%
 :align: center
-:alt: "TODO"
+:alt: "Assembly at memory addresses 0x0c–0x1c: Loop beq x19 x10 End, then add and addi instructions, an unconditional j Loop instruction, and an End label for a target instruction; curved arrows show a forward branch from beq to End and a backward jump from j Loop to Loop."
 
 Code illustrated example with jump operation.
 :::

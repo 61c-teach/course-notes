@@ -113,6 +113,7 @@ In this course, we implement the controller design in @fig-control-design, which
 
 :::{figure} images/control-design.png
 :label: fig-control-design
+:alt: "Controller design with ROM block and decoder symbol generating most control signals from instruction bits and a take-branch logic block generating PCSel from BrEq and BrLT."
 
 Suggested control design has two parts.
 

@@ -38,7 +38,7 @@ Toggle between the visualizations below to visualize the five-stage pipelined da
 :::{figure} images/five-stage-pipeline.png
 :label: fig-five-stage-pipeline
 :width: 100%
-:alt: "TODO"
+:alt: "Five-stage pipeline datapath with IF, ID, EX, MEM, and WB separated by pipeline registers."
 
 Five-stage RISC-V datapath diagram. Pipeline registers are inserted between stages to hold signals until the next clock cycle.
 :::
@@ -47,7 +47,7 @@ Five-stage RISC-V datapath diagram. Pipeline registers are inserted between stag
 :::{figure} images/five-stage-single-cycle.png
 :label: fig-five-stage-single-cycle
 :width: 100%
-:alt: "TODO"
+:alt: "Single-cycle datapath partitioned into the five logical instruction-execution steps for comparison."
 
 Single-cycle RISC-V datapath, separated into the [five steps](#sec-five-steps).
 :::
@@ -121,9 +121,10 @@ Below, we explain @fig-five-stage-pipeline-registers from the perspective of wha
 
 ::::{figure}
 :label: fig-five-stage-pipeline-registers
+:alt: "Embedded slides animating what each set of pipeline registers captures between IF, ID, EX, MEM, and WB stages in the five-stage RISC-V datapath."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSMgaBei-28IrooFMzb-ygC5ZURZV2WCwkfozWm8e6q74JxnLWYUySPoWurEwVVUgAL7rDPgbnxmULt/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1U2q6p5iPYqNPFLD4cDYgE2T4o7FA0dfSVsiAt0qBCsA/edit?usp=sharing)"
+:title: "Animation that steps through the pipeline registers in the five stage datapath, including what is fed into each, as discussed in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1U2q6p5iPYqNPFLD4cDYgE2T4o7FA0dfSVsiAt0qBCsA/edit?usp=sharing)"
 :::
 Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1U2q6p5iPYqNPFLD4cDYgE2T4o7FA0dfSVsiAt0qBCsA/edit?usp=sharing). A more complete picture is in @fig-five-stage-summary.
 ::::
@@ -199,7 +200,7 @@ We note there is nothing special to control in the `IF` stage, because the contr
 :::{figure} images/five-stage-with-control.png
 :label: fig-five-stage-control
 :width: 100%
-:alt: "TODO"
+:alt: "Five-stage pipeline diagram annotated with control signals carried and used at later stages."
 
 Five-stage RISC-V processor diagram with control.
 :::
@@ -214,7 +215,7 @@ One approach computes as many control signals as possible during instruction dec
 :::{figure} images/pipelined-control.png
 :label: fig-pipelined-control
 :width: 80%
-:alt: "TODO"
+:alt: "Added pipeline register fields for control bits flowing alongside datapath values between stages."
 
 Diagram of additional pipelined register for control.
 :::
@@ -228,7 +229,7 @@ The full five-stage pipeline processor is shown in @fig-five-stage-summary; this
 :::{figure} images/five-stage-summary.png
 :label: fig-five-stage-summary
 :width: 100%
-:alt: "TODO"
+:alt: "Combined summary diagram of five-stage datapath and associated pipelined control paths."
 
 Five-stage RISC-V processor diagram: datapath and control.
 :::

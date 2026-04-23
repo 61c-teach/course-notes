@@ -47,7 +47,7 @@ With the ability to perform SIMD multiplication, it is tempting to use our new 2
 :::{figure} images/dgemm-simd-naive.png
 :label: fig-dgemm-simd-naive
 :width: 90%
-:alt: "TODO"
+:alt: "Diagram of naive SIMD DGEMM using three matrix panels labeled A, B, and C. Row 0 of A and several columns of B are outlined or shaded to show which operands load into wide SIMD registers for one dot-product step; element C[0,0] is emphasized as the accumulator slot. The figure illustrates packing several independent multiplies from the same dot product into one SIMD instruction stream before summing into C."
 
 "Naive" SIMD DGEMM that leverages SIMD architecture registers to parallelize multiplications _within_ a single dot product. The outlined boxes indicate which values are loaded into the 256-bit-wide registers.[^block-assumption]
 
@@ -71,7 +71,7 @@ We next apply cache blocking by first transposing B, then leveraging our 256-bit
 :::{figure} images/dgemm-simd-transpose.png
 :label: fig-dgemm-simd-transpose
 :width: 90%
-:alt: "TODO"
+:alt: "Same three-matrix layout as the naive SIMD case but B is shown transposed so consecutive memory accesses align with SIMD loads. Row 0 of A and contiguous strips along the transposed B layout are highlighted to indicate 256-bit-wide register fills; C[0,0] remains the highlighted output cell. The diagram stresses that transposing B turns column walks into row-major-friendly blocks for the SIMD kernel."
 
 "Transposed" SIMD DGEMM that uses a transposed B to load in columns of B to streamline memory accesses. The outlined boxes indicate which values are loaded into the 256-bit-wide registers.
 :::
@@ -94,7 +94,7 @@ In @fig-dgemm-simd-block, we assume that the product of a scalar with a vector c
 :::{figure} images/dgemm-simd-block.png
 :label: fig-dgemm-simd-block
 :width: 90%
-:alt: "TODO"
+:alt: "Tiled SIMD matrix-multiply illustration split into left and right regions. Left: a row of C with four adjacent elements accumulated in parallel, starting at C[i,j]. Right: cloud-shaped grouping where four elements from row k of B are scaled by the scalar A[i,k] and summed across k iterations; arrows or indices suggest the inner k loop. Together the panels show how a tile reuses A and B data while updating a short vector of C entries per step."
 
 Compute four elements of C (starting with $C_{ij}$) by iteratively adding the result of scaling four elements of the $k$-th row of B (starting with $B_{kj}$) with $A_{ik}$.
 :::
@@ -103,9 +103,10 @@ We can extend this idea to a tiled SIMD approach shown in @fig-simd-dgemm-animat
 
 ::::{figure}
 :label: fig-simd-dgemm-animate
+:alt: "Embedded slides animating tiled SIMD matrix multiply: which matrix elements load into wide SIMD registers and how partial sums advance across an eight-by-eight example."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQmMcdwMl4VdgEpOtv6WFcddT58fZmS6APz_ZPHzDX4LasA6KPpDdgOZGdtShY4J4cdS3htIpi4wSZz/pubembed?start=false&loop=false
 :width: 100%
-:title: "SIMD `dgemm`"
+:title: "Slides walking through tiled SIMD `dgemm` matrix multiplication, as discussed in this section."
 :::
 SIMD `dgemm` tiled matrix multiplication. The outlined boxes indicate which values are loaded into the 256-bit-wide registers. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1luqaX7cXBd158mvN9ZJDBcNa5O2MK4aWIZcrm1wsXeo/edit?usp=sharing).
 ::::
@@ -321,7 +322,7 @@ static inline avx256_t avx_mul_add(avx256_t A, avx256_t B, avx256_t C) {
 :::{figure} images/simd-col-major.png
 :label: fig-simd-col-major
 :width: 100%
-:alt: "TODO"
+:alt: "On the left: cloud symbol encompassing a 4-element column vector times a single element. On the right, two column vectors multiplied together, the first identical to the original column vector, and the second is a new 4-element column vector set with four copies of the original single element. A right-pointing arrow connects the two sides and is labeled vec_setnum."
 
 SIMD Scalar `dgemm` Matrix Multiplication - result stored in column major order.
 :::

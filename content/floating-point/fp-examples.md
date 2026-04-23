@@ -142,7 +142,7 @@ Explanation (for now) is by image (@fig-float-ex3):
 :::{figure} images/float-ex3.png
 :label: fig-float-ex3
 :width: 100%
-:alt: "TODO"
+:alt: "Worked conversion for Example 3 from IEEE 754 binary to decimal, parsing sign, exponent, and significand from 0b00110100010101010100001101000010 and concluding the decimal answer is 1.986 times 10^-7."
 
 Example 3, explained
 :::
@@ -170,7 +170,7 @@ Explanation (for now) is by image (@fig-float-ex4):
 :::{figure} images/float-ex4.png
 :label: fig-float-ex4
 :width: 100%
-:alt: "TODO"
+:alt: "Worked conversion for Example 4 from decimal -23.40625 to IEEE 754 binary fields, showing normalization, biasing the exponent, and resulting sign-exponent-significand bit pattern."
 
 Example 4, explained
 :::
@@ -199,7 +199,7 @@ Explanation (for now) is by image (@fig-float-ex5):
 :::{figure} images/float-ex5.png
 :label: fig-float-ex5
 :width: 100%
-:alt: "TODO"
+:alt: "Worked example 5 showing representation of one-third in IEEE 754 floating point with repeating binary fraction 0.010101..., normalized form, exponent -2 plus bias, and truncated significand bits."
 
 Example 5, explained
 :::

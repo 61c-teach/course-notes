@@ -8,6 +8,7 @@ title: "Summary"
 The IEEE 754 standard defines a binary representation for floating point values using three fields.
 
 :::{figure} #fig-float
+:alt: "Reprint of the 32-bit IEEE 754 single-precision layout: sign bit, exponent field, and fraction bits ordered from most significant to least significant as in the floating-point representation section."
 Single-Precision (32-bit) Floating Point Representation (reprint of @fig-float from [this section](#sec-fp)). The leftmost bit is the most significant bit; the rightmost bit is the least significant bit.
 :::
 
@@ -27,6 +28,7 @@ $$\text{Value} = (−1)^{\text{Sign}} × 2^{\text{Exp}+\text{Bias}+1} × 0.\text
 When translating between binary and decimal floating point values, we must remember that there is a bias for the exponent.
 
 :::{figure} #tab-float-exp-fields
+:alt: "Reprint of the table summarizing IEEE 754 single-precision exponent encodings for normalized, denormalized, infinity, and NaN cases from the special floating-point values section."
 The IEEE 754 single-precision exponent field has values from $0$ to $255 (reprint of @tab-float-exp-fields from [this section](#sec-special-floats)).
 :::
 

@@ -58,7 +58,7 @@ This line tells the compiler that the variable `p` is the address of an `int`. L
 :::{figure} images/ptr-syntax-line1.png
 :label: fig-ptr-syntax-line1
 :width: 60%
-:alt: "TODO"
+:alt: "Initial state after declaration: pointer variable p exists at address 0x100 but holds an uninitialized unknown value, while integer x at 0x104 is set to 3."
 Declare a pointer variable.
 :::
 
@@ -77,7 +77,7 @@ In @fig-ptr-syntax-line4, two visual cues show this assignment. First, there is 
 :::{figure} images/ptr-syntax-line3.png
 :label: fig-ptr-syntax-line3
 :width: 60%
-:alt: "TODO"
+:alt: "After assignment p = &x, pointer p stores address 0x104 and points to x."
 
 Set `p` to point to `x`.
 :::
@@ -97,7 +97,7 @@ The star (`*`) is ([also](#deref-two-ways)) the **dereference operator**. Colloq
 :::{figure} images/ptr-syntax-line4.png
 :label: fig-ptr-syntax-line4
 :width: 60%
-:alt: "TODO"
+:alt: "A black arrow between pointer p and x shows that dereferencing p follows address 0x104 to the integer x and reads value 3."
 
 Follow the pointer `p`, i.e., access the value that `p` points to.
 :::
@@ -121,7 +121,7 @@ This syntax also uses the star `*` to dereference. Here, because it is on the le
 :::{figure} images/ptr-syntax-line5.png
 :label: fig-ptr-syntax-line5
 :width: 60%
-:alt: "TODO"
+:alt: "A new value for x demonstrates assignment through a pointer update: *p = 5 overwrites x from 3 to 5 while p still stores 0x104."
 
 Update the value that `p` points to.
 :::
@@ -166,7 +166,7 @@ int main() {
 :::{figure} images/pass-by-value.png
 :label: fig-pass-by-value
 :width: 30%
-:alt: "TODO"
+:alt: "Pass-by-value example showing rectangles for variables x and y where local parameter x changes from 3 to 4, but caller variable y remains 3."
 
 `y` is not updated.
 :::
@@ -199,7 +199,7 @@ int main() {
 :::{figure} images/pass-by-value-ptr.png
 :label: fig-pass-by-value-ptr
 :width: 30%
-:alt: "TODO"
+:alt: "Pass-by-pointer example where p stores address 0x100 of y, and writing through p updates y from 3 to 4."
 
 `y` is updated from within the `add_one` function.
 :::
@@ -223,7 +223,7 @@ The example in @fig-garbage-addresses shows code that will compile (albeit with 
 :::{figure} images/garbage-addresses.png
 :label: fig-garbage-addresses
 :width: 60%
-:alt: "TODO"
+:alt: "Code sketch with uninitialized int pointer ptr and statement *ptr = 5, alongside a box of unknown bits for ptr and an arrow to an unknown location. The figure illustrates undefined behavior from writing through a garbage address."
 
 The bytes stored at `ptr` are interpreted as an address of an `int`. This code could potentially update `5` in a random part of memory.
 :::
@@ -270,7 +270,7 @@ Regardless of pointer type, the pointer to the all-zero address is special. This
 :::{figure} images/null.png
 :label: fig-null
 :width: 40%
-:alt: "TODO"
+:alt: "Pointer initialization with NULL: char pointer p stores the all-zero address 0x00000000."
 
 The compiler resolves `NULL` to an address of all zeros, i.e., where all bits are 0.
 :::
@@ -351,7 +351,7 @@ ptr1 = ptr2;
 :::{figure} images/struct-pointers-q.png
 :label: fig-struct-pointers-q
 :width: 100%
-:alt: "TODO"
+:alt: "Starting struct-pointer state before ptr1 = ptr2: ptr2 stores 0x100 and points to a struct with fields x = 3 and y = 4, while ptr1 has an unspecified value."
 
 Starting state before executing the line `ptr1 = ptr2;
 :::
@@ -366,7 +366,7 @@ The state is updated to @fig-struct-pointers-choiceb. Colloquially, pointers `pt
 :::{figure} images/struct-pointers-choiceb.png
 :label: fig-struct-pointers-choiceb
 :width: 100%
-:alt: "TODO"
+:alt: "State after ptr1 = ptr2: both ptr1 and ptr2 store 0x100 and point to the same struct with fields x = 3 and y = 4."
 
 Starting state before executing the line `ptr1 = ptr2;
 :::
@@ -404,7 +404,7 @@ int main() {
 :::{figure} images/array-indexing.png
 :label: fig-ptr-indexing
 :width: 80%
-:alt: "TODO"
+:alt: "Memory layout before calling increment_ptr in the failing single-pointer version: arr holds 50, 60, and 70, and pointer q, located at memory address 0x120, stores 0x100 pointing to arr[0]."
 
 Memory layout before executing Line 10 in @code-pointer-handles-fail. We discuss arrays [later in this chapter](#sec-array).
 :::
@@ -438,7 +438,7 @@ int main() {
 :::{figure} images/pointer-handles-success.png
 :label: fig-pointer-handles-success
 :width: 70%
-:alt: "TODO"
+:alt: "Two-panel handle example: during the call, double pointer h stores address 0x120 of pointer q, which points to arr[0] (value 50). After an update to pointer q from 0x100 to 0x104, q now points to arr[1] (value 60)."
 
 @code-pointer-handles-success: Memory layout (top) during `increment_ptr` call and (bottom) after returning to `main`.
 :::

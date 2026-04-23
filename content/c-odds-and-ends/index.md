@@ -232,7 +232,7 @@ uint32_t y = N & ((N << 0x10) >> 0x8);
 :::{figure} images/bit-shift.png
 :label: fig-bit-shift
 :width: 50%
-:alt: "TODO"
+:alt: "Bitwise-AND operation between 0x000034FF and 0x0034FF00, producing 0x00003400. The middle bytes are highlighted to show the bitwise-AND between bytes 0x34 and 0xFF where only overlapping 1 bits are kept."
 
 Result of `N & (N << 0x10) >> 0x8`, i.e., `0x000034FF & 0x0034 FF00`
 :::

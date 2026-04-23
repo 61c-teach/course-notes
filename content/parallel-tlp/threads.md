@@ -37,7 +37,7 @@ Each thread maintains state as shown in @fig-single-multi-thread:
 :::{figure} images/single-v-multi-thread.png
 :label: fig-single-multi-thread
 :width: 90%
-:alt: "TODO"
+:alt: "Side-by-side process diagrams: left process box encloses one thread of execution with a single stack and register context; right process box encloses several threads each with its own stack pointer region but shared code and heap segments. Annotations highlight what is duplicated versus shared."
 
 Single-threaded process vs. multi-threaded process.
 :::
@@ -49,7 +49,7 @@ We assume that multi-threaded processes run using the **fork-join model** in @fi
 :::{figure} images/fork-join-model.png
 :label: fig-fork-join
 :width: 100%
-:alt: "TODO"
+:alt: "Fork-join timeline: a main thread proceeds serially, then a fork point fans out into several parallel child segments that execute concurrently, each with its own labeled interval, before a join barrier resynchronizes all paths back to a single continuation on the main thread. Vertical synchronization lines mark fork and join events."
 
 Fork-join model over time with multiple parallel tasks off the main thread. **Top**: Parallel Task I is composed of concurrent threads A, B, C; Task II is composed of A, B, C, and D; Task III is composed of A, B. **Bottom**: Main Thread forks into the three threads for Parallel Task I, then joins, then forks into the four threads for Parallel Task II, then joins, then forks into the two threads for Parallel Task III, then joins and finishes execution.
 :::
@@ -103,7 +103,7 @@ A special program called the **Operating System** "multiplexes"[^multiplex] mult
 :::{figure} images/process-v-time-threads.png
 :label: fig-process-v-time-threads
 :width: 40%
-:alt: "TODO"
+:alt: "Stacked timeline comparing one process containing a single thread against another process expanded into multiple threads of control. Vertical time lines show program counters advancing; the multithreaded version duplicates instruction pointer tracks or shows concurrent bursts inside one address space."
 
 Process over time when executing multiple threads on a single-core CPU.
 :::
@@ -180,7 +180,7 @@ Briefly—the hardware multithreading model is in @fig-hardware-multithreading. 
 :::{figure} images/hardware-multithreading.png
 :label: fig-hardware-multithreading
 :width: 70%
-:alt: "TODO"
+:alt: "Block diagram of a core exposing multiple hardware thread contexts with separate PCs and register files while sharing execution units and caches, illustrating simultaneous multithreading or hyper-threading style overlap."
 
 Hardware multithreading: multiple threads *active* in the same processor.
 :::

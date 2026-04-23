@@ -26,7 +26,7 @@ Now, we move **below** the orange line of our Great Idea #1. **How do we design 
 
 :::{figure} #fig-great-idea-1
 :width: 100%
-:alt: "TODO"
+:alt: "Layered abstraction diagram: compiler, assembler, then machine code above an ISA line, with hardware architecture and logic circuits below. The right side shows matching examples from C and RISC-V assembly through binary, a processor block diagram, and NAND gate logic."
 
 Great Idea #1: Abstraction.
 :::
@@ -48,7 +48,7 @@ Core (heh) to the modern computer are many types of **integrated circuits**, whi
 :::{figure} images/apple-a14.jpg
 :label: fig-apple-a14
 :width: 70%
-:alt: "TODO"
+:alt: "Labeled die photograph of a system-on-chip: major regions outlined for GPU, system cache, CPU clusters with L2 caches, neural engine, and DDR memory interfaces along the die edges."
 
 Apple A14 Bionic Chip (sources: [Wikipedia](https://en.wikipedia.org/wiki/Apple_A14), [TechInsights](https://www.techinsights.com/blog/two-new-apple-socs-two-market-events-apple-a14-and-m1))
 :::
@@ -85,7 +85,7 @@ In digital circuits, each wire can take on one of two values via a binary repres
 :::{figure} images/bin-wire.jpg
 :label: fig-bin-wire
 :width: 60%
-:alt: "TODO"
+:alt: "Voltage-axis diagram: separate shaded bands for the 0 range and 1 range with ideal level lines, and a middle gap labeled as an intermediate undefined region between valid binary levels."
 
 Low voltage is `0`; high voltage is `1`.
 :::
@@ -95,7 +95,7 @@ For digital circuits, we keep signals **simple** (i.e., binary values only) and 
 :::{figure} images/binary-rep-signals.png
 :label: fig-bin-rep-signals
 :width: 60%
-:alt: "TODO"
+:alt: "Eight parallel wires labeled x7 through x0 are shown equivalent to a single thick wire labeled X with a slash, denoting one 8-bit bus as shorthand for eight single-bit wires."
 
 (left) eight wires, each representing binary variables $x_0$ to $x_7$; (right) one bundle of wires representing an 8-bit variable $X$.
 :::
@@ -119,7 +119,7 @@ The evolution and design of the transistor is discussed in [Great Idea #2: Moore
 :::{figure} ../great-ideas/images/2-moores-law.png
 :label: fig-great-idea-2
 :width: 100%
-:alt: "TODO"
+:alt: "Log-scale line graph of transistors per die versus year from 1960 to 2010, comparing Moore’s 1965 data, memory chips, and Intel microprocessors, with inset die photos for early and mid-1990s processors."
 
 Visual of Moore's Law over time.
 :::
@@ -143,7 +143,7 @@ Consider NAND, which takes two binary inputs and produces a binary output that i
 :::{figure} images/equivalence-nand.png
 :label: fig-equivalence-nand
 :width: 100%
-:alt: "TODO"
+:alt: "Five equivalent NAND depictions in a row: CMOS transistor schematic, NAND block, logical definition y equals NAND of a and b, standard NAND gate symbol, and a two-input truth table."
 
 NAND gate. We will mostly use the representations on the right-hand-side.
 :::

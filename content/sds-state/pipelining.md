@@ -35,7 +35,7 @@ Suppose we had the need to cascade two combinational logic circuits, an adder an
 :::{figure} images/non-pipelined-adder.png
 :label: fig-non-pipelined-adder
 :width: 100%
-:alt: "TODO"
+:alt: "On the left, a non-pipelined-adder, comprised of a register, adder logic, shifter, and a second register. On the right, timing diagrams showing the common clock and how input and shifter output values change to result in one full add-then-shift completed per clock cycle."
 
 Diagram of a *non-pipelined* add/shift circuit and the associated timing diagram.
 :::
@@ -51,7 +51,7 @@ If we felt that the clock period for the correctly functioning circuit was too l
 :::{figure} images/pipelined-adder.png
 :label: fig-pipelined-adder
 :width: 100%
-:alt: "TODO"
+:alt: "On the left, a pipelined-adder, comprised of a register, adder logic, additional pipeline register, shifter, and a third register. On the right, timing diagrams showing the common clock and how inputs and all intermediate output values change to result in a two-stage overlap so each stage works every cycle at a shorter period."
 
 Diagram of a *pipelined* add/shift circuit and the associated timing diagram.
 :::
@@ -97,7 +97,7 @@ Pipelining is a good transformation if you are evaluating on results/time, or **
 
 :::{figure} #fig-general-model-sds
 :width: 100%
-:alt: "TODO"
+:alt: "Synchronous system sketch: combinational logic blocks interleaved with registers, optional feedback, and a clock distribution that connects only to register clock pins."
 
 General model for SDS. @fig-general-model-sds in [a previous section](#sec-signal-waveform-clock).
 :::
@@ -105,7 +105,7 @@ General model for SDS. @fig-general-model-sds in [a previous section](#sec-signa
 :::{figure} images/general-model-sds-pipeline.png
 :label: fig-general-model-pipeline
 :width: 100%
-:alt: "TODO"
+:alt: "Same SDS structure with extra pipeline registers slicing long combinational paths to raise clock frequency."
 
 Example diagram of pipelined general SDS model.
 ::: -->

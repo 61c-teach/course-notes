@@ -30,7 +30,7 @@ A FSM has a set of **inputs**, a set of **outputs**, and a finite collection of 
 :::{figure} images/fsm.png
 :label: fig-fsm
 :width: 100%
-:alt: "TODO"
+:alt: "Three-state bubble-and-arc diagram with bidirectional moves between states and a self-loop on the middle state."
 
 Three state FSM diagram with transition arcs and a self-loop.
 :::
@@ -50,7 +50,7 @@ In this circuit, we assume single bit values are applied one per cycle to the in
 :::{figure} images/three1s-timing.png
 :label: fig-three1s-timing
 :width: 100%
-:alt: "TODO"
+:alt: "Timing diagram for input and output of a sequence detector FSM where the output asserts for one cycle when the third consecutive one arrives in the input."
 
 Input and output timing diagram for a circuit detecting three sequential 1 bits.
 :::
@@ -73,7 +73,7 @@ Using the states and state transitions identified above, we can draw the FSM sta
 :::{figure} images/three1s-fsm.png
 :label: fig-three1s-fsm
 :width: 100%
-:alt: "TODO"
+:alt: "Finite state machine diagram with states S0, S1, and S2 counting run length of input ones, resetting on an input zero, and setting the output high for one cycle when leaving state S2."
 
 Complete FSM state diagram for three-state circuit detecting three sequential `1` bits.
 :::
@@ -115,7 +115,7 @@ Next, we need to design a circuit that implements a function to map the input an
 :::{figure} images/three1s-register.png
 :label: fig-three1s-reg
 :width: 70%
-:alt: "TODO"
+:alt: "Present-state register block holding encoded state bits with clocked update for the sequence detector."
 
 1. Register design for present state (PS).
 :::
@@ -125,7 +125,7 @@ Next, we need to design a circuit that implements a function to map the input an
 :::{figure} images/three1s-cl.png
 :label: fig-three1s-cl
 :width: 70%
-:alt: "TODO"
+:alt: "Combinational logic block mapping present state and external input to next-state bits and output."
 
 2. CL design for PS/INPUT $\rightarrow$ NS/OUTPUT.
 :::
@@ -137,7 +137,7 @@ Recall that input bits are applied to the FSM one per clock cycle. Therefore, we
 :::{figure} images/three1s-circuit.png
 :label: fig-three1s-circuit
 :width: 70%
-:alt: "TODO"
+:alt: "Closed-loop datapath where the state register feeds the next-state logic, and whose output loops back to the register inputs with a common clock."
 
 State register and combinational logic implementation of example sequence detector circuit.
 :::
@@ -155,7 +155,7 @@ See [Logic Gates](#sec-logic-gates) and [Boolean Algebra](#sec-boolean-algebra) 
 :::{figure} images/three1s-cl-gates.png
 :label: fig-three1s-cl-gates
 :width: 70%
-:alt: "TODO"
+:alt: "Gate-level schematic for next-state and output logic derived from the three-ones sequence detector truth table."
 
 Combinational logic for example sequence detector circuit.
 :::

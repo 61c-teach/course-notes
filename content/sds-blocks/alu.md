@@ -49,7 +49,7 @@ This ALU is implemented as a combinational logic block in @fig-alu:
 :::{figure} images/alu.png
 :label: fig-alu
 :width: 55%
-:alt: "TODO"
+:alt: "Basic ALU block symbol with 32-bit inputs A and B, 2-bit control S, and 32-bit result R. The black-box ALU symbol can consist of operations such as add, subtract, and, or."
 
 Basic ALU: ADD, SUB, AND, and OR
 :::
@@ -82,7 +82,7 @@ The internal design of our simple ALU is shown in @fig-alu-circuit:
 :::{figure} images/simple-alu.png
 :label: fig-alu-circuit
 :width: 100%
-:alt: "TODO"
+:alt: "Internal ALU datapath showing AND, OR, and add-subtract blocks in parallel. A 4-to-1 mux selects the final 32-bit result from the outputs of the parallel logic blocks."
 
 Basic ALU circuit with three blocks (AND, OR, add/subtract) and a 4-to-1 mux.
 :::

@@ -80,6 +80,7 @@ where the $i$-th rectangle has width $\Delta x$ and height $F(x_i) = \frac{4}{1+
 
 ::::{figure}
 :label: fig-openmp-pi
+:alt: "Embedded slides with diagrams for estimating pi via numerical integration and corresponding OpenMP parallel loop structure discussed in this section."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQj4u8ExC2O8m288BGtkBQzM8SE0bj8TQDCTo9a06ZGIZ-fFBP2y4CDS9Ih_3U0hw/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides associated with the code in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1XyhToa61fNXXBWOOerjT5AgiJs_-iLQI/edit?usp=sharing&ouid=113745915748997113650&rtpof=true&sd=true)"

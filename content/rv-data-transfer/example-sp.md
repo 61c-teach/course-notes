@@ -100,7 +100,7 @@ sw t0 0(sp)        # store int a on stack
 :::{figure} images/sp-example-1.png
 :label: fig-sp-example-1
 :width: 100%
-:alt: "TODO"
+:alt: "Slide for int a = 5: assembly li and sw store 0x00000005 at 0(sp) on the stack; higher stack words show placeholder garbage with a map linking a, b, c, and d to sp offsets."
 
 Line 1 of [Stack Pointer Example](#code-sp-example).
 :::
@@ -138,7 +138,7 @@ sb x0 10(sp)
 :::{figure} images/sp-example-2-costly.png
 :label: fig-sp-example-2-costly
 :width: 100%
-:alt: "TODO"
+:alt: "Byte-by-byte string setup: repeated li and sb instructions place ASCII for string plus a null at 4(sp) through 10(sp); associated stack diagram highlights stored characters in red against garbage elsewhere."
 
 Line 2 of [Stack Pointer Example](#code-sp-example).
 :::
@@ -161,7 +161,7 @@ sw t1 8(sp)        # store rest of string
 :::{figure} images/sp-example-2-concise.png
 :label: fig-sp-example-2-concise
 :width: 100%
-:alt: "TODO"
+:alt: "Concise string setup: two immediates pack stri and ng with padding, then sw at 4(sp) and 8(sp) lay out little-endian words; registers t0 and t1 hold the packed constants."
 
 Line 2 of [Stack Pointer Example](#code-sp-example), concise version.
 :::
@@ -193,7 +193,7 @@ No instructions needed.
 :::{figure} images/sp-example-3.png
 :label: fig-sp-example-3
 :width: 100%
-:alt: "TODO"
+:alt: "Uninitialized int c[10]: slide notes no instructions run; stack shows int a and string data unchanged while 12(sp) onward remains labeled random garbage for c’s reserved space."
 
 Line 3 of [Stack Pointer Example](#code-sp-example).
 :::
@@ -215,7 +215,7 @@ sb t0 52(sp)       # store into d
 :::{figure} images/sp-example-4.png
 :label: fig-sp-example-4
 :width: 100%
-:alt: "TODO"
+:alt: "uint8_t d = b[3]: lb from 7(sp) loads byte 0x69 into t0, then sb writes that byte to 52(sp); memory highlights the indexed character and d’s low byte."
 
 Line 4 of [Stack Pointer Example](#code-sp-example).
 :::
@@ -239,7 +239,7 @@ sw t2 28(sp)       # 12(sp) from c, 16(sp) from [4]
 :::{figure} images/sp-example-5.png
 :label: fig-sp-example-5
 :width: 100%
-:alt: "TODO"
+:alt: "c[4] = a + d example: lw and lbu bring int a and uint8_t d into t0 and t1, add puts the sum in t2, and sw stores it at 28(sp); a diagram lists word offsets 12 through 32 for c[0] through c[5]."
 
 Line 5 of [Stack Pointer Example](#code-sp-example).
 :::

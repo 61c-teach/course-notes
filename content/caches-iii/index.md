@@ -100,6 +100,7 @@ The below diagram shows the hit/miss pattern of various caches when run on a [Ma
 
 :::{figure} images/cache-pedantic-misses.png
 :label: fig-cache-pedantic-misses
+:alt: "Cache-access sequence graphic marking misses in red and hits in white to contrast miss categories for fully associative cache with 1M blocks, fully associative cache with 4 blocks, 2-way-set-associative cache with 4 blocks, and direct mapped cache with 4 blocks."
 
 Cache misses are in red, and cache hits are transparent (in white).
 :::
@@ -108,9 +109,10 @@ As we go through each of the three cache misses by definition, we realize there 
 
 ::::{figure}
 :label: anim-cache-pedantic-misses
+:alt: "Embedded slides walking through conflict misses and equivalent fully associative versus lower-associativity cache behavior for the pedantic example in this section."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR259Lvwi0mq_JUcQbeLD7oLLF-ZvFn1PBihG3YMV09mwtIhw0U08XBnmQXHDced7-vGWrc9RTXOc8B/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nL8eIuc16BVBKdSvs-z3B5huPgI5AHZy3s6wT7nfu4A/edit?usp=sharing)"
+:title: "Slides walking through conflict misses for cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nL8eIuc16BVBKdSvs-z3B5huPgI5AHZy3s6wT7nfu4A/edit?usp=sharing)"
 :::
 ::::
 
