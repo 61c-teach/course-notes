@@ -27,7 +27,7 @@ Pipelining was the primary way people tried to increase processor performance fr
 :::{figure} images/power-density-prediction.png
 :label: fig-power-density-pred
 :width: 80%
-:alt: "TODO"
+:alt: "Projected power-density-over-time trend chart from multicore-era analysis spanning 1970 through 2010. The plot includes labeled comparisons to other thermal references, including a hot plate, a nuclear reactor rocket nozzle, and the surface of the sun."
 
 Power-Density prediction plot. Source: S. Borkar, Intel, circa 2000.
 :::
@@ -88,7 +88,7 @@ The execution time of a third of a program can be accelerated by a factor of 2, 
 :::{figure} images/amdahl-ex01.png
 :label: fig-amdahl-ex01
 :width: 90%
-:alt: "TODO"
+:alt: "Two rectangles compare program execution time with and without enhancement using Amdahl's Law. In the top rectangle, one-third of the original program is highlighted as the fraction that can be optimized with parallel programming. In the bottom rectangle, that portion is shown with a two-times speedup, resulting in a shorter total execution time."
 
 The execution time of a third of a program can be accelerated by a factor of 2 due to some enhancement.
 :::
@@ -111,7 +111,7 @@ If we are looking to write a program that gets a **10x speedup** from this paral
 :::{figure} images/amdahl-ex02.png
 :label: fig-amdahl-ex02
 :width: 90%
-:alt: "TODO"
+:alt: "Amdahl's Law equation showing speedup with enhancement as the inverse of the sum of the serial fraction and the parallel fraction divided by the improvement factor. The equation expresses total program speedup given a parallelizable fraction and a specified parallel speedup."
 
 Assuming a program can be optimized with parallelism, the sequential fraction of program is $s = (1 - \text{fract}_{\text{optimized}})$.
 :::
@@ -140,6 +140,7 @@ As an analogy, consider @fig-parallel-analogy, where we collaborate with an infi
 
 :::{figure} images/parallel-analogy.png
 :label: fig-parallel-analogy
+:alt: "Process-flow analogy for Amdahl’s limits: a single sequential prelude box leads to three parallel swimlanes where different workers fetch or update files simultaneously, each lane labeled with a distinct employee name; curved arrows show concurrent progress. The three lanes reconverge into a final sequential box representing reporting or integration work that cannot overlap, underscoring that parallel segments still leave serial bookends."
 
 Reasonable assumption: Even with parallelization, some fraction of a program will need to run sequentially, e.g., to coordinate the parallel work itself.
 :::
@@ -159,7 +160,7 @@ This theoretical limit is illustrated in @fig-amdahl-plot.
 :::{figure} images/amdahl-plot.png
 :label: fig-amdahl-plot
 :width: 90%
-:alt: "TODO"
+:alt: "Amdahl’s Law plot of achievable speedup versus processor count for different serial fractions. The plot shows the trend line for programs with 50% parallel portion, 75% parallel portion, 90% parallel portion, and 95% parallel portion."
 
 Plot of Amdahl’s Law: Speedup vs. Number of Processors.
 :::
@@ -173,7 +174,7 @@ If we take a vertical line at 128 processors, we see that a 90% parallelizable p
 :::{figure} images/amdahl-plot-annotated.png
 :label: fig-amdahl-plot-annotated
 :width: 75%
-:alt: "TODO"
+:alt: "Annotated Amdahl speedup vs. number of processors plot highlighting that all trend lines begin to reach a steady state asymptotic limit in speedup from non-parallelizable program portions once they reach 128 processors."
 
 Consider the speedup described in the [Quick Check](#sec-amdahl-quick-check).
 :::

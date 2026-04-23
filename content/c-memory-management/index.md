@@ -15,7 +15,7 @@ subtitle: "What is the C Memory Model?"
 
 :::{iframe} https://www.youtube.com/embed/Keducx5bp-g?si=tat-NaUsgv7fdlRy
 :width: 100%
-:title: "
+:title: "[CS61C FA20] Lecture 05.3 - C Memory Management: Memory Locations"
 :enumerated: false
 
 [CS61C FA20] Lecture 05.3 - C Memory Management: Memory Locations"
@@ -46,7 +46,7 @@ A C program’s address space contains 4 regions as shown in @fig-c-mem-layout.
 :::{figure} images/c-mem-layout.png
 :label: fig-c-mem-layout
 :width: 50%
-:alt: "TODO"
+:alt: "Diagram of the C address space with text at the lowest addresses, data above text, heap above data growing upward, and stack at high addresses growing downward. The shaded gap between heap and stack indicates free space available for runtime growth."
 
 C program memory layout.
 :::

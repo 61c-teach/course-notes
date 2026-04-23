@@ -8,7 +8,7 @@ We spent one chapter covering [one figure](#fig-call-flow):
 
 :::{figure} images/call-flow.png
 :width: 60%
-:alt: "TODO"
+:alt: "Vertical flowchart of the translation and load pipeline: C source foo.c is compiled to assembly foo.s, assembled to object file foo.o, linked with lib.o to produce executable a.out, then loaded into memory. Each stage appears as a color-coded box with arrows showing inputs and outputs between files and the Compiler, Assembler, Linker, and Loader."
 
 Flow chart for steps for compiling and running a C program.
 :::

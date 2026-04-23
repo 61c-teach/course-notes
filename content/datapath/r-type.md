@@ -63,6 +63,7 @@ In these notes, we will iteratively build the processor, meaning we will introdu
 
 :::{figure} images/add-no-dmem.png
 :label: fig-add-no-dmem
+:alt: "Datapath variant for add-only execution with IMEM, PC, RegFile, and ALU active while DMEM is disconnected and unused."
 For now, we disconnect DMEM since it is unused for `add` (@fig-add-no-dmem). We will add it back when we discuss [loads and stores](#sec-datapath-load-store).
 :::
 
@@ -75,16 +76,17 @@ Given the above analysis, we can now connect wires between key elements of our p
 :label: anim-datapath-add
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-add.pptx
 :width: 100%
-:title: "Tracing the `add` Datapath"
+:title: "Slides tracing through the `add` Datapath."
 :::
 The `add` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
 
 ::::{figure}
 :label: anim-datapath-add
+:alt: "Embedded slides tracing register fetch, ALU add, and write-back on the single-cycle datapath for an R-type add instruction."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTjoG1_5TXfFBOQnHyRBwkrcRobHXJH4WCXyt57uABZuIpE3eBShew6e1ma0qVJ3A/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `add` Datapath"
+:title: "Slides tracing through the `add` Datapath."
 :::
 The `add` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1Md-1g2Cme3ScuGS4jPW23wFhUi8ysedu/edit?usp=sharing).
 ::::
@@ -129,6 +131,7 @@ Let's again consider the state elements changed by this instruction's operations
 
 :::{figure} images/sub-datapath.png
 :label: fig-sub-datapath
+:alt: "Datapath for add and sub where control logic decodes instruction bits and drives ALUSel while register and PC paths remain the same."
 To implement `sub` and `add`, we update control logic.
 :::
 
@@ -158,6 +161,7 @@ In the [previous chapter](#sec-alu) we implemented a basic four-operation ALU. A
 :::{figure} images/element-alu.png
 :label: fig-element-alu
 :width: 40%
+:alt: "ALU block symbol with inputs A, B, and ALUSel and output ALUResult, representing arithmetic and logic operations used across instruction types."
 ALU Block.
 
 :::

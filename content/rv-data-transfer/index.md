@@ -44,7 +44,7 @@ RISC-V is known as a [load-store architecture](https://en.wikipedia.org/wiki/Loa
 :::{figure} images/load-store.png
 :label: fig-rv-load-store
 :width: 100%
-:alt: "TODO"
+:alt: "Processor-centric diagram: register x4 faces a four-byte word in memory at 0x100 with byte offsets plus zero through plus three. A purple arrow labeled load from points memory to the register; a green arrow labeled store points from the register to memory, demonstrating how the load and store operations work."
 
 Load and store between register and memory.
 :::

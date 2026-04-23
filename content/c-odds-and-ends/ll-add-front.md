@@ -98,7 +98,7 @@ The first argument passed in is an address (`&head`); in other words, `head_ptr`
 :::{figure} images/ll-line04.png
 :label: fig-ll-line04
 :width: 100%
-:alt: "TODO"
+:alt: "Argument binding for add_to_front: head_ptr receives the address of head, whose current value is NULL, and data points to the string constant abc with a terminating null byte."
 
 `add_to_front` argument assignment
 :::
@@ -110,7 +110,7 @@ This `malloc` call makes a new `node_t` struct in dynamic memory (i.e., the heap
 :::{figure} images/ll-line09.png
 :label: fig-ll-line-09
 :width: 100%
-:alt: "TODO"
+:alt: "After node allocation, local pointer node stores heap address 0x300 for a new node_t whose data and next fields are still uninitialized."
 
 Line 9
 :::
@@ -126,7 +126,7 @@ Left-hand side: The pointer returned by `malloc` is then set as the `value` fiel
 :::{figure} images/ll-line10.png
 :label: fig-ll-line-10
 :width: 100%
-:alt: "TODO"
+:alt: "After allocating string storage, node->data is set to heap address 0x350, which points to four uninitialized bytes reserved for abc and the null terminator."
 
 Line 10
 :::
@@ -140,7 +140,7 @@ Once we have that uninitialized space reserved, we call `strcpy` (string copy) t
 :::{figure} images/ll-line11.png
 :label: fig-ll-line-11
 :width: 100%
-:alt: "TODO"
+:alt: "After strcpy, the heap bytes at node->data contain a, b, c, and null terminator, while node->next remains uninitialized."
 
 Line 11
 :::
@@ -152,7 +152,7 @@ Next, we set the `next` field of `node`. This is a great example of sharing; the
 :::{figure} images/ll-line12.png
 :label: fig-ll-line-12
 :width: 100%
-:alt: "TODO"
+:alt: "Setting node->next to *head_ptr stores NULL in the next field, making the new node the tail of a one-node list."
 
 Line 12
 :::
@@ -164,7 +164,7 @@ Finally, we must update the head of the list, which is defined as a pointer to t
 :::{figure} images/ll-line13.png
 :label: fig-ll-line-13
 :width: 100%
-:alt: "TODO"
+:alt: "Updating *head_ptr to node writes 0x300 into head, so the list head now points to the newly allocated node whose data points to abc."
 
 Line 13
 :::
@@ -176,7 +176,7 @@ Recall that variables declared in a function are reclaimed by the stack once the
 :::{figure} images/ll-line05.png
 :label: fig-ll-line-05
 :width: 100%
-:alt: "TODO"
+:alt: "State after returning to main: local variable node is gone, but head now stores 0x300 and still reaches the heap node and copied string abc."
 
 Return from function call at Line 4
 :::

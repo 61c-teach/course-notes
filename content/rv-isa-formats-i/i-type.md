@@ -35,7 +35,7 @@ We first discuss arithmetic instructions of the form `opname rd rs1 imm` like `a
 :::{figure} images/i-type.png
 :label: fig-i-type
 :width: 100%
-:alt: "TODO"
+:alt: "RISC-V I-type layout: assembly opname rd rs1 imm above a 32-bit bar with imm[11:0] (bits 31–20), rs1 (bits 19–15), funct3 (bits 14–12), rd (bits 11–7), and opcode (bits 6–0), labeling the 12-bit immediate, source register, and destination register fields."
 
 The I-Type Instruction Format.
 :::
@@ -57,7 +57,7 @@ Consider @fig-itype-addi-example, which translates `addi x15 x1 -50` to a machin
 :::{figure} images/itype-addi-example.png
 :label: fig-itype-addi-example
 :width: 100%
-:alt: "TODO"
+:alt: "Encoding of addi x15 x1 -50: imm[11:0] holds two’s complement 0b111111001110 for -50, rs1 is 0b00001 for x1, funct3 is 0b000 for add, rd is 0b01111 for x15, and the opcode is 0b0010011 for I-type arithmetic."
 
 The I-Type instruction `addi x15 x1 -50`.
 :::
@@ -91,7 +91,7 @@ We follow the [steps for translating assembly into machine code](#sec-assembly-t
 :::{figure} images/comparison-itype-rtype.png
 :label: fig-comparison-itype-rtype
 :width: 100%
-:alt: "TODO"
+:alt: "Side-by-side R-type and I-type instruction format comparison: both formats share bit positions for opcode, rd, funct3, and rs1; R-type uses bits 31–20 for funct7 plus rs2, while I-type replaces that region with a 12-bit immediate imm[11:0]."
 
 I-Type instruction set comparison to R-Type instruction set.
 :::
@@ -157,7 +157,7 @@ Loads can therefore use the I-Type instruction format (@fig-load-operation-isa):
 :::{figure} images/load-operation-isa.png
 :label: fig-load-operation-isa
 :width: 100%
-:alt: "TODO"
+:alt: "I-type layout for loads: syntax loadop rd imm(rs1) with immediate imm[11:0] as a byte offset added to the base rs1, funct3, rd as destination of the loaded value, and the load opcode field; color-coding differentiates the immediate, source register, and destination register."
 
 Load instructions use I-Type instruction format.
 :::
@@ -196,7 +196,7 @@ Translate `lw x14 8(x2)` to a machine instruction.
 :::{figure} images/practice-lw.png
 :label: fig-practice-lw
 :width: 100%
-:alt: "TODO"
+:alt: "Encoding of lw x14 8(x2): imm[11:0] 0b000000001000 for offset 8, rs1 is 0b00010 for register x2, funct3 is 0b010, rd is 0b01110 for x14, and opcode is 0b0000011 for loads."
 
 The I-Type instruction `lw x14 8(x2)`.
 :::
@@ -233,7 +233,7 @@ The `jalr` instruction can also be supported with the I-Type format (@fig-jalr-i
 :::{figure} images/jalr-isa.png
 :label: fig-jalr-isa
 :width: 100%
-:alt: "TODO"
+:alt: "I-type jalr layout including the immediate field imm[11:0] as an offset added to source register rs1 to form the jump target, funct3, rd receiving the link value PC plus four, and opcode; annotations differentiate the offset, base register, and link destination."
 
 jalr instruction format. The program counter is updated to the base register plus a numeric constant, e.g., `PC = R[rs1] + imm`.
 :::

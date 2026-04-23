@@ -26,7 +26,7 @@ Suppose that the memory layout starts as in @fig-rv-example-x12. After executing
 :::{figure} images/examplex12.png
 :label: fig-rv-example-x12
 :width: 100%
-:alt: "TODO"
+:alt: "Initial state: registers x5, x11, and x12 hold 0x100, 0xABCDEFAB, and 0xCDEFABCD beside a little-endian memory grid from 0x100 through 0x10C with associated byte values."
 
 Starting memory layout for [Example 1](#code-data-ex1).
 :::
@@ -48,7 +48,7 @@ Load Immediate (`li rd imm`) is `addi rd x0 0x93F5`. The pseudoinstruction there
 :::{figure} images/examplex12-sol1.png
 :label: fig-rv-example-x12-sol1
 :width: 100%
-:alt: "TODO"
+:alt: "After load immediate: x11 updates to 0x000093F5 while x5 and x12 are unchanged and memory still shows the original byte grid."
 
 Solution (1/3) for [Example 1](#code-data-ex1).
 :::
@@ -63,7 +63,7 @@ Compute memory address as base register + offset, or `R[x5] + 0` = `0x100 + 0` =
 :::{figure} images/examplex12-sol2.png
 :label: fig-rv-example-x12-sol2
 :width: 100%
-:alt: "TODO"
+:alt: "After store word: the word at 0x100 is highlighted in green as 0x000093F5 in little-endian, matching the updated value of x11, with other addresses of memory unchanged."
 
 Solution (2/3) for [Example 1](#code-data-ex1).
 :::
@@ -86,7 +86,7 @@ Compute memory address as base register + offset, or `R[x5] + 1` = `0x100 + 1` =
 :::{figure} images/examplex12-sol3.png
 :label: fig-rv-example-x12-sol3
 :width: 100%
-:alt: "TODO"
+:alt: "After load byte: byte 0x93 at offset plus one from 0x100 is highlighted and x12 holds an updated sign-extended value 0xFFFFFF93 while x5 and x11 retain prior values."
 
 Solution (3/3) for [Example 1](#code-data-ex1).
 :::

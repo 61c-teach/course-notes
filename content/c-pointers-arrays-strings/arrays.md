@@ -27,9 +27,7 @@ title: "Arrays"
 :::{iframe} https://www.youtube.com/embed/J6mhHw7UTPM
 :width: 100%
 :enumerated: false
-:title: "Meet the jewelry making community
-Meet the jewelry making community
-[CS61C FA20] Lecture 05.1 - C Memory Management: Dynamic Memory Allocation s"
+:title: "Lecture 05.1 - C Memory Management: Dynamic Memory Allocation"
 :::
 From 9:36 onwards: Arrays are not pointers example
 ::::
@@ -100,7 +98,7 @@ int main () {
 :::{figure} images/array-indexing.png
 :label: fig-array-indexing
 :width: 80%
-:alt: "TODO"
+:alt: "Memory layout for pointer q and array arr, where arr contains 50, 60, and 70 in consecutive words at 0x100, 0x104, and 0x108. Pointer q stores 0x100, so q[0] and *q read 50, q[1] and *(q+1) read 60, and q[-1] refers to the preceding unknown word."
 
 Memory layout for @code-array-indexing.
 :::
@@ -157,7 +155,7 @@ With the memory layout in @fig-array-addressing, the output is:
 :::{figure} images/array-addressing.png
 :label: fig-array-addressing
 :width: 80%
-:alt: "TODO"
+:alt: "Memory layout for pointers p and q, scalar x, and array a, showing addresses used in the printf examples. It illustrates that p and q are pointer variables with their own addresses, while a names a contiguous block whose first element is set to 3 at 0x10c and whose second element is set to 2 at 0x110."
 
 Memory layout for @code-array-addressing.
 :::

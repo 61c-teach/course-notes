@@ -28,7 +28,7 @@ As we've seen in a [previous section](#sec-cl-practice), combinational logic cir
 :::{figure} images/register-circuit.png
 :label: fig-reg-circuit
 :width: 70%
-:alt: "TODO"
+:alt: "Register symbol with n-bit data input D, stored n-bit output Q, and LOAD control that determines when a new value is captured."
 
 Diagram of a register implemented through a memory circuit.
 :::
@@ -42,7 +42,7 @@ Often the system clock signal **CLK** (see [The Clock](#sec-clock)), is used as 
 :::{figure} images/clocked-register.png
 :label: fig-clk-reg
 :width: 70%
-:alt: "TODO"
+:alt: "Clocked register, whose capture is determined by CLK instead of an explicit LOAD line, updating stored n-bit inputs to n-bit outputs on each active clock edge."
 
 Diagram of a clocked register implemented through a memory circuit.
 :::
@@ -58,7 +58,7 @@ As shown in @fig-reg-comps, an `n`-bit wide register is nothing other than `n` i
 :::{figure} images/register-components.png
 :label: fig-reg-comps
 :width: 100%
-:alt: "TODO"
+:alt: "n-bit register drawn as n parallel D flip-flops sharing a common clock and producing a bundled n-bit Q output."
 
 Diagram of a register built from `n` instances of simpler circuits called **flip-flops**.
 :::
@@ -72,7 +72,7 @@ The most common type of FF is called the **edge-triggered d-type flip flop**. In
 :::{figure} images/ff-waveform.png
 :label: fig-ff-waveform
 :width: 100%
-:alt: "TODO"
+:alt: "Clock, data d, and output q waveforms for a D flipflop, showing the output q being updated to match input d only after a rising clock edge."
 
 Waveform diagram of the operation of an edge-triggered d-type FF.
 :::
@@ -94,7 +94,7 @@ You may also notice times when the FF output doesn't change in response to the r
 :::{figure} images/waveform-diagram.png
 :label: fig-waveform-ff
 :width: 100%
-:alt: "TODO"
+:alt: "Example waveform diagram produced through a digital tool depicting timing rails for clk, d, and q showing edge-triggered sampling consistent with a Verilog or simulator trace."
 
 Simulator waveform diagram for a positive d-type FF.
 :::
@@ -107,7 +107,7 @@ A detailed FF timing diagram for a positive edge-triggered d-type FF is shown in
 :::{figure} images/timing-diagram.png
 :label: fig-ff-timing
 :width: 55%
-:alt: "TODO"
+:alt: "Annotated timing diagram focused on the CLK rising clock edge. The diagram labels intervals around the rising clock edge for setup time before the edge (A), hold time after the edge (B), and clk-to-q delay until output q is stable following the edge (C); d must stay stable across the setup-hold window."
 
 Timing diagram of a positive edge-triggered d-type FF.
 :::

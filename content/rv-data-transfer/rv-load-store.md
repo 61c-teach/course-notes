@@ -68,7 +68,7 @@ In @fig-lw-example, executing this `lw` instruction loads the word `0x00564253` 
 :::{figure} images/lw-example.png
 :label: fig-lw-example
 :width: 100%
-:alt: "TODO"
+:alt: "Load-word example: x5 holds base 0x100; the assembled little-endian word at 0x10C in memory is highlighted and loaded into register x10 as 0x00564253, with a purple load-from arrow from memory to x10."
 
 Illustration of `lw x10 12(x5)`.
 :::
@@ -110,9 +110,9 @@ In @fig-sw-example, executing this `sw` instruction stores the word `0x12345678`
 :::{figure} images/sw-example.png
 :label: fig-sw-example
 :width: 100%
-:alt: "TODO"
+:alt: "Store-word example: x10 holds 0x12345678 and x5 holds 0x100; a green store-to arrow shows the word in register x10 written in little-endian into four bytes of memory starting at address 0x100."
 
-Illustration of `lw x10 12(x5)`.
+Illustration of `sw x10 0(x5)`.
 :::
 
 :::{note} Show Explanation
@@ -194,7 +194,7 @@ As shown in @fig-rv-storebyte, this store byte instruction then ignores the uppe
 :::{figure} images/storebyte.png
 :label: fig-rv-storebyte
 :width: 100%
-:alt: "TODO"
+:alt: "Store-byte example for sb x10 0(x5): only the least significant byte 0xEF of the contents of register x10 is written to address 0x100 (held in register x5), leaving other bytes in the word unchanged."
 
 Example store byte instruction in memory.
 :::
@@ -206,7 +206,7 @@ The Load Byte instruction `lb` plucks a single byte from memory and (analogous t
 :::{figure} images/loadbyte.png
 :label: fig-rv-loadbyte
 :width: 100%
-:alt: "TODO"
+:alt: "Load-byte example for lb x10 0(x5): byte EF at address 0x100 is placed in the low byte of x10 while the upper three bytes are filled by sign extension, shown as question marks before 0xEF in the updated register x10."
 
 Example load byte instruction in memory. `lb x10 0(x5)` loads in `0xEF` but _also_ must determine how to fill the upper 24 bits of `x10`.
 :::

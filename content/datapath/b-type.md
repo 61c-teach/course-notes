@@ -54,6 +54,7 @@ These two new blocks are shown in @fig-branch-new-blocks. The branch comparator 
 
 :::{figure} images/branch-new-blocks.png
 :label: fig-branch-new-blocks
+:alt: "Branch datapath additions: branch comparator output into control logic and a PCSel mux choosing between PC plus four and branch target."
 
 The branch comparator block and the `PCSel` mux, with `PCSel` control signal.
 :::
@@ -68,6 +69,7 @@ We need **one more mux** in our datapath to compute `PC + imm` with our existing
 
 :::{figure} images/branch-new-blocks-asel.png
 :label: fig-branch-new-blocks-asel
+:alt: "Datapath showing additional ASel mux before the ALU which selects either register data or PC so branches can compute PC plus immediate."
 
 Branches require two muxes with two control signals: `PCSel` and `ASel`. The latter determines one of the inputs to our ALU.
 :::
@@ -125,6 +127,7 @@ The Branch Comparator Block in @fig-element-branch-comparator takes two data inp
 :::{figure} images/element-branch-comparator.png
 :label: fig-element-branch-comparator
 :width: 30%
+:alt: "Branch comparator block with inputs A and B, select signal BrUn, and outputs BrEq and BrLT for signed or unsigned branch decisions."
 
 Branch Comparator Block
 :::
@@ -153,6 +156,7 @@ This branch block is used to implement branches on the datapath with logic shown
 :::{figure} images/branch-branch-comparator.png
 :label: fig-branch-branch-comparator
 :width: 60%
+:alt: "Datapath diagram with a branch comparator taking values from two registers, using the BrUn flag as a select input, and outputting BrEq and BrLT signals to the control-logic block. The control-logic block also determines PCSel for whether the branch is taken, and receives inst[31:0]."
 :::
 
 The control logic sets two control signals:

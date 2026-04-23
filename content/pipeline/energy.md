@@ -42,7 +42,7 @@ Watch the video for more information!
 :::{figure} images/processor-perf-trends.png
 :label: fig-processor-trends
 :width: 70%
-:alt: "TODO"
+:alt: "Historical processor performance trend chart spanning decades with an overall growth curve over time."
 
 48 years of processor performance trends.
 :::
@@ -50,7 +50,7 @@ Watch the video for more information!
 :::{figure} images/inv-symbol.png
 :label: fig-inv-symbol
 :width: 35%
-:alt: "TODO"
+:alt: "Logic symbol for an inverter gate with one input and one inverted output."
 
 Inverter (INV) symbol.
 :::
@@ -58,7 +58,7 @@ Inverter (INV) symbol.
 :::{figure} images/inv-schematic.png
 :label: fig-inv-schematic
 :width: 35%
-:alt: "TODO"
+:alt: "Transistor-level schematic of an inverter showing complementary pull-up and pull-down devices."
 
 Inverter (INV) schematic.
 :::
@@ -66,7 +66,7 @@ Inverter (INV) schematic.
 :::{figure} images/clock-rate-power-trends.png
 :label: fig-power-trends
 :width: 70%
-:alt: "TODO"
+:alt: "Clock-rate and power trend chart over time illustrating frequency growth and power limits."
 
 36 years of clock rate and power trends.
 :::

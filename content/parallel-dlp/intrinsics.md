@@ -32,9 +32,9 @@ The "wide" registers that Intel SIMD architectures use are separate from the gen
 :::{figure} images/intel-simd-regs.png
 :label: fig-intel-simd-regs
 :width: 100%
-:alt: "TODO"
+:alt: "Figure comparing how the same physical register bits can be interpreted under SSE versus AVX. Upper drawing: 128-bit XMM lanes illustrated as stacked rectangles enumerating packings such as four single-precision floats, two doubles, sixteen bytes, eight 16-bit words, four 32-bit doublewords, two 64-bit quadwords, or one 128-bit chunk. Lower drawing: 256-bit YMM lanes showing eight floats or four doubles packed side by side. Labels indicate bit width per lane so readers can map intrinsic types to register pictures."
 
-Inte SSE/AVX-128 128-bit-wide registers and AVX 256-bit-wide registers pack different numbers of data types. On Intel architectures, words are 16-bits, so single-precision floating point is a double-word (32bit) and double-precision floating point is a quadword (64-bit).
+Intel SSE/AVX-128 128-bit-wide registers and AVX 256-bit-wide registers pack different numbers of data types. On Intel architectures, words are 16-bits, so single-precision floating point is a double-word (32bit) and double-precision floating point is a quadword (64-bit).
 :::
 
 As a side note, registers from legacy extensions operate on the lower bits of modern extensions, as shown in @fig-intel-simd-regs-compatible.
@@ -42,7 +42,7 @@ As a side note, registers from legacy extensions operate on the lower bits of mo
 :::{figure} images/intel-simd-regs-compatible.png
 :label: fig-intel-simd-regs-compatible
 :width: 50%
-:alt: "TODO"
+:alt: "Compatibility diagram for AVX YMM versus legacy XMM registers. Foreground: three wide YMM register blocks (dots imply a larger physical register file) each spanning 256 bits. Background: faint half-width XMM overlays occupying only the low 128 bits of each YMM, showing that SSE instructions still target the lower lanes while AVX instructions may use the full width. Arrows or shading clarify alias relationships between XMM and YMM names."
 
 AVX 256-bit-wide YMM registers. Legacy SSE instructions (which use the XMM registers) can still be used to operate on the lower 128 bits of the YMM registers.
 :::
@@ -105,7 +105,7 @@ C has typed variables (in contrast to assembly, which only has hardware register
 :::{figure} images/intrinsic-reg.png
 :label: fig-intrinsic-reg
 :width: 90%
-:alt: "TODO"
+:alt: "Annotated register strip for a declared Intel intrinsic variable such as __m256d. One horizontal bar is partitioned into four equally wide slots labeled X3 down to X0 left-to-right, each representing one double-precision lane inside a 256-bit AVX register. Caption ties the drawing to the C intrinsic type that packs four doubles for vectorized arithmetic."
 
 In the Intel AVX family of extensions, registers are 256-bits wide. The corresponding Intel intrinsic `__m256d reg;` declaration indicates that `reg` is a 256-bit-wide AVX register that packs four double-precision floating point values.
 :::
@@ -145,7 +145,7 @@ Luckily, most intel intrinsic procedures and data types are formatted similarly.
 :::{figure} images/intrinsics-format.png
 :label: fig-intrinsics-format
 :width: 100%
-:alt: "TODO"
+:alt: "Pedagogical poster of Intel intrinsic naming conventions with three stacked panels. Top: generic template string _mm<width>_<operation>_<element type> with each underscore-delimited field explained. Middle: worked example _mm256_add_epi32 showing eight 32-bit signed integer lanes inside a 256-bit vector and how the mnemonic encodes width, add, and packed 32-bit integers. Bottom: load example targeting a 128-bit register with four 32-bit floats, including memory alignment hints implied by the intrinsic suffix."
 
 Intel Instructions and Formats.
 :::

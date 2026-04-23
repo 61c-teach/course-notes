@@ -31,7 +31,7 @@ A data **multiplexor**, commonly called a **mux** or a **selector**, is a circui
 :::{figure} images/mux-2.png
 :label: fig-mux-2
 :width: 50%
-:alt: "TODO"
+:alt: "1-bit 2-to-1 multiplexer symbol with data inputs a and b, select input s, and output y."
 
 A 1-bit wide, 2-to-1 MUX.
 :::
@@ -40,7 +40,7 @@ A 1-bit wide, 2-to-1 MUX.
 :::{figure} images/mux-n.png
 :label: fig-mux-n
 :width: 57%
-:alt: "TODO"
+:alt: "n-bit 2-to-1 multiplexer symbol with n-bit inputs A and B, 1-bit select s, and n-bit output Y."
 
 An n-bit wide, 2-to-1 MUX.
 :::
@@ -92,7 +92,7 @@ An n-bit wide N-to-1 MUX has N data inputs, 1 control input, and 1 output. The c
 :::{figure} images/mux-4.png
 :label: fig-mux-4
 :width: 30%
-:alt: "TODO"
+:alt: "32-bit 4-to-1 mux block with four 32-bit data inputs A, B, C, D, a 2-bit select S, and a single n-bit output Y."
 
 32-bit 4-to-1 mux circuit.
 :::
@@ -127,7 +127,7 @@ Expand the dropdown items below to show the gate circuit and derive the above ex
 :::{figure} images/mux-2-circuit.png
 :label: fig-mux-2-circuit
 :width: 100%
-:alt: "TODO"
+:alt: "Gate-level 1-bit 2-to-1 mux implementing c equals (not s and a) OR (s and b)."
 
 Gate diagram for a 1-bit wide, 2-to-1 mux.
 :::
@@ -182,7 +182,7 @@ Often times we find the need to extend the number of data inputs of a multiplexo
 :::{figure} images/mux-4-bits.png
 :label: fig-mux-4-bits
 :width: 55%
-:alt: "TODO"
+:alt: "1-bit 4-to-1 mux symbol with inputs a through d, select bits s1 s0, and 1-bit output e."
 
 A 1-bit wide 4-to-1 MUX.
 :::
@@ -192,7 +192,7 @@ A 1-bit wide 4-to-1 MUX.
 :::{figure} images/mux-4-block.png
 :label: fig-mux-4-block
 :width: 60%
-:alt: "TODO"
+:alt: "4-to-1 mux built from three 2-to-1 muxes. Initially, two 2-to-1 muxes are selected with select bit s0, and the outputs feed the third 2-to-1 mux that uses select bit s1 to get the final resulting output e."
 
 4-to-1 multiplexor (MUX) circuit diagram.
 :::

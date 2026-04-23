@@ -42,7 +42,7 @@ In order to learn an ISA, we must first understand @fig-von-neumann, which shows
 :::{figure} ../great-ideas/images/von-neumann.png
 :label: fig-von-neumann
 :width: 100%
-:alt: "TODO"
+:alt: "Block diagram of a von Neumann-style machine: a processor box contains control and datapath with PC, registers, and ALU; main memory stores bytes; labeled arrows for addresses, read data, write data, and read-write control connect processor and memory, with separate input and output paths to memory."
 
 Basic computer layout (See: [von Neumann architecture](https://en.wikipedia.org/wiki/Von_Neumann_architecture)).
 :::
@@ -63,7 +63,7 @@ Consider that the speed of light (approximately $3.0 \times 10^8$ m/s), which ph
 :::{figure} ../great-ideas/images/3-locality.png
 :label: fig-3-locality
 :width: 100%
-:alt: "TODO"
+:alt: "Latency analogy chart mapping memory levels from registers through caches, RAM, disk, and tape to increasing nanosecond delays, paired with human-scale time and distance metaphors such as head versus campus, Sacramento, Pluto, and Andromeda."
 
 Great Idea 3: The Principle of Locality / Memory Hierarchy
 :::
@@ -78,7 +78,7 @@ Remember the picture of the principal memory hierarchy in (@fig-3-memory-hierarc
 :::{figure} ../great-ideas/images/3-memory-hierarchy.png
 :label: fig-3-memory-hierarchy
 :width: 100%
-:alt: "TODO"
+:alt: "Pyramid of the memory hierarchy from CPU core, registers, and L1 through L3 cache at the narrow top, DRAM main memory in the middle, and SSD, flash, magnetic disks, and virtual memory toward the wide base, with notes on speed, cost, and capacity at each tier."
 
 Great Idea 3: The Principle of Locality / Memory Hierarchy
 :::

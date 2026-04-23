@@ -37,7 +37,7 @@ From [our overview](#sec-linker):
 :::{figure} images/linker-flow.png
 :label: fig-linker-flow
 :width: 40%
-:alt: "TODO"
+:alt: "Two object modules, file1.o and file2.o, are each drawn as rectangles with text, data, and info segments; arrows feed both into a central Linker box. The diagram shows the single output executable a.out as relocated text and data segments from both modules plus aggregated relocation information, illustrating how the linker combines object files into one executable."
 
 Flow chart for linker components.
 :::
@@ -77,7 +77,7 @@ See @fig-linker-instructions:
 :::{figure} images/linker-instructions.png
 :label: fig-linker-instructions
 :width: 100%
-:alt: "TODO"
+:alt: "Instruction-format diagram comparing J/U-type, I-type, and S-type bit fields, with highlighted placeholder regions in J/U and S formats where relocation updates are written. The figure emphasizes which encoded fields the linker edits when resolving external references and data addresses."
 
 The linker "resolves references" by replacing the appropriate placeholders in machine code instructions.
 :::
@@ -114,7 +114,7 @@ Overall dynamic linking adds complexity to compiler, linker and OS. However, its
 :::{figure} images/compile-xkcd.jpg
 :label: fig-compile-xkcd
 :width: 50%
-:alt: "TODO"
+:alt: "xkcd comic showing two office workers near a doorway: one exclaims they are compiling as an excuse to avoid work, prompting another voice to respond to carry on. The joke highlights long compile times as a familiar delay in programming."
 
 Compilation is a slow process. [xkcd](https://xkcd.com/303/), [explainxkcd](https://www.explainxkcd.com/wiki/index.php/303:_Compiling)
 :::

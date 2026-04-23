@@ -36,7 +36,7 @@ subtitle: "This content is not tested. By John Wawrzynek"
 
 :::{iframe} https://www.youtube.com/embed/BoRlclML3tE?
 :width: 100%
-:title: "Water analogy of electrical systems"
+:title: "Video detailing a water analogy for electrical systems."
 :::
 
 ::::
@@ -46,7 +46,7 @@ subtitle: "This content is not tested. By John Wawrzynek"
 :class: dropdown
 :::{iframe} https://www.youtube.com/embed/8f3l8KaVcBg?
 :width: 100%
-:title: "Bipolar transistor model - Blender animation"
+:title: "Video detailing a Bipolar transistor model - Blender animation."
 :::
 
 ::::
@@ -57,7 +57,7 @@ Relevant slides:
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRnOm001_KVT3IhaHdSJ_6GxXhB5wQAtLrV0c60tdlgD35vtewNsprWXJ9sX-TurxiyCmlE-QHuF7Aj/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the content described in the videos in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1qe4xrtkAFFO6dUE7RPB5main2ESWy51Q-_-6_RjboqQ/edit?usp=sharing"
+:title: "Animation that steps through the background and details of switches and transistors, as shown in the videos in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1qe4xrtkAFFO6dUE7RPB5main2ESWy51Q-_-6_RjboqQ/edit?usp=sharing"
 :::
 
 
@@ -66,7 +66,7 @@ Relevant slides:
 :::{figure} images/n-channel-mos.png
 :label: fig-n-mos
 :width: 100%
-:alt: "TODO"
+:alt: "n-channel MOSFET schematic with terminals labeled drain, gate, and source and the channel type indicated for NMOS."
 
 Diagram of drain, gate, source for n-channel CMOS.
 :::
@@ -74,7 +74,7 @@ Diagram of drain, gate, source for n-channel CMOS.
 :::{figure} images/p-channel-mos.png
 :label: fig-p-mos
 :width: 100%
-:alt: "TODO"
+:alt: "p-channel MOSFET schematic with terminals labeled drain, gate, and source and the channel type indicated for PMOS."
 
 Diagram of drain, gate, source for p-channel CMOS.
 :::
@@ -82,7 +82,7 @@ Diagram of drain, gate, source for p-channel CMOS.
 :::{figure} images/mos-network.png
 :label: fig-mos-network
 :width: 100%
-:alt: "TODO"
+:alt: "Flowchart-style diagram relating MOS transistor networks to logic gates and higher-level digital building blocks."
 
 Flow chart of MOS Network and gates.
 :::
@@ -91,7 +91,7 @@ Flow chart of MOS Network and gates.
 :::{figure} images/switch-open.png
 :label: fig-switch-open
 :width: 100%
-:alt: "TODO"
+:alt: "Simple circuit with a voltage source, load, and an open switch so the path is broken and current does not flow."
 
 Diagram of circuit with open switch.
 :::
@@ -99,7 +99,7 @@ Diagram of circuit with open switch.
 :::{figure} images/switch-closed.png
 :label: fig-switch-closed
 :width: 100%
-:alt: "TODO"
+:alt: "Same style of circuit with the switch closed so the conducting path completes and current can flow."
 
 Diagram of circuit with closed switch.
 :::
@@ -107,7 +107,7 @@ Diagram of circuit with closed switch.
 :::{figure} images/switch-series.png
 :label: fig-switch-series
 :width: 100%
-:alt: "TODO"
+:alt: "Two switches wired in series between source and output so the output is energized only when both switches are on."
 
 Diagram of circuit with two switches in series.
 :::
@@ -115,7 +115,7 @@ Diagram of circuit with two switches in series.
 :::{figure} images/switch-parallel.png
 :label: fig-switch-parallel
 :width: 100%
-:alt: "TODO"
+:alt: "Two switches wired in parallel so the output is energized when either switch provides a conducting path."
 
 Diagram of circuit with two switches in parallel.
 :::

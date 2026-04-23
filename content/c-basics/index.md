@@ -51,7 +51,7 @@ Next, the **EDSAC** at Cambridge (1949) was the first general **stored-program**
 :label: fig-edsac
 :width: 60%
 :align: center
-:alt: "A black and white photograph shows multiple tall vertical racks of the EDSAC computer system densely populated with vacuum tubes and electronic components. The image captures the large-scale physical architecture of early stored-program computers within a laboratory setting.."
+:alt: "A black and white photograph shows multiple tall vertical racks of the EDSAC computer system densely populated with vacuum tubes and electronic components. The image captures the large-scale physical architecture of early stored-program computers within a laboratory setting."
 
 The EDSAC (Electronic Delay Storage Automatic Calculator) was one of the first general stored-program computers, completed in 1949. 
 [Wikipedia](https://en.wikipedia.org/wiki/EDSAC)
@@ -71,7 +71,7 @@ Throughout this course, we will see how all of the layers in @fig-great-idea-abs
 :label: fig-great-idea-abstraction
 :width: 100%
 :align: center
-:alt: "A hierarchical diagram illustrates computer abstraction by showing the progression from a High Level Language Program down to a Logic Circuit Description. A C program snippet is transformed by a Compiler into a RISC-V Assembly Language Program, which an Assembler then converts into binary Machine Language. This machine code interfaces with the Hardware Architecture Description, visualized as a block diagram of the processor's internal components and data paths. The final level is the Logic Circuit Description, representing the architecture implementation through circuit schematic diagrams of individual logic gates.."
+:alt: "Hierarchical diagram of computer abstraction with five stacked levels from top to bottom: a high-level language program (C code snippet), RISC-V assembly, binary machine language, a hardware architecture block diagram of the processor datapath and memory interfaces, and a logic-circuit level with gate-level schematics. Arrows or grouping show that each upper layer compiles or refines into the next, ending at physical gates that implement the ISA."
 
 Great Idea #1: Abstraction. Anything can be a number: data, instructions, etc.
 :::

@@ -397,7 +397,7 @@ The use of [goto](https://en.wikipedia.org/wiki/Goto) was historically popular i
 
 :::{figure} images/goto-xkcd.png
 :label: fig-goto-xkcd
-:alt: "TODO"
+:alt: "xkcd comic in four panels: a programmer chooses goto main_sub3 instead of restructuring, compiles, then a velociraptor attacks; the joke warns against careless goto use."
 :align: center
 :width: 80%
 

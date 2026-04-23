@@ -26,7 +26,7 @@ For now, imagine all your memory as one really big, infinitely large array start
 :::{figure} images/c-mem-byte-array.png
 :label: fig-c-mem-byte-array
 :width: 100%
-:alt: "TODO"
+:alt: "Memory is drawn as a long byte-addressed array with addresses increasing left to right. The diagram shows variable x occupying four bytes with value 0x12345678 starting at address 0x100, a character array c holding b, y, e, and the null terminator starting at address 0x104, and pointer p storing address 0x00000100 starting at memory address 0x108."
 
 One view of memory as a single huge array, where each byte has an address.
 :::
@@ -54,7 +54,7 @@ In @fig-c-mem-byte-array-ptr, the pointer `p` "points to" `x`. But everything in
 :::{figure} images/c-mem-byte-array-ptr.png
 :label: fig-c-mem-byte-array-ptr
 :width: 100%
-:alt: "TODO"
+:alt: "The same byte-addressed memory layout is shown with a blue arrow from pointer p to variable x. This visual indicates that p stores x's starting address, 0x00000100."
 
 The pointer `p` "points" to the location of `x` in memory. See the blue arrow.
 :::

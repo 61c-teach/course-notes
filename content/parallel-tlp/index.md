@@ -49,7 +49,7 @@ To improve performance, we could design our architecture as follows:
 :::{figure} images/moores-multicore.png
 :label: fig-moores-multicore
 :width: 100%
-:alt: "TODO"
+:alt: "Multi-line time-series chart titled 50 Years of Microprocessor Data comparing transistor counts, single-thread performance, clock frequency, and core counts over decades, sourced from Karl Rupp microprocessor trend data."
 
 50 Years of Microprocessor Data. Source: [Karl Rupp: 42 Years of Microprocessor Trend Data](https://www.karlrupp.net/2018/02/42-years-of-microprocessor-trend-data/), 2018. [GitHub source](https://github.com/karlrupp/microprocessor-trend-data/tree/master/50yrs).
 :::
@@ -105,7 +105,7 @@ This model is illustrated in @fig-multicore-model. Processor 0 and Processor 1 a
 :::{figure} images/multicore-model.png
 :label: fig-multicore-model
 :width: 90%
-:alt: "TODO"
+:alt: "Closer view of a multicore processor floorplan: two or more labeled cores, private L1 caches, shared last-level cache or system agent, and clock or power domains as simplified boxes. Inter-core communication paths illustrate hardware threads sharing silicon versus separate chips."
 
 The multicore processor execution model enforces a shared memory model.
 :::
@@ -155,6 +155,7 @@ Historically, **parallel computing systems** primarily referred to **distributed
 :::{figure} images/datacenter-google.jpg
 :label: fig-datacenter-google
 :width: 80%
+:alt: "Wide interior photograph of a Google data center aisle with rows of server racks, cable trays, and overhead lighting in Council Bluffs, Iowa."
 
 Google Datacenter, in Council Bluffs, Iowa. [Google Europe Blog 2012](https://europe.googleblog.com/2012/10/googles-data-centres-inside-look.html), [Data Center Photo Gallery](https://datacenters.google/discover-more/photo-gallery/).
 :::

@@ -43,7 +43,7 @@ Numerals (and therefore digits) are representations of numbers.
 
 :::{figure} images/every-base-is-base-10.png
 :label: fig-every-base-is-base-10
-:alt: "A astronaut talking to an alien with 2 fingers per hand and there are 4 rocks on the ground. Alien says  'There are 10 rocks.' Astronaut says 'Oh, you must be using base 4. See, I use base 10.' Alien says 'No. I use base 10. What is base 4?' Caption reads 'Every base is base 10'"
+:alt: "An astronaut talking to an alien with 2 fingers per hand and there are 4 rocks on the ground. Alien says 'There are 10 rocks.' Astronaut says 'Oh, you must be using base 4. See, I use base 10.' Alien says 'No. I use base 10. What is base 4?' Caption reads 'Every base is base 10'"
 :align: center
 
 Every base is base 10 ([web.archive.org](https://web.archive.org/web/20160505151914/http://cowbirdsinlove.com/43))
@@ -205,7 +205,7 @@ The slidedeck below shows how we can convert the decimal $13$ into its binary re
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSRRi1DDwigsxmr5R_fPwZ1uAOKKJ-fblPQg6GFNICf9he20UUYX_gZLwdrMG4HRvrtcD3e9nkBwk29/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing"
+:title: "Animation that steps through how to convert the decimal value 13 into its binary equivalent, as shown in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing"
 :::
 
 Let `val` be $13$ in the explanation below. Click to show.
@@ -248,7 +248,7 @@ The slidedeck below converts $165$ into its hexadecimal representation, `0xA5`.
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTWgqxt2kl5ip7bRfRY7P81WiQGDJSrAuKmkqE1m3mnrerVBeN2s9PGJVVaIQu0aDlsNfuvcRCK09q9/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1rHScPLQLom3OzhZyGzhct8vpXtO-AWRiXyr5C-9Qszs/edit?usp=sharing)"
+:title: "Animation that steps through how to convert the decimal value 165 into its hexadecimal representation, as shown in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1rHScPLQLom3OzhZyGzhct8vpXtO-AWRiXyr5C-9Qszs/edit?usp=sharing)"
 :::
 
 Let `val` be $165$ in the explanation below. Click to show.

@@ -37,7 +37,7 @@ If we consider the processor as a central component, we **transfer** control to 
 :::{figure} images/c-control-flow.png
 :label: fig-c-control-flow
 :width: 60%
-:alt: "TODO"
+:alt: "Line-numbered C snippet with foo and main: green and black arrows from the if show conditional paths to the then body or past it otherwise, while blue arrows show unconditional call into foo and return to the line after the call."
 
 Illustration of unconditional and conditional control flow transfer.
 :::
