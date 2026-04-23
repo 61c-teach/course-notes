@@ -103,6 +103,7 @@ We can extend this idea to a tiled SIMD approach shown in @fig-simd-dgemm-animat
 
 ::::{figure}
 :label: fig-simd-dgemm-animate
+:alt: "Embedded slides animating tiled SIMD matrix multiply: which matrix elements load into wide SIMD registers and how partial sums advance across an eight-by-eight example."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQmMcdwMl4VdgEpOtv6WFcddT58fZmS6APz_ZPHzDX4LasA6KPpDdgOZGdtShY4J4cdS3htIpi4wSZz/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through tiled SIMD `dgemm` matrix multiplication, as discussed in this section."

@@ -68,6 +68,7 @@ Computing $C_00$ as vector multiplication of the zero-th row of $A$ and the zero
 
 ::::{figure}
 :label: anim-matmul-00
+:alt: "Embedded slides animating memory accesses while computing matrix element C zero zero from the zero-th row of A and zero-th column of B."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTAFRr4VJ6o2brFhpjCS_edmdWM0j2cKViq6OjTX1XqDhRJWYa68FU07IyZw2oG6g/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through a C[0][0] Memory Access Pattern."
@@ -198,6 +199,7 @@ Computing $C_{ij}$ as vector multiplication of the i-th row of $A$ and the j-th 
 
 ::::{figure}
 :label: anim-matmul-ij
+:alt: "Embedded slides animating memory accesses while computing a general inner product C i j from row i of A and column j of B."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through a C[i][j] Memory Access Pattern."
@@ -386,6 +388,7 @@ Our second cache blocking approach observes that matrix multiplication can be co
 
 ::::{figure}
 :label: anim-matmul-block-2
+:alt: "Embedded slides illustrating cache blocking with a two-by-two tile of C computed from smaller submatrix multiplications of A and B."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQU5B3-twc1_pBY024sp72KsxJ6O8tieO_QwOYPj4VgLt7--ONJ0BbG-Lj1CDwdoQ/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides illustrating cache blocking with a C[i][j] Memory Access Pattern."

@@ -52,6 +52,7 @@ The slidedeck in @fig-c-stack-anim animates allocation and deallocation on the s
 
 ::::{figure}
 :label: fig-c-stack-anim
+:alt: "Embedded slide deck animating stack pointer movement as nested C functions allocate and pop stack frames on a downward-growing stack."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vT4VF2QQM8HQDb84y2sg6Bie_PURuJfOZ5yyrFh3AWCJY2lay45Vqy33iN7XIrV1fO2tIb3G7590KcW/pubembed?start=false&loop=false
 :width: 100%
 :enumerated: false

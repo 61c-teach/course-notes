@@ -127,6 +127,7 @@ The slidedeck in @fig-rv-stack-anim animates allocation and deallocation on the 
 
 ::::{figure}
 :label: fig-rv-stack-anim
+:alt: "Embedded slides animating RISC-V stack pointer decrements and increments across nested procedure prologues and epilogues on a downward-growing stack."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRmZPYooswNdpDJwrvmnf4LB5h0emERgb162lLWy88ytNPuWI-qcS0X_HiNt5XQgIPvtQ4Ed-6nW2I2/pubembed?start=false&loop=false
 :width: 100%
 :enumerated: false

@@ -83,6 +83,7 @@ The `add` datapath. Use the menu bar to trace through the animation or download 
 
 ::::{figure}
 :label: anim-datapath-add
+:alt: "Embedded slides tracing register fetch, ALU add, and write-back on the single-cycle datapath for an R-type add instruction."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTjoG1_5TXfFBOQnHyRBwkrcRobHXJH4WCXyt57uABZuIpE3eBShew6e1ma0qVJ3A/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `add` Datapath."

@@ -67,6 +67,7 @@ The `lw` datapath. Use the menu bar to trace through the animation or download a
 
 ::::{figure}
 :label: anim-datapath-lw
+:alt: "Embedded slides tracing address calculation, memory read, and register write-back on the single-cycle datapath for a load-word instruction."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRxeC98vPTgADlY5t3P_seJfptV4jyHqG7xxR6X7tcr52EXVEiCtcOQBg_0cgacHA/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `lw` Datapath."
@@ -115,6 +116,7 @@ The `sw` datapath. Use the menu bar to trace through the animation or download a
 
 ::::{figure}
 :label: anim-datapath-sw
+:alt: "Embedded slides tracing address calculation and memory write on the single-cycle datapath for a store-word instruction."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRiHxdtVBLJ-3cMkMSg7t09c_DM0b4oXInmUggpSThdg0P3Cp4O7gh4ojtZhFfd8g/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `sw` Datapath."

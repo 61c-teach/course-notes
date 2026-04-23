@@ -287,6 +287,7 @@ The RISC-V five-stage pipeline therefore "ups" the **hardware requirement** on t
 This assumption is further illustrated by the shading of the `ID` and `WB` stages in the high-level pipeline processor diagram discussed in an [earlier section](#sec-processor-hl):
 
 :::{figure} #fig-pipelined-processor-hl
+:alt: "Reprint of the high-level pipelined processor diagram: WB stage left half shaded for register-file write in the first half-cycle and ID stage right half shaded for register read in the second half, illustrating write-then-read timing."
 
 The left half of the `WB` stage is shaded, indicating that the RegFile is written in the first half of the clock cycle. Similarly, the right half of the `ID` stage is shaded, indicating that the RegFile is read in the second half of the clock cycle. Reprinted from an [earlier section](#sec-processor-hl).
 :::
@@ -300,6 +301,7 @@ If we assume our RegFile supports write-then-read, then in cycle 5, the read of 
 Let's visit our [earlier simple example](#tab-data-hazard-1).
 
 :::{figure} #tab-data-hazard-1
+:alt: "Reprint of the pipeline diagram table for the simple add then dependent instructions example, showing IF through WB stage occupancy per cycle before stalls are applied."
 :::
 
 If we assume the RegFile supports write-then-read, how many cycles do we need to stall to avoid data hazards?
@@ -466,6 +468,7 @@ Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw
 Let's visit our [earlier simple example](#tab-data-hazard-1).
 
 :::{figure} #tab-data-hazard-1
+:alt: "Reprint of the pipeline diagram table for the simple add then dependent instructions example, showing IF through WB stage occupancy per cycle before stalls are applied."
 :::
 
 Suppose the RegFile supports write-then-read, _and_ we implement the described forwarding paths from `MEM` to `EX` and `from WB` to `EX`. How many cycles do we need to stall to avoid data hazards?

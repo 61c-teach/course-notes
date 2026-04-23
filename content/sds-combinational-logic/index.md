@@ -40,6 +40,7 @@ The simplest logic gates are **binary** or **unary** operators that take as inpu
 
 ::::{grid-item}
 :::{figure}
+:alt: "Code listing defining Boolean AND as y equals AND of a and b, with the second line expressing the same operation using the C bitwise AND operator on a and b."
 ```{code} bash
 y = AND(a,b)
   = a & b
@@ -51,6 +52,7 @@ y = AND(a,b)
 ::::{grid-item}
 :::{figure} #tab-and
 :width: 70%
+:alt: "Truth table for two-input AND listing all combinations of inputs a and b with output y as reprinted from the combinational logic reference."
 2. Truth Table
 :::
 ::::
@@ -58,6 +60,7 @@ y = AND(a,b)
 ::::{grid-item}
 :::{figure} images/and-gate-mnemonic.png
 :width: 70%
+:alt: "Cartoon AND gate symbol shaped like the letter D in AND, used as a mnemonic linking the gate outline to the word AND."
 3. Graphical Representation[^mnemonic]
 
 [^mnemonic]: Mnemonic: The AND gate is shaped like the "D" in AN**D**.
@@ -67,6 +70,7 @@ y = AND(a,b)
 ::::{grid-item}
 :::{figure} images/and-transistor.png
 :width: 70%
+:alt: "CMOS transistor-level schematic of a two-input AND gate showing complementary pull-up and pull-down networks that implement the AND truth function."
 4. Transistor Circuit
 :::
 ::::
@@ -104,6 +108,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-and
+:alt: "Truth table for two-input AND with rows for each binary pattern of a and b and the resulting output y."
 :::
 ::::
 :::::
@@ -121,6 +126,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-or
+:alt: "Truth table for two-input OR with rows for each binary pattern of a and b and the resulting output y."
 :::
 ::::
 :::::
@@ -138,6 +144,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-not
+:alt: "Truth table for unary NOT showing input a and inverted output y for both logic levels."
 :::
 ::::
 :::::
@@ -209,6 +216,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-xor
+:alt: "Truth table for two-input XOR with rows for each binary pattern of a and b and the resulting output y."
 :::
 ::::
 :::::

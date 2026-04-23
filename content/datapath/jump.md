@@ -77,6 +77,7 @@ The `jal` datapath. Use the menu bar to trace through the animation or download 
 
 ::::{figure}
 :label: anim-datapath-jal
+:alt: "Embedded slides tracing PC-relative jump and link on the single-cycle datapath for jal, including link address capture and branch target muxing."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRG-3tt1Kr0wyvIhKtNd4_QUT38Kn7gL8ulf_jXpKi8sUlQJ4Vk9cRW0woMIXuXbQ/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `jal` Datapath."
@@ -137,6 +138,7 @@ The `jalr` datapath. Use the menu bar to trace through the animation or download
 
 ::::{figure}
 :label: anim-datapath-jalr
+:alt: "Embedded slides tracing register-plus-immediate jump and link on the single-cycle datapath for jalr."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTeMjM-GcVH1ueYM4pQwmgUPEBfKJ4xf3PgkGmcv3eYiSOGlLuUZ4ty02YeXq1gqw/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `jalr` Datapath."

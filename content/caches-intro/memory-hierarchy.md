@@ -21,7 +21,7 @@ title: "Memory Hierarchy"
 <!-- :::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
 :label: fig-principle-of-locality-memory-hierarchy-pyramid-2
 :width: 50%
-:alt: "TODO"
+:alt: "Pyramid-style memory hierarchy diagram from smallest fastest level near the CPU to largest slowest storage, illustrating temporal and spatial locality across registers, caches, DRAM, and disk."
 The memory hierarchy.
 ::: -->
 

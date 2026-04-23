@@ -27,6 +27,7 @@ In digital electronics, it is often important to get certain outputs based on yo
 
 We can simplify expressions using the nine key laws of Boolean algebra:
 :::{figure} #tab-boolean-laws
+:alt: "Reprint of the nine fundamental Boolean algebra laws table with expressions for identity, null, idempotent, inverse, commutative, associative, distributive, absorption, and De Morgan properties."
 Laws of Boolean Algebra (reprint of @tab-boolean-laws from [this section](#sec-boolean-algebra)).
 :::
 

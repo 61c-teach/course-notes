@@ -45,6 +45,7 @@ The `lui` datapath. Use the menu bar to trace through the animation or download 
 
 ::::{figure}
 :label: anim-datapath-lui
+:alt: "Embedded slides tracing load-upper-immediate on the single-cycle datapath, wiring the U-type immediate into the ALU bypass path and register write-back."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQaJ2vmNAHWYtsHOqepOlL_mOnOM3HPvfvhTAO_CLlNLoEo17GiOuslYVycWHUb_w/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `lui` Datapath."
@@ -95,6 +96,7 @@ The `auipc` datapath. Use the menu bar to trace through the animation or downloa
 
 ::::{figure}
 :label: anim-datapath-auipc
+:alt: "Embedded slides tracing add-upper-immediate-to-PC on the single-cycle datapath, combining PC with the upper immediate for PC-relative addressing setup."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQTNKmHKQSo2p_zRGfFjMYdnQ5QoIcEeFI57fdjlvmkOQJKbXAZ42_Y6x5iT8TNGw/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `auipc` Datapath."

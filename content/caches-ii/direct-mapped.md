@@ -164,6 +164,7 @@ The following animation traces through four memory accesses to a 12-bit address 
 
 ::::{figure}
 :label: fig-dm-warmup
+:alt: "Embedded slides stepping through four memory accesses on a cold 12-bit-address direct-mapped cache with 16-byte capacity, 4-byte blocks, and write-back policy."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSfQ89lj8_qzjh6yX5lGIOVEzC3909wUDUGC5FRbyT060KMbeTBKLFvUIlPyHIkna968TML6yoBnGbe/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through the write policy of a direct-mapped cache from this section. Access [original Google Slides](https://docs.google.com/presentation/d/1SIM8fNAVuRooMmNGsFzuiB2MwlKYi_ZPWQrQYEh0dmE/edit?usp=sharing)"

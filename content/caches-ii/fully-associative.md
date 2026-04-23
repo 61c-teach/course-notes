@@ -163,6 +163,7 @@ The following animation traces through five memory accesses to a 12-bit address 
 
 ::::{figure}
 :label: fig-fa-warmup
+:alt: "Embedded slides stepping through five memory accesses on a cold 12-bit-address fully associative cache with 16-byte capacity and 4-byte blocks."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQU9l8AzNd5IkR1OUoqNtUygI4anobQJsrXgAXObfGH_eoSDy3iCIVqHMtZE8p-TvSI06dUoLIb8Y-z/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through a warm up of a fully associative cache from this section. Access [original Google Slides](https://docs.google.com/presentation/d/1NxTminubfgSHzH2S_N7SxTyquI5B4QidA8b6W4mnRlU/edit?usp=sharing)"
@@ -296,6 +297,7 @@ The tag with the highest number is `0x10F`.
 
 ::::{figure}
 :label: fig-fa-lru
+:alt: "Embedded slides illustrating LRU replacement in a fully associative cache as additional accesses fill valid entries and evict the least recently used tag."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQZlQhRUK7d3f5-2SHQnPPSsyHFmG2xZ5hgEr5p8PyNZLKBl7zVK8UojiqD6OipYsRVa5v7t-ChQjT7/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through the replacement policy for a fully associative cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1vHYBxCYjtFT8vSbVFioz_o1K4T2e0mNykhJ89-yactQ/edit?usp=sharing)"
@@ -369,6 +371,7 @@ To implement write-back, we note further that we can only need to write back _mo
 
 ::::{figure}
 :label: fig-fa-wb
+:alt: "Embedded slides animating write-back policy and dirty-bit behavior on a fully associative cache during hits, misses, and replacements."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSBzBoel_J30XSTEfEQJDsk1OjVQ-Jnii6At7ZyqDKed1wADBar24FT5vhoT92bKNfIsKh5XVwz5rqc/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides detailing the write policy for a fully associative cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/15Nz0bRbUMH1EW45UmeayDK5D_D8eLSKCBL-CvlEjvls/edit?usp=sharing)"

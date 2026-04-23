@@ -15,10 +15,12 @@ The below are abbreviations that will be used in the table:
 * `inst`: One of the instructions in the table
 
 :::{figure} #tab-rv32i-load
+:alt: "Reprint of the RV32I load instruction reference table with opcode, funct3, assembly forms, and semantic descriptions from the data transfer section."
 Load Instructions (reprint of @tab-rv32i-load from [this section](#sec-data-transfer)).
 :::
 
 :::{figure} #tab-rv32i-store
+:alt: "Reprint of the RV32I store instruction reference table with opcode, funct3, assembly forms, and semantic descriptions from the data transfer section."
 Store Instructions (reprint of @tab-rv32i-store from [this section](#sec-data-transfer)).
 :::
 
