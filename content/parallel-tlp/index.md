@@ -96,7 +96,7 @@ There are two components to a **multicore execution model** (sometimes known as 
     * Advantages: Processors (cores) can coordinate and communicate by storing to/loading from common locations in shared memory.  There can also be just one DRAM unit on the chip.
     * Disadvantages: Communication between processors must use the slower DRAM medium; recalling our [latency analogy](#fig-3-locality), this bottleneck is like "going to Sacramento" on each inter-core communication. Synchronization between cores[^synchronization] enforces some serialization of execution, and [Amdahl's Law](#sec-amdahls-law) will eventually be the downfall of any multicore performance gain.
 
-[^synchronization]: Synchronization is when multiple threads of execution (often on different cores)try to coordinate how to read/write to the same spot at the same time. As we will see in a [later section](#sec-critical-section), synchronization enforces some serialization of execution.
+[^synchronization]: Synchronization is when multiple threads of execution (often on different cores)try to coordinate how to read/write to the same spot at the same time. As we will see in a [later section](#sec-data-race), synchronization enforces some serialization of execution.
 
 [^multicore-terminology]: (Pedantic footnote) A microprocessor is a processor on a single integrated circuit. A multiprocessor is the described execution model [above](#sec-multiprocessor). A **multicore processor** should therefore really be called a "multiprocessor microprocessor", but nowadays most people use the former as the the latter has naming redundancy. Why is multiprocessor terminology so confusing? Because many related ideas for parallel processing were pursued concurrently, and all of them are now used.
 

@@ -186,6 +186,7 @@ Understanding this section is useful for understanding your computer.
 ::::
 
 ## Visuals: Memory Hierarchy
+
 :::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
 :label: fig-principle-of-locality-memory-hierarchy-pyramid-2
 :width: 50%
