@@ -1,5 +1,5 @@
 ---
-title: "Locks and Atomic Memory Operations"
+title: "Locks, Atomic Instructions"
 subtitle: This content is not tested
 ---
 
@@ -8,7 +8,7 @@ subtitle: This content is not tested
 
 * Motivate why locks are needed to implement synchronization of accesses to shared memory/state.
 * Use the Dining Philosophers Problem to motivate when deadlock occurs.
-* Define atomic instructions, e.g., atomic memory operations.
+* Describe the behavior of atomic instructions in assembly, e.g., atomic memory operations.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
