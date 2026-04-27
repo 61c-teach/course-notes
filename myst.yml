@@ -239,12 +239,11 @@ project:
         - file: content/parallel-tlp/openmp.md
         - file: content/parallel-tlp/dgemm-mimd.md
         - file: content/parallel-tlp/openmp-examples.md
-    - title: "L33-L34 Parallelism IV: Synchronization"
+    - title: "L33-L34 Synchronization"
       children:
-        - file: content/parallel-tlp/critical-section.md
+        - file: content/parallel-tlp/data-race.md
         - file: content/parallel-tlp/cache-coherency.md
-        - file: content/parallel-tlp/locks.md
-        - file: content/parallel-tlp/atomic-operations.md
+        - file: content/parallel-tlp/locks-amos.md
         - file: content/parallel-II/summary.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md

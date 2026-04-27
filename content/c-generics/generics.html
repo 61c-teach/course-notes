@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Generics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="generics_files/libs/clipboard/clipboard.min.js"></script>
+<script src="generics_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="generics_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="generics_files/libs/quarto-html/popper.min.js"></script>
+<script src="generics_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="generics_files/libs/quarto-html/anchor.min.js"></script>
+<link href="generics_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="generics_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="generics_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="generics_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="generics_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Generics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>:::{warning} ⚠️⚠️⚠️ Looking for IEC Prefixes? IEC Prefixes like MiB, GiB are not technically C material but were covered in this lecture. They are linked in the sidebar at the bottom: <a href="#sec-iec-prefixes">IEC and Base-10 Prefixes</a>. :::</p>
+<p>(sec-generic-swap)= ## Learning Outcomes</p>
+<ul>
+<li>Understand why generic pointers (<code>void *</code>) cannot be dereferenced</li>
+<li>Use <code>memcpy</code> and <code>memmove</code> to access memory in generic functions</li>
+</ul>
+<p>In this section, we focus on implementing <strong>generic</strong> swap. Recall our goals for generic functions from the <a href="#sec-generics">introduction</a>:</p>
+<ol type="1">
+<li>Generics should work regardless of argument type.</li>
+<li>Generics should work by accessing blocks of memory, regardless of the data type stored in those blocks.</li>
+</ol>
+<p>We translate these high-level ideas into pseudocode for generic swap:</p>
+<p>(code-swap-pseudo)=</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> swap<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>ptr1<span class="op">,</span> <span class="dt">void</span> <span class="op">*</span>ptr2<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 1. store a copy of data1 in temporary storage</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 2. copy data2 to location of data1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 3. copy data in temporary storage to location of data2</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The above parameters approximately achieve the first of our goals for generic functions. By declaring <code>ptr1</code> and <code>ptr2</code> as generic pointers with <code>void *</code>, we effectively assume there is some data at the locations that <code>ptr1</code> and <code>ptr2</code> point to that need to be swapped. (We will see later that some adjustments to this function signature are necessary.)</p>
+<p>What about the function body? Our <a href="#code-swap-int"><code>swap_int</code> function</a> function from earlier uses the dereference operator (<code>*</code>) to read and write data to and from the memory pointed to by <code>ptr1</code> and <code>ptr2</code>. We will see in this section that dereferencing generic pointers <em>will not work</em>, and we must use explore other operations for accessing memory.</p>
+<section id="you-cannot-dereference-void" class="level2">
+<h2 class="anchored" data-anchor-id="you-cannot-dereference-void">You cannot dereference <code>void *</code></h2>
+<p>It is natural to want to write a generic swap function following the pattern of <code>swap_int</code>, <code>swap_short</code>, and <code>swap_string</code> from <a href="#sec-swap-motivation">earlier</a>. However, the following code will <em>not</em> work:</p>
+<p>(code-swap-faulty)= <code>ugteap c :linenos: /* produces compiler errors */ void swap_faulty(void *ptr1, void *ptr2) {   void temp = *ptr1;   *ptr1 = *ptr2;   *ptr2 = temp; }</code></p>
+<p>When we attempt to compile with <code>gcc</code>, the compiler is <em>not happy</em>:</p>
+<pre><code>$ gcc -c -o swap.o swap.c -Wall -std=c99 -g
+swap.c: In function ‘swap_faulty’:
+swap.c:10:8: error: variable or field ‘temp’ declared void
+   10 |   void temp = *ptr1;
+      |        ^~~~
+swap.c:10:15: warning: dereferencing ‘void *’ pointer
+   10 |   void temp = *ptr1;
+      |               ^~~~~
+swap.c:10:15: error: void value not ignored as it ought to be
+   10 |   void temp = *ptr1;
+      |               ^
+swap.c:11:3: warning: dereferencing ‘void *’ pointer
+   11 |   *ptr1 = *ptr2;
+      |   ^~~~~
+swap.c:11:11: warning: dereferencing ‘void *’ pointer
+   11 |   *ptr1 = *ptr2;
+      |           ^~~~~
+swap.c:11:9: error: invalid use of void expression
+   11 |   *ptr1 = *ptr2;
+      |         ^
+swap.c:12:3: warning: dereferencing ‘void *’ pointer
+   12 |   *ptr2 = temp;
+      |   ^~~~~
+swap.c:12:9: error: invalid use of void expression
+   12 |   *ptr2 = temp;
+      |         ^</code></pre>
+<p>There are two main reasons this code won’t work. First, we cannot declare untyped variables, so a declaration like <code>void temp;</code> errors. Second, dereferencing <code>void *</code> pointers <em>does not yield</em> <a href="https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Void-Pointers.html"><em>anything usable</em></a>.</p>
+<p>Consider what it means to dereference a pointer, say, declared and initialized as <code>int32_t *p = ...;</code> pointer means. This means we know that the <code>p</code> is an address of an <code>int32_t</code> value, and dereferencing with <code>*p</code> <em>accesses those 4 bytes of memory</em>. This allows the compiler to translate later statements like <code>(*p) + 4</code> into integer arithmetic, _because it knows that <code>*p</code> is an <code>int32_t</code>-typed value.</p>
+<p>:::{hint} You can only dereference typed pointers! To dereference a pointer, we must know the number of bytes to access in memory at <strong>compile time</strong>. Generic pointers (<code>void *</code>) <strong>cannot</strong> use the dereference operator! :::</p>
+<p>:::{warning} You <em>can</em> dereference <code>void **</code>!</p>
+<p>By contrast, <code>void **</code> is <strong>not</strong> a generic pointer, because it points to a known type. It is terribly confusing that the following code compiles and runs fine:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="op">**</span>doubleptr <span class="op">=</span> …<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>printf<span class="op">(</span><span class="st">"</span><span class="sc">%p\n</span><span class="st">"</span><span class="op">,</span> <span class="op">*</span>doubleptr<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that the size of <em>any</em> pointer is known at compile-time, because all pointers are word-sized. <code>sizeof(*doubleptr)</code> is <code>sizeof(void *)</code> which is the size of an address. In this case, dereferencing <code>doubleptr</code> in the <code>printf</code> call evaluates to a generic pointer, i.e., an address. <em>Generic pointers are typed</em>—they have type <code>void *</code>!</p>
+<p>:::</p>
+</section>
+<section id="generic-memory-access-with-memcpy-memmove" class="level2">
+<h2 class="anchored" data-anchor-id="generic-memory-access-with-memcpy-memmove">Generic memory access with <code>memcpy</code>, <code>memmove</code></h2>
+<p>Generics cannot use the dereference operator (<code>*</code>) because the type of the data pointed to by generic pointers is unknown. Instead, generics use two functions from the C standard library: <code>memcpy</code> and <code>memmove</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="op">*</span>memcpy<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>dest<span class="op">,</span> <span class="dt">const</span> <span class="dt">void</span> <span class="op">*</span>src<span class="op">,</span> <span class="dt">size_t</span> n<span class="op">);</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="op">*</span>memmove<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>dest<span class="op">,</span> <span class="dt">const</span> <span class="dt">void</span> <span class="op">*</span>src<span class="op">,</span> <span class="dt">size_t</span> n<span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These <code>string.h</code> generic functions <strong>copy</strong> <code>n</code> bytes from memory area <code>src</code> to memory area <code>dest</code>. In other words, they allow read/write access to data in memory using a <code>void *</code> pointer!</p>
+<p>:::{hint} Use <code>memcpy</code> for performance reasons, unless you know memory areas overlap.</p>
+<p>From the Linux <code>man</code> pages for <code>memcpy</code>: “The memory areas must not overlap.”</p>
+<p>By contrast, <code>memmove</code>: “The memory areas may overlap: copying takes place as though the bytes in <code>src</code> are first copied into a temporary array that does not overlap <code>src</code> or <code>dest</code>, and the bytes are then copied from the temporary array to dest.”</p>
+<p>Because of the above, <code>memcpy</code> is generally faster<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>:::</p>
+</section>
+<section id="generic-swap" class="level2">
+<h2 class="anchored" data-anchor-id="generic-swap">Generic Swap</h2>
+<p>Let’s consider how the generic <code>memcpy</code> will replace dereferencing in one of the statements in our <a href="#code-swap-int"><code>swap_int</code> function</a> function:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// in swap_int:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">// ptr1, ptr2 are both declared int *</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>ptr1 <span class="op">=</span> <span class="op">*</span>ptr2<span class="op">;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This statement is simply a <code>memcpy</code>—it copies the bytes of the <code>int</code> at <code>ptr2</code> into the corresponding bytes at <code>ptr1</code>!</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// equivalent to swap_int's *ptr1 = *ptr2;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>memcpy<span class="op">(</span>ptr1<span class="op">,</span> ptr2<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>memcpy</code> requires knowing how many bytes to copy from a source to a destination. Recall from <a href="#sec-array-decay">an earlier chapter</a> that with pointer parameters, functions <em>will not know</em> how much data is pointed to. We must therefore update our <a href="#code-swap-pseudo">pseudocode</a> to add an additional size parameter:</p>
+<p>(code-swap-pseudo-size)=</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> swap<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>ptr1<span class="op">,</span> <span class="dt">void</span> <span class="op">*</span>ptr2<span class="op">,</span> <span class="dt">size_t</span> nbytes<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 1. store a copy of data1 in temporary storage</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 2. copy data2 to location of data1</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 3. copy data in temporary storage to location of data2</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
+<p>Finally, we are ready to implement our <strong>generic swap</strong> function, <code>swap</code>!</p>
+<div class="{card}">
+<p>Generic swap function ^^^ (code-swap-generic)= ```ugteap c :linenos: void swap(void <em>ptr1, void </em>ptr2, size_t nbytes) { // 1. store a copy of data1 in temporary storage char temp[nbytes]; memcpy(temp, ptr1, nbytes);</p>
+<p>// 2. copy data2 to location of data1 memcpy(ptr1, ptr2, nbytes);</p>
+<p>// 3. copy data in temporary storage to location of data2 memcpy(ptr2, temp, nbytes); }</p>
+<pre><code>:::
+
+The `swap` function above uses `memcpy` and therefore assumes that `ptr1` points to `nbytes` of memory and `ptr2` points to nbytes of memory, and that there is no overlap in these two memory areas.
+
+:::{warning} What's up with that `char temp[nbytes]` declaration?
+
+Our non-generic [`swap_int` function](#code-swap-int) declared `temp` to be a local variable large enough to hold `sizeof(int)` bytes. To do the same in a generic function, we must declare a similar temporary "generic" storage.
+
+Because `sizeof(char)` is defined as one byte in C, we can achieve this generic storage by declaring a local `char` array, i.e., a **buffer**.
+:::
+
+Now, let's use this new generic `swap` to swap two `int`s:
+
+(code-swap-generic-main)=
+```{code} c
+:linenos:
+int data1 = 22;
+int data2 = 61; 
+swap(&amp;data1, &amp;data2, sizeof(data1));</code></pre>
+<p>The function call looks near-identical to <a href="#code-swap-int-main">our non-generic call to <code>swap_int</code></a>! Just like before, we pass in the locations of the two values we want to swap. The only modification is that we now additionally pass in the size of the value(s), which we assume to be identical.</p>
+<p>The below slidedeck traces through <code>swap</code> in action using a toy example. Initially, <code>data1</code> stores <code>22</code> at address <code>0x100</code>, and <code>data2</code> stores <code>61</code> at address <code>0x104</code>. Assume <code>sizeof(int)</code> is 4.</p>
+<p>:::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTd9HX8X0gtVYXfqM9Fv7-BkzzX7HHsRTjQLMV8zu9FqBTT0-NKepc9RWIJW9lKReYLZAPo16cX3G4V/pubembed?start=false&amp;loop=false :width: 100% :title: “Animation that steps through the enumerated text in Section C Generics Implementation. Access <a href="https://docs.google.com/presentation/d/1pIqociLW0G65W5Bm4kPh9Kjq7UB64VdcOkhaA1zStxg/edit?usp=sharing">original Google Slides</a>”</p>
+</div>
+</section>
+</section>
+<section id="application-swap_ends" class="level2">
+<h2 class="anchored" data-anchor-id="application-swap_ends">Application: <code>swap_ends</code></h2>
+<p>Finally, let’s consider generics that operate on a generic array of values. We will need to do pointer arithmetic!</p>
+<p>We would like to use the <code>swap</code> function to write a function <code>swap_ends</code>, that swaps the first and last elements in an array.</p>
+<p>The <a href="#code-swap-ends-main">code below</a> will update the array <code>arr</code> as shown in <strong>?@fig-swap-ends</strong>:</p>
+<p>(code-swap-ends-main)= <code>ugteap c int main() {   ...   int32_t arr[] = {1, 2, 3, 4, 5};   int32_t n = sizeof(arr)/sizeof(arr[0]);   swap_ends(arr, n, sizeof(arr[0]); // to implement   ... }</code></p>
+<p>:::{figure} images/swap-ends.png :label: fig-swap-ends :width: 60% :alt: “Array example after swap_ends: five consecutive integers at addresses 0x100 through 0x110 now read 5, 2, 3, 4, 1, showing that the first and last elements were exchanged.”</p>
+<p><code>swap_ends</code> swaps the elements <code>1</code> and <code>5</code> in the <code>arr</code> array. :::</p>
+<p>The function <code>swap_ends</code> has the following inputs and output:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> swap_ends<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>arr<span class="op">,</span> <span class="dt">size_t</span> nelems<span class="op">,</span> <span class="dt">size_t</span> nbytes<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>arr</code>: A generic pointer to a memory block (recall that all “array” arguments decay to pointers)</li>
+<li><code>size_t nelems</code>: Number of elements in the array</li>
+<li><code>size_t nbytes</code>: Size of each element, in bytes</li>
+</ul>
+<p>The last two parameters specify (1) how large the block of memory (“array”) at <code>arr</code> is and (2) how to access sequential elements within the block. Combined, <code>nelems</code> and <code>nbytes</code> should help us access the last element in the array.</p>
+<p>:::{tip} Fill in the blank</p>
+<p>Consider the partial implementation of <code>swap_ends</code> below. What goes in the blank?</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> swap_ends<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>arr<span class="op">,</span> <span class="dt">size_t</span> nelems<span class="op">,</span> <span class="dt">size_t</span> nbytes<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    swap<span class="op">(</span>arr<span class="op">,</span> ______ <span class="op">,</span> nbytes<span class="op">);</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>A.</strong> <code>arr + nelems - 1</code></li>
+<li><strong>B.</strong> <code>arr + (nelems - 1)*nbytes</code></li>
+<li><strong>C.</strong> <code>(char *) arr + (nelems - 1) * nbytes</code></li>
+<li><strong>D.</strong> <code>(char *) (arr + (nelems - 1) * nbytes)</code></li>
+<li><strong>E.</strong> Something else</li>
+</ul>
+<p>:::</p>
+<p><strong>Answer</strong>: Let’s consider what <code>swap</code> does. It takes two pointers and swaps <code>nbytes</code> at those positions. To swap the ends of the array in <strong>?@fig-swap-ends</strong>, we would like to pass in <code>0x100</code> and <code>0x104</code> to swap.</p>
+<p>Option C does this explicitly:</p>
+<ul>
+<li><code>(char *) arr</code>: Cast generic <code>arr</code> to a <code>char *</code> to perform <strong>bytewise arithmetic</strong>.</li>
+<li>Add <code>(nelems - 1) * nbytes</code> to the <code>(char *) arr</code> pointer.
+<ul>
+<li>Here, because the pointer is to a <code>char</code>, pointer arithmetic is <strong>effectively bytewise</strong>.</li>
+<li>To point to the last element, we jump to the end of the array (in bytes), then go back by one element’s length, in bytes.</li>
+</ul></li>
+</ul>
+<p>The final implementation of <code>swap_ends</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> swap_ends<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>arr<span class="op">,</span> <span class="dt">size_t</span> nelems<span class="op">,</span> <span class="dt">size_t</span> nbytes<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    swap<span class="op">(</span>arr<span class="op">,</span> <span class="op">(</span><span class="dt">char</span> <span class="op">*)</span> arr <span class="op">+</span> <span class="op">(</span>nelems <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">*</span> nbytes<span class="op">,</span> nbytes<span class="op">);</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>:::{note} Other options: Non-standard C</p>
+<p>Options B and D also work (without the <code>(char *)</code> cast) but are <a href="https://stackoverflow.com/questions/10058234/void-vs-char-pointer-arithmetic">not standard C</a>, which does not define pointer arithmetic on <code>void *</code> pointers. However, these options will compile and run fine on the course machines with <code>gcc</code>, which is a compiler to <em>GNU</em> C.</p>
+<p>:::</p>
+<p>(sec-generic-strings)= ## More Generics in <code>string.h</code></p>
+<p>The <code>string.h</code> header in the C standard library contains string functions <em>and</em> functions that handle memory, like <code>memcpy</code>, <code>memmove</code>, and <code>memset</code>.</p>
+<p>At first glance, you may then find the header name a bit misleading. However, as we have seen, memory handling functions operate byte-by-byte. Furthermore, by definition strings are byte arrays that happen to be null-terminated! Because byte arrays can be accessed with <code>char *</code> pointers, many implementations of string functions simply assume <code>char *</code> operands.</p>
+<p>For example, the glibc implementation of <code>strncpy</code> uses <code>memset</code> and <code>memcpy</code>. From the Linux <code>man</code> pages:</p>
+<pre><code>... at most n bytes of src are copied. Warning: If there is no null byte among
+the first n bytes of src, the string placed in dest will not be 
+null-terminated. If the length of src is less than n, strncpy() writes 
+additional null bytes to dest to ensure that a total of n bytes are written.
+
+...[returns] a pointer to the destination string dest.</code></pre>
+<p>Here is a simplified version of the <a href="https://codebrowser.dev/glibc/glibc/string/strncpy.c.html">full implementation</a> in glibc:</p>
+<p><code>ugteap c :linenos: char *strncpy(char *dest, const char *src, size_t n) {   size_t size = strnlen(src, n); // max(strlen(src), n)   if (size != n)      memset(dest + size, '\0', n – size);   return memcpy(dest, src, size); }</code></p>
+<p>:::{note} Explanation :class: dropdown</p>
+<p>Each line, explained:</p>
+<ol type="1">
+<li>Function declaration.</li>
+<li><code>size</code> is set to <span class="math inline">\(\max (\)</span><code>strlen(src)</code>, <code>n</code> <span class="math inline">\()\)</span>. From the Linux <code>man</code> pages: “The <code>strnlen()</code> function returns <code>strlen(s)</code>, if that is less than <code>maxlen</code>, or <code>maxlen</code> if there is no null terminating (<code>'\0'</code>) among the first <code>maxlen</code> characters pointed to by <code>s</code>.”</li>
+<li>Recall that conditional statements without curly braces treat the next statement as the singular statement of the conditional body (here, Line 4).</li>
+<li>Write in null terminators beyond the length of <code>src</code>. If <code>n</code> is at least <code>strlen(src) + 1</code> bytes, this line null-terminates the result.</li>
+<li>Copy <code>size</code> bytes from <code>src</code> to <code>dest</code>.</li>
+</ol>
+<p>:::</p>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://clc-wiki.net/wiki/memmove">Some implementations</a> of memmove actually employ temporary storage (like in C99), which risks running out of memory. Read more on <a href="https://stackoverflow.com/questions/4415910/memcpy-vs-memmove">StackOverflow</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

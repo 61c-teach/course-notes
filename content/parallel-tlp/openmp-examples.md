@@ -2,26 +2,13 @@
 title: "OpenMP Examples"
 ---
 
-More OpenMP examples if useful.
-
-::::{note} 🎥 Lecture Video
-:class: dropdown
-
-:::{iframe} https://www.youtube.com/embed/bqdaOK9mHeU
-:width: 100%
-:title: "[CS61C FA20] Lecture 34.3 - Thread-Level Parallelism II: Computing Pi"
-:::
-
-::::
-
 ## Example 1: Arrays
-
 
 :::{card}
 OpenMP C program: `for.c`
 ^^^
+
 ```{code} c
-:label: code-hello-world-openmp
 :linenos:
 #include <stdio.h>
 #include <omp.h>
@@ -65,6 +52,16 @@ thread 1, i =  5
 ```
 
 ## Example 2: Computing $\pi$
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/bqdaOK9mHeU
+:width: 100%
+:title: "[CS61C FA20] Lecture 34.3 - Thread-Level Parallelism II: Computing Pi"
+:::
+
+::::
 
 We can compute $\pi$ with numerical integration[^compute-pi]:
 

@@ -8,6 +8,7 @@ title: "Threads"
 * Define thread, program, and process.
 * Differentiate between software thread and hardware threads.
 * Explain how (and why!) the OS performs context switches.
+* Explain at a high-level how single-core processors can run multithreaded programs, and how multicore processors can speed up execution of such programs.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
