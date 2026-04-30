@@ -80,7 +80,7 @@ See the discussion of [U-Type instructions](#sec-u-type) `lui` and `auipc`. Just
 :::{figure} images/jal-isa.png
 :label: fig-jal-isa
 :width: 100%
-:alt: "TODO"
+:alt: "J-type jal instruction format: syntax jal rd Label with bits 31–12 holding the scrambled 20-bit immediate, rd in bits 11–7 holding the destination register, and opcode as 0b1101111 in bits 6–0 for jal instruction; text explains a 21-bit signed PC-relative byte offset with implicit lsb zero and destination register rd loaded with PC plus four."
 
 jal instruction format.
 :::

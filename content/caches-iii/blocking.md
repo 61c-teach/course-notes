@@ -29,6 +29,13 @@ Assume that matrices $A$, $B$, and $C$ are stored in **row-major order** as `int
 
 C code, for your reference:
 
+<!-- :::{figure} images/matmul-row-major.png
+:label: fig-matmul-row-major
+:alt: "Matrix memory-layout illustration showing row-major storage order for A, B, and C matrices in memory. The top rectangle shows the wide Nx8 matrix with elements labeled 1 through 16. The bottom rectangle shows the Nx8 elements of the matrix laid out in contiguous space in memory where the matrix is stored."
+
+Assume that all matrices are stored in **row-major order**.
+:::
+ -->
 :::{embed} #code-igemm-simple
 :::
 
@@ -61,9 +68,10 @@ Computing $C_00$ as vector multiplication of the zero-th row of $A$ and the zero
 
 ::::{figure}
 :label: anim-matmul-00
+:alt: "Embedded slides animating memory accesses while computing matrix element C zero zero from the zero-th row of A and zero-th column of B."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTAFRr4VJ6o2brFhpjCS_edmdWM0j2cKViq6OjTX1XqDhRJWYa68FU07IyZw2oG6g/pubembed?start=false&loop=false
 :width: 100%
-:title: "C[0][0] Memory Access Pattern"
+:title: "Slides walking through a C[0][0] Memory Access Pattern."
 :::
 Computing $C_{00}$ as vector multiplication of the zero-th row of $A$ and the zero-th column of $B$. Use the menu bar to trace through the animation or access the [original Google Slides](https://docs.google.com/presentation/d/1GJiXwZ8gGuZxLxSU5raiTPY_E0I4AQVU/edit?usp=sharing).
 ::::
@@ -191,9 +199,10 @@ Computing $C_{ij}$ as vector multiplication of the i-th row of $A$ and the j-th 
 
 ::::{figure}
 :label: anim-matmul-ij
+:alt: "Embedded slides animating memory accesses while computing a general inner product C i j from row i of A and column j of B."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRWBkNhA5huAtKWqxfxruNlEUAqXRxVDGHzjT88Ov3ZJnfrupfQsbNZHSyXOyS3SQ/pubembed?start=false&loop=false
 :width: 100%
-:title: "C[i][j] Memory Access Pattern"
+:title: "Slides walking through a C[i][j] Memory Access Pattern."
 :::
 Computing $C_{ij}$ as vector multiplication of the i-th row of $A$ and the j-th column of $B$. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1AekxfV7tcsUA0CcpvY4J9jg1YvnWKMfZ/edit?usp=sharing).
 ::::
@@ -344,6 +353,7 @@ A cache blocking technique could **transpose** B before matrix multiplication. T
 
 :::{figure} images/matmul-transpose.png
 :label: fig-matmul-transpose
+:alt: "Matrix transpose diagram illustrating B transpose used to improve contiguous-memory access in multiplication. The left rectangle shows the original tall matrix B with column 1 highlighted, and elements 0 and 4 highlighted further. The right rectangle shows B transpose with the same elements highlighted, but now in their new transpose locations. An arrow between the two rectangles shows the ability to transform between B and B transpose."
 :width: 60%
 
 $B^T$ is the matrix transpose of $B$ 
@@ -378,9 +388,10 @@ Our second cache blocking approach observes that matrix multiplication can be co
 
 ::::{figure}
 :label: anim-matmul-block-2
+:alt: "Embedded slides illustrating cache blocking with a two-by-two tile of C computed from smaller submatrix multiplications of A and B."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQU5B3-twc1_pBY024sp72KsxJ6O8tieO_QwOYPj4VgLt7--ONJ0BbG-Lj1CDwdoQ/pubembed?start=false&loop=false
 :width: 100%
-:title: "2x2 tile: Top left of C"
+:title: "Slides illustrating cache blocking with a C[i][j] Memory Access Pattern."
 :::
 Cache blocking. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1HY9AE2z3eb1eWPx0VQvVusZ83caTvZ5s/edit?usp=drive_link&ouid=113745915748997113650&rtpof=true&sd=true).
 ::::

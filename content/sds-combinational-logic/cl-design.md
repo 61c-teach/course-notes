@@ -25,7 +25,7 @@ Our goal this lecture is to build combinational logic blocks. We can summarize t
 :::{figure} images/cl-block-representation.png
 :label: fig-cl-block-representation
 :width: 60%
-:alt: "TODO"
+:alt: "Diagram with three bubbles describing three representations of combinational logic: Truth Table, Boolean Expression, and Gate Diagram. The representations are connected with curved arrows showing conversions between them."
 
 Second equivalent circuit: $y = a + c$.
 :::
@@ -77,7 +77,7 @@ and has the corresponding gate circuit
 :::{figure} images/majority-circuit.png
 :label: fig-majority-circuit
 :width: 60%
-:alt: "TODO"
+:alt: "Three two-input AND gates pairwise on a, b, and c feed a three-input OR gate to output y, implementing the majority function with a note on wire junctions."
 
 Circuit corresponding to $y = ab + bc + ac$.
 :::
@@ -165,7 +165,7 @@ $$y = \overline{a} \overline{b} \overline{c} + \overline{a} \overline{b} c + a \
 :::{figure} images/sum-product-example.png
 :label: fig-sum-product-example
 :width: 50%
-:alt: "TODO"
+:alt: "Sum-of-products style circuit: NOT gates on a, b, and c; one AND combines NOT a with NOT b, another AND combines a with NOT c; both outputs drive an OR gate to output y."
 
 Circuit specified by canonical form in [example](#sec-sum-product-example).
 :::
@@ -235,7 +235,7 @@ To generate a truth table from a given circuit, we just need to evaluate the out
 :::{figure} images/compare-2-circuit.png
 :label: fig-compare-2-circuit
 :width: 70%
-:alt: "TODO"
+:alt: "One-bit equality circuit: an AND of a and b in parallel with an AND of NOT a and NOT b, both outputs feed an OR gate to output y, representing logic where y is high when both bits match."
 Circuit for 2-bit compare block.
 :::
 
@@ -275,7 +275,7 @@ We would like to a circuit that **compares two 32-bit values**; this 32-bit comp
 :::{figure} images/compare-32-block.png
 :label: fig-compare-32-block
 :width: 30%
-:alt: "TODO"
+:alt: "Block symbol with 32-bit slash buses for A and B entering the top of the block. A single output Z results from the block; the block interior shows equals with subscript 32 and a question mark, representing that the combinational logic checks for equality."
 
 32-bit compare circuit.
 :::
@@ -292,7 +292,7 @@ We'd therefore like to use the 2-bit compare circuit we built in [a previous exa
 :::{figure} images/compare-2-block.png
 :label: fig-compare-2-block
 :width: 30%
-:alt: "TODO"
+:alt: "Rectangular block with single-bit inputs a and b on top and output y below. An equals subscript of one with a question mark inside the block denotes a one-bit compare that checks for equality."
 
 Bitwise compare circuit; a block representation of the mystery circuit in @fig-compare-2-circuit.
 :::
@@ -307,7 +307,7 @@ Functionally, `z` is `1` only if all of `A`'s bits are equal to all of `B`'s bit
 :::{figure} images/compare-32-circuit.png
 :label: fig-compare-32-circuit
 :width: 80%
-:alt: "TODO"
+:alt: "Thirty-two parallel one-bit equality blocks on paired inputs a31 b31 through a0 b0, all feeding a single 32-input AND gate whose output is z. The output z is high when every bit pair matches."
 
 32-bit compare circuit diagram, assuming we have implemented the bitwise compare circuit. The 32-input AND gate can be implemented recursively with 2- or 4-input AND gates.
 :::

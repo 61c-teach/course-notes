@@ -40,6 +40,7 @@ The simplest logic gates are **binary** or **unary** operators that take as inpu
 
 ::::{grid-item}
 :::{figure}
+:alt: "Code listing defining Boolean AND as y equals AND of a and b, with the second line expressing the same operation using the C bitwise AND operator on a and b."
 ```{code} bash
 y = AND(a,b)
   = a & b
@@ -51,6 +52,7 @@ y = AND(a,b)
 ::::{grid-item}
 :::{figure} #tab-and
 :width: 70%
+:alt: "Truth table for two-input AND listing all combinations of inputs a and b with output y as reprinted from the combinational logic reference."
 2. Truth Table
 :::
 ::::
@@ -58,6 +60,7 @@ y = AND(a,b)
 ::::{grid-item}
 :::{figure} images/and-gate-mnemonic.png
 :width: 70%
+:alt: "Cartoon AND gate symbol shaped like the letter D in AND, used as a mnemonic linking the gate outline to the word AND."
 3. Graphical Representation[^mnemonic]
 
 [^mnemonic]: Mnemonic: The AND gate is shaped like the "D" in AN**D**.
@@ -67,6 +70,7 @@ y = AND(a,b)
 ::::{grid-item}
 :::{figure} images/and-transistor.png
 :width: 70%
+:alt: "CMOS transistor-level schematic of a two-input AND gate showing complementary pull-up and pull-down networks that implement the AND truth function."
 4. Transistor Circuit
 :::
 ::::
@@ -99,11 +103,12 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/and-gate.png
 :label: fig-and-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input AND gate symbol: flat left edge with inputs a and b, rounded right edge with output y."
 :::
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-and
+:alt: "Truth table for two-input AND with rows for each binary pattern of a and b and the resulting output y."
 :::
 ::::
 :::::
@@ -116,11 +121,12 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/or-gate.png
 :label: fig-or-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input OR gate symbol: curved input edge with inputs a and b, pointed output edge with output y."
 :::
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-or
+:alt: "Truth table for two-input OR with rows for each binary pattern of a and b and the resulting output y."
 :::
 ::::
 :::::
@@ -133,11 +139,12 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/not-gate.png
 :label: fig-not-gate
 :width: 100%
-:alt: "TODO"
+:alt: "NOT gate symbol: triangle pointing right with inversion bubble on the tip, input a, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-not
+:alt: "Truth table for unary NOT showing input a and inverted output y for both logic levels."
 :::
 ::::
 :::::
@@ -150,7 +157,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/nand-gate.png
 :label: fig-nand-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input NAND gate symbol: AND shape with inversion bubble on the output side, inputs a and b, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -177,7 +184,7 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/nor-gate.png
 :label: fig-nor-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input NOR gate symbol: OR shape with inversion bubble on the output side, inputs a and b, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
@@ -204,11 +211,12 @@ Here are some common logic gates, many of which you have already seen as [C bitw
 :::{figure} images/xor-gate.png
 :label: fig-xor-gate
 :width: 100%
-:alt: "TODO"
+:alt: "Two-input XOR gate symbol: OR outline with extra curved line on the input side, inputs a and b, and output y."
 :::
 ::::
 ::::{tab-item} Truth Table
 :::{figure} #tab-xor
+:alt: "Truth table for two-input XOR with rows for each binary pattern of a and b and the resulting output y."
 :::
 ::::
 :::::
@@ -254,7 +262,7 @@ than two inputs also exist. For performance reasons, the number of inputs to log
 :::{figure} images/and-gate-n.png
 :label: fig-and-gate-n
 :width: 30%
-:alt: "TODO"
+:alt: "Four-input AND gate symbol: stacked inputs a, b, c, and d on the left and single output y on the curved right edge."
 
 4-input AND gate. The output `y` is `1` if and only if `a`, `b`, and `c` are all `1`.
 :::

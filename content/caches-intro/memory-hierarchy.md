@@ -21,7 +21,7 @@ title: "Memory Hierarchy"
 <!-- :::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
 :label: fig-principle-of-locality-memory-hierarchy-pyramid-2
 :width: 50%
-:alt: "TODO"
+:alt: "Pyramid-style memory hierarchy diagram from smallest fastest level near the CPU to largest slowest storage, illustrating temporal and spatial locality across registers, caches, DRAM, and disk."
 The memory hierarchy.
 ::: -->
 
@@ -184,6 +184,15 @@ Understanding this section is useful for understanding your computer.
 
 ::::
 
+## Visuals: Memory Hierarchy
+
+:::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
+:label: fig-principle-of-locality-memory-hierarchy-pyramid-2
+:width: 50%
+:alt: "Memory-hierarchy pyramid ordering storage levels by speed, size, and proximity to the processor. From the bottom layer of the pyramid to the top, the visual shows magnetic disks, solid-state memory (flash), and virtual memory as SSD and HDD drives; then random-access memory (RAM) and physical memory as a DRAM chip; and finally L3 through L1 caches, CPU cache, registers, and CPU core on the processor chip."
+The memory hierarchy.
+:::
+
 ::::{note} 🎥 Lecture Video: Actual CPUs
 :class: dropdown
 
@@ -209,5 +218,5 @@ For now, know that DRAM is the technology used for memory (primary storage), and
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR4TRAAB71WlQqQUetxcAhTBdq7QfT0xqjMlLU-qT0OH5GTiGZEUPqLNrroMw6Dg2ERrOyPfnJHIu2y/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the video in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
+:title: "Slides walking through storage and the memory hierarchy. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
 :::

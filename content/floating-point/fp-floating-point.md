@@ -49,7 +49,7 @@ You may have seen scientific notation in a physics or chemistry course, but we r
 :::{figure} images/scientific-notation-base10.png
 :label: fig-scientific-notation-base10
 :width: 40%
-:alt: "TODO"
+:alt: "Decimal scientific-notation diagram labeling mantissa and exponent for 1.640625 times 10^-1, with arrows marking the decimal point and base-10 radix."
 
 Scientific notation assumes a **normalized** form, where the mantissa has exactly one non-zero digit to the left of the decimal point.
 :::
@@ -69,7 +69,7 @@ The number $0.1640625$ in a binary normalized form is $1.0101_{\text{two}} \time
 :::{figure} images/scientific-notation-base2.png
 :label: fig-scientific-notation-base2
 :width: 40%
-:alt: "TODO"
+:alt: "Binary normalized-notation diagram labeling mantissa and exponent for 1.0101 base two times 2^-3, with arrows marking the binary point and base-2 radix."
 
 In binary, we also assume a **normalized** form, where the mantissa has exactly one non-zero digit to the left of the binary point.
 :::
@@ -112,7 +112,7 @@ Without further ado, @fig-float defines the three fields in the IEEE 754 single-
 :::{figure} images/float.png
 :label: fig-float
 :width: 100%
-:alt: "TODO"
+:alt: "IEEE 754 single-precision field layout across 32 bits: 1 sign bit at the most significant position, 8 exponent bits, and 23 significand bits."
 
 Bit fields in IEEE 754 single-precision floating point. The least significant bit (rightmost) is indexed 0; the most significant bit (leftmost) is indexed 31.
 :::
@@ -185,7 +185,7 @@ While we would love for you to use the converter to understand the comic in @fig
 
 :::{figure} images/smbc-float.png
 :label: fig-smbc-float
-:alt: "TODO"
+:alt: "SMBC comic where a robot login screen asks 0.1 + 0.2 and accepts 0.30000000000000004, illustrating floating-point rounding behavior."
 :align: center
 :width: 50%
 

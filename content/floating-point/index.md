@@ -62,7 +62,7 @@ A 6-bit fixed-point binary representation fixes the binary point to be a specifi
 :::{figure} images/fixed-point.png
 :label: fig-fixed-point
 :width: 80%
-:alt: "TODO"
+:alt: "Six-bit fixed-point layout with two integer bits and four fractional bits, where the binary point is fixed between them. Labels bit positions to powers 2^1, 2^0, 2^-1, 2^-2, 2^-3, and 2^-4."
 
 Under this 6-bit fixed-point representation,  number 2.625 
 :::
@@ -111,7 +111,7 @@ The smallest fractional step we can take is incrementing the least significant b
 :::{figure} images/fixed-point-add.png
 :label: fig-fixed-point-add
 :width: 40%
-:alt: "TODO"
+:alt: "Fixed-point addition example with aligned binary points: 01.1000 plus 00.1000 equals 10.0000, corresponding to 1.5 + 0.5 = 2.0."
 
 $1.5 + 0.5 = 2$ using the 6-bit fixed point representation from @fig-fixed-point.
 :::
@@ -121,7 +121,7 @@ However, @fig-fixed-point-mul shows that fixed-point multiplication is more comp
 :::{figure} images/fixed-point-mul.png
 :label: fig-fixed-point-mul
 :width: 40%
-:alt: ""
+:alt: "Fixed-point multiplication example showing partial products for 01.1000 times 00.1000 and a final binary-point adjustment to obtain 00.1100, which represents 0.75."
 
 $1.5 \times 0.5 = 0.75$ using the 6-bit fixed point representation from @fig-fixed-point.
 :::

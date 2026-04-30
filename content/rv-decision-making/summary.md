@@ -15,6 +15,7 @@ The below are abbreviations that will be used in the table:
 * `inst`: One of the instructions in the table
 
 :::{figure} #tab-rv-branch
+:alt: "Reprint of the RV32I branch instruction reference table with B-type opcode, funct3 comparisons, and PC-relative branch semantics from the branches section."
 Branch Instructions (reprint of @tab-rv-branch from [this section](#sec-branches)).
 :::
 

@@ -241,10 +241,9 @@ project:
         - file: content/parallel-tlp/openmp-examples.md
     - title: "L33-L34 Synchronization"
       children:
-        - file: content/parallel-tlp/critical-section.md
+        - file: content/parallel-tlp/data-race.md
         - file: content/parallel-tlp/cache-coherency.md
-        - file: content/parallel-tlp/locks.md
-        - file: content/parallel-tlp/atomic-operations.md
+        - file: content/parallel-tlp/locks-amos.md
         - file: content/parallel-II/summary.md
     - title: "L35-L36 Virtual Memory"
       children:
@@ -270,5 +269,6 @@ site:
   options:
     favicon: favicon.png
     logo: icon.png
+    logo_alt: "CS 61C Computer Chip Logo"
     folders: true
     hide_authors: true

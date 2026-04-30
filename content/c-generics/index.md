@@ -69,7 +69,7 @@ The slidedeck below traces through a toy example that assumes that initially, `x
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSPi9zeMb9_6MHbefYmj3qLUG360ZXXl6jFvy4nCSf5dhSJN7BmIVoT5x2LWBnNAUktlzvhtYoNuZ2G/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through the enumerated text in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1pjgFhJh-Rx3CapS7gbUSkjjqCC3OrL9k7MMT14lau8o/edit?usp=sharing)"
+:title: "Animation that steps through the enumerated text in this section motivating swap_int, swap_short, and swap_string. Access [original Google Slides](https://docs.google.com/presentation/d/1pjgFhJh-Rx3CapS7gbUSkjjqCC3OrL9k7MMT14lau8o/edit?usp=sharing)"
 :::
 
 Click below to show the explanation of the animation.
@@ -129,7 +129,7 @@ swap_string(&s1, &s2);
 :::{figure} images/swap-string-before.png
 :label: fig-swap-string-before
 :width: 60%
-:alt: "TODO"
+:alt: "Initial swap_string state: ptr1 and ptr2 point to variables s1 and s2, where s1 stores address 0x0FACE0 for string CS and s2 stores address 0x0ABBA0 for string 61C, both with a null terminator."
 
 `swap_string` is called.
 :::
@@ -137,7 +137,7 @@ swap_string(&s1, &s2);
 :::{figure} images/swap-string-after.png
 :label: fig-swap-string-after
 :width: 60%
-:alt: "TODO"
+:alt: "Final swap_string state before return: s1 now stores 0x0ABBA0 and points to string 61C, while s2 stores 0x0FACE0 and points to string CS; the string data in memory is unchanged."
 
 Right before `swap_string` call returns.
 :::

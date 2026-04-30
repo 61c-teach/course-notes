@@ -343,7 +343,7 @@ For more approaches to branch prediction and control hazards, see P&H 4.9.
 :::{figure} images/control-hazard.png
 :label: fig-control-hazard
 :width: 100%
-:alt: "TODO"
+:alt: "Pipeline waterfall diagram table with five instructions in the first column, and then subsequent columns for 9 cycles. Each instruction steps through IF, ID, EX, M, and WB, staggered from the instruction before it, illustrating a control hazard where branch outcome uncertainty affects following instructions."
 
 Waterfall diagram for control hazard with conditional branches.
 :::
@@ -351,7 +351,7 @@ Waterfall diagram for control hazard with conditional branches.
 :::{figure} images/branch-pipeline-diagram.png
 :label: fig-branch-pipeline
 :width: 100%
-:alt: "TODO"
+:alt: "Branch pipeline diagram showing the full five-stage datapath with labeled stages. The branch comparator in the EX stage is highlighted, along with the PCSel control signal, showing when branch decision information becomes available in the pipeline."
 
 Pipeline diagram showing branch results are ready during MEM.
 :::
@@ -359,7 +359,7 @@ Pipeline diagram showing branch results are ready during MEM.
 :::{figure} images/control-hazard-branch.png
 :label: fig-control-hazard-branch
 :width: 100%
-:alt: "TODO"
+:alt: "Control-hazard waterfall diagram table for the branch-taken case showing flushed or redirected subsequent instructions."
 
 Waterfall diagram if conditional branch taken.
 :::
@@ -367,7 +367,7 @@ Waterfall diagram if conditional branch taken.
 :::{figure} images/control-hazard-no-branch.png
 :label: fig-control-hazard-no-branch
 :width: 100%
-:alt: "TODO"
+:alt: "Control-hazard waterfall diagram table for the branch-not-taken case showing normal fall-through instruction flow."
 
 Waterfall diagram if conditional branch **not** taken.
 :::
