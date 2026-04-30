@@ -1,5 +1,6 @@
 ---
 title: "Data Hazards"
+short_title: "Data Hazards, Forwarding"
 ---
 
 (sec-data-hazards)=
