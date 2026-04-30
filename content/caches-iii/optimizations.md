@@ -91,7 +91,7 @@ _Computer Organization: A Quantitative Approach_ measures miss rate on caches of
 :label: fig-data-associativity
 :alt: "Total miss-rate versus cache size plot for varying cache associativities. All trend lines decrease in miss rate as cache size increases in KB."
 
-Total miss rate for each size cache, by associativity. Note that together, compulsory misses and capacity misses (dashed lines) are by definition the miss rate of a fully associative cache. Adjusted version of Figure B.9 from _Computer Organization: A Quantitative Approach.
+Total miss rate for each size cache, by associativity. Note that together, compulsory misses and capacity misses (dashed lines) are by definition the miss rate of a fully associative cache. Adjusted version of Figure B.9 from _Computer Organization: A Quantitative Approach_.
 :::
 
 Also as discussed earlier, [fully associative caches](#sec-fully-associative) complicate hardware and can therefore increase hit time. Nevertheless, in modern processors, L1 caches have reasonable associativity, e.g., 4-way or 8-way.[^associativity] [^apple-m1]
