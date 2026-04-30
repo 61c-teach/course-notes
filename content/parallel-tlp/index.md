@@ -2,6 +2,7 @@
 title: "MIMD Architectures"
 ---
 
+(sec-mimd)=
 ## Learning Outcomes
 
 * Identify the key components of a multicore processor: cores that execute streams of instructions independently but share memory.
