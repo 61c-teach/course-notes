@@ -55,10 +55,6 @@ P&H 4.1, 4.3, 4.4, 4.5
 
 ## Exercises
 
-Check your knowledge!
-
-### Short Exercises
-
 :::{exercise}
 :label: dp-01
 1. **True/False**: If the logic delay of reading from IMEM is reduced, then any (non-empty) program using the single cycle datapath will speed up.
@@ -68,7 +64,7 @@ Check your knowledge!
 :label: dp-01-sol
 :class: dropdown
 **True** Since every instruction must read from IMEM during the instruction fetch stage, making the IMEM faster will speed up every single instruction.
-::: 
+:::
 
 :::{exercise}
 :label: dp-02
@@ -103,10 +99,10 @@ Check your knowledge!
 **False** Each stage depends on the value produced by the stage before it (e.g., instruction decode depends on the instruction fetched).
 :::
 
-:::{exercise}
+```{exercise}
 :label: dp-05
 5. **True/False**: Stores and loads are the only instructions that require input/output from DMEM.
-:::
+```
 
 :::{solution} dp-05
 :label: dp-05-sol

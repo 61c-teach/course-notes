@@ -1,5 +1,5 @@
 ---
-title: "Memory Hierarchy"
+title: "Memory Hierarchy, Revisited"
 ---
 
 (sec-memory-hierarchy)=
@@ -24,6 +24,12 @@ title: "Memory Hierarchy"
 :alt: "Pyramid-style memory hierarchy diagram from smallest fastest level near the CPU to largest slowest storage, illustrating temporal and spatial locality across registers, caches, DRAM, and disk."
 The memory hierarchy.
 ::: -->
+
+:::{warning} Review the memory hierarchy
+
+Review our current assumption of [memory](#sec-memory-hierarchy-early): Assumes processor, registers, and memory.
+
+:::
 
 > Ideally one would desire an indefinitely large memory capacity such that any particular ... word would be immediately available. ... We are ... forced to recognize the possibility of constructing a hierarchy of memories, each of which has greater capacity than the preceding but which is less quickly accessible.
 > 
@@ -60,13 +66,13 @@ There are additional levels lower than main memory: **disk** is a huge one (lite
 Just as the cache contains a **copy** of a subset of data in main memory, main memory contains **copies** of data on disk. We discuss later how layers "synchronize" these copies; different layers use different methods.
 :::
 
++++ {"label": "block-hierarchy-management"}
 Data moves differently between different levels of the memory hierarchy:
 
 * **Registers and memory**: Managed by the compiler. Loads and stores move data in and out.
 * **Cache and memory**: Managed by cache controller hardware. We will describe the high-level operation, but leave the implementation to a later course.
-* **Memory and disk**: Managed by the operating system  and special hardware via **virtual memory**, a concept that we will discuss later.[^vm-details] Additionally managed by the programer/user via files and file streams.
-
-[^vm-details]: For now, know that virtual memory is a virtual to physical address mapping assisted by the hardware (translation lookaside buffer, or TLB).
+* **Memory and disk**: Managed by the operating system  and special hardware via [virtual memory](#sec-virtual-memory), a concept we discuss later. Additionally managed by the programer/user via files and file streams.
++++
 
 To summarize, we aim for the illusion of a "very large and fast memory":
 
@@ -174,7 +180,6 @@ In the above demo, what is the L2 cache size, in bytes?
 Understanding this section is useful for understanding your computer.
 :::
 
-
 ::::{note} 🎥 Lecture Video: Storage
 :class: dropdown
 
@@ -185,15 +190,6 @@ Understanding this section is useful for understanding your computer.
 
 ::::
 
-## Visuals: Memory Hierarchy
-
-:::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
-:label: fig-principle-of-locality-memory-hierarchy-pyramid-2
-:width: 50%
-:alt: "Memory-hierarchy pyramid ordering storage levels by speed, size, and proximity to the processor. From the bottom layer of the pyramid to the top, the visual shows magnetic disks, solid-state memory (flash), and virtual memory as SSD and HDD drives; then random-access memory (RAM) and physical memory as a DRAM chip; and finally L3 through L1 caches, CPU cache, registers, and CPU core on the processor chip."
-The memory hierarchy.
-:::
-
 ::::{note} 🎥 Lecture Video: Actual CPUs
 :class: dropdown
 
@@ -203,12 +199,23 @@ The memory hierarchy.
 :::
 
 ::::
+::::{note} 🎥 Lecture Video
+:class: dropdown
 
-Written version coming soon, but not too soon.
+:::{iframe} https://www.youtube.com/embed/MJwBmN8L2Lo
+:width: 100%
+:title: "[CS61C FA20] Lecture 29.2 - Virtual Memory I: Physical Memory and Storage"
+:::
 
-For now, know that DRAM is the technology used for memory (primary storage), and SSD is the prevalent technology used for disk (secondary storage).
+::::
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR4TRAAB71WlQqQUetxcAhTBdq7QfT0xqjMlLU-qT0OH5GTiGZEUPqLNrroMw6Dg2ERrOyPfnJHIu2y/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides walking through storage and the memory hierarchy. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
 :::
+
+Written version coming soon, but not too soon. For now, know the following technologies:
+
+* Caches use SRAM (static random access memory).
+* Primary storage is memory. Technology used is DRAM (dynamic random access memory), often called RAM.
+* Second storage is disk. Technology used is SSD (solid-state drive), though in the past magnetic disks (hard drives) were also common.

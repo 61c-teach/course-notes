@@ -109,9 +109,13 @@ A special program called the **Operating System** "multiplexes"[^multiplex] mult
 Process over time when executing multiple threads on a single-core CPU.
 :::
 
+(sec-context-switch)=
 ## The OS: Thread Context Switch
 
-On most modern computers, the number of active threads is much larger than the number of available cores, so most (software) threads are idle at any given time. The **Operating System**, or **OS**, is responsible for (among other tasks) managing which threads get run on which CPU via a process called **context switching**.
+```{embed} #sec-os-overview
+```
+
+On most modern computers, the number of active threads is much larger than the number of available cores, so most (software) threads are idle at any given time. The OS is responsible for (among other tasks) managing which threads get run on which CPU via a process called **context switching**.
 
 The OS performs a **thread context switch** for two main reasons:
 
@@ -129,7 +133,7 @@ To switch to a different thread in the process, the OS does the following:
 
 [^vm]: We describe memory tables in our section on [virtual memory](#sec-virtual-memory).
 
-The OS also performs context switches to multiplex different processes; for now, we won't discuss this. Most of the details of the operating system are out of scope, but we hope a future version of these course note will go into the operating system in more detail. For those interested, please check out CS 61C Spring 2025.
+The OS also performs context switches to multiplex different processes; for now, we won't discuss this. 
 
 ## Hardware Multithreading
 

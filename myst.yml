@@ -169,7 +169,6 @@ project:
           - file: content/datapath/b-type.md
           - file: content/datapath/jump.md
           - file: content/datapath/u-type.md
-          - file: content/datapath/summary.md
       #     # - file: content/datapath/summary-precheck.md
       #     # - file: content/datapath/exercises.md
       - title: "L23 Single-Cycle CPU Control, Instruction Timing"
@@ -180,7 +179,7 @@ project:
           - file: content/datapath/summary.md
     - title: "L24-L25 Pipelining"
       children:
-      - title: "L24 Pipelining I: Throughput, Latency, and the 5-Stage Pipeline"
+      - title: "L24 Throughput, Latency, and the 5-Stage Pipeline"
         children:
           - file: content/pipeline/index.md
           - file: content/pipeline/laundry.md
@@ -189,28 +188,29 @@ project:
           - file: content/pipeline/superscalar.md
           - file: content/pipeline/energy.md
           - file: content/pipeline/summary.md
-      - title: "L25 Pipelining II: Hazards"
+      - title: "L25 Hazards"
         children:
+          - file: content/pipeline-hazards/index.md
           - file: content/pipeline-hazards/structural-hazards.md
           - file: content/pipeline-hazards/data-hazards.md
           - file: content/pipeline-hazards/control-hazards.md
           - file: content/pipeline-hazards/summary.md
     - title: "L26-L29 Caches"
       children:
-      - title: "L26 Caches I: Performance"
+      - title: "L26 Cache Performance"
         children:
           - file: content/caches-intro/index.md
           - file: content/caches-intro/memory-hierarchy.md
           - file: content/caches-intro/amat.md
           - file: content/caches-intro/summary.md
-      - title: "L27-L28 Caches II: Design"
+      - title: "L27-L28 Cache Design"
         children:
           - file: content/caches-ii/index.md
           - file: content/caches-ii/fully-associative.md
           - file: content/caches-ii/direct-mapped.md
           - file: content/caches-ii/set-associative.md
           - file: content/caches-ii/summary.md
-      - title: "L29 Caches III: Optimization"
+      - title: "L29 Cache Misses and Optimization"
         children:
           - file: content/caches-iii/index.md
           - file: content/caches-iii/optimizations.md
@@ -218,33 +218,50 @@ project:
           - file: content/caches-iii/summary.md
     # - title: "L30-L34 Parallelism and Performance"
     #   children:
-    - title: "L30 Performance Programming, Amdahl's Law"
+    - title: "L30-L34 Performance Programming"
       children:
-        - file: content/parallel-performance/index.md
-        - file: content/parallel-performance/optimization-gcc.md
-        - file: content/parallel-performance/dgemm.md
-        - file: content/parallel-performance/dgemm-sisd.md
-        - file: content/parallel-performance/summary.md
-    - title: "L31 Flynn's Taxonomy, SIMD"
+      - title: "L30 Amdahl's Law"
+        children:
+          - file: content/parallel-performance/index.md
+          - file: content/parallel-performance/optimization-gcc.md
+          - file: content/parallel-performance/dgemm.md
+          - file: content/parallel-performance/dgemm-sisd.md
+          - file: content/parallel-performance/summary.md
+      - title: "L31 Flynn's Taxonomy, SIMD"
+        children:
+          - file: content/parallel-dlp/index.md
+          - file: content/parallel-dlp/simd.md
+          - file: content/parallel-dlp/dgemm-simd.md
+          - file: content/parallel-dlp/intrinsics.md
+          - file: content/parallel-dlp/summary.md
+      - title: "L32 MIMD, Thread-Level Parallelism"
+        children:
+          - file: content/parallel-tlp/index.md
+          - file: content/parallel-tlp/threads.md
+          - file: content/parallel-tlp/openmp.md
+          - file: content/parallel-tlp/dgemm-mimd.md
+          - file: content/parallel-tlp/openmp-examples.md
+      - title: "L33-L34 Synchronization"
+        children:
+          - file: content/parallel-tlp/data-race.md
+          - file: content/parallel-tlp/cache-coherency.md
+          - file: content/parallel-tlp/locks-amos.md
+          - file: content/parallel-tlp/summary.md
+    - title: "L35-L36 Virtual Memory"
       children:
-        - file: content/parallel-dlp/index.md
-        - file: content/parallel-dlp/simd.md
-        - file: content/parallel-dlp/dgemm-simd.md
-        - file: content/parallel-dlp/intrinsics.md
-        - file: content/parallel-dlp/summary.md
-    - title: "L32 MIMD, Thread-Level Parallelism"
-      children:
-        - file: content/parallel-tlp/index.md
-        - file: content/parallel-tlp/threads.md
-        - file: content/parallel-tlp/openmp.md
-        - file: content/parallel-tlp/dgemm-mimd.md
-        - file: content/parallel-tlp/openmp-examples.md
-    - title: "L33-L34 Synchronization"
-      children:
-        - file: content/parallel-tlp/data-race.md
-        - file: content/parallel-tlp/cache-coherency.md
-        - file: content/parallel-tlp/locks-amos.md
-        - file: content/parallel-II/summary.md
+        - title: "L35: Intro to Virtual Memory"
+          children:
+          - file: content/vm/index.md
+          - file: content/vm/address-translation.md
+          - file: content/vm/page-faults.md
+        - title: "L36: The TLB, Page Table Walks"
+          children:
+          - file: content/vm/tlb.md
+          - file: content/vm/memory-hierarchy-full.md
+          - file: content/vm/page-table-walk.md
+          - file: content/vm/page-tables-hierarchical.md
+          # - file: content/vm/performance.md
+          - file: content/vm/summary.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md

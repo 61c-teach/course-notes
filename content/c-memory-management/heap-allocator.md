@@ -1,5 +1,5 @@
 ---
-title: "Implementing Memory Management"
+title: "Implementing Heap Memory"
 subtitle: "This content is not tested"
 ---
 
@@ -19,11 +19,15 @@ This section is included as bonus content and is not tested. If you are curious 
 
 ::::
 
+```{embed} #sec-os-overview
+```
+
 ## Designing a Heap Allocator
 
 Managing the heap is tricky. While you don't have to worry about the OS moving things around, you do have to manage your own size requests and how you work with that memory.
 
 An ideal design:
+
 * Has fast implementations of `malloc` and `free`
 * Produces minimal memory fragmentation, i.e., the "bookkeeping" required to track memory.
 * Avoids **fragmentation**, i.e., where most of free memory is in many small chunks. This implies many free bytes but an inability to satisfy a large request since the free bytes are not contiguous in memory.
