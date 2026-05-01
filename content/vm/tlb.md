@@ -3,6 +3,7 @@ title: "Translation Lookaside Buffers (TLB)"
 subtitle: TODO
 ---
 
+(sec-tlb)=
 ## Learning Outcomes
 
 * TODO
@@ -60,3 +61,6 @@ Example of address translation with TLB (miss).
 :width: 80%
 Example of address translation with TLB (miss).
 :::
+
+
+For now, know that virtual memory is a virtual to physical address mapping assisted by the hardware (translation lookaside buffer, or TLB).

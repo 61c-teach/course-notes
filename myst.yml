@@ -246,7 +246,7 @@ project:
           - file: content/parallel-tlp/data-race.md
           - file: content/parallel-tlp/cache-coherency.md
           - file: content/parallel-tlp/locks-amos.md
-          - file: content/parallel-II/summary.md
+          - file: content/parallel-tlp/summary.md
     - title: "L35-L36 Virtual Memory"
       children:
         - title: "L35: VM Intro"
@@ -260,7 +260,7 @@ project:
           - file: content/vm/tlb.md
           - file: content/vm/page-tables-hierarchical.md
           - file: content/vm/page-table-walk.md
-          - file: content/vm/vm-performance.md
+          # - file: content/vm/performance.md
           - file: content/vm/summary.md
     - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
