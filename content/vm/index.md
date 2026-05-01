@@ -1,13 +1,13 @@
 ---
 title: "Virtual Memory and Pages"
-subtitle: TODO
 ---
 
 (sec-virtual-memory)=
 ## Learning Outcomes
 
-* TODO
-* TODO
+* Explain the two motivations for virtual memory.
+* Define virtual memory terminology: virtual address space, physical address space, virtual page number, physical page number, page offset.
+* Describe the two key features of virtual memory: address translation and paged memory.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown

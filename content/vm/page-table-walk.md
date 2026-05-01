@@ -1,12 +1,12 @@
 ---
-title: "Address Translation with TLB"
-subtitle: TODO
+title: "Page Table Walk"
+subtitle: Coming soon. Thanks for your patience!
 ---
 
-## Learning Outcomes
+<!-- ## Learning Outcomes
 
 * TODO
-* TODO
+* TODO -->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,7 +18,7 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+<!-- ## Visuals
 :::{figure} images/pipt-1.png
 :label: fig-pipt-1
 :width: 60%
@@ -70,4 +70,4 @@ Example of address translation with TLB (update TLB and page table).
 
 **True**. Remember: The TLB caches recent page table entries. If the entry is valid in the TLB, it **must also** be valid in the page table, and the data must therefore be in memory.
 
-:::
+::: -->

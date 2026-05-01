@@ -249,17 +249,17 @@ project:
           - file: content/parallel-tlp/summary.md
     - title: "L35-L36 Virtual Memory"
       children:
-        - title: "L35: VM Intro"
+        - title: "L35: Intro to Virtual Memory"
           children:
           - file: content/vm/index.md
-          - file: content/vm/paged-memory.md
+          - file: content/vm/address-translation.md
           - file: content/vm/page-faults.md
-          - file: content/vm/vm-os.md
-        - title: "L35: VM and Caches"
+        - title: "L36: The TLB, Page Table Walks"
           children:
           - file: content/vm/tlb.md
-          - file: content/vm/page-tables-hierarchical.md
+          - file: content/vm/memory-hierarchy-full.md
           - file: content/vm/page-table-walk.md
+          - file: content/vm/page-tables-hierarchical.md
           # - file: content/vm/performance.md
           - file: content/vm/summary.md
     - file: content/misc/iec-prefixes.md

@@ -1,13 +1,13 @@
 ---
 title: "Address Translation"
-subtitle: TODO
+subtitle: Coming soon. Thanks for your patience!
 ---
 
-## Learning Outcomes
+<!-- ## Learning Outcomes
 
 * TODO
-* TODO
-
+* TODO -->
+(sec-memory-manager)=
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
@@ -18,7 +18,7 @@ subtitle: TODO
 
 ::::
 
-to facilitate **demand paging**.
+<!-- to facilitate **demand paging**.
 
 
 ## Revisiting the Library Analogy
@@ -30,12 +30,6 @@ On card for book, in local library vs. in another branch like valid bit indicati
 On card, available for 2-hour in library use (vs. 2-week checkout) like access rights
 
 ## Visuals
-
-:::{figure} images/paged-memory-1.png
-:label: fig-paged-memory-1
-:width: 50%
-Physical memory broken into pages.
-:::
 
 :::{figure} images/page-table.png
 :label: fig-page-table
@@ -113,4 +107,4 @@ The below text is from an [earlier section](#sec-memory-hierarchy). The "later s
 
 
 Virtual memory manages the two levels of the memory hierarchy represented by main memory and disk.
-
+ -->

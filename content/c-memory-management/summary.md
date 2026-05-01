@@ -67,7 +67,7 @@ Check your knowledge!
 :::
 
 :::{solution} c-mm-02
-:label: c-mm-01-sol
+:label: c-mm-02-sol
 :class: dropdown
 
 (Almost any basic deep recursive scheme, since you're making many new function calls on top of each other without closing the previous ones, and thus, stack frames.)

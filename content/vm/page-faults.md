@@ -1,12 +1,12 @@
 ---
 title: "Page Faults"
-subtitle: TODO
+subtitle: Coming soon. Thanks for your patience!
 ---
 
-## Learning Outcomes
+<!-- ## Learning Outcomes
 
 * TODO
-* TODO
+* TODO -->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -17,12 +17,12 @@ subtitle: TODO
 :::
 
 ::::
-## Visuals
-:::{figure} images/paged-memory-1.png
+<!-- ## Visuals
+<!-- :::{figure} images/paged-memory-1.png
 :label: fig-paged-memory
 :width: 50%
 Physical memory broken into pages.
-:::
+::: -->
 
 :::{figure} images/page-table.png
 :label: fig-page-table-1
@@ -58,4 +58,4 @@ Example of page table walk: load page from disk.
 :label: fig-address-translation-page-not-in-mem-5
 :width: 70%
 Example of page table walk: read memory from newly loaded page.
-:::
+::: -->

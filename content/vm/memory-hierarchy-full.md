@@ -1,12 +1,12 @@
 ---
-title: "VM Performance"
-subtitle: TODO
+title: "Virtual Memory vs. Caches"
+subtitle: Coming soon. Thanks for your patience!
 ---
 
-## Learning Outcomes
+<!-- ## Learning Outcomes
 
 * TODO
-* TODO
+* TODO -->
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -18,7 +18,7 @@ subtitle: TODO
 
 ::::
 
-## Visuals
+<!-- ## Visuals
 :::{figure} images/cache-vs-vm.png
 :label: fig-cache-vs-vm
 :width: 80%
@@ -62,4 +62,4 @@ We use demand paging.
 | 2 | Worse | Miss ❌ | Hit (Page Table Entry Valid) ✅ | Hit |
 | 2 | Worse | Miss ❌ | Hit (Page Table Entry Valid) ✅ | Hit |
 | 3 | Worst | Miss ❌ | Miss (Page Fault) ❌ |
-:::
+::: -->
