@@ -176,17 +176,52 @@ Each VPN maps to a PPN. Virtual pages and physical pages are the same size, so t
 * A physical address is decomposed into a **physical page number (PPN)** and a **page offset**. For a 48-bit physical address with 4 KiB pages, the PPN is the upper 28 bits and the page offset is the lower 12 bits.
 * As shown in @fig-vpn-to-ppn, the address translation mechanism of virtual memory works regardless of whether physical memory is smaller _or_ larger than the virtual address space capacity.
 
-To translate a virtual address to a physical address:
+:::{hint} Quick Check
 
-1. First decompose the virtual address into VPN and page offset.
-1. Then, lookup the PPN corresponding to this VPN.
-1. Finally, construct the physical address by concatenating the PPN with the page offset.
-  a virtual page number to a physical page number. Keep the page offset the same.
+Assume a 32-bit machine with 8GiB of RAM and 16KiB pages.
+How many bits would there be for each of the following?
 
-A **page table** keeps track of the VPN-to-PPN mappings for a given process (for Step 2 above). There is one page table per process.
+1. Page offset
+1. Virtual page number (VPN)
+1. Physical page number (PPN)
 
-:::{note} Pages are the memory unit of virtual memory
+:::
+
+:::{note} Show Answer
+:class: dropdown
+
+1. Page offset: = $\log_2$(16 KiB) = $\log_2(2^4 \times 2^{10})$ = 14 bits
+
+1. VPN = 32 - 14 = 18 bits
+
+1. PPN = $\log_2$(8 GiB) - 14 = $\log_2(2^3 \times 2^{30}) - 14$ = 33 - 14 = 19 bits
+
+:::
+
+:::{hint} Quick Check
+
+Suppose we have a 32-bit virtual address space with 16 GiB DRAM and 4 KiB pages. True or False?
+
+1. There are $2^{32}$ / $2^{12}$ = $2^{20}$ Virtual Page Numbers.
+2. There are $2^{4} \times 2^{30} / 2^{12} = 2^{22}$ Physical Page Numbers.
+3. Virtual addresses are 32-bits, where the bottom 12 bits are used to reference page offset.
+4. Both the virtual page size and the physical page size are 4 KiB.
+:::
+
+:::{note} Show Answers
+:class: dropdown
+
+1. True
+1. True
+1. True
+1. True
+:::
+
+:::{warning} Pages are the memory unit of virtual memory
 
 On a given machine, virtual pages and physical pages are the **same size**. For a given virtual-physical address mapping, the virtual page number and physical page numbers may be different, but the virtual page offset and physical page offset are **identical**.
 
 :::
+
+We discuss this virtual-to-physical address translation in the [next section](#sec-vm-address-translation).
+

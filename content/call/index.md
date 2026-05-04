@@ -157,7 +157,7 @@ The loader does several things to run a program. To learn more, we strongly reco
 
 **1. Load program into a newly created address space** in memory.[^vm]
 
-[^vm]: We discuss virtual memory in a later chapter.
+[^vm]: We discuss virtual memory in a [later chapter](#sec-virtual-memory).
 
 * Read `a.out` file header for sizes of text, data segments.
 * Create new address space for program large enough to hold **text and data segments**, along with a stack segment.
