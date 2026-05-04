@@ -224,4 +224,3 @@ On a given machine, virtual pages and physical pages are the **same size**. For 
 :::
 
 We discuss this virtual-to-physical address translation in the [next section](#sec-vm-address-translation).
-
