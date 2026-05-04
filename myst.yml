@@ -253,7 +253,7 @@ project:
           children:
           - file: content/vm/index.md
           - file: content/vm/address-translation.md
-          - file: content/vm/page-faults.md
+          - file: content/vm/page-table.md
         - title: "L36: The TLB, Page Table Walks"
           children:
           - file: content/vm/tlb.md
