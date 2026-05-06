@@ -81,6 +81,7 @@ In @fig-data-associativity, we see that as cache size increases, miss rate decre
 
 As a modern example, the M1 chip has an L2 cache sized to 12 MiB—significantly larger than its L1 cache with 128 KiB.[^apple-m1]
 
+(sec-higher-associativity)=
 ## Higher Associativity
 
 As discussed [earlier](#sec-cache-misses), higher associativity reduces the miss rate by reducing compulsory misses.

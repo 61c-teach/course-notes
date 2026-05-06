@@ -172,6 +172,8 @@ A [cold](#sec-cache-temperatures) snapshot of a 32B, 2-way set-associative cache
 :title: "Slides walking through four memory accesses with a 2-way set associative cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1Wi_d703PYdJgahH0bjxTKVvwT6KQ0dCFLZF7q6O0e9o/edit?usp=sharing)"
 :::
 
+::::
+
 :::{note} 1. Load byte @ `0xFE2`. Cache miss.
 :class: dropdown
 
@@ -237,6 +239,7 @@ Contrast this set-associative cache walkthrough with the one for [direct-mapped 
 * Memory accesses 2 and 3 create cache entries in cache entries `3` and `2`, respectively; these cache entries share the same tag. However, the blocks in these entries have different **block addresses**.
 * Memory access 4 did **not** incur a block replacement/memory write. Because there are two ways in a set, the existing block in the set with index `3` was not replaced. At the end of memory access 4, the set with index `3` is full.
 
+(sec-cache-associativity)=
 ## Associativity: A Discussion
 
 We illustrate in @fig-tio-address the relationship between block address, tag, index, and offset.
@@ -284,9 +287,16 @@ A direct-mapped cache can have each block placed exactly in one location in the 
 The spectrum of cache placement policies, with set-associative as the in-between approach.
 :::
 
+We are finally ready to revisit the tradeoffs of design choices. Below, placement policy is determined by choice of associativity.
+
+```{embed} #sec-cache-design-policy
+```
+
 :::{hint} Set-associative caches
 
-Set-associative caches are a good middle ground for placement policies. A small degree of associativity balances the good parts of fully associative caches (i.e., better performance by reducing [conflict misses](#sec-cache-misses)) with good parts of direct-mapped caches (simpler hardware).
+Set-associative caches are a good middle ground for placement policies.
 
-8-way set associative caches are used in first-level caches in modern hardware; see our discussion of cache optimizations in a [later section](#sec-cache-optimizations).
+* A small degree of associativity balances the good parts of fully associative caches (i.e., better performance by reducing [conflict misses](#sec-cache-misses)) with good parts of direct-mapped caches (simpler hardware). 8-way set associative caches are used in first-level caches in modern hardware.
+* Higher associativity reduces the [miss rate](#sec-cache-misses); see measurements in a [later section](#sec-higher-associativity).
+
 :::
