@@ -38,18 +38,6 @@ Cache vs VM.
 
 :::
 
-:::{figure} images/wasteful-paging.png
-:label: fig-wasteful-paging
-:width: 60%
-How do we deal with unused pages?
-:::
-
-:::{figure} images/demand-paging-less-wasteful.png
-:label: fig-demand-paging-less-wasteful
-:width: 60%
-We use demand paging.
-:::
-
 
 
 :::{table} Extending @tab-address-translation-vm to include data in the cache.

@@ -8,6 +8,7 @@ title: "Virtual Memory and Pages"
 * Explain the two motivations for virtual memory.
 * Define virtual memory terminology: virtual address space, physical address space, virtual page number, physical page number, page offset.
 * Describe the two key features of virtual memory: address translation and paged memory.
+* Explain why protection between processes is needed to allow safe sharing of memory across processes.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -82,7 +83,7 @@ How do two programs share the same memory?
 <!-- TODO make these diagrams better. kind of light coloring-->
 :::
 
-If Program 1 stores your bank account balance @ address `0x400`, and Program 2 stores your video game score @ address `0x400`, we may optimistically hope that getting a high score of 10000 will suddenly overwrite your account balance. Virtual memory provides protection and isolation between processes, so that both programs can read and write to overlapping addresses without impacting each other. While getting rich quick sounds awesome, if all processes could access data at shared addresses, they could corrupt other processes and cause crashes.
+If Program 1 stores your bank account balance @ address `0x400`, and Program 2 stores your video game score @ address `0x400`, we may optimistically hope that getting a high score of 10000 will suddenly overwrite your account balance. Virtual memory provides **protection and isolation** between processes, so that both programs can read and write to overlapping addresses without impacting each other. While getting rich quick sounds awesome, if all processes could access data at shared addresses, they could corrupt other processes and cause crashes.
 ::::
 
 :::::

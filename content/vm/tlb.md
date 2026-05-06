@@ -19,6 +19,14 @@ subtitle: Coming soon. Thanks for your patience!
 
 ::::
 
+
+:::{figure} images/page-table-process-access.png
+:label: fig-page-table-process-access
+:width: 100%
+
+Two memory accesses
+:::
+
 <!-- ## Visuals
 :::{figure} images/just-tlb.png
 :label: fig-just-tlb

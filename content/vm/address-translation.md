@@ -7,18 +7,6 @@ title: "Address Translation"
 
 * Use a pre-populated page table to translate virtual addresses into physical addresses.
 * Define a page fault and identify when an address translation scenario triggers a page fault.
-* Explain, at a high-level, the operating system's role in address translation and handling page faults with context switches.
-
-::::{note} 🎥 Lecture Video
-:class: dropdown
-
-:::{iframe} https://www.youtube.com/embed/jpMigarDfh4
-:width: 100%
-:title: "[CS61C FA20] Lecture 29.3 - Virtual Memory I: Memory Manager"
-:::
-
-::::
-
 :::{note} Address translation
 :label: block-address-translation
 
@@ -39,16 +27,11 @@ In this section we discuss:
 
 * How to do address translation when the data requested is in memory, i.e., no page fault occurs.
 * How to do address translation when the data requested is **not** in memory, i.e., a page fault occurs.
-* What is the "memory manager," i.e., the system performs address translation (see [this section](#sec-memory-manager)).
 
-## Page Tables, Briefly
+We leave the description of the system performs address translation to [this section](#sec-memory-manager).
 
-A page table keeps tracks of the VPN-to-PPN mappings for a given process. There is one page table per process.
-
-* Each entry in a page table corresponds to a virtual page number (VPN) for this process. In this course, the number of entries in a process's page table is equivalent to the total number of virtual pages for the process.[^hierarchical-pt]
-* If a page is in memory, the entry is valid and has the corresponding physical page number. Otherwise, it may have garbage, and accessing this entry should trigger a page fault.
-
-[^hierarchical-pt]: We assume a single-level page table hierarchy in this course. In practice, multi-level (hierarchical) page tables are used to reduce the size of the page table. Read more in the [extra section](#sec-hierarchical-page-table).
+```{embed} #block-page-table
+```
 
 We discuss the fine-grained details of page tables in [another section](#sec-page-table).
 
@@ -125,74 +108,10 @@ Let's understand virtual memory using our [library analogy](#sec-library) of the
 
 This analogy breaks down slightly because the page table is a **page number** lookup, not an address lookup. But we hope the weak analogy helps.
 
+## Practice
+
 :::{tip} Quick Check
 
 See [Spring 2025 Lecture 34 Slide 30](https://docs.google.com/presentation/d/1HXo7Adnk8eJZ53UVngsSEhPoneA-H02Qfpn8BjaAs1I/edit?slide=id.g34f3c4927f7_0_15#slide=id.g34f3c4927f7_0_15) for a practice exercise.
 
 :::
-
-(sec-memory-manager)=
-## The "Memory Manager"
-
-:::{hint} About the Operating System
-:label: sec-os-overview
-
-The **operating system (OS)** is likely the single largest piece of software on your system. It loads, manages, and runs programs (i.e., **processes**), providing
-
-1. Isolation between processes, and
-1. Interaction between processes and the outside world via I/O devices.
-
-Most of the details of the operating system (OS) are out of scope for this course. Here are the sections that describe the key OS functions you should know:
-
-* [Loader](#sec-loader)
-* [Heap Memory Management](#sec-heap-allocator)
-* [Context Switches](#sec-context-switch)
-* [Virtual Memory Management](#sec-memory-manager)
-
-We hope a future version of these course notes will discuss the operating system in more detail. To learn more about the OS, please check out [CS 61C Spring 2025 slides](https://docs.google.com/presentation/d/1sh0iTDWdZiH3dxVoeOs4Yxb4Kt369x80Sj3Y7Nnluwk/edit?usp=drive_link) and [the CS 61C Fall 2020 YouTube playlist](https://youtube.com/playlist?list=PLnvUoC1Ghb7ziIlgNnQ24Gb6HBmLQO4T4&si=fJiBnfbzKuOouZ8F).
-
-:::
-
-:::{note} Text from an [earlier section](#sec-memory-hierarchy)
-```{embed} #block-hierarchy-management
-```
-
-:::
-
-Virtual memory manages the two levels of the memory hierarchy represented by main memory and disk. The "memory manager" performs translation and data mangement and is a combination of hardware (in the CPU) and software (the OS).
-
-There is address translation hardware in the CPU; it is called a [memory management unit](https://en.wikipedia.org/wiki/Memory_management_unit). This hardware unit splits the virtual address into the virtual page number and offset within the page and accesses the page table. If the page is not currently in memory, the hardware raises a **page fault exception**.
-
-Upon this page fault exception, transfer control the **page fault exception handler**—a supervisor-level OS procedure that performs the following:
-
-* Initiates transfer between memory and disk.
-  * If out of memory, first select a page to replace in memory.
-  * If needed, write the outgoing page to disk.
-  * Load the requested page from disk into memory.
-* Perform a **context switch** so that another user process can use the CPU while the disk transfer happens.
-* Following the page fault, re-execute the instruction.
-
-:::{warning} Page faults are extremely expensive!
-
-On a page fault, the process cannot continue until the memory access finishes. If the physical page is not in memory, the page must be first fetched from disk and loaded into memory (and the page table must be updated), and _finally_ the instruction can be re-executed to successfully completes the memory access. The (time) cost of disk access [^jim-gray] means that page faults are extremely expensive—on the order of a million cycles.
-
-**Context switches** amortize the cost of page faults across all processes. To keep the CPU busy, the OS performs a context switch and runs another process—while the original process that triggered a page fault "waits." Then, when the page in question is finally loaded into memory, the OS performs another context switch back to the original process.
-:::
-
-## Demand Paging
-
-As mentioned in an [earlier section](#sec-loader), the OS also performs the **load** part of [CALL](#sec-call)—meaning, the OS loads a program into a new virtual address space and runs it. Upon starting this new process, what is its memory footprint? No matter what, the OS must allocate enough space in memory for a new page table for this process. But what about memory pages corresponding to data and instructions?
-
-Preloading in numerous pages for every new process is wasteful. For example, with tiny programs like "Hello World", most pages are never used, so allocating the full virtual address space to memory at startup (i.e., assign every virtual page to a physical page in memory) seems nonsensical.
-
-In a system that uses **demand paging**,[^demand-paging] a process begins execution with none of its pages in physical memory. In other words, all of its page table entries are invalid. Then, when a page is actually requested, load the page from disk into memory.
-
-:::{figure} images/demand-paging.png
-:label: fig-demand-paging
-:width: 60%
-Our VM abstraction allows a program to use the full virtual address space, but some programs use only a tiny amount of memory. **Demand paging** means that new processes have page tables that start with entries that are all invalid.
-:::
-
-Demand paging prevents over-allocating memory to a process (and thereby supports running many processes on a limited amount of memory), but the startup cost is high for new processes.
-
-[^demand-paging]: Read more on Wikipedia about [demand paging](https://en.wikipedia.org/wiki/Demand_paging) and its counterpart, [anticipatory paging](https://en.wikipedia.org/wiki/Memory_paging#Anticipatory_paging).
