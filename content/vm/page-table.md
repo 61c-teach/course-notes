@@ -78,7 +78,7 @@ Almost all virtual memory systems try to replace the **least recently (LRU)**[^l
 :::{note} Write Policy
 :class: dropdown
 
-The write strategy for virtual memory systems is always **write-through**. We probably sound like a broken {del}`disk` record at this point, but just once more for good measure: disk accesses are _expensive_. Write-through policies, which access disk on every write, are infeasible.
+The write strategy for virtual memory systems is always **write-back**. We probably sound like a broken {del}`disk` record at this point, but just once more for good measure: disk accesses are _expensive_. Write-through policies, which access disk on every write, are infeasible.
 
 :::
 

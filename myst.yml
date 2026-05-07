@@ -275,3 +275,4 @@ site:
     logo_alt: "CS 61C Computer Chip Logo"
     folders: true
     hide_authors: true
+    style: assets/styles.css

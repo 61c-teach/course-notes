@@ -144,7 +144,7 @@ The total number of bits we need is the sum of the following:
 * 40 bits, to address bytes within each tibibyte chunk; and
 * $x$ bits, to specify which of the 2.5 chunks we are in. To represent 0 to 2.5 with the smallest number of bits, we round up to the closest power of 2, $2.5 \leq 4 = 2^2$ chunks. So $x = 2$ (the power of two).
 
-We need 22 bits at minimum to address 2.5 TiB of memory.
+We need 42 bits at minimum to address 2.5 TiB of memory.
 :::
 
 ## Mnemonics

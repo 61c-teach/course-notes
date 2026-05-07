@@ -92,7 +92,7 @@ We note that embedded into @eq-iron-law is a metric of **instruction throughput*
 
 ```{math}
 \begin{aligned}
-\frac{\text{instructions}}{\text{time}} &= \frac{\text{cycles}}{\text{instructions}} \cdot \frac{\text{cycles}}{\text{time}} \\
+\frac{\text{instructions}}{\text{time}} &= \frac{\text{instructions}}{\text{cycles}} \cdot \frac{\text{cycles}}{\text{time}} \\
 &= \frac{f}{\text{CPI}}
 \end{aligned}
 ```
