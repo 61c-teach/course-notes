@@ -28,10 +28,12 @@ The below are abbreviations that will be used in the table:
 * `inst`: One of the instructions in the table
 
 :::{figure} #tab-add-sub
+:alt: "Reprint of the RV32I basic arithmetic R-type and I-type instruction table including add, sub, and immediate variants from the RISC-V arithmetic section."
 Basic Arithmetic Instructions (reprint of @tab-add-sub from [this section](#sec-rv-arithmetic)).
 :::
 
 :::{figure} #tab-rv-bitwise
+:alt: "Reprint of the RV32I bitwise logical and shift instruction table with register and immediate forms from the bitwise section."
 Basic Bitwise Instructions (reprint of @tab-rv-bitwise from [this section](#sec-rv-bitwise)).
 :::
 

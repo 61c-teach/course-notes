@@ -1,5 +1,5 @@
 ---
-title: "Memory Hierarchy"
+title: "Memory Hierarchy, Revisited"
 ---
 
 (sec-memory-hierarchy)=
@@ -17,6 +17,20 @@ title: "Memory Hierarchy"
 
 ::::
 
+
+<!-- :::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
+:label: fig-principle-of-locality-memory-hierarchy-pyramid-2
+:width: 50%
+:alt: "Pyramid-style memory hierarchy diagram from smallest fastest level near the CPU to largest slowest storage, illustrating temporal and spatial locality across registers, caches, DRAM, and disk."
+The memory hierarchy.
+::: -->
+
+:::{warning} Review the memory hierarchy
+
+Review our current assumption of [memory](#sec-memory-hierarchy-early): Assumes processor, registers, and memory.
+
+:::
+
 > Ideally one would desire an indefinitely large memory capacity such that any particular ... word would be immediately available. ... We are ... forced to recognize the possibility of constructing a hierarchy of memories, each of which has greater capacity than the preceding but which is less quickly accessible.
 > 
 > -- Preliminary Discussion of the Logical Design of an Electronic Computing Instrument (1946)
@@ -28,6 +42,13 @@ While hardware performance has continued to improve, there is a persistent and i
 [^wulf-mckee]: Wm A. Wulf, Sally A. McKee. "Hitting the Memory Wall: Implications of the Obvious." ACM SIGARCH 1994. DOI: [10.1145/216585.216588](https://dl.acm.org/doi/10.1145/216585.216588)
 [^att]:  Maurice Willes. "The memory gap and the future of high performance memories." ACM SIGARCH 2001. DOI: [10.1145/373574.373576](https://dl.acm.org/doi/abs/10.1145/373574.373576)
 [^arxiv]: Amir Gholami et al. "AI and Memory Wall." IEEE Micro Journal 2024. Extended version on arXiV. DOI: [10.1109/MM.2024.3373763](https://doi.org/10.1109/MM.2024.3373763), [arXiV:20403.14123](https://arxiv.org/abs/2403.14123)/
+
+:::{figure} images/graph-processor-dram-gap.png
+:label: fig-graph-processor-dram-gap
+:width: 100%
+:alt: "Time-series graph showing the widening performance gap between processor speed and DRAM access speed over 30 years from 1980 to 2010."
+Performance gap between DRAM and CPU.
+:::
 
 By designing a **memory hierarchy**, we can leverage smaller amounts of high-speed hardware without ballooning the cost of our architecture nor sacrificing data and storage capacity.
 
@@ -52,13 +73,13 @@ There are additional levels lower than main memory: **disk** is a huge one (lite
 Just as the cache contains a **copy** of a subset of data in main memory, main memory contains **copies** of data on disk. We discuss later how layers "synchronize" these copies; different layers use different methods.
 :::
 
++++ {"label": "block-hierarchy-management"}
 Data moves differently between different levels of the memory hierarchy:
 
 * **Registers and memory**: Managed by the compiler. Loads and stores move data in and out.
 * **Cache and memory**: Managed by cache controller hardware. We will describe the high-level operation, but leave the implementation to a later course.
-* **Memory and disk**: Managed by the operating system  and special hardware via **virtual memory**, a concept that we will discuss later.[^vm-details] Additionally managed by the programer/user via files and file streams.
-
-[^vm-details]: For now, know that virtual memory is a virtual to physical address mapping assisted by the hardware (translation lookaside buffer, or TLB).
+* **Memory and disk**: Managed by the operating system  and special hardware via [virtual memory](#sec-virtual-memory), a concept we discuss later. Additionally managed by the programer/user via files and file streams.
++++
 
 To summarize, we aim for the illusion of a "very large and fast memory":
 
@@ -71,7 +92,7 @@ If useful, we revisit [Jim Gray's analogy](#sec-memory-hierarchy) of data access
 :::
 
 (sec-multi-level-caches)=
-### Multi-Level Caches
+## Multi-Level Caches
 
 You may have noticed that the [memory hierarchy diagram](#fig-3-memory-hierarchy) contains multiple caches labeled Level 1, Level 2, and Level 3.  A computer can have multiple caches, where each cache is a **copy** of data from lower in the memory hierarchy.
 
@@ -166,7 +187,6 @@ In the above demo, what is the L2 cache size, in bytes?
 Understanding this section is useful for understanding your computer.
 :::
 
-
 ::::{note} 🎥 Lecture Video: Storage
 :class: dropdown
 
@@ -177,13 +197,6 @@ Understanding this section is useful for understanding your computer.
 
 ::::
 
-## Visuals: Memory Hierarchy
-:::{figure} images/principle-of-locality-memory-hierarchy-pyramid.png
-:label: fig-principle-of-locality-memory-hierarchy-pyramid-2
-:width: 50%
-:alt: "TODO"
-The memory hierarchy.
-:::
 ::::{note} 🎥 Lecture Video: Actual CPUs
 :class: dropdown
 
@@ -193,13 +206,23 @@ The memory hierarchy.
 :::
 
 ::::
+::::{note} 🎥 Lecture Video
+:class: dropdown
 
+:::{iframe} https://www.youtube.com/embed/MJwBmN8L2Lo
+:width: 100%
+:title: "[CS61C FA20] Lecture 29.2 - Virtual Memory I: Physical Memory and Storage"
+:::
+
+::::
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vR4TRAAB71WlQqQUetxcAhTBdq7QfT0xqjMlLU-qT0OH5GTiGZEUPqLNrroMw6Dg2ERrOyPfnJHIu2y/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the video in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
+:title: "Slides walking through storage and the memory hierarchy. Access [original Google Slides](https://docs.google.com/presentation/d/1dzVr8fWAnCVh8wSvONkBmx_bPnelngBnay_Mark2vT0/edit?usp=sharing)"
 :::
 
-Written version coming soon, but not too soon.
+Written version coming soon, but not too soon. For now, know the following technologies:
 
-For now, know that DRAM (the technology used for )
+* Caches use SRAM (static random access memory).
+* Primary storage is memory. Technology used is DRAM (dynamic random access memory), often called RAM.
+* Second storage is disk. Technology used is SSD (solid-state drive), though in the past magnetic disks (hard drives) were also common.

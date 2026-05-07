@@ -118,7 +118,7 @@ When a load or store instruction is accessed, the processor **requests** data at
 :::{figure} images/von-neumann-cache.jpg
 :label: fig-von-neumann-cache
 :width: 100%
-:alt: "TODO"
+:alt: "Von Neumann-style computer layout with processor block connected through read/write signals and address to a cache and then to full memory. The memory block is also connected on the right to a separate input and output through I/O memory interfaces."
 
 A cache inserted into the basic computer layout from an [earlier section](#sec-architecture-elements).
 :::

@@ -51,7 +51,7 @@ The precise location of heap memory blocks is delegated to a built-in heap alloc
 :::{figure} images/c-heap.png
 :label: fig-c-heap
 :width: 100%
-:alt: "TODO"
+:alt: "Four-step heap-allocation timeline: request R1 allocates 100 bytes, request R2 allocates 10 bytes, R1 is freed, then request R3 for 50 bytes may be placed in either a reused lower hole or a separate upper region. The figure illustrates allocator choice and potential fragmentation."
 
 `main` passes its own local variable `buf` into a function call `load_buf`.
 :::

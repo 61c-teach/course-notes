@@ -1,5 +1,6 @@
 ---
 title: "Data Hazards"
+short_title: "Data Hazards, Forwarding"
 ---
 
 (sec-data-hazards)=
@@ -287,6 +288,7 @@ The RISC-V five-stage pipeline therefore "ups" the **hardware requirement** on t
 This assumption is further illustrated by the shading of the `ID` and `WB` stages in the high-level pipeline processor diagram discussed in an [earlier section](#sec-processor-hl):
 
 :::{figure} #fig-pipelined-processor-hl
+:alt: "Reprint of the high-level pipelined processor diagram: WB stage left half shaded for register-file write in the first half-cycle and ID stage right half shaded for register read in the second half, illustrating write-then-read timing."
 
 The left half of the `WB` stage is shaded, indicating that the RegFile is written in the first half of the clock cycle. Similarly, the right half of the `ID` stage is shaded, indicating that the RegFile is read in the second half of the clock cycle. Reprinted from an [earlier section](#sec-processor-hl).
 :::
@@ -300,6 +302,7 @@ If we assume our RegFile supports write-then-read, then in cycle 5, the read of 
 Let's visit our [earlier simple example](#tab-data-hazard-1).
 
 :::{figure} #tab-data-hazard-1
+:alt: "Reprint of the pipeline diagram table for the simple add then dependent instructions example, showing IF through WB stage occupancy per cycle before stalls are applied."
 :::
 
 If we assume the RegFile supports write-then-read, how many cycles do we need to stall to avoid data hazards?
@@ -433,6 +436,7 @@ We use @fig-forwarding-hl to describe at a high-level what data is forwarded.
 :::{figure} images/forwarding-hl.png
 :label: fig-forwarding-hl
 :width: 80%
+:alt: "High-level five-stage pipeline cartoon with three instructions in flight: ADD writing s0, SUB consuming s0, and OR also consuming s0. Colored bypass arrows show the ADD’s ALU result forwarded from the EX/MEM boundary straight into the SUB’s EX-stage operand mux, and a second bypass from MEM/WB into the OR’s EX-stage mux so neither dependent instruction waits for register file write-back. Stage labels IF through WB bracket each instruction row so viewers can see cycle alignment."
 
 Forwarding adds extra connections between [pipeline registers](#sec-pipeline-registers) and other components in the datapath.
 :::
@@ -456,7 +460,7 @@ In this course, we discuss **two** types of forwarding paths (i.e., bypasses) fr
 :::{figure} images/forwarding-all-hl.png
 :label: fig-forwarding-all-hl
 :width: 100%
-:alt: "TODO"
+:alt: "Expanded forwarding schematic with every pipeline stage labeled and two highlighted bypass nets. Purple path: from the register after MEM/WB back to the ALU mux feeding operand B, annotated as WB-to-EX forwarding. Pink path: from the register after EX/MEM to the same mux, annotated as MEM-to-EX forwarding. Pipeline registers between stages are drawn explicitly so students can trace where forwarded values are tapped relative to the register file read ports."
 
 Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw the bypasses for the A input signal, though they are certainly needed. With the exception of the PC, registers between stages are pipeline registers.
 :::
@@ -465,6 +469,7 @@ Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw
 Let's visit our [earlier simple example](#tab-data-hazard-1).
 
 :::{figure} #tab-data-hazard-1
+:alt: "Reprint of the pipeline diagram table for the simple add then dependent instructions example, showing IF through WB stage occupancy per cycle before stalls are applied."
 :::
 
 Suppose the RegFile supports write-then-read, _and_ we implement the described forwarding paths from `MEM` to `EX` and `from WB` to `EX`. How many cycles do we need to stall to avoid data hazards?
@@ -486,7 +491,7 @@ Forwarding is implemented by adding bypass wires between pipeline registers and 
 :::{figure} images/forwarding-ex-mem.png
 :label: fig-forwarding-ex-mem
 :width: 100%
-:alt: "TODO"
+:alt: "Full five-stage pipeline diagram with labeled stages showing the highlighted EX-MEM forwarding case. The yellow path indicates the forwarding path taken by values output from the EX stage pipeline registers, back into the muxes within the Execute stage for the following instruction to use during its EX stage to resolve a read-after-write dependency."
 
 :::
 
@@ -573,7 +578,7 @@ In @tab-data-hazard-4, which potential data hazards are resolved by inserting th
 :class: dropdown
 
 * **A.** The `add`-`lw` data hazard is **resolved** by `MEM` to `EX` forwarding. The `add` instruction result (of adding `t1` and `t2`) is available in the `EX/MEM` pipeline registers at the beginning of cycle 4. Cycle 4 is also the `lw` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `EX/MEM` pipeline registers to the A input of the ALU, overriding the stale value of register `s0` fetched during the `lw` instruction's `ID` stage in cycle 4.
-* **C.** The `lw` `and` data hazard is **resolved** by `WB` to `EX` forwarding. The memory read result from the `lw` instrution is available from the `MWM/WB` pipeline registers at the beginning of cycle 6. Cycle 6 is also the `and` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `MEM/WB` pipeline registers to the A input of the ALU, overriding the stale value of register `s1` fetched during the `and` instruction's `ID` stage in cycle 5.
+* **C.** The `lw` `and` data hazard is **resolved** by `WB` to `EX` forwarding. The memory read result from the `lw` instruction is available from the `MEM/WB` pipeline registers at the beginning of cycle 6. Cycle 6 is also the `and` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `MEM/WB` pipeline registers to the A input of the ALU, overriding the stale value of register `s1` fetched during the `and` instruction's `ID` stage in cycle 5.
 :::
 
 The `lw`-`or` data hazard in option B is **not resolved** by the proposed forwarding logic. Cycle 5 is the `or` instruction's `EX` stage. However, the `lw` instruction does not finish reading the value from DMEM (to be loaded into register `s1`) until the end of cycle 5. The result of this memory read is not available in the `MEM/WB` pipeline registers until _cycle 6_.
@@ -705,7 +710,7 @@ sw  t4 16(a0)
 <!-- :::{figure} images/read-write-data-hazard.png
 :label: fig-data-hazard
 :width: 100%
-:alt: "TODO"
+:alt: "Pipeline waterfall diagram table with 5 instructions in the first column. The sequence of instructions illustrates a read-after-write data hazard between dependent instructions 1 and 4."
 
 Waterfall diagram for read-write data hazard.
 :::
@@ -713,7 +718,7 @@ Waterfall diagram for read-write data hazard.
 :::{figure} images/alu-hazard-result.png
 :label: fig-alu-hazard
 :width: 100%
-:alt: "TODO"
+:alt: "ALU-result hazard waterfall diagram table showing three sequential instructions that rely on the ALU output of dependent combinations of registers. The second and third instructions need the updated value of register s0, which is the destination register of the add operation in instruction 1, before the normal write-back stage of instruction 1 is complete."
 
 Waterfall diagram for ALU problem: WB in `inst1` must happen before EX in `inst2`.
 :::
@@ -721,7 +726,7 @@ Waterfall diagram for ALU problem: WB in `inst1` must happen before EX in `inst2
 :::{figure} images/stalling.png
 :label: fig-stalling
 :width: 100%
-:alt: "TODO"
+:alt: "Waterfall diagram table illustrating stalling. This solution inserts two nop instructions between two dependent instructions to delay the second instruction until data from the first is ready."
 
 Solution 1: Stalling pipeline with `nop`.
 :::
@@ -731,7 +736,7 @@ Solution 1: Stalling pipeline with `nop`.
 :::{figure} images/forwarding-pipeline-table.png
 :label: fig-forwarding-table
 :width: 100%
-:alt: "TODO"
+:alt: "Forwarding pipeline table showing hazard resolution by bypassing values instead of stalling. The EX stages of both instructions in the table are highlighted, and the output of the EX stage of instruction 1 is connected to the input of the EX stage of instruction 2 via a vertical arrow."
 
 Waterfall diagram for forwarding with EX hazard.
 ::: -->

@@ -47,6 +47,7 @@ A cache is **N-Way Set Associative** if sets of N cache blocks are assigned a un
 :::{figure} images/sa-2way-small.png
 :label: fig-sa-2way-small
 :width: 80%
+:alt: "Small 2-way set-associative cache table showing set 0 as the first two cache lines and set 1 as the second two cache lines."
 
 A 16-byte, 2-way set-associative cache with 4B blocks.
 :::
@@ -58,6 +59,7 @@ In @fig-sa-2way-choice, which mapping represents a 32B **2-way** SA Cache with 4
 :::{figure} images/sa-2way-choice.png
 :label: fig-sa-2way-choice
 :width: 80%
+:alt: "Set-associative cache table with 8 cache lines and 2 sets (labeled A). The example highlights two candidate ways within one indexed set for placement choice (labeled B)."
 
 A 16-byte, 2-way set-associative cache with 4B blocks.
 :::
@@ -96,7 +98,7 @@ As an example, we can connect the 12-bit memory address in @fig-sa-2way-address 
 :::{figure} images/sa-2way-address.png
 :label: fig-sa-2way-address
 :width: 60%
-:alt: "TODO"
+:alt: "Memory address split for 2-way set-associative cache into fields: tag at bits 11 through 4, index at bits 3 through 2, and block offset at bits 1 through 0."
 For a set-associative cache, the memory address is split into **three** fields: the tag, the index, and the offset. For the cache in @fig-sa-2way-valid, a 12-bit memory address is split into an 8-bit tag, a 2-bit index, and a 2-bit offset.
 
 :::
@@ -159,7 +161,7 @@ The following animation traces through four memory accesses to a 12-bit address 
 :::{figure} images/sa-2way-valid.png
 :label: fig-sa-2way-valid
 :width: 60%
-:alt: "TODO"
+:alt: "Table showing cold 2-way set-associative cache with 4 sets. Each cache line has a valid and dirty bit."
 A [cold](#sec-cache-temperatures) snapshot of a 32B, 2-way set-associative cache with 4B blocks and a dirty bit for write-back.
 :::
 
@@ -167,8 +169,10 @@ A [cold](#sec-cache-temperatures) snapshot of a 32B, 2-way set-associative cache
 :label: fig-sa-2way-warmup
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQwW0AI7yiWfn0L5EVQQOVNbs6ke7nQDHkKwM7CHQ-IRMSnOn-88QXC9LCTtORDQmWLXp9wK_Vd_U0b/pubembed?start=false&loop=false
 :width: 100%
-:title: "Slides associated with the text of this section. Access [original Google Slides](https://docs.google.com/presentation/d/1Wi_d703PYdJgahH0bjxTKVvwT6KQ0dCFLZF7q6O0e9o/edit?usp=sharing)"
+:title: "Slides walking through four memory accesses with a 2-way set associative cache in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1Wi_d703PYdJgahH0bjxTKVvwT6KQ0dCFLZF7q6O0e9o/edit?usp=sharing)"
 :::
+
+::::
 
 :::{note} 1. Load byte @ `0xFE2`. Cache miss.
 :class: dropdown
@@ -235,6 +239,7 @@ Contrast this set-associative cache walkthrough with the one for [direct-mapped 
 * Memory accesses 2 and 3 create cache entries in cache entries `3` and `2`, respectively; these cache entries share the same tag. However, the blocks in these entries have different **block addresses**.
 * Memory access 4 did **not** incur a block replacement/memory write. Because there are two ways in a set, the existing block in the set with index `3` was not replaced. At the end of memory access 4, the set with index `3` is full.
 
+(sec-cache-associativity)=
 ## Associativity: A Discussion
 
 We illustrate in @fig-tio-address the relationship between block address, tag, index, and offset.
@@ -242,7 +247,7 @@ We illustrate in @fig-tio-address the relationship between block address, tag, i
 :::{figure} images/tio-address.png
 :label: fig-tio-address
 :width: 60%
-:alt: "TODO"
+:alt: "Address decomposition table showing memory address in bytes. The block address is split into tag and index, and the remaining part of the address is the block offset. Tag is used to connect cache to memory, index is used to select the cache block for placement in cache, and the byte offset specifies the byte within the cache block."
 A (byte-addressed) memory address can be decomposed into a **block address** and a **block offset**. For direct-mapped caches and set-associative caches, the block address can be further divided into a tag and an index. Fully associative caches have no index field.
 :::
 
@@ -278,13 +283,20 @@ A direct-mapped cache can have each block placed exactly in one location in the 
 :::{figure} images/placement-policies.png
 :label: fig-placement-policies
 :width: 75%
-:alt: "TODO"
+:alt: "Placement-policy spectrum chart from fully-associative cache to direct mapped cache with set-associative cache in between. Fully associative cache is labeled as putting a new block anywhere in the cache. Set-associative cache is labeled as putting a new block in one of N places, called sets. Direct mapped cache is labeled as putting a new block in one specific place."
 The spectrum of cache placement policies, with set-associative as the in-between approach.
 :::
 
+We are finally ready to revisit the tradeoffs of design choices. Below, placement policy is determined by choice of associativity.
+
+```{embed} #sec-cache-design-policy
+```
+
 :::{hint} Set-associative caches
 
-Set-associative caches are a good middle ground for placement policies. A small degree of associativity balances the good parts of fully associative caches (i.e., better performance by reducing [conflict misses](#sec-cache-misses)) with good parts of direct-mapped caches (simpler hardware).
+Set-associative caches are a good middle ground for placement policies.
 
-8-way set associative caches are used in first-level caches in modern hardware; see our discussion of cache optimizations in a [later section](#sec-cache-optimizations).
+* A small degree of associativity balances the good parts of fully associative caches (i.e., better performance by reducing [conflict misses](#sec-cache-misses)) with good parts of direct-mapped caches (simpler hardware). 8-way set associative caches are used in first-level caches in modern hardware.
+* Higher associativity reduces the [miss rate](#sec-cache-misses); see measurements in a [later section](#sec-higher-associativity).
+
 :::

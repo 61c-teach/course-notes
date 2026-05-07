@@ -19,7 +19,12 @@ These course notes cover the content you need to know from lecture and other par
 
 As of Spring 2026, these course notes are in active development. Due to course staff capacity, we may occasionally be unable to write course notes and will refer you to the lecture slides instead.
 
-If you find an error in our first draft, please email cs61c@ or submit a pull request on GitHub.
+:::{warning} Please help us address errata!
+
+If you find an error in our first draft, please email cs61c@, or file an issue/submit a pull request on [GitHub](https://github.com/61c-teach/course-notes).
+
+We appreciate PRs/issues that consolidate potential fixes across pages in a single course unit!
+:::
 
 ## Textbooks
 

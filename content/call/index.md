@@ -12,7 +12,7 @@ In this lecture, we will learn how to run a program. We will give more details t
 :::{figure} images/compile-high-level.png
 :label: fig-compile-high-level
 :width: 100%
-:alt: "TODO"
+:alt: "Two-panel figure comparing informal versus concrete views of translation. Left panel: schematic flow from source file foo.c through a colloquially labeled compile step to executable a.out, then loading into memory. Right panel: vertical list naming C source, assembly, and machine code as successive textual representations of one program. A large question mark between panels emphasizes that the left story is conceptual while the right enumerates actual artifacts students must relate to that story."
 
 Colloquially, "compiling C code" has translated a program `foo.c` to some executable `a.out`. But how and where does assembly get involved?
 :::
@@ -30,7 +30,7 @@ The process of **translating** a C program `foo.c` from the high-level C code to
 :::{figure} images/call-flow.png
 :label: fig-call-flow
 :width: 60%
-:alt: "TODO"
+:alt: "Vertical flowchart of the translation and load pipeline: C source foo.c is compiled to assembly foo.s, assembled to object file foo.o, linked with lib.o to produce executable a.out, then loaded into memory. Each stage appears as a color-coded box with arrows showing inputs and outputs between files and the Compiler, Assembler, Linker, and Loader."
 
 Flow chart for steps for compiling and running a C program.
 :::
@@ -123,7 +123,7 @@ The linker patches together multiple object modules to produce an executable. It
 
 :::{figure} images/linker-flow.png
 :width: 40%
-:alt: "TODO"
+:alt: "Linker combination diagram: object modules file1.o and file2.o are drawn as rectangles each subdivided into text, data, and auxiliary information segments; arrows from both modules enter a central Linker block. A single outgoing path shows one merged executable a.out whose text and data segments contain relocated addresses from both inputs, with relocation and symbol tables folded together so the loader receives one coherent image rather than two independent objects."
 :::
 
 The linker enables **separate compilation** of different parts of the program. Importantly, it supports not _recompiling_ larger libraries. For example,. C standard libraries (e.g., `stdio`) are part of the Linux source, which is over 20 million lines of code. Because of the linker, recompiling a simple `foo.c` does not require recompiling `stdio` :-)
@@ -157,7 +157,7 @@ The loader does several things to run a program. To learn more, we strongly reco
 
 **1. Load program into a newly created address space** in memory.[^vm]
 
-[^vm]: We discuss virtual memory in a later chapter.
+[^vm]: We discuss virtual memory in a [later chapter](#sec-virtual-memory).
 
 * Read `a.out` file header for sizes of text, data segments.
 * Create new address space for program large enough to hold **text and data segments**, along with a stack segment.

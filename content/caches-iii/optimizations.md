@@ -57,6 +57,7 @@ Larger blocks take advantage of spatial locality and so will reduce compulsory m
 
 :::{figure} images/figurative-block-size.png
 :label: fig-figurative-block-size
+:alt: "Three conceptual trend graphs compare miss penalty, miss rate, and AMAT versus block size. The miss-penalty graph rises with block size, the miss-rate graph decreases at first and then increases for larger blocks, and the AMAT graph decreases initially before rising again."
 
 While larger blocks can initially reduce miss rate because they improve spatial locality, they also reduce the number of blocks in the cache and can compromise temporal locality. Past a certain point, average memory access time will increase with larger block size.
 :::
@@ -65,6 +66,7 @@ While larger blocks can initially reduce miss rate because they improve spatial 
 
 :::{figure} images/data-block-size.png
 :label: fig-data-block-size
+:alt: "Empirical miss-rate versus block-size plot for multiple cache sizes. The plot compares 1KB, 8KB, 16KB, 64KB, and 256KB caches. Each trend line decreases as block size increases from 16 bytes to 64 bytes, but then increases as the block size increases further from 64 bytes to 256 bytes."
 
 Miss rate versus block size for four different caches. Note that miss rate actually goes up if the block size is too large relative to the cache size. Adjusted version of Figure B.10 from _Computer Organization: A Quantitative Approach.
 :::
@@ -79,6 +81,7 @@ In @fig-data-associativity, we see that as cache size increases, miss rate decre
 
 As a modern example, the M1 chip has an L2 cache sized to 12 MiB—significantly larger than its L1 cache with 128 KiB.[^apple-m1]
 
+(sec-higher-associativity)=
 ## Higher Associativity
 
 As discussed [earlier](#sec-cache-misses), higher associativity reduces the miss rate by reducing compulsory misses.
@@ -87,8 +90,9 @@ _Computer Organization: A Quantitative Approach_ measures miss rate on caches of
 
 :::{figure} images/data-associativity.png
 :label: fig-data-associativity
+:alt: "Total miss-rate versus cache size plot for varying cache associativities. All trend lines decrease in miss rate as cache size increases in KB."
 
-Total miss rate for each size cache, by associativity. Note that together, compulsory misses and capacity misses (dashed lines) are by definition the miss rate of a fully associative cache. Adjusted version of Figure B.9 from _Computer Organization: A Quantitative Approach.
+Total miss rate for each size cache, by associativity. Note that together, compulsory misses and capacity misses (dashed lines) are by definition the miss rate of a fully associative cache. Adjusted version of Figure B.9 from _Computer Organization: A Quantitative Approach_.
 :::
 
 Also as discussed earlier, [fully associative caches](#sec-fully-associative) complicate hardware and can therefore increase hit time. Nevertheless, in modern processors, L1 caches have reasonable associativity, e.g., 4-way or 8-way.[^associativity] [^apple-m1]

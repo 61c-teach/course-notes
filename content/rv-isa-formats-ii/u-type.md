@@ -50,7 +50,7 @@ As shown in @fig-u-type-immu, `imm = immu << 12`; this 32-bit numeric constant `
 :::{figure} images/u-type-immu.png
 :label: fig-u-type-immu
 :width: 50%
-:alt: "TODO"
+:alt: "32-bit U-Type instruction format: the 20-bit field immu sits in bits 31–12, bits 11–0 are zero, and the full immediate imm is formed by concatenating immu with twelve zero in the least significant bit positions."
 
 For U-Type instructions, `immu` is the top 20 bits of a 32-bit-wide numeric constant `imm` `imm`.
 :::
@@ -145,7 +145,7 @@ Remember, the `addi` instruction **sign-extends** the 12-bit immediate `imm`. If
 :::{figure} images/li-lui-strawman.png
 :label: fig-li-lui-strawman
 :width: 40%
-:alt: "TODO"
+:alt: "Arithmetic example showing the addition of hexadecimal value 0xB0BAC000 with 0xFFFFFAFE to produce the resulting 0xB0BABAFE word. The arithmetic is separated into an addition of the least significant three nibbles with three 0s, and the most significant 5 nibbles added to -1, represented with five hexadecimal Fs."
 
 When `addi`'s immediate `imm` is signed, a naive `lui` immediate `immu` will yield an incorrect numeric constant.
 :::
@@ -183,7 +183,7 @@ The U-Type instruction format is only used by `lui` and `auipc` and is the one o
 :::{figure} images/u-type.png
 :label: fig-u-type
 :width: 100%
-:alt: "TODO"
+:alt: "U-type instruction format layout with syntax opname rd immu and fields imm[31:12] (bits 31–12), rd (bits 11–7), and opcode (bits 6–0); additional notes specify that immu is the upper 20 bits of a 32-bit immediate produced by shifting that field left by 12."
 
 The U-Type Instruction Format.
 :::

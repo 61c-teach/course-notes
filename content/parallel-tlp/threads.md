@@ -8,6 +8,7 @@ title: "Threads"
 * Define thread, program, and process.
 * Differentiate between software thread and hardware threads.
 * Explain how (and why!) the OS performs context switches.
+* Explain at a high-level how single-core processors can run multithreaded programs, and how multicore processors can speed up execution of such programs.
 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
@@ -25,6 +26,7 @@ Threads are an easy way to describe/think about parallelism, but their implement
 
 ## Thread model of execution
 
+(sec-thread-state)=
 ### Thread state
 
 Each thread maintains state as shown in @fig-single-multi-thread:
@@ -36,7 +38,7 @@ Each thread maintains state as shown in @fig-single-multi-thread:
 :::{figure} images/single-v-multi-thread.png
 :label: fig-single-multi-thread
 :width: 90%
-:alt: "TODO"
+:alt: "Side-by-side process diagrams: left process box encloses one thread of execution with a single stack and register context; right process box encloses several threads each with its own stack pointer region but shared code and heap segments. Annotations highlight what is duplicated versus shared."
 
 Single-threaded process vs. multi-threaded process.
 :::
@@ -48,7 +50,7 @@ We assume that multi-threaded processes run using the **fork-join model** in @fi
 :::{figure} images/fork-join-model.png
 :label: fig-fork-join
 :width: 100%
-:alt: "TODO"
+:alt: "Fork-join timeline: a main thread proceeds serially, then a fork point fans out into several parallel child segments that execute concurrently, each with its own labeled interval, before a join barrier resynchronizes all paths back to a single continuation on the main thread. Vertical synchronization lines mark fork and join events."
 
 Fork-join model over time with multiple parallel tasks off the main thread. **Top**: Parallel Task I is composed of concurrent threads A, B, C; Task II is composed of A, B, C, and D; Task III is composed of A, B. **Bottom**: Main Thread forks into the three threads for Parallel Task I, then joins, then forks into the four threads for Parallel Task II, then joins, then forks into the two threads for Parallel Task III, then joins and finishes execution.
 :::
@@ -102,14 +104,18 @@ A special program called the **Operating System** "multiplexes"[^multiplex] mult
 :::{figure} images/process-v-time-threads.png
 :label: fig-process-v-time-threads
 :width: 40%
-:alt: "TODO"
+:alt: "Stacked timeline comparing one process containing a single thread against another process expanded into multiple threads of control. Vertical time lines show program counters advancing; the multithreaded version duplicates instruction pointer tracks or shows concurrent bursts inside one address space."
 
 Process over time when executing multiple threads on a single-core CPU.
 :::
 
+(sec-context-switch)=
 ## The OS: Thread Context Switch
 
-On most modern computers, the number of active threads is much larger than the number of available cores, so most (software) threads are idle at any given time. The **Operating System**, or **OS**, is responsible for (among other tasks) managing which threads get run on which CPU via a process called **context switching**.
+```{embed} #sec-os-overview
+```
+
+On most modern computers, the number of active threads is much larger than the number of available cores, so most (software) threads are idle at any given time. The OS is responsible for (among other tasks) managing which threads get run on which CPU via a process called **context switching**.
 
 The OS performs a **thread context switch** for two main reasons:
 
@@ -127,7 +133,7 @@ To switch to a different thread in the process, the OS does the following:
 
 [^vm]: We describe memory tables in our section on [virtual memory](#sec-virtual-memory).
 
-The OS also performs context switches to multiplex different processes; for now, we won't discuss this. Most of the details of the operating system are out of scope, but we hope a future version of these course note will go into the operating system in more detail. For those interested, please check out CS 61C Spring 2025.
+The OS also performs context switches to multiplex different processes; for now, we won't discuss this. 
 
 ## Hardware Multithreading
 
@@ -136,9 +142,11 @@ Up until now we have maintained that **one core** has **one hardware therad** ru
 * **Logical CPUs**: Effectively, the number of hardware threads.
 * **Physical CPUs** are the true number of hardware cores, where each core could potentially have multiple logical CPUs due to multithreading.
 
-Intel chips use hardware multithreading[^intel], whereas many modern Apple chips do not. The below `lscpu` command run on our course hive machines tells us that we have six physical cores and two threads per core for a total of 12 logical CPUs.
+Intel chips use hardware multithreading[^intel], whereas many modern Apple chips do not. The below `lscpu` command[^hive-lscpu] run on our course hive machines tells us that we have six physical cores and two threads per core for a total of 12 logical CPUs.
 
 ```{code} bash
+:label: code-hive-lscpu
+
 $ lscpu
 CPU(s):                   12
   On-line CPU(s) list:    0-11
@@ -153,6 +161,8 @@ Vendor ID:                GenuineIntel
 ```
 
 [^intel]: Intel uses yet another term to describe hardware multithreading: hyperthreading. Woo terminology!!
+
+[^hive-lscpu]: `lscpu` also lists the extensions available on this machine: `pu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2a pic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp vnmimd_clear flush_l1d arch_capabilities ibpb_exit_to_user`
 
 :::{warning} Hardware multithreading is out of scope
 
@@ -175,7 +185,7 @@ Briefly—the hardware multithreading model is in @fig-hardware-multithreading. 
 :::{figure} images/hardware-multithreading.png
 :label: fig-hardware-multithreading
 :width: 70%
-:alt: "TODO"
+:alt: "Block diagram of a core exposing multiple hardware thread contexts with separate PCs and register files while sharing execution units and caches, illustrating simultaneous multithreading or hyper-threading style overlap."
 
 Hardware multithreading: multiple threads *active* in the same processor.
 :::

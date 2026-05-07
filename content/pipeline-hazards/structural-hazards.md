@@ -2,10 +2,9 @@
 title: "Structural Hazards"
 ---
 
-(sec-pipeline-hazards)=
+(sec-structural-hazards)=
 ## Learning Outcomes
 
-* Identify the three types of hazards encountered in the RISC-V pipeline.
 * Explain why the hardware requirements of the RISC-V pipeline do not cause structural hazards.
 
 ::::{note} 🎥 Lecture Video
@@ -17,31 +16,6 @@ title: "Structural Hazards"
 :::
 
 ::::
-
-One of the costs of pipelining is that it introduces **pipeline hazards**. A pipeline hazard, or simply **hazard**, is a situation in which a planned instruction cannot execute in the “proper” clock cycle. In other words, a hazard is when executing a combination of instructions would be impossible or would lead to incorrect program execution.
-
-## Introduction to Hazards
-
-There are three types of hazards:
-
-+++ {"label": "block-def-hazard-structural"}
-**Structural hazard**: The hardware in the processor cannot support the combination of instructions that we want to execute in the same clock cycle.
-+++ {"label": "block-def-hazard-data"}
-**Data hazard**: Instructions have data dependencies, and some instructions must wait for previous instructions to complete—otherwise outdated values would be used in computation.
-+++ {"label": "block-def-hazard-control"}
-**Control hazard**: The flow of execution depends on previous instructions. The wrong instructions are executed.
-+++
-
-In this unit, we describe each type of hazard and resolve hazards through various solutions in hardware, during execution time, or in the program code:
-
-* **Stalling** is one inefficient solution to resolving any type of hazard, where we delay instructions until we can execute them without incurring hazards. Because performance suffers with stalling, we will discuss ways to avoid stalling where possible (though it is always a good last resort). See [this section](#sec-data-hazards-stall).
-* Specify **hardware requirements**, i.e., on specific hardware units within the pipeline.
-* **Forwarding**, also known as bypassing, is when we wire more connections in the datapath and instead use results when computed. See [this section](#sec-data-hazards-forward).
-* **Code scheduling**, where we rearrange instructions at compile-time to avoid hazards.
-
-In practice, computers use a combination of the above techniques to maximize throughput and maintain the benefits of **instruction-level parallelism** that pipelining provides.
-
-## Structural Hazards
 
 From earlier:
 
@@ -61,7 +35,7 @@ Suppose we had the following five instructions simultaneously executing in our f
 :::{figure} images/structural-pipeline.png
 :label: fig-structural-pipeline
 :width: 70%
-:alt: "TODO"
+:alt: "Pipeline occupancy diagram with symbols for each of the five pipeline stages. Labels under the stages show five distinct instructions simultaneously in each of the IF, ID, EX, MEM, and WB stages. Instruction 1 is in the write-back stage, at the same time that instruction 2 is in the MEM stage, instruction 3 is in the EX stage, instruction 4 is in the ID stage, and instruction 5 is in the IF stage."
 
 The five instructions `inst1`, `inst2`, `inst3`, `inst4`, `inst5` are executing in order and occupying all five stages of our pipeline in the same clock cycle.
 :::
@@ -79,7 +53,7 @@ The [register file](#sec-element-regfile) (RegFile) used in our processor suppor
 :::{figure} images/regfile-no-structural-hazard.png
 :label: fig-regfile-no-hazard
 :width: 70%
-:alt: "TODO"
+:alt: "Register file rectangular symbol showing wdata, rd, rs1, and rs2 inputs, control signal RegWEn, and outputs rdata1 and rdata2. This depicts the separate read and write access pattern avoiding structural conflicts."
 
 RISC-V RegFile design
 :::
@@ -90,7 +64,7 @@ RISC-V RegFile design
 :::{figure} images/regfile-structural-hazard.png
 :label: fig-regfile-hazard
 :width: 70%
-:alt: "TODO"
+:alt: "Alternate register-file block symbol with only wdata and rs inputs, the same RegWEn control signal, and one rdata output. This organization causes a read-write resource conflict if trying to read and write from the RegFile in the same cycle."
 
 Alternate RegFile design
 :::
@@ -109,7 +83,7 @@ The [instruction memory](#sec-element-imem) (IMEM) and [data memory](#sec-elemen
 :::{figure} images/separate-mem.png
 :label: fig-separate-mem
 :width: 60%
-:alt: "TODO"
+:alt: "On the left, a rectangular symbol for the IMEM with address input and instruction output. On the right, a rectangular symbol for the separate DMEM with address and wdata input, MemRW control signal, and rdata output. This separate memory design avoids instruction-data memory hazards."
 
 RV32I IMEM and DMEM are two separate hardware units.
 :::
@@ -123,7 +97,7 @@ We will discuss this later, but under the hood, IMEM and DMEM are actually cache
 :::{figure} images/separate-onchip-mem.png
 :label: fig-separate-onchip-mem
 :width: 80%
-:alt: "TODO"
+:alt: "Processor-memory diagram showing distinct on-chip instruction and data memories connected separately to the processor datapath."
 
 Processor and Memory diagram of separate IMEM/DMEM in memory.
 :::

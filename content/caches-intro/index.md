@@ -37,7 +37,7 @@ To understand caches, it helps to have a good analogy.[^ok-boomer] Let's review 
 Suppose you are a Cal student and you would like to find a book in the main library, or [Main Stacks](https://www.lib.berkeley.edu/visit/main-stacks). There are two stages to your search:
 
 1. **Search a large card catalog**. The library catalog[^ok-boomer] is a giant catalog that maps the title/author to the index number (e.g., [Dewey Decimal System](https://en.wikipedia.org/wiki/Dewey_Decimal_Classification)).
-2. **Check out the book**. This involves making a round-trip to walk to Main Stacks, retrieve the desired book, check out the book with the librarian, and walk back to your desk.
+2. **Check out the book**. Make a round-trip to walk to Main Stacks, retrieve the desired book, check out the book with the librarian, and walk back to your desk.
 
 ### Why are large memories slow?
 
@@ -69,19 +69,4 @@ The critical part of this analogy is your **desk** that is in the library, close
 :::{warning} Caches contain copies of data from main memory
 
 There is one caveat to this library analogy: unlike the books in a library, memory caches operate on **copies** of data from main memory. We will revisit this caveat when we formally define memory caches.
-:::
-
-## Visuals: Library Analogy
-:::{figure} images/graph-processor-dram-gap.png
-:label: fig-graph-processor-dram-gap
-:width: 80%
-:alt: "TODO"
-Performance gap between DRAM and CPU.
-:::
-
-:::{figure} images/temporal-vs-spatial-table.png
-:label: fig-temporal-vs-spatial-table-w-library
-:width: 80%
-:alt: "TODO"
-Different types of localities and their library analogies.
 :::

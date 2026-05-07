@@ -25,7 +25,7 @@ In this chapter, we will design a RISC-V processor and connect the software and 
 :::{figure} #fig-great-idea-1
 :width: 100%
 :enumerated: false
-:alt: "TODO"
+:alt: "Layered abstraction diagram: compiler, assembler, then machine code above an ISA line, with hardware architecture and logic circuits below. The right side shows matching examples from C and RISC-V assembly through binary, a processor block diagram, and NAND gate logic."
 
 Great Idea #1: Abstraction.
 :::
@@ -43,7 +43,7 @@ Before we continue, remember that we emphasize parallelism in this course. Even 
 :::{figure} ../great-ideas/images/new-school-machine-structures.png
 :width: 100%
 :enumerated: false
-:alt: "TODO"
+:alt: "Modern machine-structures stack highlighting parallelism: software layers above ISA, hardware organization below, with explicit multicore, vector, and accelerator-style parallel components."
 :label: fig-great-idea-new-school
 
 "New-School" Machine Structures leverage parallelism in both software and hardware.
@@ -75,6 +75,7 @@ One analogy comes from the operation of the [International Space Station](https:
 :::{figure} images/space-iss.jpg
 :enumerated: false
 :width: 50%
+:alt: "Photo of the International Space Station used as an analogy for the processor datapath as hardware that performs operations."
 The RISC-V datapath is like a space station.
 :::
 ::::
@@ -82,6 +83,7 @@ The RISC-V datapath is like a space station.
 ::::{grid-item}
 :::{figure} images/space-mission-control.jpg
 :width: 50%
+:alt: "Photo of mission-control operators used as an analogy for control logic that directs datapath actions."
 :enumerated: false
 The RISC-V control logic is like mission control.
 :::
@@ -107,7 +109,7 @@ Theoretically, to design our CPU we could implement something like @fig-monolith
 :::{figure} images/monolithic-datapath.png
 :label: fig-monolithic-datapath
 :width: 50%
-:alt: "TODO"
+:alt: "Strawman monolithic CPU datapath drawn as one bulky logic blob connected to state elements, illustrating why per-instruction hardware duplication is impractical."
 
 A strawman, bulky approach to implementing our datapath. We discuss the state elements listed in the figure in the [next section](#sec-state-elements).
 :::
@@ -154,6 +156,7 @@ In the next section, we introduce the key elements of a RISC-V **datapath**. For
 
 :::{figure} images/five-step-single-cycle-datapath.png
 :label: fig-five-step-single-cycle-datapath
+:alt: "Single-cycle datapath overview labeled by IF, ID, EX, MEM, and WB showing state elements, ALU and mux paths across one instruction cycle."
 
 Five steps of a single-cycle datapath. See [this section](#sec-state-elements) for descriptions of each hardware block.
 :::
@@ -162,6 +165,7 @@ We emphasize the layer of abstraction between datapath and control with @fig-fiv
 
 :::{figure} images/five-step-single-cycle-control.png
 :label: fig-five-step-single-cycle-control
+:alt: "Same five-step datapath annotated with control influence, highlighting how control signals select active data paths for each instruction."
 
 As the datapath computes values, the control logic selects the necessary values needed to execute the instruction.
 :::

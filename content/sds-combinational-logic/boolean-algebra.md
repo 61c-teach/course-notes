@@ -96,7 +96,7 @@ We can use Boolean algebra to verify the below simplification. The [first circui
 :::{figure} images/equivalent-circuit.png
 :label: fig-equivalent-circuit
 :width: 100%
-:alt: "TODO"
+:alt: "Cascade of an AND on b and a into an OR with a, and then an OR with c to output y, equivalent to y equals a OR c after simplification."
 
 First circuit: $y = ab + a + c$.
 :::
@@ -106,7 +106,7 @@ First circuit: $y = ab + a + c$.
 :::{figure} images/equivalent-circuit-or.png
 :label: fig-equivalent-circuit-or
 :width: 100%
-:alt: "TODO"
+:alt: "Equivalent single two-input OR gate with inputs a and c and output y."
 
 Second equivalent circuit: $y = a + c$.
 :::

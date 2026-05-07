@@ -32,7 +32,7 @@ First, let's consider the delays in our beloved `add` instruction. Review the `a
 :label: anim-datapath-add-full
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-add-full.pptx
 :width: 100%
-:title: "Tracing the `add` Datapath (Full)"
+:title: "Slides tracing through the `add` Datapath (Full)."
 :::
 The `add` datapath, updated from an [earlier section](#sec-datapath-r-type)'s simple `add`-only datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
@@ -41,7 +41,8 @@ The `add` datapath, updated from an [earlier section](#sec-datapath-r-type)'s si
 :label: anim-datapath-add-full
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTNTZZVVOA6hREQLorL6y7AEwzfidYgLpsBBc9YEAda0Dxih_yFBL3ykPOPSysa7w/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `add` Datapath (Full)"
+:alt: "Full add datapath trace slide showing all major buses and control lines active for an add instruction across one cycle."
+:title: "Slides tracing through the `add` Datapath (Full)."
 :::
 The `add` datapath, updated from an [earlier section](#sec-datapath-r-type)'s simple `add`-only datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/10ORU8oWu4rSY7J6uSWl_6OxrJLVLt9EQ/edit?usp=sharing).
 ::::
@@ -50,6 +51,7 @@ The `add` datapath, updated from an [earlier section](#sec-datapath-r-type)'s si
 
 :::{figure} images/timing-add.png
 :label: fig-timing-add
+:alt: "Timing waveforms for two consecutive add instructions, showing PC, instruction, register read, ALU, and writeback stabilization within a clock period."
 
 Timing diagram for `add`. Only relevant signal waveforms are shown.
 
@@ -150,7 +152,7 @@ The critical path uses the longer loop through the ALU.
 :label: anim-datapath-beq-full
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-beq-full.pptx
 :width: 100%
-:title: "Tracing the `beq` Datapath (Full)"
+:title: "Slides tracing through the `beq` Datapath (Full)."
 :::
 The `beq` datapath, updated from an [earlier section](#sec-datapath-b-type)'s simpler datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
@@ -159,7 +161,8 @@ The `beq` datapath, updated from an [earlier section](#sec-datapath-b-type)'s si
 :label: anim-datapath-beq-full
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRFDNojlD-1rvzMR9dQTJ8JZ2CllIZwaS6yYCdE1CumfoKjRXqeOekErcrTywda-w/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `beq` Datapath (Full)"
+:alt: "Full beq datapath trace slide with branch comparator, PC target computation, and control-dependent PC selection paths."
+:title: "Slides tracing through the `beq` Datapath (Full)."
 :::
 The `beq` datapath, updated from an [earlier section](#sec-datapath-b-type)'s simpler datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1iI-seGm2A7lSpHoGKM81b67utfyINT1H/edit?usp=sharing).
 ::::
@@ -176,7 +179,8 @@ We leave this derivation to you. Note you may need to make new placeholder delay
 :label: anim-datapath-lw-full
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-lw-full.pptx
 :width: 100%
-:title: "Tracing the `lw` Datapath (Full)"
+:alt: "Full lw datapath trace slide including IMEM fetch, ALU address generation, DMEM read, and writeback mux path to RegFile."
+:title: "Slides tracing through the `lw` Datapath (Full)."
 :::
 The `lw` datapath, updated from an [earlier section](#sec-datapath-load-store)'s simpler datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
@@ -185,7 +189,8 @@ The `lw` datapath, updated from an [earlier section](#sec-datapath-load-store)'s
 :label: anim-datapath-lw-full
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQqpuC67HJ6YsCXhnQ5YA1zqtUPBy-KRSnwjJzHgYdry8wwPkA6fm5pvToseVpxhQ/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `lw` Datapath (Full)"
+:alt: "Phase-based timing sketch labeling IF, ID, EX, MEM, and WB intervals used to approximate single-cycle instruction delay."
+:title: "Slides tracing through the `lw` Datapath (Full)."
 :::
 The `lw` datapath, updated from an [earlier section](#sec-datapath-load-store)'s simpler datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1QV6naVOhLr3PVoKszzY-ipUCigknXs3D/edit?usp=sharing).
 ::::
@@ -246,6 +251,7 @@ We can additionally construct
 
 :::{figure} images/timing-phases.png
 :label: fig-timing-phases
+:alt: "Phase-based timing diagram labeling IF, ID, EX, MEM, and WB intervals used to approximate single-cycle instruction delay."
 
 Approximate timing diagram for the [five steps to a RISC-V instruction](#sec-five-steps) in the single-cycle-datapath.
 

@@ -23,7 +23,7 @@ The concept of **pipelining** will increase our compute throughput. Before we ju
 :::{figure} images/laundry-setup.png
 :label: fig-laundry-setup
 :width: 100%
-:alt: "TODO"
+:alt: "Laundry-room setup diagram mapping washer, dryer, and folding tasks to pipeline-style stages where each stage takes a sequential 30 minutes."
 
 Laundry analogy.
 :::
@@ -47,7 +47,7 @@ Person 1 starts at 6pm and finishes all four steps at 8pm; then, Person 2 starts
 :::{figure} images/sequential-laundry.png
 :label: fig-laundry-sequential
 :width: 100%
-:alt: "TODO"
+:alt: "Sequential laundry schedule where one person's load fully completes all stages (washer, dryer, folder, and stasher) before the next person starts."
 
 Timeline for sequential laundry.
 :::
@@ -65,7 +65,7 @@ Now consider a **pipelined** approach to using laundry,[^pipelined-assumptions] 
 :::{figure} images/parallel-laundry.png
 :label: fig-laundry-parallel
 :width: 50%
-:alt: "TODO"
+:alt: "Pipelined laundry schedule with overlapping washer, dryer, and folding work across different customers to optimize time. The next person can start the washer stage (stage 1) once the person ahead of them moves onto the dryer stage (stage 2)."
 
 Timeline for pipelined laundry.
 :::
@@ -75,7 +75,7 @@ This implementation takes just **3.5 hours** for the same **4 loads** of laundry
 :::{figure} images/customers-different-phases.png
 :label: fig-different-phases
 :width: 100%
-:alt: "TODO"
+:alt: "Two synchronized views of pipelined laundry: on the left, a timeline showing the four customers each starting their washer stage as soon as the person ahead of them starts the dryer stage, and on the right, a focused progression of the laundry stages in order for a given 30 minute increment, showing how each stage in that 30 minutes is used by a different customer."
 
 Two views of pipelined laundry: Over time (left) versus the snapshot of the laundry room during a given time interval (e.g., 7-7:30pm).
 :::
@@ -105,7 +105,7 @@ Note (\*): Throughput is approximate for our tiny 4-customer task. In this case,
 :::{figure} images/ipc-timeline.png
 :label: fig-ipc-timeline
 :width: 100%
-:alt: "TODO"
+:alt: "IPC-style timeline showing one completed customer per cycle after initial pipeline fill."
 
 IPC Timeline diagram showing one customer per "cycle" in laundry analogy.
 :::
@@ -123,7 +123,7 @@ Consider how an instruction like `add t0 t1 t2` accesses the hardware in the **s
 :::{figure} images/single-cycle-processor-hl.png
 :label: fig-single-cycle-processor-hl
 :width: 100%
-:alt: "TODO"
+:alt: "Single-cycle processor phase icons for one add instruction with read and write shading by hardware resource. The phases include IF with IMEM block, ID with Reg block, EX with ALU, MEM with DMEM block, and WB with Reg block."
 
 High-level diagram of single-cycle processor executing the instruction `add t0 t1 t2`. We adopt a graphic representation of each of the [five phases](#sec-five-steps), where each symbol represents the major hardware resource accessed in that phase. The shading illustrates if the unit is read (i.e., the right half is shaded for IMEM in `IF` and RegFile in `ID`) or the unit is written (i.e., the left half is shaded for RegFile in `WB`). For R-Type instructions, MEM is transparent because `add` does not access the data memory.
 :::
@@ -141,7 +141,7 @@ In our **single-cycle CPU**, _only one instruction can access any resources in o
 :::{figure} images/sequential-processor.png
 :label: fig-sequential-processor
 :width: 100%
-:alt: "TODO"
+:alt: "Single-cycle processor timeline for three instructions, each instruction occupying an entire cycle and waiting to begin until the previous instruction has completed all stages."
 
 Single-cycle processor usage for three instructions. The instruction time $t_{instruction}$ is equal to the length of one clock cycle, $t_{cycle}$.
 :::
@@ -151,7 +151,7 @@ In a **pipelined** processor, on the other hand, multiple instructions access di
 :::{figure} images/pipelined-processor.png
 :label: fig-pipelined-processor
 :width: 100%
-:alt: "TODO"
+:alt: "Five-stage pipelined processor timeline for three instructions overlapped across IF through WB stages."
 
 Pipelined RISC-V processor usage for three instructions. In the first cycle, `add` is in the `IF` stage. In the second cycle, `or` is in the `IF` stage, while `add` has moved onto the `ID` stage. In the third cycle, `lw` is in the `IF` stage, while `or` and `add` have moved onto the `ID` and `EX` stages, respectively. Each instruction now takes **five cycles** to execute, but the clock cycle can be timed to the duration of the longest stage.
 :::
@@ -161,7 +161,7 @@ If we examine our `add t0 t1 t2` instruction and how it accesses the _pipelined_
 :::{figure} images/pipelined-processor-hl.png
 :label: fig-pipelined-processor-hl
 :width: 100%
-:alt: "TODO"
+:alt: "High-level pipelined processor resource-use diagram for add showing stage-by-stage hardware activity."
 
 High-level diagram of pipelined processor executing the instruction `add t0 t1 t2`. Shading is described in the caption of @fig-single-cycle-processor-hl.
 :::

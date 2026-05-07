@@ -29,7 +29,7 @@ subtitle: By John Wawrzynek, with edits by Lisa Yan
 :::{figure} images/adder-sub-block.png
 :label: fig-add-sub-block
 :width: 55%
-:alt: "TODO"
+:alt: "Adder-subtractor block with 32-bit inputs A and B, control signal SUB, 32-bit output Y, and overflow flag."
 
 Adder/Subtractor block.
 :::
@@ -112,7 +112,7 @@ We build our intuition for implementing a 1-bit adder by considering the adder i
 :::{figure} images/adder-1-zero.png
 :label: fig-adder-1-zero
 :width: 70%
-:alt: "TODO"
+:alt: "1-bit adder block demonstrating a single bit-wise addition between a0 and b0, producing output y0 and carry bit c1 to be included in the next single bit addition. The left depicts the fully written 4-bit addition between 4-bit a and 4-bit b, resulting in 4-bit y. There is no carry-in bit in this first single-bit addition between a0 and b0."
 
 1-bit adder in zero-th spot, _without_ carry-in bit.
 :::
@@ -154,7 +154,7 @@ Next, consider the logic for the next significant stage (and all subsequent stag
 :::{figure} images/adder-1-one.png
 :label: fig-adder-1-one
 :width: 70%
-:alt: "TODO"
+:alt: "Single bit addition between bit a1 and b1 with carry bit c1 from previous addition, and producing sum bit y1 and a second carry-out bit c2."
 
 1-bit adder in first spot, _with_ carry-in bit.
 :::
@@ -220,7 +220,7 @@ Let us finally consider the logic for the i{sup}`th` spot, where $i = 0, ..., n-
 :::{figure} images/adder-1-i.png
 :label: fig-adder-1-i
 :width: 70%
-:alt: "TODO"
+:alt: "Generic depiction of the i-th full-adder block with inputs ai, bi, and carry bit ci, as well as outputs yi and c_i+1. This shows an intermediate single-bit adder step in a n-bit by n-bit summation."
 
 1-bit adder in i{sup}`th` spot, _with_ carry-in bit.
 :::
@@ -234,7 +234,7 @@ The 1-bit adder's gate-level circuit diagrams for its internals are in @fig-adde
 :::{figure} images/adder-1-i-circuit.png
 :label: fig-adder-1-i-circuit
 :width: 100%
-:alt: "TODO"
+:alt: "Gate-level full-adder implementation using XOR for the sum bit and combinational logic with 3 AND gates and an OR gate to calculate the carry-out bit."
 
 1-bit-adder circuit.
 :::
@@ -268,7 +268,7 @@ The next step in the design of our adder circuit is to wire together a collectio
 :::{figure} images/cascade-add.png
 :label: fig-cascade-add
 :width: 100%
-:alt: "TODO"
+:alt: "Ripple-carry n-bit adder made by cascading 1-bit adders from bit 0 to bit n-1, with an initial carry-in bit c0 tied low."
 
 (Incomplete) Cascading n-bit adder. The carry-in bit c{sub}`0` is set to GND, but the carry-out bit c{sub}`n` is currently unused.
 :::
@@ -295,7 +295,7 @@ We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 :::{figure} images/2bit-add-overflow-table.png
 :label: fig-2bit-add-overflow-table
 :width: 70%
-:alt: "TODO"
+:alt: "Table diagram showing different outputs from 2-bit addition with varying carry-bits and signed interpretations, highlighting cases used to reason about overflow."
 
 2-bit adder overflow table diagram. Overflow occurs when adding $1 + (-2) = -1$, $1 + 1$, and $(-1) + (-2)$. Notably, the first is a valid addition, where the latter two produce incorrect results.
 :::
@@ -308,7 +308,7 @@ We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 :::{figure} images/2bit-add-overflow-overview.png
 :label: fig-2bit-add-overflow-overview
 :width: 100%
-:alt: "TODO"
+:alt: "The left shows 2-bit signed addition outcomes on a value wheel, including wraparound behavior. The right shows a similar 2-bit signed addition table showing various output possibilies and their interpretations in decimal."
 
 High-level 2-bit adder overflow table diagram.
 :::
@@ -333,7 +333,7 @@ $$ \texttt{overflow} = \texttt{c}_{\texttt{n}} XOR \texttt{c}_{\texttt{n-1}} $$
 :::{figure} images/cascade-add-overflow.png
 :label: fig-cascade-add-overflow
 :width: 100%
-:alt: "TODO"
+:alt: "Complete ripple-carry adder represented with sequential single-bit adder blocks for bits a0 and b0 through a_n-1 and b_n-1. Overflow detection is computed after the adder logic for bit a_n-1 and b_n-1 using an XOR gate with inputs c_n and c_n-1 from before the final adder block."
 
 Cascading n-bit adder with overflow.
 :::
@@ -382,7 +382,7 @@ The augmented adder design is shown below. When the input SUB is 1 the block per
 :::{figure} images/nbit-add-sub.png
 :label: fig-nbit-sub-design
 :width: 100%
-:alt: "TODO"
+:alt: "The same n-bit adder circuit with overflow detection, but now with subtractor design using XOR gates to conditionally invert B based on a control input SUB that is determining the initial carry-in bit c0."
 
 N-bit adder/substractor design circuit diagram.
 :::

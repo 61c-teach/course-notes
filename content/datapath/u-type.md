@@ -38,16 +38,17 @@ There are **two** updates we need to make:
 :label: anim-datapath-lui
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-lui.pptx
 :width: 100%
-:title: "Tracing the `lui` Datapath"
+:title: "Slides tracing through the `lui` Datapath."
 :::
 The `lui` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
 
 ::::{figure}
 :label: anim-datapath-lui
+:alt: "Embedded slides tracing load-upper-immediate on the single-cycle datapath, wiring the U-type immediate into the ALU bypass path and register write-back."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQaJ2vmNAHWYtsHOqepOlL_mOnOM3HPvfvhTAO_CLlNLoEo17GiOuslYVycWHUb_w/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `lui` Datapath"
+:title: "Slides tracing through the `lui` Datapath."
 :::
 The `lui` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/11CKXsYN9z-0RRWkwVz-Ae6ZvZIcirluV/edit?usp=sharing).
 ::::
@@ -88,16 +89,17 @@ The `lui` datapath. Use the menu bar to trace through the animation or access th
 :label: anim-datapath-auipc
 :::{iframe} https://view.officeapps.live.com/op/embed.aspx?src=https://github.com/61c-teach/course-notes/raw/refs/heads/main/content/datapath/pptx/datapath-auipc.pptx
 :width: 100%
-:title: "Tracing the `auipc` Datapath"
+:title: "Slides tracing through the `auipc` Datapath."
 :::
 The `auipc` datapath. Use the menu bar to trace through the animation or download a copy of the PDF/PPTX file.
 :::: -->
 
 ::::{figure}
 :label: anim-datapath-auipc
+:alt: "Embedded slides tracing add-upper-immediate-to-PC on the single-cycle datapath, combining PC with the upper immediate for PC-relative addressing setup."
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vQTNKmHKQSo2p_zRGfFjMYdnQ5QoIcEeFI57fdjlvmkOQJKbXAZ42_Y6x5iT8TNGw/pubembed?start=false&loop=false
 :width: 100%
-:title: "Tracing the `auipc` Datapath"
+:title: "Slides tracing through the `auipc` Datapath."
 :::
 The `auipc` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/117GS6W-vKD25dAOlAd9ycbFZpMBSAgp1/edit?usp=sharing).
 ::::
