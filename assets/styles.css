@@ -51,3 +51,10 @@ button {
   font-weight: bold;
 }
 
+/* Remove white background that MyST book-theme adds to logo in dark mode */
+.dark .myst-home-link-logo {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
