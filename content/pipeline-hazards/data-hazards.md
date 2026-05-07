@@ -436,7 +436,7 @@ We use @fig-forwarding-hl to describe at a high-level what data is forwarded.
 :::{figure} images/forwarding-hl.png
 :label: fig-forwarding-hl
 :width: 80%
-:alt: "High-level five-stage pipeline cartoon with three instructions in flight: ADD writing s0, SUB consuming s0, and OR also consuming s0. Colored bypass arrows show the ADD’s ALU result forwarded from the EX/MEM boundary straight into the SUB’s EX-stage operand mux, and a second bypass from MEM/WB into the OR’s EX-stage mux so neither dependent instruction waits for register file write-back. Stage labels IF through WB bracket each instruction row so viewers can see cycle alignment."
+:alt: "High-level five-stage pipeline visual with three instructions in flight: ADD writing s0, SUB consuming s0, and OR also consuming s0. Colored bypass arrows show the ADD’s ALU result forwarded from the EX/MEM boundary straight into the SUB’s EX-stage operand mux, and a second bypass from MEM/WB into the OR’s EX-stage mux so neither dependent instruction waits for register file write-back. Stage labels IF through WB bracket each instruction row so viewers can see cycle alignment."
 
 Forwarding adds extra connections between [pipeline registers](#sec-pipeline-registers) and other components in the datapath.
 :::
@@ -462,8 +462,10 @@ In this course, we discuss **two** types of forwarding paths (i.e., bypasses) fr
 :width: 100%
 :alt: "Expanded forwarding schematic with every pipeline stage labeled and two highlighted bypass nets. Purple path: from the register after MEM/WB back to the ALU mux feeding operand B, annotated as WB-to-EX forwarding. Pink path: from the register after EX/MEM to the same mux, annotated as MEM-to-EX forwarding. Pipeline registers between stages are drawn explicitly so students can trace where forwarded values are tapped relative to the register file read ports."
 
-Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw the bypasses for the A input signal, though they are certainly needed. With the exception of the PC, registers between stages are pipeline registers.
+Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw the bypasses for the A input signal, though they are certainly needed. With the exception of the PC, registers between stages are pipeline registers. Adapted from Spring 2026 CS 152.[^cs152-diagram]
 :::
+
+[^cs152-diagram]: [Original diagram](https://inst.eecs.berkeley.edu/~cs152/exams/pdfs/mt1/sp26-mt1-sols.pdf) by Wen Cao, Spring 2026 CS 152/252 TA. The CS 152/252 diagram is for a different pipelined datapath with different forwarding paths (e.g., see the MUX into the ID/EX pipeline register). Please use @fig-forwarding-all-hl for this course.
 
 ::::{tip} Quick Check
 Let's visit our [earlier simple example](#tab-data-hazard-1).
