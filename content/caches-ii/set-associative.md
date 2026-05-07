@@ -127,7 +127,7 @@ For set-associative caches, what replacement policies can be implemented? Select
 :::{note} Show Answer
 :class: dropdown
 
-**E.** None of the above.
+**A, B, C, D**.
 
 On a cache miss, set-associative caches must determine which block to replace **within the set**. All replacement policies now occur within each set of blocks.
 
