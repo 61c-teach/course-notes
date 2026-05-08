@@ -254,7 +254,7 @@ project:
           - file: content/vm/index.md
           - file: content/vm/address-translation.md
           - file: content/vm/memory-manager.md
-        - title: "L36: The TLB, Page Table Walks"
+        - title: "L36: The TLB, Full Memory Hierarchy"
           children:
           - file: content/vm/page-table.md
           - file: content/vm/tlb.md
