@@ -195,7 +195,22 @@ Since pipelining the datapath leaves the meaning of the control lines unchanged,
 
 :::
 
-We note there is nothing special to control in the `IF` stage, because the control signals to read instruction memory and to write the PC are always implicitly asserted. `PCSel`, the control signal to determine _what_ to write to the PC, is determined in `MEM`.
+We note there is nothing special to control in the `IF` stage, because the control signals to read instruction memory and to write the PC are always implicitly asserted.
+
+:::{tip} Quick Check
+:label: block-pcsel-mem
+
+Suppose we execute a B-Type instruction on a five-stage pipelined datapath. In which stage of this instruction will we know whether the conditional branch is taken?
+
+:::
+
+:::{note} Answer
+
+**The `MEM` stage.**
+
+As shown in @fig-five-stage-control, `PCSel` is the control signal to determine _what_ to write to the PC, is determined in `MEM`. While the outcome of Branch Comparator output in the `EX` stage, the control computes the result of `PCSel` in the `MEM` stage.
+
+:::
 
 :::{figure} images/five-stage-with-control.png
 :label: fig-five-stage-control
@@ -205,12 +220,16 @@ We note there is nothing special to control in the `IF` stage, because the contr
 Five-stage RISC-V processor diagram with control.
 :::
 
-
 ### Implementing Pipelined Control
 
-Implementing control means setting these control lines to the correct values in each stage for each instruction. We discuss two approaches below.
+Implementing control means setting these control lines to the correct values in each stage for each instruction.
 
-One approach computes as many control signals as possible during instruction decode (`ID`) because all control signals but `PCSel` can be derived from the instruction. As shown in @fig-pipelined-control, this extends the pipeline registers to include control information to pipeline control "words" between stages. This approach reuses much of the control circuitry from our single-cycle processor.
+@fig-five-stage-control above shows a **one** approach. Each stage now has a separate control unit that determines the control signals based on the instruction currently executing in that stage. This is illustrated by the inputs to the different control signal groups: `inst (ID)`, `inst (EX)`, `inst (M)`, and `inst (WB)`.
+
+::::{note} Click to show a second approach.
+:class: dropdown
+
+Another approach computes as many control signals as possible during instruction decode (`ID`) because all control signals but `PCSel` can be derived from the instruction. As shown in @fig-pipelined-control, this extends the pipeline registers to include control information to pipeline control "words" between stages. This approach reuses much of the control circuitry from our single-cycle processor, but it breaks from the grouping in @tab-controller-signals-pipeline.
 
 :::{figure} images/pipelined-control.png
 :label: fig-pipelined-control
@@ -220,7 +239,7 @@ One approach computes as many control signals as possible during instruction dec
 Diagram of additional pipelined register for control.
 :::
 
-@fig-five-stage-control shows a second approach. Each stage now has a separate control unit that determines the control signals based on the instruction currently executing in that stage. This is illustrated in @fig-five-stage-control by the inputs to the different control signal groups: `inst (ID)`, `inst (EX)`, `inst (M)`, and `inst (WB)`.
+::::
 
 ## Summary
 
