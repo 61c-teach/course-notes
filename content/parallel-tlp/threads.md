@@ -119,7 +119,7 @@ On most modern computers, the number of active threads is much larger than the n
 
 The OS performs a **thread context switch** for two main reasons:
 
-* Switch out blocked threads (e.g., cache miss, user input, network access). The OS switches to another thread to avoid stalling the CPU for an extended amount of time.
+* Switch out blocked threads (e.g., cache miss, user input, network access, disk access). The OS switches to another thread to avoid stalling the CPU for an extended amount of time.
 * Timer (e.g., switch active thread every 1 ms). The OS switches to another thread to allow multiple threads to execute concurrently, even when hardware threads are limited.
 
 :::{note} The OS enables thread concurrency
@@ -131,9 +131,9 @@ To switch to a different thread in the process, the OS does the following:
 1. Removes the old software thread from the hardware thread by interrupting its execution. Save the old software thread's state, e.g., register values (including PC value) and stack pointer to memory. Because threads in the same process share memory, we keep any memory tables.[^vm]
 1. Start executing a different software thread. Load its state into the hardware thread's registers (including the thread's PC value). Then, run the hardware thread by reading the value of the PC (which is the address of the next instruction of the newly active thread).
 
-[^vm]: We describe memory tables in our section on [virtual memory](#sec-virtual-memory).
+[^vm]: We use the term "memory tables" colloquially here to refer to all extra information to speed up memory access needed for this particular process. We mean caches and [virtual memory page tables](#sec-virtual-memory).
 
-The OS also performs context switches to multiplex different processes; for now, we won't discuss this. 
+The OS can also perform context switches to multiplex different processes. We leave the description of process context switches to a [later section](#sec-context-switch-process)
 
 ## Hardware Multithreading
 

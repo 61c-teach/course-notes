@@ -88,15 +88,21 @@ Each entry in the cache therefore needs to track (at least) **two** pieces of in
 
 Size-related terminology:
 
-* **Block size** (also called **line size**) is the number of bytes of data stored in this block. Each block in a cache has the same block size. To take advantage of spatial locality, caches usually have a block size larger than one word.[^m1-line]
+* **Block size** (also called **line size**) is the number of bytes of data stored in this block. Each block in a cache has the same block size. To take advantage of spatial locality, caches usually have a block size larger than one word.
 * **Capacity** is the size of a cache, in bytes.
 
-[^m1-line]: For the Apple M1 chip, L1 cache has 64-byte blocks, whereas L2 cache has 128-byte blocks. [GoFetch](https://gofetch.fail/).
-
 :::{warning} Cache size/capacity
+:label: block-cache-size
 
 From [Wikipedia](https://en.wikipedia.org/wiki/CPU_cache):
 > The "size" of the cache is the amount of main memory data it can hold. This size can be calculated as the number of bytes stored in each data block times the number of blocks stored in the cache. (The tag, [and other metadata] bits are not included in the size[^practice], although they do affect the physical area of a cache.)
+
+For the Apple M1 chip[^m1-line]:
+
+* The L1 cache is 128 KiB, 8-way [set-associative](#sec-set-associative) with 64-byte blocks.
+* The L2 cache is 12 MiB, 12-way [set-associative](#sec-set-associative) with 128-byte blocks.
+
+[^m1-line]: Source: [GoFetch](https://gofetch.fail/).
 
 [^practice]: See size comparisons in Sadler et al., ICCD 2006. DOI: [10.1109/ICCD.2006.4380862](https://doi.org/10.1109/ICCD.2006.4380862)
 

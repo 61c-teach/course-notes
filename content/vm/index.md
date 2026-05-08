@@ -131,6 +131,7 @@ Address translation is the key to mapping virtual address spaces from different 
 **Physical addresses** are used for the **physical address space** available on memory. For a processor to access a location in memory, a memory manager[^memory-manager] translates virtual addresses to physical addresses.
 :::
 
+(sec-paged-memory)=
 ## Paged Memory
 
 To run programs larger than main memory (Motivation 1), most of the data needed for a program must live somewhere other than main memory. The address space needed to run a program is therefore stored across two layers of the memory hierarchy: **main memory** and **disk**.
@@ -159,6 +160,17 @@ address sizes	: 39 bits physical, 48 bits virtual
 
 $ getconf PAGESIZE
 4096
+```
+
+On the Apple M4 Chip:
+
+```{code} bash
+:label: code-m4-memory
+$ sysctl -a | grep virtual    
+machdep.virtual_address_size: 47
+
+$ getconf PAGESIZE
+16384
 ```
 
 [^why-39-bit]: Why 39 bits physical? Based on the [Intel specifications](https://www.intel.com/content/www/us/en/products/sku/129948/intel-core-i78700t-processor-12m-cache-up-to-4-00-ghz/specifications.html), course hive machines have 128 GiB of memory, which should mean 34-bit-wide physical addresses. In practice, the physical address space does not always exactly map to the amount of physical memory because of the memory controller. Read more on [StackOverflow](https://superuser.com/questions/944080/why-does-my-cpu-only-support-32gb-ram-when-it-has-39-address-bits).
