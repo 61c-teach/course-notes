@@ -74,6 +74,17 @@ On a page fault, the process cannot continue until the memory access finishes. I
 **Context switches** amortize the cost of page faults across all processes. To keep the CPU busy, the OS performs a context switch and runs another process—while the original process that triggered a page fault "waits." Then, when the page in question is finally loaded into memory, the OS performs another context switch back to the original process.
 :::
 
+(sec-context-switch-process)=
+### Process Context Switches
+
+Earlier, we described [_thread_ context switches](#sec-context-switch). To switch between _processes_, update state as follows:
+
+* Save the outgoing process's state: register values, program counter, [page table base register](#block-ptbr), stack pointer, etc.
+* Load in the incoming process's state.
+* **Update the virtual memory space to the incoming process.** Do this by invalidating memory caches and [the translation lookaside buffer](#block-tlb-flush).
+
+We don't do the last of these with thread context switches, because threads from the same process share the same virtual address space.
+
 (sec-demand-paging)=
 ## Demand Paging
 

@@ -7,19 +7,22 @@ title: "Address Translation"
 
 * Use a pre-populated page table to translate virtual addresses into physical addresses.
 * Define a page fault and identify when an address translation scenario triggers a page fault.
-:::{note} Address translation
+
+:::{note} Accessing memory
 :label: block-address-translation
 
-A "memory manager" (see [this section](#sec-memory-manager)) translates virtual addresses to physical addresses as follows:
+A "memory manager" (see [this section](#sec-memory-manager)) retrieves data by translating virtual addresses to physical addresses as follows:
 
 1. A process requests a memory access at a given virtual address (VA).
 1. Translate the virtual address to the physical address:
     * Extract virtual page number (VPN) from VA
-    * Access the **page table entr**y corresponding to this VPN to look up the corresponding physical page number (PPN).
+    * Access the **page table entry** corresponding to this VPN to look up the corresponding physical page number (PPN).
 1. Construct the physical address (PA):
     * If the corresponding page table entry is valid, obtain the PPN from the page table entry and construct the PA by concatenating the PPN and the page offset.
     * If the corresponding page table entry is **not** valid, trigger a **page fault**. After the page is loaded from disk into memory, repeat this step.
 1. Access memory at the physical address in memory and return to the process.
+
+The middle two steps are **address translation**. The last step is **data access**.
 
 :::
 

@@ -133,16 +133,21 @@ Recall from an [earlier section](#sec-memory-hierarchy) that caches contain **co
 
 :::{hint} Quick Check
 
-Suppose that a process has a 32-bit address space. If pages are 16 KiB in size, and page table entries are 4 B (i.e., to store a physical page number and status bits), then what is the total size of the page table?
+Suppose that a process has a 32-bit address space. If pages are 16 KiB in size, and page table entries are 4 B (i.e., to store a physical page number and status bits):
+
+1. What is the total size of the page table?
+1. If the L1 cache is 128 KiB, can the page table fit in the cache?
 
 :::
 
 :::{note} Show Answer
 :class: dropdown
 
-If pages are 16 KiB = $2^{4}2^{10}$ B in size, then the virtual page number and page offset occupy the upper 18 bits and lower 14 bits, respectively, of the virtual address.
+1. If pages are 16 KiB = $2^{4}2^{10}$ B in size, then the virtual page number and page offset occupy the upper 18 bits and lower 14 bits, respectively, of the virtual address.
 
-Our assumption in this course is that there is one page table entry for each and every virtual page number. The total page table size is then $2^{18} \cdot 4 B$ = $2^{20}$ B = 1 MiB.
+    Our assumption in this course is that there is one page table entry for each and every virtual page number. The total page table size is then $2^{18} \cdot 4 B$ = $2^{20}$ B = 1 MiB.
+
+1. The page table is too big, so it cannot fit in the cache. The page table must be stored in memory!
 :::
 
 :::{warning} Page Table Sizes, in Practice
@@ -163,13 +168,22 @@ Each running process has a dedicated page table. In @fig-page-table-process-shar
 Three processes each have a page table, where valid entries in the page table map to different pages in physical memory. Processes can share physical pages using a [write protection](#sec-vm-write-protection) mechanism.
 :::
 
-Remember that a key motivation for virtual memory is to allow **safe** sharing of a single main memory by multiple processes. We highlight three mechanisms of memory protection:[^wiki]
+Remember that a key motivation for virtual memory is to allow **safe** sharing of a single main memory by multiple processes. We highlight key mechanisms of memory protection:[^wiki]
 
 1. The flexible placement policy of virtual memory systems means that physical pages allocated to a process do not have to be allocated in order on memory. The mapping is intentionally determined by the "memory manager" (i.e., [OS](#sec-memory-manager)), which organizes page tables so that all virtual pages that should _not_ be shared between processes are mapped to disjoint physical pages.
 1. We also see in @fig-page-table-process-share that some processes can share physical pages. The [write protection bit](#sec-vm-write-protection) (write access bit) in page table entries can enable limited sharing of data between two processes.
 1. Portions of physical memory can be marked as _protected_ address space, accessible only by the supervisor mode of the [OS](#sec-memory-manager). Page tables are placed in this protected address space to ensure that user processes cannot modify any page tables (including its own).
 
 [^wiki]: Read more about memory protection on [Wikipedia](https://en.wikipedia.org/wiki/Memory_protection).
+
+:::{warning} There is one page table per process
+:label: block-ptbr
+
+Multiple page tables can be stored in memory (in protected address space), but only one process can run on a core at any given time. To determine the current page table, the CPU has a special register called the **page table base register**[^rv-sptbr-satp] that stores the starting physical address of the current process's page table.
+
+[^rv-sptbr-satp]: In earlier versions of RISC-V, the page table base register was called the SPTBR ("S" for "Supervisor"). V1.10 updates the name to SATP (Supervisor Address Translation and Protection). See [Volume II: RISC-V Privileged ISA Specification](https://docs.riscv.org/reference/isa/priv/priv-preface.html).
+
+:::
 
 ## Status Bits
 
@@ -202,14 +216,15 @@ The **write protection bit**, also known as **write access bit**, can protect a 
 
 If a process violates the write protection policy by attempting to write to a protected page, an OS exception is triggered. Read more about the "memory manager" in [this section](#sec-memory-manager).
 
-
-
 (sec-hierarchical-page-table)=
 ## Hierarchical Page Tables
 
-:::{warning} This content is not texted
+:::{warning} This content is not tested
 
-Watch the lecture video below. See CS 152 and CS 152 for more details.
+Watch the lecture video below. See CS 152 and CS 152 for more details, or these [Cornell CS4410 Summer 2017 lecture notes](https://www.cs.cornell.edu/courses/cs4410/2017su/):
+
+* [Hierarchical page tables](https://www.cs.cornell.edu/courses/cs4410/2017su/lectures/lec11-pagetable.html), where we page the page table
+* [Inverted page tables](https://www.cs.cornell.edu/courses/cs4410/2017su/lectures/lec12-ipt.html). The name is a bit of a misnomer, but each entry corresponds to a physical page location (and thereby the size of the inverted page table is the total possible number of physical pages in memory). Hash the virtual page number and process ID to determine the possible set of physical pages.
 :::
 
 ::::{note} 🎥 Lecture Video
@@ -221,4 +236,3 @@ Watch the lecture video below. See CS 152 and CS 152 for more details.
 :::
 
 ::::
-

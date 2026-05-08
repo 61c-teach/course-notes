@@ -70,7 +70,7 @@ There are additional levels lower than main memory: **disk** is a huge one (lite
 
 (sec-memory-hierarchy-copy)=
 :::{hint} Layers of the memory hierarchy contain copies of data in lower levels
-Just as the cache contains a **copy** of a subset of data in main memory, main memory contains **copies** of data on disk. We discuss later how layers "synchronize" these copies; different layers use different methods.
+Just as the cache contains a **copy** of a subset of data in main memory, main memory contains **copies** of data on disk. Different layers "synchronize" these copies using different methods.
 :::
 
 +++ {"label": "block-hierarchy-management"}
