@@ -29,9 +29,18 @@ Control hazards occur when the instruction fetched may not be the one needed. In
 
 Control hazard occur with **jump and branch instructions**. We must begin fetching the instruction following the jump/branch on the following clock cycle. However, the pipeline cannot possibly know what the next instruction should be—since it only _just read_ the jump/branch instruction from memory.
 
-We demonstrate a control hazard with B-Type instructions in @tab-waterfall-branch. We take the branch in the `MEM` stage, after we know the result of the `ALU` and branch comparator in the `EX` stage.[^branch] Otherwise, if we don't take the branch, we continue selecting the next instruction as `PC + 4`.
+```{embed} #block-pcsel-mem
+```
 
-[^branch]: Review `MEM` in the [five stages](#sec-five-stages) from earlier.
+:::{note} Show Answer
+:class: dropdown
+
+This Quick Check was covered in an earlier section: [Pipelined Control](#sec-pipeline-control). Additionally, review `MEM` in the [five stages section](#sec-five-stages).
+
+:::
+
+We demonstrate a control hazard with B-Type instructions in @tab-waterfall-branch. We take the branch in the `MEM` stage, _after_ we know the result of the `ALU` and branch comparator from the `EX` stage. Otherwise, if we don't take the branch, we continue selecting the next instruction as `PC + 4`.
+
 
 ```{list-table} Control hazards can occur with branch instructions, because instructions are executed before the branch outcome is known.
 :label: tab-waterfall-branch

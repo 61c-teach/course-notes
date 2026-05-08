@@ -88,12 +88,32 @@ For example, imagine trying to reduce the variance in the instructions per progr
 
 ### Instruction Throughput
 
-We note that embedded into @eq-iron-law is a metric of **instruction throughput**. Instruction throughput can be measured as instructions completed per unit of time and is the product of the inverse of the last two components. Equivalent, it is the inverse of CPI multiplied by the clock frequency $f$.
+**Instruction throughput** can be measured as instructions completed per unit of time and is the product of the inverse of the last two components. Equivalently, it is the inverse of CPI multiplied by the clock frequency $f$.
+
+```{math}
+:enumerated: true
+:label: eq-throughput
+\begin{aligned}
+\text{throughput} &= \frac{\text{instructions}}{\text{time}} \\
+&= \frac{\text{instructions}}{\text{cycles}} \cdot \frac{\text{cycles}}{\text{time}} \\
+&= \frac{f}{\text{CPI}}
+\end{aligned}
+```
+
+We note that instruction throughput is embedded into the Iron Law as the product of the inverse of the last two components of Equation @eq-iron-law:
 
 ```{math}
 \begin{aligned}
-\frac{\text{instructions}}{\text{time}} &= \frac{\text{instructions}}{\text{cycles}} \cdot \frac{\text{cycles}}{\text{time}} \\
-&= \frac{f}{\text{CPI}}
+\frac{\text{time}}{\text{program}} &= \frac{\text{instructions}}{\text{program}} \cdot \frac{\text{cycles}}{\text{instructions}} \cdot \frac{\text{time}}{\text{cycles}} \\
+&= \frac{\text{instructions}}{\text{program}} \cdot \frac{1}{\text{throughput}} \\
+\end{aligned}
+```
+
+```{math}
+:enumerated: true
+:label: eq-throughput-2
+\begin{aligned}
+\frac{1}{\text{throughput}} &= \frac{\text{cycles}}{\text{instructions}} \cdot \frac{\text{time}}{\text{cycles}}
 \end{aligned}
 ```
 
