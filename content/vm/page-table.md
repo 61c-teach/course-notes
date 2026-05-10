@@ -21,7 +21,7 @@ title: "Page Table Design"
 
 ## Virtual Memory System Design
 
-Recall that when we introduced caches in an [earlier section](#sec-cache-terminology), we extensively discussed design tradeoffs. Physical memory is just another layer of the memory hierarchy—where now, memory is a "cache" for disk. We revisit therefore revisit the design questions below, now for our virtual memory system:
+Recall that when we introduced caches in an [earlier section](#sec-cache-terminology), we extensively discussed design tradeoffs. Physical memory is just another layer of the memory hierarchy—where now, memory is a "cache" for disk. We therefore revisit the design questions below, now for our virtual memory system:
 
 (sec-vm-design-policy)=
 :::{note} Virtual Memory design policies
