@@ -346,9 +346,9 @@ Remember that there is only ever one number; this value that can be represented 
 
 * $32_{10}$, or simply $32$. We recommend you write $32_{ten}$ if you're writing by hand.
 * `0x20`, or the hexadecimal numeral `20`
-* `0b10000`, or the binary numeral `10000`
+* `0b100000`, or the binary numeral `100000`
 * $20_{16}$. We recommend $20_{hex}$ if you're writing by hand.
-* $10000_{2}$. We recommend $10000_{two}$ if you're writing by hand.
+* $100000_{2}$. We recommend $100000_{two}$ if you're writing by hand.
 
 Different representations serve different purposes:
 
