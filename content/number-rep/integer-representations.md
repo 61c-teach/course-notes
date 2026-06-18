@@ -172,7 +172,7 @@ We already see one problem! With a positive and a negative zero, we'd have to ch
 :width: 50%
 :alt: "Two equations display the hexadecimal values 0x00000000 and 0x80000000 equating to positive and negative zero, respectively. Curved lines map the hexadecimal digits to a binary expansion, illustrating that the leading bit determines the sign while the remaining bits represent the magnitude of zero."
 :align: center
-Sign-Magnitude has two representations for zero: "positive zero" and "negative zero.
+Sign-Magnitude has two representations for zero: "positive zero" and "negative zero."
 :::
 
 Let's examine a subtler problem, revealed via the binary odometer:
@@ -190,14 +190,14 @@ Let's examine a subtler problem, revealed via the binary odometer:
 The problem with Sign and Magnitude is that as the odometer goes up, it goes the wrong way: you go positive, positive, and then suddenly you hit the negative range. Incrementing the binary odometer `0000` to `1111` starts at $0$, then $1$, through to $7$, then wraps to $0$ again, then $-1$, then $-7$. In other words, sometimes integer addition corresponds to adding bits, and sometimes integer addition corresponds to subtracting bits. This would get complicated very quickly!
 
 :::{note} Further Explanation
-:class: Dropdown
+:class: dropdown
 
 Consider adding $5+(-5)$ with 4-bit sign-magnitude integers.
 
 * $+5$: `0101`
 * $-5$: `1101`
 
-If both numbers have the same sign, we keep the sign and peform addition on the magnitudes, accounting for overflow where needed. In this case, the numbers have different signs, so we would have to perform subtraction on the magnitudes. Arithmetic addition is conditional in this representation–it can either be binary addition or subtraction–and circuitry would be more complicated.
+If both numbers have the same sign, we keep the sign and perform addition on the magnitudes, accounting for overflow where needed. In this case, the numbers have different signs, so we would have to perform subtraction on the magnitudes. Arithmetic addition is conditional in this representation–it can either be binary addition or subtraction–and circuitry would be more complicated.
 :::
 
 Ultimately, Sign-Magnitude is considered a straw man[^strawman] approach for supporting general purpose computing with integers. Nevertheless, it has some reasonable applications in, say, signals processing, where users are more commonly looking to decouple sign from magnitude, much less add numbers together. Ask us for more.
@@ -213,38 +213,13 @@ Here, "complement" means that if the bit is `0` change it to `1`, and vice versa
 ::::{card}
 $-7$ with 8-bit Ones' Complement
 ^^^
-:::{figure} images/ones-complement-bitflip.png
-:label: fig-ones-complement-bitflip
-:width: 70%
-:align: center
-:alt: "Two equations demonstrate the ones' complement operation by converting positive seven to negative seven. Curved orange arrows indicate that each bit in the binary sequence `0000 0111` is inverted to produce the resulting sequence `1111 1000`."
-
-Ones' complement: To change sign, flip the bits.
-:::
-
-1. Start with representing $+7$: `0b 0000 0111` (we add the spacing and the prefix for better visualization, but the actual bitstring is `00000111`)
-1. Flip all bits: `0b 1111 1000` (again, actual bitstring is `11111000`) This is the representation of $-7$.
-
-::::
-
-We've fixed one problem. We still get integer overflow, sure, but at least incrementing the binary odometer now corresponds to integer addition by one in most places of the timeline.
-
 :::{figure} images/ones-complement-number-line.png
 :label: fig-ones-complement-number-line
 :width: 100%
 :align: center
 :alt: "A blue horizontal number line displays 4-bit binary values to illustrate ones' complement representation, centered around the values 0000 and 1111. Two gold arrows point to the right to indicate that both positive and negative binary sequences increase in value as the odometer increments from left to right."
+
 "Binary odometer" for 4-bit ones' complement.
-
-:::{note} Further Explanation
-:class: Dropdown
-
-Consider adding $5+(-5)$ with 4-bit one's complement integers.
-
-* $+5$: `0101`
-* $-5$: `1010`
-
-Addition: `0101` + `1010` = `1111`, or $-0$. Arithmetic addition can be implemented with binary addition, regardless of operand sign.
 :::
 
 :::{note} Further Explanation
@@ -256,7 +231,7 @@ Consider adding $5+(-5)$ with 4-bit one's complement integers.
 * $-5$: `1010`
 
 Addition: `0101` + `1010` = `1111`, or $-0$. Arithmetic addition can be implemented with binary addition, regardless of operand sign.
-
+:::
 
 :::{tip} Quick Check
 
@@ -280,7 +255,7 @@ Suppose you use $N$ bits to represent integers with ones' complement. How many p
 
 * Zero: 2
 * Positive: $2^{N-1} - 1$
-* Negative: (same as positive)
+* Negative: same as positive
 :::
 
 :::{card}
