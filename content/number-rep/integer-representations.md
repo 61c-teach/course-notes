@@ -46,9 +46,9 @@ This representation is supported in C (discussed more later). Built-in types lik
 
 :::{caution} How many bits do we need for a system that supports $10 + 7$?
 
-* 10 in binary is `1010`. 4 bits.
-* 7 in binary is `0111`. 4 bits.
-* 17 in binary is `10001`. **5 bits**.
+* 10 as a 4-bit unsigned integer is `1010`.
+* 7 as a 4-bit unsigned integer is `0111`.
+* 17 requires a **5-bit** unsigned integer container: `10001`.
 
 If we used a 4-bit unsigned integer representation, we wouldn't have enough room to represent the number 17. Instead, our "binary odometer" would truncate the result, cropping off the leftmost `1` and storing `0001`. So binary addition with 4-bit unsigned integers would imply that $10 + 7 = 1$...?!
 
