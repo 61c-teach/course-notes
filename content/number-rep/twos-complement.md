@@ -53,7 +53,7 @@ Suppose you use $N$ bits to represent integers with two's complement. How many p
 
 * Zero: 1
 * Positive: $2^{N-1} - 1$
-* Negative: $2^{n-1}$
+* Negative: $2^{N-1}$
 :::
 
 ## Arithmetic and conversion
@@ -96,7 +96,7 @@ $$
 - 2^{n-1} d_{n-1} + \sum_{i=0}^{n-2} 2^i d_i
 $$
 
-Positive and negative numbers can be computed using the same formula. Above, the sign is computed by multiplying the highest bit by $(-2^{N-1})$.
+Positive and negative numbers can be computed using the same formula. Above, the sign is computed by multiplying the highest bit by $(-2^{n-1})$.
 
 :::{card}
 Example: $5$ and $-5$ in 4-bit two's complement
