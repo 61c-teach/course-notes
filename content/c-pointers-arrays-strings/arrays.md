@@ -245,7 +245,7 @@ Assume a 64-bit architecture where `short`s are 16 bits. When @code-array-sizeof
 :::{note} Show Answer
 :class: dropdown
 
-Print output: `0 5 8`
+Print output: `10 5 8`
 
 * In Line 10, `sizeof(nums)` is in array’s declared scope. Evaluate to the total array size of five `short`s, i.e., 10.
 * In Line 4, the value `len` is the result of evaluating `sizeof(nums)/sizeof(short)` in `main`, i.e., 10/2 = 5.

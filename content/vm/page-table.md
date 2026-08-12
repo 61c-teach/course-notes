@@ -21,7 +21,7 @@ title: "Page Table Design"
 
 ## Virtual Memory System Design
 
-Recall that when we introduced caches in an [earlier section](#sec-cache-terminology), we extensively discussed design tradeoffs. Physical memory is just another layer of the memory hierarchy—where now, memory is a "cache" for disk. We revisit therefore revisit the design questions below, now for our virtual memory system:
+Recall that when we introduced caches in an [earlier section](#sec-cache-terminology), we extensively discussed design tradeoffs. Physical memory is just another layer of the memory hierarchy—where now, memory is a "cache" for disk. We therefore revisit the design questions below, now for our virtual memory system:
 
 (sec-vm-design-policy)=
 :::{note} Virtual Memory design policies
@@ -70,7 +70,7 @@ A page's location is determined by accessing the page table for the physical pag
 
 :::{note} Page Replacement Policy
 :class: dropdown
-Almost all virtual memory systems try to replace the **least recently (LRU)**[^lru] page to maximize temporal locality. As mentioned earlier, the overriding guideline is to minimize page faults. Relative to the cost of a page fault, the cost of software and hardware to maintaining data for least recently used pages is small.
+Almost all virtual memory systems try to replace the **least recently used (LRU)**[^lru] page to maximize temporal locality. As mentioned earlier, the overriding guideline is to minimize page faults. Relative to the cost of a page fault, the cost of software and hardware to maintaining data for least recently used pages is small.
 
 [^lru]: To be precise, from _Computer Architecture_, Appendix B: "many processors provide a _use bit_ or _reference bit_, which is logically set whenever a page is accessed. ... The operating system periodically clears the use bits and later records them so it caan determine which pages were touched during a time period. By keeping track in this way, the operating system can select a page that is among the least recently reference."
 :::
