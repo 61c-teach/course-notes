@@ -2,7 +2,7 @@
 
 Course notes for CS 61C. A [Jupyter Book 2](https://jupyterbook.org/) project.
 
-## Contribute!
+## Contribute
 
 As of Spring 2026, these course notes are in active development. Due to course staff capacity, we may occasionally be unable to write course notes and will refer you to the lecture slides instead.
 
@@ -24,6 +24,8 @@ If you find an error in our first draft, please email cs61c@ or submit a pull re
 
 ## Local Jupyter Book Setup
 
+### Install JupyterBook
+
 * If you have `pip` on your machine, follow the "Install with `pip`" instructions on the [Jupyter Book website](https://jupyterbook.org/stable/get-started/install/).
 * Try locally serving the book: `jupyter book start`
 * If the above command fails, you may need to try a different installation method---likely because jupyter is incorrectly configured on your machine . If you have `npm`, use that. Otherwise here are the `uv` instructions that work on Mac M1 chips. Create a virtual environment with `uv` and then install via `uv pip`.
@@ -32,15 +34,26 @@ If you find an error in our first draft, please email cs61c@ or submit a pull re
 uv venv
 source .venv/bin/activate
 uv pip install "jupyter-book>=2.0.0"
-uv run --with jupyter jupyter book start # use this syntax for running all jupyter book commands
 ```
+
+### Launch JupyterBook
+
+If `jupyter book start` worked above, then start developing! Otherwise, if you are using `uv`, use the below command, which is the syntax for running all jupyter commands.
+
+```
+uv run --with jupyter jupyter book start
+```
+
+After running of the above `jupyter book` commands, your book should be live on your local network. The address is listed in your terminal output and should have the form `http://localhost:3000` (or some other port like `3001`, etc.). You can access this in your web browser (Chrome, Firefox, etc.) and edit in your favorite code editor. Every file-save rebuilds the relevant files, though for more structural changes (e.g., editing table of contents) you may need to relaunch the book server.
+
+If you are using Visual Studio Code, we suggest viewing the local book in a tab alongside your code. See instructions for launching the [integrated browser](https://code.visualstudio.com/docs/debugtest/integrated-browser). To launch from the Command Palette (keyboard shortcut `ctrl/cmd-shift-P`), run (i.e., type in) the *Browser: Open Integrated Browser* command. Then, enter the local address.
 
 ## Deployment
 
 This website is currently deployed at <notes.cs61c.org> via Cloudflare pages. If redeployment is needed, follow the below instructions, which assume **a freshly forked copy of this repository, and redeployment to an entirely new Pages project**:
 
 <details>
-    
+
 <summary> Redeployment from a fresh repo </summary>
 
 1. GitHub Setup
@@ -53,10 +66,10 @@ This website is currently deployed at <notes.cs61c.org> via Cloudflare pages. If
     4. Make sure GitHub account is set to whichever organization has this repository
     5. Select a repository => `this repository's name` => Begin Setup
     6. Set the following:
-        - Production branch: `main`
-        - Framework preset: `None`
-        - Build command: `bash build.sh`
-        - Build output directory: `_build/html` (see below)
+        * Production branch: `main`
+        * Framework preset: `None`
+        * Build command: `bash build.sh`
+        * Build output directory: `_build/html` (see below)
     7. Click Save and Deploy. This should deploy the project. Once it completes, click "Continue to Project".
 3. Configure a custom domain in the project
     1. Click "Custom domains" in the top navigation bar of the project
@@ -70,5 +83,5 @@ If minor changes are needed, go to the [existing Cloudflare Pages project](https
 
 Cloudflare Pages expects:
 
-- a directory with HTML source to serve as a static site: `_build/html` ([mystmd docs](https://mystmd.org/guide/deployment-github-pages)), and
-- a build command that generates that directory: `bash build.sh` wraps `mystmd build` which is installed from the pywrangler config `pyproject.toml`.
+* a directory with HTML source to serve as a static site: `_build/html` ([mystmd docs](https://mystmd.org/guide/deployment-github-pages)), and
+* a build command that generates that directory: `bash build.sh` wraps `mystmd build` which is installed from the pywrangler config `pyproject.toml`.
