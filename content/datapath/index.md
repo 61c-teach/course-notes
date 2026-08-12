@@ -161,7 +161,7 @@ In the next section, we introduce the key elements of a RISC-V **datapath**. For
 Five steps of a single-cycle datapath. See [this section](#sec-state-elements) for descriptions of each hardware block.
 :::
 
-We emphasize the layer of abstraction between datapath and control with @fig-five-step-single-cycle-control below. The The control logic selects "needed" datapath lines based on the instruction. The control logic specifies if data needs to be written to memory or registers, which arithmetic or logical operation to execute, selectors for MUXes, etc.
+We emphasize the layer of abstraction between datapath and control with @fig-five-step-single-cycle-control below. The control logic selects "needed" datapath lines based on the instruction. The control logic specifies if data needs to be written to memory or registers, which arithmetic or logical operation to execute, selectors for MUXes, etc.
 
 :::{figure} images/five-step-single-cycle-control.png
 :label: fig-five-step-single-cycle-control

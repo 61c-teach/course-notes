@@ -345,10 +345,8 @@ We don't expect you to understand this code at this time. We will discuss C synt
 Remember that there is only ever one number; this value that can be represented in multiple ways. The below are all representations of the same number, thirty-two:
 
 * $32_{10}$, or simply $32$. We recommend you write $32_{ten}$ if you're writing by hand.
-* `0x20`, or the hexadecimal numeral `20`
-* `0b10000`, or the binary numeral `10000`
-* $20_{16}$. We recommend $20_{hex}$ if you're writing by hand.
-* $10000_{2}$. We recommend $10000_{two}$ if you're writing by hand.
+* `0x20`, or the hexadecimal numeral $20$. Since the latter is already our default base-10 representation, we recommend prefixing with `0x` or (if writing by hand) using subscripts, e.g., $20_{16}$ or $20_{hex}$.
+* `0b100000`, or the binary numeral $100000$. Again, we recommend prefixing or (if writing by hand) using subscripts, e.g., $100000_{2}$ or $100000_{two}$.
 
 Different representations serve different purposes:
 
