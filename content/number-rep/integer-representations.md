@@ -233,6 +233,9 @@ Consider adding $5+(-5)$ with 4-bit one's complement integers.
 Addition: `0101` + `1010` = `1111`, or $-0$. Arithmetic addition can be implemented with binary addition, regardless of operand sign.
 :::
 
+::::
+
+
 :::{tip} Quick Check
 
 Suppose you interpret an N-bit pattern as a Ones' Complement integer. How do you determine if the bit pattern represents a positive number? a negative number?
@@ -264,9 +267,7 @@ Another added benefit of Ones' Complement
 The leftmost bit (also known as **most significant bit**) is still effectively the **sign bit**.
 :::
 
-...But we still have the problem of two zeros.
-
-Historically, this was used for a while, but eventually abandoned for [two's complement](#sec-twos-complement).
+...But we still have the problem of two zeros! Historically, one's complement was used for a while, but eventually abandoned for [two's complement](#sec-twos-complement).
 
 ## Bias Encoding
 
