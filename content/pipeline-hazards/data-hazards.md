@@ -43,7 +43,10 @@ Data hazards occur because instructions read from and write to the same register
 
 In this section, we discuss how the five-stage pipelined processor can be modified to mitigate performance hits due to data hazards.
 
-Consider the following [waterfall diagram](#sec-waterfall) in @tab-data-hazard-1. The `add` and `sub` instructions have a data hazard because the former writes to _and_ the latter reads from register `s0`. 
+(data-hazard-1)=
+### Example 1
+
+Consider the following [waterfall diagram](#sec-waterfall) below. The `add` and `sub` instructions have a data hazard because the former writes to _and_ the latter reads from register `s0`. 
 
 ```{list-table} Example 1. Data hazard.
 :header-rows: 1
@@ -96,11 +99,11 @@ The `sub` instruction must read the updated value of `s0` after the `add` instru
 (sec-data-hazards-stall)=
 ## Stalling
 
-To resolve the data hazard in @tab-data-hazard-1, we can **stall** the pipeline until resources are "ready," i.e., `add` has written the correct value to register `s0`. Pipeline stalls, or **bubbles**, are effectively "no-ops" (nops) where affected pipelines do nothing.
+To resolve the data hazard in [Example 1](#data-hazard-1), we can **stall** the pipeline until resources are "ready," i.e., `add` has written the correct value to register `s0`. Pipeline stalls, or **bubbles**, are effectively "no-ops" (nops) where affected pipelines do nothing.
 
 The below diagram illustrates a three-stall solution. In @tab-data-hazard-1-stall, `sub` will most certainly read the correctly updated value of register `s0` by the end of cycle 6.
 
-```{list-table} Example 1: Resolving data hazards with stalls. A dash (–) indicates that the pipeline is flushed and affected instructions do "nothing."
+```{list-table} [Example 1](#data-hazard-1): Resolving data hazards with stalls. A dash (–) indicates that the pipeline is flushed and affected instructions do "nothing."
 :label: tab-data-hazard-1-stall
 :header-rows: 1
 
@@ -206,7 +209,9 @@ We illustrate this in @tab-data-hazard-1-stall, where in cycle 2, the hazard det
 
 ## RegFile: Write-Then-Read
 
-Consider the waterfall diagram in @tab-data-hazard-2. Does the dependency between `add` and `sw` incur a data hazard?
+(data-hazard-2)=
+### Example 2
+Consider another example, illustrated by the waterfall diagram in @tab-data-hazard-2. Does the dependency between `add` and `sw` incur a data hazard?
 
 ```{list-table} Example 2. Data hazard...?
 :header-rows: 1
@@ -278,6 +283,8 @@ What is happening in cycle 5? If we are assuming our [original RegFile design](#
 
 [^not-structural]: We note this hazard is **not a structural hazard**. After all, the [RegFile design](#sec-element-regfile) _does not prevent_ `add` and `sw` from reading/writing to the same register in the same cycle, because there are sufficient input ports. However, what is concerning is that the _value_ `sw` reads must be the correct value that `add` writes.
 
+### Hardware requirements
+
 The RISC-V five-stage pipeline therefore "ups" the **hardware requirement** on the register file. We leverage the high speed of the register file (100 ps for each of read/write) to assume that the hardware unit supports **write-then-read**:
 
 * `WB` stage instruction updates value in first half of cycle, e.g., on _falling_ edge.
@@ -299,9 +306,9 @@ Note that it **might not always be possible** to support a register file with wr
 If we assume our RegFile supports write-then-read, then in cycle 5, the read of the `sw` instruction in the `ID` stage delivers what is written by the `add` instruction in the `WB` stage, so there is **no data hazard**.
 
 ::::{tip} Quick Check
-Let's visit our [earlier simple example](#tab-data-hazard-1).
+Let's revisit [Example 1](#data-hazard-1).
 
-:::{figure} #tab-data-hazard-1
+:::{figure} #tab-data-hazard-1 
 :alt: "Reprint of the pipeline diagram table for the simple add then dependent instructions example, showing IF through WB stage occupancy per cycle before stalls are applied."
 :::
 
@@ -313,7 +320,7 @@ If we assume the RegFile supports write-then-read, how many cycles do we need to
 :class: dropdown
 We can just stall _two_ cycles, as shown in @tab-data-hazard-1-stall-fast. In the first half of cycle 5, the `add` instruction writes to register `s0`; in the second half, the `sub` instruction reads `s0`.
 
-```{list-table}  Example 1: Resolving data hazards with stalls **and** an assumption that the register file supports write-then-read in the same cycle. A dash (–) indicates that the pipeline is flushed and affected instructions do "nothing."
+```{list-table}  [data-hazard-1](@data-hazard-1): Resolving data hazards with stalls **and** an assumption that the register file supports write-then-read in the same cycle. A dash (–) indicates that the pipeline is flushed and affected instructions do "nothing."
 :header-rows: 1
 :label: tab-data-hazard-1-stall-fast
 
@@ -377,6 +384,9 @@ So far, we have discussed some solutions to some hazards by (1) specifying appro
 
 However, we observe that with data hazards, we don't need to wait for the instruction to complete before trying to resolve the data hazard. In other words, the data in question is ready _much earlier_ than the `WB` stage of the earlier instruction.
 
+(data-hazard-3)=
+### Example 3
+
 Consider the example in @tab-data-hazard-3, which has two data hazards because the `sub` and `or` instructions depend on the result of the `add` instruction writing to register `s0`. 
 
 :::{list-table} Example 3.
@@ -427,6 +437,8 @@ Consider the example in @tab-data-hazard-3, which has two data hazards because t
 
 The result of adding `t0` and `t1` is ready at the beginning of cycle 4, once the `add` instruction completes the `EX` stage in cycle 3. So we could add extra hardware to supply this sum as the input for the `sub` instruction _and_ the `or` instruction.
 
+### Bypassing with more connections
+
 Wiring more connections in the datapath to use results when computed is a process known as **forwarding** or **bypassing**.[^forwarding-bypassing] Instead of waiting for the value to be written into the RegFile, we can instead grab the operand directly from the _next_ pipeline stage.
 
 [^forwarding-bypassing]: From P&H 4.6: "The name _forwarding_ comes from the idea that the result is passed forward from an earlier instruction to a later instruction. _Bypassing_ comes from passing the result around the register file to the desired unit."
@@ -446,14 +458,16 @@ Notes:
 * At the beginning of cycle 4, the ALU result from the `add` instruction is forwarded from its `EX/MEM` pipeline register directly to the ALU (for the `sub` instruction's `EX` stage).
 * At the beginning of cycle 5, the ALU result from the `add` instruction is forwarded from its `MEM/WB` pipeline register directly to the ALU (for the `or` instruction's `EX` stage).
 * The value of register `s0` is still updated in cycle 5, from the stale value 5 to the new value 9. The `ID` stages of the `sub` and `or` instructions still read the stale value of register `s0` in cycles 2 and 3, respectively. What matters is that the correct operands are fed into ALU during the `EX` stage for both of these instructions.
-* Note that with hardware forwarding, we do not need to update the waterfall diagram in @tab-data-hazard-3 because no stalls occur.
+* Note that with hardware forwarding, we **do not need** to update the waterfall diagram in [Example 3](#data-hazard-3)  because no stalls occur.
+
+### Forwarding Paths
 
 :::{hint} Forward data from pipeline registers
 
 In this course, we discuss **two** types of forwarding paths (i.e., bypasses) from pipeline registers to **each** of the two ALU inputs, as described in @fig-forwarding-all-hl.
 
-1. **`MEM` to `EX` forwarding**. Forward data from the `EX/MEM` pipeline registers to ALU input (e.g., in @tab-data-hazard-3, to resolve the `add`/`sub` data hazard).
-1. **`WB` to `EX` forwarding**. Forward data from the `MEM/WB` pipeline registers to ALU input (e.g., in @tab-data-hazard-3, to resolve the `add`/`or` data hazard).  
+1. **`MEM` to `EX` forwarding**. Forward data from the `EX/MEM` pipeline registers to ALU input (e.g., in [Example 3](#data-hazard-3), to resolve the `add`/`sub` data hazard).
+1. **`WB` to `EX` forwarding**. Forward data from the `MEM/WB` pipeline registers to ALU input (e.g., in [Example 3](#data-hazard-3), to resolve the `add`/`or` data hazard).  
 
 :::
 
@@ -468,13 +482,13 @@ Forwarding bypasses for the ALU's B input signal. For simplicity, we do not draw
 [^cs152-diagram]: [Original diagram](https://inst.eecs.berkeley.edu/~cs152/exams/pdfs/mt1/sp26-mt1-sols.pdf) by Wen Cao, Spring 2026 CS 152/252 TA. The CS 152/252 diagram is for a different pipelined datapath with different forwarding paths (e.g., see the MUX into the ID/EX pipeline register). Please use @fig-forwarding-all-hl for this course.
 
 ::::{tip} Quick Check
-Let's visit our [earlier simple example](#tab-data-hazard-1).
+Let's visit our earlier [Example 1](#data-hazard-1).
 
 :::{figure} #tab-data-hazard-1
 :alt: "Reprint of the pipeline diagram table for the simple add then dependent instructions example, showing IF through WB stage occupancy per cycle before stalls are applied."
 :::
 
-Suppose the RegFile supports write-then-read, _and_ we implement the described forwarding paths from `MEM` to `EX` and `from WB` to `EX`. How many cycles do we need to stall to avoid data hazards?
+Suppose the RegFile supports write-then-read, _and_ we implement the described forwarding paths from `MEM` to `EX` and from `WB` to `EX`. How many cycles do we need to stall to avoid data hazards?
 
 ::::
 
@@ -484,7 +498,7 @@ Suppose the RegFile supports write-then-read, _and_ we implement the described f
 We **do not need to stall the pipeline**. The ALU result from the `add` instuction is available at the beginning of cycle 4. We can leverage the `MEM` to `EX` forwarding path to forward the `add` instruction's ALU result directly from the `EX/MEM` pipeline registers to the ALU for the `sub` instruction's `EX` stage, also in cycle 4.
 :::
 
-### Implementing Forwarding
+### Forwarding: Implementation
 
 Forwarding is implemented by adding bypass wires between pipeline registers and other components, inserting muxes, and including additional control logic.
 
@@ -495,15 +509,18 @@ Forwarding is implemented by adding bypass wires between pipeline registers and 
 :width: 100%
 :alt: "Full five-stage pipeline diagram with labeled stages showing the highlighted EX-MEM forwarding case. The yellow path indicates the forwarding path taken by values output from the EX stage pipeline registers, back into the muxes within the Execute stage for the following instruction to use during its EX stage to resolve a read-after-write dependency."
 
+Implementation: `MEM` to `EX` forwarding path.
+
 :::
 
-We omit the full `MEM/WB` forwarding circuitry, leaving this for you to work out.
+@fig-forwarding-ex-mem implements one of the two forwarding paths described in @fig-forwarding-all-hl. We omit the full forwarding circuitry for the `WB` to `EX` path, leaving this for you to work out.
 
-:::{hint} Quick Check
+(data-hazard-4)=
+:::{hint} Quick Check: Example 4
 
-In @tab-data-hazard-4, which potential data hazards are resolved by inserting the described forwarding paths from `MEM` to `EX` and from `WB` to `EX`?
+Consider the instruction sequence below. Which potential data hazards are resolved by inserting the described forwarding paths from `MEM` to `EX` and from `WB` to `EX`?
 
-```{list-table}
+```{list-table} Example 4.
 :header-rows: 1
 :label: tab-data-hazard-4
 
@@ -583,12 +600,15 @@ In @tab-data-hazard-4, which potential data hazards are resolved by inserting th
 * **C.** The `lw` `and` data hazard is **resolved** by `WB` to `EX` forwarding. The memory read result from the `lw` instruction is available from the `MEM/WB` pipeline registers at the beginning of cycle 6. Cycle 6 is also the `and` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `MEM/WB` pipeline registers to the A input of the ALU, overriding the stale value of register `s1` fetched during the `and` instruction's `ID` stage in cycle 5.
 :::
 
+:::{warning} Forwarding does not resolve all data hazards!
+
 The `lw`-`or` data hazard in option B is **not resolved** by the proposed forwarding logic. Cycle 5 is the `or` instruction's `EX` stage. However, the `lw` instruction does not finish reading the value from DMEM (to be loaded into register `s1`) until the end of cycle 5. The result of this memory read is not available in the `MEM/WB` pipeline registers until _cycle 6_.
+:::
 
 (sec-data-hazards-load)=
 ## Load Data Hazards
 
-The `lw`-`or` data hazard described above is an example of a **load-use data hazard**. The hazard stems from an instruction's `EX` stage depending on a memory read from an immediately preceding load instruction's `MEM` stage **in the same clock cycle**.
+The `lw`-`or` data hazard described [above](#data-hazard-4) is an example of a **load-use data hazard**. The hazard stems from an instruction's `EX` stage depending on a memory read from an immediately preceding load instruction's `MEM` stage **in the same clock cycle**.
 
 ### Approach 1: Stall
 
@@ -597,10 +617,10 @@ The `lw`-`or` data hazard described above is an example of a **load-use data haz
 If an instruction immediately after a load instruction (i.e., in the **load delay slot**) uses the result of the load, the hardware must **stall for one cycle** _and_ leverage the `WB` to `EX` forwarding.
 :::
 
-Consider the [instruction sequence](#tab-data-hazard-4) in the previous Quick Check. As shown in @data-hazard-4-load, the pipeline must stall for one cycle to avoid the `lw`-`or` data hazard.
+Consider the instruction sequence in [Example 4](#data-hazard-4) (the previous Quick Check). The pipeline must stall for one cycle to avoid the `lw`-`or` data hazard:
 
 
-:::{list-table} With a hazard detection unit in the ID stage, a bubble is inserting beginning in cycle 5, changing the `or` instruction to a nop. The `or` instruction is fetched and decoded in cycles 3 and 4, but its `EX` stage is delayed until clock cycle 6.
+:::{list-table} [Example 4](data-hazard-4): With a hazard detection unit in the ID stage, a bubble is inserting beginning in cycle 5, changing the `or` instruction to a nop. The `or` instruction is fetched and decoded in cycles 3 and 4, but its `EX` stage is delayed until clock cycle 6.
 :label: data-hazard-4-load
 :header-rows: 1
 
