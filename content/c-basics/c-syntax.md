@@ -103,7 +103,7 @@ All CPP commands begin with `#`:
 * `#include "file.h"`: Inserts `file.h` into output
 * `#include <stdio.h>`: Looks for `stdio.h` in a standard location, but otherwise equivalent to previous item
 * `#define PI (3.14159)`: Define constant
-* `#if/#endif`: Conditionally include text. Useful if this C program will be compiled onto different machines and therefore require architecture-dependent libaries
+* `#if/#endif`: Conditionally include text. Useful if this C program will be compiled onto different machines and therefore require architecture-dependent libraries
 
 To see the result of preprocessing, you can use the `-save-temps` option in `gcc`. Read the GCC docs for more on [CPP](http://gcc.gnu.org/onlinedocs/cpp/) and [macros](https://gcc.gnu.org/onlinedocs/cpp/Macros.html).
 

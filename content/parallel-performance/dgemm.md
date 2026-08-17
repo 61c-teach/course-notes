@@ -33,7 +33,7 @@ How might we begin evaluating performance? Remember from our discussion of the [
 
 :::{figure} images/matmul-ml.png
 :label: fig-matmul-ml
-:alt: "Machine-learning style matrix multiplication diagram showing sequential layers of a neural network from inputs to outputs where, at each layer, there are input weights and either matrix matrix or matrix vector mulitplication."
+:alt: "Machine-learning style matrix multiplication diagram showing sequential layers of a neural network from inputs to outputs where, at each layer, there are input weights and either matrix matrix or matrix vector multiplication."
 :width: 80%
 
 A machine learning application is shown. There are many matrix-matrix and matrix-vector multiplications, e.g., in each layer of a multi-layer neural network. Matrix multiplication is also core to tasks in other domains, e.g., image filtering and noise reduction.

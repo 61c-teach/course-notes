@@ -234,7 +234,7 @@ For each input pattern of 1’s and 0’s, there exists a single output pattern.
 
 Notes:
 
-* [AND](#fig-and-gate), [OR](#fig-or-gate), [NOT](#fig-not-gate) and [XOR](#fig-xor-gate) follow from the C bitwise operations you learned eariler.
+* [AND](#fig-and-gate), [OR](#fig-or-gate), [NOT](#fig-not-gate) and [XOR](#fig-xor-gate) follow from the C bitwise operations you learned earlier.
   * The NOT gate is commonly called an **inverter**. Note the "bubble" (circle).
 * [NAND](#fig-nand-gate) is "NOT" AND. Note the bubble on its output.
 * [NOR](#fig-nor-gate) is "NOT" OR. Again, note the bubble.

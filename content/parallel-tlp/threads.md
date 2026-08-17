@@ -61,7 +61,7 @@ Fork-join model over time with multiple parallel tasks off the main thread. **To
 
 ::::{warning} Multi-threaded programs can run on single-core _and_ multi-core systems!
 
-A thread is simply a single stream of instructions that must be executed sequentially to peform some task. Up until now, we have effectively called this a "program" or "process." Given the above definition, it is therefore possible to execute a multi-threaded program on **both multi-core and single-core architectures.**
+A thread is simply a single stream of instructions that must be executed sequentially to perform some task. Up until now, we have effectively called this a "program" or "process." Given the above definition, it is therefore possible to execute a multi-threaded program on **both multi-core and single-core architectures.**
 
 Revisiting our terminology from an [earlier section](#sec-flynns-taxonomy):
 
@@ -95,7 +95,7 @@ We are so sorry,[^note-terminology] but we will introduce one more set of terms 
 * Each core provides one (or more) **hardware threads** that actively execute instructions.
 * An **active thread** is a software thread that is currently mapped to a hardware thread and executing. All software threads that are not active wait until they are able to execute.
 
-[^note-terminology]: From an [earlier section](#sec-flynns-taxonomy): "Because of the abrupt shift in processor design towards parallelism, there are a LOT of closely related terms when it comes to paralellism."
+[^note-terminology]: From an [earlier section](#sec-flynns-taxonomy): "Because of the abrupt shift in processor design towards parallelism, there are a LOT of closely related terms when it comes to parallelism."
 
 A special program called the **Operating System** "multiplexes"[^multiplex] multiple software threads onto the available hardware threads. With the OS's help, a single-core CPU can "concurrently" execute many threads by time-sharing the processor between the threads, as shown in @fig-process-v-time-threads.
 

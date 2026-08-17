@@ -25,7 +25,7 @@ From [earlier](#sec-pipeline-hazards):
 
 Control hazards occur when the instruction fetched may not be the one needed. In other words, _whether_ an instruction executes depends on the outcome of a previous execution. From P&H 4.6:
 
-> Suppose our laundry crew was given the happy task of cleaning the uniforms of a football team. Given how filthy the laundry is, we need to determine whether the detergent and water temperature setting we select are strong enough to get the unifroms clean...In our laundry pipeline, we have to wait until the second stage to examine the dry uniform to see if we need to change the washer setup or not.
+> Suppose our laundry crew was given the happy task of cleaning the uniforms of a football team. Given how filthy the laundry is, we need to determine whether the detergent and water temperature setting we select are strong enough to get the uniforms clean...In our laundry pipeline, we have to wait until the second stage to examine the dry uniform to see if we need to change the washer setup or not.
 
 Control hazard occur with **jump and branch instructions**. We must begin fetching the instruction following the jump/branch on the following clock cycle. However, the pipeline cannot possibly know what the next instruction should be—since it only _just read_ the jump/branch instruction from memory.
 

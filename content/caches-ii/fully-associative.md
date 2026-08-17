@@ -443,7 +443,7 @@ Cache "metadata":
 
 In our tiny cache with 4B-sized blocks, reading a word is equivalent to reading the entire block, but in practice blocks are composed of multiple words (e.g., 16 or 32 words per block).
 
-From P&H 5.3: "The use of a bigger block takes advantage of spatial locality: it decreases the miss rate and improves the efficiency of cache hardware by reducing the amount of tag storage releative to the amount of data storage in the cache. Although a larger block size decreases the miss rate, it could also increase the miss penalty. If the miss penalty increases linearly with block size, larger blocks can easily lead to lower performance.
+From P&H 5.3: "The use of a bigger block takes advantage of spatial locality: it decreases the miss rate and improves the efficiency of cache hardware by reducing the amount of tag storage relative to the amount of data storage in the cache. Although a larger block size decreases the miss rate, it could also increase the miss penalty. If the miss penalty increases linearly with block size, larger blocks can easily lead to lower performance.
 
 ## Fully Associative: Hardware and Performance
 

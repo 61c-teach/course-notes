@@ -308,7 +308,7 @@ We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 :::{figure} images/2bit-add-overflow-overview.png
 :label: fig-2bit-add-overflow-overview
 :width: 100%
-:alt: "The left shows 2-bit signed addition outcomes on a value wheel, including wraparound behavior. The right shows a similar 2-bit signed addition table showing various output possibilies and their interpretations in decimal."
+:alt: "The left shows 2-bit signed addition outcomes on a value wheel, including wraparound behavior. The right shows a similar 2-bit signed addition table showing various output possibilities and their interpretations in decimal."
 
 High-level 2-bit adder overflow table diagram.
 :::

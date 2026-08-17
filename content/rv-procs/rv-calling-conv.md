@@ -101,11 +101,11 @@ Next, `factorial(2)` wants to multiply this return value by its own argument, `2
 (sec-rv-calling-convention)=
 ## Register Calling Convention
 
-Consider the [fundamental steps of function calls](#sec-rv-procedure-call-steps). As part of Step 2 (where a caller transfers control and execution to a callee), how might a caller "save" their curent registers?
+Consider the [fundamental steps of function calls](#sec-rv-procedure-call-steps). As part of Step 2 (where a caller transfers control and execution to a callee), how might a caller "save" their current registers?
 
 :::{warning} Strawman solution
 
-We _could_ push and pop a caller's 31 registers `x1` to `x31` to the stack betwen procedure calls. While simple, this approach is costly: we rarely use all 31 registers (given register conventions) so we could be copying extraneous data with expensive memory operations.
+We _could_ push and pop a caller's 31 registers `x1` to `x31` to the stack between procedure calls. While simple, this approach is costly: we rarely use all 31 registers (given register conventions) so we could be copying extraneous data with expensive memory operations.
 :::
 
 Instead, RISC-V defines a **calling convention**:
@@ -163,7 +163,7 @@ Generally, register saving and restoring is considered part of the stack frame. 
 
 :::
 
-## Fundamental Steps, Revisted
+## Fundamental Steps, Revisited
 
 In light of calling convention, we revisit the [Six Fundamental Steps to Procedure Calls](#sec-rv-procedure-call-steps) from a [previous section](#sec-rv-procedure-calls) in more detail:
 

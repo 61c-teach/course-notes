@@ -49,7 +49,7 @@ next:
 ```
 :::
 
-Admittedly, J-Type instructions also have a limited range: $\pm 2^{18}$ instructions from the currrent insturction (PC).
+Admittedly, J-Type instructions also have a limited range: $\pm 2^{18}$ instructions from the current instruction (PC).
 
 If we wanted to jump to **any** address, RISC-V opts for jumping with [absolute addressing](#sec-absolute-addressing) and `jalr`. As discussed in a [previous section](#sec-jalr-itype), `jalr` is an I-Type instruction that sets PC to `PC = R[rs1] + imm`, where `imm` specifies a 12-bit immediate `imm`.
 

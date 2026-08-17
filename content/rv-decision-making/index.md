@@ -70,7 +70,7 @@ We revisit our [conceptual computer layout](#fig-von-neumann) from [earlier](#se
 The program counter holds the address of the current instruction.
 :::
 
-The processor on the left consists of a control unit and a datapath. The memory sits on the right. Inside the datapath, we have our 32 registers and our PC, which is a register internal to the processor that holds the **byte address** of the next instruction ot to be executed.
+The processor on the left consists of a control unit and a datapath. The memory sits on the right. Inside the datapath, we have our 32 registers and our PC, which is a register internal to the processor that holds the **byte address** of the next instruction to be executed.
 
 The control unit[^control] uses the PC as follows:
 
@@ -94,7 +94,7 @@ The below animation traces through a toy example of how a executing arithmetic i
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vRzEG3hI-o7XL7oL1njxPvQq0jr7uR3pVlBTtBX6KM82YUC1wROduPqaLwCiS7iU_y9p0hbTTiooPYn/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through an example of how executing arthimetic instructions will update both the destination register and the program counter register, as detailed in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nt1Qum-w_TcAtcdsT9iVIBhmDbTvjEuiFnK4bv7NeRE/edit?usp=sharing)"
+:title: "Animation that steps through an example of how executing arithmetic instructions will update both the destination register and the program counter register, as detailed in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1nt1Qum-w_TcAtcdsT9iVIBhmDbTvjEuiFnK4bv7NeRE/edit?usp=sharing)"
 :::
 
 Above, the processor executes one instruction as follows:

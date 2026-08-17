@@ -31,7 +31,7 @@ The Stack is a contiguous block of memory that starts from high addresses and gr
 
 [^stack-info]: (same exact footnote as in an [earlier section](#sec-mem-layout)) Because parameters and return addresses are critical to function call and return, they are stored directly in the CPU where possible–on special hardware called registers (which we talk about later). Because there are only a limited number of such registers, additional parameters and return addresses are stored in memory on the stack until they are needed.
 
-Allocation and deallocation is incredibly fast on the stack thanks to the **stack pointer**. The **stack pointer** is an internally tracked value[^sp-reg] that tells us the address of the "top of the stack", i.e., the start of the current frame, and thereby determins allocation and deallocation on the stack.
+Allocation and deallocation is incredibly fast on the stack thanks to the **stack pointer**. The **stack pointer** is an internally tracked value[^sp-reg] that tells us the address of the "top of the stack", i.e., the start of the current frame, and thereby determines allocation and deallocation on the stack.
 
 [^sp-reg]: The stack pointer itself must live somewhere. Instead of living in memory, it lives on the CPU in a special hardware register, so that it can be read and updated quickly. This is a detail we handwave for now and discuss in detail later.
 

@@ -70,7 +70,7 @@ The unbiased mode is the default, though the others can be specified. Unbiased w
 
 ## Casting and converting
 
-Rounding also occurs when converting betwen numeric types. In C:
+Rounding also occurs when converting between numeric types. In C:
 
 * **`int` to `float`**: There are large integers that a `float` cannot handle exactly because it lacks enough bits in the significand. For instance, $2^24 + 1$ will "snap" to the closest even float.
 * **`float` to `int`**: Floating points with fractional components simply don't have integer representations. C uses **truncation** to coerce and convert floating point to the nearest integer.  For example, `(int) 1.5` gets chopped off to `1`.

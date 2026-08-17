@@ -64,7 +64,7 @@ The I-Type instruction `addi x15 x1 -50`.
 
 We follow the [steps for translating assembly into machine code](#sec-assembly-to-machine) from earlier:
 
-1. **Determine instruction format type**. `addi` is I-type because it performs arithmetic betwen a register operand and a constant operand. We use the [arithmetic instructions table](#tab-rv32i-arithmetic) on the RISC-V green card.
+1. **Determine instruction format type**. `addi` is I-type because it performs arithmetic between a register operand and a constant operand. We use the [arithmetic instructions table](#tab-rv32i-arithmetic) on the RISC-V green card.
 
 1. **Determine operation field codes**.
 
@@ -167,7 +167,7 @@ Observations:
 * The fact that loads perform a memory access is irrelevant to how we specify the instruction. The instruction bits simply provide enough information for the hardware to decode and execute the correct instruction.
 * Loads _do_ share some similarities with other I-Type instructions. Notably, loads also perform **register-immediate addition** to compute the memory address as `R[rs1] + imm`. Loads can therefore reuse any hardware needed for register-immediate arithmetic instructions.
 
-We recommend reviewing [the earier chapter](#sec-data-transfer) for the description of each load instruction in @tab-i-type-loads.
+We recommend reviewing [the earlier chapter](#sec-data-transfer) for the description of each load instruction in @tab-i-type-loads.
 
 :::{table} Load Instructions (recall there is no `lwu`).
 :label: tab-i-type-loads

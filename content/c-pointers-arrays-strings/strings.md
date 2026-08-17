@@ -82,7 +82,7 @@ int strlen(char s[]) {
 
 :::{note} Explanation
 
-* Line 1: Array syntax in parameters are syntactic sugar for pointers; here, it is equivalent to `char *s`, declaring `s` as a pointer to a `char`. Here, we further assume that `s` points to a C string, but there is no way of explicitly describing this contraint via type declaration.
+* Line 1: Array syntax in parameters are syntactic sugar for pointers; here, it is equivalent to `char *s`, declaring `s` as a pointer to a `char`. Here, we further assume that `s` points to a C string, but there is no way of explicitly describing this constraint via type declaration.
 * Line 2: Declare a local unsigned integer `n` that is large enough to hold any count of bytes in memory (this is the `size_t` typedef)
 * Line 3: Lots going on in this while loop.
   * Body: Increment `n` by one.

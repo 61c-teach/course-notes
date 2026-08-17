@@ -284,7 +284,7 @@ RISC-V AMOs are R-Type instructions with the format `amoinst rd rs2 (rs1)` that 
 * apply the operation to that value with the contents in `rs2`
 * store the result back to where `rs1` is pointed to
 
-RISC-V supports these atomic insturctions with: swap, add, and/or/xor, min/max, min/max unsigned.
+RISC-V supports these atomic instructions with: swap, add, and/or/xor, min/max, min/max unsigned.
 
 An AMO lock implementation works as follows. On `acquire`, if the lock state was previously also 1, then another thread has the lock, so we "spin" and try again until lock state was previously 0.
 
@@ -310,7 +310,7 @@ We know from building the datapath that this is not only difficult but also inef
 
 An alternative approach to atomic instruction uses a pair of instructions (one read, one write) that are effectively atomic. To do so, we assume a different definition of success. If the _pair_ executes successfully, then nothing else has changed the value between the instruction pairs.
 
-We discuss one common atomic insturction pair:
+We discuss one common atomic instruction pair:
 
 * `lr rd (rs1)`: Load reserved. Take the value pointed to by `rs1` and load it into `rd`. Add a reservation somewhere.
 * `sc rd rs2 (rs1)`: Store conditional.

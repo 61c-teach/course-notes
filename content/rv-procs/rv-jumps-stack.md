@@ -73,7 +73,7 @@ There are two real instructions above.
 
 **J**ump **a**nd **L**ink (`jal rd label`). Write the address of the **next instruction**, `PC + 4`, to register `rd`. Then perform an unconditional jump to `label` by setting `PC` to the address of the instruction with label `label`. The **linking** means that we form a link that can be used to return to the caller. (In this respect, `jal` should really be called "Link and Jump").
 
-* Pseudoinstruction `j label` is used to implement conditional statements and loops, as discusssed in an [earlier section](#sec-branches). `jal x0 label` effectively discards the link/return addresss, because register `x0` is hardwired to zero.
+* Pseudoinstruction `j label` is used to implement conditional statements and loops, as discussed in an [earlier section](#sec-branches). `jal x0 label` effectively discards the link/return address, because register `x0` is hardwired to zero.
 * Pseudoinstruction `jal label` is expanded to `jal ra label`, where register name `ra` is the **return address** or register number `x1`. We discuss this reasoning below.
 
 **J**ump **a**nd **L**ink **R**egister (`jalr rd rs1 imm`). Link the "return address" (`PC + 4`) to a register `rd`. Then perform an unconditional jump by setting `PC` to `R[rs1] + imm`.
@@ -117,7 +117,7 @@ When we discussed [the C stack](#sec-stack), we saw [an animation](#fig-c-stack-
 
 RISC-V stack frames (mostly) operate like C stack frames. As discussed in an [earlier section](#sec-register-conventions), the **stack pointer** holds the address of the top of the stack. By [RV32I register convention], this value is stored in the **`sp` register**, which is register number `x2`.
 
-A RISC-V proedure can choose to use a stack frame by manipulating sp:
+A RISC-V procedure can choose to use a stack frame by manipulating sp:
 
 * When the callee gains control, set up in the **prologue** allocate/push the stack frame by **decrementing** `sp` (again, the stack grows downward).
 

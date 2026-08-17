@@ -134,7 +134,7 @@ Fixed point representations are very useful in specific domains that prefer very
 
 Developers considered what was needed to define a number system that could represent the numbers used in common scientific applications:
 
-* Very large numbers, e.g., the number of seconds in a millenium is $31,556,926,010 = 3.155692610 \times 10^{10}$
+* Very large numbers, e.g., the number of seconds in a millennium is $31,556,926,010 = 3.155692610 \times 10^{10}$
 * Very small numbers, e.g., Bohr radius is approximately $0.000000000052917710 = 5.2917710 \times 10^{-11}$ meters
 * Numbers with both integer and fractional points, e.g., $2.625$
 

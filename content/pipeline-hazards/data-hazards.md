@@ -495,7 +495,7 @@ Suppose the RegFile supports write-then-read, _and_ we implement the described f
 :::{note} Show Answer
 :class: dropdown
 
-We **do not need to stall the pipeline**. The ALU result from the `add` instuction is available at the beginning of cycle 4. We can leverage the `MEM` to `EX` forwarding path to forward the `add` instruction's ALU result directly from the `EX/MEM` pipeline registers to the ALU for the `sub` instruction's `EX` stage, also in cycle 4.
+We **do not need to stall the pipeline**. The ALU result from the `add` instruction is available at the beginning of cycle 4. We can leverage the `MEM` to `EX` forwarding path to forward the `add` instruction's ALU result directly from the `EX/MEM` pipeline registers to the ALU for the `sub` instruction's `EX` stage, also in cycle 4.
 :::
 
 ### Forwarding: Implementation

@@ -231,7 +231,7 @@ The minimum clock period is 5 ns = $10^{-9}$ seconds per cycle. The maximum freq
 
 ## Hold Time Violations
 
-Above, the critical path determins the maximum clock frequency we can use to ensure a stable input to our register elements. We next present a different problem: **hold time violations**.
+Above, the critical path determines the maximum clock frequency we can use to ensure a stable input to our register elements. We next present a different problem: **hold time violations**.
 
 Recall from [earlier](#sec-registers) that the **hold time** is the duration during which a register's input d must be stable _after_ the rising edge of the clock. There are some cases where data propagates through the circuit is so fast that the input to registers become unstable during the hold time.
 

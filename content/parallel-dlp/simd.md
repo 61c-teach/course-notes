@@ -24,7 +24,7 @@ In this section we discuss **SIMD instructions** (Single-Instruction, Multiple D
 
 SIMD architectures exploit **Data-Level Parallelism** (DLP) with simultaneous operation on multiple data streams. Instead of doing math on one number at a time, SIMD instructions instead do math on several numbers at a time, in a single clock cycle.
 
-**SIMD Addition**: @fig-simd-add compares SIMD addition to scalar addition. On the scalar side, we fetch one `add` instruction and apply it to one pair of operands, `A` and `B`. On the SIMD side, we do a **vector add**: we stil fetch one `add` instruction, but now we perform vector addition, element by element, for both of the vectors `A` and `B`. For the eight-element **vectors** in @fig-simd-add, vector addition therefore performs *one* addition ("single instruction") on *eight* pairs of operands ("multiple data") .
+**SIMD Addition**: @fig-simd-add compares SIMD addition to scalar addition. On the scalar side, we fetch one `add` instruction and apply it to one pair of operands, `A` and `B`. On the SIMD side, we do a **vector add**: we still fetch one `add` instruction, but now we perform vector addition, element by element, for both of the vectors `A` and `B`. For the eight-element **vectors** in @fig-simd-add, vector addition therefore performs *one* addition ("single instruction") on *eight* pairs of operands ("multiple data") .
 
 :::{figure} images/simd-add.png
 :label: fig-simd-add

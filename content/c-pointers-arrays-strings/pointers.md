@@ -138,7 +138,7 @@ Up next, let's see cases in which values _must_ be updated with pointers.
 
 ## C is Pass-by-Value
 
-The C programming language is **pass-by-value**, meaning that function parameters get a **copy** of the argument value.[^java-pass-by-value] While this property is useful to help evalute arguments before they are passed in as parameters, it restricts the values we can update.
+The C programming language is **pass-by-value**, meaning that function parameters get a **copy** of the argument value.[^java-pass-by-value] While this property is useful to help evaluate arguments before they are passed in as parameters, it restricts the values we can update.
 
 [^java-pass-by-value]: Java is also pass-by-value, though we should note that in Java, variables holding objects are inherently object-handles, i.e., references. This distinction explains the behavior of primitive Java types vs. Java "objects" when passed in as arguments. See more on [Stack Overflow](https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value).
 
@@ -287,7 +287,7 @@ if(q) { /* q is not a null pointer */ }
 (sec-pointer-arithmetic)=
 ### Pointer Arithmetic
 
-Pointers can handle some arithmetic operations: addition and substraction. You can increment or decrement pointers by integer values with a paradigm called **pointer arithmetic**.
+Pointers can handle some arithmetic operations: addition and subtraction. You can increment or decrement pointers by integer values with a paradigm called **pointer arithmetic**.
 
 In pointer arithmetic, the compiler uses the data type to determine how far to "stride" across memory to reach the next value. For example, if `ptr` is a pointer variable and you write `ptr + 5`, C will not always add 5 to `ptr`. Instead, C will add 5 times the size of the datatype that `ptr` points to. If ptr was an `int *` and `int`s take up 4 bytes in memory, `ptr + 5` adds 20 to the address held in ptr.
 

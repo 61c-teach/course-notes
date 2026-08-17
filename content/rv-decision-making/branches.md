@@ -76,7 +76,7 @@ How do we use branch instructions? Let's check out `beq` and `bne` in @tab-rv-be
 :align: center
 | Instruction | `beq rs1 rs2 Label` | `bne rs1 rs2 Label` |
 | :--: | :--- | :--- |
-| Mnemonic | **B**ranch if **eq**ual | **B**ranch if **n**ot **e**ual |
+| Mnemonic | **B**ranch if **eq**ual | **B**ranch if **n**ot **e**qual |
 | Comparison condition | Register values are equal:<br/>`R[rs1] == R[rs2]` | Register values are not equal:<br/>`R[rs1] != R[rs2]` |
 | Condition is met | `PC = <addr of Label>` |  `PC = <addr of Label>` |
 | Condition is not met | `PC = PC + 4` | `PC = PC + 4` |

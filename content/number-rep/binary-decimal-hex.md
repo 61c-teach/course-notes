@@ -131,7 +131,7 @@ Adding up one one, zero twos, one four, and one eight gives thirteen, or the dec
 Other notes:
 
 * We prepend the prefix `0b` to denote that the numeral `1101` should be interpreted in base 2; the **shorthand** `0b1101` is equivalent to the mathematical notation $1101_2$ but can be written with a standard keyboard.
-* Like before, `0b0...01101` and `0b1101` represent the same nunber, thirteen.
+* Like before, `0b0...01101` and `0b1101` represent the same number, thirteen.
 * Because there are just two binary digits `0` and `1`, in binary we are always either including a value (here, a specific power of two), or not including it. `1` or `0`, `True` or `False`. This idea of binary representing "inclusion" or "exclusion" will show up repeatedly in this course.
 
 ### Base 16 (Sixteen) #s, Hexadecimal
@@ -273,7 +273,7 @@ We leave it to you to translate the binary conversion process we described collo
 
 ### Binary $\leftrightarrow$ Hexadecimal Is Straightforward
 
-Given the above, consider the following process for converting to binary to hexidecimal, which composes the processes we've discussed above:
+Given the above, consider the following process for converting to binary to hexadecimal, which composes the processes we've discussed above:
 
 1. Convert binary to decimal.
 1. Convert decimal to hexadecimal.

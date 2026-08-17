@@ -38,7 +38,7 @@ Loads and stores participate in the `MEM` phase of [the five step process](#sec-
 :width: 100%
 :alt: "Load datapath additions: DMEM connected to the ALU-computed address and a writeback mux selecting between ALU result and memory data."
 
-For the `MEM` phase of a load instruction, conect DMEM to the ALU and use a mux before `WB` (Write Back) phase.
+For the `MEM` phase of a load instruction, connect DMEM to the ALU and use a mux before `WB` (Write Back) phase.
 ::::
 
 **DMEM**: To read the memory at an address, we use the ALU to compute the address as `alu = R[rs1] + imm`. This  readily reuses the circuitry for arithmetic and logical I-Type instructions.
@@ -276,7 +276,7 @@ The `partial_store.circ` circuit in the course project is designed to take data 
 * Make a 32-bit value where bits 16-31 are the 16 bits we want to store to memory.[^doesnt-matter]
 * Make a 4-bit writemask `0b1100`, which says to only write the second and third bytes to memory, leaving the other bytes in the memory word unchanged.
 
-[^doesnt-matter]: The lower bits 0-23 can be all zeros, though in practice these bits don't matter beacuse of `MemWriteMask`.
+[^doesnt-matter]: The lower bits 0-23 can be all zeros, though in practice these bits don't matter because of `MemWriteMask`.
 
 Note that `sh` and `sb` instructions specify data as the lower bits of a 32-bit value, i.e., bottom 16 bits and bottom 8 bits, respectively. See @tab-partial-store-details.
 

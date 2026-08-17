@@ -100,7 +100,7 @@ With intrinsics, we can program using assembly instructions indirectly. There is
 
 ### Variable Declaration
 
-C has typed variables (in contrast to assembly, which only has hardware registers that store bits). To use Intel intrinsics, we must declare registers as C variables of a specific Intel intrisic variable type.
+C has typed variables (in contrast to assembly, which only has hardware registers that store bits). To use Intel intrinsics, we must declare registers as C variables of a specific Intel intrinsic variable type.
 
 :::{figure} images/intrinsic-reg.png
 :label: fig-intrinsic-reg
@@ -124,7 +124,7 @@ Once declared, we can use the Intel intrinsic name similarly to C variables. Imp
 
 ### Procedures
 
-Once we have declared Intel intrisic variables, we can call Intel intrinsics. While these look like functions and procedures, each and every function call maps directly to an assembly instruction for the SIMD hardware. 
+Once we have declared Intel intrinsic variables, we can call Intel intrinsics. While these look like functions and procedures, each and every function call maps directly to an assembly instruction for the SIMD hardware. 
 
 :::{table} SSE Example: Intel intrinsic mapped to assembly instruction for the SSE SIMD extension. SSE has Intel intrinsic data type `_m128` (128-bit-wide register).
 :label: tab-intrinsic-sse

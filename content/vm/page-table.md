@@ -58,7 +58,7 @@ Then, expand the explanations below.
 :class: dropdown
 Most virtual memory systems opt for minimizing this cost and thus allow pages to be placed _anywhere_ in main memory.
 
-Using the terminology of [cache associativity](#sec-cache-associativity), this page placement strategy is fully associative. The cost of this policy is minimal compared to the cost of a page fault becuase (1) disk access dominates the penalty of time, and (2) the placement algorithm is determined in software, not hardware (see the ["memory manager"](#sec-memory-manager)).
+Using the terminology of [cache associativity](#sec-cache-associativity), this page placement strategy is fully associative. The cost of this policy is minimal compared to the cost of a page fault because (1) disk access dominates the penalty of time, and (2) the placement algorithm is determined in software, not hardware (see the ["memory manager"](#sec-memory-manager)).
 
 :::
 

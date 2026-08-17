@@ -130,7 +130,7 @@ A process requests a data at a given virtual address (VA).
     * On a TLB hit: (See next step.)
     * On a TLB miss:
       * Do a **page table walk** to access the page table in memory.
-      * If there is a **page fault** because the correpsonding page table entry is invalid, load the page from disk.
+      * If there is a **page fault** because the corresponding page table entry is invalid, load the page from disk.
       * At some point, write the correct address translation from this page table entry to the TLB.
 1. Construct the physical address using the physical page number from the corresponding TLB entry.
 

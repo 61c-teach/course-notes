@@ -140,7 +140,7 @@ The hardest part of multithreading is understanding and maintaining program corr
 
 Synchronization can be specified in user-level routines, i.e., in higher-level languages. A **critical section** is a segment of code that must be executed by a single thread at a time, thereby enforcing synchronization. Once a thread enters a critical section, it can safely execute all code in that critical section, knowing that it is the _only_ thread that can execute that section at that time.
 
-We discuss two OpenMP synchronization constucts:
+We discuss two OpenMP synchronization constructs:
 
 * `#pragma omp critical`: Creates a critical section within a parallel code segment. [OpenMP docs](https://www.openmp.org/spec-html/5.0/openmpsu89.html)
 * `#pragma omp barrier`: Forces all threads to wait until all threads have hit the barrier. [OpenMP docs](https://www.openmp.org/spec-html/5.0/openmpsu90.html)

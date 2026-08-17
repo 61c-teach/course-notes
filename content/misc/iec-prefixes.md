@@ -21,7 +21,7 @@ title: "IEC and Base-10 Prefixes"
 
 It is unwieldy to use numbers like 4,294,967,296 to describe the $2^32$ bytes of address space on 32-bit architectures. Instead, we much prefer terminology like 2 GiB ("gibibytes").
 
-This short reference introduces prefixes for numbers in powers of ten and two This terminology helps us describe quantites, from sizes of caches and hard drives to network transmission rates.
+This short reference introduces prefixes for numbers in powers of ten and two This terminology helps us describe quantities, from sizes of caches and hard drives to network transmission rates.
 
 ### Base-10 Prefixes
 
@@ -152,8 +152,8 @@ We need 42 bits at minimum to address 2.5 TiB of memory.
 You should become very familiar with both base-10 and binary prefixes. Here are some mnemonics, courtesy of previous students and instructors:
 
 * Kid meets giant Texas people exercising zen yoga. – Rolf O
-* Kind men give ten percent extra, zestfully, youthfully. – Hava E
-* Kindness means giving, teaching, permeating excess zeal yourself. – Hava E
+* Kind men give ten percent extra, zestfully, youthfully. – Have E
+* Kindness means giving, teaching, permeating excess zeal yourself. – Have E
 * Kindergarten means giving teachers perfect examples (of) zeal (&) youth
 * Kissing Mel Gibson, Teddy Pendergrass exclaimed: “Zesty, yo!” – Dan G
 * Kissing mom gives ten percent extra zeal & youth!

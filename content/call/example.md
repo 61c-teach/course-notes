@@ -146,7 +146,7 @@ c:  00050513 addi a0 a0 0
 
 * Left of colon, e.g., `10`: the relative address of the instruction in the module
 * 8-digit hexadecimal, e.g., (`000005b7`): the 32-bit-wide machine code, perhaps with placeholders
-* assembly instruction, e.g., (`lui a1 0x0`): the assembly insturction, perhaps with placeholders
+* assembly instruction, e.g., (`lui a1 0x0`): the assembly instruction, perhaps with placeholders
 :::
 
 Pseudoinstructions are replaced where possible.

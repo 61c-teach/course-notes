@@ -36,7 +36,7 @@ Recall from an [earlier section](#sec-store-word):
 * `opcode` (as all instructions do). Stores use opcode `0100011`.
 * `funct3` specifies partial stores.
 
-Store instructions have two operand registers, like in [R-type](#sec-r-type) instructions, but do not have a destination regsiter `rd`. Instead, S-type instructions have an immediate value, like in [I-type](#sec-i-type) instructions. Therefore, we use a new instruction format: S-type for "Store"-type.
+Store instructions have two operand registers, like in [R-type](#sec-r-type) instructions, but do not have a destination register `rd`. Instead, S-type instructions have an immediate value, like in [I-type](#sec-i-type) instructions. Therefore, we use a new instruction format: S-type for "Store"-type.
 
 ## S-Type: Fields
 

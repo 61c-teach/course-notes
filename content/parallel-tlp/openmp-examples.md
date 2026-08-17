@@ -260,7 +260,7 @@ int main(void) {
 }
 ```
 
-Toggle between the cards below to compare different parallelizations of this program. Asssume that `OMP_NUM_THREADS` on this
+Toggle between the cards below to compare different parallelizations of this program. Assume that `OMP_NUM_THREADS` on this
 
 :::::{tab-set}
 ::::{tab-item} Code 1

@@ -199,7 +199,7 @@ The Turing award winner [Don Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) 
 > The conventional wisdom shared by many of today's software engineers calls for ignoring efficiency in the small; but I believe this is simply an overreaction to the abuses they see being practiced by penny-wise-and-pound-foolish programmers, who can't debug or maintain their "optimized" programs.
 > ...
 > 
-> There is no doubt that the grail of efficiency leads to abuse. Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually havea  strong negative impact when debugging and maintenance are considered. We _should_ forget about small efficiencies, say, about 97% of the time: premature optimization is the root of all evil.
+> There is no doubt that the grail of efficiency leads to abuse. Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. We _should_ forget about small efficiencies, say, about 97% of the time: premature optimization is the root of all evil.
 > 
 > Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look at the critical code; but only _after_ that code has been identified.
 

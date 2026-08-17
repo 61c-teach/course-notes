@@ -19,7 +19,7 @@ subtitle: "lui and auipc"
 
 ::::
 
-Recall that [I-Type](#sec-i-type) arithmetic instructions encode an sign extension 12-bit immediate as a two's complement integer, which is then sign-extended to a 32-bit value. While constants are frequently short and fit into the 12-bit I-Type fields, we inevitably need to encode **wide immediates** to build numberic constants larger than the I-type's 12-bit `imm`.
+Recall that [I-Type](#sec-i-type) arithmetic instructions encode an sign extension 12-bit immediate as a two's complement integer, which is then sign-extended to a 32-bit value. While constants are frequently short and fit into the 12-bit I-Type fields, we inevitably need to encode **wide immediates** to build numeric constants larger than the I-type's 12-bit `imm`.
 
 RISC-V achieves wide immediates as follows:
 

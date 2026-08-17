@@ -43,9 +43,9 @@ We hope a future version of these course notes will discuss the operating system
 
 :::
 
-Virtual memory manages the two levels of the memory hierarchy represented by main memory and disk. The "memory manager" performs translation and data mangement and is a combination of hardware (in the CPU) and software (the OS).
+Virtual memory manages the two levels of the memory hierarchy represented by main memory and disk. The "memory manager" performs translation and data management and is a combination of hardware (in the CPU) and software (the OS).
 
-The "memory manager" sastisfies several responsibilities:
+The "memory manager" satisfies several responsibilities:
 
 1. **Address translation.** Conceptually, each process is mapped to a part of the memory through the translation of its virtual addresses to physical addresses. The parts of memory used by a process are not necessarily contiguous; in practice, they are interleaved and spread throughout DRAM.
 2. **Protection and isolation.** Each process has its own dedicated "private" part of memory, maintained by the address mappings stored in its own page table. Runtime errors that occur in one process do not corrupt the memory of another; a user program is prevented from messing with the OS's memory and consequently crashing the system.

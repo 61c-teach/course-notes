@@ -24,7 +24,7 @@ This video is taken from later in Fall 2020 and references RISC-V assembly, whic
 (sec-words)=
 ## Words
 
-What's in a word? In computer architecture, a hardware **word** is an important unit of data. The word size determines many aspects of a computer's structure and operation, from how the computer accessses memory to how the compiler translates a single C arithmetic operation into multiple assembly instructions. A 32-bit architecture has a word size of 32 bits, or 4 bytes. A 64-bit architecture has a word size of 64 bits, or 8 bytes.
+What's in a word? In computer architecture, a hardware **word** is an important unit of data. The word size determines many aspects of a computer's structure and operation, from how the computer accesses memory to how the compiler translates a single C arithmetic operation into multiple assembly instructions. A 32-bit architecture has a word size of 32 bits, or 4 bytes. A 64-bit architecture has a word size of 64 bits, or 8 bytes.
 
 On most modern architectures, the size of the word often determines (among other things[^word]) the **largest possible address** and therefore the size of a C pointer (see [address space](#sec-address-space). A 32-bit architecture has 4-byte pointers; a 64-bit architecture has 8-byte pointers. The word size also often determines the **smallest accessible or most efficiently accessible unit of memory**. On a 32-bit architecture, memory reads and writes are often in units of 4-bytes; on a 64-bit architecture, in units of 8-bytes.
 
@@ -81,7 +81,7 @@ Recall that memory on a 32-bit architecture is laid out as a very long array of 
 :::{note} Example byte addresses
 :class: dropdown
 
-* The upper-right "xx" is at adddress `0x0000000`, or `0b0000 0000 ... 0000 0000`. This is the lowest possible address in the 32-bit address space.
+* The upper-right "xx" is at address `0x0000000`, or `0b0000 0000 ... 0000 0000`. This is the lowest possible address in the 32-bit address space.
 * The upper-left "xx" is at address `0x00000003`, or `0b0000 0000 ... 0000 0011`.
 * The bottom-right "xx" is at address `0xFFFFFFC`, or `0b1111 1111 ... 1111 1100`.
 * The bottom-left "xx" is at address `0xFFFFFFFF`, or `0b1111 1111 ... 1111 1111`. This is the highest possible address in the 32-bit address space.

@@ -106,7 +106,7 @@ addi sp, sp, -8 # Room for two registers. (Why?)
 sw s0, 0(sp) # Save s0 (or any saved register)
 sw s1, 4(sp) # Save s1 (or any saved register)
 
-# Code ommitted
+# Code omitted
 
 # Epilogue
 lw s0, 0(sp) # Load s0 (or any saved register)

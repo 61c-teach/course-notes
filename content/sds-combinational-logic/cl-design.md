@@ -41,7 +41,7 @@ diagram can be replaced by a small transistor circuit that achieves is respectiv
 For a given combinational logic block, there is only one truth table. By contrast, a combinational logic block can have multiple Boolean expressions and multiple circuit diagrams.
 :::
 
-This section discusses how to translate between the diferent representations of a combinational logic block. This section ends with how to _compose_ circuits from smaller blocks.
+This section discusses how to translate between the different representations of a combinational logic block. This section ends with how to _compose_ circuits from smaller blocks.
 
 (sec-majority-circuit)=
 ### Example: Majority Circuit

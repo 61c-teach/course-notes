@@ -78,7 +78,7 @@ Data moves differently between different levels of the memory hierarchy:
 
 * **Registers and memory**: Managed by the compiler. Loads and stores move data in and out.
 * **Cache and memory**: Managed by cache controller hardware. We will describe the high-level operation, but leave the implementation to a later course.
-* **Memory and disk**: Managed by the operating system  and special hardware via [virtual memory](#sec-virtual-memory), a concept we discuss later. Additionally managed by the programer/user via files and file streams.
+* **Memory and disk**: Managed by the operating system  and special hardware via [virtual memory](#sec-virtual-memory), a concept we discuss later. Additionally managed by the programmer/user via files and file streams.
 +++
 
 To summarize, we aim for the illusion of a "very large and fast memory":

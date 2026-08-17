@@ -22,7 +22,7 @@ Until 9:10
 
 To round off our discussion of RISC-V, let's discuss RISC-V implements **procedure calls**[^procedures].
 
-[^procedures]: Terminology: The RISC-V manual refers to **procedure** calls and returns, wheras C refers to **function** calls and returns. For more information, see [this Wikipedia page](https://en.wikipedia.org/wiki/Function_(computer_programming)) and [this C wikibooks page](https://en.wikibooks.org/wiki/C_Programming/Procedures_and_functions).
+[^procedures]: Terminology: The RISC-V manual refers to **procedure** calls and returns, whereas C refers to **function** calls and returns. For more information, see [this Wikipedia page](https://en.wikipedia.org/wiki/Function_(computer_programming)) and [this C wikibooks page](https://en.wikibooks.org/wiki/C_Programming/Procedures_and_functions).
 
 
 We first outline the fundamental steps of procedure calls in this section. We then we revisit a few topics in detail:

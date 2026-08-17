@@ -24,7 +24,7 @@ But how do we leverage **hardware** improvements? That is the topic of this sect
 
 ## Parallelism: Software vs. Hardware
 
-Because of the abrupt shift in processor design towards parallelism, there are a LOT of closely related terms when it comes to paralellism. @tab-hw-sw-parallelism is an adaptaion of P&H 6.1 to clarify the terms used in software versus hardware. The biggest confusion is often between **concurrency** and **parallelism**.[^stackoverflow]
+Because of the abrupt shift in processor design towards parallelism, there are a LOT of closely related terms when it comes to parallelism. @tab-hw-sw-parallelism is an adaptation of P&H 6.1 to clarify the terms used in software versus hardware. The biggest confusion is often between **concurrency** and **parallelism**.[^stackoverflow]
 
 [^stackoverflow]: For more about concurrency and parallelism, see [StackOverflow](https://stackoverflow.com/questions/1050222/what-is-the-difference-between-concurrency-and-parallelism).
 

@@ -66,7 +66,7 @@ Another phrasing you will hear is that you can "**follow**" pointers, meaning, w
 To do so, C requires that all pointers are **typed**. If we knew that `p` was a pointer to a 32-bit unsigned integer, then we know that following the pointer `p` should get the 4 bytes **starting at** `0x00000100`, not just the byte at `0x00000100` itself. We discuss this syntax in the next chapter.
 
 
-:::{note} Summmarizing @fig-c-mem-byte-array-ptr
+:::{note} Summarizing @fig-c-mem-byte-array-ptr
 
 * `x` is a 4-byte-wide variable. We assume that `x` is an  32-bit unsigned integer. The variable `x` is located at address `0x100`, and its value is `0x12345678`.
 * `p` is a variable, also 4-bytes wide. Because the diagram shows that `p` points to `x`, we can conclude that `p` is a pointer to an unsigned 32-bit integer. The pointer `p` is located at address `0x00000108`, and its value is `0x00000100` because it points to `x`.

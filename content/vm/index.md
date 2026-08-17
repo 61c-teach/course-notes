@@ -36,7 +36,7 @@ title: "Virtual Memory and Pages"
 We have defined the memory hierarchy across two sections so far:
 
 * [Registers and Memory](#sec-memory-hierarchy-early): Assumes the CPU (with registers) accesses memory (primary storage) directly.
-* [Memory Hierarchy, Revisited](#sec-memory-hierarchy): Inserts caches into the hiarchy, between the CPU and memory.
+* [Memory Hierarchy, Revisited](#sec-memory-hierarchy): Inserts caches into the hierarchy, between the CPU and memory.
 
 :::
 

@@ -24,7 +24,7 @@ At this point, the compiler has finished and given you a `.s` file, and the asse
 
 [^link-editor]: The linker is also historically called the "link editor" because it "edits" or fixes all the links on the relocation table.
 
-Again, we like that the linker enables separate compliation of different parts of our program. We discuss some tradeoffs later in this section.
+Again, we like that the linker enables separate compilation of different parts of our program. We discuss some tradeoffs later in this section.
 
 From [our overview](#sec-linker):
 
