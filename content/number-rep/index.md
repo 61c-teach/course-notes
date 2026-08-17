@@ -51,7 +51,7 @@ Not all digital data are necessarily boring analog; sometimes you can create art
 
   :::{image} images/guardian.jpg
   :label: fig-art1
-  :alt: "A digital illustration depicts an underwater scene with a large marine reptile swimming past a shipwreck on a coral reef. Shafts of sunlight  enetrate the deep blue water, illuminating a massive school of fish above  the wreckage."
+  :alt: "A digital illustration depicts an underwater scene with a large marine reptile swimming past a shipwreck on a coral reef. Shafts of sunlight penetrate the deep blue water, illuminating a massive school of fish above the wreckage."
   :width: 40%
 
   :::
