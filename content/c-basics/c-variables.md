@@ -124,7 +124,7 @@ We encourage you to use `inttypes.h` or `stdint.h`, part of the C standard libra
 
 [^typedef-int]: More precisely, `inttypes.h` declares many `typedef` names of the form `intN_t` and `uintN_t` that designate two's complement and unsigned integer types, respectively, of specific bitwidth `N`.
 
-[^inttypes-vs-stdint]: See [StackOverflow](The array name `a` is the address of the first element in `a`; ) for differences between `inttypes.h` and `stdint.h`. For the purposes of this class, either is fine.
+[^inttypes-vs-stdint]: See StackOverflow <!-- TODO: restore original URL --> for differences between `inttypes.h` and `stdint.h`. For the purposes of this class, either is fine.
 
 ## Variable declaration and initialization
 

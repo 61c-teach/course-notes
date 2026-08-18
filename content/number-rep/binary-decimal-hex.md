@@ -65,7 +65,6 @@ While there are an infinite number of bases with which to represent numbers, we 
 | :--- | :-: | :--- |
 | Decimal | 10 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9` |
 | Binary | 2 | `0, 1` |
-| Hexadecimal | 16 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A,  B,  C,  D,  E,  F` |
 | Hexadecimal | 16 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F` |
 
 :::

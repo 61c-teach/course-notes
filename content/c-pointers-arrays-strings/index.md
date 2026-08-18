@@ -35,7 +35,7 @@ Think of this array as a very, very, very long street with lots of houses. Each 
 
 In this analogy, each cell of the array is **one byte wide**. Each byte, then, has an **address** associated with it, and the byte itself is has a **value**. For example, the byte at address `0x00000104` (i.e., "@" `0x104`) is the 8-bit pattern for the ASCII character `'b'`, or `0b01100010`.
 
-Variable names can often refer to memory locations–specifically, blocks of memory. In @fig-c-mem-byte-array, the variable `x` is (say) an unsigned 32-bit integer. The variable `x` has value `0x12345678`. Its **address**, by convention, is the address of the _first_ byte of the memory block, also known as the **lowest** address of the block. In the diagram, the address of `x` is `0x00000100`.[^endiannness]
+Variable names can often refer to memory locations–specifically, blocks of memory. In @fig-c-mem-byte-array, the variable `x` is (say) an unsigned 32-bit integer. The variable `x` has value `0x12345678`. Its **address**, by convention, is the address of the _first_ byte of the memory block, also known as the **lowest** address of the block. In the diagram, the address of `x` is `0x00000100`.[^endianness]
 
 [^endianness]: Which byte of `x` is stored at the lowest address? Depends on your architecture. Read about endianness in [another section](#sec-endianness).
 

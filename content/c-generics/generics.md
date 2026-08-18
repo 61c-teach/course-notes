@@ -222,7 +222,7 @@ int main() {
   ...
   int32_t arr[] = {1, 2, 3, 4, 5};
   int32_t n = sizeof(arr)/sizeof(arr[0]);
-  swap_ends(arr, n, sizeof(arr[0]); // to implement
+  swap_ends(arr, n, sizeof(arr[0])); // to implement
   ...
 }
 ```
@@ -265,7 +265,7 @@ void swap_ends(void *arr, size_t nelems, size_t nbytes) {
 
 :::
 
-**Answer**: Let's consider what `swap` does. It takes two pointers and swaps `nbytes` at those positions. To swap the ends of the array in @fig-swap-ends, we would like to pass in `0x100` and `0x104` to swap.
+**Answer**: Let's consider what `swap` does. It takes two pointers and swaps `nbytes` at those positions. To swap the ends of the array in @fig-swap-ends, we would like to pass in `0x100` and `0x110` to swap.
 
 Option C does this explicitly:
 
@@ -312,9 +312,9 @@ additional null bytes to dest to ensure that a total of n bytes are written.
 ```{code} c
 :linenos:
 char *strncpy(char *dest, const char *src, size_t n) {
-  size_t size = strnlen(src, n); // max(strlen(src), n)
+  size_t size = strnlen(src, n); // min(strlen(src), n)
   if (size != n) 
-    memset(dest + size, '\0', n – size);
+    memset(dest + size, '\0', n - size);
   return memcpy(dest, src, size);
 }
 ```
@@ -325,7 +325,7 @@ char *strncpy(char *dest, const char *src, size_t n) {
 Each line, explained:
 
 1. Function declaration.
-1. `size` is set to $\max ($`strlen(src)`, `n` $)$. From the Linux `man` pages: "The `strnlen()` function returns `strlen(s)`, if that is less than  `maxlen`, or `maxlen` if there is no null terminating (`'\0'`) among the first `maxlen` characters pointed to by `s`."
+1. `size` is set to $\min ($`strlen(src)`, `n` $)$. From the Linux `man` pages: "The `strnlen()` function returns `strlen(s)`, if that is less than  `maxlen`, or `maxlen` if there is no null terminating (`'\0'`) among the first `maxlen` characters pointed to by `s`."
 1. Recall that conditional statements without curly braces treat the next statement as the singular statement of the conditional body (here, Line 4).
 1. Write in null terminators beyond the length of `src`. If `n` is at least `strlen(src) + 1` bytes, this line null-terminates the result.
 1. Copy `size` bytes from `src` to `dest`.

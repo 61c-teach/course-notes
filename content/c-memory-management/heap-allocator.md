@@ -11,10 +11,10 @@ This section is included as bonus content and is not tested. If you are curious 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
-:::{iframe} https://www.youtube.com/embed/5rmB4SvfDPo?si=7YF8BXMnDpFCQiCH
+:::{iframe} https://www.youtube.com/embed/Sq5tSeWfnGY?si=lhSSc2EofyEeO4ar
 :width: 100%
 :enumerated: false
-:title: "[CS61C FA20] Lecture 02.2 - Number Representation: Conversions"
+:title: "[CS61C FA20] Lecture 05.4 - C Memory Management: Memory Management"
 :::
 
 ::::

@@ -53,10 +53,10 @@ The precise location of heap memory blocks is delegated to a built-in heap alloc
 :width: 100%
 :alt: "Four-step heap-allocation timeline: request R1 allocates 100 bytes, request R2 allocates 10 bytes, R1 is freed, then request R3 for 50 bytes may be placed in either a reused lower hole or a separate upper region. The figure illustrates allocator choice and potential fragmentation."
 
-`main` passes its own local variable `buf` into a function call `load_buf`.
+A heap allocator handling requests R1, R2, R3 and a `free`, potentially fragmenting the heap.
 :::
 
-We do not expect you to know how a heap allocator decides where to allocate memory (see this chapter's [optional section](#sec-heap-allocator) if you are curious). Instead, know that we must be careful to assume anything about the  memory locations we get back from heap functions. We can only trust that a single request will return a contiguous block of memory; however, back-to-back heap memory requests can result in blocks that are quite far apart.
+We do not expect you to know how a heap allocator decides where to allocate memory (see this chapter's [optional section](#sec-heap-allocator) if you are curious). Instead, know that we must be careful: Don't assume *anything* about the memory locations we get back from heap functions. We can only trust that a single request will return a contiguous block of memory; however, back-to-back heap memory requests can result in blocks that are quite far apart.
 
 ## C `stdlib` functions for heap management
 

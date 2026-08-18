@@ -264,7 +264,7 @@ Suppose we declare `struct foo s;` and compile a program onto a 32-bit architect
 
 - AA denotes the four bytes occupied by `s.a`. `sizeof(s.a)` is 4.
 - BB denotes the single byte occupied by `s.b`. `sizeof(s.b)` is 1. The precise alignment of `s.b` is implementation-specific.
-- CC denotes the four bytes occupied by the `s.c`. `sizeof(s.c)` is 3.
+- CC denotes the four bytes occupied by the `s.c`. `sizeof(s.c)` is 4.
 
 :::
 
