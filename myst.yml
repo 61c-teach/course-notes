@@ -244,7 +244,7 @@ project:
       - title: "L33-L34 Synchronization"
         children:
           - file: content/parallel-tlp/data-race.md
-          - file: content/parallel-tlp/cache-coherency.md
+          - file: content/parallel-tlp/cache-coherence.md
           - file: content/parallel-tlp/locks-amos.md
           - file: content/parallel-tlp/summary.md
     - title: "L35-L36 Virtual Memory"

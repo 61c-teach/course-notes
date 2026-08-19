@@ -55,19 +55,6 @@ Shared-memory Multiprocessor (SMP) with multiple cores and a single, coherent me
 :::
 
 
-```{exercise}
-:label: dp-05-b
-5. **True/False**: Stores and loads are the only instructions that require input/output from DMEM.
-```
-
-
-:::{solution} dp-05-b
-:label: dp-05-sol-b
-:class: dropdown
-**True** For all other instructions, we don’t need to read the data that is read out from DMEM, and thus don’t need to wait for the output of the MEM stage.
-:::
-
-
 Notes about @fig-smp:
 
 * Each CPU has its own cache(s), e.g., an L1 cache.

@@ -43,12 +43,12 @@ See lecture for example benchmark code. The benchmark will be hosted on the cour
 int main() {
   ...
 
-  clock_t start = omp_get_wtime();
+  double start = omp_get_wtime();
   matrix_d_t* C = dgemm(A, B); // threaded
-  clock_t end = omp_get_wtime();
+  double end = omp_get_wtime();
 
   // execution time in seconds
-  double delta_time = (double) (end - start)/CLOCKS_PER_SEC;
+  double delta_time = end - start;
   ...
 }
 ```
@@ -178,7 +178,7 @@ openmp,simd,tiled: 0.0000000686 seconds
 
 ## DGEMM 13: GCC Optimizations
 
-Again, let's compile using different `gcc` optimization flags in @tab-dgemm-gcc-mimd. The threaded versions win, every time.
+Again, let's compile using different `gcc` optimization flags in @tab-dgemm-gcc-mimd. The threaded versions win are very fast, even without further optimization.
 
 :::{list-table} Threaded DGEMM runtime (in seconds) with different optimization flags.
 :header-rows: 1
@@ -205,13 +205,13 @@ Again, let's compile using different `gcc` optimization flags in @tab-dgemm-gcc-
   - 0.035177
   - 0.037030
 * - [DGEMM, threaded](#code-dgemm-openmp)
-  - 0.0000001401
-  - 0.0000000347
-  - 0.0000000456
-  - 0.0000000467
+  - 0.131526
+  - 0.050824
+  - 0.039006
+  - 0.046711
 * - [DGEMM, threaded, tile SIMD](#code-dgemm-openmp-simd-tile)
-  - 0.0000000686
-  - 0.0000000124
-  - 0.0000000131
-  - 0.0000000131
+  - 0.069595
+  - 0.012494
+  - 0.012640
+  - 0.013847
 :::

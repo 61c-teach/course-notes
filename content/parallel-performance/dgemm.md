@@ -161,7 +161,7 @@ void free_mat_d(matrix_d_t *mat);
 | :-- | :-- | :-- | :-- |
 | $A$ | `matrix_d_t *A;` | `A->nrows` or $n$ | `A->ncols` or $d$ |
 | $B$ | `matrix_d_t *B;` | `B->nrows` or $d$ | `B->ncols` or $m$|
-| $A$ | `matrix_d_t *C;` | `C->nrows` or $n$ | `C->ncols` or $m$|
+| $C$ | `matrix_d_t *C;` | `C->nrows` or $n$ | `C->ncols` or $m$|
 :::
 
 Going forward, we will use this syntax, but all of our timing benchmarks and subsequent optimizations will assume that all matrices are square, i.e., $n = d = m$. We will further assume $n$ **powers of two** (or at minimum a multiple of 4). We will test:
@@ -216,7 +216,7 @@ C[i][j] = sum;
 :::{note} Show Explanation
 :class: dropdown
 
-* Row `i`, column `k` of $A$: First find the address of the `i`-th row at `mat_A->data + i*mat_ncols`. Then, increment by `k` elements to get the address of the `k`-th element in this row.
-* Row `k`, Column `j` of $B$: First find the address of the `k`-th row at `mat_B->data + k*mat_B->ncols`. Then, increment by `i` elements to get the address of the `j`-th element in this row.
-* Row `i`, Column `j` of $C$: First find the address of the `i`-th row at `mat_C->data + i*mat_C->ncols`. Then, increment by `j` elements to get the address of the `j`-th element in this row.
+* Row `i`, column `k` of $A$: First find the address of the `i`-th row at `A->data + i*A->ncols`. Then, increment by `k` elements to get the address of the `k`-th element in this row.
+* Row `k`, Column `j` of $B$: First find the address of the `k`-th row at `B->data + k*B->ncols`. Then, increment by `j` elements to get the address of the `j`-th element in this row.
+* Row `i`, Column `j` of $C$: First find the address of the `i`-th row at `C->data + i*C->ncols`. Then, increment by `j` elements to get the address of the `j`-th element in this row.
 :::

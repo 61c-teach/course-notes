@@ -190,7 +190,7 @@ Address `0x43F` in binary: `0b0100 0011 1111`
     * Least significant byte in block (offset `0b00`) is @ memory address `0x43C` (`0b0100 0011 1100`)
     * Most significant byte in block (offset `0b11`) is @ memory address `0x43F` (`0b0100 0011 1111`)
 
-1. **Read**. Read byte in cache block at offset `0b11` (i.e., most significant byte in block)	and return to processor.
+1. **Read**. Read byte in cache block at offset `0b11` (i.e., most significant byte in block) and return to processor.
 
 :::
 
