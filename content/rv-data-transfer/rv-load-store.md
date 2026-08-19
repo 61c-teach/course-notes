@@ -233,7 +233,7 @@ Because assembly _operations_ determine how to interpret operands, we therefore 
 
 :::{warning} Why is there no "Store Byte Unsigned"?
 
-When you store a byte to memory, you just pluck the byte and put it at a specific location in _memory_. No filling or extension is required, nor is it preferred e.g., maybe you are updating one single character in a C string). By contrast, with `load`s put data into _registers_.
+When you store a byte to memory, you just pluck the byte and put it at a specific location in _memory_. No filling or extension is required, nor is it preferred (e.g., maybe you are updating one single character in a C string). By contrast, `load`s put data into _registers_.
 
 Remember in assembly, all register values are just treated as bits. There is therefore no guarantee about how future instructions will use the destination register, so our partial loads should write all 32 bits of the destination register.
 

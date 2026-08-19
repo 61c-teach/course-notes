@@ -28,7 +28,7 @@ In an [earlier section](#sec-stored-program) we discussed the concept of the **s
 
 > Data doesn't just have to represent numbers; it can represent the program itself.
 
-[^call] Recall that assembly language is typically produced by a compiler. An assembler then produces the machine-readable code. Typically, this is stored as an executable file, which is then loaded in to the **text** segment of memory:
+Recall that assembly language is typically produced by a compiler.[^call] An assembler then produces the machine-readable code. Typically, this is stored as an executable file, which is then loaded in to the **text** segment of memory:
 
 :::{figure} #fig-c-mem-layout
 :width: 50%
@@ -52,12 +52,11 @@ How does a computer know which instruction to execute? The processor also keeps 
 
 > There is one additional unprivileged register: the program counter `PC` holds the address of the current instruction.
 
-The **Program Counter** (PC[^pc]) is effectively a pointer to memory[^intel-pc] and is a register named `pc`[^pc-name]. The `pc` register is **not** one of the 32 registers numbered `x0` to `x31`. It is a _separate_ register that generally is not explicitly specified as a read/write destination for instructions.
+The **Program Counter** (PC[^pc]) is effectively a pointer to memory and is a register named `pc`.[^pc-name] The `pc` register is **not** one of the 32 registers numbered `x0` to `x31`. It is a _separate_ register that generally is not explicitly specified as a read/write destination for instructions.
 
 [^pc]: Program Counter, not Personal Computer. 
-[^intel-pc]: Intel calls the program counter an Instruction Pointer (IP).
 
-[^pc-name] Verilog syntax is PC, though the [RISC-V Unprivileged Manual](https://docs.riscv.org/reference/isa/unpriv/rv32.html) calls it `pc`.
+[^pc-name]: Intel calls the program counter an Instruction Pointer (IP). Verilog syntax is PC, though the [RISC-V Unprivileged Manual](https://docs.riscv.org/reference/isa/unpriv/rv32.html) calls it `pc`.
 
 
 We revisit our [conceptual computer layout](#fig-von-neumann) from [earlier](#sec-architecture-elements) and focus on the program counter in @fig-program-counter.

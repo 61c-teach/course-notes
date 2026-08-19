@@ -87,7 +87,7 @@ The RISC[^turing] idea caught on quickly: A given program now would require more
 
 This idea was then taken to its full extent by Professors Dave Patterson at UC Berkeley and John Hennessy at Stanford. These two labs developed two very similar projects simultaneously: the RISC project (at UC Berkeley) and the MIPS project (at Stanford). RISC processors were used for a multitude of microprocessor architectures.
 
-Ultimately, both RISC and CISC (i.e., "not RISC" architecture) are still relatively popular. Both architecture paradigms in rapid development, and industry designs are still racing to improve performance. In the market, many Microsoft-based computers purchase Intel architectures; recently, Apple has developed its own ARM-based silicon.
+Ultimately, both RISC and CISC (i.e., "not RISC" architecture) are still relatively popular. Both architecture paradigms are in rapid development, and industry designs are still racing to improve performance. In the market, many Microsoft-based computers purchase Intel architectures; recently, Apple has developed its own ARM-based silicon.
 
 [^turing]: These three early RISC pioneers eventually won the ACM Turing Award for their contributions to computer architecture: [Cocke](https://amturing.acm.org/award_winners/cocke_2083115.cfm) in 1987, and [Patterson](https://amturing.acm.org/award_winners/patterson_2316693.cfm) and [Hennessy](https://amturing.acm.org/award_winners/hennessy_1426931.cfm) in 2017.
 
@@ -105,6 +105,6 @@ We teach RISC-V in our class because it is simple and elegant–both for underst
 
 [^rv-international]: [RISC-V International](https://riscv.org/)
 
-[^teaching]: Professors Patterson and Krste Asanoviç began the RISC-V project in 2010 as part of the Par Lab to develop open research and teaching at UC Berkeley. One of the project outputs was a four-course sequence for undergradate and graduate students, which eventually developed into our UC Berkeley computer architecture curriculum today. Read more on the [RISC-V About page](https://riscv.org/about/) and in the [RISC-V Genealogy Report](https://riscv.org/about/genealogy/).
+[^teaching]: Professors Patterson and Krste Asanović began the RISC-V project in 2010 as part of the Par Lab to develop open research and teaching at UC Berkeley. One of the project outputs was a four-course sequence for undergraduate and graduate students, which eventually developed into our UC Berkeley computer architecture curriculum today. Read more on the [RISC-V About page](https://riscv.org/about/) and in the [RISC-V Genealogy Report](https://riscv.org/about/genealogy/).
 
 [^green-card]: The ["RISC-V green card"](#sec-green-card) in these course notes is longer than one page, due to the accessible web format. For a two-sided reference card with the same information, check out the PDF reference card on our course website.

@@ -27,7 +27,7 @@ We have [previously discussed](#sec-hll-vs-assembly) that in RISC-V, operations 
 
 As [before](#sec-bitwise-ops-defined), **bitwise operations** are performed on n-bit operands **one bit at a time**.
 
-The RV32I ISA provides instructions for common bitwise operations.[^green-card]. @tab-bitwise shows that most bitwise operations correspond to two instructions:
+The RV32I ISA provides instructions for common bitwise operations.[^green-card] @tab-bitwise shows that most bitwise operations correspond to two instructions:
 
 * **RISC-V: Register**. Perform the bitwise operation on two register operands `rs1` and `rs2`, and store the result in a destination register `rd`.
 * **RISC-V: Immediate**. Perform the bitwise operation on one register operand `rs1` and an immediate `imm`, and store the result in a destination register `rd`.
@@ -115,12 +115,10 @@ Like all RISC-V arithmetic instructions, the left-shift operation `sll` must wri
 (sec-rv32i-srl-sra)=
 ### Shift right
 
-Recall our discussion of the [right shift operation](#sec-right-shift): the expression `x >> n` shifts the bits of `x` right by `n` bits, filling the `n` lower bits with zero or one. In C, this was determined by `x`'s **type**. In RISC-V, the **instruction** determines what the lower bits are filled in with
+Recall our discussion of the [right shift operation](#sec-right-shift): the expression `x >> n` shifts the bits of `x` right by `n` bits, filling the `n` lower bits with zero or one. In C, this was determined by `x`'s **type**. In RISC-V, the **instruction** determines what the lower bits are filled in with.
 
 * `srl`, or **S**hift **R**ight **L**ogical (`srli` for immediate). "Zero-extend" and fill the upper bits with `0`. This instruction effectively interprets register `rs1`'s contents as an unsigned integer. Read more in an [earlier section](#sec-right-shift-logical).
-* `sra`, or **S**hift **R**ight **A**rithmetic (`srai` for immediate). Fill in the upper bits with the sign bit of register `rs1`. This instruction effectively interprets register `rs1`'s contents as a signedinteger. Read more in an [earlier section](#sec-right-shift-arithmetic).
-
-shift arithmetic: signed
+* `sra`, or **S**hift **R**ight **A**rithmetic (`srai` for immediate). Fill in the upper bits with the sign bit of register `rs1`. This instruction effectively interprets register `rs1`'s contents as a signed integer. Read more in an [earlier section](#sec-right-shift-arithmetic).
 
 ## Other RISC-V arithmetic instructions
 

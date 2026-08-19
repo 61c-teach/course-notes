@@ -44,7 +44,7 @@ In the C code below, `main` calls `sum_square`, which makes two calls to `mult`.
 :linenos:
 
 int main() {
-  int z = sum_quare(3, 4);
+  int z = sum_square(3, 4);
   ...
 }
 

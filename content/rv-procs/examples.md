@@ -53,9 +53,9 @@ Which lines correspond to the prologue and epilogue of the `factorial` procedure
 :::{note} Show Answer
 :class: dropdown
 
-Start with the **epilogue**, which is labeled (the label `epilogue` on line 18  is tied to the `lw` instruction on line 19). Instructions on lines 19, 20, and 21 load values back into saved register `s0` and return address `ra`. and increment the stack pointer `sp`. Finally, line 22 `jr ra` returns to the caller function.
+Start with the **epilogue**, which is labeled (the label `epilogue` on line 18  is tied to the `lw` instruction on line 19). Instructions on lines 19, 20, and 21 load values back into saved register `s0` and return address `ra`, then increment the stack pointer `sp`. Finally, line 22 `jr ra` returns to the caller function.
 
-If the epilogue is "tear down," the **prologue** is "set up." We can see that instructions on lines 6, 7, and 8 decrement the stack pointer `sp` and store *callee-saved** registers `s0` and `ra` on the stack, which are used in the procedure itself.
+If the epilogue is "tear down," the **prologue** is "set up." We can see that instructions on lines 6, 7, and 8 decrement the stack pointer `sp` and store **callee-saved** registers `s0` and `ra` on the stack, which are used in the procedure itself.
 :::
 
 ### Discussion Questions
@@ -107,10 +107,10 @@ The [calling convention](#sec-rv-calling-convention) means saved registers like 
 :::{note} Show answer
 :class: dropdown
 
-The branch instruction `bne` compare two registers. This instruction checks for our base case, which (as per Line 10) is `1`. We therefore load the immediate `1` into register `t0`.[^a0-s0] [^base-case-zero]
+The branch instruction `bne` compares two registers. This instruction checks for our base case, which (as per Line 10) is `1`. We therefore load the immediate `1` into register `t0`.[^a0-s0] [^base-case-zero]
 
 [^a0-s0]: Given the `mv s0 a0` instruction, we could have equivalently replaced the branch instruction `bne s0 t0 recurse` with `bne a0 t0 recurse`. The code likely uses the former to distinguish register naming conventions for register `a0`, which is both the first function argument and the return value. The register `s0` is designated as the value of $n$ in $\text{factorial}(n)$, and the register `a0` will soon become the return value (as per line 12).
-[^base-case-zero]: Factorially is [mathematically defined](https://en.wikipedia.org/wiki/Factorial) over all non-negative numbers, including $0!= 1$. The lecture code pedagogically chooses to ignore the zero case to show you `bne` with two non-zero register values.
+[^base-case-zero]: Factorial is [mathematically defined](https://en.wikipedia.org/wiki/Factorial) over all non-negative numbers, including $0!= 1$. The lecture code pedagogically chooses to ignore the zero case to show you `bne` with two non-zero register values.
 :::
 
 
@@ -234,7 +234,7 @@ foo:          # int foo(int i)
   sw ra 0(sp)   # Prologue
   sw s0 4(sp)   # Prologue
   mv s0 a0      # Move i
-  bne s0 x0 Next# if i != 0, skip this
+  bne s0 x0 Next # if i != 0, skip this
   li a0 0       # int a = 0;
   j Epilogue    # Go to Epilogue
               # (to restore stack)

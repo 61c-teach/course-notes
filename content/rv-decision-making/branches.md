@@ -177,7 +177,7 @@ Again, both choices are valid. Again, Choice B uses `bne` and more closely repre
 | `blt rs1 rs2 Label` | Branch if Less Than (signed) (rs1 < rs2) |
 | `bge rs1 rs2 Label` | Branch if Greater or Equal (signed) (rs1 >= rs2) |
 | `bltu rs1 rs2 Label` | Branch if Less Than (unsigned) |
-| `bgeu rs1 rs2 Label` | Branch if Greater Than or Equal (unsigned) |
+| `bgeu rs1 rs2 Label` | Branch if Greater or Equal (unsigned) |
 :::
 
 This set[^mnemonic] is sufficient to describe the C comparators: `==`, `!=`, `>`, `<`, `>=`, `<=` for signed and unsigned integers. From the [RV32I Specification](https://docs.riscv.org/reference/isa/unpriv/rv32.html#2-6-2-conditional-branches):
