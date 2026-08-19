@@ -39,7 +39,7 @@ From [earlier](#sec-pipeline-hazards):
 
 Data hazards occur because instructions read from and write to the same registers and memory. From P&H 4.6:
 
-> Suppose you found a sock at the folding station for which no match existed. One possible strategy is to run down to your room and search through your clothes bureau to see if you can find the match. Obviously, while you ar edoing the search, loads that have completed drying are ready to fold and those that have finished are ready to dry.
+> Suppose you found a sock at the folding station for which no match existed. One possible strategy is to run down to your room and search through your clothes bureau to see if you can find the match. Obviously, while you are doing the search, loads that have completed drying are ready to fold and those that have finished are ready to dry.
 
 In this section, we discuss how the five-stage pipelined processor can be modified to mitigate performance hits due to data hazards.
 
@@ -620,7 +620,7 @@ If an instruction immediately after a load instruction (i.e., in the **load dela
 Consider the instruction sequence in [Example 4](#data-hazard-4) (the previous Quick Check). The pipeline must stall for one cycle to avoid the `lw`-`or` data hazard:
 
 
-:::{list-table} [Example 4](#data-hazard-4): With a hazard detection unit in the ID stage, a bubble is inserting beginning in cycle 5, changing the `or` instruction to a nop. The `or` instruction is fetched and decoded in cycles 3 and 4, but its `EX` stage is delayed until clock cycle 6.
+:::{list-table} [Example 4](#data-hazard-4): With a hazard detection unit in the ID stage, a bubble is inserted beginning in cycle 5, changing the `or` instruction to a nop. The `or` instruction is fetched and decoded in cycles 3 and 4, but its `EX` stage is delayed until clock cycle 6.
 :label: data-hazard-4-load
 :header-rows: 1
 
