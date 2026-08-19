@@ -152,8 +152,8 @@ We need 42 bits at minimum to address 2.5 TiB of memory.
 You should become very familiar with both base-10 and binary prefixes. Here are some mnemonics, courtesy of previous students and instructors:
 
 * Kid meets giant Texas people exercising zen yoga. – Rolf O
-* Kind men give ten percent extra, zestfully, youthfully. – Have E
-* Kindness means giving, teaching, permeating excess zeal yourself. – Have E
+* Kind men give ten percent extra, zestfully, youthfully. – Hava E
+* Kindness means giving, teaching, permeating excess zeal yourself. – Hava E
 * Kindergarten means giving teachers perfect examples (of) zeal (&) youth
 * Kissing Mel Gibson, Teddy Pendergrass exclaimed: “Zesty, yo!” – Dan G
 * Kissing mom gives ten percent extra zeal & youth!

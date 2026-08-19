@@ -145,7 +145,7 @@ space has been deallocated by a call to free() or realloc(), the
 behavior is undefined.
 ```
 
-In other words, when you free memory: pass in the original address returned from `malloc`, and do not "double free". These arguments will produce undefined behavior. For example, passing in `ptr+1` would still technically point to somewhere in the original memory block, Above, the start of the `malloc`-ed heap block is the address stored in `ptr`. While passing in `ptr+1` would still technically point to somewhere within this memory block, depending on how `free` is implemented, `free(ptr+1)` may crash the program...or worse...
+In other words, when you free memory: pass in the original address returned from `malloc`, and do not "double free". These arguments will produce undefined behavior. Above, the start of the `malloc`-ed heap block is the address stored in `ptr`. While passing in `ptr+1` to `free` would still technically point to somewhere within this memory block, depending on how `free` is implemented, `free(ptr+1)` may crash the program...or worse...
 
 Why does the heap not check for these mistakes in runtime? In C, memory allocation is simply so performance-critical that there just isn't time to do this. The usual result is that you somehow corrupt the memory allocator's internal structure, and you won't find out until much later on in a totally unrelated part of your code. It's like not brushing your teeth regularly; you'll pay for it years later, and via symptoms not related to your teeth...
 
@@ -289,7 +289,7 @@ A **memory leak** is a failure to `free()` allocated memory.
 
 ### Use after free
 
-Recall that a **dangling reference** is when you keep using a pointer, even after it has been deallocated. In the below code, Line 
+Recall that a **dangling reference** is when you keep using a pointer, even after it has been deallocated. In the below code, Line 7 has a dangling reference because it uses `foo` after it has already been freed in Line 5.
 
 ```{code} c
 :linenos:
@@ -351,4 +351,4 @@ nums = realloc(nums, 20*sizeof(int));
 
 ## Valgrind
 
-In general, to catch memory management errors, use tools like [Valgrind](https://valgrind.org/). Valgrind slows down your program by an order of magnitude, but is invaluable for testing and debugging C code.extremely useful for testing. It adds many checks to catch most errors (but not all), including the most common cases described in this chapter: memory leaks, misusing `free()`, and writing over the ends of the arrays.
+In general, to catch memory management errors, use tools like [Valgrind](https://valgrind.org/). Valgrind slows down your program by an order of magnitude, but is invaluable for testing and debugging C code. It adds many checks to catch most errors (but not all), including the most common cases described in this chapter: memory leaks, misusing `free()`, and writing over the ends of the arrays.

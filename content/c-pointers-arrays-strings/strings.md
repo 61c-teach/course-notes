@@ -12,7 +12,7 @@ No video.
 
 ## C Strings vs. `char` arrays
 
-A **C string** (i.e., "string") is just an array of characters, followed by a **null terminator**. A **null terminator** is the byte of all 0's, i.e., the '\0' character. The ASCII value of the null terminator is `0`. 
+A **C string** (i.e., "string") is just an array of characters, followed by a **null terminator**. A **null terminator** is the byte of all 0's, i.e., the `'\0'` character. The ASCII value of the null terminator is `0`. 
 
 The null terminator lets us determine the length of a C string from just a pointer to the beginning of the string.
 
@@ -87,7 +87,10 @@ int strlen(char s[]) {
 * Line 3: Lots going on in this while loop.
   * Body: Increment `n` by one.
   * Condition:
-    * Increment the value of `s` by one. This evaluates to the Before doing that, get the current value at `s`.
+    * Increment the value of `s` by one. Before doing that, dereference `s` to get the current character.[^post-increment] The value of the expression is the current character.
+    * Evaluate to `true` if the current character is not the null character (`'\0'` has binary value `0`).
+
+[^post-increment]: `*(s++)` uses **post-**increment: first dereference `s` to read the current character, then increment `s` by one. C also supports the **pre-**increment (and -decrement) operator `(++s)` (and `(--s)`), which evaluates to the value after the operation completes. The differences are out of scope for this course.
 :::
 
 ## String literals

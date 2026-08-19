@@ -35,7 +35,7 @@ While we said that we would use generics sparingly to avoid program bugs, you ha
 * `void free(void *ptr)`
 * `void *realloc(void *ptr, size_t size)`
 
-These functions are **generic functions** (or **generics**[^java] for short) because they return or use do not assume anything about the type of the memory being allocated or freed. As described in a [previous section](#sec-heap), we cast the return values of `malloc` and `realloc` calls to the appropriate pointer types and use them in local, typed pointer variables.
+These functions are **generic functions** (or **generics**[^java] for short) because they do not assume anything about the type of the memory being allocated or freed. As described in a [previous section](#sec-heap), we cast the return values of `malloc` and `realloc` calls to the appropriate pointer types and use them in local, typed pointer variables.
 
 [^java]: Java also supports generics to (among other things) support the creation of data structures that can hold any reference type, e.g.,  `DataStructure<T>`
 
@@ -145,7 +145,7 @@ Right before `swap_string` call returns.
 Click below to show the explanation of @fig-swap-string-before and @fig-swap-string-after.
 
 :::{note} Explanation
-asdf:class: dropdown
+:class: dropdown
 
 @fig-swap-string-before:
 

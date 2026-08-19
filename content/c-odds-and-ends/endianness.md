@@ -188,7 +188,7 @@ Read more about endianness on [Wikipedia](https://en.wikipedia.org/wiki/Endianne
 
 ### Run Demo
 
-The below instructions are mostly for reference. We suggest going through Lab 02 first so you have some experience with `gdb`. Note that in order to connect `gdb` to the source file, you will need 
+The below instructions are mostly for reference. We suggest going through Lab 02 first so you have some experience with `gdb`. Note that in order to connect `gdb` to the source file, you will need to run the below `make` command, which compiles the program with debugging symbols.
 
 :::{note} Demo gdb commands
 :class: dropdown

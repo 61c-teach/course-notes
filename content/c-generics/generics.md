@@ -83,7 +83,7 @@ swap.c:12:9: error: invalid use of void expression
 
 There are two main reasons this code won't work. First, we cannot declare untyped variables, so a declaration like `void temp;` errors. Second, dereferencing `void *` pointers _does not yield_ [_anything usable_](https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Void-Pointers.html).
 
-Consider what it means to dereference a pointer, say, declared and initialized as `int32_t *p = ...;` pointer means. This means we know that the `p` is an address of an `int32_t` value, and dereferencing with `*p` _accesses those 4 bytes of memory_. This allows the compiler to translate later statements like `(*p) + 4` into integer arithmetic, _because it knows that `*p` is an `int32_t`-typed value.
+Consider what it means to dereference a pointer, say, declared and initialized as `int32_t *p = ...;`. This means that `p` is an address of an `int32_t` value, so dereferencing with `*p` _accesses those 4 bytes of memory_. This allows the compiler to translate later statements like `(*p) + 4` into integer arithmetic, _because it knows that `*p` is an `int32_t`-typed value_.
 
 :::{hint} You can only dereference typed pointers!
 To dereference a pointer, we must know the number of bytes to access in memory at **compile time**. Generic pointers (`void *`) **cannot** use the dereference operator!
