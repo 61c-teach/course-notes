@@ -120,7 +120,7 @@ Because the C heap does not do automatic garbage collection, as C programmers we
 > 
 > Godfather: [_strokes pet cat_] Some day–and that day may never come–I may call on you to do a favor for me. But until that day, I will give you this with `malloc` under the contract that you must free it when you are done...
 
-[^godfather]: Watch the lecture video for a good [_Godfather_ (1972)](https://www.imdb.com/title/tt0068646/)impression. Timestamp 3:24
+[^godfather]: Watch the lecture video for a good [_Godfather_ (1972)](https://www.imdb.com/title/tt0068646/) impression. Timestamp 3:24
 
 :::{card} Allocate/deallocate heap memory
 ^^^
@@ -154,7 +154,7 @@ Why does the heap not check for these mistakes in runtime? In C, memory allocati
 `realloc` is a function that resizes a previously allocated block at ptr to a new size. In doing so, it _may_ need to copy all data to a new location.
 
 * **Parameter `void *ptr`**: A pointer containing an address originally returned by `malloc`/`realloc`, OR the value `NULL`.
-* **Parameter `size_t size`**: An unsigned integer type big enough to "count" memory bytes."
+* **Parameter `size_t size`**: An unsigned integer type big enough to "count" memory bytes.
 * **Return**: `void *` pointer, i.e., a pointer to generic space. A return value `NULL` indicates there is no more memory available on the heap.
 
 From the Linux `man` page:

@@ -38,7 +38,7 @@ How do Python and Java programs compare? They differ mainly in _when_ a program 
 
 **2. Generally much faster runtime performance.** Compiled C will generally run faster compared to functionally equivalent Java code. After all, the compilation process optimizes code for a given architecture.
 
-Note that depending on your application, you may still prefer Python because (1) there are libraries written for Python that are optimized for GPUs; equivalent usable libraries might not exist for C. Python also has [Cython](https://en.wikipedia.org/wiki/Cython), which you may see in a future class.
+Note that depending on your application, you may still prefer Python because there are libraries written for Python that are optimized for GPUs; equivalent usable libraries might not exist for C. Python also has [Cython](https://en.wikipedia.org/wiki/Cython), which you may see in a future class.
 
 ## Compilation: Disadvantages
 

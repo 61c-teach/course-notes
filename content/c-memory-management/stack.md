@@ -66,7 +66,7 @@ An extended animation of stack memory management in C.
 
 1. `main()` is called as soon as the program loads. One stack frame for `main` is allocated by moving stack pointer `sp` down to the start of this new frame (recall: blocks of memory are referred to by their lowest address).
 2. `a(0)` is called by `main`. `sp` moves down. Local variables for `a` are initialized in stack memory starting from `sp` and going upwards. `sp` creates enough space to store local variables, whose sizes are known at compile-time. So there is no risk that initializing these variables will spill into `main`'s frame.
-3. `b(1)` is called by `a`. Stack frame for `b` is allocated right below stack frame of `b`. Stack pointer `sp` moves down to the start of this new frame.
+3. `b(1)` is called by `a`. Stack frame for `b` is allocated right below stack frame of `a`. Stack pointer `sp` moves down to the start of this new frame.
 4. `c(2)` is called by `b`, etc.
 5. `d(3)` is called by `c`, etc.
 6. When `d` finishes executing, "return" control to the caller function `c` by (1) setting the next instruction to execute to the return address[^stack-info], and (2) popping off the stack frame, i.e., updating `sp` to the end of stack frame for `d`, which is also the start of the stack frame for `c`. `c` is now the function to continue executing.

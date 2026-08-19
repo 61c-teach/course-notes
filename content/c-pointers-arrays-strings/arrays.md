@@ -46,7 +46,7 @@ A C array is really just a big block of consecutive things in memory with certai
 To **declare** an array of two elements without initializing its values, we can use the below statement. This statement declares a block of memory large enough to hold two contiguous `int`s. It does not initialize values, so we can assume elements contain garbage:
 
 ```c
-int arr_unitialized[2];
+int arr_uninitialized[2];
 ```
 
 To **initialize and declare** an array of two elements 795 and 635, in that order:
@@ -299,7 +299,7 @@ for(i = 0; i <= N; ++i) {
 }
 ```
 
-Improper access off the end of an array is referred to as **buffer overflow**,[^buffer-overflow]. This very common bug can corrupt other parts of the program, including internal C data. Buffer overflow exploits are security vulnerabilities that can crash programs
+Improper access off the end of an array is referred to as **buffer overflow**[^buffer-overflow]. This very common bug can corrupt other parts of the program, including internal C data. Buffer overflow exploits are security vulnerabilities that can crash programs.
 
 [^buffer-overflow]: Take Computer Security to learn more! [Wikipedia](https://en.wikipedia.org/wiki/Buffer_overflow)
 :::

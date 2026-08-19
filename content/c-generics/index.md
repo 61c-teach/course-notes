@@ -115,7 +115,7 @@ void swap_string(char **ptr1, char **ptr2) {
 }
 ```
 
-Instead of making copies of `char` bytes, this function swaps the addresses of two `char *` variables (i.e., pointers to C strings). We could call `swap_str` with the below code.
+Instead of making copies of `char` bytes, this function swaps the addresses of two `char *` variables (i.e., pointers to C strings). We could call `swap_string` with the below code.
 
 (code-swap-string-main)=
 ```{code} c
@@ -156,8 +156,8 @@ Click below to show the explanation of @fig-swap-string-before and @fig-swap-str
 @fig-swap-string-after:
 
 * [Line 2](#code-swap-string): The local variable `temp` makes a copy of the value at `ptr1`, which is `0x0FACE0`.
-* [Line 3](#code-swap-string): Set the value at `ptr1` to a copy of the value at `ptr2`. The right-hand side, `*ptr2`, dereferences `ptr2` and evaluates to `0x0ABBA0` (because those are the bytes at the address `0x7F...F4`). The left-hand side, `*ptr1`, denotes the target location–the bytes at address `0x07F...F0`.
-* [Line 4](#code-swap-int): Set the value at `ptr2` to a copy of `temp`. The right-hand side evaluates to the value `0x0FACE0`. The left-hand side, `*ptr2`, denotes the target location to store these bytes–at address `0x07F...F4`.
+* [Line 3](#code-swap-string): Set the value at `ptr1` to a copy of the value at `ptr2`. The right-hand side, `*ptr2`, dereferences `ptr2` and evaluates to `0x0ABBA0` (because those are the bytes at the address `0x7F...F4`). The left-hand side, `*ptr1`, denotes the target location–the bytes at address `0x7F...F0`.
+* [Line 4](#code-swap-string): Set the value at `ptr2` to a copy of `temp`. The right-hand side evaluates to the value `0x0FACE0`. The left-hand side, `*ptr2`, denotes the target location to store these bytes–at address `0x7F...F4`.
 
 :::
 

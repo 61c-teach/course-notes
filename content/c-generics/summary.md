@@ -18,8 +18,7 @@ IEC Prefixes like MiB, GiB are not technically C material but were covered in th
   * Instead, use byte handling functions (`memcpy`, `memmove`).
   * Pointer arithmetic: first cast to byte arrays with (`char *`).
 
-* Function pointers enable higher-order functions in C.
-map, filter, sorting, etc.
+* Function pointers enable higher-order functions in C, e.g., map, filter, sorting, etc.
 
 ## Textbook Readings
 

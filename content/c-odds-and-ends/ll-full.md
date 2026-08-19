@@ -87,7 +87,7 @@ Notes:
 
 (card-ll-source)=
 :::{card}
-Source file: `linkedlist.h`
+Source file: `linkedlist.c`
 ^^^
 
 ```{code} c

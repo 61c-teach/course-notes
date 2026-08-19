@@ -42,7 +42,7 @@ char arr[] = {'h', 'e', 'l', 'l', 'o'};
 :::
 
 :::{note} Show Answer
-:class: Dropdown
+:class: dropdown
 
 No. While `arr` is a `char` array, it does not end in a null terminator and by definition is not a C string.
 :::

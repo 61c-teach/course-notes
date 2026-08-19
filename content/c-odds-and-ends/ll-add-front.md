@@ -51,7 +51,7 @@ struct _node {
 };
 ```
 
-Each `node_t` is has two fields: `data`, which has a pointer (e.g., the node "stores" a string), and `next`, which is a pointer to another `node_t`. The recursive structure means that a node's`next` pointer points to another `node_t`, which then points to the next `node_t`, and so on, until the last node's `next` member is `NULL`, signifying the end of the list.
+Each `node_t` has two fields: `data`, which has a pointer (e.g., the node "stores" a string), and `next`, which is a pointer to another `node_t`. The recursive structure means that a node's `next` pointer points to another `node_t`, which then points to the next `node_t`, and so on, until the last node's `next` member is `NULL`, signifying the end of the list.
 
 To make our code cleaner, we use `typedef`. Line 1 declares `node_t` as an alias of `struct _node`, which has been forwardly declared but not defined. Lines 2 onwards then define the fields of the `struct _node`.[^typedef-struct]
 
@@ -86,7 +86,7 @@ void add_to_front(node_t **head_ptr, char *data) {
 }
 ```
 
-Consider the `add_to_front` function above. The function takes in two pointers: one to a linked list (a **double pointer** `node_t head_ptr`) and a string, `char * data`.
+Consider the `add_to_front` function above. The function takes in two pointers: one to a linked list (a **double pointer** `node_t **head_ptr`) and a string, `char * data`.
 Recall that pointers are lightweight ways to pass data into a function, even if the linked list or the string itself is quite large.
 
 But why a double pointer? We will discuss this once we trace through the code, line by line.
@@ -147,7 +147,7 @@ Line 11
 
 ### [Line 12](#code-ll-add): Update new node's next pointer
 
-Next, we set the `next` field of `node`. This is a great example of sharing; the new node’s next pointer now points to the original head of the list. Note that we dereference with `*head_ptr` because is a double pointer to a node. In this case, the `head_ptr` points to `NULL`, so dereferencing `head_ptr` gives us the address `NULL`, which we copy into the struct.
+Next, we set the `next` field of `node`. This is a great example of sharing; the new node’s next pointer now points to the original head of the list. Note that we dereference with `*head_ptr` (a double pointer to a node). In this case, the `head_ptr` _points to_ `NULL`, so dereferencing `head_ptr` gives us the address `NULL`, which we copy into the struct.
 
 :::{figure} images/ll-line12.png
 :label: fig-ll-line-12
@@ -183,4 +183,4 @@ Return from function call at Line 4
 
 ## Conclusion
 
-This example shows how to fluently work with structs and pointers in C. We will keep showing you more examples so you get more comfortable with how memory management works. Good luck, and see you in the next sectoin!
+This example shows how to fluently work with structs and pointers in C. We will keep showing you more examples so you get more comfortable with how memory management works. Good luck, and see you in the next section!

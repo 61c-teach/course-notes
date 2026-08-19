@@ -35,7 +35,7 @@ We will cover hardware words in much more detail when we learn about instruction
 (sec-address-space)=
 ## The Address Space
 
-The **address space** is the hypothetical range of addressable memory locations on a particular machine. For example, a 32-bit architecture, a pointer can address $2^32$ locations in memory[^in-practice]. Because memory is byte-addressable and contiguous, our address space size for a program is therefore $2^32$ bytes (or 4 GiB, "four gibi-bytes". We cover this notation later).
+The **address space** is the hypothetical range of addressable memory locations on a particular machine. For example, a 32-bit architecture, a pointer can address $2^{32}$ locations in memory[^in-practice]. Because memory is byte-addressable and contiguous, our address space size for a program is therefore $2^{32}$ bytes (or 4 GiB, "four gibi-bytes". We cover this notation later).
 
 [^in-practice]: Logically,  not in practice. Some areas of memory are read/write protected, e.g., accessing memory at the address `0` (`NULL`) causes an error.
 
@@ -47,7 +47,7 @@ On a 32-bit architecture, what is `sizeof(int *)`? `sizeof(char *)`?
 :::{note} Show Answer
 :class: dropdown
 
-A pointer on a 32-bit architecture must be large enough to represent all possible addresses in the address space. The address space of a 32-bit architecture is the $2^32$ byte addresses ranging from `0x00000000` to `0xFFFFFFFF`. These correspond to bit patterns of 32 bits, so a pointer must be able to store 32 bits of information.
+A pointer on a 32-bit architecture must be large enough to represent all possible addresses in the address space. The address space of a 32-bit architecture is the $2^{32}$ byte addresses ranging from `0x00000000` to `0xFFFFFFFF`. These correspond to bit patterns of 32 bits, so a pointer must be able to store 32 bits of information.
 
 All pointers on a 32-bit architecture must therefore be 4 bytes wide[^why-not-larger], so `sizeof(int *)` is `sizeof(char *)` is `sizeof(int **)` is 4.
 
@@ -58,7 +58,7 @@ All pointers on a 32-bit architecture must therefore be 4 bytes wide[^why-not-la
 
 Before we discuss our example, we'd like to share a diagram of memory that, while confusing at first glance, will be extremely useful in interpreting the memory layout of any compiled C program.
 
-Recall that memory on a 32-bit architecture is laid out as a very long array of $2^32$ bytes. A very long array would not fit on any page, whether horizontally or vertically. Instead, we use a visualization like @tab-mem-layout, which shows memory as rows of 4 bytes, from low to high addresses:
+Recall that memory on a 32-bit architecture is laid out as a very long array of $2^{32}$ bytes. A very long array would not fit on any page, whether horizontally or vertically. Instead, we use a visualization like @tab-mem-layout, which shows memory as rows of 4 bytes, from low to high addresses:
 
 * In the rightmost four columns, "xx" values refer to data (hypothetical or otherwise) at each of four bytes of memory. These four bytes have contiguous memory addresses. 
 * The leftmost column denotes the *lowest* address of the bytes in that row, i.e., the address of the rightmost byte.
@@ -144,7 +144,7 @@ Recall that the address of a stored value is the **lowest** address among the by
 
 * `value` (the 32-bit signed integer 305419896 in decimal) has four bytes: `0x12`, `0x34`, `0x56`, and `0x78`. The lowest address of these four bytes is the address of the byte `0x78`, which is `0x7FFFE168`.
 
-* `str` is the C-string `"hi!"` which has four bytes including the null-terminator: `'h'`, `'i'`, `'!'`, `'\0'`. The lowest address of these bytes is the address of `'h'`, which is `0x7FFFE16C` + 2, or `0x7FFFE16E`.
+* `str1` is the C-string `"hi!"` which has four bytes including the null-terminator: `'h'`, `'i'`, `'!'`, `'\0'`. The lowest address of these bytes is the address of `'h'`, which is `0x7FFFE16C` + 2, or `0x7FFFE16E`.
 
 :::
 
@@ -223,7 +223,7 @@ Of the four variables in @word-program, only `value` is the size of a word. The 
 
 ### Struct Alignment
 
-Let us revisit the idea of a `struct`.  and consider how much space each declared `struct` occupies. 
+Let us revisit the idea of a `struct` and consider how much space each declared `struct` occupies. 
 
 :::{card} Data structure alignment
 From [Wikipedia](https://en.wikipedia.org/wiki/Data_structure_alignment):

@@ -104,7 +104,7 @@ $ ./map_func
 :::
 
 [^fn-reference]: `(*fp)(arg)` and
-`fp = &fname` are stylistic choices and are not required by the C standard. However, their use is strongly recommended for readability. StackOverflow has multiple [multiple](https://stackoverflow.com/questions/7518815/function-pointer-automatic-dereferencing) [articles](https://stackoverflow.com/questions/7518815/function-pointer-automatic-dereferencing) on this topic.
+`fp = &fname` are stylistic choices and are not required by the C standard. However, their use is strongly recommended for readability. StackOverflow has [multiple](https://stackoverflow.com/questions/7518815/function-pointer-automatic-dereferencing) [articles](https://stackoverflow.com/questions/7518815/function-pointer-automatic-dereferencing) on this topic.
 
 
 

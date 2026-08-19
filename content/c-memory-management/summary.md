@@ -8,14 +8,14 @@ C does not automatically handle memory for you, so it’s up to you, the program
 use, and free memory correctly. In each program, an address space is set aside, separated into 2
 dynamically changing regions and 2 ‘static’ regions.
 
-* **The Stack**: Stores local variables inside of functions. Data on the stack is garbage collected
+* **The Stack**: Stores local variables inside of functions. Data on the stack is automatically reclaimed—
 immediately after the function in which it was defined returns. Each function call creates a stack
 frame that holds the function’s arguments and local variables. The stack grows downwards with
 nested function calls (LIFO structure), and shrinks upwards as functions return.
 * **The Heap**: Stores memory manually allocated by the programmer with malloc, calloc, or
 realloc. Used for data that needs to persist after the function returns. Grows upwards in
 memory to ‘meet’ the stack. Memory on the heap is only freed when the programmer explicitly
-frees it. Careful heap management is necessary to avoid tricky bugs called Heisenbugs!
+frees it. Careful heap management is necessary to avoid tricky, hard-to-reproduce bugs (Heisenbugs).
 * **Data (or Static)**: Stores data that is a fixed size, like global variables and string literals. Does not
 grow or shrink through function execution.
 * **Text (or Code)**: Is loaded at the start of the program and does not change after, contains
