@@ -64,9 +64,9 @@ The first, PC-relative addressing within the object module, has already been com
 
 See @fig-linker-instructions:
 
-* J-Format External jumps (e.g., to C library):
+* J-Format External jumps (e.g., to C library)
 * Instructions with absolute addresses, e.g., `auipc`/`jalr` or `auipc`/`addi`
-* Instructions that specify static data references, e.g., `lw`/`sw` (of static data), `auip`lui`/`addi` (when part of `la`[^la] or `li` pseudoinstruction).
+* Instructions that specify static data references, e.g., `lw`/`sw` (of static data), `auipc`/`lui`/`addi` (e.g., when part of `la`[^la] or `li` pseudoinstructions).
 * Loads/stores that access `.data` variables[^gp]
 
 [^gp]: Global pointer (`gp`) is a pointer to the data (static) segment. Out of scope for this course
@@ -98,16 +98,16 @@ Finally, the linker outputs an executable containing text and data along with he
 
 So far, we’ve described the traditional way: **statically-linked libraries**. The executable includes the entire library, even if not all of it is used by the user program. The library is now part of the executable–if the library updates, we won’t get the fix unless we recompile the user program.
 
-An alternative is **dynamically-linked libraries** (DLL), common Windows and UNIX platforms. The prevailing approach in this model is to link at the machine code level _at loadtime_: the loader makes room for the library, stuffs it in, and runs it.
+An alternative is **dynamically-linked libraries** (DLL), common on Windows and UNIX platforms. The prevailing approach in this model is to link at the machine code level _at loadtime_: the loader makes room for the library, stuffs it in, and runs it.
 
 Tradeoffs:
 
 * **Space vs. Time**:
   * With statically-linked libraries, we get a self-contained executable that ultimately is very large. 
-  * With DLL, storing a program requires less disk space; less time to send a program. Furthermore, two programs requires less memory (if they share a library). However, there is now **runtime overhead**; there is extra time needed do dynamically link libraries.
+  * With DLL, storing a program requires less disk space; less time to send a program. Furthermore, two programs require less memory (if they share a library). However, there is now **runtime overhead**; there is extra time needed to dynamically link libraries.
 * **Reasonable handling of upgrades**
   * With statically-linked libraries, if a library has a security hole or a bug fix, every single developer has to recompile and resend updates to their users because the old, broken library is baked into their `a.out`.
-  * With DLL. replacing libXYZ.so upgrades every program using library XYZ. However, DLL introduces complexity: we now need **multiple files** to run a single program. Having the program executable isn’t enough anymore!
+  * With DLL, replacing libXYZ.so upgrades every program using library XYZ. However, DLL introduces complexity: we now need **multiple files** to run a single program. Having the program executable isn’t enough anymore!
 
 Overall dynamic linking adds complexity to compiler, linker and OS. However, its benefits outweigh its complexities.
 
