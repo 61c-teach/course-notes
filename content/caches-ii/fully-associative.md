@@ -240,7 +240,7 @@ Address `0x524` in binary: `0b0101 0010 0100`
 * Tag: `0b0101001001`, or `0x149`
 * Offset: `0b00`
 
-1. **Cache Miss**. No valid tags in the cache match `0x178`.
+1. **Cache Miss**. No valid tags in the cache match `0x149`.
 1. **Access lower level of memory hierarchy**. Load into a selected cache entry a block's worth of data from memory starting @ address `0x524` (`0b0101 0010 0100`). Write the tag `0x149`. Mark valid bit.
 1. **Read**. Read byte in cache block at offset `0b00` and return to processor.
 :::
@@ -311,11 +311,11 @@ Fully associative cache with least recently used (LRU) replacement policy.
 
 Address `0x972` in binary: `0b1001 0111 0010`
 
-* Tag: `0b100101110010`, or `0x25C`
+* Tag: `0b1001011100`, or `0x25C`
 * Offset: `0b10`
 
 1. **Cache Miss**. No valid tags in the cache match `0x25C`.
-1. **Access lower level of memory hierarchy**. Select the least recently used entry (tag `0x10F`). Replace its block with a block's worth of data from memory starting @ address `0x970` (`0b10001 0111 0000`). Write the tag `0x25C`. Mark valid bit.
+1. **Access lower level of memory hierarchy**. Select the least recently used entry (tag `0x10F`). Replace its block with a block's worth of data from memory starting @ address `0x970` (`0b1001 0111 0000`). Write the tag `0x25C`. Mark valid bit.
 1. **Read**. Read byte in cache block at offset `0b10` and return to processor.
 :::
 
