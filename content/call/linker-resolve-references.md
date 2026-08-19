@@ -90,7 +90,7 @@ We will likely not test the details of resolving references, but for those who a
 
 1. The linker knows the **length** of each text and data segment and the **ordering** of text and data segments. The linker then **calculates the absolute address** of (1) each label to be jumped to, and (2) each piece of static data referenced.
 
-1. The linker then **resolves references**. It searches for each reference (data or label) in all "user" symbol tables. If not found, it then searches librari files (e.g., for `printf`). Once the absolute address is determined, it fills in the machine code appropriately by editing specific instructions for relocation.
+1. The linker then **resolves references**. It searches for each reference (data or label) in all "user" symbol tables. If not found, it then searches library files (e.g., for `printf`). Once the absolute address is determined, it fills in the machine code appropriately by editing specific instructions for relocation.
 
 Finally, the linker outputs an executable containing text and data along with header/debugging info.
 
