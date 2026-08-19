@@ -30,8 +30,6 @@ title: "Cache Terminology"
 
 ::::
 
-https://www.youtube.com/watch?v=DiH8xtQeCJA
-
 ## Principle of Locality
 
 

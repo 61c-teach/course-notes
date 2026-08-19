@@ -188,7 +188,7 @@ Address `0x43F` in binary: `0b0100 0011 1111`
     Spatial locality: Even if we only read in one byte, loading from memory will load the full block (here, 4B), where all bytes of data in the block share the same tag because they are from the same region of memory:
 
     * Least significant byte in block (offset `0b00`) is @ memory address `0x43C` (`0b0100 0011 1100`)
-    * Most significant byte in block (offset `0b11`) is @ memory address `0x43F` (`0x0b100 0011 1111`)
+    * Most significant byte in block (offset `0b11`) is @ memory address `0x43F` (`0b0100 0011 1111`)
 
 1. **Read**. Read byte in cache block at offset `0b11` (i.e., most significant byte in block)	and return to processor.
 
@@ -421,7 +421,7 @@ In this section, we traced through a cache design for a 12-bit address space wit
 * Block size: 4B
 * Capacity: 16B
 * Placement policy: Fully associative
-* Replacement policy: Least Reecntly Used
+* Replacement policy: Least Recently Used
 * Write policy: Write-back
 
 :::{figure} images/fa-all.png

@@ -17,7 +17,7 @@ title: "Library Analogy"
 
 ::::
 
-In this chapter, we focus on the concept of **memory** and discuss how memory design is critical to computer performance. In the below figure, we focus on two pieces, **caches** and **memory**, interact.
+In this chapter, we focus on the concept of **memory** and discuss how memory design is critical to computer performance. In the below figure, we focus on how two pieces, **caches** and **memory**, interact.
 
 :::{embed} #fig-great-idea-new-school
 :::
@@ -41,7 +41,7 @@ Suppose you are a Cal student and you would like to find a book in the main libr
 
 ### Why are large memories slow?
 
-Larger libraries worsen both delays: Large libraries will have expansive catalogs, making search longer. Moreover, large libraries physically have more books, so you'll walk to have farther in your round-trip retrieval.
+Larger libraries worsen both delays: Large libraries will have expansive catalogs, making search longer. Moreover, large libraries physically have more books, so you'll have to walk farther in your round-trip retrieval.
 
 Just like a library is an expansive "memory" of all books on a campus, electronic memories have the same issue. The delay in memory is compounded by the technology used (e.g., SRAM vs. DRAM vs. disk, discussed in the [bonus subsection below](#sec-storage)).
 

@@ -12,7 +12,7 @@ We have seen in a [previous section](#sec-cache-optimizations) how as computer a
 
 **Cache blocking** is a programmer technique that rearranges data accesses to make better use of the data brought into the cache and reduce cache misses.
 
-In this section, we consider one specific program benchmark: [matrix multiplication](#sec-dgemm). After trying an initial naive implementatno, we hhow knowing the underlying design of our cache can actually improve how we write programs.
+In this section, we consider one specific program benchmark: [matrix multiplication](#sec-dgemm). After trying an initial naive implementation, we show how knowing the underlying design of our cache can actually improve how we write programs.
 
 ## Matrix Multiplication (DGEMM)
 

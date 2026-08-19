@@ -41,7 +41,7 @@ While hardware performance has continued to improve, there is a persistent and i
 
 [^wulf-mckee]: Wm A. Wulf, Sally A. McKee. "Hitting the Memory Wall: Implications of the Obvious." ACM SIGARCH 1994. DOI: [10.1145/216585.216588](https://dl.acm.org/doi/10.1145/216585.216588)
 [^att]:  Maurice Wilkes. "The memory gap and the future of high performance memories." ACM SIGARCH 2001. DOI: [10.1145/373574.373576](https://dl.acm.org/doi/abs/10.1145/373574.373576)
-[^arxiv]: Amir Gholami et al. "AI and Memory Wall." IEEE Micro Journal 2024. Extended version on arXiV. DOI: [10.1109/MM.2024.3373763](https://doi.org/10.1109/MM.2024.3373763), [arXiV:20403.14123](https://arxiv.org/abs/2403.14123)/
+[^arxiv]: Amir Gholami et al. "AI and Memory Wall." IEEE Micro Journal 2024. Extended version on arXiV. DOI: [10.1109/MM.2024.3373763](https://doi.org/10.1109/MM.2024.3373763), [arXiV:2403.14123](https://arxiv.org/abs/2403.14123)
 
 :::{figure} images/graph-processor-dram-gap.png
 :label: fig-graph-processor-dram-gap
