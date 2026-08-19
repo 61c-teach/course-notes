@@ -297,7 +297,7 @@ We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 :width: 70%
 :alt: "Table diagram showing different outputs from 2-bit addition with varying carry-bits and signed interpretations, highlighting cases used to reason about overflow."
 
-2-bit adder overflow table diagram. Overflow occurs when adding $1 + (-2) = -1$, $1 + 1$, and $(-1) + (-2)$. Notably, the first is a valid addition, where the latter two produce incorrect results.
+2-bit adder overflow table diagram. The three highlighted additions overflow and produce incorrect results.
 :::
 
 ::::{note} Show Explanation of @fig-2bit-add-overflow-table
@@ -320,6 +320,8 @@ Three overflow results are boxed in @fig-2bit-add-overflow-table:
 * $-1 + (-2) = 1$, not $-3$
 
 The original @fig-2bit-add-overflow-table shows the bit patterns of these three additions (among others), resulting in the three observations in this section.
+
+Note it is still permissible to add operands with different signs. For example, $1 + (-2) = -1$ and $0 + 1 = 1$ do not produce overflow.
 
 ::::
 
@@ -346,7 +348,7 @@ We mentioned earlier that addition and subtraction are closely related, and ther
 As discussed in our initial [adder/subtractor design](#fig-add-sub-block), a control bit SUB signals if the add/subtract block should perform subtraction. We note the following holds, due to two's complement:
 
 * When SUB=0 the circuit performs the addition `A + B`.
-* When SUB=1, the circuit performs the subtraction `A - B`. The following statements are erquivalent:
+* When SUB=1, the circuit performs the subtraction `A - B`. The following statements are equivalent:
   * Compute `A + (-B)`, where `B` is the two's complement.
   * Compute `A + ~B + 1`. This is the definition of two's complement: invert bits and add 1.
 

@@ -103,7 +103,7 @@ For digital circuits, we keep signals **simple** (i.e., binary values only) and 
 :::{note} Why not go beyond a binary signal representation?
 :class: dropdown
 
-Early computers represented signals as decimals–not binary. However, all wires subject to interference/non-idealities, which grows worse at smaller sizes. 
+Early computers represented signals as decimals–not binary. However, all wires are subject to interference/non-idealities, which grows worse at smaller sizes. 
 
 As chips get more complex, wires get smaller. Circuits to discriminate between _two_ possible inputs are simple to implement and have scaled well with Moore’s Law. **Binary representations** for signals therefore produce reliability via good noise immunity.
 
@@ -201,6 +201,6 @@ Synchronous Digital Systems consist of two basic types of circuits: combinationa
 Combinational logic circuits have **no memory** of their previous inputs or outputs. The output is a function of nothing other than the inputs—like a mathematical function, e.g., $y = f(x)$. Combinational logic circuits have no way to store information from one invocation to the next and do not generate any side effects.
 
 Combinational logic circuits are used throughout processor implementations. They provide all the necessary functions needed to execute instructions, including all the arithmetic and logic operations,
-incrementing the program counter value, determining when to branch, calculation of new PC target values, etc. Not counting the area consumed by caches, _most of the area on microprocessor chip_s is used for combinational logic blocks.
+incrementing the program counter value, determining when to branch, calculation of new PC target values, etc. Not counting the area consumed by caches, _most of the area on a microprocessor chip_ is used for combinational logic blocks.
 
 **State elements**, or memory circuits, are circuits that store information. Unlike combinational logic circuits, these circuits remember their inputs (in CL, inputs are only used to generate outputs, but never remembered). The core component of stateful circuits are **state elements**. We discuss one such state element, the **register**, in detail in a later section.

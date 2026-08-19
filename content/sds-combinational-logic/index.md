@@ -29,7 +29,7 @@ title: "Logic Gates"
 ::::
 
 To design circuits that perform complex operations on binary signals, we must first define primitive operators called **logic gates**. Logic gates are
-simple circuits (each with only a handful of transistors) that can be wired together to implement any combinational logic function. In  CS 61C we consider logic gates are primitive elements; they are the basic building blocks for our circuits.
+simple circuits (each with only a handful of transistors) that can be wired together to implement any combinational logic function. In CS 61C we consider logic gates to be primitive elements; they are the basic building blocks for our circuits.
 
 
 The simplest logic gates are **binary** or **unary** operators that take as input one/two binary variables and output one binary value.
@@ -82,7 +82,7 @@ Four different representations:
 1. The function definition `y = AND(a, b)`. The second line uses the C bitwise operation `&`.
 1. The truth table for `y = AND(a, b)`. Each row enumerates each input combination and the corresponding output value.
 1. The logic gate symbol for AND, used as a graphical representation in digital circuit diagrams. 
-1. CMOS transistor circuit for  the AND logic gate.[^and-cmos]
+1. CMOS transistor circuit for the AND logic gate.[^and-cmos]
 
 [^and-cmos]: Out of scope for this course, but those interested, [read more](https://electronics.stackexchange.com/a/226028) about AND.
 

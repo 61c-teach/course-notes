@@ -19,7 +19,7 @@ subtitle: By John Wawrzynek, with edits by Lisa Yan
 
 ::::
 
-Last time we saw how to represent and design **combinational logic blocks**. In this section we will study a few special logic blocks; data multiplexors, a adder/subtractor circuit, and an arithmetic/logic unit.
+Last time we saw how to represent and design **combinational logic blocks**. In this section we will study a few special logic blocks; data multiplexors, an adder/subtractor circuit, and an arithmetic/logic unit.
 
 ## The Mux
 

@@ -133,7 +133,7 @@ Check your knowledge!
 :class: dropdown
 **NOT, AND, OR, XOR, NAND, NOR, XNOR**
 
-Here are the outputs for each boolean function combined into a single truth table. All possible combinations of the inputs ${x}$ and ${y}$ are shown the left, and the output of the the boolean function based on the current inputs is shown on the right
+Here are the outputs for each boolean function combined into a single truth table. All possible combinations of the inputs ${x}$ and ${y}$ are shown on the left, and the output of the boolean function based on the current inputs is shown on the right
 | Input(s) | NOT | AND | OR | XOR | NAND | NOR | XNOR |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 | ${x}$ ${y}$ | $\bar{x}$ | ${x}\cdot{y}$ | ${x}+{y}$ | ${x}\oplus{y}$| $\overline{{x}\cdot{y}}$ | $\overline{{x}+{y}}$ | $\overline{{x}\oplus{y}}$ |
