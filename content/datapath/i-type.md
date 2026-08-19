@@ -97,7 +97,7 @@ The `addi` datapath. Use the menu bar to trace through the animation or access t
         * Set `BSel` to `1`.
         * Set `ALUSel` to `Add`.
 
-    After some delay, the immediate generator block updates its output signal `imm` to the appropriate sign-extended 32-bit immediate value, register value `R[rs1]` is read, and control signals are set.
+    After some delay, the immediate generator block's output signal `imm` is updated to the appropriate sign-extended 32-bit immediate value, register value `R[rs1]` is read, and control signals are set.
 
 1. **Execute**: Because the control line `BSel=1` selects the generated immediate `imm` for ALU input `B`, our ALU computes `R[rs1] + imm`.
 
@@ -258,7 +258,7 @@ Immediate Generator Block: I-Type, S-Type
 :class: dropdown
 
 1. `imm[31:12]`: **Sign-extend**. In both instruction formats, `inst[31]` is the sign bit of the immediate. Copy the **sign bit** `inst[31]` to the upper 20 bits of the immediate, `imm[31:12]`.
-1. `imm[11:5]`: **Wire**. Directly connect the instruction bits `imm[31:25]` to the output `imm[11:5]`.
+1. `imm[11:5]`: **Wire**. Directly connect the instruction bits `inst[31:25]` to the output `imm[11:5]`.
 1. `imm[4:0]`: **Select**. Select the five bits to fill `imm[4:0]`: `inst[24:20]` if I-Type, and `inst[11:7]` if S-Type.
 :::
 
@@ -271,7 +271,7 @@ Finally, suppose our datapath supports I-Type, S-Type, and B-Type instructions. 
 :label: fig-immgen-i-s-b-type
 :alt: "ImmGen for I-type, S-type, and B-type with multiple muxes routing scattered instruction bits, sign extension, and implicit zero placement."
 
-Immediate Generator Block: I-Type, S-Type
+Immediate Generator Block: I-Type, S-Type, B-Type
 :::
 
 :::{note} Show Explanation
@@ -279,8 +279,8 @@ Immediate Generator Block: I-Type, S-Type
 
 1. `imm[31:12]`: **Sign-extend**. In all three instruction formats, `inst[31]` is the sign bit of the immediate. Copy the sign bit `inst[31]` to the upper 20 bits of the immediate, `imm[31:12]`.
 1. `imm[11]`: **Select** `inst[31]` if I-Type or S-Type, and `inst[7]` if B-Type.
-1. `imm[10:5]`: **Wire**. Directly connect the instruction bits `imm[30:25]` to the output `imm[10:5]`.
-1. `imm[4:1]`: **Select**. `inst[24:20]` if I-Type, and `inst[11:8]` if S- or B-Type.
+1. `imm[10:5]`: **Wire**. Directly connect the instruction bits `inst[30:25]` to the output `imm[10:5]`.
+1. `imm[4:1]`: **Select**. `inst[24:21]` if I-Type, and `inst[11:8]` if S- or B-Type.
 1. `imm[0]`: **Select**. `inst[20]` if I-Type, `inst[7]` if S-Type, and `0` ([implicit](#sec-implicit-zero-b-type)) if B-Type.
 
 :::

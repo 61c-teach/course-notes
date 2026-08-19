@@ -102,7 +102,7 @@ The `add` datapath. Use the menu bar to trace through the animation or access th
 
     After some delay, the RegFile updates the `rdata1` and `rdata2` signals to the values of `R[rs1]` and `R[rs2]`, where `rs1` and `rs2` are determined from the instruction `inst`.
 
-1. **Execute**: Our ALU (see [below](#sec-datapath-alu)) should perform the Addition operation. For now, we just mark this block as an Adder. Feed in the two RegFile output signals into the `A` and `B` inputs of the "ALU." After some delay, the 
+1. **Execute**: Our ALU (see [below](#sec-datapath-alu)) should perform the *Addition* operation. For now, we just mark this block as an Adder. Feed in the two RegFile output signals into the `A` and `B` inputs of the "ALU" (marked as an Add block in @anim-datapath-add). After some delay, the block's output signal is updated to the *sum* of the two input values.
 
 1. **Memory**: (We don't access memory, so skip this.)
 
