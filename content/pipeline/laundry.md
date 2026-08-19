@@ -215,7 +215,7 @@ Based on @tab-processor-compare, our **throughput gain**, or pipelining speedup,
 [^no-hazards]: We assume no [load data hazards](#sec-data-hazards-load) in this program.
 
 * The single-cycle processor takes $10^{6} \cdot t_{cycle}$ = 800,000,000 ps.
-* The pipelined processor takes $10^{6} \cdot t_cycle + 4 \cdot t_cycle$ = 200,000,800 ps, where there are four cycles to accommodate the "startup" time of the pipeline (where not all stages of pipeline are used).
+* The pipelined processor takes $10^{6} \cdot t_{cycle} + 4 \cdot t_{cycle}$ = 200,000,800 ps, where there are four cycles to accommodate the "startup" time of the pipeline (where not all stages of pipeline are used).
 
 If we take the ratio of total execution times:
 
@@ -252,12 +252,14 @@ Instead of repeatedly drawing the same tiny diagram as in @fig-pipelined-process
   - 4
   - 5
   - 6
+  - 7
 * - `add s0 t0 t1`
   - IF
   - ID
   - EX
   - M
   - WB
+  -  
   -  
 * - `or  t3 t4 t5`
   -  
@@ -266,6 +268,7 @@ Instead of repeatedly drawing the same tiny diagram as in @fig-pipelined-process
   - EX
   - M
   - WB
+  -  
 * - `lw  t6 8(t7)`
   - 
   - 

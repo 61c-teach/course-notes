@@ -80,7 +80,6 @@ The `addi` datapath. Use the menu bar to trace through the animation or download
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vTd4As46cq50NW45y6rUi3eNLajyd-yaaiO2hky-fUgX5G5i5vQCgvdo0hQ78c2Bg/pubembed?start=false&loop=false
 :width: 100%
 :title: "Slides tracing through the `addi` Datapath."
-:alt: "Immediate generator block taking instruction bits and ImmSel control to produce a 32-bit sign-extended immediate output."
 :::
 The `addi` datapath. Use the menu bar to trace through the animation or access the [original Google slides](https://docs.google.com/presentation/d/1P6cAJaZCHFy5jj-MFHh4L2hy7XHpCH47/edit?usp=sharing). 
 ::::

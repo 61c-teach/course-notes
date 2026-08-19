@@ -190,7 +190,7 @@ Since pipelining the datapath leaves the meaning of the control lines unchanged,
 | `ALUSel` | `EX` |
 | `MemRW` | `MEM` |
 | `PCSel` | `MEM` |
-| `WBSel` | `EX` |
+| `WBSel` | `WB` |
 | `RegWEn` | `WB` |
 
 :::
