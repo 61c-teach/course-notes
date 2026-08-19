@@ -54,7 +54,7 @@ The S-Type Instruction Format.
 
 **Register operands**: Notice that the register fields `rs1` and `rs2` are in the same positions in S-Type and R-type; this intentional design reduces hardware complexity.
 
-**Constant operand**: Similar to I-Type, the **immediate field** `imm` specifies a 12-bit-wide immediate value. However, in S-type, the immediate field is split into two different bit positions. The lower 5 bits of the immediate `imm[4:0]` are in bits `[11:7]` and the upper 7 bits `imm[31:25]` are in bits `[31:25]` in the machine code instruction.
+**Constant operand**: Similar to I-Type, the **immediate field** `imm` specifies a 12-bit-wide immediate value. However, in S-type, the immediate field is split into two different bit positions. The lower 5 bits of the immediate `imm[4:0]` are in bits `[11:7]` and the upper 7 bits `imm[11:5]` are in bits `[31:25]` in the machine code instruction.
 
 The 12-bit immediate is still a two's complement integer with range $-2^{11} = -2048$ to $2^{11} - 1 = 2047$, like in I-type. The difference is that we now have to either split up the bits or put them together to recover the immediate, depending on if we are translating to machine code or to assembly code.
 
@@ -139,7 +139,7 @@ Consider the S-Type instructions shown in @tab-s-type from the RISC-V green card
 :label: tab-s-type
 :align: center
 
-| Instruction | imm[11:15] | rs2 | rs1 | funct3 | imm[4:0] | opcode |
+| Instruction | imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode |
 | :-- | -- | -- | -- | -- | -- | --: |
 | `sb` | `imm[11:5]` | `rs2` | `rs1` | `000` | `imm[4:0]` | `0100011` |
 | `sh` | `imm[11:5]` | `rs2` | `rs1` | `001` | `imm[4:0]` | `0100011` |

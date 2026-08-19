@@ -136,7 +136,7 @@ addi x10 x10 0xAFE
 Remember, the `addi` instruction **sign-extends** the 12-bit immediate `imm`. If the sign bit of `imm` is set, then `imm` is negative, **subtracting 1** from the upper 20 bits set by the previous `lui` instruction.
 
 1. `lui` sets `x10` to `0xB0BAC000`.
-2. `addi` sets `x10` to `0xB0BAC000 + 0xFFFFAFE`, because the 12-bit immediate `0xAFE` is a two's complement negative number. `x10` is then set to `0xB0BABAFE`.
+2. `addi` sets `x10` to `0xB0BAC000 + 0xFFFFFAFE`, because the 12-bit immediate `0xAFE` is a two's complement negative number. `x10` is then set to `0xB0BABAFE`.
 
 @fig-li-lui-strawman "cutely"[^pain] illustrates this "subtraction by one" using hexadecimal arithmetic and algebraic properties.
 
@@ -158,7 +158,7 @@ addi x10 x10 0xAFE
 ```
 
 1. `lui` sets `x10` to `0xB0BAD000`.
-2. `addi` sets `x10` to `0xB0BAD000 + 0xFFFFAFE`, because the 12-bit immediate `0xAFE` is a two's complement negative number. `x10` is then set to `0xB0BACAFE`.
+2. `addi` sets `x10` to `0xB0BAD000 + 0xFFFFFAFE`, because the 12-bit immediate `0xAFE` is a two's complement negative number. `x10` is then set to `0xB0BACAFE`.
 
 ::::
 

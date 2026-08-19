@@ -173,7 +173,7 @@ Once an instruction's type is known, the instruction bits can be mapped to field
 
 4. **Determine registers**. Use the [register convention table](#tab-calling-convention) for register names.
 
-    * `rd`: `10010` is $5$, so register `x5`, aka `t0`.
+    * `rd`: `00101` is $5$, so register `x5`, aka `t0`.
     * `rs1`: `00110` is $6$, so register `x6`, aka `t1`
     * `rs2`: `11011` is $27$, so register `x27`, aka `s11`.
 

@@ -125,7 +125,7 @@ In this course we will call these "I*-Type" (where the asterisk is "mostly I-Typ
 
 Observations:
 
-* Arithmetic bitshift operations need only a 5-bit **unsigned** immediate, in `imm[4:0]`. The maximum bitshift is 32; anything larger will shift all data off the register, which is 32 bits wide.
+* Arithmetic bitshift operations need only a 5-bit **unsigned** immediate, in `imm[4:0]`. The maximum bitshift is 31; anything larger will shift all data off the register, which is 32 bits wide.
 
 * The upper seven bits[^itype-funct7] are **not** part of the immediate and used very similarly to the `funct7` field for R-Type instructions `sll`, `srl`, and `sra`.
 
@@ -212,7 +212,7 @@ We follow the [steps for translating assembly into machine code](#sec-assembly-t
 
 1. **Translate registers, immediates, etc.**
 
-    * `rs1`: Base Register `x2`. Translate $1$ to 5-bit unsigned integer representation `00010`.
+    * `rs1`: Base Register `x2`. Translate $2$ to 5-bit unsigned integer representation `00010`.
     * `rd`: Register `x14`. Translate $14$ to 5-bit unsigned integer representation `01110`.
     * `imm`: address offset $+8$ as 12-bit two's complement: `0000 0000 1000`.
 ::::

@@ -51,7 +51,7 @@ RISC-V conditional branches can only branch to $\pm 2^{10}$ instructions away fr
 (sec-imm-swirl)=
 ## B-Type vs. I-Type, S-Type: Immediate Formats
 
-Recall a core component of RISC-V design is to keep fields as consistent as possible across instruction formats. We have already seen how source/destination register fields `rs1`, `rs2`, and `rs2` are consistent across formats, allowing clearer consistency of which registers to **read** and which to **write**.
+Recall a core component of RISC-V design is to keep fields as consistent as possible across instruction formats. We have already seen how source/destination register fields `rs1`, `rs2`, and `rd` are consistent across formats, allowing clearer consistency of which registers to **read** and which to **write**.
 
 RISC-V also tries to keep bit positions of immediates consistent. The "**swirling**" of immediate bits in @fig-ISB-type-comparison actually simplifies hardware design!
 
