@@ -40,7 +40,7 @@ $$
 
 There are many zeros in this binary representation. For example, there is no integer component, so everything to the left of the binary point is zero. In fact, there are really only one "interesting" range with some "energy", e.g., varying ones and zeros: `10101`. This bit pattern is located two values right of the binary point.
 
-With these two pieces of information—what the **significant bits** are, and what **exponent** the significant bits are associated with—we can suddently represent both very large and very small numbers. This is the intuition behind **scientific notation**.
+With these two pieces of information—what the **significant bits** are, and what **exponent** the significant bits are associated with—we can suddenly represent both very large and very small numbers. This is the intuition behind **scientific notation**.
 
 ### Scientific Notation (Base-10)
 
@@ -60,7 +60,7 @@ Scientific notation assumes a **normalized** form, where the mantissa has exactl
 
 Scientific notation assumes a **normalized form** of numbers, where the mantissa has exactly one digit to the left of the decimal point.
 
-Every number represented in scientific notation has exactly **one normalized form** for a given number of significant figures. For example, the number $1/1000000$ has normalized form (for two significant figures) $1.0 \times 10^{-9}$ and non-normalized forms $0.1 \times 10^{-8}, 10 \times 10^{-10}$, and so on.
+Every number represented in scientific notation has exactly **one normalized form** for a given number of significant figures. For example, the number $1/1000000000$ has normalized form (for two significant figures) $1.0 \times 10^{-9}$ and non-normalized forms $0.1 \times 10^{-8}, 10 \times 10^{-10}$, and so on.
 
 ### Binary Normalized Form
 
@@ -158,7 +158,7 @@ To support sorting numbers of the same sign with just integer hardware, a bigger
 
 Remember that in binary normalized form, the mantissa _always_ leads with a 1. IEEE 754 represents normalized numbers by assuming that there is _always_ an implicit 1, then having the significand explicitly representing the bits bits after the binary point. In other words, it is always true that for normalized numbers, 0 < significand < 1.
 
-This assumption for normalized numbers helps IEEE 754 single-precision pack more representable (normalized) numbers into the same 23 bits, because now we represent 24-bit (normalized) mantissas! In other words, the precision is 24 bits, though we only 23 bits.
+This assumption for normalized numbers helps IEEE 754 single-precision pack more representable (normalized) numbers into the same 23 bits, because now we represent 24-bit (normalized) mantissas! In other words, the precision is 24 bits, though we only store 23 bits.
 :::
 
 ## Zero, Infinity, and More

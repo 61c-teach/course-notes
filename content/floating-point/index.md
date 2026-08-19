@@ -39,7 +39,7 @@ Recall that N-bit strings can represent up to $2^\texttt{N}$ distinct  values. W
 | System | \# bits | Minimum | Maximum | Step Size |
 | :--- | :-: | :---: | :---: | :---: |
 | Unsigned integers | 32 | 0 | $2^{32} - 1$, i.e., <br/> $4,294,967,295$ | 1 |
-| Signed integers with two's complement | 32 | $2^{31}$, i.e., <br/> $-2,147,483,648$ | $2^{31} - 1$, i.e., <br/> $2,147,483,647$ | 1 |
+| Signed integers with two's complement | 32 | $-2^{31}$, i.e., <br/> $-2,147,483,648$ | $2^{31} - 1$, i.e., <br/> $2,147,483,647$ | 1 |
 
 :::
 
@@ -64,7 +64,7 @@ A 6-bit fixed-point binary representation fixes the binary point to be a specifi
 :width: 80%
 :alt: "Six-bit fixed-point layout with two integer bits and four fractional bits, where the binary point is fixed between them. Labels bit positions to powers 2^1, 2^0, 2^-1, 2^-2, 2^-3, and 2^-4."
 
-Under this 6-bit fixed-point representation,  number 2.625 
+Under this 6-bit fixed-point representation, the number 2.625 
 :::
 
 Under this system, the number 2.625 has bit pattern `101010`:
@@ -142,6 +142,6 @@ A fixed-point representation that could represent all three of these example val
 
 [^fp-huge]: $31,556,926,010 = 3.155692610 \times 10^{10}$ needs 34 bits for the integer part, and $0.000000000052917710 = 5.2917710 \times 10^{-11}$ needs 58 bits for the fractional part.
 
-The problem with fixed point is that once we determine the placement of our binary point, we are stuck. In our six-bit representation from @fig-fixed-point, we have no way of representing numbers much larger than $3.975$ or numbers between, say, $0$ and $1/16$, much less the many numbers in across scientific applications.
+The problem with fixed point is that once we determine the placement of our binary point, we are stuck. In our six-bit representation from @fig-fixed-point, we have no way of representing numbers much larger than $3.9375$ or numbers between, say, $0$ and $1/16$, much less the many numbers in across scientific applications.
 
 What if we had a way to "float" the binary point around and instead choose its location depending on the target number? Developers of the IEEE 754 floating point standard found a solution in a very common scientific practice for denoting decimal numbers: **scientific notation**. Let's read on!

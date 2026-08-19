@@ -26,7 +26,7 @@ project:
         - file: content/number-rep/integer-representations.md
         - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
-    - title: "L03-L08 C"
+    - title: "L03-L07 C"
       children:
       - title: "L03 C Basics"
         children:
