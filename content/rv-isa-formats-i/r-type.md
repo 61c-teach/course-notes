@@ -70,7 +70,7 @@ The R-Type Instruction Format.
 * `funct3`, `funct7`: The arithmetic operation to perform. `funct3` field is 3 bits wide; `funct7` is 7 bits wide.
 
 :::{warning} Why do we use 17 bits to specify the operation/opcode?
-Across the entire base RV32I instruction set, there are certainly fewer instructions than the $2^32$ possible representable things in a 32-bit word, so some redundancy is unavoidable. Good esign demands good premises.
+Across the entire base RV32I instruction set, there are certainly fewer instructions than the $2^{32}$ possible representable things in a 32-bit word, so some redundancy is unavoidable. Good design demands good premises.
 
 Different instruction formats **reuse the same bit positions for the same fields wherever possible**. Keeping the instruction formats as similar as possible reduces hardware complexity. The register fields `rs1`, `rs2`, and `rd` are therefore prioritized, and opcode fields like `funct3` and `funct7` occupy the remaining bits.
 
