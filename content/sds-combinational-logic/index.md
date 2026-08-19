@@ -264,14 +264,10 @@ than two inputs also exist. For performance reasons, the number of inputs to log
 :width: 30%
 :alt: "Four-input AND gate symbol: stacked inputs a, b, c, and d on the left and single output y on the curved right edge."
 
-4-input AND gate. The output `y` is `1` if and only if `a`, `b`, and `c` are all `1`.
+4-input AND gate. The output `y` is `1` if and only if `a`, `b`, `c`, and `d` are all `1`.
 :::
 
-The function of these gates with more than two inputs is obvious from the function of the two input version, except in the case of the the exclusive-or gate,
-
-Except for NOT (which is unary), we have shown 2-input versions of these gates. Versions of these gates with more than two inputs also exist. However, for performance reasons, the number of inputs to logic gates is usually restricted to around a maximum of four.
-
-The function of these gates is generally self-evident and can deterined by repeatedly composing the equivalent 2-input gate; for example, `AND(a, b, c, d) = AND(AND(a, AND(b, AND(c, d)))) = AND(AND(a, b), AND(c, d))`, etc. There are a few exceptions; let's try your reasoning with some quick checks.
+The function of these gates with more than two inputs is generally self-evident and can be determined by repeatedly composing the equivalent 2-input gate. For example, `AND(a, b, c, d) = AND(AND(a, AND(b, AND(c, d)))) = AND(AND(a, b), AND(c, d))`, etc. There are a few exceptions, such as the exclusive-or gate; let's try your reasoning with some quick checks.
 
 ```{tip} What is an N-input [NAND](#fig-nand-gate)?
 :class: dropdown

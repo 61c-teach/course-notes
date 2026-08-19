@@ -210,7 +210,7 @@ The truth table now has
 By carefully inspecting the truth-table you will notice:
 
 * **Result bit** $\texttt{y}_{\texttt{1}}$: The sum output is the **XOR of the three inputs**. Recall that an [N-bit XOR](#sec-n-xor) is a 1 when the number of 1’s in the input is odd.
-* **Carry-out bit** $\texttt{c}_{\texttt{2}}$: The carry-out function is the **majority function**. Recall that a [3-way majority circuit](#sec-majority-circuit) is a 1 when the number of 1’s in its input is greater than the number of 0
+* **Carry-out bit** $\texttt{c}_{\texttt{2}}$: The carry-out function is the **majority function**. Recall that a [3-way majority circuit](#sec-majority-circuit) is a 1 when the number of 1’s in its input is greater than the number of 0's.
 :::
 
 ### General case
@@ -287,8 +287,8 @@ As discussed in our initial [adder/subtractor design](#fig-add-sub-block), an ov
 We can make the following observations about adds in this circuit. Remember, the most significant stage is the stage associated with the sign bit, i.e., stage n-1.
 
 * If there was a **carry in** to the most significant stage, **but no carry out** of that stage, then A and B were both _positive_ and the result of the addition **overflowed**, erroneously generating a 1 in the sign bit position.
-* If there was a **carry out** of the most significant stage and **no carry out** that stage, then A and B were both _negative_ and the result of addition **overflowed**.
-* In all other cases the value of the carry in to the most significant stage matches the carry out, then there was **no overflow**.
+* If there was a **carry out** of the most significant stage, **but no carry in** to that stage, then A and B were both _negative_ and the result of addition **overflowed**.
+* In all other cases, the value of the carry in to the most significant stage matches the carry out, and there was **no overflow**.
 
 We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 
@@ -359,7 +359,7 @@ This last observation gives us a very clean way to augment our adder circuit to 
 
 We don’t really need a second adder to perform the +1, because we have the unused input c{sub}`0` (the carry in bit for the zero-th spot).
 
-  * When SUB=1, connect c{sub}`0` to 0.
+  * When SUB=0, connect c{sub}`0` to 0.
   * When SUB=1, connect c{sub}`0` to 1 to add an extra 1 in with the least significant column, achieving the extra +1. 
 
 In other words, wire SUB to c{sub}`0`.

@@ -52,13 +52,13 @@ Both of these muxes have two **data** inputs and one output. Additionally, each 
 @fig-mux-2 shows a **1-bit wide**, **2-to-1** mux circuit:
 
 * 2-to-1 because it takes two data inputs `a` and `b` and outputs one of them.
-* It is 1-bit wide because all data signals (`a` and `b`) are 1-bit in width.
+* It is 1 bit wide because all data signals (`a` and `b`) are 1 bit in width.
 * Notice, however, that the `s` signal is a single bit wide. This is because it must choose between the 2 inputs.
 
 @fig-mux-n shows an **n-bit wide**, **2-to-1** mux circuit:
 
 * 2-to-1 because it takes two data inputs `A` and `B` and outputs one of them.
-* It is 1-bit wide because all data signals (`A` and `B`) are 1-bit in width.
+* It is n bits wide because all data signals (`A` and `B`) are n bits in width.
 * The `s` signal is still a single bit wide because it must choose between the 2 inputs.
 
 The function of, say, the [1-bit wide 2-to-1 mux](#fig-mux-2) can be described with two rules:
@@ -137,7 +137,7 @@ Gate diagram for a 1-bit wide, 2-to-1 mux.
 ::::{note} Show Truth Table
 :class: dropdown
 
-:::{table} Truth table for the 1-bit 2-to-1 mux in @fig-mux-2. Note that because there are three 1-bit inputs (`a`, `b`, and control `s`), the truth table has $3^2 = 8$ rows.
+:::{table} Truth table for the 1-bit 2-to-1 mux in @fig-mux-2. Note that because there are three 1-bit inputs (`a`, `b`, and control `s`), the truth table has $2^3 = 8$ rows.
 :label: tab-mux-2
 
 | s | ab | y |
@@ -147,10 +147,10 @@ Gate diagram for a 1-bit wide, 2-to-1 mux.
 | 0 | 10 | 1 |
 | 0 | 11 | 1 |
 | 1 | 00 | 0 |
-| 1 | 00 | 0 |
 | 1 | 01 | 1 |
 | 1 | 10 | 0 |
 | 1 | 11 | 1 |
+
 :::
 
 ::::
@@ -213,7 +213,7 @@ This circuit design leverages the hierarchical nature of multiplexing. The first
 ```
 
 An alternate approach could start by enumerating the truth-
-table—in this case the function has 4 single bit data inputs and one 2-bit wide control input, for a total of 6 single bit inputs. The truth table would have 26, or 64 rows. Certainly, a feasible approach. If we were to do this, we would end up with the following logic equation:
+table—in this case the function has 4 single bit data inputs and one 2-bit wide control input, for a total of 6 single bit inputs. The truth table would have $2^6 = 64$ rows. Certainly, a feasible approach. If we were to do this, we would end up with the following logic equation:
 
 $$e = \overline{s_1 s_0} a
      + \overline{s_1} s_0 b

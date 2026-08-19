@@ -119,7 +119,3 @@ The logical operations as defined by the RISC-V ISA are bitwise operations.
 * AND: $r_i$, is $a_i$ `&` $b_i$, for the $i$-th bits of the output `R`, `A`, and `B`, respectively. Perform this bitwise operation as a collection of 32 AND gates, where each AND gate is responsible for one of the 32 resultant bits.
 * OR: Similarly, the OR block is a collection of 32 OR gates.
 * The add/subtract block is a significantly more complex block than the AND or OR blocks; its design is the subject of the [next section](#sec-adder-subtractor). For now, we note that a subtractor circuit is very similar to an adder, hence why we provide a single circuit that is capable of either operation.
-
-case of the AND, the resultant bit ri is generated as ai AND bi. The circuit to perform this operation
-is simply a collection of 32 AND gates. Each AND gate is responsible for one of the 32 resultant bits.
-Similarly, the OR block is a collection of 32 OR gates.
