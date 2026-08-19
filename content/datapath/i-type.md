@@ -249,7 +249,7 @@ Next, suppose our datapath supported immediates from both I-Type and S-Type inst
 
 :::{figure} images/immgen-i-s-type.png
 :label: fig-immgen-i-s-type
-:alt: "ImmGen for I-type, S-type, and B-type with multiple muxes routing scattered instruction bits and implicit zero placement."
+:alt: "ImmGen for I-type and S-type with a mux routing scattered instruction bits and shared sign extension."
 
 Immediate Generator Block: I-Type, S-Type
 :::
