@@ -55,7 +55,7 @@ Remember that a computer only understands `1`s and `0`s; text like `add x1 x2 x3
 A **machine instruction** is the bit representation of an assembly instruction. The RISC-V ISA specifies that the instruction `add x1 x2 x3` translates to the following 32 bits of machine code:
 
 ```
-00000000101010011000100100110011
+00000000001100010000000010110011
 ```
 
 These machine code bits specify how the computer architecture should perform arithmetic, read/write registers, access memory, transfer control, etc. We discuss machine instruction specifications in a [later section](#sec-machine-instructions).

@@ -125,7 +125,7 @@ First restore registers, whose values are stored on the stack. Then, pop the sta
 :::
 
 :::{hint} [Line 13](#code-factorial-recursive)
-Why `j epilogue`? Why not `j ra`?
+Why `j epilogue`? Why not `jr ra`?
 :::
 
 :::{note} Show Answer

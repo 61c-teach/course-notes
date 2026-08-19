@@ -54,7 +54,7 @@ int main() {
    local variables, and return value */
 int mult(int mcand, int mlier) {
   int product = 0;
-  while (mlier > 0 {
+  while (mlier > 0) {
     product = product + mcand;
     mlier = mlier - 1;
   }
@@ -104,7 +104,7 @@ In this analogy, your parents' home is the computer. Registers are the table. Th
 1. [Callee] **Prologue**. Acquire (local) storage resources: stack space (e.g., push a frame on the stack), save register values, etc.
 1. [Callee] **Perform the desired task**.
 1. [Callee] **Epilogue**. Put the return value in a place where the caller can access it, restore register values, and release local storage on stack (e.g., pop frame off the stack).
-1. [Callee] **Epilogue: Return control to point of origin**. Use the `jr` instruction: `j ra`
+1. [Callee] **Epilogue: Return control to point of origin**. Use the `jr` instruction: `jr ra`
 
 :::
 

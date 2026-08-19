@@ -1,6 +1,5 @@
 ---
 title: "Short Examples"
-subtitle: TODO
 ---
 
 ## Learning Outcomes
@@ -73,7 +72,7 @@ Solution (2/3) for [Example 1](#code-data-ex1).
 ::::{note} Explain `lb x12 1(x5)`
 :class: dropdown
 
-Compute memory address as base register + offset, or `R[x5] + 1` = `0x100 + 1` = `0x101`. Load byte `0x93` from memory at address `0x101` into the lowest byte of register `x11`.
+Compute memory address as base register + offset, or `R[x5] + 1` = `0x100 + 1` = `0x101`. Load byte `0x93` from memory at address `0x101` into the lowest byte of register `x12`.
 
 `lb` means we must sign-extend. The top bit of 0x93 is 1, so fill top 24 bits with `1`s:
 

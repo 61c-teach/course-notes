@@ -55,7 +55,7 @@ How does a computer know which instruction to execute? The processor also keeps 
 The **Program Counter** (PC[^pc]) is effectively a pointer to memory[^intel-pc] and is a register named `pc`[^pc-name]. The `pc` register is **not** one of the 32 registers numbered `x0` to `x31`. It is a _separate_ register that generally is not explicitly specified as a read/write destination for instructions.
 
 [^pc]: Program Counter, not Personal Computer. 
-[^intel-pc]: Intel calls the program counter an Instruction Pointer (PC).
+[^intel-pc]: Intel calls the program counter an Instruction Pointer (IP).
 
 [^pc-name] Verilog syntax is PC, though the [RISC-V Unprivileged Manual](https://docs.riscv.org/reference/isa/unpriv/rv32.html) calls it `pc`.
 

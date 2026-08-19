@@ -177,6 +177,6 @@ In light of calling convention, we revisit the [Six Fundamental Steps to Procedu
 | 3 | Callee | **Prologue**. Acquire (local) storage resources: stack space (e.g., push a frame on the stack), save register values, etc. | **Prologue.** Push a new stack frame by decrementing `sp`. Save registers like `s0-s11` if callee needs to use them. Save `ra` if callee will call subroutine. Allocate enough space for local non-register variables like stack arrays. |
 | 4 | Callee | **Perform the desired task.** | - |
 | 5 | Callee | **Epilogue**. Put the return value in a place where the caller can access it, restore register values, and release local storage on stack (e.g., pop frame off the stack). | Put return value in `a0` (or `a1` if necessary). Restore `ra` if callee called a subroutine. Pop current stack frame by incrementing `sp`. |
-| 6 | Callee | **Epilogue: Return control to point of origin**. Use the `jr` instruction: `j ra` | **Epilogue: Return control to caller.** Use the `jr` instruction: `j ra` |
+| 6 | Callee | **Epilogue: Return control to point of origin**. Use the `jr` instruction: `jr ra` | **Epilogue: Return control to caller.** Use the `jr` instruction: `jr ra` |
 
 :::

@@ -213,8 +213,8 @@ Example load byte instruction in memory. `lb x10 0(x5)` loads in `0xEF` but _als
 
 Because assembly _operations_ determine how to interpret operands, we therefore define **two** "load byte" operations: Load Byte `lb` and Load Byte Unsigned `lbu`.
 
-* `lb`: If the target value should be a signed two's complement number, **sign extend**. The most significant bit of the byte loaded from memory determines if the number is negative. In @fig-rv-loadbyte, `0xEF` (`0b11101111`) has sign bit `1` yields a result `R[x10]` of `0xFFFFFEF`. If the byte loaded in were, say, `0x73` (`0b01110011`), we fill in upper bits with `0` to yield a result `R[x10]` of `0x00000073`.[^avocado]
-* `lbu`: If the target value should be an unsigned number, simply zero-extend. If the instruction in @fig-rv-loadbyte were instead `lbu x10 0(0x5)`, then the result `R[x10]` would be `0x000000EF`, regardless of the bits of `0xEF`.
+* `lb`: If the target value should be a signed two's complement number, **sign extend**. The most significant bit of the byte loaded from memory determines if the number is negative. In @fig-rv-loadbyte, `0xEF` (`0b11101111`) has sign bit `1` yields a result `R[x10]` of `0xFFFFFFEF`. If the byte loaded in were, say, `0x73` (`0b01110011`), we fill in upper bits with `0` to yield a result `R[x10]` of `0x00000073`.[^avocado]
+* `lbu`: If the target value should be an unsigned number, simply zero-extend. If the instruction in @fig-rv-loadbyte were instead `lbu x10 0(x5)`, then the result `R[x10]` would be `0x000000EF`, regardless of the bits of `0xEF`.
 
 [^avocado]: In the lecture video, Professor Nikolic makes the analogy that sign extension is like putting a dollop of avocado on one side of toast, then smearing the top bit all over the upper bits.
 

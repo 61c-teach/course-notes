@@ -90,10 +90,10 @@ is equivalent to the C statement `a = b + c;` for 32-bit integers[^signed-unsign
 Addition instruction `add` in RISC-V and C.
 :::
 
-Subtraction works _almost_ the same way, using the operation sub. If you want to subtract the values in `x4` and `x5` and store the result in `x3`, you would write the below, which is equivalent to the C integer arithmetic statement `d = e - f;` (@fig-rv32i-sub).
+Subtraction works _almost_ the same way, using the operation sub. If you want to subtract the values in `x5` and `x6` and store the result in `x4`, you would write the below, which is equivalent to the C integer arithmetic statement `d = e - f;` (@fig-rv32i-sub).
 
 ```
-sub x3, x4, x5
+sub x4 x5 x6
 ```
 
 :::{figure} images/rv32i-sub.png
