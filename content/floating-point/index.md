@@ -63,8 +63,7 @@ A 6-bit fixed-point binary representation fixes the binary point to be a specifi
 :label: fig-fixed-point
 :width: 80%
 :alt: "Six-bit fixed-point layout with two integer bits and four fractional bits, where the binary point is fixed between them. Labels bit positions to powers 2^1, 2^0, 2^-1, 2^-2, 2^-3, and 2^-4."
-
-Under this 6-bit fixed-point representation, the number 2.625 
+A 6-bit fixed-point representation
 :::
 
 Under this system, the number 2.625 has bit pattern `101010`:

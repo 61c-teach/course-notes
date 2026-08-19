@@ -158,7 +158,7 @@ To support sorting numbers of the same sign with just integer hardware, a bigger
 
 Remember that in binary normalized form, the mantissa _always_ leads with a 1. IEEE 754 represents normalized numbers by assuming that there is _always_ an implicit 1, then having the significand explicitly representing the bits bits after the binary point. In other words, it is always true that for normalized numbers, 0 < significand < 1.
 
-This assumption for normalized numbers helps IEEE 754 single-precision pack more representable (normalized) numbers into the same 23 bits, because now we represent 24-bit (normalized) mantissas! In other words, the precision is 24 bits, though we only store 23 bits.
+This assumption for normalized numbers helps IEEE 754 single-precision pack more representable (normalized) numbers into the same 23 bits, because now we represent 24-bit (normalized) mantissas! In other words, the precision is 24 bits, though we only use 23 bits.
 :::
 
 ## Zero, Infinity, and More

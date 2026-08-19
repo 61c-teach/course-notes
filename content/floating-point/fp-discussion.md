@@ -72,7 +72,7 @@ The unbiased mode is the default, though the others can be specified. Unbiased w
 
 Rounding also occurs when converting between numeric types. In C:
 
-* **`int` to `float`**: There are large integers that a `float` cannot handle exactly because it lacks enough bits in the significand. For instance, $2^24 + 1$ will "snap" to the closest even float.
+* **`int` to `float`**: There are large integers that a `float` cannot handle exactly because it lacks enough bits in the significand. For instance, $2^{24} + 1$ will "snap" to the closest even float.
 * **`float` to `int`**: Floating points with fractional components simply don't have integer representations. C uses **truncation** to coerce and convert floating point to the nearest integer.  For example, `(int) 1.5` gets chopped off to `1`.
 
 Double-casting therefore does not work as expected. Code A and Code B below may not always print `"true"`:
