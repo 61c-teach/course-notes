@@ -58,7 +58,7 @@ In our multi-thread execution model, instructions from different threads have th
 
 [^data-hazard]: A data race is **not** a [_data hazard_](#block-def-hazard-data). While _data hazards_ result from instruction-level parallelism on a pipelined processor architecture, **data races** can occur even on single-cycle processors. **Data races** result from not determining instruction execution order _between_ threads—i.e., which thread accesses memory first.
 
-Let us translate the parallel section of our [example code](#code-data-race) into the three RISC-V instructions below. With four OpenMP threads, there are four sets of three sections to execute. Each thread accesses the same variable `x` in (shared) memory but has its copy of register `t0` used in arithmetic, resulting in the data race.
+Let us translate the parallel section of our [example code](#code-data-race) into the three RISC-V instructions below. With four OpenMP threads, there are four sets of three instructions to execute. Each thread accesses the same variable `x` in (shared) memory but has its copy of register `t0` used in arithmetic, resulting in the data race.
 
 
 ```{code} bash
@@ -69,7 +69,7 @@ sw t0 0(sp)
 
 Because of the many possibilities of interleaving the execution of these twelve instructions, the final value of `x` is not always the same.[^correctness] Consider the cases below.
 
-[^correctness]: Formally, a multithreaded program is only considered correct if ANY interlacing of threads yield the same result. Our [example code](#code-data-race) is an incorrect program. For those curious, there are $8!/(2!)4 = 2520$ different possible orders of load and store instruction pairs (or 105 orders if we consider that all threads are identical).
+[^correctness]: Formally, a multithreaded program is only considered correct if ANY interlacing of threads yield the same result. Our [example code](#code-data-race) is an incorrect program. For those curious, there are $8!/(2!)^4 = 2520$ different possible orders of load and store instruction pairs (or 105 orders if we consider that all threads are identical).
 
 ::::{tab-set}
 :::{tab-item} Case 1

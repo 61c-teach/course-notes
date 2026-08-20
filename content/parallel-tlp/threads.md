@@ -137,7 +137,7 @@ The OS can also perform context switches to multiplex different processes. We le
 
 ## Hardware Multithreading
 
-Up until now we have maintained that **one core** has **one hardware therad** running on it. Some architectures can support **hardware multithreading**—when we run *m*ultiple hardware threads* on the same core.
+Up until now we have maintained that **one core** has **one hardware thread** running on it. Some architectures can support **hardware multithreading**—when we run *m*ultiple hardware threads* on the same core.
 
 * **Logical CPUs**: Effectively, the number of hardware threads.
 * **Physical CPUs** are the true number of hardware cores, where each core could potentially have multiple logical CPUs due to multithreading.
@@ -190,4 +190,4 @@ Briefly—the hardware multithreading model is in @fig-hardware-multithreading. 
 Hardware multithreading: multiple threads *active* in the same processor.
 :::
 
-Hardware multithreading reduces the overhead of a context switch. When the active hardware thread encounters a cache miss, the other hardware thread can be swapped in quickly and run until the data for the original hardware thread available.
+Hardware multithreading reduces the overhead of a context switch. When the active hardware thread encounters a cache miss, the other hardware thread can be swapped in quickly and run until the data for the original hardware thread is available.

@@ -126,7 +126,7 @@ We can use the `inline` keyword to explicitly request function inlining from the
 
 Recall from our discussion of [caches](#sec-cache-terminology) the concept of **spatial and temporal locality**: Accessing adjacent or recent memory will be on average faster than accessing nonadjacent memory. In general, we would like to minimize cache misses and perform as much computation on spatially and temporally local data as possible–_before_ cache blocks need to be replaced by main memory.
 
-To do so, we leverage the idea of **cache blocking**. Cache blocking is a program optimization that is critical for the programmer to do, because compilers `gcc` does not know the intentions of our program—just the instructions themselves.
+To do so, we leverage the idea of **cache blocking**. Cache blocking is a program optimization that is critical for the programmer to do, because the compiler (`gcc`) does not know the intentions of our program—just the instructions themselves.
 
 :::{note} Review cache blocking
 
@@ -205,7 +205,7 @@ The Turing award winner [Don Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) 
 
 We therefore encourage the following best practices:
 
-* When debugging programs, compile with `-Og` so you can debug your code. With more optimizations, the mapping between high-level and assembly code gts more muddled, and stepping through code gets more esoteric.
+* When debugging programs, compile with `-Og` so you can debug your code. With more optimizations, the mapping between high-level and assembly code gets more muddled, and stepping through code gets more esoteric.
 * Leave loop unrolling and register declarations to the compiler.
 * For `gcc`, use `-O2`. `-O3` often does too much.
 *  The `inline` keyword is still useful. Function inlining requires knowing how frequently the function in question will be called.

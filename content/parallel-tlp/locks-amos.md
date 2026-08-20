@@ -159,7 +159,7 @@ Introducing locks introduces a new problem: **deadlock**. **Deadlock** is a syst
 A classic deadlock is a traffic jam, where no car can move because every car is blocked by another. Image source: [Reddit](https://www.reddit.com/r/pics/comments/6qulze/traffic_deadlock/)
 :::
 
-A classic CS example, the **dining philosophers problem**, illustrates how deadlock can occur.[^djikstra] Suppose there is a special spaghetti must be eaten with two forks (one left fork, one right fork). Each philosopher can only think OR eat. 
+A classic CS example, the **dining philosophers problem**, illustrates how deadlock can occur.[^djikstra] Suppose there is a special spaghetti that must be eaten with two forks (one left fork, one right fork). Each philosopher can only think OR eat. 
 Consider a proposal in which each philosopher is instructed to behave as follows:
 
 [^djikstra]: The Dining Philosophers Problem was first posed by Edsger Dijkstra in 1965. [Wikipedia](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
@@ -185,7 +185,7 @@ Consider a proposal in which each philosopher is instructed to behave as follows
 :width: 60%
 :alt: An illustration of the dining philosophers problem.
 
-In the problem, each philosopher has a bowl of spaghetti and can reach the two forks on either side of them.. [Wikipedia](https://commons.wikimedia.org/wiki/File:Dining_philosophers_diagram.jpg)
+In the problem, each philosopher has a bowl of spaghetti and can reach the two forks on either side of them. [Wikipedia](https://commons.wikimedia.org/wiki/File:Dining_philosophers_diagram.jpg)
 :::
 ::::
 

@@ -175,7 +175,7 @@ In practice, matrix dimensions are passed as parameters to avoid `struct`s and k
 
 ### Row-major order
 
-Assume that matrices $A$, $B$, and $C$ are stored as `A`, `B`, and `C`. In the code, these matrices are stoerd as arrays of `double` arrays. By convention, these arrays store matrix elements in **row-major order**.[^col-major]
+Assume that matrices $A$, $B$, and $C$ are stored as `A`, `B`, and `C`. In the code, these matrices are stored as arrays of `double` arrays. By convention, these arrays store matrix elements in **row-major order**.[^col-major]
 
 [^col-major]: The **row-major order** convention is used in C and Python (e.g., NumPy), though **column-major order** conventions exist in other languages (e.g., FORTRAN). One reasoning is that in C, `A[i][j]` almost inevitably implies row-major order because it can be rewritten as `(A[i])[j]`, where `A[i]` is a row. Read more on [Wikipedia](https://en.wikipedia.org/wiki/Row-_and_column-major_order).
 

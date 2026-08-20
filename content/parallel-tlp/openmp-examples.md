@@ -179,23 +179,23 @@ Output:
 
 ```{code} bash
 $ ./pi
-i =  1,  id =  1
-i =  0,  id =  0
-i =  2,  id =  2
-i =  3,  id =  3
-i =  5,  id =  1
-i =  4,  id =  0
-i =  6,  id =  2
-i =  7,  id =  3
-i =  9,  id =  1
-i =  8,  id =  0
+i =  1,  tid =  1
+i =  0,  tid =  0
+i =  2,  tid =  2
+i =  3,  tid =  3
+i =  5,  tid =  1
+i =  4,  tid =  0
+i =  6,  tid =  2
+i =  7,  tid =  3
+i =  9,  tid =  1
+i =  8,  tid =  0
 pi = 3.142425985001
 ```
 :::
 
 :::{tab-item} Parallelize 3: Scale Up
 
-Scale up: `num_steps =` = 10{sup}`6`
+Scale up: `num_steps` = 10{sup}`6`
 
 ```{code} c
 #include <stdio.h>
@@ -262,7 +262,7 @@ int main(void) {
 }
 ```
 
-Toggle between the cards below to compare different parallelizations of this program. Assume that `OMP_NUM_THREADS` on this
+Toggle between the cards below to compare different parallelizations of this program. Assume that `OMP_NUM_THREADS` on this machine is 12.
 
 :::::{tab-set}
 ::::{tab-item} Code 1

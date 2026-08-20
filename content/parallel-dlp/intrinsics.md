@@ -134,7 +134,7 @@ Once we have declared Intel intrinsic variables, we can call Intel intrinsics. W
 | `_mm_load_ps`	| `movaps` | Load/Store operation. Aligned, packed single-precision float |
 | `_mm_store_ps` | `movaps` | Load/Store operation. Aligned, packed single-precision float |
 | `_mm_add_pd` | `addpd` | add packed double |
-| `_mm_mul_pd` | `mulpd` | multiple, packed double |
+| `_mm_mul_pd` | `mulpd` | multiply, packed double |
 
 :::
 
@@ -300,7 +300,7 @@ In other words, `_mm_loadu_si128` is more flexible and allows for loading in pac
 
 | SIMD Pseudocode | Intel Intrinsic (SSE or AVX) | Description |
 | :--- | :--- | :--- |
-| `vector vec_load(int31_t *A);` | `__m128i _mm_loadu_si128(__m128i *p)` | Loads four integers at memory address A into a vector. | 
+| `vector vec_load(int32_t *A);` | `__m128i _mm_loadu_si128(__m128i *p)` | Loads four integers at memory address A into a vector. | 
 | `void vec_store(int32_t *dst, vector src);` | `void _mm_storeu_si128(__m128i *p, __m128i a)` | Stores `src` to `dst`. |
 | `vector vec_setnum(int32_t num);` | n/a | Creates a vector where every element is equal to `num`. |
 | `vec_setnum(0);` | `__m128i _mm_setzero_si128()` | Creates a vector with all elements set to zero. |

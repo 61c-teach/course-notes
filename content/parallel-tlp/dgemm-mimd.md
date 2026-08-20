@@ -102,7 +102,7 @@ C                  0.768672 seconds
 python NumPy:      0.000964 seconds
 registers:         0.277462 seconds
 simd,naive:        0.416584 seconds
-openmp:            0.0000001401 seconds
+openmp:            0.131526 seconds
 ```
 
 ## DGEMM 12: OpenMP Tiled SIMD DGEMM
@@ -172,13 +172,13 @@ C                  0.768672 seconds
 python NumPy:      0.000964 seconds
 registers:         0.277462 seconds
 simd,naive:        0.416584 seconds
-openmp:            0.0000001401 seconds
-openmp,simd,tiled: 0.0000000686 seconds
+openmp:            0.131526 seconds
+openmp,simd,tiled: 0.069595 seconds
 ```
 
 ## DGEMM 13: GCC Optimizations
 
-Again, let's compile using different `gcc` optimization flags in @tab-dgemm-gcc-mimd. The threaded versions win are very fast, even without further optimization.
+Again, let's compile using different `gcc` optimization flags in @tab-dgemm-gcc-mimd. With certain optimization flags, SIMD runs somewhat comparably. But in general, the OpenMP threaded versions run fast; this performance gain with minimal code edits is extra appealing.
 
 :::{list-table} Threaded DGEMM runtime (in seconds) with different optimization flags.
 :header-rows: 1

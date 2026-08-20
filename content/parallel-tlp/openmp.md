@@ -29,7 +29,7 @@ title: "OpenMP"
 
 ::::
 
-**OpenMP** stands for "Open Multi-Processing" and is an API[^api] with language extensions for C, C++, and Fortran. OpenMP stands for "Open Multi-Processing" and enables **multi-threaded, shared memory parallelism** with the [fork-join model](#fig-fork-join).
+**OpenMP** stands for "Open Multi-Processing" and is an API[^api] with language extensions for C, C++, and Fortran. OpenMP enables **multi-threaded, shared memory parallelism** with the [fork-join model](#fig-fork-join).
 
 [^api]: Application Programming Interface
 
