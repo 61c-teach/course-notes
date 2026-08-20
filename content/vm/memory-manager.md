@@ -53,7 +53,7 @@ The "memory manager" satisfies several responsibilities:
 
 ## Page Fault Exceptions
 
-In the CPU, there is hardware for address translation hardware: a [memory management unit](https://en.wikipedia.org/wiki/Memory_management_unit). This hardware unit splits the virtual address into the virtual page number and offset within the page and accesses the page table. If the page is not currently in memory, the hardware raises a **page fault exception**.[^os-exception]
+In the CPU, there is hardware for address translation: a [memory management unit](https://en.wikipedia.org/wiki/Memory_management_unit). This hardware unit splits the virtual address into the virtual page number and offset within the page and accesses the page table. If the page is not currently in memory, the hardware raises a **page fault exception**.[^os-exception]
 Upon this page fault exception, control is transferred to the **page fault exception handler**—a supervisor-level OS procedure that performs the following:
 
 * Initiates transfer between memory and disk.

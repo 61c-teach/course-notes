@@ -72,7 +72,7 @@ A page's location is determined by accessing the page table for the physical pag
 :class: dropdown
 Almost all virtual memory systems try to replace the **least recently used (LRU)**[^lru] page to maximize temporal locality. As mentioned earlier, the overriding guideline is to minimize page faults. Relative to the cost of a page fault, the cost of software and hardware to maintaining data for least recently used pages is small.
 
-[^lru]: To be precise, from _Computer Architecture_, Appendix B: "many processors provide a _use bit_ or _reference bit_, which is logically set whenever a page is accessed. ... The operating system periodically clears the use bits and later records them so it caan determine which pages were touched during a time period. By keeping track in this way, the operating system can select a page that is among the least recently reference."
+[^lru]: To be precise, from _Computer Architecture_, Appendix B: "many processors provide a _use bit_ or _reference bit_, which is logically set whenever a page is accessed. ... The operating system periodically clears the use bits and later records them so it can determine which pages were touched during a time period. By keeping track in this way, the operating system can select a page that is among the least recently reference."
 :::
 
 :::{note} Write Policy
@@ -194,7 +194,7 @@ Page table status bits (1) implement various choices in virtual memory design, a
 Page table entries track a **valid bit** to indicate if the page is in memory (DRAM) or only on disk. On each memory access, first check if page table entry is valid.
 
 * If the valid bit is **set** (on), then the page is in memory. The entry's physical page number can be read and used in address translation.
-* If the valid bit is **not set** (off), then the page is on disk. A [page fault exception](#sec-memory-manager) is triggered. After some time, the page is copied from disk into in memory. Because the page is now in physical memory, the corresponding page table entry (for the page's virtual page number) is updated with the physical page number and valid bit set.
+* If the valid bit is **not set** (off), then the page is on disk. A [page fault exception](#sec-memory-manager) is triggered. After some time, the page is copied from disk into memory. Because the page is now in physical memory, the corresponding page table entry (for the page's virtual page number) is updated with the physical page number and valid bit set.
 
 ### Dirty Bit
 
@@ -212,7 +212,7 @@ Address translation is a feature that allows multiple programs to easily share m
 
 An example is shown in @fig-page-table-process-share. The first entry in the orange page table and the last entry in the green page table share entries. In this way, the two processes can have different virtual page numbers for the same physical page in memory.
 
-The **write protection bit**, also known as **write access bit**, can protect a page from being written. This enables processes to share information in a limited way. From P&H 5.7: "To allow another process, say, P1, to read a page owned by process P2, P2 would ask the OS to crate a page table entry for a virtual page in P1's address space that points to the same physical page that P2 wants to share. The OS could use the write protection bit to proevent P1 from writing the data, if that was P2's wish." Common write-protection applications are library code, system data, etc.
+The **write protection bit**, also known as **write access bit**, can protect a page from being written. This enables processes to share information in a limited way. From P&H 5.7: "To allow another process, say, P1, to read a page owned by process P2, P2 would ask the OS to create a page table entry for a virtual page in P1's address space that points to the same physical page that P2 wants to share. The OS could use the write protection bit to prevent P1 from writing the data, if that was P2's wish." Common write-protection applications are library code, system data, etc.
 
 If a process violates the write protection policy by attempting to write to a protected page, an OS exception is triggered. Read more about the "memory manager" in [this section](#sec-memory-manager).
 
@@ -221,7 +221,7 @@ If a process violates the write protection policy by attempting to write to a pr
 
 :::{warning} This content is not tested
 
-Watch the lecture video below. See CS 152 and CS 152 for more details, or these [Cornell CS4410 Summer 2017 lecture notes](https://www.cs.cornell.edu/courses/cs4410/2017su/):
+Watch the lecture video below. See CS 152 and CS 162 for more details, or these [Cornell CS4410 Summer 2017 lecture notes](https://www.cs.cornell.edu/courses/cs4410/2017su/):
 
 * [Hierarchical page tables](https://www.cs.cornell.edu/courses/cs4410/2017su/lectures/lec11-pagetable.html), where we page the page table
 * [Inverted page tables](https://www.cs.cornell.edu/courses/cs4410/2017su/lectures/lec12-ipt.html). The name is a bit of a misnomer, but each entry corresponds to a physical page location (and thereby the size of the inverted page table is the total possible number of physical pages in memory). Hash the virtual page number and process ID to determine the possible set of physical pages.
