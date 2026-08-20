@@ -105,7 +105,7 @@ The first argument passed in is an address (`&head`); in other words, `head_ptr`
 
 ### [Line 9](#code-ll-add): Allocate heap space for new node
 
-This `malloc` call makes a new `node_t` struct in dynamic memory (i.e., the heap). In the toy diagram, `node` points to a newly allocated `node_t` at heap address `0x300`. At this point, the contents of that node—both the value and the next fields—are just garbage because C does not initialize them for you.
+This `malloc` call makes a new `node_t` struct in dynamic memory (i.e., the heap). In the toy diagram, `node` points to a newly allocated `node_t` at heap address `0x300`. At this point, the contents of that node—both the `data` and  the `next` fields—are just garbage because C does not initialize them for you.
 
 :::{figure} images/ll-line09.png
 :label: fig-ll-line-09
@@ -121,7 +121,7 @@ Right-hand side: This `malloc` call makes a new character array in dynamic memor
 
 Strings are defined as null-terminated character arrays; therefore `malloc`-ing space for strings always involves `strlen(string) + 1`. We use `strlen(string)` to find out how long the string is, but recall that `strlen` does not include the null terminator. If the string is `"abc"`, `strlen` says three, but you really need four to include the `'\0'`.
 
-Left-hand side: The pointer returned by `malloc` is then set as the `value` field of `node` using the arrow notation (`node->value`), which is the pointer-based way to follow the node to its `data` field.
+Left-hand side: The pointer returned by `malloc` is then set as the `data` field of `node` using the arrow notation (`node->data`), the pointer-based way to follow `node` to its `data` field.
 
 :::{figure} images/ll-line10.png
 :label: fig-ll-line-10

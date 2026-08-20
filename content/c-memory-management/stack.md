@@ -90,7 +90,7 @@ At this point in your programming livelihoods, you have likely found it useful t
 
 :::{warning} Declared array names only refer to arrays in their local scope.
 
-Recall that [arrays in C](@sec-array) are a way of locally declaring a large block of memory. Now we know that this local declaration means that array declarations allocate space on the stack, and therefore must factor into the fixed size of a function's stack frame. Locally-declared arrays must have known size at compile-time, as shown in [this `sizeof` example](@sec-array-sizeof).
+Recall that [arrays in C](#sec-array) are a way of locally declaring a large block of memory. Now we know that this local declaration means that array declarations allocate space on the stack, and therefore must factor into the fixed size of a function's stack frame. Locally-declared arrays must have known size at compile-time, as shown in [this `sizeof` example](#sec-array-sizeof).
  
 When array names are passed as arguments to other functions, they **decay** to pointers to memory. Now, we know that arrays will decay to pointers to memory on the _stack_.
 :::

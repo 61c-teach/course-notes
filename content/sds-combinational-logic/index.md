@@ -267,7 +267,7 @@ than two inputs also exist. For performance reasons, the number of inputs to log
 4-input AND gate. The output `y` is `1` if and only if `a`, `b`, `c`, and `d` are all `1`.
 :::
 
-The function of these gates with more than two inputs is generally self-evident and can be determined by repeatedly composing the equivalent 2-input gate. For example, `AND(a, b, c, d) = AND(AND(a, AND(b, AND(c, d)))) = AND(AND(a, b), AND(c, d))`, etc. There are a few exceptions, such as the exclusive-or gate; let's try your reasoning with some quick checks.
+The function of these gates with more than two inputs is generally self-evident and can be determined by repeatedly composing the equivalent 2-input gate. For example, `AND(a, b, c, d) = AND(a, AND(b, AND(c, d))) = AND(AND(a, b), AND(c, d))`, etc. There are a few exceptions, such as the exclusive-or gate; let's try your reasoning with some quick checks.
 
 ```{tip} What is an N-input [NAND](#fig-nand-gate)?
 :class: dropdown

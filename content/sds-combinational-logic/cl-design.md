@@ -27,10 +27,10 @@ Our goal this lecture is to build combinational logic blocks. We can summarize t
 :width: 60%
 :alt: "Diagram with three bubbles describing three representations of combinational logic: Truth Table, Boolean Expression, and Gate Diagram. The representations are connected with curved arrows showing conversions between them."
 
-Second equivalent circuit: $y = a + c$.
+The three representations of a combinational logic block: truth table, Boolean expression, and gate diagram. We can translate between different representations.
 :::
 
-@fig-cl-block-representation shows the three possible representation for a combinational logic block.
+@fig-cl-block-representation shows the three possible representations for a combinational logic block.
 
 * The **truth table** form is unique—for every combinational logic block, there is only one truth table. The uniqueness of the truth table makes it a useful way to clearly define the function of a combinational logic block.
 * There are multiple **Boolean expressions** possible for any combinational logic block. Boolean expressions are useful for algebraic manipulation, particularly simplification.

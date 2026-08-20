@@ -122,15 +122,15 @@ The Data Memory block DMEM. Read operations behave like combinational logic, whe
 :::
 
 
-::::{table} DMEM signals. Course project signal names, if different, are in parentheses.
+::::{table} DMEM signals. See the [Partial Load and Store](#sec-datapath-partial-load-store) section for course project signal names.
 :label: tab-dmem-signals
 :align: center
 
 | Name | Direction | Bit Width | Description |
 | :-- | :-- | :-- | :-- |
-| `addr` (`MemAddress`) | Input | 32 | The address in memory to read from or write to |
-| `wdata` (`MemWriteData`) | Input | 32 | Data to write to memory |
-| `MemRW` (`MemWriteMask`) | Input | 4 | The write enable mask for writing data to memory |
+| `addr`  | Input | 32 | The address in memory to read from or write to |
+| `wdata` | Input | 32 | Data to write to memory |
+| `MemRW` | Input | 1 | Determines whether data is written to memory on the next rising edge of the clock |
 | `clk` | Input | 1 | Clock input |
 | `rdata` (`MemReadData`) | Output | 32 | Data at `addr` (`MemAddress`) from memory |
 

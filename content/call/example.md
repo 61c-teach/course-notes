@@ -128,15 +128,15 @@ This is not very readable, so we describe some components in more detail. Below 
 (code-hello-o)=
 ```{code} bash
 00000000 <main>:
-0:  ff010113 addi sp sp -16
-4:  00112623 sw   ra 12(sp)
+0:  ffc10113 addi sp sp -4
+4:  00112023 sw   ra 0(sp)
 8:  00000537 lui  a0 0x0
 c:  00050513 addi a0 a0 0
 10: 000005b7 lui  a1 0x0
 14: 00058593 addi a1 a1 0
 18: 000080e7 jalr ra 0
-1c: 00c12083 lw   ra 12(sp)
-20: 01010113 addi sp sp 16
+1c: 00012083 lw   ra 0(sp)
+20: 00410113 addi sp sp 4
 24: 00000513 addi a0 zero 0
 28: 00008067 jalr ra
 ```
@@ -194,15 +194,15 @@ A portion of the `a.out` executable is shown:
 
 ```{code} bash
 000101b0 <main>:
-  101b0: ff010113 addi sp sp -16
-  101b4: 00112623 sw   ra 12(sp)
+  101b0: ffc10113 addi sp sp -4
+  101b4: 00112023 sw   ra 0(sp)
   101b8: 00021537 lui  a0 0x21
   101bc: a1050513 addi a0 a0 -1520 # 20a10 <str1>
   101c0: 000215b7 lui  a1 0x21
   101c4: a1c58593 addi a1 a1 -1508 # 20a1c <str2>
   101c8: 288000ef jal  ra 10450    # <printf>
-  101cc: 00c12083 lw   ra 12(sp)
-  101d0: 01010113 addi sp sp 16
+  101cc: 00012083 lw   ra 0(sp)
+  101d0: 00410113 addi sp sp 4
   101d4: 00000513 addi a0 zero 0
   101d8: 00008067 jalr ra
 ```

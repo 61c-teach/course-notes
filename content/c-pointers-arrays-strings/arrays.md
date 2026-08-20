@@ -105,9 +105,9 @@ Memory layout for @code-array-indexing.
 
 Because square-indexing is syntactic sugar for pointer arithmetic and dereference:
 
-* Line 4: The pointer `q` points to an unsigned 32-bit integer at address `0x100`, which is `50`. Print `    *q: 50 is 50`.
-* Line 5: Incrementing `q` points to the **next** 32-bit unsigned integer. If `q` points to the unsigned 32-bit integer at address `0x100`, then incrementing `q` points to the *next 32-bit unsigned integer* at address `0x104`, which is `60`. Print `*(q+1): 60 is 60`.
-* Line 6: Because square-bracket indexing is syntactic sugar, *negative indexing does not produce any error*. Instead, decrementing `q` points to the **previous** 32-bit unsigned integer at address `0x9c`, which is an unknown value. This line would likely print garbage, e.g., `*(q-1): 32490 is 32490`.
+* Line 7: The pointer `q` points to an unsigned 32-bit integer at address `0x100`, which is `50`. Print `    *q: 50 is 50`.
+* Line 8: Incrementing `q` points to the **next** 32-bit unsigned integer. If `q` points to the unsigned 32-bit integer at address `0x100`, then incrementing `q` points to the *next 32-bit unsigned integer* at address `0x104`, which is `60`. Print `*(q+1): 60 is 60`.
+* Line 9: Because square-bracket indexing is syntactic sugar, *negative indexing does not produce any error*. Instead, decrementing `q` points to the **previous** 32-bit unsigned integer at address `0xFC`, which is an unknown value. This line would likely print garbage, e.g., `*(q-1): 32490 is 32490`.
 
 ## Arrays are not pointers
 

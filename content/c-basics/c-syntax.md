@@ -63,7 +63,7 @@ song2.year_recorded      = 1988;
 :::{note} Code, explained
 :class: dropdown
 
-* Lines 1 - 4: `SONG` is an alias for `typedef struct {int length_in_seconds; int year_recorded; }`.
+* Lines 1 - 4: `SONG` is an alias for `typedef struct {uint16_t length_in_seconds; uint16_t year_recorded; }`.
 * Line 6: Declare `song1` as a struct that has two `uint16_t` variables, `length_in_seconds` and `year_recorded`.
 * Line 7-8: Instantiate the data within the `song1` variable.
 * Lines 10-12: Do something similar for `song2`.

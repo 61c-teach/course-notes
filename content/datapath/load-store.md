@@ -126,7 +126,7 @@ The `sw` datapath. Use the menu bar to trace through the animation or access the
 
 1. **Memory**: Write memory at address `alu = R[rs1] + imm` by holding `addr` and `wdata` (DMEM input). 
 
-    Around the next rising clock edge, `wdata` (DMEM input), `MemRW`, and `addr` should be held stable through setup and hold time of RegFile.
+    Around the next rising clock edge, `wdata` (DMEM input), `MemRW`, and `addr` should be held stable through setup and hold time of DMEM.
 
 1. **Write Back**: (We don't write to RegFile, so skip this.)
 

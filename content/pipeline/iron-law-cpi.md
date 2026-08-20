@@ -155,7 +155,7 @@ Despite executing more instructions and having a slower clock rate, **Processor 
 
 Program execution time for Processor A:
 
-$$10^6 \times 2.5 \times 1/(2.5 \times 10^9) = 2.5 \times 10^{-3} = 1 \text{ms}$$
+$$10^6 \times 2.5 \times 1/(2.5 \times 10^9) = 1 \times 10^{-3} = 1 \text{ms}$$
 
 Program execution time for Processor B:
 $$(1.5 \times 10^6 )\times 1 \times 1/(2 \times 10^9) = 1.5/2 \times 10^{-3} = 0.75 \text{ms}$$
