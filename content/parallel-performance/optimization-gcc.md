@@ -56,8 +56,7 @@ for (int i = 0; i < max/4; i++) {
 
 We note that the `register` keyword is like a "suggestion," meaning that compilers can choose to ignore this keyword.[^cplusplus] Nevertheless, this optimization can be especially valuable on embedded systems or even x86 architectures, where register files are small.[^x86-architecture] Since different CPUs can have different register files, this optimization is dependent on the architecture.
 
-[^cplusplus]: In fact, the `register` keyword is actually deprecated in C++. Read more on [Wikipedia](
-https://en.wikipedia.org/wiki/Register_(keyword))
+[^cplusplus]: In fact, the `register` keyword is actually deprecated in C++. Read more on [Wikipedia](https://en.wikipedia.org/wiki/Register_(keyword))
 
 [^x86-architecture]: There are 16 register names in x86-64. In x86, most variables get stored on the stack (unlike RISC-V, which has 32 registers).
 

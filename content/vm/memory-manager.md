@@ -69,7 +69,7 @@ Upon this page fault exception, control is transferred to the **page fault excep
 
 :::{warning} Page faults are extremely expensive!
 
-On a page fault, the process cannot continue until the memory access finishes. If the physical page is not in memory, the page must be first fetched from disk and loaded into memory (and the page table must be updated), and _finally_ the instruction can be re-executed to successfully completes the memory access. The (time) cost of disk access [^jim-gray] means that page faults are extremely expensive—on the order of a million cycles.
+On a page fault, the process cannot continue until the memory access finishes. If the physical page is not in memory, the page must be first fetched from disk and loaded into memory (and the page table must be updated), and _finally_ the instruction can be re-executed to successfully complete the memory access. The (time) cost of disk access [^jim-gray] means that page faults are extremely expensive—on the order of a million cycles.
 
 **Context switches** amortize the cost of page faults across all processes. To keep the CPU busy, the OS performs a context switch and runs another process—while the original process that triggered a page fault "waits." Then, when the page in question is finally loaded into memory, the OS performs another context switch back to the original process.
 :::

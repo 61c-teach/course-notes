@@ -25,7 +25,7 @@ There are two main ways a program gets run by a computer: compilation and interp
 C is a compiled language. C **compilers** map C programs directly into architecture-specific **machine code**, or bitstrings of `1`s and `0`s. 
 An **executable** is a file composed of this binary machine code that can be executed on your computer. Executables are created by compiling source code.
 
-Languages that can be compiled let us transfer programs more easily between different architectures. For example, in 2020, Apple decided to change the architecture for their Mac computer series. They moved Intel-based x86 processors to an ARM processor,. Even with this huge move, C programs did not change _that_ much. Instead, the change happened in the compilers themselves, which were also programs. They were rewritten to handle the translation from the high-level C language to the new instruction architectures.
+Languages that can be compiled let us transfer programs more easily between different architectures. For example, in 2020, Apple decided to change the architecture for their Mac computer series. They moved Intel-based x86 processors to an ARM processor. Even with this huge move, C programs did not change _that_ much. Instead, the change happened in the compilers themselves, which were also programs. They were rewritten to handle the translation from the high-level C language to the new instruction architectures.
 
 How do Python and Java programs compare? They differ mainly in _when_ a program is converted into low-level machine instructions.
 
@@ -71,7 +71,7 @@ With this two-step process, when coding in C you can experience two categories o
 
 When programming in C, there are many ways that segfaults can occur. It is important to note that depending on your exact program, not every case below may cause segfaults!
 
-1. Derefrencing a null pointer. This will  _always_ trigger a segfault. Read more about [pointers](#sec-pointers).
+1. Dereferencing a null pointer. This will  _always_ trigger a segfault. Read more about [pointers](#sec-pointers).
 1. Attempting to write to read-only memory. This will _always_ trigger a segfault. Read more about [memory layout](#sec-mem-layout), and see an example when we discuss [strings](#sec-strings).
 1. Accessing an out-of-bounds index on an array. The index at which a segfault will occur is somewhat unpredictable, hence the security risks of [buffer overflow](#sec-array).
 1. Accessing a pointer to the heap that has previously been `free`'d. This is implementation-dependent; read more about [the heap](#sec-heap).

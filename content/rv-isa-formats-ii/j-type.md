@@ -41,7 +41,7 @@ To jump even further, we can use **J-Type unconditional jumps** in combination w
 
 To branch to a far location, e.g., `beq x10 x10 far`, we can equivalently specify the assembly with one more instruction:
 
-```{code}bash
+```{code} bash
     bne  x10 x0 next
     j far
 next:

@@ -57,7 +57,7 @@ The second component in Equation @eq-iron-law is **cycles per instruction**, or 
 Examples:
 * RISC-V [single-cycle processor](#sec-single-cycle): CPI = 1.
 * RISC-V [five-stage pipelined processor](#sec-five-stage-pipeline) discussed in this chapter: CPI $\approx$ 1. CPI is often slightly greater than 1 because of stalls due to [pipeline hazards](#sec-pipeline-hazards).
-* **Complex instructions**: CPI >> 1, if used in a program benchmark. For example, take an ISA that specifies the C `strcpy` function as an assembly-level `strpcy`. The assembly-level `strcpy` will necessarily incur more cycles to than, say, an assembly-level `add`.
+* **Complex instructions**: CPI >> 1, if used in a program benchmark. For example, take an ISA that specifies the C `strcpy` function as an assembly-level `strcpy`. The assembly-level `strcpy` will necessarily incur more cycles than, say, an assembly-level `add`.
 * [Superscalar processors](#sec-superscalar): CPI < 1.
 
 To measure CPI, run a processor on a program benchmark. On the same program benchmark, processors will have different CPI because of differences in the ISA and the processor implementation. Nevertheless, CPI provides one way of comparing **two different implementations of the same ISA**, since the program benchmark (and number of instructions in the program) will be the same.

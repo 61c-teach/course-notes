@@ -140,15 +140,15 @@ Very similar to Java. Not much to say here beyond two items:
 do statement while (expression);
 ```
 
-**Switch**: Until you reach a break statement, you will continue to execute statements, even those in subsequent `case`s.
+**Switch**: Until you reach a `break` statement, you will continue to execute statements, even those in subsequent `case`s.
 
 ```c
+// this block runs through all statements
 switch (expression){
   case const1:    statements
   case const2:    statements
   default:        statements
 }
-break;
 
 ```
 

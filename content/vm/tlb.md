@@ -49,7 +49,7 @@ With virtual memory, a single load (or store) instruction requires **two accesse
 
 ## Page Table Walks
 
-At present, we must perform a **page table walk**, meaning we must access the page table to get the physical page number for address translation.[^page-table-walk] Remember that the current process's page table is located main memory. Because page tables are located in memory (@fig-page-table-process-access), then we must access main memory **twice**. This takes several hundred cycles!
+At present, we must perform a **page table walk**, meaning we must access the page table to get the physical page number for address translation.[^page-table-walk] Remember that the current process's page table is located in main memory. Because page tables are located in memory (@fig-page-table-process-access), then we must access main memory **twice**. This takes several hundred cycles!
 
 [^page-table-walk]: The "walk" terminology makes more sense with hierarchical page tables, where multiple levels of page tables are accessed on each address translation. Hierarchical page tables are out of scope for this course.
 

@@ -210,7 +210,7 @@ Let's compare this performance in @tab-processor-compare.
 
 ### Pipeline speedup
 
-Based on @tab-processor-compare, our **throughput gain**, or pipelining speedup, is close to the ratio of times between instructions. One approachis to time the single-cycle and pipelined processors against a benchmark program like 1 million `lw` instructions[^no-hazards]:
+Based on @tab-processor-compare, our **throughput gain**, or pipelining speedup, is close to the ratio of times between instructions. One approach is to time the single-cycle and pipelined processors against a benchmark program like 1 million `lw` instructions[^no-hazards]:
 
 [^no-hazards]: We assume no [load data hazards](#sec-data-hazards-load) in this program.
 

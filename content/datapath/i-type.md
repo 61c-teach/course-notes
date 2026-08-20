@@ -237,7 +237,7 @@ Immediate Generator Block: I-Type
 :class: dropdown
 
 1. `imm[31:12]`: **Sign-extend**. Copy the **sign bit** `inst[31]` to the upper 20 bits of the immediate, `imm[31:12]`.
-1. `imm[11:0]`: **Wire**. Directly connect the two upper 12 bits of the instruction `inst[31:20]` to the lower 12 bits of the output `imm[11:0]`.
+1. `imm[11:0]`: **Wire**. Directly connect the upper 12 bits of the instruction `inst[31:20]` to the lower 12 bits of the output `imm[11:0]`.
 
 :::
 

@@ -60,7 +60,7 @@ C strings have functions in the C standard library, imported via the header `<st
 * `strlen`: computes the length of a string by counting the number of characters before a null terminator
 * `strcpy`: copies a string from one memory location to another, one character at a time until it reaches a null terminator (the null terminator is copied as well).
 
-To read about any standard string function, we recomment the manual pages ("man pages"). You can type the following into a terminal:
+To read about any standard string function, we recommend the manual pages ("man pages"). You can type the following into a terminal:
 
 ```
 man strlen

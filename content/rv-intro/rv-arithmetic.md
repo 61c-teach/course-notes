@@ -251,6 +251,8 @@ is equivalent to the C statement `f = g - 10;` where `f` and `g` are 32-bit inte
 :alt: "Subtraction via add-immediate example pairing RISC-V addi x3 x4 -10 with C f = g - 10, showing negative immediate as the subtracted constant."
 
 Add immediate instruction in RISC-V and C with negative values.
+:::
+
 ::::
 
 ## Using `x0` to reduce our instruction set

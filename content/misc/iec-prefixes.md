@@ -19,7 +19,7 @@ title: "IEC and Base-10 Prefixes"
 
 ::::
 
-It is unwieldy to use numbers like 4,294,967,296 to describe the $2^32$ bytes of address space on 32-bit architectures. Instead, we much prefer terminology like 2 GiB ("gibibytes").
+It is unwieldy to use numbers like 4,294,967,296 to describe the $2^{32}$ bytes of address space on 32-bit architectures. Instead, we much prefer terminology like 2 GiB ("gibibytes").
 
 This short reference introduces prefixes for numbers in powers of ten and two This terminology helps us describe quantities, from sizes of caches and hard drives to network transmission rates.
 
@@ -37,11 +37,11 @@ We will find it very convenient to use prefixes like "kilo", "giga", etc. to ref
 | Kilo | K | $10^3$ | 1,000 |
 | Mega | M | $10^6$ | 1,000,000 |
 | Giga | G | $10^9$ | 1,000,000,000 |
-| Tera | T | $10^12$ | 1,000,000,000,000 |
-| Peta | P | $10^15$ | 1,000,000,000,000,000 |
-| Exa | E | $10^18$ | 1,000,000,000,000,000,000 |
-| Zetta | Z | $10^21$ | 1,000,000,000,000,000,000,000 |
-| Yotta | Y | $10^24$ | 1,000,000,000,000,000,000,000,000 |
+| Tera | T | $10^{12}$ | 1,000,000,000,000 |
+| Peta | P | $10^{15}$ | 1,000,000,000,000,000 |
+| Exa | E | $10^{18}$ | 1,000,000,000,000,000,000 |
+| Zetta | Z | $10^{21}$ | 1,000,000,000,000,000,000,000 |
+| Yotta | Y | $10^{24}$ | 1,000,000,000,000,000,000,000,000 |
 :::
 
 The abbreviations are then used as prefixes to units: 4 KB (four kilobytes), 10 Mbps (ten megabits per second), etc.
@@ -70,14 +70,14 @@ The IEC (International Electrotechnical Commission) defined binary prefixes like
 
 | Prefix | Abbreviation | Power | Numeric Value |
 | :--- | :--- | :--- | :--- |
-| Kibi | Ki | $2^10$ | 1,024 |
-| Mebi | Mi | $2^20$ | 1,048,576 |
-| Gibi | Gi | $2^30$ | 1,073,741,824 |
-| Tebi | Ti | $2^40$ | 1,099,511,627,776 |
-| Pebi | Pi | $2^50$ | 1,125,899,906,842,624 |
-| Exbi | Ei | $2^60$ | 1,152,921,504,606,846,976 |
-| Zebi | Zi | $2^70$ | 1,180,591,620,717,411,303,424 |
-| Yobi | Yi | $2^80$ | 1,208,925,819,614,629,174,706,176 |
+| Kibi | Ki | $2^{10}$ | 1,024 |
+| Mebi | Mi | $2^{20}$ | 1,048,576 |
+| Gibi | Gi | $2^{30}$ | 1,073,741,824 |
+| Tebi | Ti | $2^{40}$ | 1,099,511,627,776 |
+| Pebi | Pi | $2^{50}$ | 1,125,899,906,842,624 |
+| Exbi | Ei | $2^{60}$ | 1,152,921,504,606,846,976 |
+| Zebi | Zi | $2^{70}$ | 1,180,591,620,717,411,303,424 |
+| Yobi | Yi | $2^{80}$ | 1,208,925,819,614,629,174,706,176 |
 :::
 
 Like before, abbreviations can be used as prefixes to units: 4 GiB (four _gibi_-bytes, pronounced "ghee-bee"). The "bi" in each prefix likely stands for binary but is pronounced "bee." 
@@ -90,12 +90,12 @@ What is 4 KiB?
 :::{note} Show answer
 :class: dropdown
 
-4,096 bytes. 4 KiB = $ 4 \times 2^10 $ B
+4,096 bytes. 4 KiB = $ 4 \times 2^{10} $ B
 :::
 
 ## Get familiar with conversions
 
-At small numbers, base-two and base-ten are comparable because one thousand (kilo, $10^3$) is close to 1,024 (kibi, $2^10$). This 2.4% difference compounds exponentially, with the binary prefix always indicating larger numbers than its base-ten counterpart.[^comparison].
+At small numbers, base-two and base-ten are comparable because one thousand (kilo, $10^3$) is close to 1,024 (kibi, $2^{10}$). This 2.4% difference compounds exponentially, with the binary prefix always indicating larger numbers than its base-ten counterpart.[^comparison].
 
 [^comparison]: See [Wikipedia](https://en.wikipedia.org/wiki/Binary_prefix#Comparison_of_binary_and_decimal_prefixes)
 

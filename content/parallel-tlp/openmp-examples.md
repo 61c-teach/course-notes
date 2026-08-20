@@ -134,7 +134,7 @@ int main(void) {
 }
 ```
 
-Problem: Each thread needs access to the shared variable `sum`. Code runs sequentially!
+Problem: Each thread needs access to the shared variable `sum`. But multiple threads updating `sum` concurrently causes a [data race](#sec-data-race-overall)!
 :::
 
 :::{tab-item} Parallelize 2
@@ -292,7 +292,7 @@ int main(void) {
     int tid = omp_get_thread_num();
     int num_threads = omp_get_num_threads();
     for(int i = tid; i < LENGTH; i+= num_threads) {
-      arr[i] = j;
+      arr[i] = ...;
     }
   }
 }
@@ -312,7 +312,7 @@ int main(void) {
     int thread_start = tid * LENGTH / num_threads;
     int thread_end = (tid+1)*LENGTH / num_threads;
     for(int i = thread_start; i < thread_end; i++) {
-      arr[i] = j;
+      arr[i] = ...;
     }
   }
 }
@@ -329,7 +329,7 @@ int main(void) {
   {
     #pragma omp for
     for(int i = 0; i < LENGTH; i++) {
-      arr[i] = j;
+      arr[i] = ...;
     }
   }
 }
@@ -344,7 +344,7 @@ int main(void) {
   char *arr = malloc(sizeof(char) * LENGTH);
   #pragma omp parallel for
   for(int i = 0; i < LENGTH; i++) {
-    arr[i] = j;
+    arr[i] = ...;
   }
 }
 ```
@@ -369,7 +369,7 @@ Duplicates work. The for-loop is repeated 12 times, so each array element is ass
 
 ::::{tab-item} Explanation 3
 :sync: tab-openmp-for-3
-"Chunks" array sections by thread. If there are 12 OpenMP threads, then thread 0 accesses elements 0 through `LENGTH/12 - 1`; thread 1 elements elements `LENGTH/12` through element `2*LENGTH/12`, etc. Same as Code 4 and Code 5.
+"Chunks" array sections by thread. If there are 12 OpenMP threads, then thread 0 accesses elements 0 through `LENGTH/12 - 1`; thread 1 elements `LENGTH/12` through element `2*LENGTH/12`, etc. Same as Code 4 and Code 5.
 ::::
 
 ::::{tab-item} Explanation 4

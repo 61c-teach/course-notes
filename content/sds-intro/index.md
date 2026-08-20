@@ -174,7 +174,7 @@ The hardware underlying almost every processor is a **Synchronous Digital System
 
 :::{note} Synchronous Digital System
 
-* **Synchronous**: All operations coordinated by a central clock. A processor clock is the a "heartbeat" for the system. A **cycle** is the duration between heartbeats.
+* **Synchronous**: All operations coordinated by a central clock. A processor clock is the "heartbeat" for the system. A **cycle** is the duration between heartbeats.
 * **Digital**: Represent all values by discrete values, i.e., binary digits `1` and `0`.
 
 A synchronous digital system composes **circuits** together to create complex digital logic systems. At their core, these circuits are themselves composed of **wires** and **transistors**, which we briefly discuss below.

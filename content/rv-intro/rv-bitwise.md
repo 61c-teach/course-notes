@@ -84,9 +84,9 @@ These three notes together explain @fig-rv32i-not below.
 :alt: "Three aligned 32-bit patterns labeled rs1, minus one, and rd showing how the XOR operation with an all-one immediate flips every bit of rs1, turning a value ending in 0111 into a result ending in 1000 in the destination register rd."
 
 Bitwise NOT is equivalent to XOR with an all-ones immediate.
-::::
+:::
 
-:::{note} Show explanation
+:::{note} Show Explanation
 :class: dropdown
 
 * The source register `rs1` has value `0b 1111 1111 1111 1111 1111 1111 1111 0111`.
@@ -150,7 +150,7 @@ and   x12 x12 x10
 
 :::
 
-:::{note} Show answer
+:::{note} Show Answer
 :class: dropdown
 
 **B.** `0x3400`.

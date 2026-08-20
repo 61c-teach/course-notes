@@ -48,7 +48,7 @@ When translating a machine instruction to assembly, the hardware first looks at 
 The R-Type instruction format is the first row of the [instruction format table](#tab-rv32i-types) of the [RISC-V green card](#sec-green-card). All **register-register arithmetic instructions use R-Type** (the "R" is for Register). We now use "arithmetic" to encompass arithmetic and bitwise operations: `add`, `xor`, `sll`, etc. 
 We recommend you reference the [arithmetic instructions table](#tab-rv32i-arithmetic) as you explore the R-Type instruction format below.
 
-@fig-r-type (@fig-opcode-field with less annotation) shows the R-Type format. Notice that all register-register arithmetic instructions have follow the same assembly instruction syntax `opname rd rs1 rs2`.
+@fig-r-type (@fig-opcode-field with less annotation) shows the R-Type format. Notice that all register-register arithmetic instructions follow the same assembly instruction syntax `opname rd rs1 rs2`.
 
 :::{figure} images/r-type.png
 :label: fig-r-type
@@ -64,7 +64,7 @@ The R-Type Instruction Format.
 * `rs2`: "Source" Register, second operand
 * `rd`: "Destination" Register gets the result of the arithmetic computation.
 
-**Other fields**: The assembly instruction operation `opname` is mapped across three fields: `
+**Other fields**: The assembly instruction operation `opname` is mapped across three fields:
 
 * `opcode`: All R-type instructions have the same 7-bit opcode: `0110011`.
 * `funct3`, `funct7`: The arithmetic operation to perform. `funct3` field is 3 bits wide; `funct7` is 7 bits wide.

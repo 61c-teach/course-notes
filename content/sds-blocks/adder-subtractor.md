@@ -303,7 +303,7 @@ We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 ::::{note} Show Explanation of @fig-2bit-add-overflow-table
 :class: dropdown
 
-@fig-2bit-add-overflow-overview provides a high-level idea of addition with 2-bit numbers `A` and `B`. Keep the integer wheel on the left in mind when adding integers. Keep the integer wheel in mind when adding integers.
+@fig-2bit-add-overflow-overview provides a high-level idea of addition with 2-bit numbers `A` and `B`. Keep the integer wheel on the left in mind when adding integers.
 
 :::{figure} images/2bit-add-overflow-overview.png
 :label: fig-2bit-add-overflow-overview
@@ -343,7 +343,7 @@ Cascading n-bit adder with overflow.
 (sec-subtractor)=
 ## Subtractor
 
-We mentioned earlier that addition and subtraction are closely related, and therefore we would expect that their respective circuits are similar and could serve dual both purposes.
+We mentioned earlier that addition and subtraction are closely related, and therefore we would expect that their respective circuits are similar. We can therefore build on the addition circuit to integrate subtraction, thereby serving both purposes.
 
 As discussed in our initial [adder/subtractor design](#fig-add-sub-block), a control bit SUB signals if the add/subtract block should perform subtraction. We note the following holds, due to two's complement:
 
@@ -386,5 +386,5 @@ The augmented adder design is shown below. When the input SUB is 1 the block per
 :width: 100%
 :alt: "The same n-bit adder circuit with overflow detection, but now with subtractor design using XOR gates to conditionally invert B based on a control input SUB that is determining the initial carry-in bit c0."
 
-N-bit adder/substractor design circuit diagram.
+N-bit adder/subtractor design circuit diagram.
 :::
