@@ -20,9 +20,9 @@ Until 9:10
 
 ::::
 
-To round off our discussion of RISC-V, let's discuss RISC-V implements **procedure calls**[^procedures].
+To round off our discussion of RISC-V, let's discuss how RISC-V implements **procedure calls**[^procedures].
 
-[^procedures]: Terminology: The RISC-V manual refers to **procedure** calls and returns, wheras C refers to **function** calls and returns. For more information, see [this Wikipedia page](https://en.wikipedia.org/wiki/Function_(computer_programming)) and [this C wikibooks page](https://en.wikibooks.org/wiki/C_Programming/Procedures_and_functions).
+[^procedures]: Terminology: The RISC-V manual refers to **procedure** calls and returns, whereas C refers to **function** calls and returns. For more information, see [this Wikipedia page](https://en.wikipedia.org/wiki/Function_(computer_programming)) and [this C wikibooks page](https://en.wikibooks.org/wiki/C_Programming/Procedures_and_functions).
 
 
 We first outline the fundamental steps of procedure calls in this section. We then we revisit a few topics in detail:
@@ -54,7 +54,7 @@ int main() {
    local variables, and return value */
 int mult(int mcand, int mlier) {
   int product = 0;
-  while (mlier > 0 {
+  while (mlier > 0) {
     product = product + mcand;
     mlier = mlier - 1;
   }
@@ -100,11 +100,11 @@ In this analogy, your parents' home is the computer. Registers are the table. Th
 :::{note} Six Fundamental Steps to Procedure Calls
 
 1. [Caller] **Set up arguments**. Put arguments in registers.
-1. [Caller] **Transfer control to proceduren**. Use `jal` (jump-and-link) instruction: `jal ra fnLabel`
+1. [Caller] **Transfer control to procedure**. Use `jal` (jump-and-link) instruction: `jal ra fnLabel`
 1. [Callee] **Prologue**. Acquire (local) storage resources: stack space (e.g., push a frame on the stack), save register values, etc.
 1. [Callee] **Perform the desired task**.
 1. [Callee] **Epilogue**. Put the return value in a place where the caller can access it, restore register values, and release local storage on stack (e.g., pop frame off the stack).
-1. [Callee] **Epilogue: Return control to point of origin**. Use the `jr` instruction: `j ra`
+1. [Callee] **Epilogue: Return control to point of origin**. Use the `jr` instruction: `jr ra`
 
 :::
 

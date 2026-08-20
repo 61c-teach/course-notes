@@ -159,10 +159,10 @@ Introducing locks introduces a new problem: **deadlock**. **Deadlock** is a syst
 A classic deadlock is a traffic jam, where no car can move because every car is blocked by another. Image source: [Reddit](https://www.reddit.com/r/pics/comments/6qulze/traffic_deadlock/)
 :::
 
-A classic CS example, the **dining philosophers problem**, illustrates how deadlock can occur.[^djikstra] Suppose there is a special spaghetti must be eaten with two forks (one left fork, one right fork). Each philosopher can only think OR eat. 
+A classic CS example, the **dining philosophers problem**, illustrates how deadlock can occur.[^djikstra] Suppose there is a special spaghetti that must be eaten with two forks (one left fork, one right fork). Each philosopher can only think OR eat. 
 Consider a proposal in which each philosopher is instructed to behave as follows:
 
-[^djikstra]: The Dining Philosophers Problem was first posed by Edsger Djikstra in 1965. [Wikipedia](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
+[^djikstra]: The Dining Philosophers Problem was first posed by Edsger Dijkstra in 1965. [Wikipedia](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
 
 :::::{grid} 2
 
@@ -185,7 +185,7 @@ Consider a proposal in which each philosopher is instructed to behave as follows
 :width: 60%
 :alt: An illustration of the dining philosophers problem.
 
-In the problem, each philosopher has a bowl of spaghetti and can reach the two forks on either side of them.. [Wikipedia](https://commons.wikimedia.org/wiki/File:Dining_philosophers_diagram.jpg)
+In the problem, each philosopher has a bowl of spaghetti and can reach the two forks on either side of them. [Wikipedia](https://commons.wikimedia.org/wiki/File:Dining_philosophers_diagram.jpg)
 :::
 ::::
 
@@ -284,7 +284,7 @@ RISC-V AMOs are R-Type instructions with the format `amoinst rd rs2 (rs1)` that 
 * apply the operation to that value with the contents in `rs2`
 * store the result back to where `rs1` is pointed to
 
-RISC-V supports these atomic insturctions with: swap, add, and/or/xor, min/max, min/max unsigned.
+RISC-V supports these atomic instructions with: swap, add, and/or/xor, min/max, min/max unsigned.
 
 An AMO lock implementation works as follows. On `acquire`, if the lock state was previously also 1, then another thread has the lock, so we "spin" and try again until lock state was previously 0.
 
@@ -301,7 +301,7 @@ locked: # already locked now
 unlock: amoswap.w.rl  x0 x0 (s0)
 ```
 
-The code above looks very similar to our [naive implementation](#code-lock-amo), but now we use AMOs in place of `lw` and `sw`.
+The code above looks very similar to our [naive implementation](#code-lock-naive), but now we use AMOs in place of `lw` and `sw`.
 
 A single atomic memory swap operation is hard to implement because it requires both memory read and write in a single instruction.
 We know from building the datapath that this is not only difficult but also inefficient, potentially leading to a slower clocked system.
@@ -310,7 +310,7 @@ We know from building the datapath that this is not only difficult but also inef
 
 An alternative approach to atomic instruction uses a pair of instructions (one read, one write) that are effectively atomic. To do so, we assume a different definition of success. If the _pair_ executes successfully, then nothing else has changed the value between the instruction pairs.
 
-We discuss one common atomic insturction pair:
+We discuss one common atomic instruction pair:
 
 * `lr rd (rs1)`: Load reserved. Take the value pointed to by `rs1` and load it into `rd`. Add a reservation somewhere.
 * `sc rd rs2 (rs1)`: Store conditional.
@@ -322,13 +322,13 @@ A load-reserved/store-conditional lock implementation works as follows:
 ```{code} bash
 # acquire
         li   t2  1
-try:    lr   t1 s1
+try:    lr   t1 (s1)
         bne  t1 x0 try
-        sc   t0 s1 t2
+        sc   t0 t2 (s1)
         bnez t0 try
 locked: # do nothing
 ...
 
 # release
-unlock: sw x0,0(s1)
+unlock: sw x0 0(s1)
 ```

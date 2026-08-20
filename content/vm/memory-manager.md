@@ -43,17 +43,17 @@ We hope a future version of these course notes will discuss the operating system
 
 :::
 
-Virtual memory manages the two levels of the memory hierarchy represented by main memory and disk. The "memory manager" performs translation and data mangement and is a combination of hardware (in the CPU) and software (the OS).
+Virtual memory manages the two levels of the memory hierarchy represented by main memory and disk. The "memory manager" performs translation and data management and is a combination of hardware (in the CPU) and software (the OS).
 
-The "memory manager" sastisfies several responsibilities:
+The "memory manager" satisfies several responsibilities:
 
 1. **Address translation.** Conceptually, each process is mapped to a part of the memory through the translation of its virtual addresses to physical addresses. The parts of memory used by a process are not necessarily contiguous; in practice, they are interleaved and spread throughout DRAM.
 2. **Protection and isolation.** Each process has its own dedicated "private" part of memory, maintained by the address mappings stored in its own page table. Runtime errors that occur in one process do not corrupt the memory of another; a user program is prevented from messing with the OS's memory and consequently crashing the system.
-3. **Data management between memory and disk.** Disk is usually much larger and smaller than DRAM. The memory manager gives the illusion of larger memory by swapping out select pages to disk; such pages are chosen based on some metric of locality, e.g., most recently used.
+3. **Data management between memory and disk.** Disk is usually much larger than DRAM. The memory manager gives the illusion of larger memory by swapping out select pages to disk; such pages are chosen based on some metric of locality, e.g., most recently used.
 
 ## Page Fault Exceptions
 
-In the CPU, there is hardware for address translation hardware: a [memory management unit](https://en.wikipedia.org/wiki/Memory_management_unit). This hardware unit splits the virtual address into the virtual page number and offset within the page and accesses the page table. If the page is not currently in memory, the hardware raises a **page fault exception**.[^os-exception]
+In the CPU, there is hardware for address translation: a [memory management unit](https://en.wikipedia.org/wiki/Memory_management_unit). This hardware unit splits the virtual address into the virtual page number and offset within the page and accesses the page table. If the page is not currently in memory, the hardware raises a **page fault exception**.[^os-exception]
 Upon this page fault exception, control is transferred to the **page fault exception handler**—a supervisor-level OS procedure that performs the following:
 
 * Initiates transfer between memory and disk.
@@ -69,7 +69,7 @@ Upon this page fault exception, control is transferred to the **page fault excep
 
 :::{warning} Page faults are extremely expensive!
 
-On a page fault, the process cannot continue until the memory access finishes. If the physical page is not in memory, the page must be first fetched from disk and loaded into memory (and the page table must be updated), and _finally_ the instruction can be re-executed to successfully completes the memory access. The (time) cost of disk access [^jim-gray] means that page faults are extremely expensive—on the order of a million cycles.
+On a page fault, the process cannot continue until the memory access finishes. If the physical page is not in memory, the page must be first fetched from disk and loaded into memory (and the page table must be updated), and _finally_ the instruction can be re-executed to successfully complete the memory access. The (time) cost of disk access [^jim-gray] means that page faults are extremely expensive—on the order of a million cycles.
 
 **Context switches** amortize the cost of page faults across all processes. To keep the CPU busy, the OS performs a context switch and runs another process—while the original process that triggered a page fault "waits." Then, when the page in question is finally loaded into memory, the OS performs another context switch back to the original process.
 :::

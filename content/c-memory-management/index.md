@@ -17,8 +17,6 @@ subtitle: "What is the C Memory Model?"
 :width: 100%
 :title: "[CS61C FA20] Lecture 05.3 - C Memory Management: Memory Locations"
 :enumerated: false
-
-[CS61C FA20] Lecture 05.3 - C Memory Management: Memory Locations"
 :::
 
 until 8:37

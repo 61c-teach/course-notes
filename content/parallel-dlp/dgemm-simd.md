@@ -118,7 +118,7 @@ SIMD `dgemm` tiled matrix multiplication. The outlined boxes indicate which valu
 
 1. `i = 0`. Compute elements $C_{0j}$ for $j = 0, 1, 2, 3$; let this be $\vec{c}$. Let $\vec{b}$ be the corresponding part of the $k$-th row of $B$.
 
-    1a through 1h: Loop through $k = 0, ..., 7$. Compute the result of $A_{ik} \cdot $\vec{b}$ and add to the four elements of $\vec{c}$.
+    1a through 1h: Loop through $k = 0, ..., 7$. Compute the result of $A_{ik} \cdot \vec{b}$ and add to the four elements of $\vec{c}$.
 1. `i = 0`, still. Next, compute elements $C_{0j}$ for $j = 4, 5, 6, 7$; let this be $\vec{c}$. Let $\vec{b}$ be the corresponding part of the $k$-th row of $B$. Again, loop through the index $k$ to add the resulting scalar-by-vector to the elements of $\vec{c}$.
 1. `i = 1`. Compute elements $C_{1j}$ for $j = 0, 1, 2, 3$.
 1. `i = 1`. Compute elements $C_{1j}$ for $j = 4, 5, 6, 7$.

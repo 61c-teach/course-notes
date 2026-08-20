@@ -23,12 +23,12 @@ In the [previous chapter](#sec-intro-sds), we discussed a chip, which is compose
 
 :::{figure} #fig-apple-a14
 :alt: "Labeled die photograph of a system-on-chip: major regions outlined for GPU, system cache, CPU clusters with L2 caches, neural engine, and DDR memory interfaces along the die edges."
-Apple A14 Bionic Chip (sources: [Wikipedia](https://en.wikipedia.org/wiki/Apple_A14), [TechInsights]((https://www.techinsights.com/blog/two-new-apple-socs-two-market-events-apple-a14-and-m1)). @fig-apple-a14 in [Intro to SDS](#sec-intro-sds).
+Apple A14 Bionic Chip (sources: [Wikipedia](https://en.wikipedia.org/wiki/Apple_A14), [TechInsights](https://www.techinsights.com/blog/two-new-apple-socs-two-market-events-apple-a14-and-m1). @fig-apple-a14 in [Intro to SDS](#sec-intro-sds).
 :::
 
 Surrounding the inner part of the chip—the core—is a set of connections to the outside world. Usually these connect through some wires in the plastic or ceramic package to the printed circuit board (PCB). In the case of most computers this PCB would be the motherboard. Some of these connections go to the main memory and the system bus. A fair number of the pins are used to connect to the power supply. The power supply takes the 110 Volt AC from the wall socket (provided by PG&E) and converts it to low voltage DC (usually in the range of around 1 to 5 volts, depending on the particular chip used). The DC voltage is measured relative to ground potential (GND). Power connections to the chip from the power supply are of two types; GND, and DC Voltage (labeled "Vdd").
 
-The energy provided by the power supply drives the operation of the processor. The energy is used to move electric charge from place to place in the circuits and in the process is dissipated as heat. These days a processor my use on the order of 10 watts—like a not-so-bright light bulb.
+The energy provided by the power supply drives the operation of the processor. The energy is used to move electric charge from place to place in the circuits and in the process is dissipated as heat. These days a processor may use on the order of 10 watts—like a not-so-bright light bulb.
 
 (sec-clock)=
 ## The Clock
@@ -126,7 +126,7 @@ Waveform diagram of signal change over time along 4 wires.
 
 A measure of the delay from input to output, in general, is called the **propagation delay**. Propagation delay occurs in all circuits, including combinational logic circuits.
 
-However, the propagation delay of a circuit, like the adder, is always less than the clock period. We discuss this more in a [later section].
+However, the propagation delay of a circuit, like the adder, is always less than the clock period. We discuss this more in a [later section](#sec-critical-path).
 :::
 
 ## Summary: Synchronous Digital System

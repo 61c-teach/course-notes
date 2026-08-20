@@ -63,7 +63,7 @@ song2.year_recorded      = 1988;
 :::{note} Code, explained
 :class: dropdown
 
-* Lines 1 - 4: `SONG` is an alias for `typedef struct {int length_in_seconds; int year_recorded; }`.
+* Lines 1 - 4: `SONG` is an alias for `typedef struct {uint16_t length_in_seconds; uint16_t year_recorded; }`.
 * Line 6: Declare `song1` as a struct that has two `uint16_t` variables, `length_in_seconds` and `year_recorded`.
 * Line 7-8: Instantiate the data within the `song1` variable.
 * Lines 10-12: Do something similar for `song2`.
@@ -103,7 +103,7 @@ All CPP commands begin with `#`:
 * `#include "file.h"`: Inserts `file.h` into output
 * `#include <stdio.h>`: Looks for `stdio.h` in a standard location, but otherwise equivalent to previous item
 * `#define PI (3.14159)`: Define constant
-* `#if/#endif`: Conditionally include text. Useful if this C program will be compiled onto different machines and therefore require architecture-dependent libaries
+* `#if/#endif`: Conditionally include text. Useful if this C program will be compiled onto different machines and therefore require architecture-dependent libraries
 
 To see the result of preprocessing, you can use the `-save-temps` option in `gcc`. Read the GCC docs for more on [CPP](http://gcc.gnu.org/onlinedocs/cpp/) and [macros](https://gcc.gnu.org/onlinedocs/cpp/Macros.html).
 
@@ -140,15 +140,15 @@ Very similar to Java. Not much to say here beyond two items:
 do statement while (expression);
 ```
 
-**Switch**: Until you reach a break statement, you will continue to execute statements, even those in subsequent `case`s.
+**Switch**: Until you reach a `break` statement, you will continue to execute statements, even those in subsequent `case`s.
 
 ```c
+// this block runs through all statements
 switch (expression){
   case const1:    statements
   case const2:    statements
   default:        statements
 }
-break;
 
 ```
 

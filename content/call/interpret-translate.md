@@ -19,7 +19,7 @@ This section is included as bonus content and is not tested. If you are curious 
 
 ## Language Execution Continuum
 
-Interpretation and translation are two ways to running a program written in a specific source language.
+Interpretation and translation are two ways of running a program written in a specific source language.
 
 * **Interpretation**: Directly executes a program in the source language. An interpreter is a program that executes other programs.
 * **Translation**: Converts a program from the source language to an equivalent program in another language. Translating/compiling to lower-level languages almost always means higher efficiency, higher performance.
@@ -59,11 +59,11 @@ One reason is **simulation**; for example, in Venus, we have a RISC-V simulator 
 
 Another reason is **conversion** of a program from one ISA to another ISA. Consider the Apple Macintosh ISA conversion back in the day. Apple moved from 680x0 ISA to PowerPC, then to x86 (and now to ARM). Instead of requiring all programs to be re-translated from a high-level languages, instead the designers let executables contain old and/or new machine code, then **emulate**–by interpreting the old code in software if necessary. This slower process supported backward compatibility by  using software to interpret the old ISA onto the new hardware.
 
-In 2020, Apple moved again onto an ARM-based Apple silicon. To support this transition, Apple released [Rosetta](https://support.apple.com/en-us/102527), an app that runs Intel-based apps on Apple chips. The link in the previous sentence uses the word "translation" quite liberally; we know now that this process is actually interpretatoni.
+In 2020, Apple moved again onto an ARM-based Apple silicon. To support this transition, Apple released [Rosetta](https://support.apple.com/en-us/102527), an app that runs Intel-based apps on Apple chips. The link in the previous sentence uses the word "translation" quite liberally; we know now that this process is actually interpretation.
 
 ## Interpretation vs. Translation
 
-From the point of view of the program, it doesn't know—and doesn't care—whether it is running on an interpreter (software) or raw silicon (hardware). When you give it an "add" instruction, it does the add. Nevertheless, there are a pros and cons to choosing interpretation vs. translation:
+From the point of view of the program, it doesn't know—and doesn't care—whether it is running on an interpreter (software) or raw silicon (hardware). When you give it an "add" instruction, it does the add. Nevertheless, there are pros and cons to choosing interpretation vs. translation:
 
 * **Implementation**: It is generally easier to write an interpreter; you may have done so in CS 61A (Structure and Interpretation of Computer Programs).
 * **Debugging**: Interpreters are close to the high level, so you get great error messages and debugging support (see Venus). Translators can also support some debugging but requires encoding line numbers and variable names for debugging use; we will see this later.

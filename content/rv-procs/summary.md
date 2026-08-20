@@ -91,11 +91,11 @@ Let’s review what special meaning we assign to each type of register in RISC-V
 | **Register** | **Convention** | **Saver** |
 |---|----|-----|
 | `x0` | Stores **zero** | N/A |
-| `sp` | Stores the **stack pointer** | Callee|
-| `ra` | Stores the **return address** | Caller
-| `a0` - `a7` | Stores **arguments** and **return values** | Caller
-| `t0` - `t6` | Stores **temporary** values that *do not persist* after function calls | Caller
-| `s0` - `s11` | Stores **saved** values that *persist* after function calls | Callee
+| `sp` | Stores the **stack pointer** | Callee |
+| `ra` | Stores the **return address** | Caller |
+| `a0` - `a7` | Stores **arguments** and **return values** | Caller |
+| `t0` - `t6` | Stores **temporary** values that *do not persist* after function calls | Caller |
+| `s0` - `s11` | Stores **saved** values that *persist* after function calls | Callee |
 
 To save and recall values in registers, we use the `sw` and `lw` instructions to save and load words
 to and from memory, and we typically organize our functions as follows:
@@ -106,7 +106,7 @@ addi sp, sp, -8 # Room for two registers. (Why?)
 sw s0, 0(sp) # Save s0 (or any saved register)
 sw s1, 4(sp) # Save s1 (or any saved register)
 
-# Code ommitted
+# Code omitted
 
 # Epilogue
 lw s0, 0(sp) # Load s0 (or any saved register)
@@ -118,7 +118,7 @@ Below is an example of calling conventions in a RISC-V function.
 
 The callee-saved registers (like `s0`) are saved at the start of the function and restored before returning, as these registers must be preserved by the function.
 
-The caller-saved registers (like `t1` and `ra`) are saved by the caller before invoking another function,as the callee can modify these registers. **Note**: Although `ra` is a caller-saved register, it is usually saved at the very beginning and end of the function by convention, as shown below.
+The caller-saved registers (like `t1` and `ra`) are saved by the caller before invoking another function, as the callee can modify these registers. **Note**: Although `ra` is a caller-saved register, it is usually saved at the very beginning and end of the function by convention, as shown below.
 ```
 func_a:
 

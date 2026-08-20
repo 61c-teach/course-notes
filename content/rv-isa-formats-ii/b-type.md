@@ -37,11 +37,11 @@ One such extension is the **16-bit compressed extension** extension, which accom
 In this course, we only focus on RISC-V processors with 32-bit instructions. Implications of this half-word branch offset:
 
 * Half of possible branch targets will be errors
-RISC-V conditional branches can only branch to $\pm 2^{10}$ instructions away from the PC.
+* RISC-V conditional branches can only branch to $\pm 2^{10}$ instructions away from the PC.
 
 :::{tip} Quick Check
 
-**True/False**: If a program only has only 32-bit instructions, bit position 8 of all B-Type instructions will always be `0`.
+**True/False**: If a program only has 32-bit instructions, bit position 8 of all B-Type instructions will always be `0`.
 :::
 
 :::{note} Show Answer
@@ -51,7 +51,7 @@ RISC-V conditional branches can only branch to $\pm 2^{10}$ instructions away fr
 (sec-imm-swirl)=
 ## B-Type vs. I-Type, S-Type: Immediate Formats
 
-Recall a core component of RISC-V design is to keep fields as consistent as possible across instruction formats. We have already seen how source/destination register fields `rs1`, `rs2`, and `rs2` are consistent across formats, allowing clearer consistency of which registers to **read** and which to **write**.
+Recall a core component of RISC-V design is to keep fields as consistent as possible across instruction formats. We have already seen how source/destination register fields `rs1`, `rs2`, and `rd` are consistent across formats, allowing clearer consistency of which registers to **read** and which to **write**.
 
 RISC-V also tries to keep bit positions of immediates consistent. The "**swirling**" of immediate bits in @fig-ISB-type-comparison actually simplifies hardware design!
 
@@ -67,7 +67,7 @@ I-Type, S-Type, and B-Type instruction format comparison.
 Observations:
 
 * Across I-Type, S-Type, B-Type, the instruction bit `inst[31]` is always the `imm`’s sign bit.
-* The 13-bit immediate of B-type has an `imm[0] = 0`, so B-Type tries to keep `imm[10:5]`, `imm[4:1]` in the same places as in the I-Type and S-Type, e.g., instruction bits `inst[26:30]` and `inst[8:11]`.
+* The 13-bit immediate of B-type has an `imm[0] = 0`, so B-Type tries to keep `imm[10:5]`, `imm[4:1]` in the same places as in the I-Type and S-Type, e.g., instruction bits `inst[30:25]` and `inst[11:8]`.
 * S-Type, B-Type instruction formats have **just two bits that change meaning**:
   * The instruction bit `inst[31]` is immediate bit `imm[11]` in S-Type and `imm[12]` in B-Type.
   * The instruction bit `inst[7]` is immediate bit `imm[0]` in S-Type and `imm[11]` in B-Type.

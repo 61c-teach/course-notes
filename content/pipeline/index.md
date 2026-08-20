@@ -19,7 +19,7 @@ title: "Performance Metrics"
 
 :::{warning} Review pipelined circuits
 
-We briefly mention throughput and latency when we discuss registers in pipelined circuits, covered in [this section](#sec-pipelining-circuits) of the Synchronous Digital Systems unit. We reocmmend reviewing that section before continuing.
+We briefly mention throughput and latency when we discuss registers in pipelined circuits, covered in [this section](#sec-pipelining-circuits) of the Synchronous Digital Systems unit. We recommend reviewing that section before continuing.
 
 :::
 

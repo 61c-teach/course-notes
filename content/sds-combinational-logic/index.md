@@ -29,7 +29,7 @@ title: "Logic Gates"
 ::::
 
 To design circuits that perform complex operations on binary signals, we must first define primitive operators called **logic gates**. Logic gates are
-simple circuits (each with only a handful of transistors) that can be wired together to implement any combinational logic function. In  CS 61C we consider logic gates are primitive elements; they are the basic building blocks for our circuits.
+simple circuits (each with only a handful of transistors) that can be wired together to implement any combinational logic function. In CS 61C we consider logic gates to be primitive elements; they are the basic building blocks for our circuits.
 
 
 The simplest logic gates are **binary** or **unary** operators that take as input one/two binary variables and output one binary value.
@@ -82,7 +82,7 @@ Four different representations:
 1. The function definition `y = AND(a, b)`. The second line uses the C bitwise operation `&`.
 1. The truth table for `y = AND(a, b)`. Each row enumerates each input combination and the corresponding output value.
 1. The logic gate symbol for AND, used as a graphical representation in digital circuit diagrams. 
-1. CMOS transistor circuit for  the AND logic gate.[^and-cmos]
+1. CMOS transistor circuit for the AND logic gate.[^and-cmos]
 
 [^and-cmos]: Out of scope for this course, but those interested, [read more](https://electronics.stackexchange.com/a/226028) about AND.
 
@@ -234,7 +234,7 @@ For each input pattern of 1’s and 0’s, there exists a single output pattern.
 
 Notes:
 
-* [AND](#fig-and-gate), [OR](#fig-or-gate), [NOT](#fig-not-gate) and [XOR](#fig-xor-gate) follow from the C bitwise operations you learned eariler.
+* [AND](#fig-and-gate), [OR](#fig-or-gate), [NOT](#fig-not-gate) and [XOR](#fig-xor-gate) follow from the C bitwise operations you learned earlier.
   * The NOT gate is commonly called an **inverter**. Note the "bubble" (circle).
 * [NAND](#fig-nand-gate) is "NOT" AND. Note the bubble on its output.
 * [NOR](#fig-nor-gate) is "NOT" OR. Again, note the bubble.
@@ -264,14 +264,10 @@ than two inputs also exist. For performance reasons, the number of inputs to log
 :width: 30%
 :alt: "Four-input AND gate symbol: stacked inputs a, b, c, and d on the left and single output y on the curved right edge."
 
-4-input AND gate. The output `y` is `1` if and only if `a`, `b`, and `c` are all `1`.
+4-input AND gate. The output `y` is `1` if and only if `a`, `b`, `c`, and `d` are all `1`.
 :::
 
-The function of these gates with more than two inputs is obvious from the function of the two input version, except in the case of the the exclusive-or gate,
-
-Except for NOT (which is unary), we have shown 2-input versions of these gates. Versions of these gates with more than two inputs also exist. However, for performance reasons, the number of inputs to logic gates is usually restricted to around a maximum of four.
-
-The function of these gates is generally self-evident and can deterined by repeatedly composing the equivalent 2-input gate; for example, `AND(a, b, c, d) = AND(AND(a, AND(b, AND(c, d)))) = AND(AND(a, b), AND(c, d))`, etc. There are a few exceptions; let's try your reasoning with some quick checks.
+The function of these gates with more than two inputs is generally self-evident and can be determined by repeatedly composing the equivalent 2-input gate. For example, `AND(a, b, c, d) = AND(a, AND(b, AND(c, d))) = AND(AND(a, b), AND(c, d))`, etc. There are a few exceptions, such as the exclusive-or gate; let's try your reasoning with some quick checks.
 
 ```{tip} What is an N-input [NAND](#fig-nand-gate)?
 :class: dropdown

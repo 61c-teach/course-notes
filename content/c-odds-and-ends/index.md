@@ -146,7 +146,7 @@ Suppose the state of four things A, B, C, D is represented by the 4-bit pattern 
 
 * If `x` is `0b0110`, then B and C are present.
 * Suppose we wanted to update `D` to present. `x | 0b0001` does this. `0b0001` is called a bitmask.
-* Suppose we wanted to reset A, B, C to not present. `x & 0b0001` does this. `0b000` is also called a bitmask.
+* Suppose we wanted to reset A, B, C to not present. `x & 0b0001` does this. `0b0001` is also called a bitmask.
 :::
 
 :::{note} Example 2

@@ -21,16 +21,6 @@ title: "Cache Coherence"
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
-:::{iframe} https://www.youtube.com/embed/zSONGMSsMgM
-:width: 100%
-:title: "[CS61C FA20] Lecture 35.2 - Thread-Level Parallelism III: Shared Memory and Caches"
-:::
-
-::::
-
-::::{note} 🎥 Lecture Video
-:class: dropdown
-
 :::{iframe} https://www.youtube.com/embed/tf3rSHDsevM
 :width: 100%
 :title: "[CS61C FA20] Lecture 35.3 - Thread-Level Parallelism III: Cache Coherency"
@@ -55,19 +45,6 @@ Shared-memory Multiprocessor (SMP) with multiple cores and a single, coherent me
 :::
 
 
-```{exercise}
-:label: dp-05-b
-5. **True/False**: Stores and loads are the only instructions that require input/output from DMEM.
-```
-
-
-:::{solution} dp-05-b
-:label: dp-05-sol-b
-:class: dropdown
-**True** For all other instructions, we don’t need to read the data that is read out from DMEM, and thus don’t need to wait for the output of the MEM stage.
-:::
-
-
 Notes about @fig-smp:
 
 * Each CPU has its own cache(s), e.g., an L1 cache.
@@ -86,11 +63,10 @@ Consider three example memory accesses on a dual-core system. Assume the word `2
 
 @fig-cache-coherence-1 shows that accesses 1 and 2, which are reads, trigger compulsory cache misses in both CPU 1's and CPU 2's caches. The two caches must request the corresponding block from memory, via the communication bus. Each processor gets a copy of this block (and therefore a copy of the word @ address `0x5000`) and stores the block on their own cache.
 
-CPU 2 reads Mem[0x5000]
 :::{figure} images/cache-coherence-1.png
 :label: fig-cache-coherence-1
 :width: 70%
-:alt: "Visual description of a dual-core SMP system. The SMP system diagram illustrates several cores or sockets connect through a shared bus to a unified physical memory and to I/O. There are four directed arrows between each CPU's cache and the shared memory unit to show the bus access for the two memory accesses: (1) CPU 1 **reads** word @ address `0x5000`, and (2) CPU 2 **reads** word @ address `0x5000`. One set of arrows is labeled request (cache via bus to memory); the other set is labeled response (memory via bus to cache). CPU Each CPU cache has a copy of the word `20` at memory address `0x5000`.
+:alt: "Visual description of a dual-core SMP system. The SMP system diagram illustrates several cores or sockets connect through a shared bus to a unified physical memory and to I/O. There are four directed arrows between each CPU's cache and the shared memory unit to show the bus access for the two memory accesses: (1) CPU 1 **reads** word @ address `0x5000`, and (2) CPU 2 **reads** word @ address `0x5000`. One set of arrows is labeled request (cache via bus to memory); the other set is labeled response (memory via bus to cache). Each CPU cache has a copy of the word `20` at memory address `0x5000`.
 
 CPU 1 and CPU 2 both read a word @ address `0x5000`. If both caches are cold, these two memory accesses are compulsory cache misses, and the value must be retrieved from shared memory via the shared bus.
 :::

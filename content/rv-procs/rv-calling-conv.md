@@ -44,7 +44,7 @@ In the C code below, `main` calls `sum_square`, which makes two calls to `mult`.
 :linenos:
 
 int main() {
-  int z = sum_quare(3, 4);
+  int z = sum_square(3, 4);
   ...
 }
 
@@ -101,11 +101,11 @@ Next, `factorial(2)` wants to multiply this return value by its own argument, `2
 (sec-rv-calling-convention)=
 ## Register Calling Convention
 
-Consider the [fundamental steps of function calls](#sec-rv-procedure-call-steps). As part of Step 2 (where a caller transfers control and execution to a callee), how might a caller "save" their curent registers?
+Consider the [fundamental steps of function calls](#sec-rv-procedure-call-steps). As part of Step 2 (where a caller transfers control and execution to a callee), how might a caller "save" their current registers?
 
 :::{warning} Strawman solution
 
-We _could_ push and pop a caller's 31 registers `x1` to `x31` to the stack betwen procedure calls. While simple, this approach is costly: we rarely use all 31 registers (given register conventions) so we could be copying extraneous data with expensive memory operations.
+We _could_ push and pop a caller's 31 registers `x1` to `x31` to the stack between procedure calls. While simple, this approach is costly: we rarely use all 31 registers (given register conventions) so we could be copying extraneous data with expensive memory operations.
 :::
 
 Instead, RISC-V defines a **calling convention**:
@@ -163,7 +163,7 @@ Generally, register saving and restoring is considered part of the stack frame. 
 
 :::
 
-## Fundamental Steps, Revisted
+## Fundamental Steps, Revisited
 
 In light of calling convention, we revisit the [Six Fundamental Steps to Procedure Calls](#sec-rv-procedure-call-steps) from a [previous section](#sec-rv-procedure-calls) in more detail:
 
@@ -177,6 +177,6 @@ In light of calling convention, we revisit the [Six Fundamental Steps to Procedu
 | 3 | Callee | **Prologue**. Acquire (local) storage resources: stack space (e.g., push a frame on the stack), save register values, etc. | **Prologue.** Push a new stack frame by decrementing `sp`. Save registers like `s0-s11` if callee needs to use them. Save `ra` if callee will call subroutine. Allocate enough space for local non-register variables like stack arrays. |
 | 4 | Callee | **Perform the desired task.** | - |
 | 5 | Callee | **Epilogue**. Put the return value in a place where the caller can access it, restore register values, and release local storage on stack (e.g., pop frame off the stack). | Put return value in `a0` (or `a1` if necessary). Restore `ra` if callee called a subroutine. Pop current stack frame by incrementing `sp`. |
-| 6 | Callee | **Epilogue: Return control to point of origin**. Use the `jr` instruction: `j ra` | **Epilogue: Return control to caller.** Use the `jr` instruction: `j ra` |
+| 6 | Callee | **Epilogue: Return control to point of origin**. Use the `jr` instruction: `jr ra` | **Epilogue: Return control to caller.** Use the `jr` instruction: `jr ra` |
 
 :::

@@ -32,7 +32,7 @@ Recall our basic computer layout (@fig-von-neumann). The processor communicates 
 
 :::{warning} Which "direction" for memory access?
 
-As computer architects, our world is processor-centric–because that's where all the action happens. So the direction of this operation is with respct to the operation: load _from_, store _to_.
+As computer architects, our world is processor-centric–because that's where all the action happens. So the direction of this operation is with respect to the operation: load _from_, store _to_.
 
 It is important to practice using the correct terminology; doing so will help you better internalize core concepts!
 :::

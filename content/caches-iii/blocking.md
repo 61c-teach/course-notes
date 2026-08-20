@@ -12,7 +12,7 @@ We have seen in a [previous section](#sec-cache-optimizations) how as computer a
 
 **Cache blocking** is a programmer technique that rearranges data accesses to make better use of the data brought into the cache and reduce cache misses.
 
-In this section, we consider one specific program benchmark: [matrix multiplication](#sec-dgemm). After trying an initial naive implementatno, we hhow knowing the underlying design of our cache can actually improve how we write programs.
+In this section, we consider one specific program benchmark: [matrix multiplication](#sec-dgemm). After trying an initial naive implementation, we show how knowing the underlying design of our cache can actually improve how we write programs.
 
 ## Matrix Multiplication (DGEMM)
 
@@ -343,7 +343,7 @@ In our matmul example, we know that `B` is stored in row-major-layout. To access
 
 From P&H 4.4 for square matrices (N-by-N):
 
-> If the cache can hold one N-by-N matrix and one row of N, then at least the `i`th row of `A` and the entire matrix `B` may stay in the cache. Less than that and misses may occur for both `B` and `C`. In the worst case, there would be 2 N{sup}`3`+ N{sup}`2` memory words accesed for N{sup}`3` operations.
+> If the cache can hold one N-by-N matrix and one row of N, then at least the `i`th row of `A` and the entire matrix `B` may stay in the cache. Less than that and misses may occur for both `B` and `C`. In the worst case, there would be 2 N{sup}`3`+ N{sup}`2` memory words accessed for N{sup}`3` operations.
 
 ## Approach 2: Cache Blocking with Transpose
 

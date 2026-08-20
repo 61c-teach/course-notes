@@ -32,7 +32,7 @@ Historically, computers were used as scientific calculators. We therefore dedica
 There are many systems we can use. Not all systems will help us represent $2^N$ unique integers in $N$ bits! We will focus on representing *signed* and *unsigned* integers.
 
 * Signed integers refer to positive integers, negative integers, and zero.
-* Unsigned integers refer to non-negative integers,  i.e., at least greater than zero.
+* Unsigned integers refer to non-negative integers, i.e., zero or greater.
 
 ## $N$-bit Unsigned Integer Representation
 
@@ -279,7 +279,7 @@ The leftmost bit (also known as **most significant bit**) is still effectively t
 
 Imagine you are recording an electrical signal wavering between 0 and 31 volts. Wouldn't it be cool to grab that graph and pull it down so it wiggles around zero? That's bias encoding.
 
-We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as much negative numbers as positive, a **commonly-used bias** for $N$-bits is $-(2^{N-1} - 1)$.
+We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as many negative numbers as positive, a **commonly-used bias** for $N$-bits is $-(2^{N-1} - 1)$.
 
 :::{figure} images/bias-encoding-shift.png
 :label: fig-bias-encoding-shift

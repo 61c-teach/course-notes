@@ -37,8 +37,8 @@ Superscalar processors start multiple instructions per clock cycle.
 The processor hardware must also have some sort of dynamic "out-of-order" execution, where it reorders instructions dynamically to reduce impact of hazards.
 
 We note that superscalar processors, where multiple instructions are executed on multiple pipelines in a single processor, should be contrasted with multicore processors, which have separate threads per core.
-\
-Superscalar processors start multiple instructions per clock cycle. In our [Iron Law of Processor Performance](#sec-iron-law), superscalar processors have average CPI < 1 because IPC > 1 (multiple instructions completed per clock cycle).
+
+Superscalar processors start multiple instructions per clock cycle.In our [Iron Law of Processor Performance](#sec-iron-law), superscalar processors have average CPI < 1 because IPC > 1 (multiple instructions completed per clock cycle).
 
 <!-- reprint of iron-law -->
 <!-- ```{math} :label: superscalar-law

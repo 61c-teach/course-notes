@@ -6,7 +6,7 @@ title: "Special Numbers"
 ## Learning Outcomes
 
 * Understand how the IEEE 754 standard represents zero, infinity, and NaNs
-* Understand what overflow or overflow mean with floating point numbers
+* Understand what overflow or underflow mean with floating point numbers
 * Understand how denormalized numbers implement "gradual" underflow
 * Convert denormalized numbers into their decimal counterpart
 
@@ -193,7 +193,7 @@ Second smallest normalized number: (`1.00...001`) $\times 2^{(1-127)} = (1 + 2^{
 
 | s | exponent | significand |
 | :--: | :--: | :--: |
-| `0` | `0000 0001` | `000 0000 0000 0000 0000 0000` |
+| `0` | `0000 0001` | `000 0000 0000 0000 0000 0001` |
 
 Smallest normalized step size is this difference: $2^{-149}$
 
@@ -238,7 +238,7 @@ Put another way, denorms are definitely the exception. There are only $2^{23}$ o
 :::
 
 
-The "implicit exponent" for denorms is the smallest normalized exponent: $2^{1 - 127} = 2^{126}$. This denormalized exponent therefore enforces a uniform step size of $2^{149}$ across the denormalized range and the smallest normalized numbers[^at-home]. This consistency also yields the **gradual underflow** we want, as shown in @fig-underflow-gradual:
+The "implicit exponent" for denorms is the smallest normalized exponent: $2^{1 - 127} = 2^{-126}$. This denormalized exponent therefore enforces a uniform step size of $2^{-149}$ across the denormalized range and the smallest normalized numbers[^at-home]. This consistency also yields the **gradual underflow** we want, as shown in @fig-underflow-gradual:
 
 [^at-home]: We leave it to you to work this out.
 

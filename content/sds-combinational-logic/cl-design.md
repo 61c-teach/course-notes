@@ -27,21 +27,21 @@ Our goal this lecture is to build combinational logic blocks. We can summarize t
 :width: 60%
 :alt: "Diagram with three bubbles describing three representations of combinational logic: Truth Table, Boolean Expression, and Gate Diagram. The representations are connected with curved arrows showing conversions between them."
 
-Second equivalent circuit: $y = a + c$.
+The three representations of a combinational logic block: truth table, Boolean expression, and gate diagram. We can translate between different representations.
 :::
 
-@fig-cl-block-representation shows the three possible representation for a combinational logic block.
+@fig-cl-block-representation shows the three possible representations for a combinational logic block.
 
 * The **truth table** form is unique—for every combinational logic block, there is only one truth table. The uniqueness of the truth table makes it a useful way to clearly define the function of a combinational logic block.
 * There are multiple **Boolean expressions** possible for any combinational logic block. Boolean expressions are useful for algebraic manipulation, particularly simplification.
 * Multiple **gate level** representations for any combinational logic blocks. The gate diagram gives us a prescription for converting to an actual transistor circuit; each gate in the
-diagram can be replaced by a small transistor circuit that achieves is respective gate level function.
+diagram can be replaced by a small transistor circuit that achieves its respective gate level function.
 
 :::{warning} The truth table is unique
 For a given combinational logic block, there is only one truth table. By contrast, a combinational logic block can have multiple Boolean expressions and multiple circuit diagrams.
 :::
 
-This section discusses how to translate between the diferent representations of a combinational logic block. This section ends with how to _compose_ circuits from smaller blocks.
+This section discusses how to translate between the different representations of a combinational logic block. This section ends with how to _compose_ circuits from smaller blocks.
 
 (sec-majority-circuit)=
 ### Example: Majority Circuit
@@ -135,7 +135,7 @@ $$y = \overline{a} \overline{b} \overline{c} + \overline{a} \overline{b} c + a \
 :::{note} Click to show annotated truth table
 :class: dropdown
 
-| $a$ | $b$ | $c$ | $y$ | PRoduct |
+| $a$ | $b$ | $c$ | $y$ | Product |
 | :---: | :---: | :---: | :---: | :--- |
 | 0 | 0 | 0 | 1 | $\overline{a} \cdot \overline{b} \cdot \overline{c}$ |
 | 0 | 0 | 1 | 1 | $\overline{a} \cdot \overline{b} \cdot c$ |

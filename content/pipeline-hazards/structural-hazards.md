@@ -90,7 +90,7 @@ RV32I IMEM and DMEM are two separate hardware units.
 
 In @fig-structural-pipeline, memory is accessed by `inst5` in the `IF` stage (to read an instruction from IMEM) and `inst2` in the `MEM` stage (to read data from DMEM). The separate IMEM and DMEM in @fig-separate-mem do not cause a structural hazard, because `inst5` and `inst2` can simultaneously access memory.
 
-By contrast, if we used a single memory block called that could only support one read/write at a time (to any part of memory—instruction or data), then `inst5` and `inst2` attempting to access memory in the same cycle would cause a structural hazard.
+By contrast, if we used a single memory block (e.g., simply called "MEM") that could only support one read/write at a time (to any part of memory—instruction or data), then `inst5` and `inst2` attempting to access memory in the same cycle would cause a structural hazard.
 
 We will discuss this later, but under the hood, IMEM and DMEM are actually caches of main memory, as shown in @fig-separate-onchip-mem. This design allows them to be much closer to the processor to keep memory access fast.
 

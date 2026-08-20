@@ -281,7 +281,7 @@ This step is different from the previous one because we must compute the array a
 
   * **Line 2.** Load in `a` to `t1`.
 
-  * **Line 3.** Multiply `a` by `4`. This is equivalent to bitshifting left by 2. We haven't covered `slli` explicitly in lecture, but looking this up in our [refcard](#tab-rv32i-arithmetic) we see that `slli` is shift left logical immediate.`
+  * **Line 3.** Multiply `a` by `4`. This is equivalent to bitshifting left by 2. We haven't covered `slli` explicitly in lecture, but looking this up in our [refcard](#tab-rv32i-arithmetic) we see that `slli` is shift left logical immediate.
   
     ```
     0x5 = 0b101     # a
@@ -325,7 +325,9 @@ When this instruction is executed, what C expression is the closest representati
 :::{note} Show Answer
 :class: dropdown
 
-**E.** `&c[a]`. The value in register `t1` is defined (with Verilog syntax) as `R[t1]`; at this point, it is `(R[t1] * 4) + 12 + R[sp]`. The register value `R[t1]` is used as an address–it is the memory location to which we store the word `R[t0]`.
+**E.** `&c[a]`. Register `t1` originally held the value of `a` (loaded in [Line 14](#code-sp-example-rv)), then got overwritten in Lines 15-17 to compute `(a * 4) + 12 + R[sp]`. The register value `R[t1]` is used as an address–it is the memory location to which we store the word `R[t0]`.
+
+Note: The value in register `t1` is written symbolically (with Verilog syntax) as `R[t1]`. 
 
 :::
 

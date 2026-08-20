@@ -13,7 +13,9 @@ Single-Precision (32-bit) Floating Point Representation (reprint of @fig-float f
 :::
 
 * The *sign* determines the sign of the number ($0 $ for positive, $1 $ for negative).
-* The *exponent* is in biased notation. For single-precision floating point numbers, the bias is $−127$, which comes from $-(2^{(8−1)} −1)$. For double-precision floating point numbers, the bias is $−1023$. An exponent of `00000000` represents a *denormalized number* and an exponent of `11111111` represents either *NaN*, if there is a non-zero mantissa, or *infinity*, if there is a zero mantissa.
+* The *exponent* is in biased notation. For single-precision floating point numbers, the bias is $−127$, which comes from $-(2^{(8−1)} −1)$. For double-precision floating point numbers, the bias is $−1023$.
+  * An exponent of `00000000` represents either *zero*, if there is a zero mantissa, or a *denormalized number*, if there is a non-zero mantissa.
+  * An exponent of `11111111` represents either *NaN*, if there is a non-zero mantissa, or *infinity*, if there is a zero mantissa.
 * The *significand* is used to store a **fraction** instead of an integer and refers to the bits to the right of the leading "`1`" when normalized. For example, if a mantissa is `1.010011`, its significand is `010011`.
 
 
@@ -89,7 +91,7 @@ integer value.
 :label: fp-03-sol
 :class: dropdown
 
-**True.** The uneven spacing is due to the exponent representation of floating point numbers. There are a fixed number of bits in the significand. In IEEE $32$-bit storage there are $23 $ bits for the significand, which means the LSB represents $2^{−23}$ times 2 to the exponent. For example, if the exponent is zero (after allowing for the offset) the difference between two neighboring floats will be $2^{−23}$. If the exponent is $8 $, the difference between two neighboring floats will be $2^{−15}$ because the mantissa is multiplied by $2 ^{8}$. Limited precision makes binary floating-point numbersdiscontinuous; there are gaps between them.
+**True.** The uneven spacing is due to the exponent representation of floating point numbers. There are a fixed number of bits in the significand. In IEEE $32$-bit storage there are $23 $ bits for the significand, which means the LSB represents $2^{−23}$ times 2 to the exponent. For example, if the exponent is zero (after allowing for the offset) the difference between two neighboring floats will be $2^{−23}$. If the exponent is $8 $, the difference between two neighboring floats will be $2^{−15}$ because the mantissa is multiplied by $2 ^{8}$. Limited precision makes binary floating-point numbers discontinuous; there are gaps between them.
 
 :::
 

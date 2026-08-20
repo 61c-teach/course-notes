@@ -190,7 +190,7 @@ Since pipelining the datapath leaves the meaning of the control lines unchanged,
 | `ALUSel` | `EX` |
 | `MemRW` | `MEM` |
 | `PCSel` | `MEM` |
-| `WBSel` | `EX` |
+| `WBSel` | `WB` |
 | `RegWEn` | `WB` |
 
 :::
@@ -204,11 +204,15 @@ Suppose we execute a B-Type instruction on a five-stage pipelined datapath. In w
 
 :::
 
-:::{note} Answer
+:::{note} Show Answer
+:class: dropdown
 
-**The `MEM` stage.**
+The question is worded colloquially by intention: What does it mean for the CPU to "know whether the conditional branch is taken"?
 
-As shown in @fig-five-stage-control, `PCSel` is the control signal to determine _what_ to write to the PC, is determined in `MEM`. While the outcome of Branch Comparator output in the `EX` stage, the control computes the result of `PCSel` in the `MEM` stage.
+This generally falls under the purview of *control*--not data. Using this definition, let's suppose we define "taken/not taken" to be when we know which value to write to the PC, i.e., the value of `PCSel`. As shown in @fig-five-stage-control, the `PCSel` signal is determined in **the `MEM` stage.**
+
+The control computes the result of `PCSel` in the `MEM` stage—but the output of the Branch Comparator is available in the `EX` stage.
+ So the *data* is ready one stage earlier than the corresponding *control* signal! See CS 152 for an alternate design that leverages this finding.
 
 :::
 

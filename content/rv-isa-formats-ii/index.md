@@ -34,15 +34,17 @@ In almost all cases, instructions update the PC using **PC-relative addressing**
 * J-Type instructions (see a [later section](#sec-j-type))
 * (Effectively, all instructions except `jalr`)
 
-Why? **Position-Independent Code**. If all an entire code block, these relative offsets won’t change!
+Why? **Position-Independent Code**. If an entire code block is moved, relative offsets within instructions won’t change!
 
-#### From Labels to PC-Relative Offsets
+:::{hint} From Labels to PC-Relative Offsets
 
 Recall that in assembly, unconditional jumps and conditional branches uses labels, e.g., `j Label` and `beq rs1 rs2 Label`. [Labels](#sec-labels) are not instructions and **do not actually "exist"** in machine code.
 
 Building machine instructions therefore requires translating labels into numeric constants that can be used for addressing. All branch and jump instructions that use labels use **PC-relative addressing**.
 
 To translate branch and jump instructions to machine code, we must compute **PC-relative offsets**, which are numeric constants.
+
+:::
 
 :::{note} Example
 
@@ -77,7 +79,7 @@ Consider the assembly code above. In each of the following cases, what is the PC
 Code illustrated example with jump operation.
 :::
 
-3. `j Loop`. In this case, PC updates to the instruction tagged with the `Loop` label (here, `beq`). Still considering @fig-offsets, the `pc` updates from `j` (at address `0x18`) to `Loop`'s instruction (at address `0x0C`). This difference is **$-12$**. This corresponds to three instructions _before_ `j`.
+**3.** `j Loop`. In this case, PC updates to the instruction tagged with the `Loop` label (here, `beq`). Still considering @fig-offsets, the `pc` updates from `j` (at address `0x18`) to `Loop`'s instruction (at address `0x0C`). This difference is **$-12$**. This corresponds to three instructions _before_ `j`.
 
 (sec-absolute-addressing)=
 ### Absolute Addressing

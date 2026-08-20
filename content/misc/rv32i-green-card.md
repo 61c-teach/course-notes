@@ -135,7 +135,7 @@ See the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main
 ## Register Convention
 
 See the table from the [ASM Manual](https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc#general-registers), which we find the most useful. Other references include the RISC-V ELF psABI
-Specification ([RISC-V Calling Conventions](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc)), which supercedes Volume I, V2.1, 2014: [Chapter 18
+Specification ([RISC-V Calling Conventions](https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc)), which supersedes Volume I, V2.1, 2014: [Chapter 18
 Calling Convention](https://riscv.org/wp-content/uploads/2024/12/riscv-calling.pdf).
 
 :::{table} RV32I Register Convention

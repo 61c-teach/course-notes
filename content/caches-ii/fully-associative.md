@@ -188,9 +188,9 @@ Address `0x43F` in binary: `0b0100 0011 1111`
     Spatial locality: Even if we only read in one byte, loading from memory will load the full block (here, 4B), where all bytes of data in the block share the same tag because they are from the same region of memory:
 
     * Least significant byte in block (offset `0b00`) is @ memory address `0x43C` (`0b0100 0011 1100`)
-    * Most significant byte in block (offset `0b11`) is @ memory address `0x43F` (`0x0b100 0011 1111`)
+    * Most significant byte in block (offset `0b11`) is @ memory address `0x43F` (`0b0100 0011 1111`)
 
-1. **Read**. Read byte in cache block at offset `0b11` (i.e., most significant byte in block)	and return to processor.
+1. **Read**. Read byte in cache block at offset `0b11` (i.e., most significant byte in block) and return to processor.
 
 :::
 
@@ -240,7 +240,7 @@ Address `0x524` in binary: `0b0101 0010 0100`
 * Tag: `0b0101001001`, or `0x149`
 * Offset: `0b00`
 
-1. **Cache Miss**. No valid tags in the cache match `0x178`.
+1. **Cache Miss**. No valid tags in the cache match `0x149`.
 1. **Access lower level of memory hierarchy**. Load into a selected cache entry a block's worth of data from memory starting @ address `0x524` (`0b0101 0010 0100`). Write the tag `0x149`. Mark valid bit.
 1. **Read**. Read byte in cache block at offset `0b00` and return to processor.
 :::
@@ -311,11 +311,11 @@ Fully associative cache with least recently used (LRU) replacement policy.
 
 Address `0x972` in binary: `0b1001 0111 0010`
 
-* Tag: `0b100101110010`, or `0x25C`
+* Tag: `0b1001011100`, or `0x25C`
 * Offset: `0b10`
 
 1. **Cache Miss**. No valid tags in the cache match `0x25C`.
-1. **Access lower level of memory hierarchy**. Select the least recently used entry (tag `0x10F`). Replace its block with a block's worth of data from memory starting @ address `0x970` (`0b10001 0111 0000`). Write the tag `0x25C`. Mark valid bit.
+1. **Access lower level of memory hierarchy**. Select the least recently used entry (tag `0x10F`). Replace its block with a block's worth of data from memory starting @ address `0x970` (`0b1001 0111 0000`). Write the tag `0x25C`. Mark valid bit.
 1. **Read**. Read byte in cache block at offset `0b10` and return to processor.
 :::
 
@@ -421,7 +421,7 @@ In this section, we traced through a cache design for a 12-bit address space wit
 * Block size: 4B
 * Capacity: 16B
 * Placement policy: Fully associative
-* Replacement policy: Least Reecntly Used
+* Replacement policy: Least Recently Used
 * Write policy: Write-back
 
 :::{figure} images/fa-all.png
@@ -443,7 +443,7 @@ Cache "metadata":
 
 In our tiny cache with 4B-sized blocks, reading a word is equivalent to reading the entire block, but in practice blocks are composed of multiple words (e.g., 16 or 32 words per block).
 
-From P&H 5.3: "The use of a bigger block takes advantage of spatial locality: it decreases the miss rate and improves the efficiency of cache hardware by reducing the amount of tag storage releative to the amount of data storage in the cache. Although a larger block size decreases the miss rate, it could also increase the miss penalty. If the miss penalty increases linearly with block size, larger blocks can easily lead to lower performance.
+From P&H 5.3: "The use of a bigger block takes advantage of spatial locality: it decreases the miss rate and improves the efficiency of cache hardware by reducing the amount of tag storage relative to the amount of data storage in the cache. Although a larger block size decreases the miss rate, it could also increase the miss penalty. If the miss penalty increases linearly with block size, larger blocks can easily lead to lower performance.
 
 ## Fully Associative: Hardware and Performance
 

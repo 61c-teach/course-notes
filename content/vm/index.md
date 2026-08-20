@@ -36,7 +36,7 @@ title: "Virtual Memory and Pages"
 We have defined the memory hierarchy across two sections so far:
 
 * [Registers and Memory](#sec-memory-hierarchy-early): Assumes the CPU (with registers) accesses memory (primary storage) directly.
-* [Memory Hierarchy, Revisited](#sec-memory-hierarchy): Inserts caches into the hiarchy, between the CPU and memory.
+* [Memory Hierarchy, Revisited](#sec-memory-hierarchy): Inserts caches into the hierarchy, between the CPU and memory.
 
 :::
 
@@ -77,7 +77,7 @@ Virtual memory allows for efficient and safe sharing of memory among several pro
 :::{figure} images/two-programs-same-mem.png
 :label: fig-two-programs-same-mem
 :width: 100%
-:alt: "TODO"
+:alt: "Diagram of two separate programs, Program 1 and Program 2, each issuing a memory access to the same address 0x400 in a single shared physical memory, illustrating the risk of one program's data overwriting the other's without virtual memory protection."
 How do two programs share the same memory?
 
 <!-- TODO make these diagrams better. kind of light coloring-->
@@ -94,13 +94,14 @@ This section defines important terminology for virtual memory.
 
 ::::{warning} Assume no caches for now
 
-Virtual memory is much easier to understand if we assume there are no caches in the memory hierarchy. This means there are at most two copies of data in the memory hierarchy: in **main memory** (primary storage) and on **disk** (secondaty storage). We will reintroduce caches in a [later section](#sec-tlb).
+Virtual memory is much easier to understand if we assume there are no caches in the memory hierarchy. This means there are at most two copies of data in the memory hierarchy: in **main memory** (primary storage) and on **disk** (secondary storage). We will reintroduce caches in a [later section](#sec-tlb).
 
 :::{figure} images/ignore-caches-in-hierarchy.png
 :label: fig-ignore-caches-in-hierarchy
 :width: 70%
-:alt: "TODO"
+:alt: "Simplified memory hierarchy diagram showing the CPU connected directly to main memory and disk, with no cache layer drawn in between, to simplify the initial discussion of virtual memory."
 For now, assume we have no caches between the CPU and memory.
+:::
 
 ::::
 
@@ -115,7 +116,7 @@ Virtual memory means that when run, 32-bit programs will all use the same 4GiB a
 :::{figure} images/illusion-of-virtual-address-space.png
 :label: fig-illusion-of-virtual-address-space
 :width: 70%
-:alt: "TODO"
+:alt: "Diagram of several separate 32-bit processes, each drawn with its own identical 0x00000000-to-0xFFFFFFFF virtual address space, illustrating that overlapping virtual addresses used by different processes are an illusion resolved by address translation."
 Each 32-bit process uses **virtual addresses** to address a 32-bit **virtual address space**.
 :::
 
@@ -173,7 +174,7 @@ $ getconf PAGESIZE
 16384
 ```
 
-[^why-39-bit]: Why 39 bits physical? Based on the [Intel specifications](https://www.intel.com/content/www/us/en/products/sku/129948/intel-core-i78700t-processor-12m-cache-up-to-4-00-ghz/specifications.html), course hive machines have 128 GiB of memory, which should mean 34-bit-wide physical addresses. In practice, the physical address space does not always exactly map to the amount of physical memory because of the memory controller. Read more on [StackOverflow](https://superuser.com/questions/944080/why-does-my-cpu-only-support-32gb-ram-when-it-has-39-address-bits).
+[^why-39-bit]: Why 39 bits physical? Based on the [Intel specifications](https://www.intel.com/content/www/us/en/products/sku/129948/intel-core-i78700t-processor-12m-cache-up-to-4-00-ghz/specifications.html), course hive machines have 128 GiB of memory, which should mean 34-bit-wide physical addresses. In practice, the physical address space does not always exactly map to the amount of physical memory because of the memory controller. Read more on [Super User](https://superuser.com/questions/944080/why-does-my-cpu-only-support-32gb-ram-when-it-has-39-address-bits).
 
 [^why-48-bit]: Why 48 bits virtual? The course hive machines are Intel x86-64, which should mean 64-bit-wide virtual addresses. Put simply 64-bit is huge, and 48-bit is good enough (address space of 256 TiB). When 64-bit pointers are used, the CPU just reads the lower 48 bits. Read more on [StackOverflow](https://stackoverflow.com/questions/6716946/why-do-x86-64-systems-have-only-a-48-bit-virtual-address-space).
 

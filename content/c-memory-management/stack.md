@@ -31,7 +31,7 @@ The Stack is a contiguous block of memory that starts from high addresses and gr
 
 [^stack-info]: (same exact footnote as in an [earlier section](#sec-mem-layout)) Because parameters and return addresses are critical to function call and return, they are stored directly in the CPU where possible–on special hardware called registers (which we talk about later). Because there are only a limited number of such registers, additional parameters and return addresses are stored in memory on the stack until they are needed.
 
-Allocation and deallocation is incredibly fast on the stack thanks to the **stack pointer**. The **stack pointer** is an internally tracked value[^sp-reg] that tells us the address of the "top of the stack", i.e., the start of the current frame, and thereby determins allocation and deallocation on the stack.
+Allocation and deallocation is incredibly fast on the stack thanks to the **stack pointer**. The **stack pointer** is an internally tracked value[^sp-reg] that tells us the address of the "top of the stack", i.e., the start of the current frame, and thereby determines allocation and deallocation on the stack.
 
 [^sp-reg]: The stack pointer itself must live somewhere. Instead of living in memory, it lives on the CPU in a special hardware register, so that it can be read and updated quickly. This is a detail we handwave for now and discuss in detail later.
 
@@ -66,7 +66,7 @@ An extended animation of stack memory management in C.
 
 1. `main()` is called as soon as the program loads. One stack frame for `main` is allocated by moving stack pointer `sp` down to the start of this new frame (recall: blocks of memory are referred to by their lowest address).
 2. `a(0)` is called by `main`. `sp` moves down. Local variables for `a` are initialized in stack memory starting from `sp` and going upwards. `sp` creates enough space to store local variables, whose sizes are known at compile-time. So there is no risk that initializing these variables will spill into `main`'s frame.
-3. `b(1)` is called by `a`. Stack frame for `b` is allocated right below stack frame of `b`. Stack pointer `sp` moves down to the start of this new frame.
+3. `b(1)` is called by `a`. Stack frame for `b` is allocated right below stack frame of `a`. Stack pointer `sp` moves down to the start of this new frame.
 4. `c(2)` is called by `b`, etc.
 5. `d(3)` is called by `c`, etc.
 6. When `d` finishes executing, "return" control to the caller function `c` by (1) setting the next instruction to execute to the return address[^stack-info], and (2) popping off the stack frame, i.e., updating `sp` to the end of stack frame for `d`, which is also the start of the stack frame for `c`. `c` is now the function to continue executing.
@@ -90,7 +90,7 @@ At this point in your programming livelihoods, you have likely found it useful t
 
 :::{warning} Declared array names only refer to arrays in their local scope.
 
-Recall that [arrays in C](@sec-array) are a way of locally declaring a large block of memory. Now we know that this local declaration means that array declarations allocate space on the stack, and therefore must factor into the fixed size of a function's stack frame. Locally-declared arrays must have known size at compile-time, as shown in [this `sizeof` example](@sec-array-sizeof).
+Recall that [arrays in C](#sec-array) are a way of locally declaring a large block of memory. Now we know that this local declaration means that array declarations allocate space on the stack, and therefore must factor into the fixed size of a function's stack frame. Locally-declared arrays must have known size at compile-time, as shown in [this `sizeof` example](#sec-array-sizeof).
  
 When array names are passed as arguments to other functions, they **decay** to pointers to memory. Now, we know that arrays will decay to pointers to memory on the _stack_.
 :::

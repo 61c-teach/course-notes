@@ -49,11 +49,11 @@ Basic computer layout (See: [von Neumann architecture](https://en.wikipedia.org/
 
 ## Registers
 
-Importantly, the processor is designed to be _fast_. Four example, if a processor runs at 4 GHz, then it can execute instructions on some data once per cycle, or every 0.25 ns (nanoseconds). This data must also be physically located close to the processor!
+Importantly, the processor is designed to be _fast_. For example, if a processor runs at 4 GHz, then it can execute instructions on some data once per cycle, or every 0.25 ns (nanoseconds). This data must also be physically located close to the processor!
 
 Consider that the speed of light (approximately $3.0 \times 10^8$ m/s), which physically defines the fastest speed with which to access data from a certain physical location. In other words, accessing something about 10 cm away will already take 0.3 ns (thankfully most of our integrated chips are much smaller than this distance). Nevertheless, in all modern architectures we have at least two pieces of hardware for data:
 
-* **Registers**, located within the processor itself. These hardware objects have limited space[^register-rv32] are lightning fast; a processor performs operation on these data using the arithmetic logic unit.
+* **Registers**, located within the processor itself. These hardware objects have limited space[^register-rv32] but are lightning fast; a processor performs operations on these data using the arithmetic logic unit.
 * **Memory**, which is much larger[^memory-laptop] and located external to the processor. Memory access is often assumed to take approximately 100 ns (@fig-3-locality). The processor communicates with memory by issuing addresses to read or write data. The "enable" signal additionally ensures we don't accidentally alter memory values when we only intend to read; we discuss this more later.
 
 [^register-rv32]: 32 x 4B = 128 B of register data on a RV32 architecture.

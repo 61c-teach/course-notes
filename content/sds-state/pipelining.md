@@ -65,7 +65,7 @@ On each clock cycle, data moves from the output of `reg1`, through the adder, to
 
 ## Adding Registers to Improve Performance
 
-As illustrated by the equations below, there will now be a **two** clock cycle delay from the insertion of a set of data into the circuit until when it appears at the output. However, the new clock period is shorter, so in absolute time, the delay from data insertion until output (i.e., **latency**) is not significantly worse. More importantly, because of the tranformation and the new higher clock rate, results will be generated at a higher rate (more outputs per second, i.e., **throughput**).
+As illustrated by the equations below, there will now be a **two** clock cycle delay from the insertion of a set of data into the circuit until when it appears at the output. However, the new clock period is shorter, so in absolute time, the delay from data insertion until output (i.e., **latency**) is not significantly worse. More importantly, because of the transformation and the new higher clock rate, results will be generated at a higher rate (more outputs per second, i.e., **throughput**).
 
 ::::{card}
 :header: Non-pipelined circuit (@fig-non-pipelined-adder)

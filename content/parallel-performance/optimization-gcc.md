@@ -56,8 +56,7 @@ for (int i = 0; i < max/4; i++) {
 
 We note that the `register` keyword is like a "suggestion," meaning that compilers can choose to ignore this keyword.[^cplusplus] Nevertheless, this optimization can be especially valuable on embedded systems or even x86 architectures, where register files are small.[^x86-architecture] Since different CPUs can have different register files, this optimization is dependent on the architecture.
 
-[^cplusplus]: In fact, the `register` keyword is actually deprecated in C++. Read more on [Wikipedia](
-https://en.wikipedia.org/wiki/Register_(keyword))
+[^cplusplus]: In fact, the `register` keyword is actually deprecated in C++. Read more on [Wikipedia](https://en.wikipedia.org/wiki/Register_(keyword))
 
 [^x86-architecture]: There are 16 register names in x86-64. In x86, most variables get stored on the stack (unlike RISC-V, which has 32 registers).
 
@@ -126,7 +125,7 @@ We can use the `inline` keyword to explicitly request function inlining from the
 
 Recall from our discussion of [caches](#sec-cache-terminology) the concept of **spatial and temporal locality**: Accessing adjacent or recent memory will be on average faster than accessing nonadjacent memory. In general, we would like to minimize cache misses and perform as much computation on spatially and temporally local data as possible–_before_ cache blocks need to be replaced by main memory.
 
-To do so, we leverage the idea of **cache blocking**. Cache blocking is a program optimization that is critical for the programmer to do, because compilers `gcc` does not know the intentions of our program—just the instructions themselves.
+To do so, we leverage the idea of **cache blocking**. Cache blocking is a program optimization that is critical for the programmer to do, because the compiler (`gcc`) does not know the intentions of our program—just the instructions themselves.
 
 :::{note} Review cache blocking
 
@@ -199,13 +198,13 @@ The Turing award winner [Don Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) 
 > The conventional wisdom shared by many of today's software engineers calls for ignoring efficiency in the small; but I believe this is simply an overreaction to the abuses they see being practiced by penny-wise-and-pound-foolish programmers, who can't debug or maintain their "optimized" programs.
 > ...
 > 
-> There is no doubt that the grail of efficiency leads to abuse. Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually havea  strong negative impact when debugging and maintenance are considered. We _should_ forget about small efficiencies, say, about 97% of the time: premature optimization is the root of all evil.
+> There is no doubt that the grail of efficiency leads to abuse. Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. We _should_ forget about small efficiencies, say, about 97% of the time: premature optimization is the root of all evil.
 > 
 > Yet we should not pass up our opportunities in that critical 3%. A good programmer will not be lulled into complacency by such reasoning, he will be wise to look at the critical code; but only _after_ that code has been identified.
 
 We therefore encourage the following best practices:
 
-* When debugging programs, compile with `-Og` so you can debug your code. With more optimizations, the mapping between high-level and assembly code gts more muddled, and stepping through code gets more esoteric.
+* When debugging programs, compile with `-Og` so you can debug your code. With more optimizations, the mapping between high-level and assembly code gets more muddled, and stepping through code gets more esoteric.
 * Leave loop unrolling and register declarations to the compiler.
 * For `gcc`, use `-O2`. `-O3` often does too much.
 *  The `inline` keyword is still useful. Function inlining requires knowing how frequently the function in question will be called.

@@ -22,7 +22,7 @@ FSM diagram for the description above.
 
 With combinational logic and registers, any FSM can be implemented in hardware!
 
-The input to the register samples has to be stable for a certain amount of time around the rising edge of the clock for the input to be sampled accurately. The amount of time before the rising edge the input must be stable is called the **setup time**, and the time after the rising edge the input must be stable is called the **hold time**. Hold time is generally included in clk-to-q delay, so clk-to-q time will usually be greater than or equal to hold time.
+The input to the register has to be stable for a certain amount of time around the rising edge of the clock for the input to be sampled accurately. The amount of time before the rising edge the input must be stable is called the **setup time**, and the time after the rising edge the input must be stable is called the **hold time**. Hold time is generally included in clk-to-q delay, so clk-to-q time will usually be greater than or equal to hold time.
 
 Logically, the fact that clk-to-q ≥ hold time makes sense since it only takes clk-to-q seconds to copy the value over, so there’s no need to have the value fed into the register for any longer. Examine the register circuit in @fig-reg-circuit-ex-disc8 and assume **setup** time of 2.5ps, **hold** time of 1.5ps, and a **clk-to-q** time of 1.5ps. The clock signal has a period of 13ps.
 

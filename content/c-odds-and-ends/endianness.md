@@ -24,7 +24,7 @@ This video is taken from later in Fall 2020 and references RISC-V assembly, whic
 (sec-words)=
 ## Words
 
-What's in a word? In computer architecture, a hardware **word** is an important unit of data. The word size determines many aspects of a computer's structure and operation, from how the computer accessses memory to how the compiler translates a single C arithmetic operation into multiple assembly instructions. A 32-bit architecture has a word size of 32 bits, or 4 bytes. A 64-bit architecture has a word size of 64 bits, or 8 bytes.
+What's in a word? In computer architecture, a hardware **word** is an important unit of data. The word size determines many aspects of a computer's structure and operation, from how the computer accesses memory to how the compiler translates a single C arithmetic operation into multiple assembly instructions. A 32-bit architecture has a word size of 32 bits, or 4 bytes. A 64-bit architecture has a word size of 64 bits, or 8 bytes.
 
 On most modern architectures, the size of the word often determines (among other things[^word]) the **largest possible address** and therefore the size of a C pointer (see [address space](#sec-address-space). A 32-bit architecture has 4-byte pointers; a 64-bit architecture has 8-byte pointers. The word size also often determines the **smallest accessible or most efficiently accessible unit of memory**. On a 32-bit architecture, memory reads and writes are often in units of 4-bytes; on a 64-bit architecture, in units of 8-bytes.
 
@@ -35,7 +35,7 @@ We will cover hardware words in much more detail when we learn about instruction
 (sec-address-space)=
 ## The Address Space
 
-The **address space** is the hypothetical range of addressable memory locations on a particular machine. For example, a 32-bit architecture, a pointer can address $2^32$ locations in memory[^in-practice]. Because memory is byte-addressable and contiguous, our address space size for a program is therefore $2^32$ bytes (or 4 GiB, "four gibi-bytes". We cover this notation later).
+The **address space** is the hypothetical range of addressable memory locations on a particular machine. For example, a 32-bit architecture, a pointer can address $2^{32}$ locations in memory[^in-practice]. Because memory is byte-addressable and contiguous, our address space size for a program is therefore $2^{32}$ bytes (or 4 GiB, "four gibi-bytes". We cover this notation later).
 
 [^in-practice]: Logically,  not in practice. Some areas of memory are read/write protected, e.g., accessing memory at the address `0` (`NULL`) causes an error.
 
@@ -47,7 +47,7 @@ On a 32-bit architecture, what is `sizeof(int *)`? `sizeof(char *)`?
 :::{note} Show Answer
 :class: dropdown
 
-A pointer on a 32-bit architecture must be large enough to represent all possible addresses in the address space. The address space of a 32-bit architecture is the $2^32$ byte addresses ranging from `0x00000000` to `0xFFFFFFFF`. These correspond to bit patterns of 32 bits, so a pointer must be able to store 32 bits of information.
+A pointer on a 32-bit architecture must be large enough to represent all possible addresses in the address space. The address space of a 32-bit architecture is the $2^{32}$ byte addresses ranging from `0x00000000` to `0xFFFFFFFF`. These correspond to bit patterns of 32 bits, so a pointer must be able to store 32 bits of information.
 
 All pointers on a 32-bit architecture must therefore be 4 bytes wide[^why-not-larger], so `sizeof(int *)` is `sizeof(char *)` is `sizeof(int **)` is 4.
 
@@ -58,7 +58,7 @@ All pointers on a 32-bit architecture must therefore be 4 bytes wide[^why-not-la
 
 Before we discuss our example, we'd like to share a diagram of memory that, while confusing at first glance, will be extremely useful in interpreting the memory layout of any compiled C program.
 
-Recall that memory on a 32-bit architecture is laid out as a very long array of $2^32$ bytes. A very long array would not fit on any page, whether horizontally or vertically. Instead, we use a visualization like @tab-mem-layout, which shows memory as rows of 4 bytes, from low to high addresses:
+Recall that memory on a 32-bit architecture is laid out as a very long array of $2^{32}$ bytes. A very long array would not fit on any page, whether horizontally or vertically. Instead, we use a visualization like @tab-mem-layout, which shows memory as rows of 4 bytes, from low to high addresses:
 
 * In the rightmost four columns, "xx" values refer to data (hypothetical or otherwise) at each of four bytes of memory. These four bytes have contiguous memory addresses. 
 * The leftmost column denotes the *lowest* address of the bytes in that row, i.e., the address of the rightmost byte.
@@ -81,7 +81,7 @@ Recall that memory on a 32-bit architecture is laid out as a very long array of 
 :::{note} Example byte addresses
 :class: dropdown
 
-* The upper-right "xx" is at adddress `0x0000000`, or `0b0000 0000 ... 0000 0000`. This is the lowest possible address in the 32-bit address space.
+* The upper-right "xx" is at address `0x0000000`, or `0b0000 0000 ... 0000 0000`. This is the lowest possible address in the 32-bit address space.
 * The upper-left "xx" is at address `0x00000003`, or `0b0000 0000 ... 0000 0011`.
 * The bottom-right "xx" is at address `0xFFFFFFC`, or `0b1111 1111 ... 1111 1100`.
 * The bottom-left "xx" is at address `0xFFFFFFFF`, or `0b1111 1111 ... 1111 1111`. This is the highest possible address in the 32-bit address space.
@@ -144,7 +144,7 @@ Recall that the address of a stored value is the **lowest** address among the by
 
 * `value` (the 32-bit signed integer 305419896 in decimal) has four bytes: `0x12`, `0x34`, `0x56`, and `0x78`. The lowest address of these four bytes is the address of the byte `0x78`, which is `0x7FFFE168`.
 
-* `str` is the C-string `"hi!"` which has four bytes including the null-terminator: `'h'`, `'i'`, `'!'`, `'\0'`. The lowest address of these bytes is the address of `'h'`, which is `0x7FFFE16C` + 2, or `0x7FFFE16E`.
+* `str1` is the C-string `"hi!"` which has four bytes including the null-terminator: `'h'`, `'i'`, `'!'`, `'\0'`. The lowest address of these bytes is the address of `'h'`, which is `0x7FFFE16C` + 2, or `0x7FFFE16E`.
 
 :::
 
@@ -188,7 +188,7 @@ Read more about endianness on [Wikipedia](https://en.wikipedia.org/wiki/Endianne
 
 ### Run Demo
 
-The below instructions are mostly for reference. We suggest going through Lab 02 first so you have some experience with `gdb`. Note that in order to connect `gdb` to the source file, you will need 
+The below instructions are mostly for reference. We suggest going through Lab 02 first so you have some experience with `gdb`. Note that in order to connect `gdb` to the source file, you will need to run the below `make` command, which compiles the program with debugging symbols.
 
 :::{note} Demo gdb commands
 :class: dropdown
@@ -223,7 +223,7 @@ Of the four variables in @word-program, only `value` is the size of a word. The 
 
 ### Struct Alignment
 
-Let us revisit the idea of a `struct`.  and consider how much space each declared `struct` occupies. 
+Let us revisit the idea of a `struct` and consider how much space each declared `struct` occupies. 
 
 :::{card} Data structure alignment
 From [Wikipedia](https://en.wikipedia.org/wiki/Data_structure_alignment):
@@ -264,7 +264,7 @@ Suppose we declare `struct foo s;` and compile a program onto a 32-bit architect
 
 - AA denotes the four bytes occupied by `s.a`. `sizeof(s.a)` is 4.
 - BB denotes the single byte occupied by `s.b`. `sizeof(s.b)` is 1. The precise alignment of `s.b` is implementation-specific.
-- CC denotes the four bytes occupied by the `s.c`. `sizeof(s.c)` is 3.
+- CC denotes the four bytes occupied by the `s.c`. `sizeof(s.c)` is 4.
 
 :::
 

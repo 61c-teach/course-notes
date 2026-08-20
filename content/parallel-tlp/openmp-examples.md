@@ -94,6 +94,7 @@ Slides version of the code below, with some additional diagrams.
 
 int main(void) {
   const long num_steps = 10;
+  double step = 1.0/((double) num_steps);
   double sum = 0.0;
   for (int i = 0; i < num_steps; i++) {
     double x = (i + 0.5) * step;
@@ -120,8 +121,9 @@ Resembles $\pi$, but not very accurate. Let’s increase `num_steps` and paralle
 
 int main(void) {
   const long num_steps = 10;
+  double step = 1.0/((double) num_steps);
   double sum = 0.0;
-  #pragma parallel for
+  #pragma omp parallel for
   for (int i = 0; i < num_steps; i++) {
     double x = (i + 0.5) * step;
     sum += 4.0 * step/(1.0 + x*x);
@@ -132,7 +134,7 @@ int main(void) {
 }
 ```
 
-Problem: Each thread needs access to the shared variable `sum`. Code runs sequentially!
+Problem: Each thread needs access to the shared variable `sum`. But multiple threads updating `sum` concurrently causes a [data race](#sec-data-race-overall)!
 :::
 
 :::{tab-item} Parallelize 2
@@ -177,23 +179,23 @@ Output:
 
 ```{code} bash
 $ ./pi
-i =  1,  id =  1
-i =  0,  id =  0
-i =  2,  id =  2
-i =  3,  id =  3
-i =  5,  id =  1
-i =  4,  id =  0
-i =  6,  id =  2
-i =  7,  id =  3
-i =  9,  id =  1
-i =  8,  id =  0
+i =  1,  tid =  1
+i =  0,  tid =  0
+i =  2,  tid =  2
+i =  3,  tid =  3
+i =  5,  tid =  1
+i =  4,  tid =  0
+i =  6,  tid =  2
+i =  7,  tid =  3
+i =  9,  tid =  1
+i =  8,  tid =  0
 pi = 3.142425985001
 ```
 :::
 
 :::{tab-item} Parallelize 3: Scale Up
 
-Scale up: `num_steps =` = 10{sup}`6`
+Scale up: `num_steps` = 10{sup}`6`
 
 ```{code} c
 #include <stdio.h>
@@ -260,7 +262,7 @@ int main(void) {
 }
 ```
 
-Toggle between the cards below to compare different parallelizations of this program. Asssume that `OMP_NUM_THREADS` on this
+Toggle between the cards below to compare different parallelizations of this program. Assume that `OMP_NUM_THREADS` on this machine is 12.
 
 :::::{tab-set}
 ::::{tab-item} Code 1
@@ -290,7 +292,7 @@ int main(void) {
     int tid = omp_get_thread_num();
     int num_threads = omp_get_num_threads();
     for(int i = tid; i < LENGTH; i+= num_threads) {
-      arr[i] = j;
+      arr[i] = ...;
     }
   }
 }
@@ -310,7 +312,7 @@ int main(void) {
     int thread_start = tid * LENGTH / num_threads;
     int thread_end = (tid+1)*LENGTH / num_threads;
     for(int i = thread_start; i < thread_end; i++) {
-      arr[i] = j;
+      arr[i] = ...;
     }
   }
 }
@@ -327,7 +329,7 @@ int main(void) {
   {
     #pragma omp for
     for(int i = 0; i < LENGTH; i++) {
-      arr[i] = j;
+      arr[i] = ...;
     }
   }
 }
@@ -342,7 +344,7 @@ int main(void) {
   char *arr = malloc(sizeof(char) * LENGTH);
   #pragma omp parallel for
   for(int i = 0; i < LENGTH; i++) {
-    arr[i] = j;
+    arr[i] = ...;
   }
 }
 ```
@@ -367,7 +369,7 @@ Duplicates work. The for-loop is repeated 12 times, so each array element is ass
 
 ::::{tab-item} Explanation 3
 :sync: tab-openmp-for-3
-"Chunks" array sections by thread. If there are 12 OpenMP threads, then thread 0 accesses elements 0 through `LENGTH/12 - 1`; thread 1 elements elements `LENGTH/12` through element `2*LENGTH/12`, etc. Same as Code 4 and Code 5.
+"Chunks" array sections by thread. If there are 12 OpenMP threads, then thread 0 accesses elements 0 through `LENGTH/12 - 1`; thread 1 elements `LENGTH/12` through element `2*LENGTH/12`, etc. Same as Code 4 and Code 5.
 ::::
 
 ::::{tab-item} Explanation 4

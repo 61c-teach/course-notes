@@ -56,7 +56,7 @@ In the 19th Century, the mathematician George Boole (1815-1864), developed a mat
 
 :::{warning} Boolean algebra has neither multiplication nor addition!
 
-In Boolean algebra, operations $\cdot$ and $+$ **do not represent multiplication nor addition of integer values**! Rather, these operator symbols represent AND and NOT, respectively, on **Boolean** variables $a$ and $b$.
+In Boolean algebra, operations $\cdot$ and $+$ **do not represent multiplication nor addition of integer values**! Rather, these operator symbols represent AND and OR, respectively, on **Boolean** variables $a$ and $b$.
 :::
 
 We can also define operations for NAND, NOR, and XOR (though these are not considered basic operations).

@@ -33,11 +33,11 @@ Programs are distributed in binary form, i.e., as assembled machine code. Progra
 
 In our discussion of [instruction execution](#sec-rv-pc) and the program counter, we learned that all RV32I instructions are [word sized](#sec-rv32i-pc-4).[^instruction-word] Simplification works for RISC-V: Instructions are same size as a data word (32 bits) so that they can leverage the same hardware for memory access.
 
-How do we go about translating `add x1 x2 x3` to the 32-bit word `00000000101010011000100100110011`?
+How do we go about translating `add x1 x2 x3` to the 32-bit word `00000000001100010000000010110011`?
 
 [^instruction-word]: We cover RV32I (32-bit integer instructions). The same 32-bit instructions are used for RV32, RV64, RV128.
 
-RISC-V defines six basic **instruction formats**, where similar instructions use the same format. Each instruction format divides an instruction word into **fields**; each field tells the processor something about the instructor.
+RISC-V defines six basic **instruction formats**, where similar instructions use the same format. Each instruction format divides an instruction word into **fields**; each field tells the processor something about the instruction.
 
 We hope you treat these two chapters like a puzzle hunt, where you learn how to decipher the rightmost columns of the [RISC-V green card](#sec-green-card) and the [Instruction Types](#tab-rv32i-types) table.
 

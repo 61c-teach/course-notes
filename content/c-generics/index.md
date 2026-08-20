@@ -35,7 +35,7 @@ While we said that we would use generics sparingly to avoid program bugs, you ha
 * `void free(void *ptr)`
 * `void *realloc(void *ptr, size_t size)`
 
-These functions are **generic functions** (or **generics**[^java] for short) because they return or use do not assume anything about the type of the memory being allocated or freed. As described in a [previous section](#sec-heap), we cast the return values of `malloc` and `realloc` calls to the appropriate pointer types and use them in local, typed pointer variables.
+These functions are **generic functions** (or **generics**[^java] for short) because they do not assume anything about the type of the memory being allocated or freed. As described in a [previous section](#sec-heap), we cast the return values of `malloc` and `realloc` calls to the appropriate pointer types and use them in local, typed pointer variables.
 
 [^java]: Java also supports generics to (among other things) support the creation of data structures that can hold any reference type, e.g.,  `DataStructure<T>`
 
@@ -115,7 +115,7 @@ void swap_string(char **ptr1, char **ptr2) {
 }
 ```
 
-Instead of making copies of `char` bytes, this function swaps the addresses of two `char *` variables (i.e., pointers to C strings). We could call `swap_str` with the below code.
+Instead of making copies of `char` bytes, this function swaps the addresses of two `char *` variables (i.e., pointers to C strings). We could call `swap_string` with the below code.
 
 (code-swap-string-main)=
 ```{code} c
@@ -145,7 +145,7 @@ Right before `swap_string` call returns.
 Click below to show the explanation of @fig-swap-string-before and @fig-swap-string-after.
 
 :::{note} Explanation
-asdf:class: dropdown
+:class: dropdown
 
 @fig-swap-string-before:
 
@@ -156,8 +156,8 @@ asdf:class: dropdown
 @fig-swap-string-after:
 
 * [Line 2](#code-swap-string): The local variable `temp` makes a copy of the value at `ptr1`, which is `0x0FACE0`.
-* [Line 3](#code-swap-string): Set the value at `ptr1` to a copy of the value at `ptr2`. The right-hand side, `*ptr2`, dereferences `ptr2` and evaluates to `0x0ABBA0` (because those are the bytes at the address `0x7F...F4`). The left-hand side, `*ptr1`, denotes the target location–the bytes at address `0x07F...F0`.
-* [Line 4](#code-swap-int): Set the value at `ptr2` to a copy of `temp`. The right-hand side evaluates to the value `0x0FACE0`. The left-hand side, `*ptr2`, denotes the target location to store these bytes–at address `0x07F...F4`.
+* [Line 3](#code-swap-string): Set the value at `ptr1` to a copy of the value at `ptr2`. The right-hand side, `*ptr2`, dereferences `ptr2` and evaluates to `0x0ABBA0` (because those are the bytes at the address `0x7F...F4`). The left-hand side, `*ptr1`, denotes the target location–the bytes at address `0x7F...F0`.
+* [Line 4](#code-swap-string): Set the value at `ptr2` to a copy of `temp`. The right-hand side evaluates to the value `0x0FACE0`. The left-hand side, `*ptr2`, denotes the target location to store these bytes–at address `0x7F...F4`.
 
 :::
 

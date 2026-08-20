@@ -48,7 +48,7 @@ When translating a machine instruction to assembly, the hardware first looks at 
 The R-Type instruction format is the first row of the [instruction format table](#tab-rv32i-types) of the [RISC-V green card](#sec-green-card). All **register-register arithmetic instructions use R-Type** (the "R" is for Register). We now use "arithmetic" to encompass arithmetic and bitwise operations: `add`, `xor`, `sll`, etc. 
 We recommend you reference the [arithmetic instructions table](#tab-rv32i-arithmetic) as you explore the R-Type instruction format below.
 
-@fig-r-type (@fig-opcode-field with less annotation) shows the R-Type format. Notice that all register-register arithmetic instructions have follow the same assembly instruction syntax `opname rd rs1 rs2`.
+@fig-r-type (@fig-opcode-field with less annotation) shows the R-Type format. Notice that all register-register arithmetic instructions follow the same assembly instruction syntax `opname rd rs1 rs2`.
 
 :::{figure} images/r-type.png
 :label: fig-r-type
@@ -64,13 +64,13 @@ The R-Type Instruction Format.
 * `rs2`: "Source" Register, second operand
 * `rd`: "Destination" Register gets the result of the arithmetic computation.
 
-**Other fields**: The assembly instruction operation `opname` is mapped across three fields: `
+**Other fields**: The assembly instruction operation `opname` is mapped across three fields:
 
 * `opcode`: All R-type instructions have the same 7-bit opcode: `0110011`.
 * `funct3`, `funct7`: The arithmetic operation to perform. `funct3` field is 3 bits wide; `funct7` is 7 bits wide.
 
 :::{warning} Why do we use 17 bits to specify the operation/opcode?
-Across the entire base RV32I instruction set, there are certainly fewer instructions than the $2^32$ possible representable things in a 32-bit word, so some redundancy is unavoidable. Good esign demands good premises.
+Across the entire base RV32I instruction set, there are certainly fewer instructions than the $2^{32}$ possible representable things in a 32-bit word, so some redundancy is unavoidable. Good design demands good premises.
 
 Different instruction formats **reuse the same bit positions for the same fields wherever possible**. Keeping the instruction formats as similar as possible reduces hardware complexity. The register fields `rs1`, `rs2`, and `rd` are therefore prioritized, and opcode fields like `funct3` and `funct7` occupy the remaining bits.
 
@@ -173,7 +173,7 @@ Once an instruction's type is known, the instruction bits can be mapped to field
 
 4. **Determine registers**. Use the [register convention table](#tab-calling-convention) for register names.
 
-    * `rd`: `10010` is $5$, so register `x5`, aka `t0`.
+    * `rd`: `00101` is $5$, so register `x5`, aka `t0`.
     * `rs1`: `00110` is $6$, so register `x6`, aka `t1`
     * `rs2`: `11011` is $27$, so register `x27`, aka `s11`.
 

@@ -29,7 +29,7 @@ P&H: 2.4
 
 ## Additional References
 
-[Dan Garcia's Binary Slides, Fall 2025](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/garcia_binary_slides.pdf)
+[Dan Garcia's Binary Slides, Spring 2021](https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/garcia_binary_slides.pdf)
 
 Amazing Illustrations by Ketrina (Yim) Thompson: [CS Illustrated](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2009/EECS-2009-79.html) Number Rep Handouts
 
@@ -52,7 +52,7 @@ Check your knowledge!
 :label: num-01-sol
 :class: dropdown
 
-A bit is the smallest unit of digital information and it can be either 0 of 1. There are 4 bits in a nibble and 8 bits in a byte.
+A bit is the smallest unit of digital information and it can be either 0 or 1. There are 4 bits in a nibble and 8 bits in a byte.
 
 <!--See: [Lecture 2 Slide 13](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g2af3b38b3e2_1_154#slide=id.g2af3b38b3e2_1_154)-->
 :::
@@ -140,7 +140,7 @@ positive numbers.
 :::{solution} num-07
 :label: num-07-sol
 :class: dropdown
-**False.** Our current representation formats has a major limitation; we can only represent and do arithmetic with integers. To successfully represent fractional values as well as numbers with extremely high magnitude beyond our current boundaries, we need another representation format.
+**False.** Our current representation formats have a major limitation; we can only represent and do arithmetic with integers. To successfully represent fractional values as well as numbers with extremely high magnitude beyond our current boundaries, we need another representation format.
 :::
 
 :::{exercise}
