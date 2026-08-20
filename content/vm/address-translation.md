@@ -61,7 +61,7 @@ Address Translation, Case I: The target page is in memory.
 1. **Program requests a memory access at a virtual address (VA).** Here, load byte @ address `0xFFFF F004` to register `t0`. The value `0xFFFF F004` is a virtual address (VA).
 2. **Translate the virtual address to physical address** (i.e., location in memory).
     * Extract the virtual page number (VPN) from the VA. The lower 12 bits of each address are reserved for the page offset (4 KiB pages = $2^{12}$ B pages), so the VPN is the upper 20 bits of VA, or `0xFFFFF`.
-3. **Construct the physical address (PA).** The entry associated with VPN `0xFFFFF` has a valid page table entry. Access the entry for the physical page number (PPN, `0x2`) and concatenate it with offset `0x004` to construct physical address `0x1004`.
+3. **Construct the physical address (PA).** The entry associated with VPN `0xFFFFF` has a valid page table entry. Access the entry for the physical page number (PPN, `0x2`) and concatenate it with offset `0x004` to construct physical address `0x2004`.
 4. **Access memory at the physical address in memory and return to the process.** Here, the byte @ address `0x1004` is read and returned to the  process.
 :::
 
