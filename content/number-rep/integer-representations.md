@@ -274,12 +274,12 @@ The leftmost bit (also known as **most significant bit**) is still effectively t
 **Bias Encoding**:
 
 > * Keep track of a **bias**.
-> * To interpret stored binary: Read the data as an unsigned integer, then **add** the bias
-> * To store an integer as data: **Subtract** the bias, then store the resulting number as an unsigned integer.
+> * To interpret stored binary: Read the data as an unsigned integer, then **subtract** the bias
+> * To store an integer as data: **Add** the bias, then store the resulting number as an unsigned integer.
 
 Imagine you are recording an electrical signal wavering between 0 and 31 volts. Wouldn't it be cool to grab that graph and pull it down so it wiggles around zero? That's bias encoding.
 
-We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as many negative numbers as positive, a **commonly-used bias** for $N$-bits is $-(2^{N-1} - 1)$.
+We can shift to any arbitrary bias we want to suit our needs. To represent (nearly) as many negative numbers as positive, a **commonly-used bias** for $N$-bits is $(2^{N-1} - 1)$.
 
 :::{figure} images/bias-encoding-shift.png
 :label: fig-bias-encoding-shift
@@ -291,15 +291,15 @@ A bias-encoded representation effectively shifts the number line to an unsigned 
 :::
 
 :::{card}
-Example: $N = 5$ with bias $-(2^{N-1} - 1)$
+Example: $N = 5$ with bias $(2^{N-1} - 1)$
 ^^^
 
 * 5-bit integer representation
-* Bias: $-(2^{5-1} - 1) = -15$
-* All zeros: smallest negative number
+* Bias: $(2^{5-1} - 1) = 15$
+* Bias: $0b1110$
 :::
 
-Here are some diagrams in case they are useful. @fig-bias-encoding-number-line represents a bias encoding where $N = 4$ and bias $ = -7$. The odometer just does the right thing; it counts up through zero with nothing strange happening.
+Here are some diagrams in case they are useful. @fig-bias-encoding-number-line represents a bias encoding where $N = 4$ and bias $ = 7$. The odometer just does the right thing; it counts up through zero with nothing strange happening.
 
 :::{figure} images/bias-encoding-number-line.png
 :label: fig-bias-encoding-number-line
@@ -307,7 +307,7 @@ Here are some diagrams in case they are useful. @fig-bias-encoding-number-line r
 :align: center
 :alt: "A blue horizontal number line displays 4-bit binary values and their corresponding decimal equivalents from -7 (for 0000) to 8 (for 1111) to illustrate bias encoding. A single gold arrow points to the right to indicate that the decimal values increase monotonically as the binary sequence increments from 0000 to 1111."
 
-"Binary odometer" for 4-bit bias-encoded integers, with bias -7.
+"Binary odometer" for 4-bit bias-encoded integers, with bias 7.
 :::
 
 You may also find the **number wheel** useful for seeing where overflow happens, and how integers increase with respect to binary incrementing. See @fig-bias-encoding-number-wheel.
