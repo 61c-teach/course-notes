@@ -176,7 +176,7 @@ Check out [this web app](https://www.h-schmidt.net/FloatConverter/IEEE754.html) 
 The IEEE 754 double-precision floating point standard is used for the C `double` variable type. It has three fields, now over 64 bits:
 
 * Sign: Still 1 sign bit (most significant bit, bit index 63)
-* Exponent: 11 bits with bias -1023
+* Exponent: 11 bits with bias 1023
 * Significand: now 52 bits
 
 The primary advantage is greater accuracy due to the larger significand. The normalized form can represent numbers from about $2.0 \times 10^{-308}$ to $2.0 \times 10^{308}$.

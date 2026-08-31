@@ -84,7 +84,7 @@ When the result of an arithmetic operation is outside the range of what is repre
 * **Sign-Magnitude**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
 * **One's complement**: $[-(2^{n-1} - 1), 2^{n-1} - 1]$
 * **Two's complement**: $[-2^{n-1}, 2^{n-1} - 1]$
-* **Bias**: $[0+$bias$, 2^n-1+$bias$]$
+* **Bias**: $[0-$bias$, 2^n-1-$bias$]$
 
 <!--See:  [Lecture 2](https://docs.google.com/presentation/d/1dmCk2fZz-P8VedzAXnVmJiYPKszVka5NKmTuLJ6hqZc/edit?slide=id.g32e4dda2ba9_0_123#slide=id.g32e4dda2ba9_0_123)-->
 :::

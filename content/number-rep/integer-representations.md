@@ -296,7 +296,7 @@ Example: $N = 5$ with bias $(2^{N-1} - 1)$
 
 * 5-bit integer representation
 * Bias: $(2^{5-1} - 1) = 15$
-* Bias: $0b1110$
+* Bias: $0$b$1110$
 :::
 
 Here are some diagrams in case they are useful. @fig-bias-encoding-number-line represents a bias encoding where $N = 4$ and bias $ = 7$. The odometer just does the right thing; it counts up through zero with nothing strange happening.
