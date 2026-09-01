@@ -69,7 +69,7 @@ For example, let’s add $10$ and $7$, which are `1010` and `0111`, respectively
 
 $$
 \begin{array}{rrl}
-  & \texttt{ 11   } & \text{carry bits} \\
+  & \texttt{11  } & \text{carry bits} \\
   & \texttt{ 1010} \\
 + & \texttt{ 0111} \\
 \hline
