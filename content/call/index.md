@@ -44,7 +44,7 @@ The high-level details are shown in @tab-call-flow:
 | :-- | :-- | :-- | :-- |
 | [**Compiler**](#sec-compiler) | High-level Language Code (e.g., `foo.c`) | Assembly Language Code (e.g., `foo.s`) | Output may contain pseudoinstructions (`mv`, `li`, `j`, etc.) |
 | [**Assembler**](#sec-assembler) | Assembly Language Code (e.g., `foo.s`) | Machine Language Module object file (e.g., `foo.o`) | Replace pseudoinstructions with true assembly instructions; produce an object file (module). |
-| [**Linker**](#sec-linker) | Object files (e.g., `foo.o`, `lib.o` | Executable machine code (e.g., `a.out`) | The Linker enables separate compilation of files. Changes to one file does not require recompilation of the entire program.|
+| [**Linker**](#sec-linker) | Object files (e.g., `foo.o`, `lib.o`) | Executable machine code (e.g., `a.out`) | The Linker enables separate compilation of files. Changes to one file does not require recompilation of the entire program.|
 | [**Loader**](#sec-loader) | Executable Code (e.g., `a.out`) | (program is run) | When an executable is run, the loader first loads the executable file from disk into memory and then runs the executable. |
 
 :::
@@ -118,7 +118,7 @@ until 1:38
 The linker patches together multiple object modules to produce an executable. It resolves all the assembler's "TODO items," including **relocating** everything for the final executable:
 
 1. Put together **text segments** from each `.o` file.
-1. Put together data segments from each `.o` file, then  concatenate this onto the end of Step 1’s segment.
+1. Put together data segments from each `.o` file, then concatenate this onto the end of Step 1’s segment.
 1. Resolve references, i.e., addresses that the assembler wasn't able to resolve.
 
 :::{figure} images/linker-flow.png
@@ -126,11 +126,11 @@ The linker patches together multiple object modules to produce an executable. It
 :alt: "Linker combination diagram: object modules file1.o and file2.o are drawn as rectangles each subdivided into text, data, and auxiliary information segments; arrows from both modules enter a central Linker block. A single outgoing path shows one merged executable a.out whose text and data segments contain relocated addresses from both inputs, with relocation and symbol tables folded together so the loader receives one coherent image rather than two independent objects."
 :::
 
-The linker enables **separate compilation** of different parts of the program. Importantly, it supports not _recompiling_ larger libraries. For example,. C standard libraries (e.g., `stdio`) are part of the Linux source, which is over 20 million lines of code. Because of the linker, recompiling a simple `foo.c` does not require recompiling `stdio` :-)
+The linker enables **separate compilation** of different parts of the program. Importantly, it supports not _recompiling_ larger libraries. For example, C standard libraries (e.g., `stdio`) are part of the Linux source, which is over 20 million lines of code. Because of the linker, recompiling a simple `foo.c` does not require recompiling `stdio` :-)
 
 :::{hint} Read more about how the linker resolves references
 
-The linker updates **absolute addresses** because it know the full size of the executable's text and data segments. Read more in a [later section](#sec-linker-details). This section also talks about statically linked and dynamically linked libraries.
+The linker updates **absolute addresses** because it knows the full size of the executable's text and data segments. Read more in a [later section](#sec-linker-details). This section also talks about statically linked and dynamically linked libraries.
 
 :::
 

@@ -34,7 +34,7 @@ Floating point addition is more complex than integer addition. We can't just add
 
 Because of how floating point numbers are stored, simple operations like addition are not always associative.
 
-Define `x`, `y`, and `z` as $-1.5 \times 10^{38}$, `y`: $1.5 \times 10^{38}$, and $1.0$, respectively.
+Define `x`, `y`, and `z` as $-1.5 \times 10^{38}$, $1.5 \times 10^{38}$, and $1.0$, respectively.
 
 $$
 \begin{align}
@@ -70,9 +70,9 @@ The unbiased mode is the default, though the others can be specified. Unbiased w
 
 ## Casting and converting
 
-Rounding also occurs when converting betwen numeric types. In C:
+Rounding also occurs when converting between numeric types. In C:
 
-* **`int` to `float`**: There are large integers that a `float` cannot handle exactly because it lacks enough bits in the significand. For instance, $2^24 + 1$ will "snap" to the closest even float.
+* **`int` to `float`**: There are large integers that a `float` cannot handle exactly because it lacks enough bits in the significand. For instance, $2^{24} + 1$ will "snap" to the closest even float.
 * **`float` to `int`**: Floating points with fractional components simply don't have integer representations. C uses **truncation** to coerce and convert floating point to the nearest integer.  For example, `(int) 1.5` gets chopped off to `1`.
 
 Double-casting therefore does not work as expected. Code A and Code B below may not always print `"true"`:
@@ -112,7 +112,7 @@ Below, we discuss other floating point representations that can yield more accur
 Still more representations exist. Here are a few from the IEEE 754 standard:
 
 * **Quad-precision**, or IEEE 754 quadruple-precision format binary128. Defined as 128 bits (15 exponent bits, 112 significand bits) with unbelievable range and precision.
-* **Oct-Precision**, or IEEE 754 octuple-precision format binary256. Defined as 256 bits (19 exponent bits, 237 significand bits).
+* **Oct-Precision**, or IEEE 754 octuple-precision format binary256. Defined as 256 bits (19 exponent bits, 236 significand bits).
 * **Half-Precision**, or IEEE 754 half-precision format binary16. Defined as 16 bits (5 exponent bits, 10 significand bits).
 
 Domain-specific architectures demand different number formats (@tab-float-types). For example, the bfloat16[^bf16] on Google's Tensor Processing Unit (TPU) is defined over 16 bits (8 exponent bits, 7 significand bits); because of its wider exponent field, it covers the same range as IEEE 754 single-precision format at the expense of significand precision. This tradeoff is preferred given vanishing gradients towards zero for neural network training.

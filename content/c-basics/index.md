@@ -63,7 +63,7 @@ Side note: At the time, the notion of the 8-bit byte was less standard. The EDSA
 
 ## Great Idea #1
 
-> Abstraction. Anything can be a string of bits: data, numbers, instructions, etc.
+> Abstraction. Anything can be a number: data, numbers, instructions, etc.
 
 Throughout this course, we will see how all of the layers in @fig-great-idea-abstraction are tied together by this idea.
 
@@ -73,7 +73,7 @@ Throughout this course, we will see how all of the layers in @fig-great-idea-abs
 :align: center
 :alt: "Hierarchical diagram of computer abstraction with five stacked levels from top to bottom: a high-level language program (C code snippet), RISC-V assembly, binary machine language, a hardware architecture block diagram of the processor datapath and memory interfaces, and a logic-circuit level with gate-level schematics. Arrows or grouping show that each upper layer compiles or refines into the next, ending at physical gates that implement the ISA."
 
-Great Idea #1: Abstraction. Anything can be a number: data, instructions, etc.
+Great Idea #1: Abstraction. Anything can be a number (i.e., string of bits): data, instructions, etc.
 :::
 
 ## High-level programming languages

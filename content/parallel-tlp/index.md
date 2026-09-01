@@ -90,7 +90,7 @@ There are two components to a **multicore execution model** (sometimes known as 
 1. Each processor (core) executes a **stream of instructions**, or **thread**, independently from other processors (cores). We discuss threads in [a later section](#sec-threads).
 
     * Each core has its own datapath: PC, registers, ALU, etc.
-    * Each core has its own set of higher-level cahces: L1 and L2 caches.
+    * Each core has its own set of higher-level caches: L1 and L2 caches.
 1. **Shared memory model**: All processors (cores) access the same shared memory. We discuss cache coherency in a [later section](#sec-cache-coherency).
 
     * All cores share primary memory (DRAM) and sometimes the L3 cache.

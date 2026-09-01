@@ -51,7 +51,7 @@ Not all digital data are necessarily boring analog; sometimes you can create art
 
   :::{image} images/guardian.jpg
   :label: fig-art1
-  :alt: "A digital illustration depicts an underwater scene with a large marine reptile swimming past a shipwreck on a coral reef. Shafts of sunlight  enetrate the deep blue water, illuminating a massive school of fish above  the wreckage."
+  :alt: "A digital illustration depicts an underwater scene with a large marine reptile swimming past a shipwreck on a coral reef. Shafts of sunlight penetrate the deep blue water, illuminating a massive school of fish above the wreckage."
   :width: 40%
 
   :::
@@ -122,7 +122,7 @@ Revisit this explanation once you've read more about hexadecimal and binary in t
   
 :::
 
-**Locations/Addresses**: IPv4 and IPv6 are 32-bit and 64-bit representations of device addresses on the Internet, also known as Internet Procotol addresses. Read more about [IP Addreses](https://en.wikipedia.org/wiki/IP_address) if you're curious.
+**Locations/Addresses**: IPv4 and IPv6 are 32-bit and 64-bit representations of device addresses on the Internet, also known as Internet Protocol addresses. Read more about [IP Addresses](https://en.wikipedia.org/wiki/IP_address) if you're curious.
 
 **Many types of data** You can even represent emotions, like "happy" as `00` or "grumpy" as `01`. We note that a 2-bit representation is likely not sufficient for representing the diverse range of human emotions. In fact, attempts to quantify human emotions (often for the purpose of processing data via computers) is a huge area of research. What are the implications of using computers to sample and discretize human experience? For more, we recommend you look into sociotechnical coursework that explores the human contexts and ethics of data.
 

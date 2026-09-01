@@ -33,7 +33,7 @@ How might we begin evaluating performance? Remember from our discussion of the [
 
 :::{figure} images/matmul-ml.png
 :label: fig-matmul-ml
-:alt: "Machine-learning style matrix multiplication diagram showing sequential layers of a neural network from inputs to outputs where, at each layer, there are input weights and either matrix matrix or matrix vector mulitplication."
+:alt: "Machine-learning style matrix multiplication diagram showing sequential layers of a neural network from inputs to outputs where, at each layer, there are input weights and either matrix matrix or matrix vector multiplication."
 :width: 80%
 
 A machine learning application is shown. There are many matrix-matrix and matrix-vector multiplications, e.g., in each layer of a multi-layer neural network. Matrix multiplication is also core to tasks in other domains, e.g., image filtering and noise reduction.
@@ -161,7 +161,7 @@ void free_mat_d(matrix_d_t *mat);
 | :-- | :-- | :-- | :-- |
 | $A$ | `matrix_d_t *A;` | `A->nrows` or $n$ | `A->ncols` or $d$ |
 | $B$ | `matrix_d_t *B;` | `B->nrows` or $d$ | `B->ncols` or $m$|
-| $A$ | `matrix_d_t *C;` | `C->nrows` or $n$ | `C->ncols` or $m$|
+| $C$ | `matrix_d_t *C;` | `C->nrows` or $n$ | `C->ncols` or $m$|
 :::
 
 Going forward, we will use this syntax, but all of our timing benchmarks and subsequent optimizations will assume that all matrices are square, i.e., $n = d = m$. We will further assume $n$ **powers of two** (or at minimum a multiple of 4). We will test:
@@ -175,7 +175,7 @@ In practice, matrix dimensions are passed as parameters to avoid `struct`s and k
 
 ### Row-major order
 
-Assume that matrices $A$, $B$, and $C$ are stored as `A`, `B`, and `C`. In the code, these matrices are stoerd as arrays of `double` arrays. By convention, these arrays store matrix elements in **row-major order**.[^col-major]
+Assume that matrices $A$, $B$, and $C$ are stored as `A`, `B`, and `C`. In the code, these matrices are stored as arrays of `double` arrays. By convention, these arrays store matrix elements in **row-major order**.[^col-major]
 
 [^col-major]: The **row-major order** convention is used in C and Python (e.g., NumPy), though **column-major order** conventions exist in other languages (e.g., FORTRAN). One reasoning is that in C, `A[i][j]` almost inevitably implies row-major order because it can be rewritten as `(A[i])[j]`, where `A[i]` is a row. Read more on [Wikipedia](https://en.wikipedia.org/wiki/Row-_and_column-major_order).
 
@@ -216,7 +216,7 @@ C[i][j] = sum;
 :::{note} Show Explanation
 :class: dropdown
 
-* Row `i`, column `k` of $A$: First find the address of the `i`-th row at `mat_A->data + i*mat_ncols`. Then, increment by `k` elements to get the address of the `k`-th element in this row.
-* Row `k`, Column `j` of $B$: First find the address of the `k`-th row at `mat_B->data + k*mat_B->ncols`. Then, increment by `i` elements to get the address of the `j`-th element in this row.
-* Row `i`, Column `j` of $C$: First find the address of the `i`-th row at `mat_C->data + i*mat_C->ncols`. Then, increment by `j` elements to get the address of the `j`-th element in this row.
+* Row `i`, column `k` of $A$: First find the address of the `i`-th row at `A->data + i*A->ncols`. Then, increment by `k` elements to get the address of the `k`-th element in this row.
+* Row `k`, Column `j` of $B$: First find the address of the `k`-th row at `B->data + k*B->ncols`. Then, increment by `j` elements to get the address of the `j`-th element in this row.
+* Row `i`, Column `j` of $C$: First find the address of the `i`-th row at `C->data + i*C->ncols`. Then, increment by `j` elements to get the address of the `j`-th element in this row.
 :::

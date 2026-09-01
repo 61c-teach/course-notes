@@ -264,7 +264,7 @@ Approximate timing diagram for the [five steps to a RISC-V instruction](#sec-fiv
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | `add` | X | X | X | | X | 600ps |
 | `beq` | X | X | X | | | 500ps |
-| `jal` | X | X | X | | | 500ps |
+| `jal` | X | X | X | | X | 600ps |
 | `lw` | X | X | X | X | X | 800ps |
 | `sw` | X | X | X | X | | 700ps |
 :::

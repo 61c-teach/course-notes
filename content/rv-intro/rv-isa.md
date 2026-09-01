@@ -45,7 +45,7 @@ To write a comment in RISC-V,  use a hash mark (`#`)[^apollo]. Everything to the
 
 :::
 
-[^apollo]: The `#` commenting style has a long history. For example, the 1966 Apollo Guidance Computer code (written by lead programmer [Margaret Hamilton](https://www.smithsonianmag.com/smithsonian-institution/margaret-hamilton-led-nasa-software-team-landed-astronauts-moon-180971575/)) used similar commenting conventions. the printout of the code for the lunar lander was famously taller than Hamilton herself. You can actually find the Apollo landing code on GitHub. As reported on [ABC News](https://abcnews.go.com/Technology/apollo-11s-source-code-tons-easter-eggs-including/story?id=40515222), the [code](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/THE_LUNAR_LANDING.agc#L245) has a [ton](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/LUNAR_LANDING_GUIDANCE_EQUATIONS.agc#L179) of [easter eggs](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/BURN_BABY_BURN--MASTER_IGNITION_ROUTINE.agc#L61) that belie the nature of early computer scientists.
+[^apollo]: The `#` commenting style has a long history. For example, the 1966 Apollo Guidance Computer code (written by lead programmer [Margaret Hamilton](https://www.smithsonianmag.com/smithsonian-institution/margaret-hamilton-led-nasa-software-team-landed-astronauts-moon-180971575/)) used similar commenting conventions. The printout of the code for the lunar lander was famously taller than Hamilton herself. You can actually find the Apollo landing code on GitHub. As reported on [ABC News](https://abcnews.go.com/Technology/apollo-11s-source-code-tons-easter-eggs-including/story?id=40515222), the [code](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/THE_LUNAR_LANDING.agc#L245) has a [ton](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/LUNAR_LANDING_GUIDANCE_EQUATIONS.agc#L179) of [easter eggs](https://github.com/chrislgarry/Apollo-11/blob/247dd7d0d1b0e7f9f270750ec08983e0a72e73e1/Luminary099/BURN_BABY_BURN--MASTER_IGNITION_ROUTINE.agc#L61) that belie the nature of early computer scientists.
 
 (sec-machine-language)=
 ### Machine language
@@ -55,7 +55,7 @@ Remember that a computer only understands `1`s and `0`s; text like `add x1 x2 x3
 A **machine instruction** is the bit representation of an assembly instruction. The RISC-V ISA specifies that the instruction `add x1 x2 x3` translates to the following 32 bits of machine code:
 
 ```
-00000000101010011000100100110011
+00000000001100010000000010110011
 ```
 
 These machine code bits specify how the computer architecture should perform arithmetic, read/write registers, access memory, transfer control, etc. We discuss machine instruction specifications in a [later section](#sec-machine-instructions).

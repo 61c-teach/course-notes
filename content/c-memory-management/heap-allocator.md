@@ -11,10 +11,10 @@ This section is included as bonus content and is not tested. If you are curious 
 ::::{note} 🎥 Lecture Video
 :class: dropdown
 
-:::{iframe} https://www.youtube.com/embed/5rmB4SvfDPo?si=7YF8BXMnDpFCQiCH
+:::{iframe} https://www.youtube.com/embed/Sq5tSeWfnGY?si=lhSSc2EofyEeO4ar
 :width: 100%
 :enumerated: false
-:title: "[CS61C FA20] Lecture 02.2 - Number Representation: Conversions"
+:title: "[CS61C FA20] Lecture 05.4 - C Memory Management: Memory Management"
 :::
 
 ::::
@@ -29,7 +29,7 @@ Managing the heap is tricky. While you don't have to worry about the OS moving t
 An ideal design:
 
 * Has fast implementations of `malloc` and `free`
-* Produces minimal memory fragmentation, i.e., the "bookkeeping" required to track memory.
+* Produces minimal overhead, i.e., the "bookkeeping" required to track memory.
 * Avoids **fragmentation**, i.e., where most of free memory is in many small chunks. This implies many free bytes but an inability to satisfy a large request since the free bytes are not contiguous in memory.
 
 **External fragmentation**: If you request 100 bytes (R1) and then 1 byte (R2), and then you free R1, your memory is now fragmented into two separate areas. When a third request (R3) comes in, the system has to be smart about where to put it based on past patterns.

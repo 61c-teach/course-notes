@@ -79,7 +79,7 @@ void list_free(linked_list_t *list);
 Notes:
 
 * Lines 1-2: These macros prevent double includes, e.g., if this header were included by multiple C files in the project.
-* Line 4: This is a **forward** declaration. It is "forward" because  “Forward” since haven’t defined `struct _node` yet (we define it in the source file along with implementation).
+* Line 4: This is a **forward** declaration. It is "forward" because we haven't defined `struct _node` yet (we define it in the source file along with its implementation).
 * Lines 4-5: The struct names `struct _node` and `struct _linked_list` are opaque because library users will not need to use `_node` and `_linked_list` explicitly, hence why we prepend `_` to the names.
 
 ## Implement: `linkedlist.c`
@@ -87,7 +87,7 @@ Notes:
 
 (card-ll-source)=
 :::{card}
-Source file: `linkedlist.h`
+Source file: `linkedlist.c`
 ^^^
 
 ```{code} c

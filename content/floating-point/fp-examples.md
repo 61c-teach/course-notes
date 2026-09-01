@@ -104,7 +104,7 @@ Instead of translating `y` and this new number `y + z`, then taking their differ
 
 The least significant bit `.0....01`, for any mantissa of a binary normalized form:
 
-* Implicit leading 1 is not represent by any of 23 bits but corresponds to $2^0$
+* Implicit leading 1 is not represented by any of 23 bits but corresponds to $2^0$
 * bit 22 (most significant bit) of significand is $2^{-1}$
 * bit 0 (least significant bit) of significand is $2^{-23}$
 

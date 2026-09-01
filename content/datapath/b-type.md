@@ -25,8 +25,8 @@ _State element updates_:
 
 * RegFile: We **read** two registers `rs1` and `rs2` and compare the values `R[rs1]` and `R[rs2]`. We do not write to any registers.
 * PC: We **read** from and **write** to PC. The value to write now **conditionally** depends on the result of the two-register comparison, which determines whether a branch is *taken*:
-  * **taken**: `pc + 4`
-  * **not taken**: `pc + imm`
+  * **taken**: `pc + imm`
+  * **not taken**: `pc + 4`
 * DMEM: No reading nor writing.
 
 Like before, we **reuse** what already exists in our R-, I-, and S-Type datapath. Even with this, we will need to add three new blocks and some additional control logic.
@@ -106,7 +106,7 @@ Let's walk through the updated datapath for branch instructions (B-Type):
 :::{note} Control Signals for Branches
 
 * Configure `ImmSel` to `UB`-type immediates.
-* Set `RegWEn` to `1`, i.e., write back to RegFile.
+* Set `RegWEn` to `0`. This means **no** write back to RegFile.
 * Set `BrUn` to `1` if the branch comparator should perform an unsigned comparison. If the branch comparator should perform a signed comparison, set to `0`.
 * Set `ASel` to `1`.
 * Set `BSel` to `1`.

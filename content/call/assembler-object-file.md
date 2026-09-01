@@ -72,8 +72,8 @@ The **symbol table** is a list of labels (procedures) and data (like global arra
 
 * **Instruction labels**: Used to compute machine code for PC-relative addressing in branches, function calling, etc.
   * If you want to call a function like `printf` from a library, the linker will eventually need this symbol (additionally, see the relocation table below).
-  * Can use .globl [directive](#sec-directives) to allow labels can be referenced by other files.
-* **Data segment**: anything in section marked by the `.data` directive. Recall that the data segment has global variables may be accessed/used by other files.
+  * Can use .globl [directive](#sec-directives) to allow labels to be referenced by other files.
+* **Data segment**: anything in section marked by the `.data` directive. Recall that the data segment has global variables that may be accessed/used by other files.
 
 An [example symbol table](#tab-hello-symbol-table) is discussed in the [example](#sec-call-example) at the end of this chapter.
 
@@ -84,4 +84,4 @@ The **relocation table** is a "to-do list" of things to fix later (by the downst
 * **Absolute addresses for any external label** used by a jump, e.g., in lib files, `jal ext_label`
 * **Absolute addresses for any data located in data segment**. e.g., static variables from the `la` load address instruction. The assembler doesn't know where the static section or the "final resting place" is; it delegates this "final resting place" resolution to the **linker**.
 
-An [example relocation table](#tab-hello-symbol-table) is discussed in the [example](#sec-call-example) at the end of this chapter.
+An [example relocation table](#tab-hello-relocation-table) is discussed in the [example](#sec-call-example) at the end of this chapter.

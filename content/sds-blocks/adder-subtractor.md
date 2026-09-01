@@ -210,7 +210,7 @@ The truth table now has
 By carefully inspecting the truth-table you will notice:
 
 * **Result bit** $\texttt{y}_{\texttt{1}}$: The sum output is the **XOR of the three inputs**. Recall that an [N-bit XOR](#sec-n-xor) is a 1 when the number of 1’s in the input is odd.
-* **Carry-out bit** $\texttt{c}_{\texttt{2}}$: The carry-out function is the **majority function**. Recall that a [3-way majority circuit](#sec-majority-circuit) is a 1 when the number of 1’s in its input is greater than the number of 0
+* **Carry-out bit** $\texttt{c}_{\texttt{2}}$: The carry-out function is the **majority function**. Recall that a [3-way majority circuit](#sec-majority-circuit) is a 1 when the number of 1’s in its input is greater than the number of 0's.
 :::
 
 ### General case
@@ -287,8 +287,8 @@ As discussed in our initial [adder/subtractor design](#fig-add-sub-block), an ov
 We can make the following observations about adds in this circuit. Remember, the most significant stage is the stage associated with the sign bit, i.e., stage n-1.
 
 * If there was a **carry in** to the most significant stage, **but no carry out** of that stage, then A and B were both _positive_ and the result of the addition **overflowed**, erroneously generating a 1 in the sign bit position.
-* If there was a **carry out** of the most significant stage and **no carry out** that stage, then A and B were both _negative_ and the result of addition **overflowed**.
-* In all other cases the value of the carry in to the most significant stage matches the carry out, then there was **no overflow**.
+* If there was a **carry out** of the most significant stage, **but no carry in** to that stage, then A and B were both _negative_ and the result of addition **overflowed**.
+* In all other cases, the value of the carry in to the most significant stage matches the carry out, and there was **no overflow**.
 
 We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 
@@ -297,18 +297,18 @@ We demonstrate this intuition in @fig-2bit-add-overflow-table for a 2-bit adder.
 :width: 70%
 :alt: "Table diagram showing different outputs from 2-bit addition with varying carry-bits and signed interpretations, highlighting cases used to reason about overflow."
 
-2-bit adder overflow table diagram. Overflow occurs when adding $1 + (-2) = -1$, $1 + 1$, and $(-1) + (-2)$. Notably, the first is a valid addition, where the latter two produce incorrect results.
+2-bit adder overflow table diagram. The three highlighted additions overflow and produce incorrect results.
 :::
 
 ::::{note} Show Explanation of @fig-2bit-add-overflow-table
 :class: dropdown
 
-@fig-2bit-add-overflow-overview provides a high-level idea of addition with 2-bit numbers `A` and `B`. Keep the integer wheel on the left in mind when adding integers. Keep the integer wheel in mind when adding integers.
+@fig-2bit-add-overflow-overview provides a high-level idea of addition with 2-bit numbers `A` and `B`. Keep the integer wheel on the left in mind when adding integers.
 
 :::{figure} images/2bit-add-overflow-overview.png
 :label: fig-2bit-add-overflow-overview
 :width: 100%
-:alt: "The left shows 2-bit signed addition outcomes on a value wheel, including wraparound behavior. The right shows a similar 2-bit signed addition table showing various output possibilies and their interpretations in decimal."
+:alt: "The left shows 2-bit signed addition outcomes on a value wheel, including wraparound behavior. The right shows a similar 2-bit signed addition table showing various output possibilities and their interpretations in decimal."
 
 High-level 2-bit adder overflow table diagram.
 :::
@@ -320,6 +320,8 @@ Three overflow results are boxed in @fig-2bit-add-overflow-table:
 * $-1 + (-2) = 1$, not $-3$
 
 The original @fig-2bit-add-overflow-table shows the bit patterns of these three additions (among others), resulting in the three observations in this section.
+
+Note it is still permissible to add operands with different signs. For example, $1 + (-2) = -1$ and $0 + 1 = 1$ do not produce overflow.
 
 ::::
 
@@ -341,12 +343,12 @@ Cascading n-bit adder with overflow.
 (sec-subtractor)=
 ## Subtractor
 
-We mentioned earlier that addition and subtraction are closely related, and therefore we would expect that their respective circuits are similar and could serve dual both purposes.
+We mentioned earlier that addition and subtraction are closely related, and therefore we would expect that their respective circuits are similar. We can therefore build on the addition circuit to integrate subtraction, thereby serving both purposes.
 
 As discussed in our initial [adder/subtractor design](#fig-add-sub-block), a control bit SUB signals if the add/subtract block should perform subtraction. We note the following holds, due to two's complement:
 
 * When SUB=0 the circuit performs the addition `A + B`.
-* When SUB=1, the circuit performs the subtraction `A - B`. The following statements are erquivalent:
+* When SUB=1, the circuit performs the subtraction `A - B`. The following statements are equivalent:
   * Compute `A + (-B)`, where `B` is the two's complement.
   * Compute `A + ~B + 1`. This is the definition of two's complement: invert bits and add 1.
 
@@ -359,7 +361,7 @@ This last observation gives us a very clean way to augment our adder circuit to 
 
 We don’t really need a second adder to perform the +1, because we have the unused input c{sub}`0` (the carry in bit for the zero-th spot).
 
-  * When SUB=1, connect c{sub}`0` to 0.
+  * When SUB=0, connect c{sub}`0` to 0.
   * When SUB=1, connect c{sub}`0` to 1 to add an extra 1 in with the least significant column, achieving the extra +1. 
 
 In other words, wire SUB to c{sub}`0`.
@@ -384,5 +386,5 @@ The augmented adder design is shown below. When the input SUB is 1 the block per
 :width: 100%
 :alt: "The same n-bit adder circuit with overflow detection, but now with subtractor design using XOR gates to conditionally invert B based on a control input SUB that is determining the initial carry-in bit c0."
 
-N-bit adder/substractor design circuit diagram.
+N-bit adder/subtractor design circuit diagram.
 :::

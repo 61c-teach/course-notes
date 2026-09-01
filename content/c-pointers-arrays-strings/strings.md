@@ -12,7 +12,7 @@ No video.
 
 ## C Strings vs. `char` arrays
 
-A **C string** (i.e., "string") is just an array of characters, followed by a **null terminator**. A **null terminator** is the byte of all 0's, i.e., the '\0' character. The ASCII value of the null terminator is `0`. 
+A **C string** (i.e., "string") is just an array of characters, followed by a **null terminator**. A **null terminator** is the byte of all 0's, i.e., the `'\0'` character. The ASCII value of the null terminator is `0`. 
 
 The null terminator lets us determine the length of a C string from just a pointer to the beginning of the string.
 
@@ -42,7 +42,7 @@ char arr[] = {'h', 'e', 'l', 'l', 'o'};
 :::
 
 :::{note} Show Answer
-:class: Dropdown
+:class: dropdown
 
 No. While `arr` is a `char` array, it does not end in a null terminator and by definition is not a C string.
 :::
@@ -60,7 +60,7 @@ C strings have functions in the C standard library, imported via the header `<st
 * `strlen`: computes the length of a string by counting the number of characters before a null terminator
 * `strcpy`: copies a string from one memory location to another, one character at a time until it reaches a null terminator (the null terminator is copied as well).
 
-To read about any standard string function, we recomment the manual pages ("man pages"). You can type the following into a terminal:
+To read about any standard string function, we recommend the manual pages ("man pages"). You can type the following into a terminal:
 
 ```
 man strlen
@@ -82,12 +82,15 @@ int strlen(char s[]) {
 
 :::{note} Explanation
 
-* Line 1: Array syntax in parameters are syntactic sugar for pointers; here, it is equivalent to `char *s`, declaring `s` as a pointer to a `char`. Here, we further assume that `s` points to a C string, but there is no way of explicitly describing this contraint via type declaration.
+* Line 1: Array syntax in parameters are syntactic sugar for pointers; here, it is equivalent to `char *s`, declaring `s` as a pointer to a `char`. Here, we further assume that `s` points to a C string, but there is no way of explicitly describing this constraint via type declaration.
 * Line 2: Declare a local unsigned integer `n` that is large enough to hold any count of bytes in memory (this is the `size_t` typedef)
 * Line 3: Lots going on in this while loop.
   * Body: Increment `n` by one.
   * Condition:
-    * Increment the value of `s` by one. This evaluates to the Before doing that, get the current value at `s`.
+    * Increment the value of `s` by one. Before doing that, dereference `s` to get the current character.[^post-increment] The value of the expression is the current character.
+    * Evaluate to `true` if the current character is not the null character (`'\0'` has binary value `0`).
+
+[^post-increment]: `*(s++)` uses **post-**increment: first dereference `s` to read the current character, then increment `s` by one. C also supports the **pre-**increment (and -decrement) operator `(++s)` (and `(--s)`), which evaluates to the value after the operation completes. The differences are out of scope for this course.
 :::
 
 ## String literals

@@ -15,6 +15,7 @@ title: "Conditional Branches"
 :::{iframe} https://www.youtube.com/embed/OWxcAqFNkpo
 :width: 100%
 :title: "[CS61C FA20] Lecture 08.3 - RISC-V lw, sw, Decisions I: Decision Making"
+:::
 
 Until 8:50
 ::::
@@ -76,7 +77,7 @@ How do we use branch instructions? Let's check out `beq` and `bne` in @tab-rv-be
 :align: center
 | Instruction | `beq rs1 rs2 Label` | `bne rs1 rs2 Label` |
 | :--: | :--- | :--- |
-| Mnemonic | **B**ranch if **eq**ual | **B**ranch if **n**ot **e**ual |
+| Mnemonic | **B**ranch if **eq**ual | **B**ranch if **n**ot **e**qual |
 | Comparison condition | Register values are equal:<br/>`R[rs1] == R[rs2]` | Register values are not equal:<br/>`R[rs1] != R[rs2]` |
 | Condition is met | `PC = <addr of Label>` |  `PC = <addr of Label>` |
 | Condition is not met | `PC = PC + 4` | `PC = PC + 4` |
@@ -176,7 +177,7 @@ Again, both choices are valid. Again, Choice B uses `bne` and more closely repre
 | `blt rs1 rs2 Label` | Branch if Less Than (signed) (rs1 < rs2) |
 | `bge rs1 rs2 Label` | Branch if Greater or Equal (signed) (rs1 >= rs2) |
 | `bltu rs1 rs2 Label` | Branch if Less Than (unsigned) |
-| `bgeu rs1 rs2 Label` | Branch if Greater Than or Equal (unsigned) |
+| `bgeu rs1 rs2 Label` | Branch if Greater or Equal (unsigned) |
 :::
 
 This set[^mnemonic] is sufficient to describe the C comparators: `==`, `!=`, `>`, `<`, `>=`, `<=` for signed and unsigned integers. From the [RV32I Specification](https://docs.riscv.org/reference/isa/unpriv/rv32.html#2-6-2-conditional-branches):

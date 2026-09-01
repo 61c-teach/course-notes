@@ -35,7 +35,7 @@ Power-Density prediction plot. Source: S. Borkar, Intel, circa 2000.
 :::{embed} #fig-great-idea-2
 :::
 
-To stay under reasonable power limits, people explored using **parallelism in software and in hardware.** Nowadays, almost all high-programs exploit parallelism in some way.
+To stay under reasonable power limits, people explored using **parallelism in software and in hardware.** Nowadays, almost all high-performance programs exploit parallelism in some way.
 
 :::{warning} Amdahl's "Heartbreaking" Law
 

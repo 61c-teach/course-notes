@@ -39,7 +39,7 @@ Consider the [address translation](#block-address-translation) discussed in an [
 
 With virtual memory, a single load (or store) instruction requires **two accesses** to the memory hierarchy:
 
-1. **Address translation**. Translate to the virtual address to a physical address by looking up the corresponding physical page number.
+1. **Address translation**. Translate the virtual address to a physical address by looking up the corresponding physical page number.
 
 1. **Data access**: Read (or write) the physical page in main memory.
 
@@ -49,7 +49,7 @@ With virtual memory, a single load (or store) instruction requires **two accesse
 
 ## Page Table Walks
 
-At present, we must perform a **page table walk**, meaning we must access the page table to get the physical page number for address translation.[^page-table-walk] Remember that the current process's page table is located main memory. Because page tables are located in memory (@fig-page-table-process-access, then we must access main memory **twice**. This takes several hundred cycles!
+At present, we must perform a **page table walk**, meaning we must access the page table to get the physical page number for address translation.[^page-table-walk] Remember that the current process's page table is located in main memory. Because page tables are located in memory (@fig-page-table-process-access), then we must access main memory **twice**. This takes several hundred cycles!
 
 [^page-table-walk]: The "walk" terminology makes more sense with hierarchical page tables, where multiple levels of page tables are accessed on each address translation. Hierarchical page tables are out of scope for this course.
 
@@ -100,7 +100,7 @@ The **TLB Reach** is the number of virtual addresses can get immediately transla
 
 If the TLB "hits," then no page table walk occurs, meaning we avoid accessing memory on address translation. Common TLB design:
 
-* 38-128 entries
+* 32-128 entries
 * [Fully associative](#sec-fully-associative-policy), [^tlb-tio] which increases TLB reach by minimizing conflicting entries.
 * FIFO or random replacement policy
 
@@ -146,7 +146,7 @@ Let us compare three cases for translating the requested virtual address.[^tlb-c
 ::::{tab-item} Case 1: TLB Hit
 :sync: tlb-case1
 
-1. The requested VPN is in the TLB (e.g., it was recently accessed), so we retrieve the PPN from the TLB entry and translating the resulting physical address.
+1. The requested VPN is in the TLB (e.g., it was recently accessed), so we retrieve the PPN from the TLB entry and translate the resulting physical address.
 
 Address translation accesses just the TLB and is close to instant, [on the order](#fig-3-locality) of a clock cycle.
 
@@ -162,7 +162,7 @@ Case 1 is the best-case scenario: A TLB hit. Because the corresponding physical 
 :sync: tlb-case2
 
 1. The requested VPN is not in the TLB, so we perform a **page table walk** to access the current process's page table.
-1. The page table entry for VPN 4 is accessed; it is valid, so we retrieve the PPN from the page table entry and translating the resulting physical address.
+1. The page table entry for VPN 4 is accessed; it is valid, so we retrieve the PPN from the page table entry and translate the resulting physical address.
 1. Before moving to the data access step, update the TLB. The page table entry for VPN 4 is inserted into the TLB (replacing an older entry) and marked with the current process PID.
 
 Address translation accesses the TLB and memory and therefore takes [on the order](#fig-3-locality) of a hundred clock cycles.
@@ -187,9 +187,9 @@ Case 2: Before moving to the data access step, update the TLB with the most rece
 
 1. The requested VPN is not in the TLB, so we perform a **page table walk** to access the current process's page table.
 1. The page table entry for VPN 4 is accessed; it is **not valid**. Trigger a **page fault exception**.
-1. The OS intervenes and requests the page from disk. It also performs a context switch to the another process while this process waits.
+1. The OS intervenes and requests the page from disk. It also performs a context switch to another process while this process waits.
 1. The page is loaded from disk into a physical page in memory. The page table entry for VPN 4 is updated with the PPN of the newly updated physical page, and mark the entry valid.
-1. The page table entry for VPN 4 is accessed; it is valid, so we retrieve the PPN from the page table entry and translating the resulting physical address.
+1. The page table entry for VPN 4 is accessed; it is valid, so we retrieve the PPN from the page table entry and translate the resulting physical address.
 1. Before moving to the data access step, update the TLB. The page table entry for VPN 4 is inserted into the TLB (replacing an older entry) and marked with the current process PID.[^detail]
 
 [^detail]: Imagine that during the context switch, the other process does not update any pages in the TLB. This is unlikely, but our toy scenario is contrived for simplicity.
@@ -201,7 +201,7 @@ Address translation accesses the TLB, memory, and disk and therefore takes [on t
 :::{figure} images/tlb-case3-page-fault.png
 :label: fig-tlb-case3-page-fault
 
-Case 3 is the worst-case scenario: A page fault. The physical page is not in memory, the page table walk does not yield a valid page table entry, and disk access is needed. Access to disk is needed for address translation. Access to main memory is needed for address translation.
+Case 3 is the worst-case scenario: A page fault. The physical page is not in memory, the page table walk does not yield a valid page table entry, and disk access is needed for address translation.
 
 :::
 

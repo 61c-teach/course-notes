@@ -130,7 +130,7 @@ A process requests a data at a given virtual address (VA).
     * On a TLB hit: (See next step.)
     * On a TLB miss:
       * Do a **page table walk** to access the page table in memory.
-      * If there is a **page fault** because the correpsonding page table entry is invalid, load the page from disk.
+      * If there is a **page fault** because the corresponding page table entry is invalid, load the page from disk.
       * At some point, write the correct address translation from this page table entry to the TLB.
 1. Construct the physical address using the physical page number from the corresponding TLB entry.
 
@@ -184,7 +184,7 @@ Suppose we only have DRAM and never access disk. Average memory access time in t
 ```{math}
 \begin{aligned}
 AMAT_{no} &= 1 + 0.05 \times (\text{L1 miss penalty}) \\
-&= 1 + 0.05 \times (10 + 0.r0 \times (\text{L2 miss penalty})) \\
+&= 1 + 0.05 \times (10 + 0.40 \times (\text{L2 miss penalty})) \\
 &= 1 + 0.05 \times 10 + 0.05 \times 0.40 \times 200 \\
 &= 5.5 \text{ clock cycles}
 \end{aligned}
@@ -208,7 +208,7 @@ The second factor is a performance cost proportional to the performance of our d
   $$ AMAT = 5.5+(0.02 \times (.001) \times 20,000,000)
   = 405.5 \text{ cycles}$$
 * $R = 99\%$:
-  $$ AMAT = 5.5+(0.02 \times (99) \times 20,000,000)
+  $$ AMAT = 5.5+(0.02 \times (.01) \times 20,000,000)
   = 4005.5 \text{ cycles}$$
 
 The last of these is about 680 times slower than the first of these. That's really, really, REALLY slow...!

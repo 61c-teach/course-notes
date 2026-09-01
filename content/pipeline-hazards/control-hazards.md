@@ -25,9 +25,9 @@ From [earlier](#sec-pipeline-hazards):
 
 Control hazards occur when the instruction fetched may not be the one needed. In other words, _whether_ an instruction executes depends on the outcome of a previous execution. From P&H 4.6:
 
-> Suppose our laundry crew was given the happy task of cleaning the uniforms of a football team. Given how filthy the laundry is, we need to determine whether the detergent and water temperature setting we select are strong enough to get the unifroms clean...In our laundry pipeline, we have to wait until the second stage to examine the dry uniform to see if we need to change the washer setup or not.
+> Suppose our laundry crew was given the happy task of cleaning the uniforms of a football team. Given how filthy the laundry is, we need to determine whether the detergent and water temperature setting we select are strong enough to get the uniforms clean...In our laundry pipeline, we have to wait until the second stage to examine the dry uniform to see if we need to change the washer setup or not.
 
-Control hazard occur with **jump and branch instructions**. We must begin fetching the instruction following the jump/branch on the following clock cycle. However, the pipeline cannot possibly know what the next instruction should be—since it only _just read_ the jump/branch instruction from memory.
+Control hazards occur with **jump and branch instructions**. We must begin fetching the instruction following the jump/branch on the following clock cycle. However, the pipeline cannot possibly know what the next instruction should be—since it only _just read_ the jump/branch instruction from memory.
 
 ```{embed} #block-pcsel-mem
 ```
@@ -190,7 +190,7 @@ This approach is simple but slow. It is rather costly if our program has many br
 
 Another approach could be to _stall only when needed_. In other words, proceed with executing the instructions in sequence, and immediately **flush the pipeline** once it is determined that the branch should be taken. Compare the two cases below.
 
-If a branch is taken, we stall **three cycles**. In @tab-waterfall-branch-taken, once it is determined that the branch is taken in cycle 4, flush the pipeline. This involves converting the instructions in the `IF`, `IF`, `EX` stages to no-ops. Then, in cycle 5, the correct instruction (the `sw` instruction branched to) is executed.
+If a branch is taken, we stall **three cycles**. In @tab-waterfall-branch-taken, once it is determined that the branch is taken in cycle 4, flush the pipeline. This involves converting the instructions in the `IF`, `ID`, `EX` stages to no-ops. Then, in cycle 5, the correct instruction (the `sw` instruction branched to) is executed.
 
 ```{list-table} Approach 2. In cycle 4, we determine that the branch is taken. A dash (–) indicates that the pipeline is flushed and affected instructions do "nothing."
 :label: tab-waterfall-branch-taken

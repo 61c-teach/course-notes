@@ -142,7 +142,7 @@ Two's Complement: To change sign, flip the bits and add one.
 
 At home: Prove algorithm is equivalent to formula!
 
-The intuition comes from a "number wheel" representation of our binary odometer (Figure @fig-twos-complement-number-wheel). This wheel also helps us understand identify where integer overflow occurs:
+The intuition comes from a "number wheel" representation of our binary odometer (Figure @fig-twos-complement-number-wheel). This wheel also helps us identify where integer overflow occurs:
 
 :::{figure} images/twos-complement-number-wheel.png
 :label: fig-twos-complement-number-wheel

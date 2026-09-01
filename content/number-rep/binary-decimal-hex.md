@@ -53,7 +53,7 @@ The alien, the astronaut, and the pile of rocks use three different representati
 
 ## Binary, Decimal, and Hexadecimal Representations
 
-While there are an infinite number of bases with which to represent numbers, we discuss three will be the most useful to us, as computer scientists: **decimal**, **binary**, and **hexadecimal** representations.
+While there are an infinite number of bases with which to represent numbers, we discuss three that will be the most useful to us, as computer scientists: **decimal**, **binary**, and **hexadecimal** representations.
 
 @tab-dec-hex-bin probably makes little sense to you at the moment, but we present it first so you can make some educated guesses.
 
@@ -65,7 +65,7 @@ While there are an infinite number of bases with which to represent numbers, we 
 | :--- | :-: | :--- |
 | Decimal | 10 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9` |
 | Binary | 2 | `0, 1` |
-| Hexadecimal | 16 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A,  B,  C,  D,  E,  F` |
+| Hexadecimal | 16 | `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F` |
 
 :::
 
@@ -131,7 +131,7 @@ Adding up one one, zero twos, one four, and one eight gives thirteen, or the dec
 Other notes:
 
 * We prepend the prefix `0b` to denote that the numeral `1101` should be interpreted in base 2; the **shorthand** `0b1101` is equivalent to the mathematical notation $1101_2$ but can be written with a standard keyboard.
-* Like before, `0b0...01101` and `0b1101` represent the same nunber, thirteen.
+* Like before, `0b0...01101` and `0b1101` represent the same number, thirteen.
 * Because there are just two binary digits `0` and `1`, in binary we are always either including a value (here, a specific power of two), or not including it. `1` or `0`, `True` or `False`. This idea of binary representing "inclusion" or "exclusion" will show up repeatedly in this course.
 
 ### Base 16 (Sixteen) #s, Hexadecimal
@@ -205,7 +205,7 @@ The slidedeck below shows how we can convert the decimal $13$ into its binary re
 
 :::{iframe} https://docs.google.com/presentation/d/e/2PACX-1vSRRi1DDwigsxmr5R_fPwZ1uAOKKJ-fblPQg6GFNICf9he20UUYX_gZLwdrMG4HRvrtcD3e9nkBwk29/pubembed?start=false&loop=false
 :width: 100%
-:title: "Animation that steps through how to convert the decimal value 13 into its binary equivalent, as shown in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing"
+:title: "Animation that steps through how to convert the decimal value 13 into its binary equivalent, as shown in this section. Access [original Google Slides](https://docs.google.com/presentation/d/1aihcZDiAEMCarSs-QIzRE_ixW5mACYYTykdmRyqIZUc/edit?usp=sharing)"
 :::
 
 Let `val` be $13$ in the explanation below. Click to show.
@@ -217,7 +217,7 @@ Make columns 1, 2, 4, 8, which correspond to increasing integer powers of two. T
 
 1. Take the largest power of two: $2^3 = 8$, or eight. This "fits" into `val`, so "use" it. "Using" means we need the binary digit `1`. Set the 4th-from-the-right space to `1`, i.e., populate `0b 1 _ _ _`. Because we have now "used up" eight, subtract it and update `val` to 5. This is the remainder we have to represent.
 1. Take the next power of two: $2^2 = 4$, or four. "Use" it by setting the 3rd-from-the-right space to `1`, i.e., populate `0b 1 1 _ _`. Update `val` to 1.
-1. Take the next power of two: $2^1 = 2$, or two. We cannot "use" it because it is too big. "Not using" means we need the binary digit `0`. Set the second-from-the-right space to `0`, i.e., populate `0b 1 1 0 _`. `bal` is unchanged and is still 1.
+1. Take the next power of two: $2^1 = 2$, or two. We cannot "use" it because it is too big. "Not using" means we need the binary digit `0`. Set the second-from-the-right space to `0`, i.e., populate `0b 1 1 0 _`. `val` is unchanged and is still 1.
 1. Take the next power of two, which is also the smallest: $2^0 = 1$, or one. "Use" it by setting the rightmost space to `1`, i.e., populate `0b 1 1 0 1`. Update `val` to 0.
 
 The resulting **binary string** is `0b1101`. By yourself, practice going the other way and check that `0b1101` represents the decimal number $13$.
@@ -261,7 +261,7 @@ Make columns 1, 16, 256, 4096 which correspond to increasing integer powers of s
 1. Take the largest power: $16^3 = 4096$. This does not fit into `val`, so we set the 4th-from-the-right space to `0`, e.g., `0x 0 _ _ _`.
 1. Take the next power: $16^2 = 256$. This does not fit into `val`, so we set the 3rd-from-the-right space to `0`, e.g., `0x 0 0 _ _`.
 1. Take the next power: $16^1 = 16$. Count how many times you can "use" it; at most ten $16$'s fit into `val`, which is currently $165$. Ten is the hexadecimal digit `A`, so we set the 2nd-from-the-right space to `A`, e.g., `0x 0 0 A _`. Subtract $10 \times 16^1$ from $165$ and update `val` to $5$.
-1. Take the next power, which is also the smallest: $16^0 = 1$, or one. Count how many times you can "use" it; at most five $1$'s fit into `val`, which is currently $5$. Se the rightmost space to `5`, e.g., `0x 0 0 A 5`. Update `val` to $0$.
+1. Take the next power, which is also the smallest: $16^0 = 1$, or one. Count how many times you can "use" it; at most five $1$'s fit into `val`, which is currently $5$. Set the rightmost space to `5`, e.g., `0x 0 0 A 5`. Update `val` to $0$.
 
 The resulting hexadecimal numeral is `0x00A5`, or equivalently, `0xA5` if we dropped leading zeros.
 
@@ -273,7 +273,7 @@ We leave it to you to translate the binary conversion process we described collo
 
 ### Binary $\leftrightarrow$ Hexadecimal Is Straightforward
 
-Given the above, consider the following process for converting to binary to hexidecimal, which composes the processes we've discussed above:
+Given the above, consider the following process for converting to binary to hexadecimal, which composes the processes we've discussed above:
 
 1. Convert binary to decimal.
 1. Convert decimal to hexadecimal.
@@ -295,7 +295,7 @@ To convert `0b11110` to hexadecimal:
 
 * First group into full 4-bit strings, left-padding with zeros where necessary: `0001 1110`
 * `0001` in binary is `1` in hexadecimal
-* `1110` in hexadecimal is `E` in hexadecimal
+* `1110` in binary is `E` in hexadecimal
 * Concatenate: `0x1E` (we add the `0x` prefix to denote hexadecimal)
 
 
@@ -352,7 +352,7 @@ Different representations serve different purposes:
 
 * **Decimal**: Great for humans, especially when doing arithmetic. We hope you won't ever forget base-10 :-)
 * **Binary**: What computers use. To a computer, numbers are stored as binary data, regardless of how numbers are specified.
-* **Hex**: Hopefully you have realized by now that long strings of binary numbers are hard to parse. Hexadecimal is terrible for arithmetic on paper, but it is much more compact than binary while also being much much easier than decimal as a more compact way of representing binary values.
+* **Hex**: Hopefully you have realized by now that long strings of binary numbers are hard to parse. Hexadecimal is terrible for arithmetic on paper, but it is (1) much more compact than binary, and (2) much easier than decimal as a format to convert to and from binary.
 
 We use two strategies in this course to more easily visualize strings of 32 bits, 64 bits, etc.:
 

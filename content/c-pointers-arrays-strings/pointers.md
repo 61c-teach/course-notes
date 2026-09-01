@@ -138,7 +138,7 @@ Up next, let's see cases in which values _must_ be updated with pointers.
 
 ## C is Pass-by-Value
 
-The C programming language is **pass-by-value**, meaning that function parameters get a **copy** of the argument value.[^java-pass-by-value] While this property is useful to help evalute arguments before they are passed in as parameters, it restricts the values we can update.
+The C programming language is **pass-by-value**, meaning that function parameters get a **copy** of the argument value.[^java-pass-by-value] While this property is useful to help evaluate arguments before they are passed in as parameters, it restricts the values we can update.
 
 [^java-pass-by-value]: Java is also pass-by-value, though we should note that in Java, variables holding objects are inherently object-handles, i.e., references. This distinction explains the behavior of primitive Java types vs. Java "objects" when passed in as arguments. See more on [Stack Overflow](https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value).
 
@@ -208,7 +208,7 @@ int main() {
 
 ## Pointers: The Good, the Bad, and the Ugly
 
-At the time C was invented (early 1970s), compilers didn’t produce efficient code, so C was designed to give human programmer more flexibility. Given the pass-by-value paradigm, it was much easier to pass a pointer to a function instead of a large struct or array.
+At the time C was invented (early 1970s), compilers didn’t produce efficient code, so C was designed to give human programmers more flexibility. Given the pass-by-value paradigm, it was much easier to pass a pointer to a function instead of a large struct or array.
 
 Nowadays, computers are hundreds of thousands of times faster than early computers, and compilers are much more efficient. That being said, pointers are still incredibly useful for understanding low-level system code, as well as implementation of “pass-by-reference” object paradigms in other languages.
 
@@ -287,7 +287,7 @@ if(q) { /* q is not a null pointer */ }
 (sec-pointer-arithmetic)=
 ### Pointer Arithmetic
 
-Pointers can handle some arithmetic operations: addition and substraction. You can increment or decrement pointers by integer values with a paradigm called **pointer arithmetic**.
+Pointers can handle some arithmetic operations: addition and subtraction. You can increment or decrement pointers by integer values with a paradigm called **pointer arithmetic**.
 
 In pointer arithmetic, the compiler uses the data type to determine how far to "stride" across memory to reach the next value. For example, if `ptr` is a pointer variable and you write `ptr + 5`, C will not always add 5 to `ptr`. Instead, C will add 5 times the size of the datatype that `ptr` points to. If ptr was an `int *` and `int`s take up 4 bytes in memory, `ptr + 5` adds 20 to the address held in ptr.
 
@@ -299,7 +299,7 @@ Remember that pointers store addresses of our byte-addressable memory:
 
 Pointer arithmetic is particularly useful for accessing elements of arrays with [square-bracket indexing](#sec-array-indexing).
 
-Note you cannot add two pointers together (what is it mean to add two addresses??), but you can subtract two pointers[^pointer-subtraction].
+Note you cannot add two pointers together (what does it mean to add two addresses??), but you can subtract two pointers[^pointer-subtraction].
 
 [^pointer-subtraction]: Pointer subtraction also depends on pointer type; read more on [StackOverflow](https://stackoverflow.com/questions/3238482/pointer-subtraction-confusion).
 
@@ -353,7 +353,7 @@ ptr1 = ptr2;
 :width: 100%
 :alt: "Starting struct-pointer state before ptr1 = ptr2: ptr2 stores 0x100 and points to a struct with fields x = 3 and y = 4, while ptr1 has an unspecified value."
 
-Starting state before executing the line `ptr1 = ptr2;
+Starting state before executing the line `ptr1 = ptr2;`
 :::
 
 ::::
@@ -368,7 +368,7 @@ The state is updated to @fig-struct-pointers-choiceb. Colloquially, pointers `pt
 :width: 100%
 :alt: "State after ptr1 = ptr2: both ptr1 and ptr2 store 0x100 and point to the same struct with fields x = 3 and y = 4."
 
-Starting state before executing the line `ptr1 = ptr2;
+State after executing the line `ptr1 = ptr2;`
 :::
 
 Sometimes it is easier to return to our definition of pointers as variables that store **addresses**. In this case, we are reading the value at `ptr2` (`0x100`) and storing it into `ptr1`.
@@ -443,9 +443,12 @@ int main() {
 @code-pointer-handles-success: Memory layout (top) during `increment_ptr` call and (bottom) after returning to `main`.
 :::
 
-:::{note} Success: @code-pointer-handles-success updates `q` with a double pointer
+:::{note} Show Explanation
+:class: dropdown
 
-* Line 10, function call (@fig-pointer-handles-success, top): `&q` passes in the **address* of `q`, `0x120`, as the argument to `increment_ptr`.
+Success: @code-pointer-handles-success updates `q` with a double pointer
+
+* Line 10, function call (@fig-pointer-handles-success, top): `&q` passes in the **address** of `q`, `0x120`, as the argument to `increment_ptr`.
 * Line 3: The parameter `h` is assigned to `0x120`. `h` is a **double pointer**, meaning that following it twice should get us to a 32-bit unsigned integer:
   * `h` is the value `0x120`.
   * ("follow once") `*h` accesses the value at address `0x120`, which is itself an address, `0x100`.

@@ -37,7 +37,13 @@ Below is an example of a series of RISC-V instructions with their corresponding 
 
 | `example.S` | `example.bin` |
 | :--- | :--- |
-| `main:`<br/>`addi sp,sp,-4`<br/>`sw ra,0(sp)`<br/>`addi s0,sp,4`<br/>`mv a0,a5`<br/>`call printf`<br/>`...` | `...`<br>`11111111110000010000000100010011`<br>`00000000000100010010000000100011`<br>`00000000010000010000010000010011`<br>`00000000000000000000010100010011`<br/>`00000000010001000000000011101111`<br/>`...` |
+| `main:`| (N/A) |
+| `addi sp,sp,-4` | `11111111110000010000000100010011` |
+| `sw   ra 0(sp)` | `00000000000100010010000000100011` |
+| `addi s0 sp 4`  | `00000000010000010000010000010011` |
+| `mv   a0 a5`    | `00000000000001111000010100010011` |
+| `call printf`   | `00000000010001000000000011101111` |
+| `...` | (omitted)
 
 ## Textbook Readings
 
@@ -71,7 +77,7 @@ Check your knowledge!
 :label: isa-02-sol
 :class: dropdown
 
-**False.** This is a bit of a trick question. It is true that every regular instruction in RISC-V will always be encoded in 32-bits. However, `li` is actually a pseudo-instruction! Recall that pseudo-instructionscan translate into one or more RISC-V instructions. In this case, li will be translated into an `addi` and `lui` instruction. Therefore, `li x5 0x44331416` will actually be encoded in 64-bits, as it represents two RISC-V instructions.
+**False.** This is a bit of a trick question. It is true that every regular instruction in RISC-V will always be encoded in 32-bits. However, `li` is actually a pseudo-instruction! Recall that pseudo-instructions can translate into one or more RISC-V instructions. In this case, li will be translated into an `addi` and `lui` instruction. Therefore, `li x5 0x44331416` will actually be encoded in 64-bits, as it represents two RISC-V instructions.
 :::
 
 :::{exercise}
@@ -102,7 +108,7 @@ Check your knowledge!
 :class: dropdown
 Note that since we have 32 different registers in RISC-V, we need 5 bits to encode them.
 Looking at the 61C reference sheet, we can see that `s0` refers to the `x8` register. To get the final answer, we convert 8 into binary: `0b01000`. Following the same procedure as above, we get the rest of the answers...
-* `s0`: `x9` = `0b01000`
+* `s0`: `x8` = `0b01000`
 * `sp`: `x2` = `0b00010`
 * `x9`: `x9` = `0b01001`
 * `t4`: `x29` = `0b11101`

@@ -21,7 +21,7 @@ subtitle: "Adapted from John Wawrzynek"
 
 ::::
 
-As we've seen in a [previous section](#sec-cl-practice), combinational logic circuits provide all the necessary functions needed to execute instructions, including all the arithmetic and logic operations, incrementing the program counter value, determining when to branch,calculating the new PC target values, etc, but they have no memory of their previous inputs or outputs. The **memory circuit**[^sds-handout] is an example of another type of circuit used to make processors that does remember its inputs. This memory circuit is used to implement the general purpose register, as shown in @fig-reg-circuit.
+As we've seen in a [previous section](#sec-cl-practice), combinational logic circuits provide all the necessary functions needed to execute instructions, including all the arithmetic and logic operations, incrementing the program counter value, determining when to branch, calculating the new PC target values, etc, but they have no memory of their previous inputs or outputs. The **memory circuit**[^sds-handout] is an example of another type of circuit used to make processors that does remember its inputs. This memory circuit is used to implement the general purpose register, as shown in @fig-reg-circuit.
 
 [^sds-handout]: These notes are adapted from Professor John Wawrzynek's notes: [SDS Handout](../resources/sds.pdf).
 
@@ -37,7 +37,7 @@ Diagram of a register implemented through a memory circuit.
 
 Under the control of a special input, called **LOAD**, the register captures the value of the input signal and holds onto it indefinitely, or until another value is loaded. The value stored by the register appears at the output of the register (a very short time after it gets loaded). If the processor loads a value in a register at one point in time, it can come back later and read that same value back. Even if different values appear at the input to the register in the interim, the output value of the register will not change unless instructed to do so by signaling with the **LOAD** input. So, as long as the processor has control over the signaling of the **LOAD** input, it has total control over what gets saved and when.
 
-Often the system clock signal **CLK** (see [The Clock](#sec-clock)), is used as the LOAD signal on a register, as shown in @fig-clk-reg. This configuration means that, for this register, a new value is loaded on each clock cycle. This is a valuable configuration we will explore in a [future section].
+Often the system clock signal **CLK** (see [The Clock](#sec-clock)), is used as the LOAD signal on a register, as shown in @fig-clk-reg. This configuration means that, for this register, a new value is loaded on each clock cycle. This is a valuable configuration we will explore in a [future section](#sec-use-register).
 
 :::{figure} images/clocked-register.png
 :label: fig-clk-reg
@@ -67,7 +67,7 @@ We call these simple circuits **flip-flops** (FF), which are 1-bit wide register
 
 ### Edge-Triggered D-Type Flip Flop
 
-The most common type of FF is called the **edge-triggered d-type flip flop**. Internally, each FF comprises around 10 transistors. The operation of the FF is illustrated as a waveform diagram in @fig-ff-waveform. The figure shows the operation of a **positive** edge-triggered d-type flip-flop, one of two types of edge-triggered d-type flip-flops. Negative edge-triggered d-type flip-flops is the other type, but for CS 61C, we will focus on positive edge flip-flops.
+The most common type of FF is called the **edge-triggered d-type flip flop**. Internally, each FF comprises around 10 transistors. The operation of the FF is illustrated as a waveform diagram in @fig-ff-waveform. The figure shows the operation of a **positive** edge-triggered d-type flip-flop, one of two types of edge-triggered d-type flip-flops. The other type is a _negative_ edge-triggered d-type flip-flop—but for CS 61C, we will focus on positive edge flip-flops.
 
 :::{figure} images/ff-waveform.png
 :label: fig-ff-waveform

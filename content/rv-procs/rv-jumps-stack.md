@@ -73,7 +73,7 @@ There are two real instructions above.
 
 **J**ump **a**nd **L**ink (`jal rd label`). Write the address of the **next instruction**, `PC + 4`, to register `rd`. Then perform an unconditional jump to `label` by setting `PC` to the address of the instruction with label `label`. The **linking** means that we form a link that can be used to return to the caller. (In this respect, `jal` should really be called "Link and Jump").
 
-* Pseudoinstruction `j label` is used to implement conditional statements and loops, as discusssed in an [earlier section](#sec-branches). `jal x0 label` effectively discards the link/return addresss, because register `x0` is hardwired to zero.
+* Pseudoinstruction `j label` is used to implement conditional statements and loops, as discussed in an [earlier section](#sec-branches). `jal x0 label` effectively discards the link/return address, because register `x0` is hardwired to zero.
 * Pseudoinstruction `jal label` is expanded to `jal ra label`, where register name `ra` is the **return address** or register number `x1`. We discuss this reasoning below.
 
 **J**ump **a**nd **L**ink **R**egister (`jalr rd rs1 imm`). Link the "return address" (`PC + 4`) to a register `rd`. Then perform an unconditional jump by setting `PC` to `R[rs1] + imm`.
@@ -92,7 +92,7 @@ Why have both `jal` and `jalr`?
 
 `jal` specifies a jump target by **label**. `jal` supports procedure calls because presumably, you should know the name of the procedure you are calling.
 
-`jalr` specifies a jump target by **register**. `jalr` supports procedure returns because you don't necessarily know the name of procedure called you (nor should you expect that you were called at the beginning of said procedure); rather you should just know the address to return to. We will see in a later chapter how `jalr` facilitates jumps with *absolute addressing*.
+`jalr` specifies a jump target by **register**. `jalr` supports procedure returns because you don't necessarily know the name of the procedure that called you (nor should you expect that you were called at the beginning of said procedure); rather you should just know the address to return to. We will see in a later chapter how `jalr` facilitates jumps with *absolute addressing*.
 :::
 
 ## `leaf` Function Example
@@ -109,17 +109,17 @@ Why have both `jal` and `jalr`?
 (sec-rv-stack)=
 ## RISC-V Stack Frames
 
-In a [previous section](#sec-example-sp) we have already seen how we can store and load arrays to and from the stack. In this section we discuss how stack frames get allocated and deallocated between **function calls**.
+In a [previous section](#sec-example-sp) we have already seen how we can store and load arrays to and from the stack. The **stack pointer** holds the address of the top of the stack. In this section we discuss how stack frames get allocated and deallocated between **function calls**.
 
 When we discussed [the C stack](#sec-stack), we saw [an animation](#fig-c-stack-anim) that pushed and popped stack frames between function calls. Importantly:
 
 > The stack grows downward. The stack pointer (`sp`) points to the top of the stack, i.e., the address of the current stack frame.
 
-RISC-V stack frames (mostly) operate like C stack frames. As discussed in an [earlier section](#sec-register-conventions), the **stack pointer** holds the address of the top of the stack. By [RV32I register convention], this value is stored in the **`sp` register**, which is register number `x2`.
+RISC-V stack frames (mostly) operate like C stack frames. By [RV32I register convention](#sec-register-conventions), the stack pointer is stored in the **`sp` register**, which is register number `x2`.
 
-A RISC-V proedure can choose to use a stack frame by manipulating sp:
+A RISC-V procedure can choose to use a stack frame by manipulating sp:
 
-* When the callee gains control, set up in the **prologue** allocate/push the stack frame by **decrementing** `sp` (again, the stack grows downward).
+* When the callee gains control, in the **prologue**, allocate/push the stack frame by **decrementing** `sp` (again, the stack grows downward).
 
 * When the callee wraps up in the **epilogue**, deallocate/pop the stack frame by **incrementing** `sp`.
 
@@ -152,5 +152,5 @@ Across function calls, the caller `main`'s stack pointer is preserved. We discus
 Some procedures have small local storage footprint; perhaps their equivalent C code uses just a few 32-bit variables. When translating these procedures, we can avoid expensive load/store memory operations and use [register conventions](#tab-calling-convention) to limit logic to volatile/temporary registers.
 ```
 
-Like in C, pushing and popping stack frames simply corresponds to decrementing and incrementing the the stack pointer. A previous callee's data may therefore stay in memory that is marked as "free" for the next callee to scribble over it. Refer to the [C stack discussion](#sec-stack) for potential security issues.
+Like in C, pushing and popping stack frames simply corresponds to decrementing and incrementing the stack pointer. A previous callee's data may therefore stay in memory that is marked as "free" for the next callee to scribble over it. Refer to the [C stack discussion](#sec-stack) for potential security issues.
 

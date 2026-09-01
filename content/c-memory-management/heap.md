@@ -53,10 +53,10 @@ The precise location of heap memory blocks is delegated to a built-in heap alloc
 :width: 100%
 :alt: "Four-step heap-allocation timeline: request R1 allocates 100 bytes, request R2 allocates 10 bytes, R1 is freed, then request R3 for 50 bytes may be placed in either a reused lower hole or a separate upper region. The figure illustrates allocator choice and potential fragmentation."
 
-`main` passes its own local variable `buf` into a function call `load_buf`.
+A heap allocator handling requests R1, R2, R3 and a `free`, potentially fragmenting the heap.
 :::
 
-We do not expect you to know how a heap allocator decides where to allocate memory (see this chapter's [optional section](#sec-heap-allocator) if you are curious). Instead, know that we must be careful to assume anything about the  memory locations we get back from heap functions. We can only trust that a single request will return a contiguous block of memory; however, back-to-back heap memory requests can result in blocks that are quite far apart.
+We do not expect you to know how a heap allocator decides where to allocate memory (see this chapter's [optional section](#sec-heap-allocator) if you are curious). Instead, know that we must be careful: Don't assume *anything* about the memory locations we get back from heap functions. We can only trust that a single request will return a contiguous block of memory; however, back-to-back heap memory requests can result in blocks that are quite far apart.
 
 ## C `stdlib` functions for heap management
 
@@ -120,7 +120,7 @@ Because the C heap does not do automatic garbage collection, as C programmers we
 > 
 > Godfather: [_strokes pet cat_] Some day–and that day may never come–I may call on you to do a favor for me. But until that day, I will give you this with `malloc` under the contract that you must free it when you are done...
 
-[^godfather]: Watch the lecture video for a good [_Godfather_ (1972)](https://www.imdb.com/title/tt0068646/)impression. Timestamp 3:24
+[^godfather]: Watch the lecture video for a good [_Godfather_ (1972)](https://www.imdb.com/title/tt0068646/) impression. Timestamp 3:24
 
 :::{card} Allocate/deallocate heap memory
 ^^^
@@ -145,7 +145,7 @@ space has been deallocated by a call to free() or realloc(), the
 behavior is undefined.
 ```
 
-In other words, when you free memory: pass in the original address returned from `malloc`, and do not "double free". These arguments will produce undefined behavior. For example, passing in `ptr+1` would still technically point to somewhere in the original memory block, Above, the start of the `malloc`-ed heap block is the address stored in `ptr`. While passing in `ptr+1` would still technically point to somewhere within this memory block, depending on how `free` is implemented, `free(ptr+1)` may crash the program...or worse...
+In other words, when you free memory: pass in the original address returned from `malloc`, and do not "double free". These arguments will produce undefined behavior. Above, the start of the `malloc`-ed heap block is the address stored in `ptr`. While passing in `ptr+1` to `free` would still technically point to somewhere within this memory block, depending on how `free` is implemented, `free(ptr+1)` may crash the program...or worse...
 
 Why does the heap not check for these mistakes in runtime? In C, memory allocation is simply so performance-critical that there just isn't time to do this. The usual result is that you somehow corrupt the memory allocator's internal structure, and you won't find out until much later on in a totally unrelated part of your code. It's like not brushing your teeth regularly; you'll pay for it years later, and via symptoms not related to your teeth...
 
@@ -154,7 +154,7 @@ Why does the heap not check for these mistakes in runtime? In C, memory allocati
 `realloc` is a function that resizes a previously allocated block at ptr to a new size. In doing so, it _may_ need to copy all data to a new location.
 
 * **Parameter `void *ptr`**: A pointer containing an address originally returned by `malloc`/`realloc`, OR the value `NULL`.
-* **Parameter `size_t size`**: An unsigned integer type big enough to "count" memory bytes."
+* **Parameter `size_t size`**: An unsigned integer type big enough to "count" memory bytes.
 * **Return**: `void *` pointer, i.e., a pointer to generic space. A return value `NULL` indicates there is no more memory available on the heap.
 
 From the Linux `man` page:
@@ -289,7 +289,7 @@ A **memory leak** is a failure to `free()` allocated memory.
 
 ### Use after free
 
-Recall that a **dangling reference** is when you keep using a pointer, even after it has been deallocated. In the below code, Line 
+Recall that a **dangling reference** is when you keep using a pointer, even after it has been deallocated. In the below code, Line 7 has a dangling reference because it uses `foo` after it has already been freed in Line 5.
 
 ```{code} c
 :linenos:
@@ -351,4 +351,4 @@ nums = realloc(nums, 20*sizeof(int));
 
 ## Valgrind
 
-In general, to catch memory management errors, use tools like [Valgrind](https://valgrind.org/). Valgrind slows down your program by an order of magnitude, but is invaluable for testing and debugging C code.extremely useful for testing. It adds many checks to catch most errors (but not all), including the most common cases described in this chapter: memory leaks, misusing `free()`, and writing over the ends of the arrays.
+In general, to catch memory management errors, use tools like [Valgrind](https://valgrind.org/). Valgrind slows down your program by an order of magnitude, but is invaluable for testing and debugging C code. It adds many checks to catch most errors (but not all), including the most common cases described in this chapter: memory leaks, misusing `free()`, and writing over the ends of the arrays.

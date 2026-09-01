@@ -230,7 +230,7 @@ matrix_d_t *dgemm(matrix_d_t *A, matrix_d_t *B) {
       register double *ptr_B = (B->data) + j;
       register int k = 0;
       for(; k < C->ncols; ){
-          sum += (*ptr_A) + (*ptr_B);
+          sum += (*ptr_A) * (*ptr_B);
           ptr_A++;
           ptr_B += B->ncols;
           k++;
@@ -269,7 +269,7 @@ C          0.768672 seconds
 registers: 0.277462 seconds
 ```
 
-We get a 4x improvement by moving frequently accessed values to registers!
+We get a 2.8x improvement by moving frequently accessed values to registers!
 
 ## DGEMM 5: Cache blocking with matrix transpose
 

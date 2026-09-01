@@ -38,7 +38,7 @@ Loads and stores participate in the `MEM` phase of [the five step process](#sec-
 :width: 100%
 :alt: "Load datapath additions: DMEM connected to the ALU-computed address and a writeback mux selecting between ALU result and memory data."
 
-For the `MEM` phase of a load instruction, conect DMEM to the ALU and use a mux before `WB` (Write Back) phase.
+For the `MEM` phase of a load instruction, connect DMEM to the ALU and use a mux before `WB` (Write Back) phase.
 ::::
 
 **DMEM**: To read the memory at an address, we use the ALU to compute the address as `alu = R[rs1] + imm`. This  readily reuses the circuitry for arithmetic and logical I-Type instructions.
@@ -126,7 +126,7 @@ The `sw` datapath. Use the menu bar to trace through the animation or access the
 
 1. **Memory**: Write memory at address `alu = R[rs1] + imm` by holding `addr` and `wdata` (DMEM input). 
 
-    Around the next rising clock edge, `wdata` (DMEM input), `MemRW`, and `addr` should be held stable through setup and hold time of RegFile.
+    Around the next rising clock edge, `wdata` (DMEM input), `MemRW`, and `addr` should be held stable through setup and hold time of DMEM.
 
 1. **Write Back**: (We don't write to RegFile, so skip this.)
 
@@ -190,7 +190,7 @@ Endianness is relevant when you're trying to interpret a set of 4 bytes as a wor
   * All `lh`, `lhu`, `sh` instructions will use memory addresses that end in `0b00`, `0b01`, or `0b10` (never an address that ends in `0b11`[^why]).
   * All `lb`, `lbu`, `sb` instructions use any memory addresses.[^why]
 
-* **DMEM uses only the lower 16 bits**. Due to Logisim size limitations, the memory unit only uses the lower 16 bits of the provided address, discarding the upper 16 bits. This means that the memory can only store $2^16$ bytes of data.
+* **DMEM uses only the lower 16 bits**. Due to Logisim size limitations, the memory unit only uses the lower 16 bits of the provided address, discarding the upper 16 bits. This means that the memory can only store $2^{16}$ bytes of data.
 
     The provided tests will always set the upper 16 bits of addresses to 0, and any tests you write should avoid using the upper 16 bits when interacting with memory.
 
@@ -272,11 +272,11 @@ The `partial_store.circ` circuit in the course project is designed to take data 
 
 **Example 2**: Suppose we had a `sh` instruction on address `2` = `0b000010`.
 
-* Of the word's byte addresses `0-1-2-3`, we actually want to write two bytes at addresses `2` and `3`, because the bottom 2 bits of the address `2` are `0b10` (and it is an `sb` instruction).
+* Of the word's byte addresses `0-1-2-3`, we actually want to write two bytes at addresses `2` and `3`, because the bottom 2 bits of the address `2` are `0b10` (and it is an `sh` instruction).
 * Make a 32-bit value where bits 16-31 are the 16 bits we want to store to memory.[^doesnt-matter]
 * Make a 4-bit writemask `0b1100`, which says to only write the second and third bytes to memory, leaving the other bytes in the memory word unchanged.
 
-[^doesnt-matter]: The lower bits 0-23 can be all zeros, though in practice these bits don't matter beacuse of `MemWriteMask`.
+[^doesnt-matter]: The lower bits 0-23 can be all zeros, though in practice these bits don't matter because of `MemWriteMask`.
 
 Note that `sh` and `sb` instructions specify data as the lower bits of a 32-bit value, i.e., bottom 16 bits and bottom 8 bits, respectively. See @tab-partial-store-details.
 

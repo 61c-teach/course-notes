@@ -34,7 +34,7 @@ input signals. They are used for a wide variety of functions. State elements, on
 
 :::{tip} Registers can be used to control the flow of signals between combination logic circuits.
 
-The accumulator example in this section should convince you that there are places were state elements are necessary for correct circuit function.
+The accumulator example in this section should convince you that there are places where state elements are necessary for correct circuit function.
 
 Nevertheless, introducing state elements will impact how much can occur in a given clock period. We discuss this below.
 
@@ -137,7 +137,7 @@ Even though $X_i$ and $S_{i-1}$ arrive at different times to the accumulator, th
 :::{note} Show explanation of @fig-accumulator-timing-realistic
 :class: dropdown
 When the register first captures $X_0$, for a small time period the $X$ input still has $X_0$, therefore
-the adder begins to compute $X_0 + X_0$! However, this erroneous calculation is quickly aborted when the $X$ input changes to $X_1$. Unfortunately, the aborted computation will probably make it through the adder, creating a sort of instability at the output. However, the instability in $S_i$ has no effect on $S_{i−1}$, as it captures its value from $S{i}$ before it goes bad.
+the adder begins to compute $X_0 + X_0$! However, this erroneous calculation is quickly aborted when the $X$ input changes to $X_1$. Unfortunately, the aborted computation will probably make it through the adder, creating a sort of instability at the output. However, the instability in $S_i$ has no effect on $S_{i−1}$, as it captures its value from $S_i$ before it goes bad.
 :::
 
 As seen above, on each cycle there is a small time period where the adder has inconsistent inputs. This sort of arrival mismatch and subsequent output instability is common in many circuits. In properly designed circuits, this instability never happens around the rising-edge of the clock and therefore gets ignored by the registers and downstream circuitry.
@@ -231,10 +231,10 @@ The minimum clock period is 5 ns = $10^{-9}$ seconds per cycle. The maximum freq
 
 ## Hold Time Violations
 
-Above, the critical path determins the maximum clock frequency we can use to ensure a stable input to our register elements. We next present a different problem: **hold time violations**.
+Above, the critical path determines the maximum clock frequency we can use to ensure a stable input to our register elements. We next present a different problem: **hold time violations**.
 
-Recall from [earlier](#sec-registers) that the **hold time** is the duration during which a register's input d must be stable _after_ the rising edge of the clock. There are some cases where data propagates through the circuit is so fast that the input to registers become unstable during the hold time.
+Recall from [earlier](#sec-registers) that the **hold time** is the duration during which a register's input d must be stable _after_ the rising edge of the clock. There are some cases where data propagates through the circuit so fast that the input to registers becomes unstable during the hold time.
 
-While rare[^hold-time-violation], this may occur if the _best-case_ delay between clocked elements is _shorter_ than the hold time. To mitigate this, we could add arbitrary delay to combinational logic the circuit to increase the best-case delay.
+While rare[^hold-time-violation], this may occur if the _best-case_ delay between clocked elements is _shorter_ than the hold time. To mitigate this, we could add arbitrary delay to the circuit's combinational logic to increase the best-case delay.
 
 [^hold-time-violation]: See the relevant footnote in a [previous section](#sec-registers).

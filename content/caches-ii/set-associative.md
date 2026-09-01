@@ -227,13 +227,13 @@ Address `0xCAD` in binary: `0b1100 1010 1101`
 * Index: `0b11`, or `3`
 * Offset: `0b01`
 
-1. **Cache Miss**. No valid tags in the set with index `3` match `0x61`..
-1. **Access lower level of memory hierarchy**. Replace the least recently used block in the set with index `3`; here, it is the **invalid** block. Replace the invalid block with a block's worth of data from memory starting @ address `0xCAC` (`0b01100 1010 1100`). Write the tag `0xCA`. Mark valid bit. Unset dirty bit.
+1. **Cache Miss**. No valid tags in the set with index `3` match `0xCA`.
+1. **Access lower level of memory hierarchy**. Replace the least recently used block in the set with index `3`; here, it is the **invalid** block. Replace the invalid block with a block's worth of data from memory starting @ address `0xCAC` (`0b1100 1010 1100`). Write the tag `0xCA`. Mark valid bit. Unset dirty bit.
 1. **Read**. Read byte in cache block at offset `0b01` and return to processor.
 
 :::
 
-Contrast this set-associative cache walkthrough with the one for [direct-mapped caches](#sec-fa-walkthrough):
+Contrast this set-associative cache walkthrough with the one for [direct-mapped caches](#sec-dm-walkthrough):
 
 * Identification of a cache hit occurs by checking **M tags** in an M-way set associative cache: each of the tags for the M blocks in the set.
 * Memory accesses 2 and 3 create cache entries in cache entries `3` and `2`, respectively; these cache entries share the same tag. However, the blocks in these entries have different **block addresses**.

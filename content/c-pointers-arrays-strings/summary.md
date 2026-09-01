@@ -65,7 +65,7 @@ Check your knowledge!
 :label: c-ptrs-03-sol
 :class: dropdown
 
-As we like to say, "everything is just bits." A pointer is just a sequence of bits, interpreted as a memory address. An array acts like a pointer to the first element in the allocated memory for that array. However, an array name is not a variable, that is, `&arr = arr` whereas `&ptr != ptr` unless some magic happens (what does that mean?).
+As we like to say, "everything is just bits." A pointer is just a sequence of bits, interpreted as a memory address. An array acts like a pointer to the first element in the allocated memory for that array. However, an array name is not a variable; that is, `&arr` is `arr`, whereas `&ptr` is not `ptr` unless some magic happens (what does that mean?).
 
 <!--See: [Lecture 4 Slide 5](https://docs.google.com/presentation/d/1qSZZ1_rcPgtix08uJtxgkueccjWzwiCRrr4fhsGueJw/edit?slide=id.g32af6a99fd0_0_10#slide=id.g32af6a99fd0_0_10)-->
 :::

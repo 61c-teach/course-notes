@@ -64,7 +64,7 @@ The I-Type instruction `addi x15 x1 -50`.
 
 We follow the [steps for translating assembly into machine code](#sec-assembly-to-machine) from earlier:
 
-1. **Determine instruction format type**. `addi` is I-type because it performs arithmetic betwen a register operand and a constant operand. We use the [arithmetic instructions table](#tab-rv32i-arithmetic) on the RISC-V green card.
+1. **Determine instruction format type**. `addi` is I-type because it performs arithmetic between a register operand and a constant operand. We use the [arithmetic instructions table](#tab-rv32i-arithmetic) on the RISC-V green card.
 
 1. **Determine operation field codes**.
 
@@ -125,7 +125,7 @@ In this course we will call these "I*-Type" (where the asterisk is "mostly I-Typ
 
 Observations:
 
-* Arithmetic bitshift operations need only a 5-bit **unsigned** immediate, in `imm[4:0]`. The maximum bitshift is 32; anything larger will shift all data off the register, which is 32 bits wide.
+* Arithmetic bitshift operations need only a 5-bit **unsigned** immediate, in `imm[4:0]`. The maximum bitshift is 31; anything larger will shift all data off the register, which is 32 bits wide.
 
 * The upper seven bits[^itype-funct7] are **not** part of the immediate and used very similarly to the `funct7` field for R-Type instructions `sll`, `srl`, and `sra`.
 
@@ -167,7 +167,7 @@ Observations:
 * The fact that loads perform a memory access is irrelevant to how we specify the instruction. The instruction bits simply provide enough information for the hardware to decode and execute the correct instruction.
 * Loads _do_ share some similarities with other I-Type instructions. Notably, loads also perform **register-immediate addition** to compute the memory address as `R[rs1] + imm`. Loads can therefore reuse any hardware needed for register-immediate arithmetic instructions.
 
-We recommend reviewing [the earier chapter](#sec-data-transfer) for the description of each load instruction in @tab-i-type-loads.
+We recommend reviewing [the earlier chapter](#sec-data-transfer) for the description of each load instruction in @tab-i-type-loads.
 
 :::{table} Load Instructions (recall there is no `lwu`).
 :label: tab-i-type-loads
@@ -212,7 +212,7 @@ We follow the [steps for translating assembly into machine code](#sec-assembly-t
 
 1. **Translate registers, immediates, etc.**
 
-    * `rs1`: Base Register `x2`. Translate $1$ to 5-bit unsigned integer representation `00010`.
+    * `rs1`: Base Register `x2`. Translate $2$ to 5-bit unsigned integer representation `00010`.
     * `rd`: Register `x14`. Translate $14$ to 5-bit unsigned integer representation `01110`.
     * `imm`: address offset $+8$ as 12-bit two's complement: `0000 0000 1000`.
 ::::

@@ -125,9 +125,11 @@ Reference the [assembly above](#code-for-loop-rv) as you go through the answers.
 1. Register `x8` holds `&arr[0]`, the address of the first element of the `arr` (equivalently, the address of `arr`).
 1. Register `x11` holds `i` , the loop variable. Hints are from the `add x11 x0 x0` instruction right before the `Loop`, and the `addi x11 x11 1` instruction before we jump back to the start of the `Loop`.
 1. Register `x9` holds `&arr[i]`, the address of the current element of the `arr`. Hints are from the first instruction `add x9 x8 x0` and the **integer pointer arithmetic** instruction `add x9 x9 4` before we jump back to the start of the `Loop`.
-1. Register `x12` holds `arr[i]`, the current element of `arr` (the value, not the address). Hints are from its initialization with `add x10 x0 x0` and its use within the loop, `add x10 x10 x12`.
+1. Register `x12` holds `arr[i]`, the current element of `arr` (the value, not the address). Hints are from its "initialization"[^wording] with `lw x12 0(x9)` and its use within the loop, `add x10 x10 x12`.
 1. Register `x10` holds `sum`, the current value of `sum`. The hint is the singular `add x10 x10 x12` instruction in the `Loop`.
 1. Register `x13` has the immediate value `20` and it is set in `addi x13 x0 20`. This value is used in the `bge` branch instruction, which must compare **registers**.
+
+[^wording]: Note that the physical register is always there, so registers cannot be initialized. Prior to the `lw` instruction, there is just some other data in `x12`; after the `lw` instruction, `x12` holds the bits needed for this instruction sequence.
 :::
 
 
@@ -154,13 +156,15 @@ End:
 
 **Line 1**. `add x9 x8 x0`. Put the first (zero-th) element in register `x9`.
 
-**Line 2**. `add x10 x0 x0`. Initialize the `sum` to zero in register `x10`.
+**Line 2**. `add x10 x0 x0`. Initialize[^wording-2] the `sum` to zero in register `x10`.
+
+[^wording-2]: The register `x10` is not being initialized; it is a physical storage location for bits. We use initialization to refer to the C variable. Here, the register `x10` is being used to hold the values of the `sum` variable; the `sum` variable is initialized to the value zero.
 
 **Line 3**: `add x11 x0 x0`. Initialize the loop variable `i` to zero in register `x11`.
 
 **Line 4**: `addi x13 x0 20` (`li x13 20`). Put the value `20` in register `x13` to use for the branch instruction.
 
-**Line 5-6**: `bge x11 x13 End`. If the current loop variable is greater than or equal to zero, branch to the End instruction in Line 13.
+**Line 5-6**: `bge x11 x13 End`. If the current loop variable is greater than or equal to 20, branch to the End instruction in Line 13.
 
 * `bge` exits loop if `R[x11] >= R[x13]` is true.
 * Otherwise if false, then `i < 20`, so continue in the loop.

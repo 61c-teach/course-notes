@@ -158,6 +158,7 @@ For direct-mapped caches, what write policies can be implemented?
 Direct-mapped _placement_ policy does not impact our choice of _when_ writes to memory happen. Both write-through and write-back policies are possible.
 :::
 
+(sec-dm-walkthrough)=
 ## Walkthrough
 
 The following animation traces through four memory accesses to a 12-bit address space on our 16B direct-mapped cache with 4B blocks. Assume a write-back policy. Assume the cache starts out [cold](#sec-cache-temperatures), like in @fig-dm-valid.
@@ -227,7 +228,7 @@ Address `0xCAD` in binary: `0b1100 1010 1101`
 * Offset: `0b01`
 
 1. **Cache Miss**. While the entry at index `3` is valid, its tag `0x61` does **not** match the provided tag `0xCA`.
-1. **Access lower level of memory hierarchy**. The existing valid block at cache entry `3` must be replaced. Its dirty bit is set, so write this block to memory and replace it with a block's worth of data from memory starting @ address `0xCAC` (`0b01100 1010 1100`). Write the tag `0xCA`. Mark valid bit. Unset dirty bit.
+1. **Access lower level of memory hierarchy**. The existing valid block at cache entry `3` must be replaced. Its dirty bit is set, so write this block to memory and replace it with a block's worth of data from memory starting @ address `0xCAC` (`0b1100 1010 1100`). Write the tag `0xCA`. Mark valid bit. Unset dirty bit.
 1. **Read**. Read byte in cache block at offset `0b01` and return to processor.
 
 :::

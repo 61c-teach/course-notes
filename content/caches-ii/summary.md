@@ -8,7 +8,7 @@ title: "Summary"
 
 * For direct-mapped caches, each block of memory maps to one specific block in our cache. On a cache miss, if there is data present in that cache block, then we must evict the block to make room for our new data.
 * For non-direct-mapped caches, we can choose one of multiple cache blocks to place our new data. When our cache is full, we will have to decide which block to evict to make space for the new data. Block Replacement policies decide which block should be replaced.
-    * Least recenty used (LRU)
+    * Least recently used (LRU)
     * First-in, first-out (FIFO)
     * Random
 

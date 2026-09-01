@@ -39,7 +39,7 @@ From [earlier](#sec-pipeline-hazards):
 
 Data hazards occur because instructions read from and write to the same registers and memory. From P&H 4.6:
 
-> Suppose you found a sock at the folding station for which no match existed. One possible strategy is to run down to your room and search through your clothes bureau to see if you can find the match. Obviously, while you ar edoing the search, loads that have completed drying are ready to fold and those that have finished are ready to dry.
+> Suppose you found a sock at the folding station for which no match existed. One possible strategy is to run down to your room and search through your clothes bureau to see if you can find the match. Obviously, while you are doing the search, loads that have completed drying are ready to fold and those that have finished are ready to dry.
 
 In this section, we discuss how the five-stage pipelined processor can be modified to mitigate performance hits due to data hazards.
 
@@ -495,7 +495,7 @@ Suppose the RegFile supports write-then-read, _and_ we implement the described f
 :::{note} Show Answer
 :class: dropdown
 
-We **do not need to stall the pipeline**. The ALU result from the `add` instuction is available at the beginning of cycle 4. We can leverage the `MEM` to `EX` forwarding path to forward the `add` instruction's ALU result directly from the `EX/MEM` pipeline registers to the ALU for the `sub` instruction's `EX` stage, also in cycle 4.
+We **do not need to stall the pipeline**. The ALU result from the `add` instruction is available at the beginning of cycle 4. We can leverage the `MEM` to `EX` forwarding path to forward the `add` instruction's ALU result directly from the `EX/MEM` pipeline registers to the ALU for the `sub` instruction's `EX` stage, also in cycle 4.
 :::
 
 ### Forwarding: Implementation
@@ -596,8 +596,8 @@ Consider the instruction sequence below. Which potential data hazards are resolv
 :::{note} Show Answer
 :class: dropdown
 
-* **A.** The `add`-`lw` data hazard is **resolved** by `MEM` to `EX` forwarding. The `add` instruction result (of adding `t1` and `t2`) is available in the `EX/MEM` pipeline registers at the beginning of cycle 4. Cycle 4 is also the `lw` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `EX/MEM` pipeline registers to the A input of the ALU, overriding the stale value of register `s0` fetched during the `lw` instruction's `ID` stage in cycle 4.
-* **C.** The `lw` `and` data hazard is **resolved** by `WB` to `EX` forwarding. The memory read result from the `lw` instruction is available from the `MEM/WB` pipeline registers at the beginning of cycle 6. Cycle 6 is also the `and` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `MEM/WB` pipeline registers to the A input of the ALU, overriding the stale value of register `s1` fetched during the `and` instruction's `ID` stage in cycle 5.
+* **A.** The `add`-`lw` data hazard is **resolved** by `MEM` to `EX` forwarding. The `add` instruction result (of adding `t1` and `t2`) is available in the `EX/MEM` pipeline registers at the beginning of cycle 4. Cycle 4 is also the `lw` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `EX/MEM` pipeline registers to the A input of the ALU, overriding the stale value of register `s0` fetched earlier (during the `lw` instruction's `ID` stage in cycle 3).
+* **C.** The `lw` `and` data hazard is **resolved** by `WB` to `EX` forwarding. The memory read result from the `lw` instruction is available from the `MEM/WB` pipeline registers at the beginning of cycle 6. Cycle 6 is also the `and` instruction's `EX` stage. In this cycle, the correct value is forwarded from the `MEM/WB` pipeline registers to the A input of the ALU, overriding the stale value of register `s1` fetched earlier (during the `and` instruction's `ID` stage in cycle 5).
 :::
 
 :::{warning} Forwarding does not resolve all data hazards!
@@ -620,7 +620,7 @@ If an instruction immediately after a load instruction (i.e., in the **load dela
 Consider the instruction sequence in [Example 4](#data-hazard-4) (the previous Quick Check). The pipeline must stall for one cycle to avoid the `lw`-`or` data hazard:
 
 
-:::{list-table} [Example 4](data-hazard-4): With a hazard detection unit in the ID stage, a bubble is inserting beginning in cycle 5, changing the `or` instruction to a nop. The `or` instruction is fetched and decoded in cycles 3 and 4, but its `EX` stage is delayed until clock cycle 6.
+:::{list-table} [Example 4](#data-hazard-4): With a hazard detection unit in the ID stage, a bubble is inserted beginning in cycle 5, changing the `or` instruction to a nop. The `or` instruction is fetched and decoded in cycles 3 and 4, but its `EX` stage is delayed until clock cycle 6.
 :label: data-hazard-4-load
 :header-rows: 1
 

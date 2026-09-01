@@ -85,3 +85,8 @@ Cloudflare Pages expects:
 
 * a directory with HTML source to serve as a static site: `_build/html` ([mystmd docs](https://mystmd.org/guide/deployment-github-pages)), and
 * a build command that generates that directory: `bash build.sh` wraps `mystmd build` which is installed from the pywrangler config `pyproject.toml`.
+
+## License
+
+The contents of this book are licensed for free consumption under the following license:
+[Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
