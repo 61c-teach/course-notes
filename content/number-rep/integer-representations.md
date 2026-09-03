@@ -33,7 +33,7 @@ title: "Integer Representations"
 :width: 100%
 :title: "[CS61C FA20] Lecture 02.4 - Number Representation: Two's Complement, Bias, and Summary"
 :::
-
+0:00 - 6:41
 ::::
 
 ## Introduction
@@ -447,12 +447,11 @@ A bias-encoded representation effectively shifts the number line to an unsigned 
 :::
 
 :::{card}
-Example: $N = 5$ with bias $(2^{N-1} - 1)$
+Example: $N = 4$ with bias $(2^{N-1} - 1)$
 ^^^
 
-* 5-bit integer representation
-* Bias: $(2^{5-1} - 1) = 15$
-* Bias: $0$b$1110$
+* 4-bit integer representation
+* Bias: $(2^{4-1} - 1) = 7$
 :::
 
 Here are some diagrams in case they are useful. @fig-bias-encoding-number-line represents a bias encoding where $N = 4$ and bias $ = 7$. The odometer just does the right thing; it counts up through zero with nothing strange happening.
