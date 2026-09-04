@@ -24,7 +24,7 @@ project:
         - file: content/number-rep/index.md
         - file: content/number-rep/binary-decimal-hex.md
         - file: content/number-rep/integer-representations.md
-        - file: content/number-rep/twos-complement.md
+        # - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
     - title: "L03-L07 C"
       children:
