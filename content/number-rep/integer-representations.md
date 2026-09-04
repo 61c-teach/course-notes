@@ -31,9 +31,19 @@ title: "Integer Representations"
 
 :::{iframe} https://www.youtube.com/embed/opFCs4m7pW8?si=u3uolJHtdKzZRsBB
 :width: 100%
-:title: "[CS61C FA20] Lecture 02.4 - Number Representation: Two's Complement, Bias, and Summary"
+:title: "[CS61C FA20] Lecture 02.4 - Number Representation: Two's Complement"
 :::
-0:00 - 6:41
+
+::::
+
+::::{note} 🎥 Lecture Video
+:class: dropdown
+
+:::{iframe} https://www.youtube.com/embed/KC_QTRW0dY0?si=qbTGX8iqN5FRjXDz
+:width: 100%
+:title: "[CS61C FA26] Lecture 02 - Number Representation: Bias Encoding"
+:::
+
 ::::
 
 ## Introduction
