@@ -84,6 +84,7 @@ Suppose that when compiled, @code-array-indexing below produces the memory layou
 ```{code} c
 :linenos:
 #include <stdio.h>
+#include <stdint.h>
 
 int main () {
   uint32_t arr[] = {50, 60, 70}; // 32-bit unsigned array
