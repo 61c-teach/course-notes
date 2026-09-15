@@ -102,7 +102,7 @@ Consider the struct allocation code above. What is allocated on the heap, if any
 
 * Line 1: `typedef struct` does not allocate memory. It simply defines `treenode_t`.
 * Line 2, RHS (right-hand side): `malloc(sizeof(treenode_t))` allocates `sizeof(treenode_t)` bytes of memory on the heap.
-* Line 2, LHS (left-hand side): `treenode_t *tp` is a **local variable**. This declaration allocates at least `sizeof(tp *)` (i.e., the size of a pointer) onto the stack frame. Based on just the C code, we can't specify exactly how much data is allocated for the full stack frame, but it must be at least `sizeof(tp *)` unless the C compiler decides to optimize with hardware registers (more later).
+* Line 2, LHS (left-hand side): `treenode_t *tp` is a **local variable**. This declaration allocates at least `sizeof(tp)` (i.e., the size of a pointer) onto the stack frame. Based on just the C code, we can't specify exactly how much data is allocated for the full stack frame, but it must be at least `sizeof(tp)` unless the C compiler decides to optimize with hardware registers (more later).
 :::
 
 ### `void free(void *ptr)`
