@@ -1,16 +1,13 @@
 ---
 title: "GDB Guide"
 ---
-Here are the key commands from this lab. **You will need these throughout the semester** --- especially for project debugging.
 
 # Using GDB
-
-## Compiling and Opening GDB
 
 ## Views
 The **TUI** transforms GDB from a simple command line into a visual debugger. Use these commands to see your code, assembly, and registers in real-time as you step through a program.
 
-### Example:
+### Example
 Let's walk through example program `count_ones.s ` adapted from [Su24 Exam Question](https://inst.eecs.berkeley.edu/~cs61c/exams/pdfs/su24-final-blank.pdf#page=4). This will count the number of ones in a numbers binary represention you can see full code in the dropdown:
 
 ::::{note} Full `count_ones.s` code
@@ -78,20 +75,29 @@ beq     t3, x0, zero_case
 beqz    t3, 0x10210 <zero_case>
 ```
 
-Running `layout asm` will show only the assembly code (not the original source code) and running `layout regs` will show the assembly and the values of all the regs. As you step through the program the registers will update.
-
 :::{figure} images/gdb-layout-split.png
 :label: gdb-layout-split
 :width: 100%
 :alt: "TODO"
 :::
 
-**TODO: layout split and layout regs images**
+Running `layout asm` will show only the assembly code (not the original source code) and running `layout regs` will show the assembly and the values of all the regs. As you step through the program the registers will update.
 
-<!-- :::{figure} images/gdb-start.png
-:label: gdb-start
+:::{figure} images/gdb-layout-asm.png
+:label: gdb-layout-asm
 :width: 100%
-:alt: "TODO" -->
+:alt: "TODO"
+:::
+
+:::{figure} images/gdb-layout-regs.png
+:label: gdb-layout-regs
+:width: 100%
+:alt: "TODO"
+:::
+
+
+
+### Commands 
 
 | Command | Description |
 |---------|-------------|
@@ -139,7 +145,7 @@ Num     Type           Disp Enb Address            What
 1       breakpoint     keep y   0x000101e0         countone.s:15
 ```
 
-### Condtional Breakpoints:
+### Condtional Breakpoints
 You can also set breakpoints to only trigger when a certain condition is met. This is helpful when trying to debug something in a large loop. 
 
 Command:
@@ -152,7 +158,7 @@ For example:
 ```
 *Note:* `$` is necessary when using register value in the condition
 
-### Example:
+### Example
 In our example we can run 
 ```
 (gdb) b count_ones
@@ -164,19 +170,32 @@ Equivalently:
 ```
 which will create a breakpoint at line 15 (the start of the `count_ones` function). See the `b+` on the left side of the display. Then run the `continue` or `c` command which will continuing running the program until the breakpoint is hit.
 
-TODO: add image
+:::{figure} images/gdb-breakpoint-line15.png
+:label: gdb-breakpoint
+:width: 100%
+:alt: "TODO"
+:::
 
 Next, if we run `layout regs` we will see the value of `a0` is `0xc`. If we run the `continue` command again, the program will run until the next call to `count_ones`. The the value of `a0`, `ra`, and `sp` all change. 
 
-TODO: add image
+:::{figure} images/gdb-breakpoint-regs.png
+:label: gdb-breakpoint-regs
+:width: 100%
+:alt: "TODO"
+:::
 
-Then run this command to break at the final recursive call of `count_ones`. (Be sure to run `d 1` so our original unconditional breakpoint is deleted)
+We can run this command to break at the final recursive call of `count_ones`. (Be sure to run `d 1` so our original unconditional breakpoint is deleted)
 ```
 (gdb) b count_ones if $a0 == 0
 ```
 
-TODO: add image
+:::{figure} images/gdb-breakpoint-conditional.png
+:label: gdb-breakpoint-conditional
+:width: 100%
+:alt: "TODO"
+:::
 
+### Commands 
 | Command | Shortcut | Description |
 |---------|----------|-------------|
 | `break <line>` | `b <line>` | Break at a source line number (e.g., `b 12`) |
@@ -189,34 +208,113 @@ TODO: add image
 
 ## Registers
 
+There are also 2 others ways to view values in registers. Using the `info registers` and `print` commands. 
+
 **`info` command:**
 
-TODO
+```
+(gdb) info registers
+```
+
+Equivalently:
+```
+(gdb) info reg
+```
+
+Will output the values of all the registers. It will output the regsister name, value in hex, and value in decimal. For registers that hold pointer values, the values will stay in hex and will show the offset to the closest preceding label.
+
+:::{figure} images/gdb-info-reg.png
+:label: gdb-info-reg
+:width: 50%
+:alt: "TODO"
+:::
+
+It is sometimes difficult to see the exact register value you need, you can also specify the register(s) you want to view with:
+```
+(gdb) info reg <reg 1> <reg 2> ...
+```
+
+For example:
+```
+(gdb) info reg a0
+a0             0x1	1
+
+(gdb) info reg sp t0 t1
+sp             0x7ffffd90	0x7ffffd90
+t0             0x1149c	70812
+t1             0xf	15
+```
 
 **`print` command:**
+You can also use the `print` or `p` command to print the value of a specific register. Where `f` is the specified print format. 
 
-TODO
+```
+(gdb) print/<f> $<reg>
+```
+
+| Formats |  |
+|---------|----------|
+| `x` | print value as **hexadecimal** |
+| `d` | print value as **signed decimal** |
+| `u` | print value as **unsigned decimal** |
+| `t` | print value as **binary** |
+| `c` | print value as **char** |
+| `a` | print value as an **address**, in hexadecimal and as an offset from the nearest preceding label |
+
+For example:
+```
+(gdb) p/x $a0
+$1 = 0xc
+
+(gdb) p/d $a0
+$2 = 12
+
+(gdb) p/a $ra
+$3 = 0x101d4 <main+16>
+```
+
+*Note: `$n` represents the `n`-th print that is done*
+
+### Commands
 
 | Command | Shortcut | Description |
 |---------|----------|-------------|
 | `info registers` | `info reg` | Show all registers |
 | | `info reg t0` | Show just `t0` |
 | | `info reg t0 t1 t2` | Show multiple specific registers |
-| `print/x $a0` | `p/x $a0` | Print register in hex |
-| `print/d $a0` | `p/d $a0` | Print register in decimal |
-| `print/t $a0` | `p/t $a0` | Print register in binary |
+| `print/<f> $a0` | `p/<f> $a0` | Print register in specified format |
 
-## Examine Memory --- the `x` command
+## Examine Memory 
+
+The examine `x` command is used for viewing memory contents at a given address. You can specify the format and size of the memory output.
 
 The full format is `x/NFU` where **N** = count (default 1), **F** = format, **U** = unit size.
 
-Formats: `x` hex, `d` signed decimal, `i` instruction, `s` string, `t` binary
+**Formats**: `x` hex, `d` signed decimal, `i` instruction, `s` string, `t` binary
 
-Unit sizes: `b` byte, `h` halfword, `w` word
-When you just want one value, you can leave out **N**:
+**Unit sizes**: `b` byte, `h` halfword, `w` word
 
-### Example:
+*Note: When you just want one value, you can leave out **N***
 
+### Examples
+The example below will print 16 words in hex starting at memory address `0x7ffffd90`
+```
+(gdb) x/16xw 0x7ffffd90
+0x7ffffd90: 0x00000001 0x7ffffde0 0x00000000 0x0000000
+0x7ffffda0: 0x00000009 0x000100f8 0x00000005 0x0000004
+0x7ffffdb0: 0x00000004 0x00000020 0x00000003 0x7ffffe0
+0x7ffffdc0: 0x00000006 0x00001000 0x00000017 0x0000000
+```
+Reminder: RISC-V is little endian so note the differences if we print 32 half-word starting at memory address `0x7ffffd90`
+```
+(gdb) x/32xh 0x7ffffd90
+0x7ffffd90: 0x0001 0x0000 0xfde0 0x7fff 0x0000 0x0000 0x0000 0x0000
+0x7ffffda0: 0x0009 0x0000 0x00f8 0x0001 0x0005 0x0000 0x0004 0x0000
+0x7ffffdb0: 0x0004 0x0000 0x0020 0x0000 0x0003 0x0000 0xfe00 0x7fff 
+0x7ffffdc0: 0x0006 0x0000 0x1000 0x0000 0x0017 0x0000 0x0000 0x0000
+```
+
+Below are more examples and their descriptions:
 | Command | Description |
 |---------|-------------|
 | `x/xw $pc` | Machine code of current instruction (one hex word) |
@@ -224,10 +322,6 @@ When you just want one value, you can leave out **N**:
 | `x/xb <addr>` | One byte in hex at an address |
 | `x/4xw $sp` | 4 words in hex at stack pointer |
 | `x/10i $pc` | Disassemble 10 instructions from current PC |
-
-## Backtrace
-
-TODO
 
 ## Miscellaneous
 
@@ -242,31 +336,29 @@ TODO
 - By default, the arrow keys will scroll the assembly window. To switch the focus to the gdb
 prompt so you can use the arrow keys to select previous commands, enter `focus cmd`. To
 return focus to the assembly window, type `focus asm`.
-- To continue execution after pausing at breakpoint, type `c` or `continue`.
 
 # Apendix
 
 ## GDB Commands
-| Command | Shortcut | Description |
-|---------|----------|-------------|
-| `layout split` | | Source + disassembly side by side |
-| `layout regs` | | Registers + assembly |
-| `layout asm` | | Assembly only |
-| `tui disable` | | Exit the TUI views |
-| `step` | `s` | Execute one instruction (steps over runtime helpers) |
-| `next` | `n` | Execute one instruction, stepping over all function calls |
-| `continue` | `c` | Resume execution until next breakpoint |
-| `info registers` | `info reg` | Show all registers |
-| | `info reg t0` | Show just `t0` |
-| | `info reg t0 t1 t2` | Show multiple specific registers |
-| `print/x $a0` | `p/x $a0` | Print register in hex |
-| `print/d $a0` | `p/d $a0` | Print register in decimal |
-| `print/t $a0` | `p/t $a0` | Print register in binary |
-| `x/xw $pc` | | Machine code of current instruction (one hex word) |
-| `x/dw <addr>` | | Read an integer at an address (one signed decimal word) |
-| `x/xb <addr>` | | One byte in hex at an address |
-| `x/4xw $sp` | | 4 words in hex at stack pointer |
-| `x/10i $pc` | | Disassemble 10 instructions from current PC |
-| `disassemble <label>` | | Disassemble a whole function/label |
-| `quit` | | Exit GDB |
-TODO: focus and bt
+| Command | Description |
+|---------|-------------|
+| `layout split` | Source + disassembly side by side |
+| `layout regs` | Registers + assembly |
+| `layout asm` | Assembly only |
+| `tui disable` | Exit the TUI views |
+| `step` or `s` | Execute one instruction (steps over runtime helpers) |
+| `next` or `n` | Execute one instruction, stepping over all function calls |
+| `continue` or `c` | Resume execution until next breakpoint |
+| `info registers` or `info reg` | Show all registers |
+| `info reg t0` | Show just `t0` |
+| `info reg t0 t1 t2` | Show multiple specific registers |
+| `print/<f> $a0` | `p/<f> $a0` | Print register in specified format |
+| `x/xw $pc` | Machine code of current instruction (one hex word) |
+| `x/dw <addr>` | Read an integer at an address (one signed decimal word) |
+| `x/xb <addr>` | One byte in hex at an address |
+| `x/4xw $sp` | 4 words in hex at stack pointer |
+| `x/10i $pc` | Disassemble 10 instructions from current PC |
+| `disassemble <label>` | Disassemble a whole function/label |
+| `focus cmd` | Focus arrow keys and scrolling to the command line |
+| `focus asm` | Focus arrow keys and scrolling to the assembly window |
+| `quit` or `q` | Exit GDB |
