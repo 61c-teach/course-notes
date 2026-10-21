@@ -18,7 +18,8 @@ These course notes cover the content you need to know from lecture and other par
 * Before attending discussion section, try the precheck exercises. Solutions are provided.
 * Lecture will not cover every single topic. We always will recommend you read the course notes.
 
-As of Spring 2026, these course notes are in active development. Due to course staff capacity, we may occasionally be unable to write course notes and will refer you to the lecture slides instead.
+As of Spring 2026, these course notes are in active development.
+<!-- Due to course staff capacity, we may occasionally be unable to write course notes and will refer you to the lecture slides instead. -->
 
 :::{warning} Please help us address errata!
 
