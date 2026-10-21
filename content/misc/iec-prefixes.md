@@ -1,5 +1,5 @@
 ---
-title: "IEC and Base-10 Prefixes"
+title: "Ch.14 IEC and Base-10 Prefixes"
 ---
 
 (sec-iec-prefixes)=
