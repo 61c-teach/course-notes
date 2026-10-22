@@ -1,5 +1,5 @@
 ---
-title: "Special Numbers"
+title: "3.4 Special Numbers"
 ---
 
 (sec-special-floats)=

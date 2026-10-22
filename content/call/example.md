@@ -1,5 +1,5 @@
 ---
-title: "CAL Example: Hello World"
+title: "6.4 CAL Example: Hello World"
 subtitle: "Translation: Compiler, Assembler, Linker"
 ---
 

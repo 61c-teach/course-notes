@@ -1,5 +1,5 @@
 ---
-title: "Summary"
+title: "1.4 Summary"
 ---
 
 ## And in Summary$\dots$

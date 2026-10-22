@@ -1,5 +1,5 @@
 ---
-title: "Integer Representations"
+title: "1.3 Integer Representations"
 ---
 
 (sec-integer-reps)=

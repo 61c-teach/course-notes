@@ -19,14 +19,14 @@ project:
 
   toc:
     - file: index.md
-    - title: "Ch.1 Number Representation"
+    - title: "1 Number Representation"
       children:
         - file: content/number-rep/index.md
         - file: content/number-rep/binary-decimal-hex.md
         - file: content/number-rep/integer-representations.md
         # - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
-    - title: "Ch.2 C"
+    - title: "2 C"
       children:
       - title: "2.1 C Basics"
         children:
@@ -63,7 +63,7 @@ project:
           - file: content/c-generics/generics.md
           - file: content/c-generics/fn-ptr.md
           - file: content/c-generics/summary.md
-    - title: "Ch.3 Floating Point"
+    - title: "3 Floating Point"
       children:
         - file: content/floating-point/index.md
         - file: content/floating-point/fp-floating-point.md
@@ -71,7 +71,7 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-    - title: "Ch.4 RISC-V"
+    - title: "4 RISC-V"
       children:
       - title: "4.1 RISC-V Intro"
         children:
@@ -102,7 +102,7 @@ project:
           - file: content/rv-procs/rv-calling-conv.md
           - file: content/rv-procs/examples.md
           - file: content/rv-procs/summary.md
-    - title: "Ch.5 RISC-V Instruction Formats"
+    - title: "5 RISC-V Instruction Formats"
       children:
       - title: "5.1 RISC-V Instruction Formats I"
         children:
@@ -118,7 +118,7 @@ project:
           - file: content/rv-isa-formats-ii/j-type.md
           - file: content/rv-isa-formats-ii/u-type.md
           - file: content/rv-isa-formats-ii/summary.md
-    - title: "Ch.6 CALL"
+    - title: "6 CALL"
       children:
         - file: content/call/index.md
         - file: content/call/assembler-object-file.md
@@ -126,7 +126,7 @@ project:
         - file: content/call/example.md
         - file: content/call/interpret-translate.md
         - file: content/call/summary.md
-    - title: "Ch.7 Synchronous Digital Systems"
+    - title: "7 Synchronous Digital Systems"
       children:
       - title: "7.1 Intro to SDS"
         children:
@@ -147,7 +147,7 @@ project:
           - file: content/sds-state/fsm.md
           - file: content/sds-state/pipelining.md
           - file: content/sds-state/summary.md
-      - title: "Ch.8 Combinational Logic Blocks"
+      - title: "7.4 Combinational Logic Blocks"
         children:
           - file: content/sds-blocks/index.md
           - file: content/sds-blocks/adder-subtractor.md
@@ -155,15 +155,15 @@ project:
           - file: content/sds-blocks/summary.md
       #     - file: content/sds-logic-blocks/summary-precheck.md
       #     - file: content/sds-logic-blocks/exercises.md
-    - title: "Ch.9 Single-Cycle CPU"
+    - title: "8 Single-Cycle CPU"
       children:
-      - title: "9.1 Single-Cycle CPU Datapath I"
+      - title: "8.1 Single-Cycle CPU Datapath I"
         children:
           - file: content/datapath/index.md
           - file: content/datapath/elements.md
           - file: content/datapath/r-type.md
           - file: content/datapath/i-type.md
-      - title: "9.2 Single-Cycle CPU Datapath II"
+      - title: "8.2 Single-Cycle CPU Datapath II"
         children:
           - file: content/datapath/load-store.md
           - file: content/datapath/b-type.md
@@ -171,15 +171,15 @@ project:
           - file: content/datapath/u-type.md
       #     # - file: content/datapath/summary-precheck.md
       #     # - file: content/datapath/exercises.md
-      - title: "9.3 Single-Cycle CPU Control, Instruction Timing"
+      - title: "8.3 Single-Cycle CPU Control, Instruction Timing"
         children:
           - file: content/datapath/control.md
           - file: content/datapath/instruction-timing.md
           - file: content/datapath/special-regs.md
           - file: content/datapath/summary.md
-    - title: "Ch.10 Pipelining"
+    - title: "9 Pipelining"
       children:
-      - title: "10.1 Throughput, Latency, and the 5-Stage Pipeline"
+      - title: "9.1 Throughput, Latency, and the 5-Stage Pipeline"
         children:
           - file: content/pipeline/index.md
           - file: content/pipeline/laundry.md
@@ -188,29 +188,29 @@ project:
           - file: content/pipeline/superscalar.md
           - file: content/pipeline/energy.md
           - file: content/pipeline/summary.md
-      - title: "10.2 Hazards"
+      - title: "9.2 Hazards"
         children:
           - file: content/pipeline-hazards/index.md
           - file: content/pipeline-hazards/structural-hazards.md
           - file: content/pipeline-hazards/data-hazards.md
           - file: content/pipeline-hazards/control-hazards.md
           - file: content/pipeline-hazards/summary.md
-    - title: "Ch.11 Caches"
+    - title: "10 Caches"
       children:
-      - title: "11.1 Cache Performance"
+      - title: "10.1 Cache Performance"
         children:
           - file: content/caches-intro/index.md
           - file: content/caches-intro/memory-hierarchy.md
           - file: content/caches-intro/amat.md
           - file: content/caches-intro/summary.md
-      - title: "11.2 Cache Design"
+      - title: "10.2 Cache Design"
         children:
           - file: content/caches-ii/index.md
           - file: content/caches-ii/fully-associative.md
           - file: content/caches-ii/direct-mapped.md
           - file: content/caches-ii/set-associative.md
           - file: content/caches-ii/summary.md
-      - title: "11.3 Cache Misses and Optimization"
+      - title: "10.3 Cache Misses and Optimization"
         children:
           - file: content/caches-iii/index.md
           - file: content/caches-iii/optimizations.md
@@ -218,43 +218,43 @@ project:
           - file: content/caches-iii/summary.md
     # - title: "L30-L34 Parallelism and Performance"
     #   children:
-    - title: "Ch.12 Performance Programming"
+    - title: "11 Performance Programming"
       children:
-      - title: "12.1 Amdahl's Law"
+      - title: "11.1 Amdahl's Law"
         children:
           - file: content/parallel-performance/index.md
           - file: content/parallel-performance/optimization-gcc.md
           - file: content/parallel-performance/dgemm.md
           - file: content/parallel-performance/dgemm-sisd.md
           - file: content/parallel-performance/summary.md
-      - title: "12.2 Flynn's Taxonomy, SIMD"
+      - title: "11.2 Flynn's Taxonomy, SIMD"
         children:
           - file: content/parallel-dlp/index.md
           - file: content/parallel-dlp/simd.md
           - file: content/parallel-dlp/dgemm-simd.md
           - file: content/parallel-dlp/intrinsics.md
           - file: content/parallel-dlp/summary.md
-      - title: "12.3 MIMD, Thread-Level Parallelism"
+      - title: "11.3 MIMD, Thread-Level Parallelism"
         children:
           - file: content/parallel-tlp/index.md
           - file: content/parallel-tlp/threads.md
           - file: content/parallel-tlp/openmp.md
           - file: content/parallel-tlp/dgemm-mimd.md
           - file: content/parallel-tlp/openmp-examples.md
-      - title: "12.4 Synchronization"
+      - title: "11.4 Synchronization"
         children:
           - file: content/parallel-tlp/data-race.md
           - file: content/parallel-tlp/cache-coherence.md
           - file: content/parallel-tlp/locks-amos.md
           - file: content/parallel-tlp/summary.md
-    - title: "Ch.13 Virtual Memory"
+    - title: "12 Virtual Memory"
       children:
-        - title: "13.1: Intro to Virtual Memory"
+        - title: "12.1: Intro to Virtual Memory"
           children:
           - file: content/vm/index.md
           - file: content/vm/address-translation.md
           - file: content/vm/memory-manager.md
-        - title: "13.2: The TLB, Full Memory Hierarchy"
+        - title: "12.2: The TLB, Full Memory Hierarchy"
           children:
           - file: content/vm/page-table.md
           - file: content/vm/tlb.md
