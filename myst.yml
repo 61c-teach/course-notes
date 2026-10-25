@@ -63,6 +63,9 @@ project:
           - file: content/c-generics/generics.md
           - file: content/c-generics/fn-ptr.md
           - file: content/c-generics/summary.md
+      - title: "2.6 IEC and Base-10 Prefixes"
+        children:
+          - file: content/misc/iec-prefixes.md
     - title: "3 Floating Point"
       children:
         - file: content/floating-point/index.md
@@ -197,6 +200,9 @@ project:
           - file: content/pipeline-hazards/summary.md
     - title: "10 Caches"
       children:
+      - title: "10.0 IEC and Base-10 Prefixes [Refresh]"
+        children:
+          - file: content/misc/iec-prefixes.md
       - title: "10.1 Cache Performance"
         children:
           - file: content/caches-intro/index.md
