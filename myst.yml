@@ -268,7 +268,9 @@ project:
           # - file: content/vm/page-tables-hierarchical.md
           # - file: content/vm/performance.md
           - file: content/vm/summary.md
-    - file: content/misc/iec-prefixes.md
+    - title: "13 IEC and Base-10 Prefixes"
+      children:
+        - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
     
