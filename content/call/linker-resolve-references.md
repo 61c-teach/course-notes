@@ -1,5 +1,5 @@
 ---
-title: "Linker: Resolve References"
+title: "6.3 Linker: Resolve References"
 ---
 
 (sec-linker-details)=

@@ -1,5 +1,5 @@
 ---
-title: "Normalized Numbers"
+title: "3.2 Normalized Numbers"
 ---
 
 (sec-fp)=

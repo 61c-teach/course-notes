@@ -1,5 +1,5 @@
 ---
-title: "Floating Point: More Discussion"
+title: "3.5 Floating Point: More Discussion"
 subtitle: "This content is not tested"
 ---
 

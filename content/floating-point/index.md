@@ -1,5 +1,5 @@
 ---
-title: "Motivation: Fixed Point"
+title: "3.1 Motivation: Fixed Point"
 ---
 
 ## Learning Outcomes

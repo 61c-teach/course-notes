@@ -1,5 +1,5 @@
 ---
-title: "Binary, Decimal, Hex"
+title: "1.2 Binary, Decimal, Hex"
 ---
 
 (bin-dec-hex)=

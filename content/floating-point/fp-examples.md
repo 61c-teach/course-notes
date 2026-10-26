@@ -1,5 +1,5 @@
 ---
-title: "Normalized Numbers: Practice"
+title: "3.3 Normalized Numbers: Practice"
 ---
 
 ## Learning Outcomes

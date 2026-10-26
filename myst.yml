@@ -19,16 +19,16 @@ project:
 
   toc:
     - file: index.md
-    - title: "L02 Number Representation"
+    - title: "1 Number Representation"
       children:
         - file: content/number-rep/index.md
         - file: content/number-rep/binary-decimal-hex.md
         - file: content/number-rep/integer-representations.md
         # - file: content/number-rep/twos-complement.md
         - file: content/number-rep/summary.md
-    - title: "L03-L07 C"
+    - title: "2 C"
       children:
-      - title: "L03 C Basics"
+      - title: "2.1 C Basics"
         children:
           - file: content/c-basics/index.md
           - file: content/c-basics/compile-vs-interpret.md
@@ -36,34 +36,37 @@ project:
           - file: content/c-basics/c-variables.md
           - file: content/c-basics/c-syntax.md
           - file: content/c-basics/summary.md
-      - title: "L04 C Pointers, Arrays, Strings"
+      - title: "2.2 C Pointers, Arrays, Strings"
         children:
           - file: content/c-pointers-arrays-strings/index.md
           - file: content/c-pointers-arrays-strings/pointers.md
           - file: content/c-pointers-arrays-strings/arrays.md
           - file: content/c-pointers-arrays-strings/strings.md
           - file: content/c-pointers-arrays-strings/summary.md
-      - title: "L05 C Memory Management"
+      - title: "2.3 C Memory Management"
         children:
           - file: content/c-memory-management/index.md
           - file: content/c-memory-management/stack.md
           - file: content/c-memory-management/heap.md
           - file: content/c-memory-management/heap-allocator.md
           - file: content/c-memory-management/summary.md
-      - title: "L06 C Odds and Ends"
+      - title: "2.4 C Odds and Ends"
         children:
           - file: content/c-odds-and-ends/index.md
           - file: content/c-odds-and-ends/endianness.md
           - file: content/c-odds-and-ends/ll-add-front.md
           - file: content/c-odds-and-ends/ll-full.md
           - file: content/c-odds-and-ends/summary.md
-      - title: "L07 C Generics, Function Pointers"
+      - title: "2.5 C Generics, Function Pointers"
         children:
           - file: content/c-generics/index.md
           - file: content/c-generics/generics.md
           - file: content/c-generics/fn-ptr.md
           - file: content/c-generics/summary.md
-    - title: "L08 Floating Point"
+      - title: "2.6 IEC and Base-10 Prefixes"
+        children:
+          - file: content/misc/iec-prefixes.md
+    - title: "3 Floating Point"
       children:
         - file: content/floating-point/index.md
         - file: content/floating-point/fp-floating-point.md
@@ -71,9 +74,9 @@ project:
         - file: content/floating-point/fp-special-numbers.md
         - file: content/floating-point/fp-discussion.md
         - file: content/floating-point/summary.md
-    - title: "L09-L12 RISC-V"
+    - title: "4 RISC-V"
       children:
-      - title: "L09 RISC-V Intro"
+      - title: "4.1 RISC-V Intro"
         children:
           - file: content/rv-intro/index.md
           - file: content/rv-intro/elements.md
@@ -82,43 +85,43 @@ project:
           - file: content/rv-intro/rv-bitwise.md
           - file: content/rv-intro/summary.md
           # - file: content/rv-intro/summary-precheck.md
-      - title: "L10 RISC-V Data Transfer"
+      - title: "4.2 RISC-V Data Transfer"
         children:
           - file: content/rv-data-transfer/index.md
           - file: content/rv-data-transfer/rv-load-store.md
           - file: content/rv-data-transfer/examples.md
           - file: content/rv-data-transfer/example-sp.md
           - file: content/rv-data-transfer/summary.md
-      - title: "L11 RISC-V Decision Making"
+      - title: "4.3 RISC-V Decision Making"
         children:
           - file: content/rv-decision-making/index.md
           - file: content/rv-decision-making/branches.md
           - file: content/rv-decision-making/loops.md
           - file: content/rv-decision-making/summary.md
-      - title: "L12 RISC-V Procedures"
+      - title: "4.4 RISC-V Procedures"
         children:
           - file: content/rv-procs/index.md
           - file: content/rv-procs/rv-jumps-stack.md
           - file: content/rv-procs/rv-calling-conv.md
           - file: content/rv-procs/examples.md
           - file: content/rv-procs/summary.md
-    - title: "L13-L14 RISC-V Instruction Formats"
+    - title: "5 RISC-V Instruction Formats"
       children:
-      - title: "L13 RISC-V Instruction Formats I"
+      - title: "5.1 RISC-V Instruction Formats I"
         children:
           - file: content/rv-isa-formats-i/index.md
           - file: content/rv-isa-formats-i/r-type.md
           - file: content/rv-isa-formats-i/i-type.md
           - file: content/rv-isa-formats-i/s-type.md
           - file: content/rv-isa-formats-i/summary.md
-      - title: "L14 RISC-V Instruction Formats II"
+      - title: "5.2 RISC-V Instruction Formats II"
         children:
           - file: content/rv-isa-formats-ii/index.md
           - file: content/rv-isa-formats-ii/b-type.md
           - file: content/rv-isa-formats-ii/j-type.md
           - file: content/rv-isa-formats-ii/u-type.md
           - file: content/rv-isa-formats-ii/summary.md
-    - title: "L15 CALL"
+    - title: "6 CALL"
       children:
         - file: content/call/index.md
         - file: content/call/assembler-object-file.md
@@ -126,20 +129,20 @@ project:
         - file: content/call/example.md
         - file: content/call/interpret-translate.md
         - file: content/call/summary.md
-    - title: "L16-L20 Synchronous Digital Systems"
+    - title: "7 Synchronous Digital Systems"
       children:
-      - title: "L16 Intro to SDS"
+      - title: "7.1 Intro to SDS"
         children:
           - file: content/sds-intro/index.md
           - file: content/sds-intro/transistors.md
           - file: content/sds-intro/summary.md
-      - title: "L17 Combinational Logic"
+      - title: "7.2 Combinational Logic"
         children:
           - file: content/sds-combinational-logic/index.md
           - file: content/sds-combinational-logic/boolean-algebra.md
           - file: content/sds-combinational-logic/cl-design.md
           - file: content/sds-combinational-logic/summary.md
-      - title: "L18 State, Timing"
+      - title: "7.3 State, Timing"
         children:
           - file: content/sds-state/index.md
           - file: content/sds-state/register.md
@@ -147,7 +150,7 @@ project:
           - file: content/sds-state/fsm.md
           - file: content/sds-state/pipelining.md
           - file: content/sds-state/summary.md
-      - title: "L19-L20 Combinational Logic Blocks"
+      - title: "7.4 Combinational Logic Blocks"
         children:
           - file: content/sds-blocks/index.md
           - file: content/sds-blocks/adder-subtractor.md
@@ -155,15 +158,15 @@ project:
           - file: content/sds-blocks/summary.md
       #     - file: content/sds-logic-blocks/summary-precheck.md
       #     - file: content/sds-logic-blocks/exercises.md
-    - title: "L21-L23 Single-Cycle CPU"
+    - title: "8 Single-Cycle CPU"
       children:
-      - title: "L21 Single-Cycle CPU Datapath I"
+      - title: "8.1 Single-Cycle CPU Datapath I"
         children:
           - file: content/datapath/index.md
           - file: content/datapath/elements.md
           - file: content/datapath/r-type.md
           - file: content/datapath/i-type.md
-      - title: "L22 Single-Cycle CPU Datapath II"
+      - title: "8.2 Single-Cycle CPU Datapath II"
         children:
           - file: content/datapath/load-store.md
           - file: content/datapath/b-type.md
@@ -171,15 +174,15 @@ project:
           - file: content/datapath/u-type.md
       #     # - file: content/datapath/summary-precheck.md
       #     # - file: content/datapath/exercises.md
-      - title: "L23 Single-Cycle CPU Control, Instruction Timing"
+      - title: "8.3 Single-Cycle CPU Control, Instruction Timing"
         children:
           - file: content/datapath/control.md
           - file: content/datapath/instruction-timing.md
           - file: content/datapath/special-regs.md
           - file: content/datapath/summary.md
-    - title: "L24-L25 Pipelining"
+    - title: "9 Pipelining"
       children:
-      - title: "L24 Throughput, Latency, and the 5-Stage Pipeline"
+      - title: "9.1 Throughput, Latency, and the 5-Stage Pipeline"
         children:
           - file: content/pipeline/index.md
           - file: content/pipeline/laundry.md
@@ -188,29 +191,32 @@ project:
           - file: content/pipeline/superscalar.md
           - file: content/pipeline/energy.md
           - file: content/pipeline/summary.md
-      - title: "L25 Hazards"
+      - title: "9.2 Hazards"
         children:
           - file: content/pipeline-hazards/index.md
           - file: content/pipeline-hazards/structural-hazards.md
           - file: content/pipeline-hazards/data-hazards.md
           - file: content/pipeline-hazards/control-hazards.md
           - file: content/pipeline-hazards/summary.md
-    - title: "L26-L29 Caches"
+    - title: "10 Caches"
       children:
-      - title: "L26 Cache Performance"
+      - title: "10.0 IEC and Base-10 Prefixes [Refresh]"
+        children:
+          - file: content/misc/iec-prefixes.md
+      - title: "10.1 Cache Performance"
         children:
           - file: content/caches-intro/index.md
           - file: content/caches-intro/memory-hierarchy.md
           - file: content/caches-intro/amat.md
           - file: content/caches-intro/summary.md
-      - title: "L27-L28 Cache Design"
+      - title: "10.2 Cache Design"
         children:
           - file: content/caches-ii/index.md
           - file: content/caches-ii/fully-associative.md
           - file: content/caches-ii/direct-mapped.md
           - file: content/caches-ii/set-associative.md
           - file: content/caches-ii/summary.md
-      - title: "L29 Cache Misses and Optimization"
+      - title: "10.3 Cache Misses and Optimization"
         children:
           - file: content/caches-iii/index.md
           - file: content/caches-iii/optimizations.md
@@ -218,43 +224,43 @@ project:
           - file: content/caches-iii/summary.md
     # - title: "L30-L34 Parallelism and Performance"
     #   children:
-    - title: "L30-L34 Performance Programming"
+    - title: "11 Performance Programming"
       children:
-      - title: "L30 Amdahl's Law"
+      - title: "11.1 Amdahl's Law"
         children:
           - file: content/parallel-performance/index.md
           - file: content/parallel-performance/optimization-gcc.md
           - file: content/parallel-performance/dgemm.md
           - file: content/parallel-performance/dgemm-sisd.md
           - file: content/parallel-performance/summary.md
-      - title: "L31 Flynn's Taxonomy, SIMD"
+      - title: "11.2 Flynn's Taxonomy, SIMD"
         children:
           - file: content/parallel-dlp/index.md
           - file: content/parallel-dlp/simd.md
           - file: content/parallel-dlp/dgemm-simd.md
           - file: content/parallel-dlp/intrinsics.md
           - file: content/parallel-dlp/summary.md
-      - title: "L32 MIMD, Thread-Level Parallelism"
+      - title: "11.3 MIMD, Thread-Level Parallelism"
         children:
           - file: content/parallel-tlp/index.md
           - file: content/parallel-tlp/threads.md
           - file: content/parallel-tlp/openmp.md
           - file: content/parallel-tlp/dgemm-mimd.md
           - file: content/parallel-tlp/openmp-examples.md
-      - title: "L33-L34 Synchronization"
+      - title: "11.4 Synchronization"
         children:
           - file: content/parallel-tlp/data-race.md
           - file: content/parallel-tlp/cache-coherence.md
           - file: content/parallel-tlp/locks-amos.md
           - file: content/parallel-tlp/summary.md
-    - title: "L35-L36 Virtual Memory"
+    - title: "12 Virtual Memory"
       children:
-        - title: "L35: Intro to Virtual Memory"
+        - title: "12.1: Intro to Virtual Memory"
           children:
           - file: content/vm/index.md
           - file: content/vm/address-translation.md
           - file: content/vm/memory-manager.md
-        - title: "L36: The TLB, Full Memory Hierarchy"
+        - title: "12.2: The TLB, Full Memory Hierarchy"
           children:
           - file: content/vm/page-table.md
           - file: content/vm/tlb.md
@@ -262,7 +268,9 @@ project:
           # - file: content/vm/page-tables-hierarchical.md
           # - file: content/vm/performance.md
           - file: content/vm/summary.md
-    - file: content/misc/iec-prefixes.md
+    - title: "13 IEC and Base-10 Prefixes"
+      children:
+        - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
     - file: content/reference.md
     

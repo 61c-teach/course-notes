@@ -1,5 +1,5 @@
 ---
-title: "Assembler: Object File"
+title: "6.2 Assembler: Object File"
 ---
 
 (sec-assembler-details)=

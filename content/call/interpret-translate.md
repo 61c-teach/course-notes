@@ -1,5 +1,5 @@
 ---
-title: "Interpretation vs Translation"
+title: "6.5 Interpretation vs Translation"
 subtitle: "This content is not tested"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "1.1 Introduction"
 subtitle: "How do we represent digital data?"
 ---
 
