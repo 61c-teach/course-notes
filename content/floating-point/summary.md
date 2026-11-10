@@ -40,7 +40,7 @@ P&H 3.5, 3.9
 
 ## Additional References
 
-* [IEEE 754 Simulator](https://www.h-schmidt.net/FloatConverter/IEEE754.html)
+* [IEEE 754 Converter](converter.html)
 
 ## Exercises
 Check your knowledge!
