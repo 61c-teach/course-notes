@@ -10,7 +10,7 @@
    Field colors: California Gold / Berkeley Blue / Blue Light. Checked for protan, deutan and
    tritan color blindness (Machado 2009 simulation, same idea as Color Oracle): every pair stays
    >= 60 dE apart. All text meets WCAG AA 4.5:1; focus rings and input borders meet 3:1.
-   Bit state never relies on fill alone: each bit shows its 0/1 digit, and 1-bits get a dark border. */
+   Bit state never relies on fill alone: each bit shows its 0/1 digit. */
 :root {
   --berkeley-blue: #002676; --california-gold: #FDB515; --blue-light: #9FD1FF; --blue-medium: #004AAE;
   --page: #FFFFFF; --bg: #F2F2F2; --text: #181A1B; --muted: #5f6368; --border: #d9dde1;
@@ -69,26 +69,34 @@ h1 { font-size: 24px; font-weight: 600; margin: 0; }
 /* --bw (bit width) and --mw (mantissa bits per row) are set by fitBits() to fit the window */
 .group { display: flex; }
 .group.m { flex-wrap: wrap; width: calc(var(--mw, 23) * (var(--bw) - 1px) + 1px); }
-.bit { width: var(--bw); height: 36px; flex: none; margin: 0 -1px 0 0; border: 1px solid var(--border); border-radius: 0; background: var(--page);
-  font: 600 14px var(--mono); color: var(--muted); cursor: pointer; padding: 0; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; }
-.bit small { font-size: 8px; font-weight: 400; line-height: 1; }
+/* each bit: its index on top, then the box holding the 0/1 digit */
+.bit { width: var(--bw); flex: none; margin: 0 -1px 0 0; border: 0; padding: 0; background: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; font: 600 14px var(--mono); color: var(--muted); }
+.bit small { font-size: 9px; font-weight: 400; line-height: 1; padding-bottom: 3px; color: var(--muted); }
+.bit .d { width: 100%; height: 30px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); background: var(--page); }
 .group .bit:last-child { margin-right: 0; }
-.group.s .bit.on { background: var(--sign); color: var(--sign-on); border-color: var(--sign-on); }
-.group.e .bit.on { background: var(--exp);  color: var(--exp-on);  border-color: var(--exp); }
-.group.m .bit.on { background: var(--man);  color: var(--man-on);  border-color: var(--man-on); }
-.bit:hover { border-color: var(--text); color: var(--text); position: relative; z-index: 1; box-shadow: inset 0 -3px 0 var(--link); }
-.bit.on:hover { box-shadow: inset 0 -3px 0 var(--text); }
-.bit:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; position: relative; z-index: 1; }
+.group.s .bit.on .d { background: var(--sign); color: var(--sign-on); border-color: var(--sign); }
+.group.e .bit.on .d { background: var(--exp);  color: var(--exp-on);  border-color: var(--exp); }
+.group.m .bit.on .d { background: var(--man);  color: var(--man-on);  border-color: var(--man); }
+.bit:hover, .bit:focus-visible { position: relative; z-index: 1; }
+.group .bit:not(.on):hover .d { color: var(--text); }
+.group .bit:hover .d, .group .bit.on:hover .d { border-color: var(--text); }
+.bit:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; }
 .double .bit { font-size: 12px; }
 /* thin bits: drop the bit index and shrink the digit */
-.tight .bit { height: 28px; font-size: 11px; }
+.tight .bit { font-size: 11px; }
+.tight .bit .d { height: 26px; }
 .tight .bit small { display: none; }
 
-.step { display: inline-flex; gap: 3px; margin-left: 8px; vertical-align: middle; }
-.step button { font: 12px var(--mono); border: 1px solid var(--muted); background: var(--page); color: var(--text);
-  border-radius: 0; padding: 0 6px; cursor: pointer; }
-.step button:hover { border-color: var(--text); background: var(--bg); }
+/* − value + stepper for the exponent and mantissa encodings */
+.step { display: inline-flex; align-items: stretch; max-width: 100%; border: 1px solid var(--muted); vertical-align: middle; }
+.step button { font: 14px var(--mono); border: 0; background: var(--bg); color: var(--text); border-radius: 0;
+  padding: 0 9px; cursor: pointer; }
+.step button:hover { background: var(--border); }
+.step button:focus-visible { outline: 2px solid var(--blue-medium); outline-offset: -2px; }
+.step .val { padding: 1px 10px; min-width: 4ch; text-align: center; overflow-wrap: anywhere;
+  border-left: 1px solid var(--muted); border-right: 1px solid var(--muted); background: var(--page); }
 
 
 /* conversion: label / value rows */
@@ -114,8 +122,8 @@ main > p.note { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(-
   .layout { font-size: 12px; }
   .layout > div, .layout .bitcell { padding: 5px 6px; }
   .layout .h small { display: none; }
-  .step { margin-left: 4px; }
-  .step button { padding: 0 3px; font-size: 11px; }
+  .step button { padding: 0 5px; font-size: 12px; }
+  .step .val { padding: 1px 5px; min-width: 0; }
   .io { grid-template-columns: 1fr; gap: 2px; }
   .io label { margin-top: 8px; }
 }
@@ -339,9 +347,10 @@ new ResizeObserver(() => {
   requestAnimationFrame(() => { fitPending = false; if (F) fitBits(); });
 }).observe(document.querySelector("main"));
 
-function stepper(field, label) {
-  return `<span class="step"><button type="button" data-f="${field}" data-d="-1" aria-label="${label} minus 1">−1</button>` +
-         `<button type="button" data-f="${field}" data-d="1" aria-label="${label} plus 1">+1</button></span>`;
+function stepper(field, label, value) {
+  return `<span class="step"><button type="button" data-f="${field}" data-d="-1" aria-label="${label} minus 1">−</button>` +
+         `<span class="val">${value}</span>` +
+         `<button type="button" data-f="${field}" data-d="1" aria-label="${label} plus 1">+</button></span>`;
 }
 
 function setField(field, delta) {
@@ -363,7 +372,7 @@ function render(source) {
   for (let i = 0; i < F.N; i++) {
     const on = Number((bits >> B(i)) & 1n);
     bitBtns[i].classList.toggle("on", !!on);
-    bitBtns[i].innerHTML = on + "<small>" + i + "</small>";
+    bitBtns[i].innerHTML = "<small>" + i + "</small><span class=\"d\">" + on + "</span>";
     bitBtns[i].setAttribute("aria-pressed", on ? "true" : "false");
   }
 
@@ -387,8 +396,8 @@ function render(source) {
     $("eF").innerHTML = `× 2<sup>${exp}−${F.bias}</sup>`;
     $("mF").innerHTML = `× 1.${fracBits(frac)}<sub>2</sub>`;
   }
-  $("eEnc").innerHTML = exp + stepper("e", "exponent");
-  $("mEnc").innerHTML = frac + stepper("m", "mantissa");
+  $("eEnc").innerHTML = stepper("e", "exponent", exp);
+  $("mEnc").innerHTML = stepper("m", "mantissa", frac);
 
   // stored / error
   const ex = exactOf(bits);
