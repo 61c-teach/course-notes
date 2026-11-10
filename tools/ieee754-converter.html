@@ -5,6 +5,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IEEE 754 Converter</title>
+<script>
+// Inside the course notes page, hide our navbar and grow the iframe to fit (same origin).
+try { if (window.frameElement) document.documentElement.classList.add("embedded"); } catch (e) {}
+</script>
 <style>
 /* UC Berkeley brand palette (brand.berkeley.edu/visual-identity/colors).
    Field colors: California Gold / Berkeley Blue / Blue Light. Checked for protan, deutan and
@@ -30,7 +34,13 @@ code { font-family: var(--mono); font-size: 0.92em; }
 
 .navbar { background: var(--navbar); color: var(--navbar-text); border-bottom: 4px solid var(--california-gold); }
 .navbar .inner { max-width: 1000px; margin: 0 auto; padding: 10px 16px; }
+.navbar .inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .navbar .brand { font-weight: 600; font-size: 17px; }
+.navbar a { color: var(--navbar-text); text-decoration: none; font-size: 14px; }
+.navbar a:hover, .navbar a:focus-visible { text-decoration: underline; }
+/* Embedded in the course notes page (iframe): the book's own header replaces ours. */
+html.embedded .navbar { display: none; }
+html.embedded main { padding-top: 4px; padding-bottom: 8px; }
 
 main { max-width: 1000px; margin: 0 auto; padding: 24px 16px 48px; }
 .titlebar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; }
@@ -130,7 +140,7 @@ main > p.note { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(-
 </style>
 </head>
 <body>
-<nav class="navbar"><div class="inner"><span class="brand">Float Converter</span></div></nav>
+<nav class="navbar"><div class="inner"><span class="brand">Float Converter</span><a href="https://notes.cs61c.org/">&larr; CS 61C Course Notes</a></div></nav>
 <main>
   <div class="titlebar">
     <h1 id="title">IEEE 754 Single-Precision Converter</h1>
@@ -497,6 +507,21 @@ $("layout").addEventListener("click", e => {
 document.querySelectorAll(".prec input").forEach(r => r.addEventListener("change", () => setPrecision(r.value)));
 
 setPrecision(location.hash === "#double" ? "double" : "single");
+
+/* ---------- size the iframe to the content when embedded ---------- */
+(() => {
+  let frame = null;
+  try { frame = window.frameElement; } catch (e) { return; }
+  if (!frame) return;
+  frame.setAttribute("scrolling", "no");
+  // MyST wraps iframes in a fixed aspect-ratio box; let height follow our content instead.
+  const box = frame.parentElement;
+  if (box && box.style.paddingBottom) { box.style.paddingBottom = "0"; box.style.height = "auto"; }
+  frame.style.position = "static";
+  const fit = () => { frame.style.height = document.documentElement.scrollHeight + "px"; };
+  new ResizeObserver(fit).observe(document.body);
+  fit();
+})();
 </script>
 </body>
 </html>

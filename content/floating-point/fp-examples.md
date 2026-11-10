@@ -19,7 +19,7 @@ title: "3.3 Normalized Numbers: Practice"
 
 In this course, we will expect that you should be able to translate between a number's IEEE 754 Floating Point format and their decimal representation. We give some examples below.
 
-In practice, you can and should use floating point converters. [Our interactive converter](converter.html) is a great tool that you can and should use to explore numbers beyond those discussed below!
+In practice, you can and should use floating point converters. [Our interactive converter](../../tools/ieee754-converter.md) is a great tool that you can and should use to explore numbers beyond those discussed below!
 
 ## Example 1: Floating Point to Decimal
 
