@@ -40,7 +40,7 @@ P&H 3.5, 3.9
 
 ## Additional References
 
-* [IEEE 754 Converter](converter.html)
+* [IEEE 754 Converter](../../tools/ieee754-converter.md)
 
 ## Exercises
 Check your knowledge!

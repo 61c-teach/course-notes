@@ -167,7 +167,7 @@ This assumption for normalized numbers helps IEEE 754 single-precision pack more
 
 ## Use a Floating Point Converter
 
-Check out [our interactive converter](converter.html) for converting between decimal numbers and their IEEE 754 single- or double-precision floating point format.
+Check out [our interactive converter](../../tools/ieee754-converter.md) for converting between decimal numbers and their IEEE 754 single- or double-precision floating point format.
 
 
 (sec-double)=

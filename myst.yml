@@ -272,6 +272,9 @@ project:
       children:
         - file: content/misc/iec-prefixes.md
     - file: content/misc/rv32i-green-card.md
+    - title: "Tools"
+      children:
+        - file: tools/ieee754-converter.md
     - file: content/reference.md
     
 site:
