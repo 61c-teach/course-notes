@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="color-scheme" content="light">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IEEE 754 Converter</title>
+<style>
+/* UC Berkeley brand palette (brand.berkeley.edu/visual-identity/colors).
+   Field colors: California Gold / Berkeley Blue / Blue Light. Checked for protan, deutan and
+   tritan color blindness (Machado 2009 simulation, same idea as Color Oracle): every pair stays
+   >= 60 dE apart. All text meets WCAG AA 4.5:1; focus rings and input borders meet 3:1.
+   Bit state never relies on fill alone: each bit shows its 0/1 digit. */
+:root {
+  --berkeley-blue: #002676; --california-gold: #FDB515; --blue-light: #9FD1FF; --blue-medium: #004AAE;
+  --page: #FFFFFF; --bg: #F2F2F2; --text: #181A1B; --muted: #5f6368; --border: #d9dde1;
+  --navbar: var(--berkeley-blue); --navbar-text: #FFFFFF; --link: var(--blue-medium);
+  --sign: var(--california-gold); --sign-on: var(--berkeley-blue);
+  --exp: var(--berkeley-blue);    --exp-on: #FFFFFF;
+  --man: var(--blue-light);       --man-on: var(--berkeley-blue);
+  --warn: #8a5300; --ok: var(--berkeley-blue); --err: #770747; --exact: #00553A;
+  --bw: 22px;   /* bit cell width; narrower in double precision */
+  --mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text);
+  font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+a { color: var(--link); }
+code { font-family: var(--mono); font-size: 0.92em; }
+
+.navbar { background: var(--navbar); color: var(--navbar-text); border-bottom: 4px solid var(--california-gold); }
+.navbar .inner { max-width: 1000px; margin: 0 auto; padding: 10px 16px; }
+.navbar .brand { font-weight: 600; font-size: 17px; }
+
+main { max-width: 1000px; margin: 0 auto; padding: 24px 16px 48px; }
+.titlebar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; }
+h1 { font-size: 24px; font-weight: 600; margin: 0; }
+.panel h2 { font-size: 17px; font-weight: 600; margin: 28px 0 10px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+.panel h2 .hint { font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 8px; }
+
+/* precision toggle: segmented radio group */
+.prec { display: inline-flex; border: 1px solid var(--berkeley-blue); }
+.prec label { position: relative; padding: 4px 14px; font-size: 14px; cursor: pointer; color: var(--berkeley-blue); }
+.prec label + label { border-left: 1px solid var(--berkeley-blue); }
+.prec input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.prec label:has(input:checked) { background: var(--berkeley-blue); color: #fff; }
+.prec label:has(input:focus-visible) { outline: 2px solid var(--berkeley-blue); outline-offset: 2px; }
+
+/* one grid for bits, field table and formula, so the three fields line up in columns */
+/* outer grid owns the columns; the table uses them via subgrid */
+.fieldgrid { display: grid;
+  grid-template-columns: minmax(min-content, 104px) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, 1fr); }
+.layout { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; border: 1px solid var(--border); font-size: 14px; }
+.layout > div { padding: 7px 10px; border-bottom: 1px solid var(--border); overflow-wrap: break-word; }
+.layout #mVal, .layout #mF, .layout #mEnc { overflow-wrap: anywhere; }
+.layout > div:not(.rl) { border-left: 1px solid var(--border); }
+.layout > div.last { border-bottom: none; }
+.layout .rl { font-weight: 600; background: var(--bg); overflow-wrap: normal; }
+.layout .corner { background: var(--bg); }
+.layout .h { font-weight: 600; }
+.layout .h.s { background: var(--sign); color: var(--sign-on); }
+.layout .h.e { background: var(--exp);  color: var(--exp-on); }
+.layout .h.m { background: var(--man);  color: var(--man-on); }
+.layout .h small { font-weight: 400; margin-left: 4px; }
+.layout .v { font-family: var(--mono); }
+.layout .bitcell { padding: 8px 10px; }
+
+/* bit strip: ruled cells, filled with the field color when 1 */
+/* --bw (bit width) and --mw (mantissa bits per row) are set by fitBits() to fit the window */
+.group { display: flex; }
+.group.m { flex-wrap: wrap; width: calc(var(--mw, 23) * (var(--bw) - 1px) + 1px); }
+/* each bit: its index on top, then the box holding the 0/1 digit */
+.bit { width: var(--bw); flex: none; margin: 0 -1px 0 0; border: 0; padding: 0; background: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; font: 600 14px var(--mono); color: var(--muted); }
+.bit small { font-size: 9px; font-weight: 400; line-height: 1; padding-bottom: 3px; color: var(--muted); }
+.bit .d { width: 100%; height: 30px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); background: var(--page); }
+.group .bit:last-child { margin-right: 0; }
+.group.s .bit.on .d { background: var(--sign); color: var(--sign-on); border-color: var(--sign); }
+.group.e .bit.on .d { background: var(--exp);  color: var(--exp-on);  border-color: var(--exp); }
+.group.m .bit.on .d { background: var(--man);  color: var(--man-on);  border-color: var(--man); }
+.bit:hover, .bit:focus-visible { position: relative; z-index: 1; }
+.group .bit:not(.on):hover .d { color: var(--text); }
+.group .bit:hover .d, .group .bit.on:hover .d { border-color: var(--text); }
+.bit:focus-visible { outline: 2px solid var(--text); outline-offset: 1px; }
+.double .bit { font-size: 12px; }
+/* thin bits: drop the bit index and shrink the digit */
+.tight .bit { font-size: 11px; }
+.tight .bit .d { height: 26px; }
+.tight .bit small { display: none; }
+
+/* − value + stepper for the exponent and mantissa encodings */
+.step { display: inline-flex; align-items: stretch; max-width: 100%; border: 1px solid var(--muted); vertical-align: middle; }
+.step button { font: 14px var(--mono); border: 0; background: var(--bg); color: var(--text); border-radius: 0;
+  padding: 0 9px; cursor: pointer; }
+.step button:hover { background: var(--border); }
+.step button:focus-visible { outline: 2px solid var(--blue-medium); outline-offset: -2px; }
+.step .val { padding: 1px 10px; min-width: 4ch; text-align: center; overflow-wrap: anywhere;
+  border-left: 1px solid var(--muted); border-right: 1px solid var(--muted); background: var(--page); }
+
+
+/* conversion: label / value rows */
+.io { display: grid; grid-template-columns: 220px 1fr; gap: 8px 14px; align-items: center; }
+.io label { font-size: 14px; }
+.io input { width: 100%; font: 15px var(--mono); padding: 6px 8px; border: 1px solid var(--muted); border-radius: 0;
+  background: var(--page); color: var(--text); }
+.io input:focus { outline: 2px solid var(--blue-medium); outline-offset: -1px; }
+.io input.bad { border-color: var(--err); outline-color: var(--err); }
+.io .out { font-family: var(--mono); padding: 6px 8px; background: var(--bg); border: 1px solid var(--border); overflow-wrap: anywhere; min-height: 37px; }
+.status { font-size: 14px; margin-top: 10px; }
+.status.ok { color: var(--ok); } .status.exact { color: var(--exact); } .status.warn { color: var(--warn); } .status.err { color: var(--err); }
+
+.examples { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.examples button { font: 14px var(--mono); border: 0; background: none; color: var(--link); padding: 0;
+  cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.examples button:hover { text-decoration-thickness: 2px; }
+.note { color: var(--muted); font-size: 13px; }
+main > p.note { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(--border); }
+
+/* narrow screens: same columns, just tighter */
+@media (max-width: 760px) {
+  .layout { font-size: 12px; }
+  .layout > div, .layout .bitcell { padding: 5px 6px; }
+  .layout .h small { display: none; }
+  .step button { padding: 0 5px; font-size: 12px; }
+  .step .val { padding: 1px 5px; min-width: 0; }
+  .io { grid-template-columns: 1fr; gap: 2px; }
+  .io label { margin-top: 8px; }
+}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="inner"><span class="brand">Float Converter</span></div></nav>
+<main>
+  <div class="titlebar">
+    <h1 id="title">IEEE 754 Single-Precision Converter</h1>
+    <div class="prec" role="radiogroup" aria-label="Precision">
+      <label><input type="radio" name="prec" value="single" checked>Single (32-bit)</label>
+      <label><input type="radio" name="prec" value="double">Double (64-bit)</label>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Bit pattern and fields <span class="hint">Click any bit to flip it between 0 and 1</span></h2>
+    <div class="fieldgrid" id="fg">
+    <div class="layout" id="layout">
+      <div class="corner" style="--o:0"></div>
+      <div class="h s" style="--o:10">Sign</div>
+      <div class="h e" style="--o:20">Exponent</div>
+      <div class="h m" style="--o:30">Mantissa</div>
+
+      <div class="rl">Bits</div>
+      <div class="bitcell cell" data-l="Bits" style="--o:11"><div class="group s" id="gS"></div></div>
+      <div class="bitcell cell" data-l="Bits" style="--o:21"><div class="group e" id="gE"></div></div>
+      <div class="bitcell cell" data-l="Bits" style="--o:31"><div class="group m" id="gM"></div></div>
+
+      <div class="rl">Value</div>
+      <div class="v cell" data-l="Value" style="--o:12" id="sVal"></div>
+      <div class="v cell" data-l="Value" style="--o:22" id="eVal"></div>
+      <div class="v cell" data-l="Value" style="--o:32" id="mVal"></div>
+
+      <div class="rl">Encoded as</div>
+      <div class="v cell" data-l="Encoded as" style="--o:13" id="sEnc"></div>
+      <div class="v cell" data-l="Encoded as" style="--o:23" id="eEnc"></div>
+      <div class="v cell" data-l="Encoded as" style="--o:33" id="mEnc"></div>
+
+      <div class="rl last">Formula</div>
+      <div class="v cell last" data-l="Formula" style="--o:14" id="sF"></div>
+      <div class="v cell last" data-l="Formula" style="--o:24" id="eF"></div>
+      <div class="v cell last" data-l="Formula" style="--o:34" id="mF"></div>
+    </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Conversion</h2>
+    <div class="io">
+      <label for="dec">Decimal input</label>
+      <input id="dec" spellcheck="false" autocomplete="off" value="0.1">
+      <label>Value actually stored</label>
+      <div class="out" id="stored"></div>
+      <label>Error due to conversion</label>
+      <div class="out" id="error"></div>
+      <label for="bin">Binary representation</label>
+      <input id="bin" spellcheck="false" autocomplete="off">
+      <label for="hex">Hexadecimal representation</label>
+      <input id="hex" spellcheck="false" autocomplete="off">
+    </div>
+    <div class="status" id="status"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Examples</h2>
+    <div class="examples" id="examples"></div>
+  </section>
+
+  <p class="note" id="footnote"></p>
+</main>
+
+<script>
+"use strict";
+const B = BigInt;
+
+/* ---------- formats ---------- */
+const FORMATS = {
+  single: { name: "Single", N: 32, E: 8, M: 23, bw: 22, mantRow: 23, maxMag: 40,
+    examples: ["0.1", "1", "-2.5", "3.14159", "16777217", "3.4028235e38", "1e39", "1.17549435e-38", "1.4e-45", "1e-46", "-0", "inf", "nan"] },
+  double: { name: "Double", N: 64, E: 11, M: 52, bw: 20, mantRow: 26, maxMag: 310,
+    examples: ["0.1", "1", "-2.5", "3.14159", "9007199254740993", "1.7976931348623157e308", "1e309", "2.2250738585072014e-308", "4.9e-324", "1e-325", "-0", "inf", "nan"] },
+};
+let F;                   // current format, extended with derived constants below
+let bits = 0n;           // current bit pattern (BigInt, F.N bits)
+let input = null;        // last typed decimal as {neg, p, a} meaning p / 10^a, or null
+
+function useFormat(key) {
+  const f = FORMATS[key];
+  F = Object.assign({ key }, f, {
+    bias: (1 << (f.E - 1)) - 1,
+    emax: (1 << f.E) - 1,
+    mask: (1n << B(f.M)) - 1n,
+    hidden: 1n << B(f.M),
+  });
+  F.emin = 1 - F.bias;
+}
+
+/* ---------- exact arithmetic helpers ---------- */
+const pow10 = n => 10n ** B(n);
+const bitLen = x => x === 0n ? 0 : x.toString(2).length;
+const minus = n => n < 0 ? "−" + (-n) : "" + n;
+
+function decStr(neg, n, scale) {          // n / 10^scale  as a decimal string
+  let s = n.toString();
+  if (scale > 0) {
+    if (s.length <= scale) s = "0".repeat(scale - s.length + 1) + s;
+    const i = s.length - scale;
+    const frac = s.slice(i).replace(/0+$/, "");
+    s = s.slice(0, i) + (frac ? "." + frac : "");
+  }
+  return (neg && n !== 0n ? "-" : "") + s;
+}
+
+function decode(b) {
+  return { sign: Number(b >> B(F.N - 1)) & 1, exp: Number((b >> B(F.M)) & B(F.emax)), frac: b & F.mask };
+}
+function encode(sign, exp, frac) {
+  return (B(sign) << B(F.N - 1)) | (B(exp) << B(F.M)) | frac;
+}
+
+function exactOf(b) {                      // exact decimal value of a finite float
+  const { sign, exp, frac } = decode(b);
+  if (exp === F.emax) return null;
+  let M, e;
+  if (exp === 0) { M = frac; e = F.emin - F.M; } else { M = frac | F.hidden; e = exp - F.bias - F.M; }
+  if (e >= 0) return { neg: !!sign, n: M << B(e), scale: 0 };
+  return { neg: !!sign, n: M * 5n ** B(-e), scale: -e };
+}
+
+/* ---------- parsing ---------- */
+function parseDecimal(raw) {
+  const s = raw.trim().replace(/[\s_]/g, "");
+  let m = /^([+-]?)(inf|infinity|nan)$/i.exec(s);
+  if (m) return m[2].toLowerCase() === "nan" ? { kind: "nan" } : { kind: "inf", neg: m[1] === "-" };
+  m = /^([+-]?)(\d*)(?:\.(\d*))?(?:e([+-]?\d+))?$/i.exec(s);
+  if (!m || (m[2] === "" && !m[3])) return null;
+  const neg = m[1] === "-";
+  let digits = (m[2] + (m[3] || "")).replace(/^0+/, "");
+  let exp10 = parseInt(m[4] || "0", 10) - (m[3] || "").length;
+  if (!digits) return { kind: "zero", neg, exact: true };
+  const tz = digits.match(/0*$/)[0].length;
+  digits = digits.slice(0, digits.length - tz); exp10 += tz;
+  const mag = digits.length + exp10;       // value lies in [10^(mag-1), 10^mag)
+  if (mag > F.maxMag) return { kind: "inf", neg, overflow: true };
+  if (mag < -400) return { kind: "zero", neg, underflow: true };
+  const D = B(digits);
+  return exp10 >= 0 ? { kind: "num", neg, p: D * pow10(exp10), a: 0 }
+                    : { kind: "num", neg, p: D, a: -exp10 };
+}
+
+/* compare p/q with 2^e */
+function cmpPow(p, q, e) {
+  const L = e >= 0 ? p : p << B(-e), R = e >= 0 ? q << B(e) : q;
+  return L < R ? -1 : L > R ? 1 : 0;
+}
+
+/* exact round-to-nearest-even of p/q into the current format's bits */
+function roundToFloat(neg, p, q) {
+  const signBit = neg ? 1n << B(F.N - 1) : 0n;
+  if (p === 0n) return signBit;
+  let e = bitLen(p) - bitLen(q);
+  if (cmpPow(p, q, e) < 0) e--;
+  if (e < F.emin) e = F.emin;
+  const sh = F.M - e;
+  let num = p, den = q;
+  if (sh >= 0) num = p << B(sh); else den = q << B(-sh);
+  let m = num / den;
+  const twice = 2n * (num - m * den);
+  if (twice > den || (twice === den && (m & 1n))) m++;
+  if (m === F.hidden << 1n) { m >>= 1n; e++; }
+  let v;
+  if (e > F.bias) v = B(F.emax) << B(F.M);                    // overflow to infinity
+  else if (m < F.hidden) v = m;                               // subnormal or zero
+  else v = (B(e + F.bias) << B(F.M)) | (m & F.mask);
+  return signBit | v;
+}
+
+/* ---------- UI ---------- */
+const $ = id => document.getElementById(id);
+let bitBtns = [];
+
+function buildBits() {
+  bitBtns = [];
+  const groups = [["gS", F.N - 1, F.N - 1], ["gE", F.N - 2, F.M], ["gM", F.M - 1, 0]];
+  for (const [id, hi, lo] of groups) {
+    const g = $(id);
+    g.innerHTML = "";
+    for (let i = hi; i >= lo; i--) {
+      const b = document.createElement("button");
+      b.className = "bit"; b.type = "button";
+      b.title = "bit " + i;
+      b.setAttribute("aria-label", "bit " + i);
+      b.onclick = () => { bits ^= 1n << B(i); input = null; render("bits"); setStatus("", ""); };
+      g.appendChild(b);
+      bitBtns[i] = b;
+    }
+  }
+  document.documentElement.classList.toggle("double", F.key === "double");
+}
+
+/* Keep the column structure at every width: try the widest bits first, and for each bit width
+   try fewer mantissa rows first, until the grid fits inside its container. */
+function fitBits() {
+  const fg = $("fg"), root = document.documentElement;
+  const rows = F.key === "double" ? [2, 3, 4] : [1, 2, 3];
+  for (let bw = F.bw; bw >= 8; bw--) {
+    root.style.setProperty("--bw", bw + "px");
+    root.classList.toggle("tight", bw < 16);
+    for (const r of rows) {
+      $("gM").style.setProperty("--mw", Math.ceil(F.M / r));
+      if ($("layout").offsetWidth <= fg.clientWidth) return;   // table spans every column track
+    }
+  }
+}
+let fitPending = false;
+new ResizeObserver(() => {
+  if (fitPending) return;
+  fitPending = true;
+  requestAnimationFrame(() => { fitPending = false; if (F) fitBits(); });
+}).observe(document.querySelector("main"));
+
+function stepper(field, label, value) {
+  return `<span class="step"><button type="button" data-f="${field}" data-d="-1" aria-label="${label} minus 1">−</button>` +
+         `<span class="val">${value}</span>` +
+         `<button type="button" data-f="${field}" data-d="1" aria-label="${label} plus 1">+</button></span>`;
+}
+
+function setField(field, delta) {
+  let { sign, exp, frac } = decode(bits);
+  if (field === "e") exp = (exp + delta + F.emax + 1) % (F.emax + 1);
+  if (field === "m") frac = (frac + B(delta) + F.hidden) & F.mask;
+  bits = encode(sign, exp, frac);
+  input = null;
+  render("bits");
+}
+
+function fracBits(frac) {
+  return frac.toString(2).padStart(F.M, "0").replace(/0+$/, "") || "0";
+}
+
+function render(source) {
+  const { sign, exp, frac } = decode(bits);
+
+  for (let i = 0; i < F.N; i++) {
+    const on = Number((bits >> B(i)) & 1n);
+    bitBtns[i].classList.toggle("on", !!on);
+    bitBtns[i].innerHTML = "<small>" + i + "</small><span class=\"d\">" + on + "</span>";
+    bitBtns[i].setAttribute("aria-pressed", on ? "true" : "false");
+  }
+
+  // field values, one column per field
+  $("sVal").textContent = sign ? "−1" : "+1";
+  $("sEnc").textContent = sign;
+  $("sF").innerHTML = `(−1)<sup>${sign}</sup>`;
+  if (exp === F.emax) {
+    $("eVal").textContent = "special (all 1s)";
+    $("mVal").textContent = frac === 0n ? "0 → Infinity" : "≠ 0 → NaN";
+    $("eF").textContent = "all 1s";
+    $("mF").textContent = frac === 0n ? (sign ? "= −∞" : "= +∞") : "= NaN";
+  } else if (exp === 0) {
+    $("eVal").innerHTML = `2<sup>${minus(F.emin)}</sup> (subnormal)`;
+    $("mVal").textContent = decStr(false, frac * 5n ** B(F.M), F.M) || "0";
+    $("eF").innerHTML = `× 2<sup>1−${F.bias}</sup>`;
+    $("mF").innerHTML = `× 0.${fracBits(frac)}<sub>2</sub>`;
+  } else {
+    $("eVal").innerHTML = `2<sup>${minus(exp - F.bias)}</sup>`;
+    $("mVal").textContent = decStr(false, (frac + F.hidden) * 5n ** B(F.M), F.M);
+    $("eF").innerHTML = `× 2<sup>${exp}−${F.bias}</sup>`;
+    $("mF").innerHTML = `× 1.${fracBits(frac)}<sub>2</sub>`;
+  }
+  $("eEnc").innerHTML = stepper("e", "exponent", exp);
+  $("mEnc").innerHTML = stepper("m", "mantissa", frac);
+
+  // stored / error
+  const ex = exactOf(bits);
+  $("stored").textContent = ex
+    ? (ex.n === 0n ? (ex.neg ? "-0" : "0") : decStr(ex.neg, ex.n, ex.scale))
+    : (frac ? "NaN" : (sign ? "-Infinity" : "Infinity"));
+
+  if (input && ex) {
+    const S = Math.max(input.a, ex.scale);
+    const iv = (input.neg ? -1n : 1n) * input.p * pow10(S - input.a);
+    const sv = (ex.neg ? -1n : 1n) * ex.n * pow10(S - ex.scale);
+    const d = iv - sv;
+    $("error").textContent = d === 0n ? "0" : decStr(d < 0n, d < 0n ? -d : d, S);
+  } else if (input && !ex) {
+    $("error").textContent = "n/a (overflowed to Infinity)";
+  } else {
+    $("error").textContent = ex ? "0" : "n/a";
+  }
+
+  // sync text fields (not the one being typed in)
+  const binStr = bits.toString(2).padStart(F.N, "0");
+  if (source !== "bin") $("bin").value = binStr[0] + " " + binStr.slice(1, 1 + F.E) + " " + binStr.slice(1 + F.E);
+  if (source !== "hex") $("hex").value = "0x" + bits.toString(16).padStart(F.N / 4, "0");
+  if (source !== "dec") $("dec").value = $("stored").textContent;
+  ["dec", "bin", "hex"].forEach(id => $(id).classList.remove("bad"));
+}
+
+function setStatus(msg, cls) { const s = $("status"); s.textContent = msg; s.className = "status " + (cls || ""); }
+
+function fromDecimal(str) {
+  const r = parseDecimal(str);
+  const fmt = F.key;
+  if (!r) { $("dec").classList.add("bad"); setStatus("Couldn't parse that as a decimal number.", "err"); return; }
+  if (r.kind === "nan") {
+    bits = (B(F.emax) << B(F.M)) | (1n << B(F.M - 1)); input = null; render("dec");
+    setStatus(`NaN (quiet NaN, ${$("hex").value}).`, "ok"); return;
+  }
+  if (r.kind === "inf") {
+    bits = (r.neg ? 1n << B(F.N - 1) : 0n) | (B(F.emax) << B(F.M)); input = null; render("dec");
+    setStatus(r.overflow ? `Too large for ${fmt}, so it overflowed to Infinity.` : "Infinity.", r.overflow ? "warn" : "ok"); return;
+  }
+  if (r.kind === "zero") {
+    bits = r.neg ? 1n << B(F.N - 1) : 0n; input = r.underflow ? null : { neg: r.neg, p: 0n, a: 0 }; render("dec");
+    setStatus(r.underflow ? `Too small for ${fmt}, so it underflowed to zero.` : "Exactly representable.", r.underflow ? "warn" : "exact"); return;
+  }
+  bits = roundToFloat(r.neg, r.p, pow10(r.a));
+  input = r;
+  render("dec");
+  const { exp, frac } = decode(bits);
+  const err = $("error").textContent;
+  if (exp === F.emax) setStatus(`Too large for ${fmt}, so it overflowed to Infinity.`, "warn");
+  else if (exp === 0 && frac === 0n) setStatus(`Too small for ${fmt}, so it underflowed to zero.`, "warn");
+  else if (err === "0") setStatus("Exactly representable" + (exp === 0 ? " (subnormal)." : "."), "exact");
+  else setStatus("Not exactly representable, rounded to the nearest float" + (exp === 0 ? " (subnormal, so precision is reduced)." : "."), "warn");
+}
+
+function setPrecision(key) {
+  // carry the current number across: the typed input if there is one, else the stored value
+  const carry = $("dec").value;
+  useFormat(key);
+  document.querySelector(`.prec input[value="${key}"]`).checked = true;
+  try { history.replaceState(null, "", key === "double" ? "#double" : location.pathname + location.search); } catch (e) {}
+  $("title").textContent = `IEEE 754 ${F.name}-Precision Converter`;
+  $("footnote").innerHTML = "Rounding mode is round-to-nearest, ties-to-even. Accepts forms like <code>3.14</code>, " +
+    "<code>-1.5e-7</code>, <code>inf</code>, <code>nan</code>, hex <code>0x" + (F.N === 32 ? "3dcccccd" : "3fb999999999999a") +
+    "</code>, and " + F.N + "-bit binary (spaces are fine).";
+  const exWrap = $("examples");
+  exWrap.innerHTML = "";
+  for (const x of F.examples) {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = x;
+    b.onclick = () => { $("dec").value = x; fromDecimal(x); };
+    exWrap.appendChild(b);
+  }
+  buildBits();
+  $("dec").value = carry;
+  fromDecimal(carry);
+  fitBits();
+}
+
+$("dec").addEventListener("input", e => fromDecimal(e.target.value));
+$("hex").addEventListener("input", e => {
+  const s = e.target.value.trim().replace(/^0x/i, "").replace(/[\s_]/g, "");
+  const n = F.N / 4;
+  if (!new RegExp(`^[0-9a-f]{1,${n}}$`, "i").test(s)) { e.target.classList.add("bad"); setStatus(`Hex needs 1 to ${n} hex digits.`, "err"); return; }
+  bits = B("0x" + s); input = null; render("hex"); setStatus("Set from hex.", "ok");
+});
+$("bin").addEventListener("input", e => {
+  const s = e.target.value.replace(/^0b/i, "").replace(/[\s_]/g, "");
+  if (!new RegExp(`^[01]{1,${F.N}}$`).test(s)) { e.target.classList.add("bad"); setStatus(`Binary needs 1 to ${F.N} bits (0/1).`, "err"); return; }
+  bits = B("0b" + s); input = null; render("bin"); setStatus("Set from binary.", "ok");
+});
+$("layout").addEventListener("click", e => {
+  const b = e.target.closest("button[data-f]");
+  if (b) { setField(b.dataset.f, +b.dataset.d); setStatus("", ""); }
+});
+document.querySelectorAll(".prec input").forEach(r => r.addEventListener("change", () => setPrecision(r.value)));
+
+setPrecision(location.hash === "#double" ? "double" : "single");
+</script>
+</body>
+</html>
