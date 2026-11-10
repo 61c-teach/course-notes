@@ -68,7 +68,7 @@ h1 { font-size: 24px; font-weight: 600; margin: 0; }
 /* bit strip: ruled cells, filled with the field color when 1 */
 /* --bw (bit width) and --mw (mantissa bits per row) are set by fitBits() to fit the window */
 .group { display: flex; }
-.group.m { flex-wrap: wrap; width: calc(var(--mw, 23) * (var(--bw) - 1px) + 1px); }
+.group.m { flex-wrap: wrap; row-gap: 8px; width: calc(var(--mw, 23) * (var(--bw) - 1px) + 1px); }
 /* each bit: its index on top, then the box holding the 0/1 digit */
 .bit { width: var(--bw); flex: none; margin: 0 -1px 0 0; border: 0; padding: 0; background: none; cursor: pointer;
   display: flex; flex-direction: column; align-items: center; font: 600 14px var(--mono); color: var(--muted); }
