@@ -473,7 +473,8 @@ function setPrecision(key) {
   $("title").textContent = `IEEE 754 ${F.name}-Precision Converter`;
   $("footnote").innerHTML = "Rounding mode is round-to-nearest, ties-to-even. Accepts forms like <code>3.14</code>, " +
     "<code>-1.5e-7</code>, <code>inf</code>, <code>nan</code>, hex <code>0x" + (F.N === 32 ? "3dcccccd" : "3fb999999999999a") +
-    "</code>, and " + F.N + "-bit binary (spaces are fine).";
+    "</code>, and " + F.N + "-bit binary (spaces are fine).<br>" +
+    "Based on the h-schmidt.net <a href=\"https://www.h-schmidt.net/FloatConverter/IEEE754.html\" target=\"_blank\" rel=\"noopener\">IEEE-754 Floating Point Converter</a>.";
   const exWrap = $("examples");
   exWrap.innerHTML = "";
   for (const x of F.examples) {
