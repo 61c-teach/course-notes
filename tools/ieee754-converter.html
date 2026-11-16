@@ -99,14 +99,24 @@ h1 { font-size: 24px; font-weight: 600; margin: 0; }
 .tight .bit .d { height: 26px; }
 .tight .bit small { display: none; }
 
-/* − value + stepper for the exponent and mantissa encodings */
-.step { display: inline-flex; align-items: stretch; max-width: 100%; border: 1px solid var(--muted); vertical-align: middle; }
-.step button { font: 14px var(--mono); border: 0; background: var(--bg); color: var(--text); border-radius: 0;
-  padding: 0 9px; cursor: pointer; }
-.step button:hover { background: var(--border); }
-.step button:focus-visible { outline: 2px solid var(--blue-medium); outline-offset: -2px; }
-.step .val { padding: 1px 10px; min-width: 4ch; text-align: center; overflow-wrap: anywhere;
-  border-left: 1px solid var(--muted); border-right: 1px solid var(--muted); background: var(--page); }
+/* previous / next float: one centered pair between the bit table and the conversion */
+.stepper { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
+.stepper button { font: 14px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; padding: 5px 16px; cursor: pointer;
+  border: 1px solid var(--berkeley-blue); border-radius: 0; background: var(--page); color: var(--berkeley-blue); }
+.stepper button:hover:not(:disabled) { background: var(--berkeley-blue); color: #fff; }
+.stepper button:focus-visible { outline: 2px solid var(--berkeley-blue); outline-offset: 2px; }
+.stepper button:disabled { border-color: var(--border); color: var(--muted); cursor: default; }
+
+/* "?" help: tooltip on hover or keyboard focus */
+.help { position: relative; display: inline-block; vertical-align: middle; margin-left: 6px; }
+.help > button { width: 18px; height: 18px; padding: 0; border-radius: 50%; border: 1px solid var(--muted);
+  background: var(--page); color: var(--muted); font: 600 11px/16px system-ui, sans-serif; cursor: help; }
+.help > button:hover, .help > button:focus-visible { border-color: var(--berkeley-blue); color: var(--berkeley-blue); }
+.help > button:focus-visible { outline: 2px solid var(--berkeley-blue); outline-offset: 1px; }
+.help .tip { display: none; position: absolute; z-index: 10; left: -8px; top: calc(100% + 6px);
+  width: max-content; max-width: min(340px, calc(100vw - 40px)); padding: 8px 10px;
+  background: var(--berkeley-blue); color: #fff; font-size: 13px; font-weight: 400; line-height: 1.45; text-align: left; }
+.help:hover .tip, .help:focus-within .tip { display: block; }
 
 
 /* conversion: label / value rows */
@@ -132,8 +142,6 @@ main > p.note { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(-
   .layout { font-size: 12px; }
   .layout > div, .layout .bitcell { padding: 5px 6px; }
   .layout .h small { display: none; }
-  .step button { padding: 0 5px; font-size: 12px; }
-  .step .val { padding: 1px 5px; min-width: 0; }
   .io { grid-template-columns: 1fr; gap: 2px; }
   .io label { margin-top: 8px; }
 }
@@ -143,7 +151,7 @@ main > p.note { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(-
 <nav class="navbar"><div class="inner"><span class="brand">Float Converter</span><a href="https://notes.cs61c.org/">&larr; CS 61C Course Notes</a></div></nav>
 <main>
   <div class="titlebar">
-    <h1 id="title">IEEE 754 Single-Precision Converter</h1>
+    <h1>IEEE 754 Floating Point Converter</h1>
     <div class="prec" role="radiogroup" aria-label="Precision">
       <label><input type="radio" name="prec" value="single" checked>Single (32-bit)</label>
       <label><input type="radio" name="prec" value="double">Double (64-bit)</label>
@@ -151,7 +159,7 @@ main > p.note { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(-
   </div>
 
   <section class="panel">
-    <h2>Bit pattern and fields <span class="hint">Click any bit to flip it between 0 and 1</span></h2>
+    <h2>Bit pattern and fields<span class="help"><button type="button" aria-label="Help: bit pattern and fields" aria-describedby="tipBits">?</button><span class="tip" role="tooltip" id="tipBits">Click any bit to flip it between 0 and 1. The other fields will be updated immediately.</span></span></h2>
     <div class="fieldgrid" id="fg">
     <div class="layout" id="layout">
       <div class="corner" style="--o:0"></div>
@@ -180,20 +188,24 @@ main > p.note { margin-top: 28px; padding-top: 10px; border-top: 1px solid var(-
       <div class="v cell last" data-l="Formula" style="--o:34" id="mF"></div>
     </div>
     </div>
+    <div class="stepper">
+      <button type="button" id="prev">− Previous float</button>
+      <button type="button" id="next">Next float +</button>
+    </div>
   </section>
 
   <section class="panel">
-    <h2>Conversion</h2>
+    <h2>Conversion<span class="help"><button type="button" aria-label="Help: conversion" aria-describedby="tipConv">?</button><span class="tip" role="tooltip" id="tipConv">Enter a binary number, a hex number or the decimal representation into the corresponding text field. The bit pattern will be updated immediately. You can also enter the words <code>inf</code>, <code>-inf</code> or <code>nan</code> to get the corresponding special values for IEEE 754. Note there are two kinds of zero: +0 and −0.</span></span></h2>
     <div class="io">
       <label for="dec">Decimal input</label>
       <input id="dec" spellcheck="false" autocomplete="off" value="0.1">
       <label>Value actually stored</label>
       <div class="out" id="stored"></div>
-      <label>Error due to conversion</label>
+      <label>Error due to conversion<span class="help"><button type="button" aria-label="Help: error due to conversion" aria-describedby="tipErr">?</button><span class="tip" role="tooltip" id="tipErr">Not every decimal number can be expressed exactly as a floating point number. Rounding mode is round-to-nearest, ties-to-even.</span></span></label>
       <div class="out" id="error"></div>
       <label for="bin">Binary representation</label>
       <input id="bin" spellcheck="false" autocomplete="off">
-      <label for="hex">Hexadecimal representation</label>
+      <label for="hex">Hexadecimal representation<span class="help"><button type="button" aria-label="Help: hexadecimal representation" aria-describedby="tipHex">?</button><span class="tip" role="tooltip" id="tipHex">The integer value of the bit string, printed as hex.</span></span></label>
       <input id="hex" spellcheck="false" autocomplete="off">
     </div>
     <div class="status" id="status"></div>
@@ -357,19 +369,21 @@ new ResizeObserver(() => {
   requestAnimationFrame(() => { fitPending = false; if (F) fitBits(); });
 }).observe(document.querySelector("main"));
 
-function stepper(field, label, value) {
-  return `<span class="step"><button type="button" data-f="${field}" data-d="-1" aria-label="${label} minus 1">−</button>` +
-         `<span class="val">${value}</span>` +
-         `<button type="button" data-f="${field}" data-d="1" aria-label="${label} plus 1">+</button></span>`;
+/* neighbouring float in value order (like C's nextafter): dir = +1 toward +Infinity, -1 toward -Infinity.
+   Returns null when there is no neighbour (NaN, or already at that infinity). */
+function neighbor(b, dir) {
+  const { sign, exp, frac } = decode(b);
+  if (exp === F.emax && frac !== 0n) return null;                  // NaN
+  if (exp === F.emax && (sign ? dir < 0 : dir > 0)) return null;   // already at ±Infinity
+  const signBit = 1n << B(F.N - 1), mag = b & (signBit - 1n);
+  if (mag === 0n) return dir > 0 ? 1n : signBit | 1n;              // ±0 → smallest float on that side
+  return (sign ? -dir : dir) > 0 ? b + 1n : b - 1n;                // away from / toward zero
 }
 
-function setField(field, delta) {
-  let { sign, exp, frac } = decode(bits);
-  if (field === "e") exp = (exp + delta + F.emax + 1) % (F.emax + 1);
-  if (field === "m") frac = (frac + B(delta) + F.hidden) & F.mask;
-  bits = encode(sign, exp, frac);
-  input = null;
-  render("bits");
+function step(dir) {
+  const nb = neighbor(bits, dir);
+  if (nb === null) return;
+  bits = nb; input = null; render("bits"); setStatus("", "");
 }
 
 function fracBits(frac) {
@@ -396,7 +410,7 @@ function render(source) {
     $("eF").textContent = "all 1s";
     $("mF").textContent = frac === 0n ? (sign ? "= −∞" : "= +∞") : "= NaN";
   } else if (exp === 0) {
-    $("eVal").innerHTML = `2<sup>${minus(F.emin)}</sup> (subnormal)`;
+    $("eVal").innerHTML = `2<sup>${minus(F.emin)}</sup>`;
     $("mVal").textContent = decStr(false, frac * 5n ** B(F.M), F.M) || "0";
     $("eF").innerHTML = `× 2<sup>1−${F.bias}</sup>`;
     $("mF").innerHTML = `× 0.${fracBits(frac)}<sub>2</sub>`;
@@ -406,8 +420,10 @@ function render(source) {
     $("eF").innerHTML = `× 2<sup>${exp}−${F.bias}</sup>`;
     $("mF").innerHTML = `× 1.${fracBits(frac)}<sub>2</sub>`;
   }
-  $("eEnc").innerHTML = stepper("e", "exponent", exp);
-  $("mEnc").innerHTML = stepper("m", "mantissa", frac);
+  $("eEnc").textContent = exp;
+  $("mEnc").textContent = frac;
+  $("prev").disabled = neighbor(bits, -1) === null;
+  $("next").disabled = neighbor(bits, 1) === null;
 
   // stored / error
   const ex = exactOf(bits);
@@ -451,7 +467,7 @@ function fromDecimal(str) {
   }
   if (r.kind === "zero") {
     bits = r.neg ? 1n << B(F.N - 1) : 0n; input = r.underflow ? null : { neg: r.neg, p: 0n, a: 0 }; render("dec");
-    setStatus(r.underflow ? `Too small for ${fmt}, so it underflowed to zero.` : "Exactly representable.", r.underflow ? "warn" : "exact"); return;
+    setStatus(r.underflow ? `Too small for ${fmt}, so it underflowed to zero.` : "", r.underflow ? "warn" : ""); return;
   }
   bits = roundToFloat(r.neg, r.p, pow10(r.a));
   input = r;
@@ -460,8 +476,8 @@ function fromDecimal(str) {
   const err = $("error").textContent;
   if (exp === F.emax) setStatus(`Too large for ${fmt}, so it overflowed to Infinity.`, "warn");
   else if (exp === 0 && frac === 0n) setStatus(`Too small for ${fmt}, so it underflowed to zero.`, "warn");
-  else if (err === "0") setStatus("Exactly representable" + (exp === 0 ? " (subnormal)." : "."), "exact");
-  else setStatus("Not exactly representable, rounded to the nearest float" + (exp === 0 ? " (subnormal, so precision is reduced)." : "."), "warn");
+  else if (err === "0") setStatus("", "");
+  else setStatus("Rounded to the nearest float.", "warn");
 }
 
 function setPrecision(key) {
@@ -470,11 +486,7 @@ function setPrecision(key) {
   useFormat(key);
   document.querySelector(`.prec input[value="${key}"]`).checked = true;
   try { history.replaceState(null, "", key === "double" ? "#double" : location.pathname + location.search); } catch (e) {}
-  $("title").textContent = `IEEE 754 ${F.name}-Precision Converter`;
-  $("footnote").innerHTML = "Rounding mode is round-to-nearest, ties-to-even. Accepts forms like <code>3.14</code>, " +
-    "<code>-1.5e-7</code>, <code>inf</code>, <code>nan</code>, hex <code>0x" + (F.N === 32 ? "3dcccccd" : "3fb999999999999a") +
-    "</code>, and " + F.N + "-bit binary (spaces are fine).<br>" +
-    "Based on the h-schmidt.net <a href=\"https://www.h-schmidt.net/FloatConverter/IEEE754.html\" target=\"_blank\" rel=\"noopener\">IEEE-754 Floating Point Converter</a>.";
+  $("footnote").innerHTML = "Based on the h-schmidt.net <a href=\"https://www.h-schmidt.net/FloatConverter/IEEE754.html\" target=\"_blank\" rel=\"noopener\">IEEE-754 Floating Point Converter</a>.";
   const exWrap = $("examples");
   exWrap.innerHTML = "";
   for (const x of F.examples) {
@@ -501,10 +513,8 @@ $("bin").addEventListener("input", e => {
   if (!new RegExp(`^[01]{1,${F.N}}$`).test(s)) { e.target.classList.add("bad"); setStatus(`Binary needs 1 to ${F.N} bits (0/1).`, "err"); return; }
   bits = B("0b" + s); input = null; render("bin"); setStatus("Set from binary.", "ok");
 });
-$("layout").addEventListener("click", e => {
-  const b = e.target.closest("button[data-f]");
-  if (b) { setField(b.dataset.f, +b.dataset.d); setStatus("", ""); }
-});
+$("prev").addEventListener("click", () => step(-1));
+$("next").addEventListener("click", () => step(1));
 document.querySelectorAll(".prec input").forEach(r => r.addEventListener("change", () => setPrecision(r.value)));
 
 setPrecision(location.hash === "#double" ? "double" : "single");
